@@ -1,0 +1,42 @@
+search_query=
+(
+  (
+    ti:"source recovery" OR abs:"source recovery" OR
+    ti:"source code recovery" OR abs:"source code recovery" OR
+    ti:"code recovery" OR abs:"code recovery" OR
+    ti:"source reconstruction" OR abs:"source reconstruction" OR
+    ti:"binary-to-source" OR abs:"binary-to-source" OR
+    ti:"binary to source" OR abs:"binary to source" OR
+    ti:"assembly-to-C" OR abs:"assembly-to-C" OR
+    ti:"binary-to-C" OR abs:"binary-to-C" OR
+    ti:"lifting" OR abs:"lifting"
+  )
+  AND
+  (
+    ti:binary OR abs:binary OR
+    ti:assembly OR abs:assembly OR
+    ti:executable OR abs:executable OR
+    ti:"machine code" OR abs:"machine code" OR
+    ti:bytecode OR abs:bytecode OR
+    ti:disassembly OR abs:disassembly OR
+    ti:disassembler OR abs:disassembler OR
+    ti:disassembling OR abs:disassembling
+  )
+  AND
+  (
+    ti:"machine learning" OR abs:"machine learning" OR
+    ti:"deep learning" OR abs:"deep learning" OR
+    ti:"neural network" OR abs:"neural network" OR
+    ti:"neural networks" OR abs:"neural networks" OR
+    ti:transformer OR abs:transformer OR
+    ti:transformers OR abs:transformers OR
+    ti:"language model" OR abs:"language model" OR
+    ti:"language models" OR abs:"language models" OR
+    ti:LLM OR abs:LLM OR
+    ti:GPT OR abs:GPT
+  )
+  AND
+  (cat:cs.CR OR cat:cs.SE OR cat:cs.PL OR cat:cs.LG)
+  AND
+  submittedDate:[201801010000 TO 202612310000]
+)

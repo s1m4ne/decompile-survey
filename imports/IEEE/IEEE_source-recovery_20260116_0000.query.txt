@@ -1,0 +1,32 @@
+(
+  (
+    "Document Title":"source recovery" OR "Abstract":"source recovery" OR
+    "Document Title":"source code recovery" OR "Abstract":"source code recovery" OR
+    "Document Title":"code recovery" OR "Abstract":"code recovery" OR
+    "Document Title":"source reconstruction" OR "Abstract":"source reconstruction" OR
+    "Document Title":"binary-to-source" OR "Abstract":"binary-to-source" OR
+    "Document Title":"binary to source" OR "Abstract":"binary to source" OR
+    "Document Title":"assembly-to-C" OR "Abstract":"assembly-to-C" OR
+    "Document Title":"binary-to-C" OR "Abstract":"binary-to-C" OR
+    "Document Title":"lifting" OR "Abstract":"lifting"
+  )
+  AND
+  (
+    "Document Title":binary OR "Abstract":binary OR
+    "Document Title":assembly OR "Abstract":assembly OR
+    "Document Title":executable OR "Abstract":executable OR
+    "Document Title":"machine code" OR "Abstract":"machine code" OR
+    "Document Title":disassembl* OR "Abstract":disassembl* OR
+    "Document Title":bytecode OR "Abstract":bytecode
+  )
+  AND
+  (
+    "Document Title":"machine learning" OR "Abstract":"machine learning" OR
+    "Document Title":"deep learning" OR "Abstract":"deep learning" OR
+    "Document Title":"neural network*" OR "Abstract":"neural network*" OR
+    "Document Title":transformer* OR "Abstract":transformer* OR
+    "Document Title":"language model*" OR "Abstract":"language model*" OR
+    "Document Title":LLM OR "Abstract":LLM OR
+    "Document Title":GPT OR "Abstract":GPT
+  )
+)

@@ -1,0 +1,34 @@
+(
+  (
+    Title:"source recovery" OR Abstract:"source recovery" OR
+    Title:"source code recovery" OR Abstract:"source code recovery" OR
+    Title:"code recovery" OR Abstract:"code recovery" OR
+    Title:"source reconstruction" OR Abstract:"source reconstruction" OR
+    Title:"binary-to-source" OR Abstract:"binary-to-source" OR
+    Title:"binary to source" OR Abstract:"binary to source" OR
+    Title:"assembly-to-C" OR Abstract:"assembly-to-C" OR
+    Title:"binary-to-C" OR Abstract:"binary-to-C" OR
+    Title:"lifting" OR Abstract:"lifting"
+  )
+  AND
+  (
+    Title:binary OR Abstract:binary OR
+    Title:assembly OR Abstract:assembly OR
+    Title:executable OR Abstract:executable OR
+    Title:"machine code" OR Abstract:"machine code" OR
+    Title:disassembl* OR Abstract:disassembl* OR
+    Title:bytecode OR Abstract:bytecode
+  )
+  AND
+  (
+    Title:"machine learning" OR Abstract:"machine learning" OR
+    Title:"deep learning" OR Abstract:"deep learning" OR
+    Title:"neural network" OR Abstract:"neural network" OR
+    Title:"neural networks" OR Abstract:"neural networks" OR
+    Title:transformer* OR Abstract:transformer* OR
+    Title:"language model" OR Abstract:"language model" OR
+    Title:"language models" OR Abstract:"language models" OR
+    Title:LLM OR Abstract:LLM OR
+    Title:GPT OR Abstract:GPT
+  )
+)
