@@ -26,10 +26,12 @@ decompile-survey/
 ├── logs/                       # ログファイル
 │   └── import_log.csv          # インポート記録
 ├── scripts/                    # スクリプト
-│   └── arxiv/                  # arXiv用スクリプト
-│       ├── arxiv_fetch.py      # arXiv APIからのBibTeX取得
-│       ├── query.txt           # クエリテンプレート
-│       └── README.md
+│   ├── bibtex_fetcher/         # arXiv APIからBibTeX取得
+│   │   └── arxiv_fetch.py
+│   ├── pdf2md_llamaparse/      # LlamaParseでPDF→Markdown変換
+│   │   └── parse_pdf.py
+│   └── pdf2md_mistral/         # Mistral OCRでPDF→Markdown変換
+│       └── parse_pdf.py
 ├── .gitignore
 └── README.md
 ```
@@ -131,10 +133,11 @@ python arxivcollector.py --url "https://arxiv.org/search/..." --title output
 ```
 参照: https://github.com/s1m4ne/arxivcollector
 
-#### 方法B: arXiv API (scripts/arxiv/arxiv_fetch.py)
+#### 方法B: arXiv API (scripts/bibtex_fetcher/arxiv_fetch.py)
 ```bash
-cd scripts/arxiv
-python arxiv_fetch.py
+python3 scripts/bibtex_fetcher/arxiv_fetch.py \
+  --query '(ti:"decompil*" OR abs:"decompil*")' \
+  --page-size 100 --max-pages 2
 ```
 
 ### 3. 文献管理ツールへのインポート

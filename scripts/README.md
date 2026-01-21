@@ -4,24 +4,34 @@
 
 ## サブディレクトリ
 
-### arxiv/
+### bibtex_fetcher/
 
 arXiv APIからBibTeXを取得するスクリプト。
 
 ```bash
-python arxiv_fetch.py \
+python3 arxiv_fetch.py \
   --query '(ti:"decompil*" OR abs:"decompil*")' \
   --page-size 100 --max-pages 2
 ```
 
-詳細: [arxiv/README.md](arxiv/README.md)
+詳細: [bibtex_fetcher/README.md](bibtex_fetcher/README.md)
 
-### llamaparse/
+### pdf2md_llamaparse/
 
 LlamaParseを使用してPDFをMarkdownに変換するスクリプト。
 
 ```bash
-python parse_pdf.py paper.pdf
+python3 parse_pdf.py paper.pdf
 ```
 
-詳細: [llamaparse/README.md](llamaparse/README.md)
+詳細: [pdf2md_llamaparse/README.md](pdf2md_llamaparse/README.md)
+
+### pdf2md_mistral/
+
+Mistral OCR 3を使用してPDFをMarkdownに変換するスクリプト。画像も抽出・保存される。
+
+```bash
+python3 parse_pdf.py paper.pdf
+```
+
+詳細: [pdf2md_mistral/README.md](pdf2md_mistral/README.md)

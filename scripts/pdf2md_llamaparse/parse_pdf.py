@@ -7,6 +7,7 @@ Usage: python parse_pdf.py <input.pdf> [output.md]
 import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 from dotenv import load_dotenv
 from llama_parse import LlamaParse
@@ -16,7 +17,7 @@ script_dir = Path(__file__).parent
 load_dotenv(script_dir / ".env")
 
 
-def parse_pdf(input_path: str, output_path: str | None = None) -> str:
+def parse_pdf(input_path: str, output_path: Optional[str] = None) -> str:
     """Convert PDF to Markdown using LlamaParse."""
 
     api_key = os.getenv("LLAMA_CLOUD_API_KEY")

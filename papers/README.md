@@ -54,3 +54,7 @@ papers/
 ### AI/Claude Codeでの参照
 - 1フォルダ = 1論文で完結
 - 「Coda論文について教えて」→ `papers/decompile/Coda_NeurIPS2019/` を読む
+
+### AI/Claude Code向けルール
+- **BibTeX**: 自動生成しない（精度が保証できないため、ユーザーが用意する）
+- **notes.md**: 指示がない限り生成しない

@@ -1,10 +1,11 @@
-# LlamaParse PDF to Markdown
+# PDF to Markdown (LlamaParse)
 
-PDFをMarkdownに変換するスクリプト。
+LlamaParseを使用してPDFをMarkdownに変換するスクリプト。
 
 ## セットアップ
 
 1. 依存関係をインストール
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -14,19 +15,18 @@ pip install -r requirements.txt
    - APIキーを取得
    - `.env` ファイルにAPIキーを貼り付け
 
-```bash
-# .env
+```
 LLAMA_CLOUD_API_KEY=llx-xxxxxxxxxxxxxxxx
 ```
 
 ## 使い方
 
 ```bash
-# 基本
-python parse_pdf.py paper.pdf
+# 基本（出力は入力ファイルと同じ場所に .md として保存）
+python3 parse_pdf.py paper.pdf
 
 # 出力ファイル指定
-python parse_pdf.py paper.pdf output.md
+python3 parse_pdf.py paper.pdf output.md
 ```
 
 ## 無料枠

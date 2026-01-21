@@ -14,9 +14,12 @@ venv/
 .env
 !.env.example
 
-# papers/ - PDFとMDは除外、notes.md/README.md/bibは追跡
+# papers/ - PDFとMDと画像は除外、notes.md/README.md/bibは追跡
 papers/**/*.pdf
 papers/**/*.md
+papers/**/*.jpeg
+papers/**/*.jpg
+papers/**/*.png
 !papers/**/notes.md
 !papers/**/README.md
 !papers/README.md
