@@ -1,0 +1,593 @@
+@article{Al-Kaswan2023,
+ abstract = {Reverse engineering binaries is required to understand and analyse programs for which the source code is unavailable. Decompilers can transform the largely unreadable binaries into a more readable source code-like representation. However, reverse engineering is time-consuming, much of which is taken up by labelling the functions with semantic information. While the automated summarisation of decompiled code can help Reverse Engineers understand and analyse binaries, current work mainly focuses on summarising source code, and no suitable dataset exists for this task. In this work, we extend large pre-trained language models of source code to summarise decompiled binary functions. Furthermore, we investigate the impact of input and data properties on the performance of such models. Our approach consists of two main components; the data and the model. We first build CAPYBARA, a dataset of 214K decompiled function-documentation pairs across various compiler optimisations. We extend CAPYBARA further by generating synthetic datasets and deduplicating the data. Next, we fine-tune the CodeT5 base model with CAPYBARA to create BinT5. BinT5 achieves the state-of-the-art BLEU-4 score of 60.83, 58.82, and 44.21 for summarising source, decompiled, and synthetically stripped decompiled code, respectively. This indicates that these models can be extended to decompiled binaries successfully. Finally, we found that the performance of BinT5 is not heavily dependent on the dataset size and compiler optimisation level. We recommend future research to further investigate transferring knowledge when working with less expressive input formats such as stripped binaries. },
+ author = {Al-Kaswan, Ali AND Ahmed, Toufique AND Izadi, Maliheh AND Sawant, Ashok, Anand AND Devanbu, Premkumar AND Deursen, van, Arie},
+ doi = {https://doi.org/10.48550/arXiv.2301.01701},
+ howpublished = {\url{https://arxiv.org/pdf/2301.01701}},
+ month = {jan},
+ note = {SANER 2023 Technical Track Camera Ready},
+ title = {Extending Source Code Pre-Trained Language Models to Summarise Decompiled Binaries},
+ year = {2023}
+}
+
+@article{Arasteh2025,
+ abstract = {The software compilation process has a tendency to obscure the original design of the system and makes it difficult both to identify individual components and discern their purpose simply by examining the resulting binary code. Although decompilation techniques attempt to recover higher-level source code from the machine code in question, they are not fully able to restore the semantics of the original functions. Furthermore, binaries are often stripped of metadata, and this makes it challenging to reverse engineer complex binary software. In this paper we show how a combination of binary decomposition techniques, decompilation passes, and LLM-powered function summarization can be used to build an economical engine to identify modules in stripped binaries and associate them with high-level natural language descriptions. We instantiated this technique with three underlying open-source LLMs -- CodeQwen, DeepSeek-Coder and CodeStral -- and measured its effectiveness in identifying modules in robotics firmware. This experimental evaluation involved 467 modules from four devices from the ArduPilot software suite, and showed that CodeStral, the best-performing backend LLM, achieves an average F1-score of 0.68 with an online running time of just a handful of seconds. },
+ author = {Arasteh, Sima AND Jandaghi, Pegah AND Weideman, Nicolaas AND Perepech, Dennis AND Raghothaman, Mukund AND Hauser, Christophe AND Garcia, Luis},
+ doi = {https://doi.org/10.48550/arXiv.2503.03969},
+ howpublished = {\url{https://arxiv.org/pdf/2503.03969}},
+ month = {mar},
+ note = {11 pages, 5 figures},
+ title = {Trim My View: An LLM-Based Code Query System for Module Retrieval in Robotic Firmware},
+ year = {2025}
+}
+
+@article{Armengol-Estapé2022,
+ abstract = {Deep learning has had a significant impact on many fields. Recently, code-to-code neural models have been used in code translation, code refinement and decompilation. However, the question of whether these models can automate compilation has yet to be investigated. In this work, we explore neural compilation, building and evaluating Transformer models that learn how to produce x86 assembler from C code. Although preliminary results are relatively weak, we make our data, models and code publicly available to encourage further research in this area. },
+ author = {Armengol-Estapé, Jordi AND O'Boyle, P., F., Michael},
+ doi = {https://doi.org/10.48550/arXiv.2108.07639},
+ howpublished = {\url{https://arxiv.org/pdf/2108.07639}},
+ month = {dec},
+ note = {Published in AIPLANS 2021},
+ title = {Learning C to x86 Translation: An Experiment in Neural Compilation},
+ year = {2022}
+}
+
+@article{Arranz-Olmos2025,
+ abstract = {Cryptographic libraries are a main target of timing side-channel attacks. A practical means to protect against these attacks is to adhere to the constant-time (CT) policy. However, it is hard to write constant-time code, and even constant-time code can be turned vulnerable by mainstream compilers. So how can we verify that binary code is constant-time? The obvious answer is to use binary-level CT tools. To do so, a common approach is to use decompilers or lifters as a front-end for CT analysis tools operating on source code or IR. Unfortunately, this approach is problematic with current decompilers. To illustrate this fact, we use the recent Clangover vulnerability and other constructed examples to show that five popular decompilers eliminate CT violations, rendering them not applicable with the approach. In this paper, we develop foundations to asses whether a decompiler is fit for the Decompile-then-Analyze approach. We propose CT transparency, which states that a transformation neither eliminates nor introduces CT violations, and a general method for proving that a program transformation is CT transparent. Then, we build CT-RetDec, a CT analysis tool based on a modified version of the LLVM-based decompiler RetDec. We evaluate CT-RetDec on a benchmark of real-world vulnerabilities in binaries, and show that the modifications had significant impact on CT-RetDec's performance. As a contribution of independent interest, we found that popular tools for binary-level CT analysis rely on decompiler-like transformations before analysis. We show that two such tools employ transformations that are not CT transparent, and, consequently, that they incorrectly accept non-CT programs. While our examples are very specific and do not invalidate the general approach of these tools, we advocate that tool developers counter such potential issues by proving the transparency of such transformations. },
+ author = {Arranz-Olmos, Santiago AND Barthe, Gilles AND Blatter, Lionel AND Bouzid, Youcef AND Wall, der, van, Sören AND Zhang, Zhiyuan},
+ doi = {https://doi.org/10.48550/arXiv.2501.04183},
+ howpublished = {\url{https://arxiv.org/pdf/2501.04183}},
+ month = {oct},
+ note = {},
+ title = {Decompiling for Constant-Time Analysis},
+ year = {2025}
+}
+
+@article{Bielik2020,
+ abstract = {Machine learning and deep learning in particular has been recently used to successfully address many tasks in the domain of code such as finding and fixing bugs, code completion, decompilation, type inference and many others. However, the issue of adversarial robustness of models for code has gone largely unnoticed. In this work, we explore this issue by: (i) instantiating adversarial attacks for code (a domain with discrete and highly structured inputs), (ii) showing that, similar to other domains, neural models for code are vulnerable to adversarial attacks, and (iii) combining existing and novel techniques to improve robustness while preserving high accuracy. },
+ author = {Bielik, Pavol AND Vechev, Martin},
+ doi = {https://doi.org/10.48550/arXiv.2002.04694},
+ howpublished = {\url{https://arxiv.org/pdf/2002.04694}},
+ month = {aug},
+ note = {Proceedings of the 37th International Conference on Machine Learning, Online, PMLR 119, 2020},
+ title = {Adversarial Robustness for Code},
+ year = {2020}
+}
+
+@article{Bu2025,
+ abstract = {Smart contracts deployed on blockchain platforms are vulnerable to various security vulnerabilities. However, only a small number of Ethereum contracts have released their source code, so vulnerability detection at the bytecode level is crucial. This paper introduces SmartBugBert, a novel approach that combines BERT-based deep learning with control flow graph (CFG) analysis to detect vulnerabilities directly from bytecode. Our method first decompiles smart contract bytecode into optimized opcode sequences, extracts semantic features using TF-IDF, constructs control flow graphs to capture execution logic, and isolates vulnerable CFG fragments for targeted analysis. By integrating both semantic and structural information through a fine-tuned BERT model and LightGBM classifier, our approach effectively identifies four critical vulnerability types: transaction-ordering, access control, self-destruct, and timestamp dependency vulnerabilities. Experimental evaluation on 6,157 Ethereum smart contracts demonstrates that SmartBugBert achieves 90.62% precision, 91.76% recall, and 91.19% F1-score, significantly outperforming existing detection methods. Ablation studies confirm that the combination of semantic features with CFG information substantially enhances detection performance. Furthermore, our approach maintains efficient detection speed (0.14 seconds per contract), making it practical for large-scale vulnerability assessment. },
+ author = {Bu, Jiuyang AND Li, Wenkai AND Li, Zongwei AND Zhang, Zeng AND Li, Xiaoqi},
+ doi = {https://doi.org/10.48550/arXiv.2504.05002},
+ howpublished = {\url{https://arxiv.org/pdf/2504.05002}},
+ month = {apr},
+ note = {},
+ title = {SmartBugBert: BERT-Enhanced Vulnerability Detection for Smart Contract Bytecode},
+ year = {2025}
+}
+
+@article{Butz2020,
+ abstract = {There exists a dichotomy between classical probabilistic graphical models, such as Bayesian networks (BNs), and modern tractable models, such as sum-product networks (SPNs). The former generally have intractable inference, but provide a high level of interpretability, while the latter admits a wide range of tractable inference routines, but are typically harder to interpret. Due to this dichotomy, tools to convert between BNs and SPNs are desirable. While one direction -- compiling BNs into SPNs -- is well discussed in Darwiche's seminal work on arithmetic circuit compilation, the converse direction -- decompiling SPNs into BNs -- has received surprisingly little attention. In this paper, we fill this gap by proposing SPN2BN, an algorithm that decompiles an SPN into a BN. SPN2BN has several salient features when compared to the only other two works decompiling SPNs. Most significantly, the BNs returned by SPN2BN are minimal independence-maps that are more parsimonious with respect to the introduction of latent variables. Secondly, the output BN produced by SPN2BN can be precisely characterized with respect to a compiled BN. More specifically, a certain set of directed edges will be added to the input BN, giving what we will call the moral-closure. Lastly, it is established that our compilation-decompilation process is idempotent. This has practical significance as it limits the size of the decompiled SPN. },
+ author = {Butz, J., Cory AND Oliveira, S., Jhonatan AND Peharz, Robert},
+ doi = {https://doi.org/10.48550/arXiv.1912.10092},
+ howpublished = {\url{https://arxiv.org/pdf/1912.10092}},
+ month = {may},
+ note = {},
+ title = {Sum-Product Network Decompilation},
+ year = {2020}
+}
+
+@article{Chakraborty2020,
+ abstract = {Mapping programs from one architecture to another plays a key role in technologies such as binary translation, decompilation, emulation, virtualization, and application migration. Although multicore architectures are ubiquitous, the state-of-the-art translation tools do not handle concurrency primitives correctly. Doing so is rather challenging because of the subtle differences in the concurrency models between architectures. In response, we address various aspects of the challenge. First, we develop correct and efficient translations between the concurrency models of two mainstream architecture families: x86 and ARM (versions 7 and 8). We develop direct mappings between x86 and ARMv8 and ARMv7, and fence elimination algorithms to eliminate redundant fences after direct mapping. Although our mapping utilizes ARMv8 as an intermediate model for mapping between x86 and ARMv7, we argue that it should not be used as an intermediate model in a decompiler because it disallows common compiler transformations. Second, we propose and implement a technique for inserting memory fences for safely migrating programs between different architectures. Our technique checks robustness against x86 and ARM, and inserts fences upon robustness violations. Our experiments demonstrate that in most of the programs both our techniques introduce significantly fewer fences compared to naive schemes for porting applications across these architectures. },
+ author = {Chakraborty, Soham},
+ doi = {https://doi.org/10.48550/arXiv.2009.03846},
+ howpublished = {\url{https://arxiv.org/pdf/2009.03846}},
+ month = {sep},
+ note = {},
+ title = {On Architecture to Architecture Mapping for Concurrency},
+ year = {2020}
+}
+
+@article{Chu2018,
+ abstract = {This paper investigates the security and privacy of Internet-connected children's smart toys through case studies of three commercially-available products. We conduct network and application vulnerability analyses of each toy using static and dynamic analysis techniques, including application binary decompilation and network monitoring. We discover several publicly undisclosed vulnerabilities that violate the Children's Online Privacy Protection Rule (COPPA) as well as the toys' individual privacy policies. These vulnerabilities, especially security flaws in network communications with first-party servers, are indicative of a disconnect between many IoT toy developers and security and privacy best practices despite increased attention to Internet-connected toy hacking risks. },
+ author = {Chu, Gordon AND Apthorpe, Noah AND Feamster, Nick},
+ doi = {https://doi.org/10.48550/arXiv.1805.02751},
+ howpublished = {\url{https://arxiv.org/pdf/1805.02751}},
+ month = {aug},
+ note = {8 pages, 8 figures; publication version},
+ title = {Security and Privacy Analyses of Internet of Things Children's Toys},
+ year = {2018}
+}
+
+@article{Chukkol2024,
+ abstract = {Binary program vulnerability detection is critical for software security, yet existing deep learning approaches often rely on source code analysis, limiting their ability to detect unknown vulnerabilities. To address this, we propose VulCatch, a binary-level vulnerability detection framework. VulCatch introduces a Synergy Decompilation Module (SDM) and Kolmogorov-Arnold Networks (KAN) to transform raw binary code into pseudocode using CodeT5, preserving high-level semantics for deep analysis with tools like Ghidra and IDA. KAN further enhances feature transformation, enabling the detection of complex vulnerabilities. VulCatch employs word2vec, Inception Blocks, BiLSTM Attention, and Residual connections to achieve high detection accuracy (98.88%) and precision (97.92%), while minimizing false positives (1.56%) and false negatives (2.71%) across seven CVE datasets. },
+ author = {Chukkol, Adama, Hamman, Abdulrahman AND Luo, Senlin AND Sharif, Kashif AND Haruna, Yunusa AND Abdullahi, Muhammad, Muhammad},
+ doi = {https://doi.org/10.48550/arXiv.2408.07181},
+ howpublished = {\url{https://arxiv.org/pdf/2408.07181}},
+ month = {aug},
+ note = {},
+ title = {VulCatch: Enhancing Binary Vulnerability Detection through CodeT5 Decompilation and KAN Advanced Feature Extraction},
+ year = {2024}
+}
+
+@article{Dramko2025,
+ abstract = {Neural decompilers are machine learning models that reconstruct the source code from an executable program. Critical to the lifecycle of any machine learning model is an evaluation of its effectiveness. However, existing techniques for evaluating neural decompilation models have substantial weaknesses, especially when it comes to showing the correctness of the neural decompiler's predictions. To address this, we introduce codealign, a novel instruction-level code equivalence technique designed for neural decompilers. We provide a formal definition of a relation between equivalent instructions, which we term an equivalence alignment. We show how codealign generates equivalence alignments, then evaluate codealign by comparing it with symbolic execution. Finally, we show how the information codealign provides-which parts of the functions are equivalent and how well the variable names match-is substantially more detailed than existing state-of-the-art evaluation metrics, which report unitless numbers measuring similarity. },
+ author = {Dramko, Luke AND Goues, Le, Claire AND Schwartz, J., Edward},
+ doi = {https://doi.org/10.48550/arXiv.2501.04811},
+ howpublished = {\url{https://arxiv.org/pdf/2501.04811}},
+ month = {jan},
+ note = {},
+ title = {Fast, Fine-Grained Equivalence Checking for Neural Decompilers},
+ year = {2025}
+}
+
+@article{Enders2022,
+ abstract = {Analyzing third-party software such as malware or firmware is a crucial task for security analysts. Although various approaches for automatic analysis exist and are the subject of ongoing research, analysts often have to resort to manual static analysis to get a deep understanding of a given binary sample. Since the source code of encountered samples is rarely available, analysts regularly employ decompilers for easier and faster comprehension than analyzing a binary's disassembly. In this paper, we introduce our decompilation approach dewolf. We developed a variety of improvements over the previous academic state-of-the-art decompiler and some novel algorithms to enhance readability and comprehension, focusing on manual analysis. To evaluate our approach and to obtain a better insight into the analysts' needs, we conducted three user surveys. The results indicate that dewolf is suitable for malware comprehension and that its output quality noticeably exceeds Ghidra and Hex-Rays in certain aspects. Furthermore, our results imply that decompilers aiming at manual analysis should be highly configurable to respect individual user preferences. Additionally, future decompilers should not necessarily follow the unwritten rule to stick to the code-structure dictated by the assembly in order to produce readable output. In fact, the few cases where dewolf already cracks this rule lead to its results considerably exceeding other decompilers. We publish a prototype implementation of dewolf and all survey results on GitHub. },
+ author = {Enders, Steffen AND Behner, C., Eva-Maria AND Bergmann, Niklas AND Rybalka, Mariia AND Padilla, Elmar AND Hui, Xue, Er AND Low, Henry AND Sim, Nicholas},
+ doi = {https://doi.org/10.48550/arXiv.2205.06719},
+ howpublished = {\url{https://arxiv.org/pdf/2205.06719}},
+ month = {may},
+ note = {},
+ title = {dewolf: Improving Decompilation by leveraging User Surveys},
+ year = {2022}
+}
+
+@article{Erinfolami2019,
+ abstract = {Recovering class inheritance from C++ binaries has several security benefits including problems such as decompilation and program hardening. Thanks to the optimization guidelines prescribed by the C++ standard, commercial C++ binaries tend to be optimized. While state-of-the-art class inheritance inference solutions are effective in dealing with unoptimized code, their efficacy is impeded by optimization. Particularly, constructor inlining--or worse exclusion--due to optimization render class inheritance recovery challenging. Further, while modern solutions such as MARX can successfully group classes within an inheritance sub-tree, they fail to establish directionality of inheritance, which is crucial for security-related applications (e.g. decompilation). We implemented a prototype of DeClassifier using Binary Analysis Platform (BAP) and evaluated DeClassifier against 16 binaries compiled using gcc under multiple optimization settings. We show that (1) DeClassifier can recover 94.5% and 71.4% true positive directed edges in the class hierarchy tree under O0 and O2 optimizations respectively, (2) a combination of ctor+dtor analysis provides much better inference than ctor only analysis. },
+ author = {Erinfolami, Ayomide, Rukayat AND Prakash, Aravind},
+ doi = {https://doi.org/10.48550/arXiv.1901.10073},
+ howpublished = {\url{https://arxiv.org/pdf/1901.10073}},
+ month = {feb},
+ note = {13 pages of main paper including references, 1 page of appendix, 2 figures and 10 tables},
+ title = {DeClassifier: Class-Inheritance Inference Engine for Optimized C++ Binaries},
+ year = {2019}
+}
+
+@article{Erinfolami2020,
+ abstract = {Complexities that arise from implementation of object-oriented concepts in C++ such as virtual dispatch and dynamic type casting have attracted the attention of attackers and defenders alike. Binary-level defenses are dependent on full and precise recovery of class inheritance tree of a given program. While current solutions focus on recovering single and multiple inheritances from the binary, they are oblivious to virtual inheritance. Conventional wisdom among binary-level defenses is that virtual inheritance is uncommon and/or support for single and multiple inheritances provides implicit support for virtual inheritance. In this paper, we show neither to be true. Specifically, (1) we present an efficient technique to detect virtual inheritance in C++ binaries and show through a study that virtual inheritance can be found in non-negligible number (more than 10\% on Linux and 12.5\% on Windows) of real-world C++ programs including Mysql and libstdc++. (2) we show that failure to handle virtual inheritance introduces both false positives and false negatives in the hierarchy tree. These false positves and negatives either introduce attack surface when the hierarchy recovered is used to enforce CFI policies, or make the hierarchy difficult to understand when it is needed for program understanding (e.g., during decompilation). (3) We present a solution to recover virtual inheritance from COTS binaries. We recover a maximum of 95\% and 95.5\% (GCC -O0) and a minimum of 77.5\% and 73.8\% (Clang -O2) of virtual and intermediate bases respectively in the virtual inheritance tree. },
+ author = {Erinfolami, Ayomide, Rukayat AND Prakash, Aravind},
+ doi = {https://doi.org/10.48550/arXiv.2003.05039},
+ howpublished = {\url{https://arxiv.org/pdf/2003.05039}},
+ month = {jun},
+ note = {Accepted at CCS20. This is a technical report version},
+ title = {Devil is Virtual: Reversing Virtual Inheritance in C++ Binaries},
+ year = {2020}
+}
+
+@article{Harrand2019,
+ abstract = {During compilation from Java source code to bytecode, some information is irreversibly lost. In other words, compilation and decompilation of Java code is not symmetric. Consequently, the decompilation process, which aims at producing source code from bytecode, must establish some strategies to reconstruct the information that has been lost. Modern Java decompilers tend to use distinct strategies to achieve proper decompilation. In this work, we hypothesize that the diverse ways in which bytecode can be decompiled has a direct impact on the quality of the source code produced by decompilers. We study the effectiveness of eight Java decompilers with respect to three quality indicators: syntactic correctness, syntactic distortion and semantic equivalence modulo inputs. This study relies on a benchmark set of 14 real-world open-source software projects to be decompiled (2041 classes in total). Our results show that no single modern decompiler is able to correctly handle the variety of bytecode structures coming from real-world programs. Even the highest ranking decompiler in this study produces syntactically correct output for 84% of classes of our dataset and semantically equivalent code output for 78% of classes. },
+ author = {Harrand, Nicolas AND Soto-Valero, César AND Monperrus, Martin AND Baudry, Benoit},
+ doi = {https://doi.org/10.48550/arXiv.1908.06895},
+ howpublished = {\url{https://arxiv.org/pdf/1908.06895}},
+ month = {aug},
+ note = {11 pages, 6 figures, 9 listings, 3 tables},
+ title = {The Strengths and Behavioral Quirks of Java Bytecode Decompilers},
+ year = {2019}
+}
+
+@article{Harrand2020,
+ abstract = {During compilation from Java source code to bytecode, some information is irreversibly lost. In other words, compilation and decompilation of Java code is not symmetric. Consequently, decompilation, which aims at producing source code from bytecode, relies on strategies to reconstruct the information that has been lost. Different Java decompilers use distinct strategies to achieve proper decompilation. In this work, we hypothesize that the diverse ways in which bytecode can be decompiled has a direct impact on the quality of the source code produced by decompilers. In this paper, we assess the strategies of eight Java decompilers with respect to three quality indicators: syntactic correctness, syntactic distortion and semantic equivalence modulo inputs. Our results show that no single modern decompiler is able to correctly handle the variety of bytecode structures coming from real-world programs. The highest ranking decompiler in this study produces syntactically correct, and semantically equivalent code output for 84%, respectively 78%, of the classes in our dataset. Our results demonstrate that each decompiler correctly handles a different set of bytecode classes. We propose a new decompiler called Arlecchino that leverages the diversity of existing decompilers. To do so, we merge partial decompilation into a new one based on compilation errors. Arlecchino handles 37.6% of bytecode classes that were previously handled by no decompiler. We publish the sources of this new bytecode decompiler. },
+ author = {Harrand, Nicolas AND Soto-Valero, César AND Monperrus, Martin AND Baudry, Benoit},
+ doi = {https://doi.org/10.48550/arXiv.2005.11315},
+ howpublished = {\url{https://arxiv.org/pdf/2005.11315}},
+ month = {may},
+ note = {arXiv admin note: substantial text overlap with arXiv:1908.06895},
+ title = {Java Decompiler Diversity and its Application to Meta-decompilation},
+ year = {2020}
+}
+
+@article{He2025,
+ abstract = {Large Language Models (LLMs) have demonstrated strong capabilities in various code intelligence tasks. However, their effectiveness for Android malware analysis remains underexplored. Decompiled Android malware code presents unique challenges for analysis, due to the malicious logic being buried within a large number of functions and the frequent lack of meaningful function names. This paper presents CAMA, a benchmarking framework designed to systematically evaluate the effectiveness of Code LLMs in Android malware analysis. CAMA specifies structured model outputs to support key malware analysis tasks, including malicious function identification and malware purpose summarization. Built on these, it integrates three domain-specific evaluation metrics (consistency, fidelity, and semantic relevance), enabling rigorous stability and effectiveness assessment and cross-model comparison. We construct a benchmark dataset of 118 Android malware samples from 13 families collected in recent years, encompassing over 7.5 million distinct functions, and use CAMA to evaluate four popular open-source Code LLMs. Our experiments provide insights into how Code LLMs interpret decompiled code and quantify the sensitivity to function renaming, highlighting both their potential and current limitations in malware analysis. },
+ author = {He, Yiling AND She, Hongyu AND Qian, Xingzhi AND Zheng, Xinran AND Chen, Zhuo AND Qin, Zhan AND Cavallaro, Lorenzo},
+ doi = {https://doi.org/10.48550/arXiv.2504.00694},
+ howpublished = {\url{https://arxiv.org/pdf/2504.00694}},
+ month = {apr},
+ note = {This paper has been accepted to the 34th ACM SIGSOFT ISSTA Companion (LLMSC Workshop 2025)},
+ title = {On Benchmarking Code LLMs for Android Malware Analysis},
+ year = {2025}
+}
+
+@article{He2025,
+ abstract = {Large Language Models (LLMs) have demonstrated strong capabilities in various code intelligence tasks. However, their effectiveness for Android malware analysis remains underexplored. Decompiled Android malware code presents unique challenges for analysis, due to the malicious logic being buried within a large number of functions and the frequent lack of meaningful function names. This paper presents CAMA, a benchmarking framework designed to systematically evaluate the effectiveness of Code LLMs in Android malware analysis. CAMA specifies structured model outputs to support key malware analysis tasks, including malicious function identification and malware purpose summarization. Built on these, it integrates three domain-specific evaluation metrics (consistency, fidelity, and semantic relevance), enabling rigorous stability and effectiveness assessment and cross-model comparison. We construct a benchmark dataset of 118 Android malware samples from 13 families collected in recent years, encompassing over 7.5 million distinct functions, and use CAMA to evaluate four popular open-source Code LLMs. Our experiments provide insights into how Code LLMs interpret decompiled code and quantify the sensitivity to function renaming, highlighting both their potential and current limitations in malware analysis. },
+ author = {He, Yiling AND She, Hongyu AND Qian, Xingzhi AND Zheng, Xinran AND Chen, Zhuo AND Qin, Zhan AND Cavallaro, Lorenzo},
+ doi = {https://doi.org/10.48550/arXiv.2504.00694},
+ howpublished = {\url{https://arxiv.org/pdf/2504.00694}},
+ month = {apr},
+ note = {This paper has been accepted to the 34th ACM SIGSOFT ISSTA Companion (LLMSC Workshop 2025)},
+ title = {On Benchmarking Code LLMs for Android Malware Analysis},
+ year = {2025}
+}
+
+@article{Hussain2025,
+ abstract = {Recognizing vulnerabilities in stripped binary files presents a significant challenge in software security. Although some progress has been made in generating human-readable information from decompiled binary files with Large Language Models (LLMs), effectively and scalably detecting vulnerabilities within these binary files is still an open problem. This paper explores the novel application of LLMs to detect vulnerabilities within these binary files. We demonstrate the feasibility of identifying vulnerable programs through a combined approach of decompilation optimization to make the vulnerabilities more prominent and long-term memory for a larger context window, achieving state-of-the-art performance in binary vulnerability analysis. Our findings highlight the potential for LLMs to overcome the limitations of traditional analysis methods and advance the field of binary vulnerability detection, paving the way for more secure software systems. In this paper, we present Vul-BinLLM , an LLM-based framework for binary vulnerability detection that mirrors traditional binary analysis workflows with fine-grained optimizations in decompilation and vulnerability reasoning with an extended context. In the decompilation phase, Vul-BinLLM adds vulnerability and weakness comments without altering the code structure or functionality, providing more contextual information for vulnerability reasoning later. Then for vulnerability reasoning, Vul-BinLLM combines in-context learning and chain-of-thought prompting along with a memory management agent to enhance accuracy. Our evaluations encompass the commonly used synthetic dataset Juliet to evaluate the potential feasibility for analysis and vulnerability detection in C/C++ binaries. Our evaluations show that Vul-BinLLM is highly effective in detecting vulnerabilities on the compiled Juliet dataset. },
+ author = {Hussain, Nasir AND Chen, Haohan AND Tran, Chanh AND Huang, Philip AND Li, Zhuohao AND Chugh, Pravir AND Chen, William AND Kundu, Ashish AND Tian, Yuan},
+ doi = {https://doi.org/10.48550/arXiv.2505.22010},
+ howpublished = {\url{https://arxiv.org/pdf/2505.22010}},
+ month = {may},
+ note = {},
+ title = {VulBinLLM: LLM-powered Vulnerability Detection for Stripped Binaries},
+ year = {2025}
+}
+
+@article{Jiang2025,
+ abstract = {Binary code analysis is the foundation of crucial tasks in the security domain; thus building effective binary analysis techniques is more important than ever. Large language models (LLMs) although have brought impressive improvement to source code tasks, do not directly generalize to assembly code due to the unique challenges of assembly: (1) the low information density of assembly and (2) the diverse optimizations in assembly code. To overcome these challenges, this work proposes a hierarchical attention mechanism that builds attention summaries to capture the semantics more effectively and designs contrastive learning objectives to train LLMs to learn assembly optimization. Equipped with these techniques, this work develops Nova, a generative LLM for assembly code. Nova outperforms existing techniques on binary code decompilation by up to 14.84 -- 21.58% (absolute percentage point improvement) higher Pass@1 and Pass@10, and outperforms the latest binary code similarity detection techniques by up to 6.17% Recall@1, showing promising abilities on both assembly generation and understanding tasks. },
+ author = {Jiang, Nan AND Wang, Chengxiao AND Liu, Kevin AND Xu, Xiangzhe AND Tan, Lin AND Zhang, Xiangyu AND Babkin, Petr},
+ doi = {https://doi.org/10.48550/arXiv.2311.13721},
+ howpublished = {\url{https://arxiv.org/pdf/2311.13721}},
+ month = {nov},
+ note = {Published as a conference paper at ICLR 2025},
+ title = {Nova: Generative Language Models for Assembly Code with Hierarchical Attention and Contrastive Learning},
+ year = {2025}
+}
+
+@article{KC2023,
+ abstract = {Neural machine translation (NMT) methods developed for natural language processing have been shown to be highly successful in automating translation from one natural language to another. Recently, these NMT methods have been adapted to the generation of program code. In NMT for code generation, the task is to generate output source code that satisfies constraints expressed in the input. In the literature, a variety of different input scenarios have been explored, including generating code based on natural language description, lower-level representations such as binary or assembly (neural decompilation), partial representations of source code (code completion and repair), and source code in another language (code translation). In this paper we survey the NMT for code generation literature, cataloging the variety of methods that have been explored according to input and output representations, model architectures, optimization techniques used, data sets, and evaluation methods. We discuss the limitations of existing methods and future research directions },
+ author = {KC, Dharma AND Morrison, T., Clayton},
+ doi = {https://doi.org/10.48550/arXiv.2305.13504},
+ howpublished = {\url{https://arxiv.org/pdf/2305.13504}},
+ month = {may},
+ note = {33 pages, 1 figure},
+ title = {Neural Machine Translation for Code Generation},
+ year = {2023}
+}
+
+@article{Kim2023,
+ abstract = {Malware detection on binary executables provides a high availability to even binaries which are not disassembled or decompiled. However, a binary-level approach could cause ambiguity problems. In this paper, we propose a new feature engineering technique that use minimal knowledge about the internal layout on a binary. The proposed feature avoids the ambiguity problems by integrating the information about the layout with structural entropy. The experimental results show that our feature improves accuracy and F1-score by 3.3% and 0.07, respectively, on a CNN based malware detector with realistic benign and malicious samples. },
+ author = {Kim, Jeongwoo AND Cho, Eun-Sun AND Paik, Joon-Young},
+ doi = {https://doi.org/10.48550/arXiv.2304.02260},
+ howpublished = {\url{https://arxiv.org/pdf/2304.02260}},
+ month = {apr},
+ note = {2pages, no figures, This manuscript was presented in the poster session of The Annual Computer Security Applications Conference (ACSAC) 2020},
+ title = {Feature Engineering Using File Layout for Malware Detection},
+ year = {2023}
+}
+
+@article{Kumar2018,
+ abstract = {Control flow obfuscation (CFO) alters the control flow path of a program without altering its semantics. Existing literature has proposed several techniques; however, a quick survey reveals a lack of clarity in the types of techniques proposed, and how many are unique. What is also unclear is whether there is a disparity in the theory and practice of CFO. In this paper, we systematically study CFO techniques proposed for Java programs, both from papers and commercially available tools. We evaluate 13 obfuscators using a dataset of 16 programs with varying software characteristics, and different obfuscator parameters. Each program is carefully reverse engineered to study the effect of obfuscation. Our study reveals that there are 36 unique techniques proposed in the literature and 7 from tools. Three of the most popular commercial obfuscators implement only 13 of the 36 techniques in the literature. Thus there appears to be a gap between the theory and practice of CFO. We propose a novel classification of the obfuscation techniques based on the underlying component of a program that is transformed. We identify the techniques that are potent against reverse engineering attacks, both from the perspective of a human analyst and an automated program decompiler. Our analysis reveals that majority of the tools do not implement these techniques, thus defeating the protection obfuscation offers. We furnish examples of select techniques and discuss our findings. To the best of our knowledge, we are the first to assemble such a research. This study will be useful to software designers to decide upon the best techniques to use based upon their needs, for researchers to understand the state-of-the-art and for commercial obfuscator developers to develop new techniques. },
+ author = {Kumar, Renuka AND Kurian, Mariam, Anjana},
+ doi = {https://doi.org/10.48550/arXiv.1809.11037},
+ howpublished = {\url{https://arxiv.org/pdf/1809.11037}},
+ month = {sep},
+ note = {20 pages, 3 tables},
+ title = {A Systematic Study on Static Control Flow Obfuscation Techniques in Java},
+ year = {2018}
+}
+
+@article{Lagouvardos2025,
+ abstract = {Decompilation of binary code has arisen as a highly-important application in the space of Ethereum VM (EVM) smart contracts. Major new decompilers appear nearly every year and attain popularity, for a multitude of reverse-engineering or tool-building purposes. Technically, the problem is fundamental: it consists of recovering high-level control flow from a highly-optimized continuation-passing-style (CPS) representation. Architecturally, decompilers can be built using either static analysis or symbolic execution techniques. We present Shrknr, a static-analysis-based decompiler succeeding the state-of-the-art Elipmoc decompiler. Shrknr manages to achieve drastic improvements relative to the state of the art, in all significant dimensions: scalability, completeness, precision. Chief among the techniques employed is a new variant of static analysis context: shrinking context sensitivity. Shrinking context sensitivity performs deep cuts in the static analysis context, eagerly "forgetting" control-flow history, in order to leave room for further precise reasoning. We compare Shrnkr to state-of-the-art decompilers, both static-analysis- and symbolic-execution-based. In a standard benchmark set, Shrnkr scales to over 99.5% of contracts (compared to ~95%), covers (i.e., reaches and manages to decompile) 67% more code, and reduces key imprecision metrics by over 65%. },
+ author = {Lagouvardos, Sifis AND Bollanos, Yannis AND Grech, Neville AND Smaragdakis, Yannis},
+ doi = {https://doi.org/10.48550/arXiv.2409.11157},
+ howpublished = {\url{https://arxiv.org/pdf/2409.11157}},
+ month = {apr},
+ note = {Full version of ISSTA 2025 paper},
+ title = {The Incredible Shrinking Context... in a Decompiler Near You},
+ year = {2025}
+}
+
+@article{Li2020,
+ abstract = {More than eight million smart contracts have been deployed into Ethereum, which is the most popular blockchain that supports smart contract. However, less than 1% of deployed smart contracts are open-source, and it is difficult for users to understand the functionality and internal mechanism of those closed-source contracts. Although a few decompilers for smart contracts have been recently proposed, it is still not easy for users to grasp the semantic information of the contract, not to mention the potential misleading due to decompilation errors. In this paper, we propose the first system named STAN to generate descriptions for the bytecodes of smart contracts to help users comprehend them. In particular, for each interface in a smart contract, STAN can generate four categories of descriptions, including functionality description, usage description, behavior description, and payment description, by leveraging symbolic execution and NLP (Natural Language Processing) techniques. Extensive experiments show that STAN can generate adequate, accurate, and readable descriptions for contract's bytecodes, which have practical value for users. },
+ author = {Li, Xiaoqi AND Chen, Ting AND Luo, Xiapu AND Zhang, Tao AND Yu, Le AND Xu, Zhou},
+ doi = {https://doi.org/10.48550/arXiv.2007.09696},
+ howpublished = {\url{https://arxiv.org/pdf/2007.09696}},
+ month = {jul},
+ note = {In Proc. of the 20th IEEE International Conference on Software Quality, Reliability and Security (QRS), 2020},
+ title = {STAN: Towards Describing Bytecodes of Smart Contract},
+ year = {2020}
+}
+
+@article{Li2025,
+ abstract = {Security patch detection (SPD) is crucial for maintaining software security, as unpatched vulnerabilities can lead to severe security risks. In recent years, numerous learning-based SPD approaches have demonstrated promising results on source code. However, these approaches typically cannot be applied to closed-source applications and proprietary systems that constitute a significant portion of real-world software, as they release patches only with binary files, and the source code is inaccessible. Given the impressive performance of code large language models (LLMs) in code intelligence and binary analysis tasks such as decompilation and compilation optimization, their potential for detecting binary security patches remains unexplored, exposing a significant research gap between their demonstrated low-level code understanding capabilities and this critical security task. To address this gap, we construct a large-scale binary patch dataset containing \textbf\{19,448\} samples, with two levels of representation: assembly code and pseudo-code, and systematically evaluate \textbf\{19\} code LLMs of varying scales to investigate their capability in binary SPD tasks. Our initial exploration demonstrates that directly prompting vanilla code LLMs struggles to accurately identify security patches from binary patches, and even state-of-the-art prompting techniques fail to mitigate the lack of domain knowledge in binary SPD within vanilla models. Drawing on the initial findings, we further investigate the fine-tuning strategy for injecting binary SPD domain knowledge into code LLMs through two levels of representation. Experimental results demonstrate that fine-tuned LLMs achieve outstanding performance, with the best results obtained on the pseudo-code representation. },
+ author = {Li, Qingyuan AND Li, Binchang AND Gao, Cuiyun AND Gao, Shuzheng AND Li, Zongjie},
+ doi = {https://doi.org/10.48550/arXiv.2509.06052},
+ howpublished = {\url{https://arxiv.org/pdf/2509.06052}},
+ month = {sep},
+ note = {},
+ title = {Empirical Study of Code Large Language Models for Binary Security Patch Detection},
+ year = {2025}
+}
+
+@article{Liu2021,
+ abstract = {There is increasing interest in applying verification tools to programs that have bitvector operations (eg., binaries). SMT solvers, which serve as a foundation for these tools, have thus increased support for bitvector reasoning through bit-blasting and linear arithmetic approximations. In this paper we show that similar linear arithmetic approximation of bitvector operations can be done at the source level through transformations. Specifically, we introduce new paths that over-approximate bitvector operations with linear conditions/constraints, increasing branching but allowing us to better exploit the well-developed integer reasoning and interpolation of verification tools. We show that, for reachability of bitvector programs, increased branching incurs negligible overhead yet, when combined with integer interpolation optimizations, enables more programs to be verified. We further show this exploitation of integer interpolation in the common case also enables competitive termination verification of bitvector programs and leads to the first effective technique for LTL verification of bitvector programs. Finally, we provide an in-depth case study of decompiled ("lifted") binary programs, which emulate X86 execution through frequent use of bitvector operations. We present a new tool DarkSea, the first tool capable of verifying reachability, termination, and LTL of lifted binaries. },
+ author = {Liu, Cyrus, Yuandong AND Pang, Chengbin AND Dietsch, Daniel AND Koskinen, Eric AND Le, Ton-Chanh AND Portokalidis, Georgios AND Xu, Jun},
+ doi = {https://doi.org/10.48550/arXiv.2105.05159},
+ howpublished = {\url{https://arxiv.org/pdf/2105.05159}},
+ month = {aug},
+ note = {39 pages(including Appendix), 10 tables, 4 Postscript figures, accepted to APLAS 2021},
+ title = {Proving LTL Properties of Bitvector Programs and Decompiled Binaries (Extended)},
+ year = {2021}
+}
+
+@article{Manuel2024,
+ abstract = {Security experts reverse engineer (decompile) binary code to identify critical security vulnerabilities. The limited access to source code in vital systems - such as firmware, drivers, and proprietary software used in Critical Infrastructures (CI) - makes this analysis even more crucial on the binary level. Even with available source code, a semantic gap persists after compilation between the source and the binary code executed by the processor. This gap may hinder the detection of vulnerabilities in source code. That being said, current research on Large Language Models (LLMs) overlooks the significance of decompiled binaries in this area by focusing solely on source code. In this work, we are the first to empirically uncover the substantial semantic limitations of state-of-the-art LLMs when it comes to analyzing vulnerabilities in decompiled binaries, largely due to the absence of relevant datasets. To bridge the gap, we introduce DeBinVul, a novel decompiled binary code vulnerability dataset. Our dataset is multi-architecture and multi-optimization, focusing on C/C++ due to their wide usage in CI and association with numerous vulnerabilities. Specifically, we curate 150,872 samples of vulnerable and non-vulnerable decompiled binary code for the task of (i) identifying; (ii) classifying; (iii) describing vulnerabilities; and (iv) recovering function names in the domain of decompiled binaries. Subsequently, we fine-tune state-of-the-art LLMs using DeBinVul and report on a performance increase of 19%, 24%, and 21% in the capabilities of CodeLlama, Llama3, and CodeGen2 respectively, in detecting binary code vulnerabilities. Additionally, using DeBinVul, we report a high performance of 80-90% on the vulnerability classification task. Furthermore, we report improved performance in function name recovery and vulnerability description tasks. },
+ author = {Manuel, Dylan AND Islam, Tanveer, Nafis AND Khoury, Joseph AND Nunez, Ana AND Bou-Harb, Elias AND Najafirad, Peyman},
+ doi = {https://doi.org/10.48550/arXiv.2411.04981},
+ howpublished = {\url{https://arxiv.org/pdf/2411.04981}},
+ month = {nov},
+ note = {},
+ title = {Enhancing Reverse Engineering: Investigating and Benchmarking Large Language Models for Vulnerability Analysis in Decompiled Binaries},
+ year = {2024}
+}
+
+@article{Manuel2025,
+ abstract = {The generation of large, high-quality datasets for code understanding and generation remains a significant challenge, particularly when aligning decompiled binaries with their original source code. To address this, we present CodableLLM, a Python framework designed to automate the creation and curation of datasets by mapping decompiled functions to their corresponding source functions. This process enhances the alignment between decompiled and source code representations, facilitating the development of large language models (LLMs) capable of understanding and generating code across multiple abstraction levels. CodableLLM supports multiple programming languages and integrates with existing decompilers and parsers to streamline dataset generation. This paper presents the design and implementation of CodableLLM, evaluates its performance in dataset creation, and compares it to existing tools in the field. The results demonstrate that CodableLLM offers a robust and efficient solution for generating datasets tailored for code-focused LLMS. },
+ author = {Manuel, Dylan AND Rad, Paul},
+ doi = {https://doi.org/10.48550/arXiv.2507.22066},
+ howpublished = {\url{https://arxiv.org/pdf/2507.22066}},
+ month = {jul},
+ note = {},
+ title = {CodableLLM: Automating Decompiled and Source Code Mapping for LLM Dataset Generation},
+ year = {2025}
+}
+
+@article{Mihajlenko2021,
+ abstract = {Introduction: Decompilers are useful tools for software analysis and support in the absence of source code. They are available for many hardware architectures and programming languages. However, none of the existing decompilers support modern AMD GPU architectures such as AMD GCN and RDNA. Purpose: We aim at developing the first assembly decompiler tool for a modern AMD GPU architecture that generates code in the OpenCL language, which is widely used for programming GPGPUs. Results: We developed the algorithms for the following operations: preprocessing assembly code, searching data accesses, extracting system values, decompiling arithmetic operations and recovering data types. We also developed templates for decompilation of branching operations. Practical relevance: We implemented the presented algorithms in Python as a tool called OpenCLDecompiler, which supports a large subset of AMD GCN instructions. This tool automatically converts disassembled GPGPU code into the equivalent OpenCL code, which reduces the effort required to analyze assembly code. },
+ author = {Mihajlenko, I., K. AND Lukin, A., M. AND Stankevich, S., A.},
+ doi = {https://doi.org/10.48550/arXiv.2107.07809},
+ howpublished = {\url{https://arxiv.org/pdf/2107.07809}},
+ month = {jul},
+ note = {10 pages, 5 figures},
+ title = {A method for decompilation of AMD GCN kernels to OpenCL},
+ year = {2021}
+}
+
+@article{Nandi2020,
+ abstract = {Recent program synthesis techniques help users customize CAD models(e.g., for 3D printing) by decompiling low-level triangle meshes to Constructive Solid Geometry (CSG) expressions. Without loops or functions, editing CSG can require many coordinated changes, and existing mesh decompilers use heuristics that can obfuscate high-level structure. This paper proposes a second decompilation stage to robustly "shrink" unstructured CSG expressions into more editable programs with map and fold operators. We present Szalinski, a tool that uses Equality Saturation with semantics-preserving CAD rewrites to efficiently search for smaller equivalent programs. Szalinski relies on inverse transformations, a novel way for solvers to speculatively add equivalences to an E-graph. We qualitatively evaluate Szalinski in case studies, show how it composes with an existing mesh decompiler, and demonstrate that Szalinski can shrink large models in seconds. },
+ author = {Nandi, Chandrakana AND Willsey, Max AND Anderson, Adam AND Wilcox, R., James AND Darulova, Eva AND Grossman, Dan AND Tatlock, Zachary},
+ doi = {https://doi.org/10.48550/arXiv.1909.12252},
+ howpublished = {\url{https://arxiv.org/pdf/1909.12252}},
+ month = {apr},
+ note = {14 pages},
+ title = {Synthesizing Structured CAD Models with Equality Saturation and Inverse Transformations},
+ year = {2020}
+}
+
+@article{Palmarini2024,
+ abstract = {DreamCoder is an inductive program synthesis system that, whilst solving problems, learns to simplify search in an iterative wake-sleep procedure. The cost of search is amortized by training a neural search policy, reducing search breadth and effectively "compiling" useful information to compose program solutions across tasks. Additionally, a library of program components is learnt to compress and express discovered solutions in fewer components, reducing search depth. We present a novel approach for library learning that directly leverages the neural search policy, effectively "decompiling" its amortized knowledge to extract relevant program components. This provides stronger amortized inference: the amortized knowledge learnt to reduce search breadth is now also used to reduce search depth. We integrate our approach with DreamCoder and demonstrate faster domain proficiency with improved generalization on a range of domains, particularly when fewer example solutions are available. },
+ author = {Palmarini, B., Alessandro AND Lucas, G., Christopher AND Siddharth, N.},
+ doi = {https://doi.org/10.48550/arXiv.2306.07856},
+ howpublished = {\url{https://arxiv.org/pdf/2306.07856}},
+ month = {may},
+ note = {},
+ title = {Bayesian Program Learning by Decompiling Amortized Knowledge},
+ year = {2024}
+}
+
+@article{Pearce2022,
+ abstract = {Large language models (such as OpenAI's Codex) have demonstrated impressive zero-shot multi-task capabilities in the software domain, including code explanation. In this work, we examine if this ability can be used to help with reverse engineering. Specifically, we investigate prompting Codex to identify the purpose, capabilities, and important variable names or values from code, even when the code is produced through decompilation. Alongside an examination of the model's responses in answering open-ended questions, we devise a true/false quiz framework to characterize the performance of the language model. We present an extensive quantitative analysis of the measured performance of the language model on a set of program purpose identification and information extraction tasks: of the 136,260 questions we posed, it answered 72,754 correctly. A key takeaway is that while promising, LLMs are not yet ready for zero-shot reverse engineering. },
+ author = {Pearce, Hammond AND Tan, Benjamin AND Krishnamurthy, Prashanth AND Khorrami, Farshad AND Karri, Ramesh AND Dolan-Gavitt, Brendan},
+ doi = {https://doi.org/10.48550/arXiv.2202.01142},
+ howpublished = {\url{https://arxiv.org/pdf/2202.01142}},
+ month = {feb},
+ note = {18 pages, 19 figures. Linked dataset: https://doi.org/10.5281/zenodo.5949075},
+ title = {Pop Quiz! Can a Large Language Model Help With Reverse Engineering?},
+ year = {2022}
+}
+
+@article{Pochelu2024,
+ abstract = {Among numerical libraries capable of computing gradient descent optimization, JAX stands out by offering more features, accelerated by an intermediate representation known as Jaxpr language. However, editing the Jaxpr code is not directly possible. This article introduces JaxDecompiler, a tool that transforms any JAX function into an editable Python code, especially useful for editing the JAX function generated by the gradient function. JaxDecompiler simplifies the processes of reverse engineering, understanding, customizing, and interoperability of software developed by JAX. We highlight its capabilities, emphasize its practical applications especially in deep learning and more generally gradient-informed software, and demonstrate that the decompiled code speed performance is similar to the original. },
+ author = {Pochelu, Pierrick},
+ doi = {https://doi.org/10.48550/arXiv.2403.10571},
+ howpublished = {\url{https://arxiv.org/pdf/2403.10571}},
+ month = {mar},
+ note = {},
+ title = {JaxDecompiler: Redefining Gradient-Informed Software Design},
+ year = {2024}
+}
+
+@article{Pordanesh2024,
+ abstract = {This study investigates the capabilities of Large Language Models (LLMs), specifically GPT-4, in the context of Binary Reverse Engineering (RE). Employing a structured experimental approach, we analyzed the LLM's performance in interpreting and explaining human-written and decompiled codes. The research encompassed two phases: the first on basic code interpretation and the second on more complex malware analysis. Key findings indicate LLMs' proficiency in general code understanding, with varying effectiveness in detailed technical and security analyses. The study underscores the potential and current limitations of LLMs in reverse engineering, revealing crucial insights for future applications and improvements. Also, we examined our experimental methodologies, such as methods of evaluation and data constraints, which provided us with a technical vision for any future research activity in this field. },
+ author = {Pordanesh, Saman AND Tan, Benjamin},
+ doi = {https://doi.org/10.48550/arXiv.2406.06637},
+ howpublished = {\url{https://arxiv.org/pdf/2406.06637}},
+ month = {jun},
+ note = {},
+ title = {Exploring the Efficacy of Large Language Models (GPT-4) in Binary Reverse Engineering},
+ year = {2024}
+}
+
+@article{Qin2024,
+ abstract = {Decompilation, the process of converting machine-level code into readable source code, plays a critical role in reverse engineering. Given that the main purpose of decompilation is to facilitate code comprehension in scenarios where the source code is unavailable, the understandability of decompiled code is of great importance. In this paper, we propose the first empirical study on the understandability of Java decompiled code and obtained the following findings: (1) Understandability of Java decompilation is considered as important as its correctness, and decompilation understandability issues are even more commonly encountered than decompilation failures. (2) A notable percentage of code snippets decompiled by Java decompilers exhibit significantly lower or higher levels of understandability in comparison to their original source code. (3) Unfortunately, Cognitive Complexity demonstrates relatively acceptable precision while low recall in recognizing these code snippets exhibiting diverse understandability during decompilation. (4) Even worse, perplexity demonstrates lower levels of precision and recall in recognizing such code snippets. Inspired by the four findings, we further proposed six code patterns and the first metric for the assessment of decompiled code understandability. This metric was extended from Cognitive Complexity, with six more rules harvested from an exhaustive manual analysis into 1287 pairs of source code snippets and corresponding decompiled code. This metric was also validated using the original and updated dataset, yielding an impressive macro F1-score of 0.88 on the original dataset, and 0.86 on the test set. },
+ author = {Qin, Ruixin AND Xiong, Yifan AND Lu, Yifei AND Pan, Minxue},
+ doi = {https://doi.org/10.48550/arXiv.2409.20343},
+ howpublished = {\url{https://arxiv.org/pdf/2409.20343}},
+ month = {sep},
+ note = {18 pages, 16 figures},
+ title = {Demystifying and Assessing Code Understandability in Java Decompilation},
+ year = {2024}
+}
+
+@article{Rao2024,
+ abstract = {Hardware decompilation reverses logic synthesis, converting a gate-level digital electronic design, or netlist, back up to hardware description language (HDL) code. Existing techniques decompile data-oriented features in netlists, like loops and modules, but struggle with sequential logic. In particular, they cannot decompile memory elements, which pose difficulty due to their deconstruction into individual bits and the feedback loops they form in the netlist. Recovering multi-bit registers and memory blocks from netlists would expand the applications of hardware decompilation, notably towards retargeting technologies (e.g. FPGAs to ASICs) and decompiling processor memories. We devise a method for register aggregation, to identify relationships between the data flip-flops in a netlist and group them into registers and memory blocks, resulting in HDL code that instantiates these memory elements. We aggregate flip-flops by identifying common enable pins, and derive the bit-order of the resulting registers using functional dependencies. This scales similarly to memory blocks, where we repeat the algorithm in the second dimension with special attention to the read, write, and address ports of each memory block. We evaluate our technique over a dataset of 13 gate-level netlists, comprising circuits from binary multipliers to CPUs, and we compare the quantity and widths of recovered registers and memory blocks with the original source code. The technique successfully recovers memory elements in all of the tested circuits, even aggregating beyond the source code expectation. In 10 / 13 circuits, all source code memory elements are accounted for, and we are able to compact up to 2048 disjoint bits into a single memory block. },
+ author = {Rao, Varun AND Sisco, D., Zachary},
+ doi = {https://doi.org/10.48550/arXiv.2409.03119},
+ howpublished = {\url{https://arxiv.org/pdf/2409.03119}},
+ month = {sep},
+ note = {6 pages, 6 figures},
+ title = {Register Aggregation for Hardware Decompilation},
+ year = {2024}
+}
+
+@article{Reis2020,
+ abstract = {This paper introduces Tezla, an intermediate representation of Michelson smart contracts that eases the design of static smart contract analysers. This intermediate representation uses a store and preserves the semantics, ow and resource usage of the original smart contract. This enables properties like gas consumption to be statically verified. We provide an automated decompiler of Michelson smart contracts to Tezla. In order to support our claim about the adequacy of Tezla, we develop a static analyser that takes advantage of the Tezla representation of Michelson smart contracts to prove simple but non-trivial properties. },
+ author = {Reis, Santos, João AND Crocker, Paul AND Sousa, de, Melo, Simão},
+ doi = {https://doi.org/10.48550/arXiv.2005.11839},
+ howpublished = {\url{https://arxiv.org/pdf/2005.11839}},
+ month = {may},
+ note = {},
+ title = {Tezla, an Intermediate Representation for Static Analysis of Michelson Smart Contracts},
+ year = {2020}
+}
+
+@article{Reiter2023,
+ abstract = {Vulnerabilities are challenging to locate and repair, especially when source code is unavailable and binary patching is required. Manual methods are time-consuming, require significant expertise, and do not scale to the rate at which new vulnerabilities are discovered. Automated methods are an attractive alternative, and we propose Partially Recompilable Decompilation (PRD). PRD lifts suspect binary functions to source, available for analysis, revision, or review, and creates a patched binary using source- and binary-level techniques. Although decompilation and recompilation do not typically work on an entire binary, our approach succeeds because it is limited to a few functions, like those identified by our binary fault localization. We evaluate these assumptions and find that, without any grammar or compilation restrictions, 70-89% of individual functions are successfully decompiled and recompiled with sufficient type recovery. In comparison, only 1.7% of the full C-binaries succeed. When decompilation succeeds, PRD produces test-equivalent binaries 92.9% of the time. In addition, we evaluate PRD in two contexts: a fully automated process incorporating source-level Automated Program Repair (APR) methods; human-edited source-level repairs. When evaluated on DARPA Cyber Grand Challenge (CGC) binaries, we find that PRD-enabled APR tools, operating only on binaries, performs as well as, and sometimes better than full-source tools, collectively mitigating 85 of the 148 scenarios, a success rate consistent with these same tools operating with access to the entire source code. PRD achieves similar success rates as the winning CGC entries, sometimes finding higher-quality mitigations than those produced by top CGC teams. For generality, our evaluation includes two independently developed APR tools and C++, Rode0day, and real-world binaries. },
+ author = {Reiter, Pemma AND Tay, Jun, Hui AND Weimer, Westley AND Doupé, Adam AND Wang, Ruoyu AND Forrest, Stephanie},
+ doi = {https://doi.org/10.48550/arXiv.2202.12336},
+ howpublished = {\url{https://arxiv.org/pdf/2202.12336}},
+ month = {jun},
+ note = {},
+ title = {Automatically Mitigating Vulnerabilities in Binary Programs via Partially Recompilable Decompilation},
+ year = {2023}
+}
+
+@article{Ringer2021,
+ abstract = {We describe a new approach to automatically repairing broken proofs in the Coq proof assistant in response to changes in types. Our approach combines a configurable proof term transformation with a decompiler from proof terms to tactic scripts. The proof term transformation implements transport across equivalences in a way that removes references to the old version of the changed type and does not rely on axioms beyond those Coq assumes. We have implemented this approach in PUMPKIN Pi, an extension to the PUMPKIN PATCH Coq plugin suite for proof repair. We demonstrate PUMPKIN Pi's flexibility on eight case studies, including supporting a benchmark from a user study, easing development with dependent types, porting functions and proofs between unary and binary numbers, and supporting an industrial proof engineer to interoperate between Coq and other verification tools more easily. },
+ author = {Ringer, Talia AND Porter, RanDair AND Yazdani, Nathaniel AND Leo, John AND Grossman, Dan},
+ doi = {https://doi.org/10.48550/arXiv.2010.00774},
+ howpublished = {\url{https://arxiv.org/pdf/2010.00774}},
+ month = {may},
+ note = {Tool repository with code guide: https://github.com/uwplse/pumpkin-pi/blob/v2.0.0/GUIDE.md},
+ title = {Proof Repair across Type Equivalences},
+ year = {2021}
+}
+
+@article{Saul2024,
+ abstract = {Binary analysis is a core component of many critical security tasks, including reverse engineering, malware analysis, and vulnerability detection. Manual analysis is often time-consuming, but identifying commonly-used or previously-seen functions can reduce the time it takes to understand a new file. However, given the complexity of assembly, and the NP-hard nature of determining function equivalence, this task is extremely difficult. Common approaches often use sophisticated disassembly and decompilation tools, graph analysis, and other expensive pre-processing steps to perform function similarity searches over some corpus. In this work, we identify a number of discrepancies between the current research environment and the underlying application need. To remedy this, we build a new benchmark, REFuSE-Bench, for binary function similarity detection consisting of high-quality datasets and tests that better reflect real-world use cases. In doing so, we address issues like data duplication and accurate labeling, experiment with real malware, and perform the first serious evaluation of ML binary function similarity models on Windows data. Our benchmark reveals that a new, simple basline, one which looks at only the raw bytes of a function, and requires no disassembly or other pre-processing, is able to achieve state-of-the-art performance in multiple settings. Our findings challenge conventional assumptions that complex models with highly-engineered features are being used to their full potential, and demonstrate that simpler approaches can provide significant value. },
+ author = {Saul, Rebecca AND Liu, Chang AND Fleischmann, Noah AND Zak, Richard AND Micinski, Kristopher AND Raff, Edward AND Holt, James},
+ doi = {https://doi.org/10.48550/arXiv.2410.22677},
+ howpublished = {\url{https://arxiv.org/pdf/2410.22677}},
+ month = {oct},
+ note = {To appear in the 38th Conference on Neural Information Processing Systems (NeurIPS 2024) Track on Datasets and Benchmarks},
+ title = {Is Function Similarity Over-Engineered? Building a Benchmark},
+ year = {2024}
+}
+
+@article{Shokri2023,
+ abstract = {We introduce a novel approach to automatically synthesize a mathematical representation of the control algorithms implemented in industrial cyber-physical systems (CPS), given the embedded system binary. The output model can be used by subject matter experts to assess the system's compliance with the expected behavior and for a variety of forensic applications. Our approach first performs static analysis on decompiled binary files of the controller to create a sketch of the mathematical representation. Then, we perform an evolutionary-based search to find the correct semantic for the created representation, i.e., the control law. We demonstrate the effectiveness of the introduced approach in practice via three case studies conducted on two real-life industrial CPS. },
+ author = {Shokri, Ali AND Perez, Alexandre AND Chowdhury, Souma AND Zeng, Chen AND Kaloor, Gerald AND Matei, Ion AND Schneider, Peter-Patel AND Gunasekaran, Akshith AND Rane, Shantanu},
+ doi = {https://doi.org/10.48550/arXiv.2308.00250},
+ howpublished = {\url{https://arxiv.org/pdf/2308.00250}},
+ month = {jul},
+ note = {},
+ title = {CONSTRUCT: A Program Synthesis Approach for Reconstructing Control Algorithms from Embedded System Binaries in Cyber-Physical Systems},
+ year = {2023}
+}
+
+@article{Slawinski2019,
+ abstract = {We classify .NET files as either benign or malicious by examining directed graphs derived from the set of functions comprising the given file. Each graph is viewed probabilistically as a Markov chain where each node represents a code block of the corresponding function, and by computing the PageRank vector (Perron vector with transport), a probability measure can be defined over the nodes of the given graph. Each graph is vectorized by computing Lebesgue antiderivatives of hand-engineered functions defined on the vertex set of the given graph against the PageRank measure. Files are subsequently vectorized by aggregating the set of vectors corresponding to the set of graphs resulting from decompiling the given file. The result is a fast, intuitive, and easy-to-compute glass-box vectorization scheme, which can be leveraged for training a standalone classifier or to augment an existing feature space. We refer to this vectorization technique as PageRank Measure Integration Vectorization (PMIV). We demonstrate the efficacy of PMIV by training a vanilla random forest on 2.5 million samples of decompiled .NET, evenly split between benign and malicious, from our in-house corpus and compare this model to a baseline model which leverages a text-only feature space. The median time needed for decompilation and scoring was 24ms. },
+ author = {Slawinski, A., Michael AND Wortman, Andy},
+ doi = {https://doi.org/10.48550/arXiv.1810.04789},
+ howpublished = {\url{https://arxiv.org/pdf/1810.04789}},
+ month = {nov},
+ note = {},
+ title = {Applications of Graph Integration to Function Comparison and Malware Classification},
+ year = {2019}
+}
+
+@article{Smith2024,
+ abstract = {EDA toolchains are notoriously unpredictable, incomplete, and error-prone; the generally-accepted remedy has been to re-imagine EDA tasks as compilation problems. However, any compiler framework we apply must be prepared to handle the wide range of EDA tasks, including not only compilation tasks like technology mapping and optimization (the "there" in our title), but also decompilation tasks like loop rerolling (the "back again"). In this paper, we advocate for equality saturation -- a term rewriting framework -- as the framework of choice when building hardware toolchains. Through a series of case studies, we show how the needs of EDA tasks line up conspicuously well with the features equality saturation provides. },
+ author = {Smith, Henry, Gus AND Sisco, D., Zachary AND Techaumnuaiwit, Thanawat AND Xia, Jingtao AND Canumalla, Vishal AND Cheung, Andrew AND Tatlock, Zachary AND Nandi, Chandrakana AND Balkind, Jonathan},
+ doi = {https://doi.org/10.48550/arXiv.2404.00786},
+ howpublished = {\url{https://arxiv.org/pdf/2404.00786}},
+ month = {mar},
+ note = {},
+ title = {There and Back Again: A Netlist's Tale with Much Egraphin'},
+ year = {2024}
+}
+
+@article{Stuglik2023,
+ abstract = {Manual translation of the algorithms from sequential version to its parallel counterpart is time consuming and can be done only with the specific knowledge of hardware accelerator architecture, parallel programming or programming environment. The automation of this process makes porting the code much easier and faster. The key aspect in this case is how efficient the generated parallel code will be. The paper describes J-Parallelio, the framework for automatic analysis of the bytecode source codes and its parallelisation on multicore processors. The process consists of a few steps. First step is a process of decompilation of JVM and its translation to internal abstract syntax tree, the dependency extraction and memory analysis is performed. Finally, the mapping process is performed which consists of a set of rules responsible for translating the input virtual machine source code to its parallel version. The main novelty is that it can deal with pure Java virtual machine and can generate parallel code for multicore processors. This makes the system portable and it can work with different languages based on JVM after some small modifications. The efficiency of automatically translated source codes were compared with their manually written counterparts on chosen benchmarks. },
+ author = {Stuglik, Krzysztof AND Listkiewicz, Piotr AND Kulczyk, Mateusz AND Pietron, Marcin},
+ doi = {https://doi.org/10.48550/arXiv.2303.08746},
+ howpublished = {\url{https://arxiv.org/pdf/2303.08746}},
+ month = {feb},
+ note = {},
+ title = {J-Parallelio -- automatic parallelization framework for Java virtual machine code},
+ year = {2023}
+}
+
+@article{Udeshi2024,
+ abstract = {Cybersecurity attacks on embedded devices for industrial control systems and cyber-physical systems may cause catastrophic physical damage as well as economic loss. This could be achieved by infecting device binaries with malware that modifies the physical characteristics of the system operation. Mitigating such attacks benefits from reverse engineering tools that recover sufficient semantic knowledge in terms of mathematical equations of the implemented algorithm. Conventional reverse engineering tools can decompile binaries to low-level code, but offer little semantic insight. This paper proposes the REMaQE automated framework for reverse engineering of math equations from binary executables. Improving over state-of-the-art, REMaQE handles equation parameters accessed via registers, the stack, global memory, or pointers, and can reverse engineer object-oriented implementations such as C++ classes. Using REMaQE, we discovered a bug in the Linux kernel thermal monitoring tool "tmon". To evaluate REMaQE, we generate a dataset of 25,096 binaries with math equations implemented in C and Simulink. REMaQE successfully recovers a semantically matching equation for all 25,096 binaries. REMaQE executes in 0.48 seconds on average and in up to 2 seconds for complex equations. Real-time execution enables integration in an interactive math-oriented reverse engineering workflow. },
+ author = {Udeshi, Meet AND Krishnamurthy, Prashanth AND Pearce, Hammond AND Karri, Ramesh AND Khorrami, Farshad},
+ doi = {https://doi.org/10.48550/arXiv.2305.06902},
+ howpublished = {\url{https://arxiv.org/pdf/2305.06902}},
+ month = {apr},
+ note = {},
+ title = {REMaQE: Reverse Engineering Math Equations from Executables},
+ year = {2024}
+}
+
+@article{Verbeek2025,
+ abstract = {Binary-level pointer analysis can be of use in symbolic execution, testing, verification, and decompilation of software binaries. In various such contexts, it is crucial that the result is trustworthy, i.e., it can be formally established that the pointer designations are overapproximative. This paper presents an approach to formally proven correct binary-level pointer analysis. A salient property of our approach is that it first generically considers what proof obligations a generic abstract domain for pointer analysis must satisfy. This allows easy instantiation of different domains, varying in precision, while preserving the correctness of the analysis. In the trade-off between scalability and precision, such customization allows "meaningful" precision (sufficiently precise to ensure basic sanity properties, such as that relevant parts of the stack frame are not overwritten during function execution) while also allowing coarse analysis when pointer computations have become too obfuscated during compilation for sound and accurate bounds analysis. We experiment with three different abstract domains with high, medium, and low precision. Evaluation shows that our approach is able to derive designations for memory writes soundly in COTS binaries, in a context-sensitive interprocedural fashion. },
+ author = {Verbeek, Freek AND Shokri, Ali AND Engel, Daniel AND Ravindran, Binoy},
+ doi = {https://doi.org/10.48550/arXiv.2501.17766},
+ howpublished = {\url{https://arxiv.org/pdf/2501.17766}},
+ month = {jan},
+ note = {},
+ title = {Formally Verified Binary-level Pointer Analysis},
+ year = {2025}
+}
+
+@article{Wan2025,
+ abstract = {While Vision-language Models (VLMs) have demonstrated strong semantic capabilities, their ability to interpret the underlying geometric structure of visual information is less explored. Pictographic characters, which combine visual form with symbolic structure, provide an ideal test case for this capability. We formulate this visual recognition challenge in the mathematical domain, where each character is represented by an executable program of geometric primitives. This is framed as a program synthesis task, training a VLM to decompile raster images into programs composed of Bézier curves. Our model, acting as a "visual decompiler", demonstrates performance superior to strong zero-shot baselines, including GPT-4o. The most significant finding is that when trained solely on modern Chinese characters, the model is able to reconstruct ancient Oracle Bone Script in a zero-shot context. This generalization provides strong evidence that the model acquires an abstract and transferable geometric grammar, moving beyond pixel-level pattern recognition to a more structured form of visual understanding. },
+ author = {Wan, Zihao AND Xu, Lin, Tong, Pau AND Luo, Fuwen AND Wang, Ziyue AND Li, Peng AND Liu, Yang},
+ doi = {https://doi.org/10.48550/arXiv.2511.00076},
+ howpublished = {\url{https://arxiv.org/pdf/2511.00076}},
+ month = {oct},
+ note = {},
+ title = {Bridging Vision, Language, and Mathematics: Pictographic Character Reconstruction with Bézier Curves},
+ year = {2025}
+}
+
+@article{Wang2023,
+ abstract = {With the development of blockchain technology, more and more attention has been paid to the intersection of blockchain and education, and various educational evaluation systems and E-learning systems are developed based on blockchain technology. Among them, Ethereum smart contract is favored by developers for its ``event-triggered" mechanism for building education intelligent trading systems and intelligent learning platforms. However, due to the immutability of blockchain, published smart contracts cannot be modified, so problematic contracts cannot be fixed by modifying the code in the educational blockchain. In recent years, security incidents due to smart contract vulnerabilities have caused huge property losses, so the detection of smart contract vulnerabilities in educational blockchain has become a great challenge. To solve this problem, this paper proposes a graph neural network (GNN) based vulnerability detection for smart contracts in educational blockchains. Firstly, the bytecodes are decompiled to get the opcode. Secondly, the basic blocks are divided, and the edges between the basic blocks according to the opcode execution logic are added. Then, the control flow graphs (CFG) are built. Finally, we designed a GNN-based model for vulnerability detection. The experimental results show that the proposed method is effective for the vulnerability detection of smart contracts. Compared with the traditional approaches, it can get good results with fewer layers of the GCN model, which shows that the contract bytecode and GCN model are efficient in vulnerability detection. },
+ author = {Wang, Zhifeng AND Wu, Wanxuan AND Zeng, Chunyan AND Yao, Jialong AND Yang, Yang AND Xu, Hongmin},
+ doi = {https://doi.org/10.48550/arXiv.2303.04477},
+ howpublished = {\url{https://arxiv.org/pdf/2303.04477}},
+ month = {mar},
+ note = {8 pages, 8 figures},
+ title = {Graph Neural Networks Enhanced Smart Contract Vulnerability Detection of Educational Blockchain},
+ year = {2023}
+}
+
+@article{Wu2024,
+ abstract = {WebAssembly is a low-level bytecode language designed for client-side execution in web browsers. The need for decompilation techniques that recover high-level source code from WASM binaries has grown as WASM continues to gain widespread adoption and its security concerns. However little research has been done to assess the quality of decompiled code from WASM. This paper aims to fill this gap by conducting a comprehensive comparative analysis between decompiled C code from WASM binaries and state-of-the-art native binary decompilers. We presented a novel framework for empirically evaluating C-based decompilers from various aspects including correctness/ readability/ and structural similarity. The proposed metrics are validated practicality in decompiler assessment and provided insightful observations regarding the characteristics and constraints of existing decompiled code. This in turn contributes to bolstering the security and reliability of software systems that rely on WASM and native binaries. },
+ author = {Wu, Wei-Cheng AND Yan, Yutian AND Egilsson, David, Hallgrimur AND Park, David AND Chan, Steven AND Hauser, Christophe AND Wang, Weihang},
+ doi = {https://doi.org/10.48550/arXiv.2411.02278},
+ howpublished = {\url{https://arxiv.org/pdf/2411.02278}},
+ month = {nov},
+ note = {SecureComm'24: Proceedings of the 20th EAI International Conference on Security and Privacy in Communication Networks},
+ title = {Is This the Same Code? A Comprehensive Study of Decompilation Techniques for WebAssembly Binaries},
+ year = {2024}
+}
+
+@article{You2024,
+ abstract = {PyTorch \texttt\{2.x\} introduces a compiler designed to accelerate deep learning programs. However, for machine learning researchers, adapting to the PyTorch compiler to full potential can be challenging. The compiler operates at the Python bytecode level, making it appear as an opaque box. To address this, we introduce \texttt\{depyf\}, a tool designed to demystify the inner workings of the PyTorch compiler. \texttt\{depyf\} decompiles bytecode generated by PyTorch back into equivalent source code, and establishes connections between in-memory code objects and their on-disk source code counterparts. This feature enables users to step through the source code line by line using debuggers, thus enhancing their understanding of the underlying processes. Notably, \texttt\{depyf\} is non-intrusive and user-friendly, primarily relying on two convenient context managers for its core functionality. The project is \href\{https://github.com/thuml/depyf\}\{ openly available\} and is recognized as a \href\{https://pytorch.org/ecosystem/\}\{PyTorch ecosystem project\}. },
+ author = {You, Kaichao AND Bai, Runsheng AND Cao, Meng AND Wang, Jianmin AND Stoica, Ion AND Long, Mingsheng},
+ doi = {https://doi.org/10.48550/arXiv.2403.13839},
+ howpublished = {\url{https://arxiv.org/pdf/2403.13839}},
+ month = {mar},
+ note = {16 pages, 2 figures},
+ title = {depyf: Open the Opaque Box of PyTorch Compiler for Machine Learning Researchers},
+ year = {2024}
+}
+
+@article{Zhang2024,
+ abstract = {With the rapid advancement of Internet technology, the threat of malware to computer systems and network security has intensified. Malware affects individual privacy and security and poses risks to critical infrastructures of enterprises and nations. The increasing quantity and complexity of malware, along with its concealment and diversity, challenge traditional detection techniques. Static detection methods struggle against variants and packed malware, while dynamic methods face high costs and risks that limit their application. Consequently, there is an urgent need for novel and efficient malware detection techniques to improve accuracy and robustness. This study first employs the minhash algorithm to convert binary files of malware into grayscale images, followed by the extraction of global and local texture features using GIST and LBP algorithms. Additionally, the study utilizes IDA Pro to decompile and extract opcode sequences, applying N-gram and tf-idf algorithms for feature vectorization. The fusion of these features enables the model to comprehensively capture the behavioral characteristics of malware. In terms of model construction, a CNN-BiLSTM fusion model is designed to simultaneously process image features and opcode sequences, enhancing classification performance. Experimental validation on multiple public datasets demonstrates that the proposed method significantly outperforms traditional detection techniques in terms of accuracy, recall, and F1 score, particularly in detecting variants and obfuscated malware with greater stability. The research presented in this paper offers new insights into the development of malware detection technologies, validating the effectiveness of feature and model fusion, and holds promising application prospects. },
+ author = {Zhang, Lixia AND Liu, Tianxu AND Shen, Kaihui AND Chen, Cheng},
+ doi = {https://doi.org/10.48550/arXiv.2410.09401},
+ howpublished = {\url{https://arxiv.org/pdf/2410.09401}},
+ month = {oct},
+ note = {},
+ title = {A Novel Approach to Malicious Code Detection Using CNN-BiLSTM and Feature Fusion},
+ year = {2024}
+}
+
+@article{Zhang2025,
+ abstract = {Guarded Kleene Algebra with Tests (GKAT) provides a sound and complete framework to reason about trace equivalence between simple imperative programs. However, there are still several notable limitations. First, GKAT is completely agnostic with respect to the meaning of primitives, to keep equivalence decidable. Second, GKAT excludes non-local control flow such as goto, break, and return. To overcome these limitations, we introduce Control-Flow GKAT (CF-GKAT), a system that allows reasoning about programs that include non-local control flow as well as hardcoded values. CF-GKAT is able to soundly and completely verify trace equivalence of a larger class of programs, while preserving the nearly-linear efficiency of GKAT. This makes CF-GKAT suitable for the verification of control-flow manipulating procedures, such as decompilation and goto-elimination. To demonstrate CF-GKAT's abilities, we validated the output of several highly non-trivial program transformations, such as Erosa and Hendren's goto-elimination procedure and the output of Ghidra decompiler. CF-GKAT opens up the application of Kleene Algebra to a wider set of challenges, and provides an important verification tool that can be applied to the field of decompilation and control-flow transformation. },
+ author = {Zhang, Cheng AND Kappé, Tobias AND Narváez, E., David AND Naus, Nico},
+ doi = {https://doi.org/10.48550/arXiv.2411.13220},
+ howpublished = {\url{https://arxiv.org/pdf/2411.13220}},
+ month = {jan},
+ note = {},
+ title = {CF-GKAT: Efficient Validation of Control-Flow Transformations},
+ year = {2025}
+}
+
+@article{Zhou2025,
+ abstract = {Decompiling Rust binaries is challenging due to the language's rich type system, aggressive compiler optimizations, and widespread use of high-level abstractions. In this work, we conduct a benchmark-driven evaluation of decompilation quality across core Rust features and compiler build modes. Our automated scoring framework shows that generic types, trait methods, and error handling constructs significantly reduce decompilation quality, especially in release builds. Through representative case studies, we analyze how specific language constructs affect control flow, variable naming, and type information recovery. Our findings provide actionable insights for tool developers and highlight the need for Rust-aware decompilation strategies. },
+ author = {Zhou, Zixu},
+ doi = {https://doi.org/10.48550/arXiv.2507.18792},
+ howpublished = {\url{https://arxiv.org/pdf/2507.18792}},
+ month = {jul},
+ note = {},
+ title = {Decompiling Rust: An Empirical Study of Compiler Optimizations and Reverse Engineering Challenges},
+ year = {2025}
+}

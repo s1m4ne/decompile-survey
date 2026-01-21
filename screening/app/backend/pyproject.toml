@@ -1,0 +1,15 @@
+[project]
+name = "screening-app-backend"
+version = "0.1.0"
+description = "Paper screening app backend"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "bibtexparser>=1.4.0",
+    "python-dotenv>=1.0.0",
+    "openai>=1.0.0",
+]
+
+[tool.uv]
+dev-dependencies = []

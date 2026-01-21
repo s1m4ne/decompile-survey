@@ -1,0 +1,100 @@
+{"decision": "include", "confidence": 0.72, "reason": "機械学習を用いて最適化済みバイナリからライブラリ関数の使用を復元するデコンパイル関連の研究。入力はバイナリ/アセンブリで、出力は高級言語表現または可読性向上したデコンパイル結果を目指す。Ghidraなどのデコンパイラと併用。", "citation_key": "Ahmed2021"}
+{"decision": "exclude", "confidence": 0.65, "reason": "本論文はデコンパイルバイナリの要約（summarisation）を主題としており、除外条件の 'summarization' に該当するため。", "citation_key": "Al-Kaswan2023"}
+{"decision": "exclude", "confidence": 0.72, "reason": "デコンパイル関連だが、出力はソースコードやデコンパイル擬似コードの修復・高級化ではなく、モジュール識別と自然言語による説明付与（要約/検索寄りのタスク）に近く、除外条件に該当するため。", "citation_key": "Arasteh2025"}
+{"decision": "exclude", "confidence": 0.75, "reason": "デコンパイル研究の条件を満たしていません。入力が高級言語(C)で出力がアセンブリ(x86)となっており、デコンパイル/ソースコード復元タスク（binary/assembly/decompiler outputを入力として高級言語ソースまたは読解性向上の擬似コードを出力）に該当しません。", "citation_key": "Armengol-Estapé2022"}
+{"decision": "include", "confidence": 0.82, "reason": "機械学習/深層学習を用い、デコンパイル/ソースコード復元を扱う論文。最適化済みアセンブリから高級言語コードへ復元するデコンパイラを提案・評価している。", "citation_key": "Armengol-Estapé2024"}
+{"decision": "exclude", "confidence": 0.72, "reason": "機械学習/深層学習を使用していない。デコンパイラを用いたバイナリから高水準表現への変換とCT分析に関する研究だが、ML/DLの適用は明示されていない。", "citation_key": "Arranz-Olmos2025"}
+{"decision": "include", "confidence": 0.85, "reason": "機械学習/深層学習を用い、デコンパイル出力から変数名を復元するデコンパイル研究であり、出力は高級言語の読解性を向上させる変数名復元（デコンパイル後のコードの修復/高級化）である。", "citation_key": "Banerjee2021"}
+{"decision": "exclude", "confidence": 0.62, "reason": "本論文はコードタスクの敵対的ロバストネスを扱う研究であり、デコンパイル/ソース復元の入出力（バイナリ→ソース、デコンパイラ出力の高級言語化など）を実際に行う内容には見えない。デコンパイルを含む領域として言及はあるが、デコンパイルタスクを中心に扱っていない。", "citation_key": "Bielik2020"}
+{"decision": "exclude", "confidence": 0.78, "reason": "本論文はスマートコントラクトのバイトコードからの脆弱性検出を扱い、デコンパイル/ソースコード復元の出力を提供していない。除外条件の脆弱性検出タスクに該当。", "citation_key": "Bu2025"}
+{"decision": "exclude", "confidence": 0.6, "reason": "本論文は SPN を BN にデコンパイルする手法を提案しているが、入力がバイナリ/アセンブリ/デコンパイラ出力に限定されるデコンパイル研究の条件を満たしていない。コード復元・ソース化には該当せず除外。", "citation_key": "Butz2020"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/深層学習を使用し、デコンパイラ出力を入力として変数名・型の復元・読みやすさの改善を行っている。除外条件（検索・識別・SCA・要約・脆弱性検出・パッチ検出・検証・IRのみ等）には該当しない。", "citation_key": "Cao2023"}
+{"decision": "include", "confidence": 0.68, "reason": "ニューラルネットワークを用いたデコンパイル研究で、最適化済みバイナリを対象にLPL→IRを経由して高級言語復元を目指すNeurDPを提案しており、デコンパイル/ソース復元の適合性が高い。IRのみ出力かどうかは論文の評価次第だが、デコンパイル研究として該当。", "citation_key": "Cao2023"}
+{"decision": "exclude", "confidence": 0.6, "reason": "機械学習/深層学習を使用していない。デコンパイル/ソース復元を扱っているとあるが、論文はアーキテクチャ間の並行性モデルの翻訳とメモリフェンス挿入の手法であり、実際のソースコード復元やデコンパイラ出力の修復・高級化を明示的に扱っていない。", "citation_key": "Chakraborty2020"}
+{"decision": "include", "confidence": 0.85, "reason": "LLMsを用いた分類タスクと、バイナリをGhidraでデコンパイルしてCコードを得るワークフローを採用しており、デコンパイル研究の条件を満たす。", "citation_key": "Chawla2026"}
+{"decision": "include", "confidence": 0.82, "reason": "機械学習を用いたデコンパイラ出力の可読性向上（変数名・型推定）を扱う論文。入力はデコンパイル出力/バイナリ、出力は高級言語風のソースコードまたは可読化されたデコンパイラ出力。除外条件に該当しない。", "citation_key": "Chen2021"}
+{"decision": "include", "confidence": 0.75, "reason": "機械学習/深層学習を使用しており、デコンパイル出力（デコンパイル擬似コード）を入力として、ソースコードに近い高級言語表現へ再構成・可読性向上を目指すデコンパイル研究である。除外条件には該当しない。", "citation_key": "Chen2025"}
+{"decision": "include", "confidence": 0.88, "reason": "LLMを活用したデコンパイラで、スマートコントラクトのバイトコードを高級言語のソースコードへ復元することを目的としており、デコンパイル/ソースコード復元を扱っている。除外カテゴリにも該当しない。", "citation_key": "Chen2025"}
+{"decision": "exclude", "confidence": 0.65, "reason": "条件1の機械学習/深層学習の使用が明示されておらず、デコンパイルを扱うもののデコンパイル研究としての出力要件（高級言語ソースコードや修復済みデコンパイル擬似コードの明示的提示）を確認できない。加えて、本論文は脆弱性検出を含む分析であり、除外条件に該当する可能性が高い。", "citation_key": "Chu2018"}
+{"decision": "exclude", "confidence": 0.78, "reason": "本論文はバイナリ脆弱性検出を目的とするため、除外条件の『脆弱性検出』に該当。デコンパイルを用いた高級言語化はあるがタスクが脆弱性検出であり、本スクリーニング条件には適さない。", "citation_key": "Chukkol2024"}
+{"decision": "include", "confidence": 0.75, "reason": "機械学習/深層学習を使用し、入力がバイナリ/デコンパイル出力、出力としてソースコードまたはデコンパイル後の高級言語の可読性向上を目指す点を満たす。タイトル・アブストラクトは脆弱性予測を主眼としているが、デコンパイルを用いたソースコード復元とその高級化を組み合わせる研究であり、デコンパイル研究として適合すると判断。", "citation_key": "Cotroneo2025"}
+{"decision": "include", "confidence": 0.78, "reason": "LLMsを用いたデコンパイル／デオブフスケーションを含むバイナリマルウェア検出とCVE連携を提案。入力はbinary/デコンパイル出力、出力は高級言語コードまたは読みやすいデコンパイル擬似コード。RAGとLLMによるCVE分類を組み込み。除外条件に該当せず、条件1/条件2を満たす。", "citation_key": "Cristea2025"}
+{"decision": "include", "confidence": 0.85, "reason": "機械学習/深層学習を使用しており（LLMを用いたデコンパイルパイプライン）、入力がEVMバイトコード等のデコンパイル対象で、出力として高級言語（Solidity）の復元を行っている。デコンパイルを主題とする実装を提示している点で採択条件を満たす。", "citation_key": "David2025"}
+{"decision": "include", "confidence": 0.85, "reason": "機械学習/深層学習を用いたデコンパイルを扱い、入力がバイナリ/デコンパイラ出力、出力がソースコード（C/C++/Rust等の高級言語）またはデコンパイル擬似コードの高級化・可読性改善を含む。さらにユーザー定義型定義の生成を併用する点から、デコンパイル研究の範囲に適合。IRのみや分類・要約・脆弱性検出等の除外カテゴリには該当しない。", "citation_key": "Dramko2025"}
+{"decision": "exclude", "confidence": 0.65, "reason": "本論文はニューラルデコンパイラの評価/検証手法（codealign）を提案しており、デコンパイル出力の生成やソースコード復元を実際に提供することを主目的としていない。出力は等価性アライメントなどの評価情報であり、デコンパイル研究としての出力条件を満たさない（検証タスク寄り）。", "citation_key": "Dramko2025"}
+{"decision": "exclude", "confidence": 0.6, "reason": "本論文はデコンパイルの改善と出力の可読性向上を扱うが、機械学習/深層学習の使用を明示していない。条件1のML/DLの使用を満たしていないため除外。", "citation_key": "Enders2022"}
+{"decision": "exclude", "confidence": 0.72, "reason": "機械学習/深層学習を使用していない。デコンパイル/ソース復元を扱うが、ML/DLを用いたアプローチが明示されていない。", "citation_key": "Erinfolami2019"}
+{"decision": "exclude", "confidence": 0.65, "reason": "本論文はバイナリから仮想継承を復元する従来手法に関するもので、機械学習/深層学習を用いているとは明示されておらず、デコンパイル研究としてのMLベース要件を満たさない。", "citation_key": "Erinfolami2020"}
+{"decision": "include", "confidence": 0.72, "reason": "機械学習を用いてデコンパイラを改善する研究で、入力はbinary/デコンパイラ出力、出力は関数の戻り値型の推定など高級情報の付加。直接の全高級言語ソースの生成ではなく、デコンパイラの出力を高級情報で補完・読みやすさ向上を狙う点が条件に適合。", "citation_key": "Escalada2021"}
+{"decision": "include", "confidence": 0.85, "reason": "LLMsを用いたWebAssemblyのデコンパイルで、入力がWasmバイナリ、出力がC++等の高級言語コードになるデコンパイル研究。ニューロシンボリックとチェーンオブソートを用い、デコンパイル/ソース復元を扱う。除外条件に該当しない。", "citation_key": "Fang2024"}
+{"decision": "include", "confidence": 0.84, "reason": "機械学習/大規模言語モデルを用いたデコンパイル手法で、入力がバイナリ/アセンブリ/デコンパイラ出力、出力がソースコードまたは高級化されたデコンパイル擬似コード。デコンパイル研究。除外条件には該当しない。", "citation_key": "Feng2024"}
+{"decision": "include", "confidence": 0.85, "reason": "LLMベースのデコンパイル手法で、バイナリ/アセンブリを高級言語コードへ復元することを目的。入力はbinary/assembly、出力はソースコードまたは可読性改善されたデコンパイル擬似コード。従って採択条件を満たす。", "citation_key": "Feng2025"}
+{"decision": "include", "confidence": 0.85, "reason": "ニューラルネットを用いたデコンパイラ（Coda）を提案し、バイナリから高級言語のソースコード復元を扱う研究である。入力はバイナリ/デコンパイラ出力、出力はソースコードまたは可読性向上された疑似コードである。条件を満たす。", "citation_key": "Fu2019"}
+{"decision": "include", "confidence": 0.75, "reason": "デコンパイル/ソースコード復元を直接扱い、LLMを評価に用いるなど機械学習/大規模言語モデルを活用している。実世界のプログラム由来データを対象に、デコンパイラの出力をソースコードまたは高級化された擬似コードとして評価するベンチマーク研究である。", "citation_key": "Gao2025"}
+{"decision": "include", "confidence": 0.82, "reason": "機械学習/深層学習を用い、デコンパイラ出力（トークン）から変数の型・名前を推定するデコンパイル関連の研究で、出力は高級言語風の情報（リファクタリング済みの名前・型）となる。除外条件に該当せず採択基準を満たす。", "citation_key": "Green2024"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習を使用していない。Javaバイトコードデコンパイラの比較・評価を行う論文で、ML/DLを用いたデコンパイル手法は扱っていない。", "citation_key": "Harrand2019"}
+{"decision": "exclude", "confidence": 0.75, "reason": "機械学習/深層学習を使用しているとは明示されておらず、デコンパイル手法の評価とマージ手法を扱う研究のため採択条件を満たさない。", "citation_key": "Harrand2020"}
+{"decision": "exclude", "confidence": 0.65, "reason": "要約タスク（binary summarization across decompilation levels）を含むため、除外条件に該当", "citation_key": "He2025"}
+{"decision": "exclude", "confidence": 0.7, "reason": "本論文は decompiled code を入力としてCode LLMsを用いたマルウェア分析の評価であり、出力は関数識別・要約などの分析タスク。ソースコードの復元や高級言語化／デコンパイル出力の修復・高級化を直接行うことはなく、デコンパイル研究の採択条件を満たさない。", "citation_key": "He2025"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/ディープラーニングを用いたデコンパイル研究で、入力をアセンブリ/バイナリとし、出力を高級言語ソースコードへ復元するデコンパイラを提案している。除外条件（検索・同一性認識・SCA・要約・脆弱性検知・パッチ検出・検証・IRのみ）に該当せず、デコンパイル・ソース復元を扱う研究である。", "citation_key": "Hosseini2022"}
+{"decision": "exclude", "confidence": 0.85, "reason": "本論はストリップ済みバイナリの脆弱性検出を主題としており、除外条件の vulnerability detection に該当するため。", "citation_key": "Hussain2025"}
+{"decision": "exclude", "confidence": 0.7, "reason": "アブストラクトに decompilation を扱うが、評価タスクとして code summarization（コード要約）が含まれており、除外条件の summarize に該当する可能性が高い。そのためデコンパイル研究 v1 の除外条件に該当する。", "citation_key": "Jiang2025"}
+{"decision": "include", "confidence": 0.72, "reason": "LLMを用いたデコンパイル研究。入力は binary/assembly/decompiler output、出力は高級言語コードまたはデコンパイル後の高級化表現を目指す。除外条件（コード検索、識別、SCA、要約、脆弱性検出、パッチ検出、検証、IRのみ）に該当せず、デコンパイル/ソース復元を扱っている。", "citation_key": "Jiang2025"}
+{"decision": "include", "confidence": 0.85, "reason": "ニューラルネットワークを用いたデコンパイル手法で、入力がアセンブリ/LLVM IR、出力が高級言語（C等）のソースコード復元を目的とする。デコンパイル研究として条件を満たす。", "citation_key": "Katz2019"}
+{"decision": "exclude", "confidence": 0.65, "reason": "本論文はコード生成のNMTに関する総説であり、デコンパイル/復元を実際に行う研究ではない。デコンパイル入力→出力の具体的タスクを提示・実装していないため、除外条件の総説/要約に該当", "citation_key": "KC2023"}
+{"decision": "exclude", "confidence": 0.72, "reason": "デコンパイル/ソース復元を扱っていない。機械学習は使用しているが、バイナリ特徴量設計によるマルウェア検出で、ソースコード復元やデコンパイル出力の生成には該当しない。", "citation_key": "Kim2023"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習を使用していないため条件1を満たさない。デコンパイル/ソース復元の要素はある可能性があるが、本論はCFOの手法の分類・評価でMLを用いていない。", "citation_key": "Kumar2018"}
+{"decision": "include", "confidence": 0.88, "reason": "機械学習/深層学習を用い、デコンパイル出力の識別子命名を再命名する手法。入力はデコンパイル出力（バイナリ/アセンブリから得られた高級コード風コード）で、出力は高級言語風コード（識別子名の修復・再命名）を提供。デコンパイル/ソース復元を扱う研究であり、除外条件に該当しない。", "citation_key": "Lacomis2019"}
+{"decision": "exclude", "confidence": 0.66, "reason": "機械学習/深層学習の使用が明記されておらず、条件1を満たさない。論文はデコンパイル手法の静的分析に基づくものとして述べられている。", "citation_key": "Lagouvardos2025"}
+{"decision": "include", "confidence": 0.82, "reason": "機械学習（NMT/Transformer）を用い、バイナリ/アセンブリ/デコンパイラ出力からJavaソースコードまたは高級化された読解性表現を復元するデコンパイル研究。", "citation_key": "Li2019"}
+{"decision": "exclude", "confidence": 0.72, "reason": "本論文はスマートコントラクトのバイトコードの説明生成を行い、ソースコード復元やデコンパイル出力の修復・高級化には該当せず、スクリーニング条件を満たさない。", "citation_key": "Li2020"}
+{"decision": "include", "confidence": 0.75, "reason": "本論は実行ファイル（バイナリ）をデコンパイルする研究で、LLMを含む深層学習手法と動的解析を用いて高水準モデルへ復元する。入力はバイナリ/デコンパイラ出力、出力は高水準モデルまたは可読化されたデコンパイル結果を目指しており、デコンパイル研究の範囲に該当する。", "citation_key": "Li2025"}
+{"decision": "exclude", "confidence": 0.72, "reason": "本論文は二値パッチ検出（binary security patch detection）を扱っており、除外条件の patch detection に該当するため。", "citation_key": "Li2025"}
+{"decision": "include", "confidence": 0.85, "reason": "機械学習/深層学習を用いたデコンパイル研究で、入力はバイナリ/アセンブリから高級言語コードを復元する neural decompilation アプローチを提案しているため。", "citation_key": "Liang2021"}
+{"decision": "include", "confidence": 0.85, "reason": "機械学習/大規模言語モデルを用い、デコンパイラ出力の高級言語コード復元・読みやすさ改善を扱う研究。入力は decompiler output、出力は高級言語コードまたは読みやすさ改善された擬似コード。SmartHaloは静的解析とLLMを組み合わせ、検証も実施している。除外条件に該当せず、スクリーニング条件を満たす。", "citation_key": "Liao2025"}
+{"decision": "exclude", "confidence": 0.72, "reason": "機械学習/深層学習を使用しているとは明示されていない。デコンパイル/ソース復元を扱うが、出力はソースコードや高級化された擬似コードではなく、 lifted binaries の検証ツール（DarkSea）に基づく検証結果であるため、スクリーニング条件を満たさない。", "citation_key": "Liu2021"}
+{"decision": "include", "confidence": 0.85, "reason": "論文は機械学習/深層学習を用いたデコンパイラ研究で、入力がDNN実行ファイル（バイナリ/デコンパイラ出力）であり、出力として高水準のDNN仕様（オペレータ種別、ネットワーク構造、寸法、パラメータ）を復元する。目的はソースコード相当の表現を生成するデコンパイル/ソース復元である。", "citation_key": "Liu2022"}
+{"decision": "include", "confidence": 0.87, "reason": "LLMを用いたバイナリデコンパイル（入力: バイナリ/デコンパイラ出力 → 出力: 高級言語ソースコードまたはデコンパイル後の高級化）を扱い、デコンパイル/ソースコード復元の採択条件を満たすため。", "citation_key": "Liu2025"}
+{"decision": "exclude", "confidence": 0.75, "reason": "本論文はLLMを用いてdecompiled binariesの脆弱性分析を扱い、脆弱性の識別・分類・記述を含むタスクを扱っている。スクリーニング基準の除外条件「vulnerability detection（脆弱性検出）」に該当するため除外。", "citation_key": "Manuel2024"}
+{"decision": "exclude", "confidence": 0.55, "reason": "機械学習/深層学習の使用が明示されていない。LLMデータセット生成の文脈はあるが、本文でML/DLの適用が述べられていないため条件1を満たすか不確定。", "citation_key": "Manuel2025"}
+{"decision": "exclude", "confidence": 0.65, "reason": "条件1の機械学習/深層学習の使用が見つからない。デコンパイルを扱うがML/DLを用いた記述がない。", "citation_key": "Mihajlenko2021"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習 / 深層学習の使用が明示されていない。要旨は等価飽和/E-グラフを用いるプログラム合成に基づくデコンパイル的手法であり、ML/DLベースのアプローチではない。", "citation_key": "Nandi2020"}
+{"decision": "exclude", "confidence": 0.75, "reason": "本論はデコンパイルを直接扱う実務的タスク（バイナリ/アセンブリの復元やデコンパイラ出力から高級言語への変換）ではなく、デコンパイル知識の再利用・抽出を比喩的に扱う機械学習ベースのプログラム合成研究。入出力がデコンパイル対象ではないため除外。", "citation_key": "Palmarini2024"}
+{"decision": "exclude", "confidence": 0.75, "reason": "アブストラクトはデコンパイル後のコードから目的や重要な変数名などを識別する情報抽出・識別タスクを扱う。これは除外条件の識別（identification）に該当するため。", "citation_key": "Pearce2022"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習の使用が本文の要約に明記されておらず、条件1を満たさないため。デコンパイル/ソース復元の対象には該当するが、採択条件を全て満たさない。", "citation_key": "Pochelu2024"}
+{"decision": "exclude", "confidence": 0.62, "reason": "条件1は満たすが、デコンパイル/ソースコード復元の出力要件を満たしていない。論文はGPT-4を用いたコードの解釈・説明に焦点を当てており、出力として高級言語のソースコードやデコンパイル擬似コードの修復・高級化を明示していない。", "citation_key": "Pordanesh2024"}
+{"decision": "exclude", "confidence": 0.58, "reason": "機械学習/深層学習の使用が明示されていない。本文は decompiled コードの可読性評価と規則ベースの指標提案で、ML/DLの学習済みモデルの利用は確認できない。", "citation_key": "Qin2024"}
+{"decision": "exclude", "confidence": 0.72, "reason": "機械学習/深層学習を使用していない。デコンパイルは対象だが、提案手法は従来のアルゴリズム的手法であり、ML/DLを用いたデコンパイル/ソースコード復元の要件を満たさない。", "citation_key": "Rao2024"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習を使用していることが条件だが、本論文は静的解析用の中間表現 Tezla の導入と Michelson のデコンパイルを扱っているのみで、ML/DLの利用が明示されていないため条件を満たさない。", "citation_key": "Reis2020"}
+{"decision": "exclude", "confidence": 0.62, "reason": "機械学習/深層学習の使用が明示されていない。デコンパイルと自動修復を扱うが、ML/DL要件を満たさない可能性が高い。", "citation_key": "Reiter2023"}
+{"decision": "exclude", "confidence": 0.62, "reason": "機械学習/深層学習を使用しているとの記述がなく、デコンパイル/ソース復元タスクはバイナリ接触を前提とするものではなく、Coq証明の項のデコンパイルに関する研究であり、対象タスク（バイナリ/アセンブリ/デコンパイラ出力からの高級言語ソース復元/可読性向上）とは異なる。", "citation_key": "Ringer2021"}
+{"decision": "exclude", "confidence": 0.66, "reason": "デコンパイル/ソースコード復元を扱う条件を満たさない。論文はバイナリ関数の類似性検出のベンチマークを作成・評価しており、出力はソースコード復元ではなくデータセット/評価手法の構築。", "citation_key": "Saul2024"}
+{"decision": "include", "confidence": 0.78, "reason": "LLMを用いたバイナリ分析の評価ベンチマークで、デコンパイルを含むタスクを扱い、出力として高級言語への復元を想定することが明記されている。除外条件に該当しない。", "citation_key": "Shang2025"}
+{"decision": "include", "confidence": 0.78, "reason": "WebAssemblyバイナリを高級言語表現へ復元するために、ファインチューニング済みのLLMを用いるデコンパイル研究であり、入力がバイナリ/デコンパイラ出力、出力が高級言語または可読性向上を含むデコンパイル結果である点を満たす。", "citation_key": "She2024"}
+{"decision": "exclude", "confidence": 0.66, "reason": "機械学習/深層学習の使用が明示されていない（進化的探索のみ）。デコンパイル済みバイナリから制御アルゴリズムを再構成する点は条件2を満たす。", "citation_key": "Shokri2023"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習を用い、デコンパイル結果を入力として活用しているが、最終出力は高級言語コードの復元やデコンパイル擬似コードの読解性改善（出力としてのソースコード生成/高級化）ではなく、デコンパイル結果を用いた特徴量ベースの分類に留まるため、スクリーニング条件の出力要件を満たさない。", "citation_key": "Slawinski2019"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習を使用しているか、デコンパイル/ソースコード復元を扱っているかの条件を満たさない。抽象の焦点はEDAツールチェーンと等価飽和（Equality Saturation）であり、バイナリ/アセンブリ/デコンパイラ出力の入出力を前提としたデコンパイル研究ではない。", "citation_key": "Smith2024"}
+{"decision": "exclude", "confidence": 0.68, "reason": "機械学習/深層学習を使用していない。論文はJVMバイトコードのデコンパイルと並列化をルールベースで行う手法を提案しており、条件1を満たさない。", "citation_key": "Stuglik2023"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/深層学習を使用し、LLVM IRを中間表現としてデコンパイル/高級言語への翻訳を扱っている。IR decompilationの試みも言及され、デコンパイル出力への適用があるため採択条件を満たす。", "citation_key": "Szafraniec2023"}
+{"decision": "include", "confidence": 0.85, "reason": "論文はバイナリコードを高級言語へ復元するデコンパイルをLLMで行う手法を提案しており、機械学習/深層学習（LLM）とデコンパイル対象（バイナリ）が明確に含まれる。除外条件にも該当しない。", "citation_key": "Tan2024"}
+{"decision": "include", "confidence": 0.85, "reason": "LLMを用いたバイナリデコンパイルを扱い、入力はbinary、出力はソースコードまたは高級言語のデコンパイル結果を復元する。二段階の構造回復と識別子命名で可読性・正確性を向上させる。除外条件に該当しない。", "citation_key": "Tan2025"}
+{"decision": "include", "confidence": 0.78, "reason": "LLMベースのデコンパイラを評価・ベンチマークする論文で、機械学習/深層学習を用い、入力がバイナリ/デコンパイラ出力、出力が高級言語のソースコード復元を扱う。除外条件（検索・同定・SCA・要約・脆弱性検出・パッチ検出・検証・IRのみ）に該当せず。", "citation_key": "Tan2025"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/深層学習を用いており、デコンパイル対象はTracrでコンパイルされたトランザフォーマーの重みからRASPコードを復元するデコンパイル・ソース復元タスクを扱う", "citation_key": "Thurnherr2024"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習の使用が明示されておらず、従来の逆アセンブリ/静的解析ベースの手法と読み取れるため、条件1を満たさない。デコンパイル対象には該当するが、採択条件を満たさない。", "citation_key": "Udeshi2024"}
+{"decision": "exclude", "confidence": 0.72, "reason": "機械学習/深層学習を使用していない。デコンパイル/ソース復元を扱っていない。出力は高級言語のソースコードではなく、形式検証付きのポインタ分析設計の議論に近い。", "citation_key": "Verbeek2025"}
+{"decision": "exclude", "confidence": 0.7, "reason": "本論文は視覚データを幾何プリミティブのプログラムへ変換するデコンパイル風タスクを扱うが、入力が binaries/assembly/decompiler output のいずれかではなく、出力も高級言語のソースコードやデコンパイル擬似コードではない。採択条件を満たさない。", "citation_key": "Wan2025"}
+{"decision": "exclude", "confidence": 0.65, "reason": "機械学習/深層学習を使用しているが、デコンパイルを扱う条件は満たすものの、出力がソースコードや高級言語への修復・高級化ではなく、脆弱性検出モデルとなっており条件2を満たさない。", "citation_key": "Wang2023"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/深層学習を用いたデコンパイル研究で、入力はバイナリ/デコンパイラ出力、出力は高級言語のソースコードまたは可読性向上した高級化コードを目指す。再実行可能性を意図したデコンパイル手法。", "citation_key": "Wang2025"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/深層学習を用い、バイナリ/アセンブリからソースコード復元を扱うデコンパイル研究であり、除外条件（コード検索、識別、脆弱性検出等）に該当しない。", "citation_key": "Wang2025"}
+{"decision": "include", "confidence": 0.72, "reason": "LLM-driven framework that integrates execution traces with decompiled contract code and introduces a decompile tool to recover/readability for high-level code from binaries/bytecode; usage of ML/LLMs and explicit decompilation focus align with the decompilation research criteria.", "citation_key": "Wang2025"}
+{"decision": "include", "confidence": 0.85, "reason": "LLMsを用いてデコンパイル出力を補修・高級化し、再コンパイル可能なコードを生成することを目的としており、入力はデコンパイル出力、出力は高級言語ソースコードまたは可読性向上されたデコンパイル擬似コードである。", "citation_key": "Wong2023"}
+{"decision": "include", "confidence": 0.72, "reason": "本文はソフトウェアセキュリティ応用としてChatGPTなどのLLMを用いたデコンパイルを含むタスクを検討しており、入力がassemblyなどデコンパイル対象で、出力として高級言語コードまたは可読性改善を伴うデコンパイル結果を想定している。従ってデコンパイル研究 v1の採択条件を満たす。", "citation_key": "Wu2023"}
+{"decision": "exclude", "confidence": 0.62, "reason": "機械学習/深層学習の使用を明示しておらず、デコンパイル/ソース復元の分析はあるが、条件1を満たさないため除外", "citation_key": "Wu2024"}
+{"decision": "include", "confidence": 0.78, "reason": "デコンパイル対象（低レベルの量子回路表現から高水準アルゴリズムへ復元）を扱い、量子機械学習を含む機械学習手法を用いる。出力は高水準コード/デコンパイル後の可読性向上を目指す。除外条件にも該当しない。", "citation_key": "Xie2025"}
+{"decision": "include", "confidence": 0.82, "reason": "機械学習/深層学習を用いたデコンパイル研究で、 stripped binary からの変数名復元・高級言語表現の修復を扱う。入力はデコンパイル後の関数、出力は高級言語の意味を持つ変数名の復元・可読性向上で、デコンパイル／ソースコード復元に該当。除外条件（検索・識別・SCA・要約・脆弱性検出・パッチ検出・検証・IRのみ）には該当しない。", "citation_key": "Xu2024"}
+{"decision": "exclude", "confidence": 0.72, "reason": "論文はデコンパイル/ソースコード復元を扱っているが、機械学習/深層学習の活用を明示していない。", "citation_key": "You2024"}
+{"decision": "exclude", "confidence": 0.66, "reason": "デコンパイルを特徴抽出に用いているが、最終出力はソースコード/デコンパイル擬似コードの修復・高級化ではなく、マルウェア検知の分類モデルと特徴量に留まるため、デコンパイル研究としての出力要件を満たさない。", "citation_key": "Zhang2024"}
+{"decision": "exclude", "confidence": 0.78, "reason": "機械学習/深層学習を使用していない。デコンパイルやソース復元を扱うが、本論は代数的検証手法であり、ML/DLを用いた研究ではない。", "citation_key": "Zhang2025"}
+{"decision": "include", "confidence": 0.78, "reason": "機械学習/LLMを用い、デコンパイル出力の修正・高級化を目的。入力はバイナリ/デコンパイラ出力、出力は高級言語コードや修復済み擬似コード。IRのみや単なる検索・要約ではなく、デコンパイルの精度向上を狙う。", "citation_key": "Zhou2025"}
+{"decision": "exclude", "confidence": 0.62, "reason": "本論文はRustバイナリのデコンパイルを評価する研究だが、機械学習/深層学習の使用を明示していない。採択条件の条件1を満たさないため除外。条件2はデコンパイル関連で満たす。", "citation_key": "Zhou2025"}
+{"decision": "include", "confidence": 0.85, "reason": "論文はデコンパイル出力の品質向上を目的とした機械学習/LLMベースのバックエンド改善を提案しており、入力としてバイナリ/デコンパイラ出力、出力として高級言語ソースコードや可読性改善を含むデコンパイル擬似コードを扱う。除外条件（検索・識別・SCA・要約・脆弱性検出・パッチ検出・検証・IRのみ）には該当しない。", "citation_key": "Zou2025"}

@@ -1,0 +1,456 @@
+{
+  "meta": {
+    "run_id": "2026-01-21_2339",
+    "source_rules": "スクリーニング基準",
+    "source_input": "input.bib",
+    "created_at": "2026-01-22T03:25:44.495426",
+    "updated_at": "2026-01-22T03:25:44.495560",
+    "stats": {
+      "total": 55,
+      "checked": 0,
+      "modified": 0
+    }
+  },
+  "papers": {
+    "arXiv:2204.08393": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習や深層学習を使用しておらず、デコンパイルやバイナリ→ソースコード変換に関する内容ではないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2112.14765": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "この論文は量子場理論に関するものであり、機械学習や深層学習を使用していないため、採択条件を満たしていません。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2012.15860": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "論文は物理学に関するものであり、機械学習や深層学習を使用していないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2106.16248": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は量子物理学に関するものであり、機械学習や深層学習を使用していないため、採択条件を満たしていない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2512.24296": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "論文は量子熱力学に関するものであり、機械学習や深層学習を使用していないため、採択条件を満たしていない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2507.04931": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習（大規模言語モデル）を使用しており、デコンパイルまたはバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2304.04658": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習/深層学習を使用しており、バイナリとソースコードのマッチングを扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1809.04193": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はデコンパイルやバイナリからソースコードへの変換を扱っているが、機械学習や深層学習の使用が明示されていないため除外する。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2505.07360": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しており、デコンパイルを扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2304.09842": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習/深層学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2501.09201": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "逆アセンブルやバイナリからソースコードへの変換を扱っていないため、除外条件に該当する。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2405.20611": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "機械学習を使用しており、デコンパイルまたはバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2509.14646": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "論文は機械学習/深層学習を使用しており、バイナリからソースコードへのデコンパイルを扱っているため、採択条件を満たしています。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2501.19259": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習や深層学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2506.18240": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は量子ニューラルネットワークに関するものであり、デコンパイルやバイナリからソースコードへの変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2304.12866": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を扱っているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2201.07420": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習/深層学習を使用しており、デコンパイルまたはバイナリからソースコードへの変換を扱っているため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2401.11161": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習を使用しており、デコンパイルまたはバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2412.20992": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習を使用しており、デコンパイルやバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1910.11717": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はラムダリフティングに関するものであり、機械学習や深層学習を使用していないため、採択条件を満たしていない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2304.01102": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習を使用しており、デコンパイルまたはバイナリ→ソースコード変換を扱っているため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2506.10125": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "機械学習/深層学習を使用しており、デコンパイルおよびバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2511.05791": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習/深層学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2507.14570": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "論文はグラフニューラルネットワークに関するものであり、デコンパイルやバイナリからソースコードへの変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2601.05772": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習を使用しており、バイナリからのソースコード復元に関連するセキュリティパッチ検出を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2101.08116": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習を使用してデコンパイルにおけるソースコード復元の精度を向上させる内容であり、採択条件を満たしているため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2507.10624": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は大規模言語モデルの限界についての分析であり、機械学習や深層学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2405.19581": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習を使用しており、バイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2108.07639": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習を使用しており、Cコードからx86アセンブラへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2404.18249": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "逆アセンブルのみの内容ではなく、デコンパイルやソースコード変換を扱っているが、機械学習/深層学習の使用が明示されていないため除外と判断した。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2105.05159": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習の使用は明示されていないが、デコンパイルされたバイナリの検証を扱っており、ソースコード復元に関連する内容が含まれているため、採択条件を満たす可能性が高い。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2302.08760": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は3Dヒューマンポーズのリフティングに関するものであり、機械学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1910.10398": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は3Dセグメンテーションに関するものであり、機械学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2505.04852": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習を使用しており、CからRustへのソースコード変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2509.24507": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2103.05221": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習を使用して最適化されたバイナリから関数呼び出しを回復する問題を扱っており、デコンパイルに関連しているため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1802.07119": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2212.09239": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は非対話型ソースシミュレーションに関するものであり、機械学習や深層学習を使用していないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2308.04838": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はコード生成に関するものであるが、機械学習/深層学習を使用しているかどうかが明確でなく、デコンパイルやバイナリ→ソースコード変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2503.23748": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習を使用しており、デコンパイルまたはバイナリ→ソースコード変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2404.16041": {
+      "ai_decision": "include",
+      "ai_confidence": 1.0,
+      "ai_reason": "機械学習を使用しており、デコンパイルまたはバイナリからソースコードへの変換を扱っているため、採択条件を満たしている。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2409.17115": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はデータ精製に関するものであり、デコンパイルやバイナリからソースコードへの変換を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2406.10529": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を扱っているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2505.21577": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1901.06540": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習アルゴリズムの安定性や収束について扱っているが、デコンパイルやバイナリからソースコードへの変換を直接扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:1907.12475": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/深層学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2203.11386": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2403.01907": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "論文は機械学習や深層学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため、除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2006.04847": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しているが、デコンパイルやバイナリ→ソースコード変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2404.18098": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はプログラムの仕様と検証に関する理論を扱っており、機械学習や深層学習を使用していないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2310.02295": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2507.11676": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は量子プログラミング言語の構築に関するものであり、機械学習や深層学習を使用していないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2601.05887": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文はゲーム理論に基づくAIを扱っており、機械学習/深層学習を使用しているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2512.06155": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "逆アセンブルのみの内容であり、ソースコード復元を扱っていないため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "arXiv:2306.03542": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文は機械学習を扱っているが、デコンパイルやバイナリからソースコードへの変換を扱っていないため除外される。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    }
+  }
+}

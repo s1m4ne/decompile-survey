@@ -75,7 +75,7 @@ uv run python screening/scripts/screen.py --input papers.bib --rules rules.md
 
 ### decompile_v1.md
 
-機械学習を用いたデコンパイル研究のスクリーニング基準。
+機械学習を用いたデコンパイル研究のスクリーニング基準（初版）。
 
 **採択条件:**
 - 機械学習/深層学習を使用
@@ -87,6 +87,16 @@ uv run python screening/scripts/screen.py --input papers.bib --rules rules.md
 - vulnerability detection、patch detection、verification
 - IR-only（中間表現止まり）
 
+### decompile_v2.md
+
+v1の改訂版。より詳細な判定ガイドラインを追加。
+
+**主な変更点:**
+- 「デコンパイルが手段として使われるだけ」のケースを明確に除外
+- 判定ガイドを追加（評価指標がF1/AUC中心なら除外など）
+- 境界例の取り扱いルールを追加
+- 論文タイプ（ベンチマーク、サーベイ等）の除外条件を追加
+
 ## 実行履歴
 
 ### 2026-01-21_2339
@@ -94,3 +104,9 @@ uv run python screening/scripts/screen.py --input papers.bib --rules rules.md
 
 ### 2026-01-22_0032
 テスト実行。`imports/IEEE/IEEE_source-recovery_20260116_0000.bib`（IEEE source-recovery検索結果、24件）を使用。`rules/decompile_v1.md`を適用し、全て除外された。source-recoveryクエリの結果はデコンパイル研究には該当しないものが多いことを確認。
+
+### 2026-01-22_0125
+テスト実行。`imports/arXiv/arXiv_decompil_20260115_1917.bib`（arXivのdecompil*検索結果）を使用。includedが多く含まれるデータで正しく分類できるかを確認。結果：除外判定は全て正しかったが、included判定のうち12件は本来除外すべきものだった。この結果を受けてルールをv2に改訂。
+
+### 2026-01-22_0146
+`rules/decompile_v2.md`を適用して再実行。同じ入力（`imports/arXiv/arXiv_decompil_20260115_1917.bib`）で検証。誤判定の件数は減少したが、まだ完璧ではない。継続的なルール改善が必要。

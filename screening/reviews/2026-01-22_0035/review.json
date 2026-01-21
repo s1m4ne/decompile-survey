@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "run_id": "2026-01-22_0035",
+    "source_rules": "スクリーニング基準: デコンパイル研究 v1",
+    "source_input": "input.bib",
+    "created_at": "2026-01-22T02:53:02.116665",
+    "updated_at": "2026-01-22T02:53:02.116833",
+    "stats": {
+      "total": 24,
+      "checked": 0,
+      "modified": 0
+    }
+  },
+  "papers": {
+    "9724320": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.68,
+      "ai_reason": "本論文は二値とソース関数の一致を行うマッチング/リトリーバルタスクであり、デコンパイル出力の生成や高級言語への復元を直接的に扱っていない。除外条件のマッチング/リトリーバルに該当するため。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "5554891": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "デコンパイル/ソースコード復元を扱う対象ではなく、題材は画像ウォーターマーキングと幾何変換耐性。機械学習は用いているが、スクリーニング条件のデコンパイル研究には該当しない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10548390": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.85,
+      "ai_reason": "本論文はソフトウェア構成分析（SCA）として、二値からソースコードの再利用ライブラリを特定するタスクを扱っており、除外条件に該当する。機械学習/深層学習を用いていても、スクリーニング目的はデコンパイル/ソース復元には該当せず、SCAに分類されるためexcludeと判断。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10596484": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "論文はバイナリとソースコードの類似性を学習するマッチング/リトリーバル手法であり、デコンパイルやソースコード復元（入力がバイナリ/アセンブリ/デコンパイラ出力に対して高級言語ソースを復元する）を直接扱っていないため、除外条件に該当。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "9967528": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.85,
+      "ai_reason": "デコンパイル研究の対象条件（入力がバイナリ/アセンブリ/デコンパイラ出力で、出力が高級言語ソースコードまたは修復された高級化コード）を満たしていない。機械学習と生体信号の分類研究で、ソースコード復元は行われていない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10405830": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.8,
+      "ai_reason": "デコンパイル研究の定義（入力がバイナリ/アセンブリ/デコンパイラ出力であり、出力がソースコードや高級化された擬似コードとなる）を満たしていない。論文は機械学習を用いた姿勢分類（IMUデータ）であり、ソースコード復元には該当しない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10577819": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.8,
+      "ai_reason": "デコンパイル/ソースコード復元を扱う研究条件を満たしていない。深層学習を用いたタスク認識とRULAスコア推定の研究であり、デコンパイル対象（バイナリ/アセンブリ/デコンパイラ出力からの高級言語復元）ではない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "8833774": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.85,
+      "ai_reason": "デコンパイル/ソースコード復元を扱っておらず、対象はSRLの設計・制御でデコンパイル研究の採択条件を満たさない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "8794414": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.78,
+      "ai_reason": "デコンパイル研究の定義条件を満たさない。機械学習要素はあるが、バイナリ/アセンブリ/デコンパイラ出力から高級言語ソース復元を扱う内容ではない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "668070": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "機械学習/デコンパイル/ソースコード復元を扱っておらず、デコンパイル研究としての条件を満たさない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10217512": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.8,
+      "ai_reason": "デコンパイル研究の条件を満たしていない。機械学習（LSTM）を用いた CTS データの分類論文で、入力/output はバイナリ/アセンブリ/デコンパイラ出力の復元に関するものではない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10895149": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.72,
+      "ai_reason": "デコンパイル研究としての要件を満たさず、入力/出力がバイナリ/アセンブリ/デコンパイラ出力からソースコード復元へ向かっていない。論文は姿勢推定を用いた労働安全の応用研究である。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "9856521": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.78,
+      "ai_reason": "デコンパイル/ソースコード復元を扱う論文基準を満たしていない。機械学習を用いた生体信号（EMG）とNIOSHリスク分類に関する研究で、コード復元やデコンパイル対象のタスクではない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "7881398": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.65,
+      "ai_reason": "デコンパイル/ソースコード復元を扱う要件を満たしていない。機械学習は使用しているが、論文はデコンパイル対象タスクではなく音声インタフェースの設計・検証に関する研究のため除外",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "5679020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "デコンパイル/ソースコード復元を扱う研究条件を満たしていない。機械学習は使用しているが、本論文は風力タービン建設のシミュレーション研究であり、出力がソースコード復元や高級化には該当しない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "9383643": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "デコンパイル/ソースコード復元に関する研究ではなく、顔認識における機械学習手法の論文であり、入力出力がソースコードやデコンパイラ出力に該当しない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10721204": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.65,
+      "ai_reason": "デコンパイル・ソースコード復元を扱っておらず、機械学習/深層学習の明示的な利用も記述されていないため、デコンパイル研究の採択条件を満たさない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "9141578": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.7,
+      "ai_reason": "機械学習/深層学習を使用していることを示す要件を満たしていない。抽象はファジィ論理と情報融合を用いた故障診断の手法で、デコンパイルやソースコード復元を扱っていない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10317229": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "機械学習を使用しているが、デコンパイル/ソースコード復元を扱うタスクではない。入力としてバイナリ/アセンブリ/デコンパイラ出力を扱う、または高級言語のソースコード復元・リードアビリティ改善を目的とする論文ではない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "6537009": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "機械学習/深層学習を使用しない、デコンパイル/ソースコード復元を扱わない。1930年の電気機器論文で、デコンパイル分野の対象外。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "9169782": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "本論文は生体信号の機械学習分類であり、デコンパイル対象の入力/出力（バイナリ、アセンブリ、デコンパイラ出力→高級言語コード）を扱っていないため除外。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10878070": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.72,
+      "ai_reason": "デコンパイル研究の条件を満たさない（入力/出力がデコンパイル対象のバイナリ推定やソース復元を扱わず、目的はパン製造プロセスの品質予測に機械学習を適用すること）",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "10385215": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.75,
+      "ai_reason": "本論文は機械学習/深層学習を用いた研究やデコンパイル/ソースコード復元を扱っているとは記述されておらず、FPFHEの暗号技術・実装・検証に関する論文である。デコンパイル研究の入力/出力条件を満たさない。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    },
+    "7045288": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.6,
+      "ai_reason": "タイトルが『Table of contents』で、デコンパイル/ソースコード復元を扱う明確な研究内容が示されていません。抽象にもデコンパイルやソースコード復元に関する説明が見られず、除外条件に該当します。機械学習の要素が含まれる可能性はあるが、本論文はデコンパイル研究として特化していないため不適合と判断します。",
+      "manual_decision": null,
+      "checked": false,
+      "note": ""
+    }
+  }
+}
