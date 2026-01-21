@@ -1,2 +1,3 @@
 run_id,date,model,total,included,excluded,uncertain,notes
 2026-01-21_2339,2026-01-21,gpt-4o-mini,55,19,36,0,
+2026-01-22_0035,2026-01-22,gpt-5-nano-2025-08-07,24,0,24,0,

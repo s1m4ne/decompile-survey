@@ -40,6 +40,7 @@ uv run python screening/scripts/screen.py --input papers.bib --rules rules.md
 - `--rules`, `-r`: スクリーニング基準ファイル（必須）
 - `--model`, `-m`: 使用するモデル（デフォルト: gpt-4o-mini）
 - `--output-dir`, `-o`: 出力ディレクトリ（省略時は自動生成）
+- `--concurrency`, `-c`: 並列実行数（デフォルト: 10）
 
 ## runs/ の各ファイル
 
@@ -68,7 +69,28 @@ uv run python screening/scripts/screen.py --input papers.bib --rules rules.md
 | uncertain | 要確認数 |
 | notes | 備考 |
 
+## ルールファイル
+
+`rules/` ディレクトリにスクリーニング基準を保存。
+
+### decompile_v1.md
+
+機械学習を用いたデコンパイル研究のスクリーニング基準。
+
+**採択条件:**
+- 機械学習/深層学習を使用
+- 入力がbinary/assembly/decompiler output
+- 出力がソースコード（高級言語）またはデコンパイル擬似コードの修復
+
+**除外条件:**
+- matching/retrieval、identification、SCA、summarization
+- vulnerability detection、patch detection、verification
+- IR-only（中間表現止まり）
+
 ## 実行履歴
 
 ### 2026-01-21_2339
 テスト実行。`imports/arXiv/arXiv_decompil_20260115_2350.bib`（arXivのdecompil*検索結果、55件）を使用。小規模なデータセットでスクリプトの動作確認を行った。
+
+### 2026-01-22_0032
+テスト実行。`imports/IEEE/IEEE_source-recovery_20260116_0000.bib`（IEEE source-recovery検索結果、24件）を使用。`rules/decompile_v1.md`を適用し、全て除外された。source-recoveryクエリの結果はデコンパイル研究には該当しないものが多いことを確認。

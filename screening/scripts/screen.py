@@ -7,6 +7,7 @@ Usage:
 """
 
 import argparse
+import asyncio
 import csv
 import json
 import os
@@ -18,12 +19,15 @@ from typing import Optional
 
 import bibtexparser
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import AsyncOpenAI
 
 # Load .env from repo root
 script_dir = Path(__file__).parent
 repo_root = script_dir.parent.parent
 load_dotenv(repo_root / ".env")
+
+# 並列実行数（API rate limitに注意）
+DEFAULT_CONCURRENCY = 10
 
 
 def parse_bibtex(bib_path: str) -> list[dict]:
@@ -44,8 +48,23 @@ def parse_bibtex(bib_path: str) -> list[dict]:
     return papers
 
 
-def screen_paper(client: OpenAI, model: str, rules: str, paper: dict) -> dict:
-    """1論文をスクリーニングして判定結果を返す"""
+async def screen_paper(
+    client: AsyncOpenAI,
+    model: str,
+    rules: str,
+    paper: dict,
+    semaphore: asyncio.Semaphore
+) -> dict:
+    """1論文をスクリーニングして判定結果を返す（非同期）"""
+
+    # アブストラクトがない場合はuncertain
+    if not paper["abstract"]:
+        return {
+            "citation_key": paper["citation_key"],
+            "decision": "uncertain",
+            "confidence": 0.0,
+            "reason": "アブストラクトなし"
+        }
 
     prompt = f"""あなたは学術論文のスクリーニングを行うアシスタントです。
 以下のスクリーニング基準に基づいて、論文を判定してください。
@@ -68,17 +87,38 @@ def screen_paper(client: OpenAI, model: str, rules: str, paper: dict) -> dict:
 }}
 """
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.1,
-        response_format={"type": "json_object"}
-    )
+    async with semaphore:
+        response = await client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
 
     result = json.loads(response.choices[0].message.content)
     result["citation_key"] = paper["citation_key"]
 
     return result
+
+
+async def screen_papers_parallel(
+    client: AsyncOpenAI,
+    model: str,
+    rules: str,
+    papers: list[dict],
+    concurrency: int
+) -> list[dict]:
+    """複数論文を並列でスクリーニング"""
+    semaphore = asyncio.Semaphore(concurrency)
+
+    async def process_with_progress(i: int, paper: dict) -> dict:
+        result = await screen_paper(client, model, rules, paper, semaphore)
+        print(f"[{i+1}/{len(papers)}] {paper['title'][:40]}... -> {result['decision']}")
+        return result
+
+    tasks = [process_with_progress(i, paper) for i, paper in enumerate(papers)]
+    results = await asyncio.gather(*tasks)
+
+    return results
 
 
 def write_bibtex(papers: list[dict], output_path: str):
@@ -90,12 +130,14 @@ def write_bibtex(papers: list[dict], output_path: str):
         bibtexparser.dump(db, f)
 
 
-def main():
+async def async_main():
     parser = argparse.ArgumentParser(description="論文スクリーニングスクリプト")
     parser.add_argument("--input", "-i", required=True, help="入力BibTeXファイル")
     parser.add_argument("--rules", "-r", required=True, help="スクリーニング基準ファイル")
-    parser.add_argument("--model", "-m", default="gpt-4o-mini", help="使用するモデル")
+    parser.add_argument("--model", "-m", default="gpt-5-nano-2025-08-07", help="使用するモデル")
     parser.add_argument("--output-dir", "-o", help="出力ディレクトリ（省略時は自動生成）")
+    parser.add_argument("--concurrency", "-c", type=int, default=DEFAULT_CONCURRENCY,
+                        help=f"並列実行数（デフォルト: {DEFAULT_CONCURRENCY}）")
     args = parser.parse_args()
 
     # APIキーの確認
@@ -104,7 +146,7 @@ def main():
         print("Error: OPENAI_API_KEY not set in .env file", file=sys.stderr)
         sys.exit(1)
 
-    client = OpenAI(api_key=api_key)
+    client = AsyncOpenAI(api_key=api_key)
 
     # ルールを読み込む
     with open(args.rules, encoding="utf-8") as f:
@@ -113,6 +155,7 @@ def main():
     # 論文を読み込む
     papers = parse_bibtex(args.input)
     print(f"Loaded {len(papers)} papers from {args.input}")
+    print(f"Concurrency: {args.concurrency}")
 
     # 出力ディレクトリを作成
     if args.output_dir:
@@ -130,37 +173,28 @@ def main():
     shutil.copy(rules_path, output_dir / "rules.md")
 
     print(f"Output directory: {output_dir}")
+    print("=" * 50)
 
-    # スクリーニング実行
-    decisions = []
+    # スクリーニング実行（並列）
+    decisions = await screen_papers_parallel(
+        client, args.model, rules, papers, args.concurrency
+    )
+
+    # 結果を分類
     included = []
     excluded = []
     uncertain = []
 
-    for i, paper in enumerate(papers):
-        print(f"[{i+1}/{len(papers)}] {paper['title'][:50]}...")
-
-        if not paper["abstract"]:
-            # アブストラクトがない場合はuncertain
-            result = {
-                "citation_key": paper["citation_key"],
-                "decision": "uncertain",
-                "confidence": 0.0,
-                "reason": "アブストラクトなし"
-            }
-        else:
-            result = screen_paper(client, args.model, rules, paper)
-
-        decisions.append(result)
-
-        if result["decision"] == "include":
+    # papersとdecisionsを対応付け
+    paper_dict = {p["citation_key"]: p for p in papers}
+    for decision in decisions:
+        paper = paper_dict[decision["citation_key"]]
+        if decision["decision"] == "include":
             included.append(paper)
-        elif result["decision"] == "exclude":
+        elif decision["decision"] == "exclude":
             excluded.append(paper)
         else:
             uncertain.append(paper)
-
-        print(f"  -> {result['decision']} ({result['confidence']:.2f}): {result['reason'][:50]}")
 
     # 結果を保存
     # decisions.jsonl
@@ -204,6 +238,10 @@ def main():
     print(f"  Included:  {len(included)}")
     print(f"  Excluded:  {len(excluded)}")
     print(f"  Uncertain: {len(uncertain)}")
+
+
+def main():
+    asyncio.run(async_main())
 
 
 if __name__ == "__main__":
