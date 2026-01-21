@@ -4,32 +4,25 @@ LlamaParseを使用してPDFをMarkdownに変換するスクリプト。
 
 ## セットアップ
 
-1. 依存関係をインストール
-
-```bash
-pip install -r requirements.txt
-```
-
-2. APIキーを設定
-   - https://cloud.llamaindex.ai/ でアカウント作成
-   - APIキーを取得
-   - `.env` ファイルにAPIキーを貼り付け
+1. リポジトリルートの`.env`にAPIキーを設定
 
 ```
 LLAMA_CLOUD_API_KEY=llx-xxxxxxxxxxxxxxxx
 ```
 
+APIキーは https://cloud.llamaindex.ai/ から取得できます。
+
 ## 使い方
 
 ```bash
 # 基本（出力は入力ファイルと同じ場所に .md として保存）
-python3 parse_pdf.py paper.pdf
+uv run python scripts/pdf2md_llamaparse/parse_pdf.py paper.pdf
 
 # 出力ファイル指定
-python3 parse_pdf.py paper.pdf output.md
+uv run python scripts/pdf2md_llamaparse/parse_pdf.py paper.pdf output.md
 ```
 
-## 無料枠
+## 料金
 
-- 10,000クレジット/月
-- Cost-effectiveモード: 約3,300ページ/月
+- 10,000クレジット/月（無料枠）
+- Balancedモード: $3 / 1,000ページ

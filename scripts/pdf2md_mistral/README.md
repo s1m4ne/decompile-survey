@@ -4,13 +4,7 @@ Mistral OCR 3を使用してPDFをMarkdownに変換するスクリプト。画�
 
 ## セットアップ
 
-1. 依存関係をインストール
-
-```bash
-pip install mistralai python-dotenv
-```
-
-2. `.env`ファイルにAPIキーを設定
+リポジトリルートの`.env`にAPIキーを設定
 
 ```
 MISTRAL_API_KEY=your_api_key_here
@@ -22,10 +16,10 @@ APIキーは https://console.mistral.ai/ から取得できます。
 
 ```bash
 # 基本（出力は入力ファイルと同じ場所に .md として保存）
-python3 parse_pdf.py paper.pdf
+uv run python scripts/pdf2md_mistral/parse_pdf.py paper.pdf
 
 # 出力先を指定
-python3 parse_pdf.py paper.pdf output/paper.md
+uv run python scripts/pdf2md_mistral/parse_pdf.py paper.pdf output/paper.md
 ```
 
 ## 出力
@@ -41,8 +35,6 @@ output/
 └── ...
 ```
 
-## 制限事項
+## 料金
 
-- ファイルサイズ: 最大50MB
-- ページ数: 最大1,000ページ
-- 料金: $1 / 1,000ページ
+$1 / 1,000ページ

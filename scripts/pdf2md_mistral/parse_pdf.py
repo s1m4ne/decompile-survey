@@ -13,9 +13,10 @@ from typing import Optional
 from dotenv import load_dotenv
 from mistralai import Mistral
 
-# Load .env from script directory
+# Load .env from repo root
 script_dir = Path(__file__).parent
-load_dotenv(script_dir / ".env")
+repo_root = script_dir.parent.parent
+load_dotenv(repo_root / ".env")
 
 
 def parse_pdf(input_path: str, output_path: Optional[str] = None) -> str:

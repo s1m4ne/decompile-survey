@@ -1,2 +1,0 @@
-llama-parse
-python-dotenv

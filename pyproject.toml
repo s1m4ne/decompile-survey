@@ -1,0 +1,19 @@
+[project]
+name = "decompile-survey"
+version = "0.1.0"
+description = "機械学習を用いたデコンパイル技術に関するサーベイ"
+requires-python = ">=3.10"
+dependencies = [
+    # PDF to Markdown
+    "llama-parse",
+    "mistralai",
+    # BibTeX
+    "bibtexparser",
+    # Screening
+    "openai",
+    # Common
+    "python-dotenv",
+]
+
+[tool.uv]
+dev-dependencies = []

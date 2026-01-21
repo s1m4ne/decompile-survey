@@ -6,12 +6,12 @@ arXiv APIからBibTeXを取得するスクリプト。アブストラクトや�
 
 ```bash
 # 自動ファイル名で出力
-python3 arxiv_fetch.py \
+uv run python scripts/bibtex_fetcher/arxiv_fetch.py \
   --query '(ti:"source recovery" OR abs:"source recovery") AND (cat:cs.CR)' \
   --page-size 5 --max-pages 1
 
 # 出力先を指定
-python3 arxiv_fetch.py \
+uv run python scripts/bibtex_fetcher/arxiv_fetch.py \
   --query '(ti:"source recovery" OR abs:"source recovery") AND (cat:cs.CR)' \
   --output imports/arXiv/arXiv_decompil_20260115_1200.bib
 ```
