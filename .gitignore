@@ -13,3 +13,10 @@ venv/
 # Environment
 .env
 !.env.example
+
+# papers/ - PDFとMDは除外、notes.md/README.md/bibは追跡
+papers/**/*.pdf
+papers/**/*.md
+!papers/**/notes.md
+!papers/**/README.md
+!papers/README.md
