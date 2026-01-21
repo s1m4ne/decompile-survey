@@ -9,3 +9,7 @@ venv/
 # IDE
 .vscode/
 .idea/
+
+# Environment
+.env
+!.env.example
