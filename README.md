@@ -32,6 +32,16 @@ decompile-survey/
 │   │   └── parse_pdf.py
 │   └── pdf2md_mistral/         # Mistral OCRでPDF→Markdown変換
 │       └── parse_pdf.py
+├── screening/                  # 論文スクリーニング
+│   ├── scripts/                # スクリーニングスクリプト
+│   │   └── screen.py           # LLMによる論文スクリーニング
+│   ├── rules/                  # スクリーニングルール
+│   ├── runs/                   # 実行結果
+│   ├── reviews/                # レビューデータ
+│   ├── app/                    # レビュー用Webアプリ
+│   │   ├── backend/            # FastAPI
+│   │   └── frontend/           # React + TypeScript
+│   └── history.csv             # 実行履歴
 ├── .gitignore
 └── README.md
 ```
@@ -140,7 +150,24 @@ python3 scripts/bibtex_fetcher/arxiv_fetch.py \
   --page-size 100 --max-pages 2
 ```
 
-### 3. 文献管理ツールへのインポート
+### 3. 論文スクリーニング
+
+LLMを使用して論文の関連性を自動判定する。
+
+```bash
+# スクリーニング実行
+uv run python screening/scripts/screen.py \
+  -i imports/arXiv/arXiv_decompil_20260115_1917.bib \
+  -r screening/rules/decompile_v2.md
+
+# Webアプリでレビュー
+cd screening/app && ./start.sh
+# http://localhost:5173 でアクセス
+```
+
+詳細は `screening/README.md` を参照。
+
+### 4. 文献管理ツールへのインポート
 
 BibTeXファイルをZoteroなどの文献管理ツールにインポートする。
 
