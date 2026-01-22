@@ -166,11 +166,11 @@ async def async_main():
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # 入力ファイルとルールをコピー
+    # 入力ファイルとルールをコピー（ルールはファイル名を維持）
     input_path = Path(args.input).resolve()
     rules_path = Path(args.rules).resolve()
     shutil.copy(input_path, output_dir / "input.bib")
-    shutil.copy(rules_path, output_dir / "rules.md")
+    shutil.copy(rules_path, output_dir / rules_path.name)
 
     print(f"Output directory: {output_dir}")
     print("=" * 50)

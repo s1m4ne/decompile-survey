@@ -7,18 +7,32 @@ LLMを使った論文スクリーニングを管理するディレクトリ。
 ```
 screening/
 ├── README.md
-├── history.csv          # 実行履歴
+├── history.csv              # 実行履歴
 ├── scripts/
-│   └── screen.py        # スクリーニングスクリプト
-└── runs/
-    └── {YYYY-MM-DD_HHMM}/
-        ├── rules.md         # スクリーニング基準
-        ├── input.bib        # 入力BibTeX
-        ├── decisions.jsonl  # 判定結果（JSON）
-        ├── decisions.csv    # 判定結果（CSV）
-        ├── included.bib     # 採択論文
-        ├── excluded.bib     # 除外論文
-        └── uncertain.bib    # 要確認論文
+│   └── screen.py            # スクリーニングスクリプト
+├── rules/                   # スクリーニング基準
+│   ├── decompile_v1.md
+│   └── decompile_v2.md
+├── runs/                    # 実行結果
+│   └── {YYYY-MM-DD_HHMM}/
+│       ├── rules.md         # この実行で使用した基準
+│       ├── input.bib        # 入力BibTeX
+│       ├── decisions.jsonl  # 判定結果（JSON）
+│       ├── decisions.csv    # 判定結果（CSV）
+│       ├── included.bib     # 採択論文
+│       ├── excluded.bib     # 除外論文
+│       └── uncertain.bib    # 要確認論文
+├── reviews/                 # レビューデータ
+│   └── {run_id}/
+│       └── review.json      # 手動レビュー結果
+└── app/                     # レビュー用Webアプリ
+    ├── README.md
+    ├── start.sh             # 起動スクリプト
+    ├── backend/             # FastAPI
+    │   ├── main.py
+    │   └── routers/
+    └── frontend/            # React + TypeScript
+        └── src/
 ```
 
 ## セットアップ
@@ -110,3 +124,56 @@ v1の改訂版。より詳細な判定ガイドラインを追加。
 
 ### 2026-01-22_0146
 `rules/decompile_v2.md`を適用して再実行。同じ入力（`imports/arXiv/arXiv_decompil_20260115_1917.bib`）で検証。誤判定の件数は減少したが、まだ完璧ではない。継続的なルール改善が必要。
+
+---
+
+## Webアプリ（レビュー用）
+
+AIスクリーニング結果を手動でレビュー・修正するためのWebアプリケーション。
+
+### 起動方法
+
+```bash
+cd screening/app
+./start.sh
+```
+
+- フロントエンド: http://localhost:5173
+- バックエンド: http://localhost:8000
+
+### 主な機能
+
+1. **Reviews** - AI判定結果のレビュー
+   - include/exclude/uncertainの確認と修正
+   - チェック済みフラグ・メモの追加
+   - 複数選択・一括操作
+   - フィルタリング・キーワード検索
+
+2. **Imports** - BibTeXファイル閲覧
+   - `imports/`内のファイルをブラウズ
+   - 論文詳細・外部リンク表示
+
+3. **Run Screening** - スクリーニング実行
+   - アプリ内から`screen.py`を実行
+   - 入力ファイル・ルール・モデル・並列数を設定
+
+### レビューデータ
+
+`reviews/{run_id}/review.json`に保存。AIの判定結果は保持したまま、手動で修正可能。
+
+```json
+{
+  "entry_key": {
+    "ai_decision": "include",
+    "ai_confidence": 0.85,
+    "ai_reason": "...",
+    "manual_decision": "exclude",
+    "checked": true,
+    "note": "手動メモ"
+  }
+}
+```
+
+最終判定: `final_decision = manual_decision ?? ai_decision`
+
+詳細は `app/README.md` を参照。

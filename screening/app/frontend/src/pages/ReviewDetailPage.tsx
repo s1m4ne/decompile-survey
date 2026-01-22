@@ -1,28 +1,40 @@
-import { useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useMemo, useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { runsApi, reviewsApi, Paper, PaperReview, UpdatePaperRequest } from '../lib/api';
+import { runsApi, reviewsApi, UpdatePaperRequest } from '../lib/api';
 import { PaperCard } from '../components/PaperCard';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Select } from '../components/ui/Select';
 import { Badge } from '../components/ui/Badge';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
-import { Search, Filter, FileText, Download, CheckSquare } from 'lucide-react';
+import { Search, Filter, FileText, Download, CheckSquare, ChevronDown, ChevronUp } from 'lucide-react';
 
 type FilterDecision = 'all' | 'include' | 'exclude' | 'uncertain';
-type FilterChecked = 'all' | 'checked' | 'unchecked';
+type FilterReviewed = 'all' | 'reviewed' | 'unreviewed';
 
 export function ReviewDetailPage() {
   const { runId } = useParams<{ runId: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
 
   // State
   const [search, setSearch] = useState('');
   const [filterDecision, setFilterDecision] = useState<FilterDecision>('all');
-  const [filterChecked, setFilterChecked] = useState<FilterChecked>('all');
+  const [filterReviewed, setFilterReviewed] = useState<FilterReviewed>('all');
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [showRules, setShowRules] = useState(false);
+  const [expandAll, setExpandAll] = useState<boolean | undefined>(undefined);
+
+  // Check URL params for showRules
+  useEffect(() => {
+    if (searchParams.get('showRules') === 'true') {
+      setShowRules(true);
+      // Remove the param from URL
+      searchParams.delete('showRules');
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   // Queries
   const { data: runData, isLoading: runLoading } = useQuery({
@@ -47,7 +59,7 @@ export function ReviewDetailPage() {
   });
 
   const bulkUpdateMutation = useMutation({
-    mutationFn: (data: { citation_keys: string[]; manual_decision?: string | null; checked?: boolean }) =>
+    mutationFn: (data: { citation_keys: string[]; manual_decision?: string | null; reset?: boolean }) =>
       reviewsApi.bulkUpdate(runId!, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['review', runId] });
@@ -78,22 +90,23 @@ export function ReviewDetailPage() {
         return false;
       }
 
-      // Checked filter
-      if (filterChecked === 'checked' && !review?.checked) return false;
-      if (filterChecked === 'unchecked' && review?.checked) return false;
+      // Reviewed filter
+      const isReviewed = review?.manual_decision !== null && review?.manual_decision !== undefined;
+      if (filterReviewed === 'reviewed' && !isReviewed) return false;
+      if (filterReviewed === 'unreviewed' && isReviewed) return false;
 
       return true;
     });
-  }, [runData?.papers, reviewData?.papers, search, filterDecision, filterChecked]);
+  }, [runData?.papers, reviewData?.papers, search, filterDecision, filterReviewed]);
 
   // Stats
   const stats = useMemo(() => {
-    if (!reviewData?.papers) return { total: 0, checked: 0, modified: 0 };
+    if (!reviewData?.papers) return { total: 0, reviewed: 0, modified: 0 };
     const papers = Object.values(reviewData.papers);
     return {
       total: papers.length,
-      checked: papers.filter((p) => p.checked).length,
-      modified: papers.filter((p) => p.manual_decision).length,
+      reviewed: papers.filter((p) => p.manual_decision !== null && p.manual_decision !== undefined).length,
+      modified: papers.filter((p) => p.manual_decision && p.manual_decision !== 'ai').length,
     };
   }, [reviewData?.papers]);
 
@@ -112,10 +125,17 @@ export function ReviewDetailPage() {
     });
   };
 
-  const handleBulkCheck = () => {
+  const handleBulkApproveAI = () => {
     bulkUpdateMutation.mutate({
       citation_keys: Array.from(selectedKeys),
-      checked: true,
+      manual_decision: 'ai',
+    });
+  };
+
+  const handleBulkReset = () => {
+    bulkUpdateMutation.mutate({
+      citation_keys: Array.from(selectedKeys),
+      reset: true,
     });
   };
 
@@ -135,7 +155,7 @@ export function ReviewDetailPage() {
           <div>
             <h2 className="text-2xl font-semibold text-gray-900">{runId}</h2>
             <p className="text-gray-500 mt-1">
-              {stats.checked} / {stats.total} checked
+              {stats.reviewed} / {stats.total} reviewed
               {stats.modified > 0 && ` · ${stats.modified} modified`}
             </p>
           </div>
@@ -158,7 +178,7 @@ export function ReviewDetailPage() {
         <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
           <div
             className="bg-green-500 h-full transition-all"
-            style={{ width: `${(stats.checked / stats.total) * 100}%` }}
+            style={{ width: `${(stats.reviewed / stats.total) * 100}%` }}
           />
         </div>
       </div>
@@ -203,15 +223,15 @@ export function ReviewDetailPage() {
             <option value="uncertain">Uncertain</option>
           </Select>
 
-          {/* Checked filter */}
+          {/* Reviewed filter */}
           <Select
-            value={filterChecked}
-            onChange={(e) => setFilterChecked(e.target.value as FilterChecked)}
+            value={filterReviewed}
+            onChange={(e) => setFilterReviewed(e.target.value as FilterReviewed)}
             className="w-36"
           >
             <option value="all">All status</option>
-            <option value="checked">Checked</option>
-            <option value="unchecked">Unchecked</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="unreviewed">Unreviewed</option>
           </Select>
 
           <div className="text-sm text-gray-500">
@@ -231,18 +251,18 @@ export function ReviewDetailPage() {
             <Button size="sm" variant="outline" onClick={() => handleBulkDecision('exclude')}>
               → Exclude
             </Button>
-            <Button size="sm" variant="outline" onClick={() => handleBulkDecision(null)}>
-              Reset to AI
-            </Button>
-            <Button size="sm" variant="outline" onClick={handleBulkCheck}>
+            <Button size="sm" variant="outline" onClick={handleBulkApproveAI}>
               <CheckSquare className="h-4 w-4 mr-1" />
-              Mark checked
+              OK (AI)
+            </Button>
+            <Button size="sm" variant="outline" onClick={handleBulkReset}>
+              Reset
             </Button>
           </div>
         )}
       </div>
 
-      {/* Select all */}
+      {/* Select all / Expand all */}
       <div className="flex items-center gap-2 mb-3">
         <Button
           variant="ghost"
@@ -252,6 +272,23 @@ export function ReviewDetailPage() {
           {selectedKeys.size === filteredPapers.length && filteredPapers.length > 0
             ? 'Deselect all'
             : 'Select all'}
+        </Button>
+        <span className="text-gray-300">|</span>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setExpandAll(true)}
+        >
+          <ChevronDown className="h-4 w-4 mr-1" />
+          Expand all
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setExpandAll(false)}
+        >
+          <ChevronUp className="h-4 w-4 mr-1" />
+          Collapse all
         </Button>
       </div>
 
@@ -276,6 +313,8 @@ export function ReviewDetailPage() {
               updatePaperMutation.mutate({ citationKey: paper.citation_key, data })
             }
             showReviewControls
+            forceExpanded={expandAll}
+            onExpandChange={() => setExpandAll(undefined)}
           />
         ))}
       </div>

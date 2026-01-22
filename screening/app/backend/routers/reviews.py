@@ -1,5 +1,10 @@
 """
 Reviews API - レビュー結果の管理
+
+ロジック:
+- manual_decision = None: 未レビュー（AI判定のみ）
+- manual_decision = "include"/"exclude"/"uncertain": 人間がレビュー済み
+- manual_decision = "ai": AI判定を承認（人間が確認済み）
 """
 
 import json
@@ -18,22 +23,16 @@ REVIEWS_DIR = SCREENING_DIR / "reviews"
 RUNS_DIR = SCREENING_DIR / "runs"
 
 
-class PaperReview(BaseModel):
-    manual_decision: Optional[str] = None  # include, exclude, uncertain, or None
-    checked: bool = False
-    note: str = ""
-
-
 class UpdatePaperReviewRequest(BaseModel):
-    manual_decision: Optional[str] = None
-    checked: Optional[bool] = None
+    manual_decision: Optional[str] = None  # include, exclude, uncertain, ai, or None(reset)
     note: Optional[str] = None
+    reset: Optional[bool] = None  # Trueの場合manual_decisionをNoneにリセット
 
 
 class BulkUpdateRequest(BaseModel):
     citation_keys: list[str]
-    manual_decision: Optional[str] = None
-    checked: Optional[bool] = None
+    manual_decision: Optional[str] = None  # include, exclude, uncertain, ai
+    reset: Optional[bool] = None
 
 
 def load_review(run_id: str) -> dict:
@@ -77,35 +76,23 @@ def init_review_from_run(run_id: str) -> dict:
                     "ai_decision": d.get("decision", ""),
                     "ai_confidence": d.get("confidence", 0),
                     "ai_reason": d.get("reason", ""),
-                    "manual_decision": None,
-                    "checked": False,
+                    "manual_decision": None,  # None = 未レビュー
                     "note": "",
                 }
 
-    # ルール名を取得
-    rules_path = run_dir / "rules.md"
-    rules_name = ""
-    if rules_path.exists():
-        with open(rules_path, encoding="utf-8") as f:
-            first_line = f.readline().strip()
-            if first_line.startswith("#"):
-                rules_name = first_line.lstrip("#").strip()
-
-    # input.bibのファイル名を取得（実際はコピーなのでrun内から取得）
+    # input.bibのファイル名を取得
     input_name = "input.bib"
 
     now = datetime.now().isoformat()
     review_data = {
         "meta": {
             "run_id": run_id,
-            "source_rules": rules_name,
             "source_input": input_name,
             "created_at": now,
             "updated_at": now,
             "stats": {
                 "total": len(papers),
-                "checked": 0,
-                "modified": 0,
+                "reviewed": 0,
             }
         },
         "papers": papers,
@@ -119,8 +106,7 @@ def update_stats(review_data: dict):
     papers = review_data["papers"]
     review_data["meta"]["stats"] = {
         "total": len(papers),
-        "checked": sum(1 for p in papers.values() if p.get("checked")),
-        "modified": sum(1 for p in papers.values() if p.get("manual_decision") is not None),
+        "reviewed": sum(1 for p in papers.values() if p.get("manual_decision") is not None),
     }
 
 
@@ -150,10 +136,12 @@ def update_paper_review(run_id: str, citation_key: str, request: UpdatePaperRevi
 
     paper = review["papers"][citation_key]
 
-    if request.manual_decision is not None:
-        paper["manual_decision"] = request.manual_decision if request.manual_decision else None
-    if request.checked is not None:
-        paper["checked"] = request.checked
+    # manual_decisionの更新
+    if request.reset:
+        paper["manual_decision"] = None
+    elif request.manual_decision is not None:
+        paper["manual_decision"] = request.manual_decision
+
     if request.note is not None:
         paper["note"] = request.note
 
@@ -175,10 +163,10 @@ def bulk_update_papers(run_id: str, request: BulkUpdateRequest):
     for key in request.citation_keys:
         if key in review["papers"]:
             paper = review["papers"][key]
-            if request.manual_decision is not None:
-                paper["manual_decision"] = request.manual_decision if request.manual_decision else None
-            if request.checked is not None:
-                paper["checked"] = request.checked
+            if request.reset:
+                paper["manual_decision"] = None
+            elif request.manual_decision is not None:
+                paper["manual_decision"] = request.manual_decision
             updated.append(key)
 
     update_stats(review)
@@ -198,13 +186,16 @@ def export_review(run_id: str, format: str = "csv"):
     # 最終判定を計算
     results = []
     for key, paper in review["papers"].items():
-        final_decision = paper.get("manual_decision") or paper.get("ai_decision")
+        manual = paper.get("manual_decision")
+        ai = paper.get("ai_decision")
+        # manual_decision="ai"の場合はAI判定を使用
+        final_decision = ai if manual == "ai" else (manual or ai)
         results.append({
             "citation_key": key,
-            "ai_decision": paper.get("ai_decision"),
-            "manual_decision": paper.get("manual_decision"),
+            "ai_decision": ai,
+            "manual_decision": manual,
             "final_decision": final_decision,
-            "checked": paper.get("checked"),
+            "reviewed": manual is not None,
             "note": paper.get("note", ""),
         })
 

@@ -19,7 +19,7 @@ async function fetchApi<T>(path: string, options?: RequestInit): Promise<T> {
 // Runs API
 export interface RunSummary {
   id: string;
-  rules_name: string;
+  rules_file: string;
   stats: {
     total: number;
     included: number;
@@ -90,22 +90,19 @@ export interface PaperReview {
   ai_decision: string;
   ai_confidence: number;
   ai_reason: string;
-  manual_decision: string | null;
-  checked: boolean;
+  manual_decision: string | null;  // null = not reviewed, "ai" = approved AI, "include"/"exclude"/"uncertain" = human override
   note: string;
 }
 
 export interface Review {
   meta: {
     run_id: string;
-    source_rules: string;
     source_input: string;
     created_at: string;
     updated_at: string;
     stats: {
       total: number;
-      checked: number;
-      modified: number;
+      reviewed: number;
     };
   };
   papers: Record<string, PaperReview>;
@@ -113,14 +110,14 @@ export interface Review {
 
 export interface UpdatePaperRequest {
   manual_decision?: string | null;
-  checked?: boolean;
   note?: string;
+  reset?: boolean;  // true to reset manual_decision to null
 }
 
 export interface BulkUpdateRequest {
   citation_keys: string[];
   manual_decision?: string | null;
-  checked?: boolean;
+  reset?: boolean;
 }
 
 export const reviewsApi = {
@@ -141,7 +138,11 @@ export const reviewsApi = {
 // Screening API
 export interface RuleFile {
   filename: string;
-  title: string;
+}
+
+export interface RuleDetail {
+  filename: string;
+  content: string;
 }
 
 export interface InputFile {
@@ -157,8 +158,19 @@ export interface ScreeningRequest {
   concurrency?: number;
 }
 
+export interface CreateRuleRequest {
+  filename: string;
+  content: string;
+}
+
 export const screeningApi = {
   listRules: () => fetchApi<RuleFile[]>('/screening/rules'),
+  getRule: (filename: string) => fetchApi<RuleDetail>(`/screening/rules/${filename}`),
+  createRule: (data: CreateRuleRequest) =>
+    fetchApi<RuleDetail>('/screening/rules', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
   listInputs: () => fetchApi<InputFile[]>('/screening/inputs'),
   run: (data: ScreeningRequest) =>
     fetchApi<{ status: string; run_id: string; output: string }>('/screening/run', {

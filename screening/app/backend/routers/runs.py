@@ -70,18 +70,15 @@ def list_runs():
                 "uncertain": sum(1 for d in decisions.values() if d.get("decision") == "uncertain"),
             }
 
-            # ルール名を取得
-            rules_path = d / "rules.md"
-            rules_name = ""
-            if rules_path.exists():
-                with open(rules_path, encoding="utf-8") as f:
-                    first_line = f.readline().strip()
-                    if first_line.startswith("#"):
-                        rules_name = first_line.lstrip("#").strip()
+            # ルールファイル名を取得（.mdファイルを探す、input.bibは除外）
+            rules_file = ""
+            for md_file in d.glob("*.md"):
+                rules_file = md_file.name
+                break
 
             runs.append({
                 "id": d.name,
-                "rules_name": rules_name,
+                "rules_file": rules_file,
                 "stats": stats,
             })
 
@@ -101,12 +98,12 @@ def get_run(run_id: str):
     # decisionsを読み込み
     decisions = load_decisions(run_dir)
 
-    # ルールを読み込み
-    rules_path = run_dir / "rules.md"
+    # ルールを読み込み（.mdファイルを探す）
     rules_content = ""
-    if rules_path.exists():
-        with open(rules_path, encoding="utf-8") as f:
+    for md_file in run_dir.glob("*.md"):
+        with open(md_file, encoding="utf-8") as f:
             rules_content = f.read()
+        break
 
     # 結合
     result_papers = []
@@ -139,10 +136,10 @@ def get_run(run_id: str):
 def get_run_rules(run_id: str):
     """特定のrunのルールを取得"""
     run_dir = RUNS_DIR / run_id
-    rules_path = run_dir / "rules.md"
 
-    if not rules_path.exists():
-        raise HTTPException(status_code=404, detail="Rules not found")
+    # .mdファイルを探す
+    for md_file in run_dir.glob("*.md"):
+        with open(md_file, encoding="utf-8") as f:
+            return {"content": f.read()}
 
-    with open(rules_path, encoding="utf-8") as f:
-        return {"content": f.read()}
+    raise HTTPException(status_code=404, detail="Rules not found")

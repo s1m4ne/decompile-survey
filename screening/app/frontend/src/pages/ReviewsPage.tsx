@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { runsApi, RunSummary } from '../lib/api';
 import { Badge } from '../components/ui/Badge';
 import { ChevronRight } from 'lucide-react';
@@ -37,10 +37,17 @@ export function ReviewsPage() {
 }
 
 function RunCard({ run }: { run: RunSummary }) {
+  const navigate = useNavigate();
   const total = run.stats.total;
   const includedPct = total > 0 ? (run.stats.included / total) * 100 : 0;
   const excludedPct = total > 0 ? (run.stats.excluded / total) * 100 : 0;
   const uncertainPct = total > 0 ? (run.stats.uncertain / total) * 100 : 0;
+
+  const handleRulesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/reviews/${run.id}?showRules=true`);
+  };
 
   return (
     <Link to={`/reviews/${run.id}`} className="block">
@@ -49,8 +56,14 @@ function RunCard({ run }: { run: RunSummary }) {
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               <h3 className="font-medium text-gray-900">{run.id}</h3>
-              {run.rules_name && (
-                <Badge variant="outline" className="font-normal">{run.rules_name}</Badge>
+              {run.rules_file && (
+                <Badge
+                  variant="outline"
+                  className="font-normal cursor-pointer hover:bg-gray-100"
+                  onClick={handleRulesClick}
+                >
+                  {run.rules_file}
+                </Badge>
               )}
             </div>
 

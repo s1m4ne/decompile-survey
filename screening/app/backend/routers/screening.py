@@ -26,6 +26,11 @@ class ScreeningRequest(BaseModel):
     concurrency: int = 10
 
 
+class CreateRuleRequest(BaseModel):
+    filename: str
+    content: str
+
+
 @router.get("/rules")
 def list_rules():
     """利用可能なルールファイル一覧"""
@@ -34,16 +39,46 @@ def list_rules():
 
     rules = []
     for f in sorted(RULES_DIR.glob("*.md")):
-        with open(f, encoding="utf-8") as file:
-            first_line = file.readline().strip()
-            title = first_line.lstrip("#").strip() if first_line.startswith("#") else f.stem
-
         rules.append({
             "filename": f.name,
-            "title": title,
         })
 
     return rules
+
+
+@router.get("/rules/{filename}")
+def get_rule(filename: str):
+    """ルールファイルの内容を取得"""
+    rules_path = RULES_DIR / filename
+    if not rules_path.exists():
+        raise HTTPException(status_code=404, detail=f"Rules file not found: {filename}")
+
+    with open(rules_path, encoding="utf-8") as f:
+        return {"filename": filename, "content": f.read()}
+
+
+@router.post("/rules")
+def create_rule(request: CreateRuleRequest):
+    """新しいルールファイルを作成"""
+    # ファイル名の検証
+    if not request.filename.endswith(".md"):
+        raise HTTPException(status_code=400, detail="Filename must end with .md")
+
+    if "/" in request.filename or "\\" in request.filename:
+        raise HTTPException(status_code=400, detail="Invalid filename")
+
+    rules_path = RULES_DIR / request.filename
+    if rules_path.exists():
+        raise HTTPException(status_code=409, detail=f"Rule file already exists: {request.filename}")
+
+    # ディレクトリが存在しない場合は作成
+    RULES_DIR.mkdir(parents=True, exist_ok=True)
+
+    # ファイルを作成
+    with open(rules_path, "w", encoding="utf-8") as f:
+        f.write(request.content)
+
+    return {"filename": request.filename, "content": request.content}
 
 
 @router.get("/inputs")
