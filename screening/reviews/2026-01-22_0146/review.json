@@ -4,11 +4,10 @@
     "source_rules": "スクリーニング基準: デコンパイル研究 v2（改訂案）",
     "source_input": "input.bib",
     "created_at": "2026-01-22T02:52:44.244017",
-    "updated_at": "2026-01-22T03:32:55.200275",
+    "updated_at": "2026-01-22T16:47:12.095933",
     "stats": {
       "total": 90,
-      "checked": 0,
-      "modified": 1
+      "reviewed": 0
     }
   },
   "papers": {
@@ -16,7 +15,7 @@
       "ai_decision": "include",
       "ai_confidence": 0.75,
       "ai_reason": "条件1: ML/DLを中核に用いている\n条件2: デコンパイルの主目的として、最適化済みバイナリから高級言語相当の復元を狙う\n条件3: 入力は binary、出力は高級言語ソース相当または擬似コードの高級化を目指すデコンパイルの改善であること",
-      "manual_decision": "include",
+      "manual_decision": null,
       "checked": false,
       "note": ""
     },
