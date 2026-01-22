@@ -26,6 +26,9 @@ export interface RunSummary {
     excluded: number;
     uncertain: number;
   };
+  input_file?: string | null;
+  model?: string | null;
+  created_at?: string | null;
 }
 
 export interface Paper {
@@ -41,6 +44,17 @@ export interface Paper {
   ai_reason?: string;
 }
 
+export interface RunMeta {
+  run_id: string;
+  created_at: string;
+  model: string;
+  concurrency: number;
+  input_file: string;
+  input_file_abs: string;
+  rules_file: string;
+  rules_file_abs: string;
+}
+
 export interface RunDetail {
   id: string;
   papers: Paper[];
@@ -51,6 +65,7 @@ export interface RunDetail {
     excluded: number;
     uncertain: number;
   };
+  meta?: RunMeta | null;
 }
 
 export const runsApi = {
@@ -156,11 +171,24 @@ export interface ScreeningRequest {
   rules_file: string;
   model?: string;
   concurrency?: number;
+  provider?: 'openai' | 'local';
 }
 
 export interface CreateRuleRequest {
   filename: string;
   content: string;
+}
+
+export interface PickFileResponse {
+  path: string | null;
+  cancelled: boolean;
+}
+
+export interface LocalServerStatus {
+  connected: boolean;
+  url: string;
+  models: { id: string; owned_by: string }[];
+  error: string | null;
 }
 
 export const screeningApi = {
@@ -172,6 +200,11 @@ export const screeningApi = {
       body: JSON.stringify(data),
     }),
   listInputs: () => fetchApi<InputFile[]>('/screening/inputs'),
+  pickFile: () =>
+    fetchApi<PickFileResponse>('/screening/pick-file', {
+      method: 'POST',
+    }),
+  checkLocalServer: () => fetchApi<LocalServerStatus>('/screening/check-local-server'),
   run: (data: ScreeningRequest) =>
     fetchApi<{ status: string; run_id: string; output: string }>('/screening/run', {
       method: 'POST',

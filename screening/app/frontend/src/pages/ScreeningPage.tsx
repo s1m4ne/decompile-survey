@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { screeningApi } from '../lib/api';
+import { screeningApi, LocalServerStatus } from '../lib/api';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Select } from '../components/ui/Select';
 import { Input } from '../components/ui/Input';
 import { Textarea } from '../components/ui/Textarea';
-import { Play, Loader2, CheckCircle, AlertCircle, Eye, X, Plus } from 'lucide-react';
+import { Play, Loader2, CheckCircle, AlertCircle, Eye, X, Plus, FolderOpen, Wifi, WifiOff } from 'lucide-react';
 
 export function ScreeningPage() {
   const navigate = useNavigate();
@@ -15,12 +15,32 @@ export function ScreeningPage() {
 
   const [inputFile, setInputFile] = useState('');
   const [rulesFile, setRulesFile] = useState('');
+  const [provider, setProvider] = useState<'openai' | 'local'>('openai');
   const [model, setModel] = useState('gpt-5-nano-2025-08-07');
   const [concurrency, setConcurrency] = useState(10);
   const [showRulePreview, setShowRulePreview] = useState(false);
   const [showNewRuleForm, setShowNewRuleForm] = useState(false);
   const [newRuleFilename, setNewRuleFilename] = useState('');
   const [newRuleContent, setNewRuleContent] = useState('');
+
+  // プロバイダー別のモデルオプション
+  const modelOptions = {
+    openai: [
+      { value: 'gpt-5-nano-2025-08-07', label: 'gpt-5-nano' },
+      { value: 'gpt-4o-mini', label: 'gpt-4o-mini' },
+      { value: 'gpt-4o', label: 'gpt-4o' },
+    ],
+    local: [
+      { value: 'openai/gpt-oss-120b', label: 'gpt-oss-120b (GPU0)' },
+    ],
+  };
+
+  // プロバイダー変更時にモデルと並列数をリセット
+  const handleProviderChange = (newProvider: 'openai' | 'local') => {
+    setProvider(newProvider);
+    setModel(modelOptions[newProvider][0].value);
+    setConcurrency(newProvider === 'local' ? 500 : 10);
+  };
 
   const { data: rules } = useQuery({
     queryKey: ['screening-rules'],
@@ -55,6 +75,27 @@ export function ScreeningPage() {
       setShowNewRuleForm(false);
       setNewRuleFilename('');
       setNewRuleContent('');
+    },
+  });
+
+  const pickFileMutation = useMutation({
+    mutationFn: screeningApi.pickFile,
+    onSuccess: (data) => {
+      if (data.path && !data.cancelled) {
+        setInputFile(data.path);
+      }
+    },
+  });
+
+  const [serverStatus, setServerStatus] = useState<LocalServerStatus | null>(null);
+  const checkServerMutation = useMutation({
+    mutationFn: screeningApi.checkLocalServer,
+    onSuccess: (data) => {
+      setServerStatus(data);
+      // 接続成功時、サーバーから取得したモデルでmodelOptionsを更新
+      if (data.connected && data.models.length > 0) {
+        setModel(data.models[0].id);
+      }
     },
   });
 
@@ -108,6 +149,7 @@ export function ScreeningPage() {
       rules_file: rulesFile,
       model,
       concurrency,
+      provider,
     });
   };
 
@@ -130,17 +172,45 @@ export function ScreeningPage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 入力BibTeXファイル
               </label>
-              <Select
-                value={inputFile}
-                onChange={(e) => setInputFile(e.target.value)}
-              >
-                <option value="">ファイルを選択...</option>
-                {inputs?.map((input) => (
-                  <option key={input.path} value={input.path}>
-                    {input.database} / {input.filename}
-                  </option>
-                ))}
-              </Select>
+              <div className="flex items-center gap-2">
+                <Select
+                  value={inputFile}
+                  onChange={(e) => setInputFile(e.target.value)}
+                  className="flex-1"
+                >
+                  <option value="">ファイルを選択...</option>
+                  {inputs?.map((input) => (
+                    <option key={input.path} value={input.path}>
+                      {input.database} / {input.filename}
+                    </option>
+                  ))}
+                  {/* 選択したファイルがリストにない場合（Finderで選択した場合）も表示 */}
+                  {inputFile && inputFile.startsWith('/') && (
+                    <option value={inputFile}>
+                      {inputFile.split('/').pop()}
+                    </option>
+                  )}
+                </Select>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => pickFileMutation.mutate()}
+                  disabled={pickFileMutation.isPending}
+                  title="Finderでファイルを選択"
+                >
+                  {pickFileMutation.isPending ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <FolderOpen className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
+              {inputFile && inputFile.startsWith('/') && (
+                <p className="text-xs text-gray-500 mt-1 truncate" title={inputFile}>
+                  {inputFile}
+                </p>
+              )}
             </div>
 
             {/* Rules file */}
@@ -246,14 +316,113 @@ export function ScreeningPage() {
               )}
             </div>
 
+            {/* Provider */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                プロバイダー
+              </label>
+              <div className="flex gap-4">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="openai"
+                    checked={provider === 'openai'}
+                    onChange={() => handleProviderChange('openai')}
+                    className="w-4 h-4 text-blue-600"
+                  />
+                  <span className="text-sm">OpenAI</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="local"
+                    checked={provider === 'local'}
+                    onChange={() => handleProviderChange('local')}
+                    className="w-4 h-4 text-blue-600"
+                  />
+                  <span className="text-sm">ローカルサーバー</span>
+                </label>
+              </div>
+
+              {/* ローカルサーバー接続確認 */}
+              {provider === 'local' && (
+                <div className="mt-2 p-3 bg-gray-50 rounded-md border border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-600">192.168.50.100:8000</span>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => checkServerMutation.mutate()}
+                      disabled={checkServerMutation.isPending}
+                      className="text-xs"
+                    >
+                      {checkServerMutation.isPending ? (
+                        <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                      ) : (
+                        <Wifi className="h-3 w-3 mr-1" />
+                      )}
+                      接続確認
+                    </Button>
+                  </div>
+
+                  {serverStatus && (
+                    <div className="mt-2">
+                      {serverStatus.connected ? (
+                        <div className="flex items-center gap-2 text-green-600">
+                          <CheckCircle className="h-4 w-4" />
+                          <span className="text-xs">接続OK</span>
+                          {serverStatus.models.length > 0 && (
+                            <span className="text-xs text-gray-500">
+                              ({serverStatus.models.length}モデル利用可能)
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2 text-red-600">
+                          <WifiOff className="h-4 w-4" />
+                          <span className="text-xs">{serverStatus.error}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
             {/* Model */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 モデル
               </label>
               <Select value={model} onChange={(e) => setModel(e.target.value)}>
-                <option value="gpt-5-nano-2025-08-07">gpt-5-nano</option>
+                {provider === 'openai' ? (
+                  modelOptions.openai.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))
+                ) : serverStatus?.connected && serverStatus.models.length > 0 ? (
+                  serverStatus.models.map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.id}
+                    </option>
+                  ))
+                ) : (
+                  modelOptions.local.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))
+                )}
               </Select>
+              {provider === 'local' && !serverStatus?.connected && (
+                <p className="text-xs text-gray-500 mt-1">
+                  接続確認でモデル一覧を取得できます
+                </p>
+              )}
             </div>
 
             {/* Concurrency */}
@@ -263,14 +432,14 @@ export function ScreeningPage() {
               </label>
               <Input
                 type="number"
-                min={1}
-                max={50}
                 value={concurrency}
-                onChange={(e) => setConcurrency(parseInt(e.target.value) || 10)}
+                onChange={(e) => setConcurrency(parseInt(e.target.value) || 1)}
                 className="w-24"
               />
               <p className="text-xs text-gray-500 mt-1">
-                同時に実行するAPI呼び出し数
+                {provider === 'local'
+                  ? 'ローカルサーバーは高い並列数に対応（推奨: 50〜200）'
+                  : 'OpenAI APIのrate limitに注意（推奨: 10〜50）'}
               </p>
             </div>
 

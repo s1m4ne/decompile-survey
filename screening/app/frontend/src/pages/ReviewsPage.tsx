@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { runsApi, RunSummary } from '../lib/api';
 import { Badge } from '../components/ui/Badge';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, FileInput } from 'lucide-react';
 
 export function ReviewsPage() {
   const { data: runs, isLoading } = useQuery({
@@ -66,6 +66,14 @@ function RunCard({ run }: { run: RunSummary }) {
                 </Badge>
               )}
             </div>
+
+            {/* Input file */}
+            {run.input_file && (
+              <div className="flex items-center gap-1.5 text-xs text-gray-500 mb-2">
+                <FileInput className="h-3 w-3" />
+                <span>{run.input_file}</span>
+              </div>
+            )}
 
             {/* Stats with inline progress bar */}
             <div className="flex items-center gap-4 text-sm">

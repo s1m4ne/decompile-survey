@@ -29,6 +29,9 @@ load_dotenv(repo_root / ".env")
 # 並列実行数（API rate limitに注意）
 DEFAULT_CONCURRENCY = 10
 
+# ローカルLLMサーバー設定
+LOCAL_LLM_BASE_URL = "http://192.168.50.100:8000/v1"
+
 
 def parse_bibtex(bib_path: str) -> list[dict]:
     """BibTeXファイルをパースして論文リストを返す"""
@@ -138,15 +141,26 @@ async def async_main():
     parser.add_argument("--output-dir", "-o", help="出力ディレクトリ（省略時は自動生成）")
     parser.add_argument("--concurrency", "-c", type=int, default=DEFAULT_CONCURRENCY,
                         help=f"並列実行数（デフォルト: {DEFAULT_CONCURRENCY}）")
+    parser.add_argument("--provider", "-p", choices=["openai", "local"], default="openai",
+                        help="APIプロバイダー（openai または local）")
     args = parser.parse_args()
 
-    # APIキーの確認
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        print("Error: OPENAI_API_KEY not set in .env file", file=sys.stderr)
-        sys.exit(1)
-
-    client = AsyncOpenAI(api_key=api_key)
+    # クライアントの設定
+    if args.provider == "local":
+        # ローカルLLMサーバー（api_keyはダミーでOK）
+        client = AsyncOpenAI(
+            base_url=LOCAL_LLM_BASE_URL,
+            api_key="dummy"
+        )
+        print(f"Using local LLM server: {LOCAL_LLM_BASE_URL}")
+    else:
+        # OpenAI API
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            print("Error: OPENAI_API_KEY not set in .env file", file=sys.stderr)
+            sys.exit(1)
+        client = AsyncOpenAI(api_key=api_key)
+        print("Using OpenAI API")
 
     # ルールを読み込む
     with open(args.rules, encoding="utf-8") as f:
@@ -171,6 +185,21 @@ async def async_main():
     rules_path = Path(args.rules).resolve()
     shutil.copy(input_path, output_dir / "input.bib")
     shutil.copy(rules_path, output_dir / rules_path.name)
+
+    # メタデータを保存
+    meta = {
+        "run_id": output_dir.name,
+        "created_at": datetime.now().isoformat(),
+        "model": args.model,
+        "provider": args.provider,
+        "concurrency": args.concurrency,
+        "input_file": args.input,
+        "input_file_abs": str(input_path),
+        "rules_file": args.rules,
+        "rules_file_abs": str(rules_path),
+    }
+    with open(output_dir / "meta.json", "w", encoding="utf-8") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
 
     print(f"Output directory: {output_dir}")
     print("=" * 50)
@@ -228,6 +257,7 @@ async def async_main():
             len(included),
             len(excluded),
             len(uncertain),
+            args.input,
             ""
         ])
 

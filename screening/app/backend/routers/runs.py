@@ -5,6 +5,7 @@ Runs API - runs/ ディレクトリの管理
 import json
 from pathlib import Path
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import PlainTextResponse
 import bibtexparser
 
 router = APIRouter()
@@ -52,6 +53,16 @@ def load_decisions(run_dir: Path) -> dict[str, dict]:
     return decisions
 
 
+def load_meta(run_dir: Path) -> dict | None:
+    """meta.jsonを読み込む"""
+    meta_path = run_dir / "meta.json"
+    if not meta_path.exists():
+        return None
+
+    with open(meta_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
 @router.get("")
 def list_runs():
     """runs/ 内のディレクトリ一覧を取得"""
@@ -76,10 +87,16 @@ def list_runs():
                 rules_file = md_file.name
                 break
 
+            # メタデータを読み込み
+            meta = load_meta(d)
+
             runs.append({
                 "id": d.name,
                 "rules_file": rules_file,
                 "stats": stats,
+                "input_file": meta.get("input_file") if meta else None,
+                "model": meta.get("model") if meta else None,
+                "created_at": meta.get("created_at") if meta else None,
             })
 
     return runs
@@ -105,6 +122,9 @@ def get_run(run_id: str):
             rules_content = f.read()
         break
 
+    # メタデータを読み込み
+    meta = load_meta(run_dir)
+
     # 結合
     result_papers = []
     for key, paper in papers.items():
@@ -129,6 +149,7 @@ def get_run(run_id: str):
         "papers": result_papers,
         "rules": rules_content,
         "stats": stats,
+        "meta": meta,
     }
 
 
@@ -143,3 +164,47 @@ def get_run_rules(run_id: str):
             return {"content": f.read()}
 
     raise HTTPException(status_code=404, detail="Rules not found")
+
+
+@router.get("/{run_id}/export/{decision}")
+def export_bibtex(run_id: str, decision: str):
+    """AI判定結果のBibTeXファイルをエクスポート
+
+    decision: "included", "excluded", "uncertain", "all"
+    """
+    run_dir = RUNS_DIR / run_id
+    if not run_dir.exists():
+        raise HTTPException(status_code=404, detail="Run not found")
+
+    # ファイル名のマッピング
+    file_map = {
+        "included": "included.bib",
+        "excluded": "excluded.bib",
+        "uncertain": "uncertain.bib",
+        "all": "input.bib",
+    }
+
+    if decision not in file_map:
+        raise HTTPException(status_code=400, detail=f"Invalid decision: {decision}")
+
+    bib_path = run_dir / file_map[decision]
+    if not bib_path.exists():
+        # ファイルが存在しない場合（例: uncertainが0件の場合）
+        return PlainTextResponse(
+            content="",
+            media_type="application/x-bibtex",
+            headers={
+                "Content-Disposition": f'attachment; filename="{run_id}_{decision}.bib"'
+            }
+        )
+
+    with open(bib_path, encoding="utf-8") as f:
+        content = f.read()
+
+    return PlainTextResponse(
+        content=content,
+        media_type="application/x-bibtex",
+        headers={
+            "Content-Disposition": f'attachment; filename="{run_id}_{decision}.bib"'
+        }
+    )
