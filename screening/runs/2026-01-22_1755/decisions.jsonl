@@ -1,0 +1,2 @@
+{"decision": "exclude", "confidence": 0.95, "reason": "ML/DL が主要手法として使われておらず、IN1 を満たさないため除外（新規MLベースの復元手法が提示されていない）", "citation_key": "Enders2022"}
+{"decision": "exclude", "confidence": 0.92, "reason": "摘要に機械学習／ディープラーニング手法の使用が示されておらず、IN1（ML/DLが中核）を満たさないため除外", "citation_key": "Udeshi2024"}

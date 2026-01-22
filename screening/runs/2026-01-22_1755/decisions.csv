@@ -1,0 +1,3 @@
+citation_key,decision,confidence,reason
+Enders2022,exclude,0.95,ML/DL が主要手法として使われておらず、IN1 を満たさないため除外（新規MLベースの復元手法が提示されていない）
+Udeshi2024,exclude,0.92,摘要に機械学習／ディープラーニング手法の使用が示されておらず、IN1（ML/DLが中核）を満たさないため除外

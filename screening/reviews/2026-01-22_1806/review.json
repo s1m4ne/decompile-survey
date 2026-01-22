@@ -1,0 +1,4599 @@
+{
+  "meta": {
+    "run_id": "2026-01-22_1806",
+    "source_input": "input.bib",
+    "created_at": "2026-01-22T18:07:56.918486",
+    "updated_at": "2026-01-22T18:17:51.045019",
+    "stats": {
+      "total": 655,
+      "reviewed": 0
+    }
+  },
+  "papers": {
+    "wiedemeier_walking_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・深層学習を用いた手法を提示せず、デコンパイル結果の人間による修正・調査を中心とした実証研究であり、ML/DLが核心でないため IN1 を満たさず、EX-C1（手法の新規提案がなく評価中心）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "giesen_poster_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "Abstractに機械学習／ディープラーニングを用いる旨が記載されておらず、IN1を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dramko_fast_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "主目的がニューラルデコンパイラの評価手法（等価性チェック）の提案であり、デコンパイルによるソース復元や擬似コードの高級化ではないため、EX-A3（評価・検証）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "soni_benchmarking_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL が主たる手法として使われておらず、デコンパイル手法の比較ベンチマークが主目的（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lerner_ideco_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.85,
+      "ai_reason": "抽象ではML/DLが主要手法と明示されておらず、ルールベースのリライトが中心であるため、IN1（ML/DLを中核に使用）を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sirlanci_empirical_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は C デコンパイラの性能評価とエラーベンチマークであり、機械学習・深層学習を用いた手法の提案はなく、ML/DL が中心要素でないため（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "udeshi_remend_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "Transformerベースのニューラルデコンパイルを核心に用い、バイナリを入力として数式という高級表現（ソース相当）を生成することが主目的であり、入出力が条件IN3を満たすため、除外条件に該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wong_decllm_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中核に用いて、デコンパイラ出力をコンパイル可能な高級言語コードへ自動修正することが主目的であり、入力はデコンパイル結果、出力はCソースというスコープを満たすため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lagouvardos_incredible_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文は静的解析ベースのデコンパイラ手法であり、機械学習／深層学習を中核に用いていないため、IN1を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "su_disco_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中核にEVMバイトコードからSolidityソースコードへの変換を目的としており、入力はバイナリ、出力は高級言語コードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_suigpt_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中核に用いたデコンパイルで、バイトコードを高級言語（Move）ソースコードへ変換することが主目的。入力はバイナリ、出力は再コンパイル可能なソースであり、除外条件に該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cotroneo_can_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文の主目的はバイナリの脆弱性予測であり、デコンパイルはその予測のための前処理に過ぎない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "she_wadec_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中核に用いてWasmバイナリを高級言語のソースコードへ復元することが主目的であり、入力はバイナリ、出力はソースコード（高級化）で、除外条件に該当しないため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cao_evaluating_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は既存デコンパイラの評価・比較が主目的であり、機械学習や深層学習を用いた新規デコンパイル手法の提案がないため、除外条件EX-C1（評価・整理中心）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "eom_r2i_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はデコンパイルコードの可読性評価指標を提案するもので、ML/DL を用いた高級言語復元や擬似コード高級化が目的ではなく、デコンパイルは手段に過ぎない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lu_understanding_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "主目的がJavaデコンパイラのバグ分析であり、ML/DLを用いた復元手法の提案や評価がなく、デコンパイル自体は手段に過ぎないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_slade_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.97,
+      "ai_reason": "Transformerベースの小規模言語モデルを用いてバイナリ/アセンブリから高級言語のソースコードを生成することが主目的であり、入力はバイナリ関数、出力は可読性の高いC等のコードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sisco_loop_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "ML/DL が主要手法として示されておらず、対象がハードウェアのネットリストでありソフトウェアバイナリのデコンパイル範囲外（EX‑B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dramko_dire_2023": {
+      "ai_decision": "include",
+      "ai_confidence": 0.92,
+      "ai_reason": "ML/DL（DIRE）を中心に用い、デコンパイル済みコードの変数名付与という高級コードの可読性向上（擬似コードの高級化）を主目的としており、入力はデコンパイラ出力、出力は高級言語レベルのコード（変数名が付与された）なので、IN1・IN2・IN3 を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tan_splendid_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "Abstractに機械学習や深層学習の利用が示されておらず、IN1（ML/DLを中核に使用）が満たされないため除外（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cao_boosting_2022": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "論文はGNNを用いたニューラルデコンパイラで、機械学習が中心手法であり、バイナリを入力としてC/C++等の高級言語コードを生成することを主目的としているため、IN1・IN2・IN3 をすべて満たす。除外条件にも該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gregorio_e-apk_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.94,
+      "ai_reason": "論文の主目的はエネルギーパターンの検出であり、デコンパイルは解析の前処理として用いられているだけ。高級言語ソースや擬似コードの復元・高級化が目的ではないため、除外基準EX-Aに該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "grech_elipmoc_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文抜粋に機械学習／ディープラーニングに関する記述がなく、ML/DLが主要手法として用いられていないため（IN1未達成）。デコンパイル自体は行っているが、スクリーニング基準のIN1を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gussoni_comb_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文からは機械学習・深層学習を使用している記述がなく、デコンパイル手法はルールベースのアルゴリズムです。IN1を満たさないため除外と判断しました。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_how_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "抽象に機械学習・深層学習の利用が示されず、MLベースの復元手法の提案・評価ではなく、既存Cデコンパイラの正確性調査のみであるため除外（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jaffe_meaningful_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "統計的機械翻訳のみで深層学習やニューラルネットを使用していないため、IN1（ML/DLが中核）を満たさない",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nandi_functional_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "要旨に機械学習・深層学習の手法が記述されておらず、IN1（ML/DL が中核）を満たさないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "botacin_revenge_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習・深層学習を用いたことが記載されておらず、IN1（ML/DLを中核に使用）を満たさないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lacomis_dire_2020": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "論文はニューラルネットワークを用いてデコンパイル後のコードから変数名を予測し、デコンパイル擬似コードの可読性向上（変数名復元）を目的としている。入力はデコンパイル結果、出力は高級コードに近づけるための識別子名であり、IN1‑IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jang_kerberoid_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文は機械学習/深層学習を使用せず、単に複数デコンパイラの結果を統合する手法を提案しているため、IN1（ML/DLが中核）を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "grech_gigahorse_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿は機械学習／ディープラーニングを核心技術として用いていない（AbstractにML/DLに関する記述なし）。デコンパイルは行うが、IN1（ML/DLが中核）を満たさないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhong_hardening_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿の主目的はDNNバイナリを難読化することであり、デコンパイルや高級コード復元が目的ではないため、除外基準EX‑A3に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_recover_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本論文は関数シグネチャ（パラメータ型・戻り値等）の抽出を主目的としており、コードや擬似コードの復元・高級化ではなく、バイナリからの識別タスク（EX-A1）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pilgun_demo_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "ML/DL が使われておらず、デコンパイルは分析支援の手段に過ぎず、ソース復元や擬似コードの高級化が主目的ではないため（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_orcas_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイナリコードの類似性評価（コード検索・比較）であり、復元や高級化は副次的でないため EX-A2 に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "altamura_assessing_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "EX-C1: 本稿はTigressオブフュスケータの効果評価であり、機械学習・ディープラーニングを用いたデコンパイル手法の提案や検証が主目的ではなく、復元・高級化タスクも扱っていないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sakamoto_toward_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "目的はバイナリから構造メンバの型・役割を推測することで、ソースコードや擬似コードの復元・高級化が主目的ではなく、出力もコードやASTではなく属性情報（構造的セマンティクス）であるため、EX-B3に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "magin_towards_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はソフトウェア理解評価の手法提案であり、ML/DLを用いたデコンパイルや高級コード復元が目的ではないため、IN1・IN2を満たさず除外対象です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dallaglio_highliner_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.94,
+      "ai_reason": "本研究の主目的はインライン関数の検出・境界推定であり、デコンパイルや高級言語コードの復元は副次的な目的にすぎない。出力は指示のインライン/非インラインラベルで、ソースコードや擬似コードへの変換を行わないため、除外基準 EX-A1 に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_clearagent_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ脆弱性検出であり、デコンパイルによる高級コード復元が主目的ではない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_function_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文の目的はLLMで関数名を自動付与することであり、生成物は関数名（ラベル）であり、ソースコードや擬似コードの復元・高級化ではないため、IN3を満たさずEX-B3に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "blazquez_practical_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A1: 本稿はAndroidアプリの保護手法の分類・調査が主目的で、デコンパイルやソース復元は目的に含まれず、ML/DL の使用も示されていないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nguyen_automating_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はサイバーフィジカルシステムの適合性評価自動化を目的としており、機械学習／ディープラーニングの使用やバイナリから高級言語への復元・デコンパイルが主目的ではないため、IN1・IN2を満たさず除外基準（EX-A）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alecci_toward_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がGDPRコンプライアンス検証であり、デコンパイルや高級コード生成が主目的ではない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_keenhash_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がバイナリコード類似性検索・クローン検索であり、デコンパイルや高級言語ソースの復元が主目的ではないため（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sun_fire_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "主目的がバイトコード中の関数識別（分類）であり、ソースコードや擬似コードへの復元・高級化が目標でないため (EX-A1)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhu_misum_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文の主目的はバイナリコードの要約（自然言語生成）であり、ソースコード復元や擬似コードの高級化を目的としていない（EX-A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jin_ccci_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はコード補完（コード生成）を主目的としており、デコンパイルやバイナリからの高級言語復元を目的としていないため、除外基準 EX‑A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "santos_detecting_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はAndroidのリソースリーク検出・自動修正であり、ML/DLの使用も記述されず、デコンパイル・ソース復元が主目的ではない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ferreira_transpilejs_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・深層学習を用いておらず、目的もJavaScriptをWebAssemblyへ変換するコード保護・トランスパイルであり、バイナリから高級言語を復元するデコンパイル研究ではないため（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "he_benchmarking_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア解析（関数識別・要約）であり、デコンパイル・高級コード復元が主目的ではなく、評価ベンチマークなのでEX-A1/EX-A4に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhou_regraph_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ類似性検出（コード検索・類似度評価）であり、デコンパイルや高級コード復元が主目的ではないため、EX-A2（検索・類似性が主目的）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_ponzihunter_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がPonziスマートコントラクトの検出であり、デコンパイルや高級コード復元が主目的ではなく、MLは検出モデルの構築に用いられている（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mudraje_reverse_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本稿はML/DLを用いたデコンパイル・高級化が主目的ではなく、Wi‑Fiドライバの逆向き解析とエネルギー消費の静的最悪ケース解析が目的であり、MLベースの復元手法が提示されていないため除外（EX‑A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_demystifying_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DL が使用されておらず、目的は静的解析・IR 変換であり、ソースコード復元や高級化が主目的ではないため（EX‑A と EX‑B1 に該当）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "verbeek_formally_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はバイナリレベルのポインタ解析を形式的に検証する手法を提案しており、機械学習・ディープラーニングは使用していない（IN1未達）うえ、主目的がデコンパイル・高級化ではなく解析結果の信頼性確保であるため、EX-A1（解析・検証目的）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "berge_anti-games_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はゲームデザインコミュニティの研究であり、デコンパイルや機械学習を利用したバイナリからのソース復元が目的ではないため除外（EX-A）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "brossard_automatic_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "ML/DLが主要要素でなく、目的は関数シグネチャの自動注釈取得であり、デコンパイルやソースコード復元とは無関係（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yan_uefuzzer_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文は静的解析と構造化ファジング手法を提案しており、機械学習/ディープラーニングは使用されていない上、デコンパイルや高級コード復元が主目的ではなく、ファジング支援が目的であるため除外（EX-A）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fang_wasserstein_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "論文はAndroid証明書検証の脆弱性検出が主目的であり、デコンパイルやソースコード復元を目的としないため、除外条件EX-A3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "m_s_detection_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "研究の主目的はAndroidマルウェアの検出であり、デコンパイルや高級言語ソースの復元は目的外の副次的要素であるため、除外基準EX-A3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_cf-gkat_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DLが使用されておらず、主目的は制御フロー変換の検証（verification）であり、デコンパイルは手段に過ぎないためEX-A3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "naus_poster_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はアセンブリから低レベルIR（P-Code）へのリフティングと形式的検証であり、ソースコードや高級擬似コードへの復元・高級化が主目的ではない（EX‑B1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "verbeek_verifiably_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DL が中心技術でなく、出力はシンボライズされたアセンブリであり高級言語や擬似コードへ変換しないため、IN1, IN3 を満たさず EX-B1 (IR‑only) に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xie_resym_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.93,
+      "ai_reason": "LLMを中心に使用し（IN1）、変数名・型の復元を主目的としたデコンパイル高級化手法（IN2）で、入力はバイナリ、出力はソースに近いシンボル情報（IN3）を提供しているため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "udeshi_remaqe_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "Abstractに機械学習／深層学習を中心手法として使用している記述がなく、IN1を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yong_wong_understanding_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文はLLMを利用してマルウェアの回避技術を迂回させる支援手法の評価であり、バイナリから高級言語コードや擬似コードへの復元・高級化が主目的ではないため、EX‑A 系列の除外基準に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_characterizing_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がIoTデバイス設定時の情報漏洩評価であり、デコンパイルや高級コード復元とは無関係。ML/DLの使用も記載されていないため、IN条件を満たさずEX-Aに該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "song_typefsl_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイナリから型を予測する分類タスクであり、出力は型ラベル（コードや擬似コードの復元ではない）なので、EX-B3（コード生成・高級化がない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_models_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は悪意あるコードの毒殺攻撃検出を目的としており、デコンパイルや高級言語復元は主目的ではない（EX‑A3）。入力はモデルやスクリプトで、出力は検出結果・分類であり、IN3 も満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_varlifter_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文では機械学習／深層学習を用いる旨が示されておらず、IN1（ML/DL が中核）を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "botacin_what_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "調査・サーベイ論文であり、デコンパイルや高級コード復元を目的とした機械学習手法は提示されていない（EX-A1/EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fu_android_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出という分類タスクであり、デコンパイルや高級コード復元が主目的ではない（EX-A1）。MLは使用しているが、デコンパイルは手段に過ぎない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nguyen_scalable_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究はML/DLを使用せず、デコンパイルや高級コード復元が目的ではなく、ジャンプテーブル解析手法の提案であるため、IN1・IN2・IN3 を満たさない",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiong_atlas_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はAndroid閉源ネイティブライブラリの自動ファズィングを目的としており、ML/DL を用いた手法やバイナリから高級言語コードを復元することが主目的ではないため、除外基準 EX‑A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fissore_higher-order_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は高階統一と証明検索に関するもので、機械学習/深層学習を用いていない上、バイナリやアセンブリから高級言語を復元するデコンパイルが目的ではなく、対象も形式的論理体系であるためスコープ外（EX‑B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "krook_welcome_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はML/DLを用いた手法でもデコンパイル／高級コード復元を目的とした研究でもなく、単にHaskellプログラムの分割手法を示すだけであるため、IN1・IN2を満たさず除外対象（EX-A）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liao_smart_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的がスマートコントラクトの脆弱性検出であり、デコンパイルやソース復元が主目的ではない（EX-A3）。ML/DLの使用も記載されていないため、基準を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bove_large-scale_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DLが中核で使用されておらず、デコンパイル・高級コード復元が研究目的ではなく、TEE機能の利用実態調査であるため（EX‑A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dong_pilot_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "調査・サーベイ論文であり、デコンパイルや高級コード復元を目的とした新規ML手法の提案がないため（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "brain_misconceptions_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "機械学習・ディープラーニングを用いてバイナリやアセンブルから高級言語コードを復元することが目的ではなく、ループ解析の課題紹介であり、デコンパイル研究に該当しないため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "braconaro_dataset_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究はAndroidアプリの脆弱性修正を評価するデータセット提供とLLMによる自動プログラム修復の性能比較が主目的であり、バイナリ/アセンブリから高級言語ソースを復元するデコンパイルは目的に含まれない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pizzolotto_mitigating_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・ディープラーニングを用いた手法を提示せず、デコンパイルや高級言語コードの復元が主目的ではなく、Javaバイトコードのデバッグ攻撃防止というセキュリティ保護が目的であるため、スクリーニング基準のIN1・IN2を満たさず除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_uncover_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はスマートコントラクトの再入可能性脆弱性を検出することが主目的であり、デコンパイルや高級コード復元は目的に含まれない（EX-A3）。さらに、ML/DLを中核技術として使用している記述もないため、採択条件を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhong_prettysmart_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使用されておらず、目的は脆弱性検出（EX‑A3）であり、デコンパイルや高級コード復元とは無関係です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_minimon_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はAndroidアプリの機能削除（デブローティング）を目的とし、バイナリから高級言語ソースや擬似コードへの復元・高級化を行うものではない（出力はデブロート済みAPK）。したがってEX‑B2に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiao_research_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はコード難読化手法の改良を提案しており、デコンパイルや高級コード復元を目的としていない上、機械学習・ディープラーニングも使用していないため、IN1・IN2 の要件を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "spiess_stracebert_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がメソッドのソースコード検索・取得であり、デコンパイルや高級化が主目的ではないため（EX-A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_deepinfer_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本研究の主目的はバイトコードから関数シグネチャ・型情報を推定することであり、高級言語のソースコードや擬似コードの復元・高級化を目的としていないため、IN2 を満たさず EX-A3/EX-B3 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_systematic_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A3: 論文はミニアプリの脆弱性検出・リスク評価が主目的であり、デコンパイルや高級言語復元に関するML/DL手法は含まれないため、除外基準に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tao_jslibd_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本研究はミニアプリのサードパーティライブラリ検出が主目的で、デコンパイルや高級コード復元とは無関係。Abstract に機械学習/深層学習が主要手法として記載されておらず、IN1・IN2 を満たさないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "song_multi-modality_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出（分類）であり、バイナリから高級言語コードを復元することが主目的ではないため（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yan_repackaged_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がリパッケージアプリの分類であり、デコンパイルは前処理に過ぎないためEX-A1（分類タスク）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiong_hext5_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的がコード要約や類似性検出など decompilation のみを手段とした情報推論タスクであり、デコンパイル自体が主目的ではなく EX-A4/EX-A2 に該当するため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xia_binary_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ関数名予測（要約/命名）であり、ソースコードや擬似コードの復元・高級化ではないため、EX-A4（要約・説明）に該当します。出力も関数名文字列で、IN2・IN3を満たしません。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jin_compilation_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DL が中核でなく、目的もバイナリから高級言語へ復元するデコンパイルではなく、LLVM IR をハードウェア向けに変換するコンパイル支援ツールであるため、IN1・IN2 を満たさず EX-B1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pohjola_pancake_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は新言語と検証コンパイラの設計・評価が主目的であり、ML/DL を用いたデコンパイルや高級コード復元は対象外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_method_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が暗号化WebShellトラフィックの検出・識別であり、デコンパイルやソースコード復元ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shirani_towards_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "研究の主目的はバイナリのコード類似性による脆弱性検出であり、デコンパイルは特徴量生成の前処理に過ぎず、出力は類似度スコアで高級言語コードの復元や擬似コードの高級化ではないため、EX-A3 に該当して除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kong_defitainter_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が価格操作脆弱性検出であり、デコンパイルや高級コード復元が主旨ではなく、ML/DLも使用していないためEX-A3に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_exploring_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はWebAssembly最適化の欠落検出を目的としており、ML/DLの使用やバイナリから高級言語コードを復元することは主目的ではないため除外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cong_towards_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本文は効果ハンドラのためのコンパイル/デコンパイル間の理論的リフレクションを扱っており、機械学習／深層学習を使用していないため、IN1 を満たさず除外対象です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mittal_solving_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は機械学習・深層学習を使用せず、主目的はAADLモデルのビュー更新問題の解決と変換ツールの提供であり、デコンパイル（バイナリから高級言語コード復元）とは無関係。したがってIN1を満たさず、EX-A（デコンパイルが副次的・目的外）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pauck_scaling_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がアプリとライブラリコードの識別・除去による解析スケーラビリティ向上で、デコンパイルや高級コード復元ではなく、ML/DLも主要手法として使用していないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lv_fastbot2_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はAndroidアプリのGUIテスト手法を強化学習で提案しており、デコンパイルやバイナリから高級言語コードを復元することが目的ではないため、IN2を満たさずEX-A（目的がデコンパイル以外）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_pg-vulnet_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的が供給チェーン脆弱性検出であり、デコンパイルや高級コード復元が主目的ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jeng_novel_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア検出・分類であり、デコンパイルや高級コード復元が主目的でない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liao_smartdagger_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使用されておらず、目的が脆弱性検出であり、デコンパイルやソースコード復元が主目的ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "oconnor_toward_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が自動脆弱性検出・エクスプロイト生成であり、デコンパイルやソース復元が主目的ではなく、ML/DLも使用していない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xing_h-container_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DL が使用されておらず、デコンパイル・高級コード復元が研究目的ではないため、スクリーニング基準の IN1・IN2 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kim_reverse_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本文はシンボリック実行とデータフロー解析を用いて逆コンパイル・パッチ適用を行うが、機械学習／深層学習が主要手法として示されておらず、IN1 を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sun_two-path_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が Android アプリのマルウェア検出（分類）であり、デコンパイルや高級コード復元が主目的ではないため EX-A1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_exebench_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルやソース復元が主目的でなく、実行可能なC関数のデータセット提供が中心（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "verbeek_formally_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文・要旨に機械学習・ディープラーニングの使用が示されず、目的はバイナリの形式的検証用リフトであり、ソースコードや高級擬似コードへの復元・高級化ではない（EX-B1・IN1未達成）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lehmann_finding_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "出力が関数のパラメータ・戻り値型という型情報だけで、ソースコードや擬似コード・AST等の再構成を行わないため、EX-B3（コード生成・高級化がない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mantovani_convergence_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習/ディープラーニングの使用が記載されておらず、主目的はデコンパイルを用いた脆弱性検出の評価であり、デコンパイル自体の改善や高級コード復元が目的ではないため、EX-A3（脆弱性検出が主目的）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mahmud_acid_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究は Android アプリの API 互換性問題検出が主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル目的ではない（EX-A1: 目的が識別／検出）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_pitracker_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はML/DLを使用せず、目的はAndroidアプリのPendingIntent脆弱性検出であり、デコンパイルや高級コード復元が主目的ではないため（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "otsuki_overcoming_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "EX-B2: 論文は動的名前解決の難読化を解除し隠された名前情報を公開することが目的で、ソースコードや擬似コードの復元・高級化を行うデコンパイル研究ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alrabaee_survey_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "サーベイ論文であり、ML/DL を用いた新規デコンパイル手法の提案がなく、目的はバイナリ指紋抽出・評価であるため（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wood_novel_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はJVMバイトコードの制御フローを難読化する手法を提案しており、機械学習・ディープラーニングは使用せず、デコンパイルや高級コード復元が目的ではないため、除外基準 EX‑A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ullah_iot-based_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がクローン検出（類似アプリ識別）であり、デコンパイルは特徴抽出の前処理に過ぎないため、EX‑A2（検索・類似度/クローンが主目的）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_android_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文はグラフニューラルネットワークを用いたマルウェア検出とコード位置特定が主目的であり、デコンパイルや高級言語ソース復元を目的としていない（EX-A1: classification/identification が主目的）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bibi_secure_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "マルウェア検出（分類）が主目的で、デコンパイルやソースコード復元を目的としていないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "biernacki_reflectingnbspstackednbspcontinuations_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本文はML/DLを使用せず、バイナリやアセンブリのデコンパイルや高級コード生成を目的としていないため、IN1・IN2を満たさず除外対象です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pei_stateformer_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "出力が変数や関数の型情報のみで、ソースコード・擬似コード・ASTなどの「ソースに近い」再構成を行わないため EX-B3 に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "casolare_steaelergon_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がマルウェアペイロードの注入・コラボレーティブ攻撃の実証であり、デコンパイルや高級コード復元に関わらず、ML/DL の使用やコード再構成が記載されていないため、除外基準 EX-A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "singh_multi-view_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "主目的がマルウェア検出という分類タスクであり、デコンパイルや高級コード復元は目的に含まれないため EX-A1（分類・識別が主目的）に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "abuhamad_large-scale_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がコード著者識別（Authorship Identification）であり、デコンパイルや高級コード復元が主目的ではないため EX-A1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kalhauge_logical_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使われておらず、目的はバイトコードのサイズ削減であり、出力は高級言語ソースや擬似コードではなく低レベルのバイトコード（IR）のみなので、除外条件 EX-B1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ringer_proof_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "対象はCoq証明項からタクティックスクリプトへの変換であり、バイナリやアセンブリから高級言語コードを復元する研究ではなく、ML/DLも中心技術として用いられていないため、スコープ外（EX-B4）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_igscript_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "抽象部に機械学習/ディープラーニングの利用が記載されておらず、ML/DL を中核としたバイナリ/アセンブリからの高級コード復元が目的でもないため、IN1 を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_falx_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は可視化ツールのデータ変換支援であり、機械学習／ディープラーニングやバイナリ/アセンブリから高級言語への復元を目的としていないため、IN1・IN2・IN3 を満たさず除外（EX-A 系統）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kang_obfus_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はコード難読化であり、デコンパイルは副次的手段（EX-A）。ML/DL が中心かつデコンパイルによるソース復元が主目的ではないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hilbig_empirical_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文はWebAssembly バイナリの実態調査とデータセット提供が主目的であり、ML/DL を用いたデコンパイル手法の提案や高級コード復元を目的としていない。したがって除外基準 EX‑C1 に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "noauthor_pepm_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はワークショップの論文集紹介であり、個別研究の概要やML/DLを用いたデコンパイル手法の記述がなく、対象外（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_automated_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はクリップボードへのアクセス検出と情報漏洩の特定が主目的であり、機械学習／ディープラーニングは使用されず、バイナリから高級言語ソースや擬似コードを復元するデコンパイル研究ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "albert_taming_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はSMTによるモジュラリティ検証が主目的で、ML/DLは使用しておらず、出力は検証用IRでありデコンパイルによる高級コード復元ではない（EX-A3/EX-B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "erinfolami_devil_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "本論文は機械学習・ディープラーニングを用いておらず、出力はバイナリからのクラス継承階層情報でありソースコード・擬似コードの復元や高級化を目的としていないため、IN1・IN2・IN3 を満たさず EX-B2（ソース相当の復元ではない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "grech_madmax_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はガス関連脆弱性の検出であり、デコンパイルは解析手段に過ぎない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yan_eshield_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本研究はスマートコントラクトのバイトコードを難読化することが主目的であり、ML/DL の利用も記載されていない。出力はソースコードや擬似コードではなく、改変されたバイトコードであり、IN2・IN3 を満たさないため、除外（EX-B2）と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "seraj_novel_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が偽装アンチマルウェアの分類・検出であり、デコンパイルは副次的説明にすぎないため、EX-A1（分類タスク）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nandi_synthesizing_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DLが主軸でなく、入力はバイナリ/アセンブリでもなくCADメッシュで、対象がソフトウェアバイナリの高級言語復元でないため、スコープ外（EX-B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "vasileiadis_revealing_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア逆コンパイル検知であり、デコンパイルや高級コード復元とは無関係（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rohleder_hands-ghidra_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はGhidraのチュートリアルであり、ML/DLを中核に用いた手法の提示や新規デコンパイル手法の提案がなく、調査・紹介目的のため（EX‑C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xylogiannopoulos_text_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアの分類であり、デコンパイルは分類のための入力データとして利用されているだけで、ソースコード復元や擬似コード高級化が主目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kalhauge_binary_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使用されておらず、主目的がデバッグ用の入力削減であり、ソースコード復元や擬似コード高級化とは無関係なため、EX-Aに該当して除外されます。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kumar_android_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "主目的はAPKのデコンパイルで得た特徴を用いたマルウェア分類であり、デコンパイルは前処理に過ぎない（EX‑A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "erinfolami_declassifier_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はML/DLを使用せず、主目的がC++バイナリからクラス継承関係を推測すること（識別タスク）であり、ソースコードや擬似コードの復元・高級化を目指すデコンパイル研究ではないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "raychev_predicting_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はバイナリやアセンブリから高級コードを復元することが主目的ではなく、プログラム属性（識別子名・型注釈）予測を行うML手法を提案している。入力はソースコードであり、出力も属性予測であるため、IN3を満たさず、デコンパイルは副次的な応用例にすぎない（EX‑A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "roessle_formally_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的はバイナリの形式的検証であり、デコンパイルして得たコードをソース相当に復元することが主目的ではない（EX‑A3）。また機械学習は補助的で中心的手法ではなく、出力は等価性定理や形式的意味論であり、ソースコードや擬似コードの生成は行わない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "grech_madmax_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的はガス関連の脆弱性検出であり、デコンパイルは副次的手段。ML/DLが中心でない点と、復元・高級化が主目的でない点からEX-A3／IN1に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feichtner_automated_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的が暗号学的誤用検出（脆弱性検出）であり、デコンパイルは解析手段に過ぎない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "classen_anatomy_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは脆弱性分析の手段であり、復元や高級化が主目的ではないためEX-A3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "senthivel_denial_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習／深層学習を使用せず、デコンパイルは攻撃分析の補助手段に過ぎず、主目的が攻撃手法の提示であるため、IN1・IN2を満たさず除外対象となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dutu_improving_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DLが主軸でなく、デコンパイル手法の評価・フレームワーク提供が主目的（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mauthe_large-scale_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "機械学習・深層学習を用いた手法の提案がなく、デコンパイル手法の実証的評価のみであり、復元アルゴリズムやMLベースの高級化が目的でないため（EX‑C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pavel_technique_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はデジタルウォーターマークの埋め込みと耐性評価が主目的で、デコンパイルによるソース復元や擬似コード高級化を目指すものではなく、機械学習も使用していないため、EX-A1（識別・検出が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "domas_decompilation_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿は逆アセンブルやデコンパイルの手順を解説する章であり、機械学習やディープラーニングを用いた手法の提示がなく、研究貢献として新規MLベースの復元手法を提案していないため、EX-C1（サーベイ/チュートリアル）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_empirical_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は既存スマートコントラクトデコンパイラの大規模実証評価を行う調査研究であり、ML/DL を用いた新規デコンパイル手法の提案や実装がなく、主目的がデコンパイラの信頼性・性能評価であるため、除外基準 EX-C1（サーベイ・ベンチマーク中心）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "broukhis_notes_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "Abstractに機械学習／ディープラーニングの使用が示されておらず、デコンパイルは歴史的・解説的目的であり、ソースコード復元や擬似コード高級化を主目的としたMLベースの研究ではないため、IN1が満たされず除外となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yoo_digital_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はフォレンジック用のアーティファクト抽出であり、デコンパイルは手段に過ぎず高級言語コード復元や擬似コード高級化が主目的ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "katz_using_2018": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "RNNを中心とした機械学習手法でバイナリから高級言語相当のコードを生成することを主目的としており、入力はバイナリ、出力は可読性の高いソースコード（変数名・制御構造等）であり、全ての採択条件IN1‑IN3を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "harrand_strengths_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は8つのJavaデコンパイラをベンチマーク評価する調査研究であり、機械学習・深層学習を用いた手法の提案や実装がなく、評価・ベンチマークが主目的（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wiedemeier_pylingual_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML中心のNLPコンポーネントでPythonバイナリから高級言語ソースコードを復元することが主要目的であり、入力はバイトコード、出力はPythonソースという要件を満たすため、採択基準IN1‑IN3をすべてクリアしている。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_queryx_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はバイナリのバグ・脆弱性検出が主目的であり、デコンパイルは解析の入力として利用するだけで、復元や高級化を目指すものではない（EX‑A3）上、ML/DLが中心手法として記述されていないため除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ahad_pyfet_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文に機械学習・ディープラーニングの利用が示されておらず、IN1（ML/DLを中核に用いる）を満たさないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sateanpattanakul_java_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本論文はバイトコードの制御フローを分類することが主目的で、出力は分類ラベルであり、ソースコードや擬似コードの復元・高級化を行わないため除外（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sharikov_methodology_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はデジタル透かし埋め込み手法の提案であり、ML/DLは使用せず、デコンパイルは保護手段として扱われるだけで、ソースコード復元や高級化が主目的ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lacomis_dire_2019": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "本稿はニューラルネットワークを用いた手法（IN1）で、変数名復元というデコンパイルコードの可読性向上を主目的（IN2）としており、入力はデコンパイル結果、出力は高級言語レベルのコード（変数名付与）という入出力条件（IN3）を満たすため、採択基準をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "al-kaswan_extending_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はデコンパイルコードの要約生成であり、復元や高級化が主目的ではない（EX‑A4：summarization）が支配的",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alsabbagh_control_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はPLCへの攻撃手法を示すもので、デコンパイルは攻撃工程の一部に過ぎず、ML/DL を用いた高級コード復元や擬似コード高級化が主目的ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liao_augmenting_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/LLMを中心に用い、既存のスマートコントラクトデコンパイラ出力を高級言語に近い形で改善することが主目的であり、入力はバイナリ/デコンパイラ出力、出力は復元されたソースコードであるため、IN1・IN2・IN3 をすべて満たす",
+      "manual_decision": null,
+      "note": ""
+    },
+    "she_wadec_2024-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中核に用いたWebAssemblyバイナリから高級言語相当のソースコードへ変換するデコンパイル手法で、入力はバイナリ、出力は再コンパイル可能な高級コードであり、全ての採択条件（IN1, IN2, IN3）を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "park_static_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "デコンパイルはバイナリ解析・脆弱性検出の手段であり、主目的はJNIプログラムの静的解析・バグ検出であるため、EX‑A3（脆弱性・検証タスクが主）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_human_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はAI生成変数名・型名が逆コンパイルコードの理解に与える影響の評価であり、デコンパイル自体は手段に過ぎない（EX-A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_optimizing_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文は機械学習／ディープラーニングを用いた手法を提示しておらず、MLが研究の中心でないためIN1を満たさず、デコンパイル高級化研究として採択基準を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_slade_2024-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "Transformerベースのシーケンスtoシーケンスモデルを用いたデコンパイル手法で、最適化されたアセンブリを入力として高級言語のソースコードを生成することが主目的であるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pal_len_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "BERTなどの深層学習を中心に用い、デコンパイル出力の変数名を予測してコードをソースに近づけることを主目的としており、入力はデコンパイラ出力、出力は変数名付与された高級コードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "reiter_automatically_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "目的がバイナリ脆弱性の自動修正（脆弱性緩和）であり、デコンパイルはその手段に過ぎず、ML/DLが主要要素でもないため、EX-A3（脆弱性検出・修正が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sang_control_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文・要旨に機械学習・深層学習の使用が記載されておらず、ML/DLが中核でないためIN1を満たさない",
+      "manual_decision": null,
+      "note": ""
+    },
+    "korencik_symbolic_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは形式検証の前処理にすぎず、出力は低レベルLLVM IRで高級言語ソースや擬似コードの復元が目的ではない（EX-A3／EX-B1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "magin_heros_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "デコンパイルは解析手段に過ぎず、主目的はObjective‑Cバイナリの静的タイント解析であり、ML/DLも使用していないため除外（EX‑A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "izrailov_gremc_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.86,
+      "ai_reason": "GAを中核とした機械学習手法でバイナリからCソースコードを復元することが主目的であり、入力は機械コード、出力は高級言語コードという要件を満たすため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cao_revisiting_2023": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML（Transformer）を中核に用い、デコンパイラ出力を入力として変数名・型を付与し、擬似コードをソースに近づけることが主目的であり、入力・出力が規定の1対1であるためIN1IN2IN3を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ahmed_learning_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.78,
+      "ai_reason": "目的が最適化バイナリ中のライブラリ関数呼び出しを予測・復元することで、主に関数使用の識別・ラベリングに焦点を当てている（EX-A1）。出力はソースコードや高級化された擬似コードではなく、関数呼び出しラベルであり、デコンパイル結果の高級化が主目的ではないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_sok_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はバイナリリフタの評価・体系化を行うSoKであり、ML/DLを中核に用いた新手法の提案がなく、復元手法の評価が主目的の調査研究（EX-C1）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "slawinski_applications_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的は.NETファイルのマルウェア分類であり、デコンパイルは前処理に過ぎず、復元や高級化が主目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "smith_irene_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文では機械学習／深層学習を使用していない（IN1未達）上、デコンパイルはパッチ作成の手段であり、復元そのものが主目的ではないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ahmad_ali_qureshi_apk_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DLが用いられておらず、デコンパイルはフォレンジック分析の手段に過ぎず、主目的が悪意コードや脆弱性の検出であるため、EX‑A3（脆弱性・検出が主目的）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "enders_jump-table-agnostic_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "Abstractに機械学習／深層学習の利用が示されておらず、ML/DLが研究の中心でないためIN1を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_stan_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイトコードの自然言語説明生成であり、復元や高級化ではなく要約/説明（EX‑A4）に該当するため、スコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bodei_language-independent_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "論文はファイアウォール設定の抽象化・合成を行うツールを提示しているが、機械学習／ディープラーニングを中核技術として用いていないため、IN1 を満たさず除外となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zubair_control_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "ML/DLが使用されておらず、デコンパイルや高級コード復元が主目的ではなく、制御ロジックの難読化攻撃を示すだけなので基準IN1・IN2を満たさない",
+      "manual_decision": null,
+      "note": ""
+    },
+    "semenov_obfuscated_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "EX-B3: 本研究はデコンパイルコードの品質指標を測定することが主目的であり、ML/DL 手法は使用せず、出力はコード生成や高級化ではなくメトリクス（特徴量）であるため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "enders_pidarci_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "本文に機械学習・ディープラーニングを用いる記述がなく、ML/DLが研究の中心でないためIN1を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_investigating_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイナリ関数の名前付けであり、ソースコードや高級擬似コードの復元・高級化ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yu_bytecode_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "ML/DLが使用されず、研究目的はバイトコード難読化であり、デコンパイルや高級コード復元が主目的ではないため除外 (IN1不成立、IN2不成立)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lee_identifying_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がコード改ざん検出（tampering detection）であり、デコンパイルは手段に過ぎず、ML/DLも使用していないため EX-A3 に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "behner_sok_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿は制御フロー構造化の課題を整理・比較するSoKであり、ML/DL を中核とした新規デコンパイル手法の提案がなく、調査・レビューが主体（EX-C1）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "peng_bctd-ics_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がICSコンポーネントの検出・プライバシー保護であり、ML/DLは中心でなく、デコンパイルは副次的手段なので除外（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lu_research_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はELFファイルの保護であり、デコンパイルや高級コード復元は手段に過ぎないため、IN2を満たさずEX‑Aに該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "r_designing_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究の主目的はマルウェアの検出・分類であり、Ghidraによるデコンパイルは特徴抽出の前処理として利用されている。デコンパイル自体が復元・高級化の中心課題ではなく、EX-A1（分類・識別が主目的）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tahtaci_android_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出であり、デコンパイルは入力前処理に過ぎないため、デコンパイル研究の主目的から外れる（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aminuddin_android_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文は暗号化によるアセット保護手法を提案しており、機械学習・ディープラーニングの使用もデコンパイル・高級コード復元も目的としていないため、IN1・IN2を満たさず除外対象（EX‑C）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_binary_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ脆弱性検出であり、デコンパイルは前処理に過ぎない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiao_xvmp_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はLLVMベースのコード仮想化による難読化手法を提案しており、機械学習・深層学習を用いた手法ではなく、デコンパイルや高級コード復元が主目的ではないため、IN1・IN2を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "maalla_improves_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "ML/DLが使用されておらず、バイナリから高級言語ソースや擬似コードを復元することが主目的でもないため（IN1未満、EX-B2該当）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhu_similarity_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイトコードの類似度測定であり、復元や高級化ではなく検索/類似性評価（EX-A2）に該当するため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wahaz_is_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出・安全性評価であり、デコンパイルは解析手段に過ぎないため除外（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nghi_phu_efficient_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出という分類タスクであり、デコンパイルによる高級コード復元が主目的ではなく、ML/DLも用いていないためEX-A1に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feng_research_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿はモバイルアプリのセキュリティリスク分析・対策が主目的であり、デコンパイルによる高級コード復元は手段の一つに過ぎない（EX-A3: 脆弱性検出が主目的）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_binary_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは前処理にすぎず、主目的はバイナリ脆弱性検出（EX-A3）であるため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kim_pildroid_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使用されておらず、目的はJNIを用いたプライバシー情報漏洩検出であり、デコンパイルは解析の前処理に過ぎない（EX-A3／EX-B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fang_research_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "デコンパイルは特徴抽出の前処理にすぎず、主目的はマルウェア分類・検出であり、デコンパイルが目的ではないため除外（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_runtime-environment_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はAndroidアプリのテスト環境生成が主目的で、デコンパイルはテストケース生成のための前処理に過ぎず、ソースコード復元・高級化は目的外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "adamec_malware_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出（分類）であり、デコンパイルは入力として使用されるだけで、ソースコードの復元や高級化が主目的ではないため EX-A1 に該当。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "corcalciuc_low-level_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文は制御フロー操作の攻撃手法を紹介するだけで、機械学習・深層学習を用いたデコンパイルや高級言語コード復元を目的としていない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lv_research_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DLが用いられておらず、研究目的はコード難読化であり、デコンパイルや高級コード復元が主目的ではないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_research_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは APP の名前・パッケージ名・アイコン取得の前処理に過ぎず、主目的は偽アプリ識別という分類タスク（EX-A1）であり、ソースコードや擬似コードの復元・高級化は行っていないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bhattacharjee_hybrid_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本論文の主目的はマルウェア検出（分類）であり、デコンパイルは検出パイプラインの一部に過ぎないため、目的がデコンパイルではなくEX‑A1（分類/識別）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yama_machine_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がマルウェア分類（バイナリの特徴抽出・分類）であり、デコンパイルや高級コード復元は主目的ではなく除外基準 EX-A1 に該当するため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "domas_advanced_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "Abstractに機械学習／ディープラーニングの利用が言及されておらず、MLを中核とした復元手法の提示がない上、逆コンパイル技術の概要紹介というサーベイ的内容であるため、除外条件 EX-C1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_malicious_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本研究の主目的はマルウェア検出・分類であり、デコンパイルは前処理に過ぎず、ソースコードの復元や高級化が目的ではない（EX‑A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_mobile_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はモバイルアプリの難読化・保護手法の提案であり、デコンパイルは評価手段に過ぎず、復元や高級化が目的ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yu_android_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "デコンパイルは前処理に過ぎず、主目的はマルウェア検出・分類であるため、デコンパイル研究の対象外（EX-A3）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "johri_amadel_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "研究の主目的はアンチマルウェアの二分類であり、デコンパイルは特徴抽出の前処理に過ぎない（EX-A1）。出力はコードや擬似コードではなくラベルであり、IN3を満たさないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "krishnaswamy_mbased_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文に機械学習・深層学習の利用が示されておらず、条件IN1（ML/DL を中核に用いる）を満たさないためです。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_research_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本文はデジタル署名による Android アプリの保護機構を提案しており、機械学習やディープラーニングの利用は記述されていない。デコンパイルや高級コード復元が主目的でもなく、保護・検証が目的のため、EX-A（目的が別タスク）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chu_security_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "主目的は脆弱性検出・プライバシー分析であり、バイナリのデコンパイルは手段に過ぎないため、EX-A3（脆弱性検出が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bragagnolo_smartinspect_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はML/DLを使用せず、主目的はデプロイ済みスマートコントラクトの状態可視化であり、出力はソースコードや高級擬似コードではなく状態の視覚化であるため、IN1・IN2・IN3 を満たさず EX-B2（出力がソース相当でない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "akarsh_deep_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアの分類であり、デコンパイルや高級コード復元は手段として言及されているだけ。ML/DLは使用されているが、IN2を満たさずEX-A1（分類）が支配的なため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gao_malware_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア分類であり、デコンパイルやソースコード復元は副次的でなく、主タスクは分類（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_osprey_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本文では機械学習/深層学習が使用されている旨が示されず、出力は変数・構造の確率情報でありソースコードや擬似コードに変換されないため、IN1およびIN3を満たさずEX-B3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "costa_lightweight_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はマルウェア検出を主目的としており、デコンパイルや高級コード復元は手段に過ぎないため、EX-A1（分類／識別が主目的）に該当し除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alsabbagh_stealth_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はPLCへのステルス攻撃手法を提示することが主目的であり、デコンパイルは攻撃の一部に過ぎない。機械学習／深層学習の利用も示されておらず、デコンパイルは副次的手段（EX‑A）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_deep_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は opcode シーケンスを用いたマルウェア分類が主目的であり、デコンパイルによる高級コード復元や擬似コード高級化は行っていない（EX-A1: classification が主目的）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rodriguez-bazan_android_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは特徴抽出に利用されているだけで、主目的は Android ランサムウェアの分類（マルウェア識別）であり、デコンパイル・高級化が目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nethala_deep_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はCNNを用いたマルウェア分類が主目的であり、デコンパイルは前処理に過ぎない。目的が識別/分類であるためEX-A1に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_smart_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がスマートコントラクトの脆弱性検出であり、デコンパイルは前処理に過ぎないため EX‑A3 に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_bian_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文はスマートコントラクトの難読化手法を提案しており、目的はコードを復元・高級化するデコンパイルではなく、逆に復元を困難にすることであり、IN2を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_fault_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が変圧器故障診断の分類であり、デコンパイルやソースコード復元が主目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_research_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はAPTマルウェアの検出・分類であり、デコンパイルは前処理に過ぎないためEX-A1（分類・識別が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_novel_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はマルウェア検出（分類）を主目的としており、デコンパイルは特徴抽出の手段に過ぎない。高級言語ソースや擬似コードの復元・高級化が目的ではないため、EX-A1（分類/識別）が適用され除外される。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hua_mmguard_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は Android アプリ内の DNN モデル保護を目的としたフレームワークであり、デコンパイルによる高級言語コード復元や擬似コード高級化を主目的としていないため、IN2 を満たさず除外 (目的が別タスク) と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_android_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアファミリのクラスタリングであり、デコンパイルは特徴抽出の手段に過ぎないため、EX-A1（分類・識別が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "s_reverse_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "抽象では機械学習やディープラーニングの使用や新規復元手法の提案がなく、ツールの概要・比較というサーベイであるため、IN1・IN2を満たさずEX-C1に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tirkey_anatomizing_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がマルウェア分類であり、デコンパイルは特徴抽出の前処理にすぎないため、デコンパイル研究の対象外（EX-A3）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kurniawan_hybrid_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルはマルウェア検出の前処理に過ぎず、主目的は Android マルウェアの検出・予測であるため、デコンパイル研究の範囲外（EX-A3）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ogwara_mobdroid_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究の主目的はマルウェア検出の分類であり、デコンパイルは権限情報抽出の前処理に過ぎないため、デコンパイルが主目的ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xia_bcontext2name_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は関数名付与（ラベリング）を主目的としており、出力はコードや擬似コードではなく名前ラベルであるため、デコンパイル・高級化研究の範囲外（EX-A1）となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ayub_charlie_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はPLC制御ロジックへの攻撃手法を提案するものであり、機械学習／ディープラーニングを用いたデコンパイルやソースコード復元が主目的ではない（EX-A）。抽象的に「decompilation」は検出手段の一部として言及されるだけで、復元タスクや高級化タスクは含まれない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mk_comprehensive_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はモバイルアプリのセキュリティ評価・マルウェア検出であり、デコンパイルは手段にすぎず、ML/DL が主要手法でもないため、EX‑A3（脆弱性/マルウェア検出が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bosse_tiny_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "目的はIoT向けML仮想化とモデル配布であり、デコンパイルは副次的手段に過ぎず、ソース復元や擬似コード高級化が主目的ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xia_firmware_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "主目的がファームウェア脆弱性検出であり、逆コンパイルは解析手段に過ぎないため、EX-A3（脆弱性検出）が適用され除外されます。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "adams_blockchain_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A: 目的がブロックチェーンのスマートコントラクトフレームワーク構築であり、デコンパイルやML/DLによる高級コード復元とは無関係。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "borrello_customprocessingunit_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文献はマイクロコードの逆向き解析とカスタマイズを目的としており、機械学習／ディープラーニングを主要手法として使用していない（AbstractにML/DLの言及なし）。したがって、IN1（ML/DL を中核に用いる）が満たされず、デコンパイル研究の対象外となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lin_reifunc_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はバイナリ中のインライン関数を識別することが主目的であり、コード復元や高級化を目的としたデコンパイル研究ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "seixas_high-accuracy_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がランサムウェア検出であり、デコンパイルは特徴抽出の手段に過ぎないため EX-A3（検出タスク）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "luo_binary_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "EX-A2: 主目的がバイナリコードの類似性検出（検索・類似度判定）であり、デコンパイルは特徴抽出の手段に過ぎないため、デコンパイル・高級化研究の対象外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "verbeek_formally_2025-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文は機械学習・ディープラーニングを用いておらず、主目的はバイナリレベルのポインタ解析であり、ソースコード復元や擬似コード高級化を目指すものではないため、IN1・IN2を満たさない上に出力もコード生成ではなく解析結果となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ghimire_survey_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "サーベイ論文であり、新規MLベースのデコンパイル手法の提案や評価が主旨ではなく、復元研究そのものの貢献がないため除外（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rajendran_ai-based_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルはバイナリから画像生成の前処理に過ぎず、主目的はマルウェア分類であり、ソースコードや擬似コードの復元・高級化が目的ではないため、EX-A3（検出系タスク）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_typeforge_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.9,
+      "ai_reason": "ML（LLM）を中心に用い、ストリップバイナリから高級言語レベルの構造体型情報を復元することが主要目的であり、入力はバイナリ、出力はソース相当の型宣言として高級化されているため、IN1・IN2・IN3 を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_firmccf_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は暗号関数の脆弱性検出が主目的であり、デコンパイルは手段に過ぎない（EX-A3）ため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_research_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はコード仮想化による難読化・保護が目的であり、バイナリから高級言語ソースや擬似コードを復元することを主目的としていない。したがってIN2を満たさず、スコープ外（EX-A）となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_software_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルはソフトウェア多様化・保護の手段であり、ソースコード復元や擬似コード高級化が主目的ではないため（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "priambodo_malqwen_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がマルウェア解析レポートの生成であり、デコンパイルや高級コード復元は副次的な入力要素に過ぎない（EX-A4: サマリ/説明が主目的）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "guo_android_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はAndroidアプリの強化（リインフォース）であり、デコンパイルは手段に過ぎず、ML/DLは使用していないためIN1を満たさず、EX‑A（デコンパイルが副次的タスク）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hartman_cross-architecture_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "主目的が関数の指紋付け・類似検索であり、デコンパイルは前処理に過ぎないため、EX-A1（識別タスク）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "naliapara_maia_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "decompilation は MAIA の主要機能ではなく、マルウェア解析・脅威情報提供が主目的であるため、デコンパイルを中心とした復元研究に該当しません（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "izrailov_reengineering_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的は脆弱性探索であり、デコンパイルは手段に過ぎない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hossain_mollah_enhanced_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出であり、デコンパイルは特徴抽出の前処理に過ぎない（EX-A1）。ソースコードや擬似コードの復元・高級化は行っていない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feng_interactive_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中心に用いたエンドツーエンドのデコンパイル手法で、入力はバイナリ/アセンブリ、出力は高級言語ソースコードであり、デコンパイルが主目的のため採択",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aljebreen_binary-source_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がバイナリとソースコードのマッチング（コードクローン検出）であり、デコンパイルは手段に過ぎないため EX-A2 に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_iradt_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.87,
+      "ai_reason": "MLベースのseq2seqモデルを用いてデコンパイル出力（LLVM IR）を高可読性かつコンパイル可能な形に変換することが主目的で、入力はバイナリ/デコンパイラ出力、出力は高レベルIRとしてソースに近い形に再構成しているため、IN1・IN2・IN3 を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alcocer_use_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はデコンパイルコードの変数名予測で、出力は変数名提案のみであり、ソースコードや擬似コード全体の復元・高級化ではないためIN3を満たさず、EX-B3に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gribkov_analysis_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ断片の類似性検出であり、デコンパイルは前処理として利用されているため、デコンパイル自体が主目的ではない（EX‑A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gregorio_e-apk_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はML/DLを使用せず、主目的がエネルギーパターン検出であり、デコンパイルは分析手段に過ぎないためEX-A1に該当し除外される。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dramko_dire_2023-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL（DIRE）を中核に用いて、デコンパイル出力の変数名を予測・復元することが主目的であり、入力はデコンパイラ出力、出力は可読性向上した高級コード（変数名付与）という点でIN1・IN2・IN3を満たすため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kargen_android_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが中核で使用されておらず、デコンパイル性能の実証調査のみで新規復元手法を提案していないため（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_binvuldet_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はバイナリ脆弱性検出であり、デコンパイルは前処理として利用されているだけです（EX-A3）。MLは脆弱性パターン抽出に使われていますが、復元や高級化が主目的ではありません。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liang_neutron_2021": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "注意機構を用いたニューラル機械翻訳で低レベルコードから高レベルコードへ変換することが主目的であり、ML/DLが中核技術で、入力はバイナリ/アセンブリ、出力は高級言語コードとなっているため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "harrand_java_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文はML/DLを用いた手法を提示しておらず、IN1（ML/DLの中核利用）を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mateless_decompiled_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本研究の主目的はAPKのマルウェア分類であり、デコンパイルは特徴抽出の前処理にすぎないため、EX-A1（分類タスク）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qasim_control_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "論文は組み込みデコンパイラを用いた制御ロジック復元を提案しているが、機械学習／深層学習が主要手法として示されておらず、IN1 を満たさないため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kumar_malsff_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは特徴抽出の前処理に過ぎず、主目的はマルウェア検出であるため、デコンパイル・高級化が目的の研究ではない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "prasad_andromd_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア検出（分類）であり、デコンパイルは特徴抽出の手段に過ぎないため EX‑A3 に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_feature_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿の主目的はマルウェア検出であり、デコンパイルや高級コード復元は手段として言及されていないため、EX-A（目的が別タスク）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bai_nature_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はバイオインスパイアドエアロゴル材料の開発であり、機械学習／ディープラーニングやバイナリからのソースコード復元を目的としていない（IN1, IN2, IN3 を満たさない）ため、EX‑A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "karamitas_recover_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・深層学習を用いていない（IN1未達）上、出力はバイナリのコンパイル単位境界の推定であり、高級言語ソースや擬似コードの復元・高級化ではない（EX-B2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bojic_modernizing_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "目的はレガシーコードの別言語への翻訳・モダナイゼーションであり、デコンパイルは副次的手段にすぎないため、IN2を満たさずEX-Aに該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "peng_decentralized_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "抽象には機械学習・深層学習の利用がなく、目的はゼロダイナミック攻撃への防御であり、デコンパイルによる高級コード復元や擬似コード高級化を主目的としていないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_compiler_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がコンパイラバージョンの識別（分類）であり、デコンパイルは特徴抽出の前処理に過ぎないため、EX-A1（分類/識別が主目的）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "vu_minh_static_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的はマルウェア検出であり、デコンパイルは前処理として利用されているだけです。デコンパイル自体が主目的でないため、EX-A3（脆弱性/マルウェア検出）が適用され除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ren_low_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文・要旨に機械学習・深層学習の使用がなく、目的はFPGAビットストリームの復号であり高級言語ソースや擬似コードの復元・高級化ではないため、基準IN1・IN2・IN3を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "thabit_detecting_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿は .NET 実行ファイルのマルウェア検出を目的とした分類研究で、デコンパイルは特徴抽出の前処理に過ぎず、ソースコード復元や擬似コード高級化が主目的ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cui_sensitive_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はIoTデバイスの脆弱性検出・ファズテストであり、デコンパイルは解析手段に過ぎないためEX-A3に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yu_crosscode2vec_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "主目的がコード類似性検出であり、デコンパイルは前処理的に利用されているため、デコンパイル研究の対象外（EX-A2）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "balogh_using_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "主目的は脆弱性検出やログ分析であり、デコンパイルは副次的な情報源に過ぎず、デコンパイル自体の復元・高級化が目的ではないため、EX-A3に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiang_fine-grained_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はAndroidアプリのタイント分析であり、デコンパイルは前処理にすぎず、ML/DLは使用されていないため、デコンパイル研究の対象外（EX-A3）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_gmadv_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア分類と変種生成であり、デコンパイルは単なる特徴抽出手段に過ぎず、ソースコード復元や高級化が主目的ではないため除外（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "drabent_how_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが中心でなく、デコンパイルは解析手段に過ぎず、主目的はランサムウェア復旧なのでEX-Aに該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_comprehensive_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はスマートコントラクトのセキュリティに関するサーベイであり、新規のMLベースデコンパイル手法や復元手法の提案・評価が主目的ではない（除外コード EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "avellaneda-tamayo_chemical_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は化学データの解析であり、機械学習によるバイナリ/アセンブリからのソースコード復元とは無関係です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cheremisino_graph_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DLが使用されておらず（IN1未達）かつ対象がトランジスタ回路の階層化（コード復元ではなく回路復元）でスコープ外（EX-B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rodriguez-bazan_android_2023-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本研究の主目的はCNNによるマルウェア分類であり、デコンパイルはハッシュ化の前処理に過ぎないため、デコンパイル・高級化が主目的ではない（EX-A1）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lebedev_using_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが使用されておらず、目的はコード保護・難読化であり、デコンパイルや高級コード復元が主目的ではないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kim_neural_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "目的はリザーバコンピュータの内部表現を解析・プログラミングすることで、バイナリやアセンブリから高級言語ソースへの復元ではなく、ニューラル計算向けの低レベル「機械コード」を定義しているためスコープ外（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_android_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは特徴抽出の前処理に過ぎず、主目的はグラフニューラルネットワークによるマルウェア検出であるため、EX‑A3（検出タスク）に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_chunked_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はデータプライバシー保護アルゴリズムの提案であり、機械学習／ディープラーニングを用いたデコンパイルや高級コード復元を目的としていないため、IN1・IN2・IN3 のいずれも満たさず、除外基準 EX‑A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shi_sfcgdroid_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア検出（分類）であり、デコンパイルは前処理に過ぎないため、EX-A1（分類/識別が主目的）に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yuan_optimizing_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文の主目的はスマートコントラクトの脆弱性検出であり、生成物は脆弱性ラベルである。デコンパイルやソースコード復元は手段に過ぎず、EX-A3（脆弱性検出が主目的）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ortin_analyzing_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は Java ソースコードの構文パターンを機械学習で解析・分類することが主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイルは目的に含まれない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_predicting_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは特徴抽出の前処理に過ぎず、主目的はマルウェア検出であり、デコンパイル・高級化が研究の中心ではないため除外（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sharma_visualizing_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がマルウェア検出であり、出力は分類ラベルのみで、ソースコード復元や擬似コード高級化が主目的ではないため（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lu_research_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出（分類）であり、デコンパイルはデータ生成の手段に過ぎないため EX-A3 に該当",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_deep_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアのファミリ分類であり、デコンパイルやソースコード復元は手段として使用されていない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bolanos_rodas_image_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "タイトル・要旨ともに歴史的人口研究であり、機械学習やバイナリ/アセンブリからの高級コード復元に関する記述がなく、デコンパイル研究の対象外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shanmugam_electro_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はモバイルマルウェアの分類・検出であり、デコンパイルは前処理に過ぎず、復元や高級化が主目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_psps_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿は物理的侵入検知システムを提案しており、機械学習・深層学習の利用やバイナリから高級言語を復元することが目的ではなく、デコンパイルは副次的な脅威説明に過ぎないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhu_bigdata_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はエネルギー変換モデルとマイクログリッドの最適化について述べており、バイナリ/アセンブリから高級言語を復元するデコンパイル研究とは無関係である（対象がソフトウェアバイナリでない）ため、スコープ外（EX-B4）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mladentseva_responding_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・ディープラーニングを用いたデコンパイル手法を提案しておらず、目的はFlash作品の保存・移行であり、スコープの対象外（IN1未達、EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "guan_method_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がAndroidマルウェア検出（分類）であり、デコンパイルや高級コード復元は主目的ではなく、MLは検出モデル構築に用いられているためEX-A3に該当し除外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_learning-based_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは特徴抽出の前処理に過ぎず、主目的はマルウェア検出（分類）であり、ソースコード復元や擬似コード高級化ではないため除外（EX-A3／EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_malware_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアの分類であり、デコンパイルによる高級コード復元や擬似コード高級化ではないため（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ortin_cnerator_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本稿の主目的は標準Cコードの確率的生成とデータセット作成であり、デコンパイルは副次的な利用目的。ML/DLは生成データを用いたデコンパイラ改善に用いられるが、デコンパイル自体が中心タスクではないため除外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "du_mobile_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "デコンパイルは特徴抽出の前処理に過ぎず、主目的はマルウェアの検出・分類（EX-A1）であるため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sasidharan_prodroid_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的はマルウェア検出・分類であり、デコンパイルは特徴抽出の前処理に過ぎず、復元・高級化が主目的ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hu_design_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究はバイナリから高級言語コードを復元するデコンパイルを目的としておらず、人工ニューラルネットワークを用いたバティックパターンの生成手法の提案である。目的がデコンパイルではない（EX-A1）ため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ullah_clone_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がAndroidアプリのクローン検出（類似性判定）であり、デコンパイルは前処理に過ぎないためEX-A2に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bodei_fws_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが主体でなく、出力は中間言語(IFCL)でありソースコード相当の復元や高級化を行わないため、IN1・IN2・IN3を満たさずEX‑B1に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_android_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェア検出・分類であり、デコンパイルは前処理に過ぎない（EX‑A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "connor_forensic_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文に機械学習・ディープラーニングの使用が示されておらず、ML/DLが研究の中心でないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_malware_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はマルウェアの分類であり、デコンパイルは特徴抽出の前処理に過ぎず、復元・高級化が主目的ではないため（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_data_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習/ディープラーニングを使用せず、デコンパイルはコード復元ではなくデータ連結性分析の手段であるため、IN1・IN2を満たさず除外と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ullah_iot-based_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルはクローン検出の前処理に過ぎず、主目的は Android アプリのクローン識別であり、復元・高級化ではない（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_opcode_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本研究はCNNでオペコード列を学習しマルウェアを分類・検出することが主目的であり、デコンパイルや高級コード復元は副次的な前処理にすぎない（EX‑A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xie_accurate_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はAndroidアプリのクローン検出が主目的であり、デコンパイルは手段に過ぎない（EX-A2）。ML/DL の中核利用も示されておらず、復元・高級化タスクでもないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "javaloy_preliminary_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はLaTeXデコンパイルを対象としており、バイナリやアセンブリから高級言語ソースを復元する目的ではない（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_compile-time_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文は機械学習・ディープラーニングを使用せず、目的はコード仮想化による保護であり、出力はLLVM IRという低レベルIRでありソースコード相当の復元を目指すものではない（EX-B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ding_android_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿の主目的はCNNによるバイトコード画像のマルウェア分類であり、デコンパイルは手段に過ぎない（EX-A1）。MLは使用されるが、復元・高級化が目的ではないため除外対象。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yeom_vulnerability_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が脆弱性評価・検出であり、デコンパイルは手段に過ぎない（EX-A3）。ML/DL の使用も示されていないため、IN1‑IN3 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ullah_detection_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がAndroidアプリのクローン検出であり、デコンパイルは前処理に過ぎないため EX‑A2（クローン検出タスク）に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tang_ssldetecter_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は Android アプリの SSL 脆弱性検出が主目的であり、ML/DL を用いたデコンパイルや高級コード復元は行っていない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "martin_clonespot_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "クローン/リパッケージ検出が主目的であり、デコンパイルやソースコード復元を目的としていない（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "saito_iterative_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "研究対象が化学合成であり、バイナリやアセンブリのデコンパイルとは無関係。ML/DL の使用やコード復元が目的でないため、スコープ外（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dong_defect_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ実行ファイルの欠陥予測であり、デコンパイルや高級コード復元は副次的な前処理に過ぎないため、EX-A3に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "su_using_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がアドライブラリの識別・分類であり、バイナリからのソース復元や擬似コード高級化を目指すデコンパイル研究ではない（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ragkhitwetsagul_comparison_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本研究はコード類似性評価が主目的であり、デコンパイルは正規化手段に過ぎず、機械学習/深層学習が使用されていないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhuang_performance_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はAndroidアプリの難読化と性能コストの最適化が主目的であり、デコンパイルや高級言語ソースの復元は副次的な背景に過ぎない。MLはNaive Bayes分類器で使用されているが、目的が復元・高級化でないためIN2を満たさず、EX-A（デコンパイルが手段）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_tinydroid_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がマルウェア検出・分類（分類タスク）であり、デコンパイルは特徴抽出の前処理に過ぎず、ソースコードや高級擬似コードの復元が主目的ではないため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yan_detecting_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "研究目的がマルウェア検出であり、デコンパイルは特徴抽出の一部に過ぎないため、デコンパイル復元を主目的とした条件IN2を満たさず除外（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yan_lstm-based_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的がマルウェア検出であり、デコンパイルは前処理として用いられるだけ。デコンパイル・高級化が主目的ではなく、EX-A3（検出タスク）に該当するため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "al-kaswan_extending_2023-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はデコンパイルされたバイナリ関数の自然言語要約生成であり、デコンパイルは入力データとして使用されるだけで、ソースコード復元や擬似コードの高級化が主目的ではない（EX-A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "arasteh_trim_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がロボットファームウェアのモジュール検索・識別であり、LLMは関数要約を生成するだけで、ソースコードや擬似コードの復元・高級化を行わないため、EX-A2（検索・類似性）に該当し除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_learning_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は C から x86 アセンブリへの変換（コンパイル）を目的としており、出力は低レベルのアセンブリで高級言語ソースや擬似コードの復元ではないため、IN2・IN3 を満たさず除外（EX-B）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_slade_2024-2": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はシーケンス‑ツー‑シーケンスTransformerを中心に用いたデコンパイラで、入力は最適化されたアセンブリ、出力は高級言語のソースコードであり、デコンパイルそのものが主要目的として明示されているため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "arranz-olmos_decompiling_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習・深層学習の利用が示されず、研究目的は定数時間性の検証であり、デコンパイルは解析前処理に過ぎないため、EX‑A3（検証・解析が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "banerjee_variable_2021": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL（Transformer/BERT）を中核に用い、デコンパイラ出力を入力として変数名を予測し、擬似コードをソースに近づけることが主目的であり、入出力がdecompiler output → 高級言語レベルの変数名付きコードという条件を満たすため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bielik_adversarial_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "主目的はコードモデルの対抗的ロバスト性の評価・改善であり、デコンパイルは例示的タスクに過ぎず、復元研究の中心ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bu_smartbugbert_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイトコードからの脆弱性検出であり、デコンパイルは前処理に過ぎず、ソースコードや高級擬似コードの復元・高級化が主目的ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "butz_sum-product_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "研究はSPNからBNへのモデル変換を目的としており、バイナリやアセンブリから高級言語ソースコードや擬似コードへの復元とは無関係。出力はベイジアンネットワークであり、スコープ外の変換（EX-B4）に該当するため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cao_revisiting_2023-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "Transformer を用いた学習が主軸で、目的は変数タイプ・名前の復元によるデコンパイルコードの高級化であり、入力はデコンパイラ出力、出力は型情報を付加した高級コードであるため、IN1・IN2・IN3 をすべて満たす",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cao_boosting_2023": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "IN1: GNNベースのニューラルネットワークを使用。IN2: 主目的はバイナリからC/C++等の高級言語へデコンパイルすること。IN3: 入力はバイナリ、出力は高級言語コード（HPL）で、1対1の変換を実施。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chakraborty_architecture_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習やディープラーニングの活用が示されておらず、研究目的はアーキテクチャ間の並行性マッピングであり、デコンパイルや高級言語復元が主目的ではないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chawla_decompilation-driven_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "EX-A3: 研究の主目的はマルウェア検知（分類）であり、デコンパイルは前処理に過ぎず、ソースコード復元や高級化は目指していない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_augmenting_2021": {
+      "ai_decision": "include",
+      "ai_confidence": 0.75,
+      "ai_reason": "タイトルと要旨から、MLで学習した変数名・型予測を用いてデコンパイラ出力を高級化することが主目的であり、入力はデコンパイル結果、出力は高級言語レベルの情報となっているが、ML手法の具体的記述が抽象からは不明確なため確信度はやや低い。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_recopilot_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.82,
+      "ai_reason": "LLMを用いたML/DLが中心（IN1）で、デコンパイル擬似コードの関数名復元・変数型推定という高級化が主目的（IN2）であり、入力はバイナリ/デコンパイルコード、出力は擬似コードの高級化情報（IN3）を満たすため、スコープ内と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_suigpt_2025-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中核に用いたデコンパイラで、バイトコードから再コンパイル可能な高級言語（Move）ソースコードを生成することが主目的であり、入力がバイナリ、出力がソースコードという要件を満たすため採択",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chukkol_vulcatch_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ脆弱性検出であり、デコンパイルは特徴抽出の手段に過ぎないためEX-A3に該当し除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cotroneo_can_2025-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的が脆弱性予測であり、デコンパイルは予測のための前処理に過ぎない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cristea_malcve_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルは検出パイプラインの前処理であり、主目的はマルウェア検出と CVE 付与という分類・関連付けタスクで、デコンパイルは副次的な手段（EX-A3）に該当するため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "david_decompiling_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中心に用いてバイトコードからSolidityソースへの変換を主目的とし、入力はEVMバイトコード、出力は高級言語ソースコードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dramko_idioms_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.94,
+      "ai_reason": "ML/DL（LLM）を中核に用い、バイナリ/アセンブリから高級言語のコードと型定義を生成することが主目的であり、入力はバイナリ／アセンブリ、出力はソースコード相当であるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "enders_dewolf_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "Abstractに機械学習・深層学習を用いたことが示されておらず、ML/DL が研究の中核でないため (IN1 不達成)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "erinfolami_declassifier_2019-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿は機械学習を用いず、C++ バイナリからクラス継承関係を推測することが主目的であり、ソースコードや擬似コードの復元・高級化ではない（EX-A1: クラス継承推定＝識別タスク）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "erinfolami_devil_2020-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本稿はバイナリから仮想継承情報を回復する手法を提案しているが、機械学習／ディープラーニングを中心技術として用いておらず、条件IN1を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "escalada_improving_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的はデコンパイラの型推定精度向上であり、出力は関数の戻り型というラベルでありコードや擬似コードの生成・高級化ではない（EX-B3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fang_stacksight_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中心とした手法でWebAssemblyバイナリを入力とし、可読なC++コードを出力するデコンパイルが主目的であるため、IN1・IN2・IN3 をすべて満たす。除外条件には該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feng_self-constructed_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はLLMを用いたデコンパイル手法を提案しており、ML/DLが中心技術（IN1）。目的はコンパイル済みコードから高級言語コードを復元・改善することでデコンパイルが主目的（IN2）。入力はアセンブリコード、出力は高級言語のソースコードであり、入力1種・出力1種の条件を満たす（IN3）。したがって採択基準を全て満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feng_ref_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文はLLMを用いたエンドツーエンドのデコンパイル手法を提案し、低レベルコードから高級言語コードへの復元を主目的としている。入力はアセンブリ/バイナリ、出力は高級言語ソースであり、条件IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fu_neural-based_2019": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文はニューラルネットワークを中心にバイナリからAST/ソースコードを生成するデコンパイルを主目的としており、入力はバイナリ、出力は高級言語に近いコード/ASTであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gao_decompilebench_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はデコンパイラ評価のベンチマークを提案しており、ML/DL を用いた新規デコンパイル手法の提示やソース復元が主目的ではない（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "green_stride_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.7,
+      "ai_reason": "AbstractではML/DLが主要手法として示されておらず、主にシーケンスマッチングによる軽量手法であるため、IN1（ML/DLを中核に使用）を満たさない",
+      "manual_decision": null,
+      "note": ""
+    },
+    "harrand_strengths_2019-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "ML/DLが使用されておらず、デコンパイル手法の評価・ベンチマークが主目的（EX-C1）であるため、スコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "he_retrofit_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "本論文は継続学習手法の提案が主目的であり、バイナリから高級言語コードを復元することは副次的な評価タスク（binary summarization）に過ぎず、デコンパイル・高級化が目的ではない（EX‑A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "he_benchmarking_2025-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア関数の識別や目的要約などの解析タスクであり、デコンパイルや高級コード復元が主目的ではないため（EX-A1/EX-A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hosseini_beyond_2022": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ニューラル機械翻訳を中心に用いたデコンパイル手法で、アセンブリから高級言語ソースコードへの変換を目的としているため、IN1・IN2・IN3 をすべて満たす。除外条件に該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hussain_vulbinllm_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的は脆弱性検出であり、デコンパイルは脆弱性推論の前処理に過ぎない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_can_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はLLMのIR理解能力を評価することが主目的で、デコンパイルは評価タスクの一部に過ぎないため、デコンパイルが手段であり目的ではない（EX‑A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_nova_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.88,
+      "ai_reason": "本論文はLLMを用いたアセンブリコード生成が主目的であり、出力は低レベルのアセンブリで高級言語ソースや構造化疑似コードへの復元・高級化を行わない（EX‑B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "katz_towards_2019": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL（ニューラル機械翻訳）を中核に使用し、バイナリ/アセンブリ（LLVM IR・x86）からCコードへの高級言語復元を主目的としているため、IN1・IN2・IN3 をすべて満たす。除外条件には該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kc_neural_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿は NMT を用いたコード生成全般のサーベイであり、新規の機械学習ベースのデコンパイル手法の提案・評価が主旨ではないため、除外基準 EX-C1 に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kim_feature_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はバイナリのレイアウト特徴を用いたマルウェア検出という分類タスクが主目的であり、デコンパイルや高級言語ソースの復元を目的としていないため、除外条件 EX‑A1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kumar_systematic_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はJavaの制御フロー難読化技術の体系的調査であり、ML/DL を中心としたデコンパイル手法の提案や評価を行っていない（サーベイ・レビュー）ため、除外条件 EX-C1 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lacomis_dire_2019-1": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "IN1: 論文はニューラル（機械学習）手法を用いた変数名復元を提案。IN2: 目的はデコンパイル結果の変数名を復元し、コード可読性を向上させることで、デコンパイルの高級化が主目的。IN3: 入力はデコンパイルされたコード、出力は高級言語レベルの変数名付与されたコード（擬似コードの改善）に該当するため、全条件を満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_adabot_2019": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "Transformerベースのニューラル機械翻訳を用いてバイトコードからJavaソースコードを生成することが主目的であり、ML/DLが中心技術で入力はバイナリ、出力は高級言語ソースとなっているため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_stan_2020-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイトコードの自然言語説明生成であり、ソースコードや擬似コードの復元・高級化ではない（EX-A4）。機械学習は使用するが、デコンパイルは手段に過ぎず、主目的がコード生成ではないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_neurodex_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.92,
+      "ai_reason": "論文はLLMを中核とした機械学習手法で、バイナリ(DNN実行ファイル)を入力として高レベルモデル（ソースコードに相当する表現）を出力し、デコンパイルが主目的であるため、IN1・IN2・IN3 をすべて満たす。除外基準には該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_empirical_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的はバイナリパッチからの脆弱性パッチ検出であり、デコンパイルや高級コード復元は手段に過ぎない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liang_semantics-recovering_2021": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ニューラル機械翻訳を中核に用いたデコンパイル手法で、低レベルバイナリを高レベルC/C++コードへ変換することが主目的であり、入力はバイナリ、出力は高級言語ソースコードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_proving_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的がバイナリの到達性・終端性・LTL検証であり、デコンパイルは検証の前処理に過ぎない（EX-A3）。出力は検証結果で、ソースコードや高級化された擬似コードは生成しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_decompiling_2022": {
+      "ai_decision": "include",
+      "ai_confidence": 0.86,
+      "ai_reason": "論文はMLベースの手法でバイナリ(DNN実行ファイル)から高レベルのモデル仕様（演算子、トポロジ、パラメータ）を復元することを主目的としており、入力はバイナリ、出力はソースに相当する高レベル表現であるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_codeinverter_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中核にバイナリから高級言語コードを生成することが主目的であり、入力はバイナリ/CFG、出力は再構成されたソースコードであるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "manuel_enhancing_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が脆弱性検出・分類・記述であり、デコンパイルは解析入力として使用されるだけで、ソースコードや擬似コードの復元・高級化が主目的ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "manuel_codablellm_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本研究はデコンパイルをデータセット生成の手段として利用しており、デコンパイル自体の復元・高級化が主目的ではない（EX‑A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mihajlenko_method_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文では機械学習／ディープラーニングを用いた手法が示されておらず、ML/DL が研究の中心となっていないため、採択条件 IN1 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "nandi_synthesizing_2020-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "Abstractに機械学習／ディープラーニングの記述がなく、ML/DLが研究の中心でないため（IN1未達成）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "palmarini_bayesian_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はプログラム合成とライブラリ学習であり、バイナリやアセンブリからソースコードを復元することではない。『decompiling』は amortized knowledge の抽出手段であり、デコンパイル自体が主目的ではないため EX‑A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pearce_pop_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はLLMを用いてコードの目的や変数名を識別・抽出することを主目的としており、バイナリから高級言語ソースや擬似コードを復元・高級化することが目的ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pochelu_jaxdecompiler_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "ML/DL が手法の中心であるという記述がなく、デコンパイルは主にプログラム変換技術によるものであり、条件 IN1 を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "pordanesh_exploring_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "目的がバイナリの解釈・説明であり、復元や高級化ではなく要約/説明タスク（EX-A4）に該当するため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qin_demystifying_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はJavaデコンパイルコードの可読性評価に関する実証研究であり、ML/DLを中心とした復元手法を提案していない（IN1不成立）し、目的は可読性メトリクスの提案・評価であってデコンパイルそのものの高級化やソース復元ではない（EX-A4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rao_register_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが主たる手法でなく、対象がハードウェアのゲートレベルネットリストでありソフトウェアバイナリのデコンパイル対象外（EX-B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "reis_tezla_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は機械学習・ディープラーニングを用いておらず、出力はMichelson向けの中間表現（IR）でありソースコードや高級擬似コードへの復元を目的としていない（EX-B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "reiter_automatically_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はバイナリの脆弱性緩和を主目的としており、ML/DL が中心手法として記述されていないため、条件IN1を満たさず、除外理由はEX-A3（脆弱性検出・緩和が主目的）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ringer_proof_2021-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本文はCoq証明の修復を目的としており、デコンパイルは手段に過ぎず、機械学習/深層学習の利用も示されていないため、IN1・IN2を満たさずEX‑Aに該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "saul_is_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がバイナリ関数類似性検出（検索・類似度評価）であり、デコンパイルやソースコード復元が主目的ではないため（EX-A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shang_binmetric_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ベンチマーク・データセットの紹介が主目的であり、新規MLベースのデコンパイル手法の提案・評価がないため除外（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "she_wadec_2024-2": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中心に用いた手法で、Wasm バイナリを入力として高級言語レベルのソースコード（及びAST）を出力し、デコンパイルが主目的であるため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shokri_construct_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文献はML/DLを中核に用いておらず、進化的探索で制御アルゴリズムの数式表現を合成することが目的で、ソースコードや擬似コードの復元・高級化が主目的ではないため、IN1・IN2を満たさず除外されます。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "slawinski_applications_2019-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的は.NETバイナリのマルウェア/正常分類であり、デコンパイルは前処理に過ぎないためEX-A1（分類タスク）に該当し、デコンパイルによるソース復元・高級化が主目的ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "smith_there_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "抽象に機械学習・深層学習の利用が記載されておらず、ハードウェアEDAの等価飽和手法を提案しているだけで、バイナリ/アセンブリから高級言語ソースや擬似コードを復元することが主目的ではないため、IN1・IN2を満たさず除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "stuglik_j-parallelio_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文はML/DLを使用せず、目的はJVMバイトコードの自動並列化であり、デコンパイルは前処理に過ぎないため、IN1・IN2を満たさず除外（EX-A）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "szafraniec_code_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.9,
+      "ai_reason": "論文の主目的は高級言語間のコード翻訳であり、IR デコンパイルは副次的手段に過ぎないため、デコンパイル研究の対象外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tan_llm4decompile_2024": {
+      "ai_decision": "include",
+      "ai_confidence": 0.98,
+      "ai_reason": "LLM4Decompileは大規模言語モデルを中核に用い、バイナリから高級言語のソースコードを直接生成することを主目的としており、入力はバイナリ、出力は高級ソースコードであるため、IN1・IN2・IN3をすべて満たす。除外基準には該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tan_sk2decompile_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.97,
+      "ai_reason": "LLMを中核にバイナリから高級言語相当のコードを生成することが主目的であり、入力はバイナリ、出力は構造化されたソース（識別子付き）であり、条件IN1・IN2・IN3をすべて満たすため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tan_decompile-bench_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本稿は大規模バイナリ‑ソース対データセットとベンチマークの提供が主目的であり、新規のML/DLを用いたデコンパイル手法の提案・検証は行っていない（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "thurnherr_neural_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "入力がバイナリやアセンブリではなくTransformerの重みで、出力はRASPプログラムというDSLであり、バイナリ/アセンブリから高級言語コードへの復元という本スコープ外（EX-B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "verbeek_formally_2025-2": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は機械学習・深層学習を用いた手法を提示しておらず、主目的はバイナリレベルのポインタ解析であり、デコンパイルや高級コード復元が主目的ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wan_bridging_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "入力がラスタ画像であり、バイナリやアセンブリではないため、スコープ外（EX-B4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_graph_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "主目的がスマートコントラクトの脆弱性検出であり、デコンパイルは前処理にすぎないため、デコンパイル研究の対象外（EX-A3）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_context-guided_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL（LLM）を核心に使い、バイナリから再コンパイル可能な高級言語コードを生成することが主目的であり、入力はバイナリ、出力はソースコードで、条件IN1・IN2・IN3をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_salt4decompile_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを用いた手法で、バイナリ（アセンブリ）から高級言語コードを生成することが主目的であり、入力は単一のバイナリ関数、出力はデコンパイルされたソースコードという要件をすべて満たすため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_tracellm_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿の主目的はEthereumスマートコントラクトのセキュリティ診断・脆弱性検出であり、デコンパイルは分析パイプラインの一部として使用されるに過ぎず、ソースコード復元や擬似コード高級化が主要タスクではない（EX‑A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wong_refining_2023": {
+      "ai_decision": "include",
+      "ai_confidence": 0.95,
+      "ai_reason": "LLMを中核に用いたデコンパイル出力の高級化（再コンパイル可能なCコード生成）を主目的とし、入力は既存デコンパイラ出力、出力は高級言語ソースであり、全条件IN1・IN2・IN3を満たすため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_exploring_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はChatGPTの汎用的なセキュリティタスクでの性能評価が主目的であり、デコンパイルは評価項目の一部に過ぎない（EX-A：目的が復元ではなくLLM評価）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wu_is_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本論文はML/DLを使用せず、デコンパイル手法の比較評価を目的としたサーベイ/ベンチマークであり、新規復元手法の提案が主旨ではない（EX-C1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xie_deqompile_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "対象が量子回路であり、ソフトウェアバイナリのデコンパイル対象外（EX-B4）。手法は遺伝的プログラミング中心で、ML/DLが主軸ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xu_symbol_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.87,
+      "ai_reason": "出力が変数名というラベル情報であり、ソースコードや擬似コードそのものの生成・高級化ではないため（EX-B3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "you_depyf_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "抽象からは機械学習／ディープラーニングを中核技術として使用している旨が示されず、単なるバイトコードデコンパイラであるため、IN1を満たさず除外（EX‑A）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_novel_2024-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェア検出（分類）であり、デコンパイルは特徴抽出の前処理に過ぎないため、EX-A1（分類・識別が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhou_fidelitygpt_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.92,
+      "ai_reason": "ML/DL（RAG/LLM）を中核に用い、デコンパイル結果の歪み検出と修正を主目的とし、入力はデコンパイラ出力、出力は高忠実度のコード（擬似コード/ソースに近い形）を提供しているため、IN1・IN2・IN3 をすべて満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhou_decompiling_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はRustバイナリのデコンパイル品質をベンチマーク評価する経験的研究で、ML/DL手法の提案や利用が記載されていない。目的はデコンパイルの課題分析であり、新規MLベースの復元手法ではないため、除外基準EX‑C1に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zou_d-lift_2025": {
+      "ai_decision": "include",
+      "ai_confidence": 0.96,
+      "ai_reason": "LLMを中核に用いた手法で、デコンパイラ出力を入力とし、可読性と正確性を向上させた高級言語ソースを生成することを主目的としているため、IN1·IN2·IN3 を全て満たす。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_proton_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は機械学習やデコンパイル手法に関する研究ではなく、標準模型と統一理論における陽子の安定性を理論的に議論する物理学論文であるため、目的がデコンパイル（ソース復元）と無関係（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_cobordism_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は量子場理論のCobordism分類を扱う理論物理研究であり、機械学習／ディープラーニングを用いた手法やバイナリ/アセンブリからのソースコード復元・高級化は目的にも手段にも含まれないため、IN1・IN2・IN3をすべて満たさず除外基準に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_ultra_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿は物理学の理論提案であり、機械学習やデコンパイルに関する記述がなく、スコープ外の研究です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_gauge_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は機械学習やデコンパイルを中心とした研究ではなく、IN1・IN2を満たさないため除外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "latune_quantum_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "論文は量子熱力学の理論と応用を扱っており、機械学習/深層学習の利用やバイナリから高級言語への復元・高級化といったデコンパイル目的が全く記述されていないため、IN1・IN2・IN3 を満たさず、EX-A（目的がデコンパイル以外）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_lift_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "EX-B1: 本研究はLLMでIRを最適化しシンボリック実行を高速化することが目的で、出力は高級言語ソースや擬似コードではなく最適化された低レベルIRであり、デコンパイル・ソース復元が主目的ではないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tehranijamsaz_graphbinmatch_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文の主目的はバイナリとソースコード間の類似度学習によるマッチングであり、デコンパイルや高級言語ソースの復元が目的ではない（EX‑A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wong_faster_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はバイトコード変換による変分実行の高速化を対象としており、機械学習やディコンパイルは中心課題ではないため、IN1を満たさず除外と判定",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lu_chameleon_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿はLLMを用いたマルチモーダル推論システムの提案であり、バイナリやアセンブリから高級言語ソースを復元することが主目的ではなく、入力・出力もコード生成ではなく回答生成なので、EX‑A（デコンパイルが目的でない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_towards_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的がソースコードの復元や高級化ではなく、LLM生成コードの正当性検証（検証タスク）であり、ML/DLは補助的であり、出力は高レベル仕様でコード復元に該当しない (EX-A3)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mccully_bi-directional_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的が脆弱性検出であり、デコンパイルは手段に過ぎないため（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "joshi_neuro-lift_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が自律ドローン航行のための自然言語指示・ニューロモーフィック視覚であり、バイナリやアセンブリから高級言語ソースを復元・擬似コードを高級化することが主目的ではない（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_quantum-classical_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的が量子最適化を用いたニューラルネットワークの訓練であり、バイナリ/アセンブリから高級言語ソースを復元することではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_binary_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はノイジーなメモリスタを用いたハードウェア向け深層学習アルゴリズムの提案であり、バイナリやアセンブリから高級言語コードを復元することを目的としていない。デコンパイル研究のスコープ外（EX‑A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gui_cross-language_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリとソースコードのマッチング（検索・類似度判定）であり、デコンパイルによる高級コード復元が主目的ではないためEX-A2に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_binaryai_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリとソースコードのマッチングによるソフトウェア構成分析であり、復元や高級化ではなく検索・類似度評価（EX-A2）に該当するため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhan_verified_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本文はシンボリック実行・SMTベースの手法で低レベル実装から数式を合成しており、機械学習/ディープラーニングを中心手法として使用していないため、IN1を満たさず除外となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "graf_selective_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本文はML/DLを使用せず、バイナリやアセンブリから高級言語への復元を目的としたデコンパイル研究ではなく、関数型言語の最適化手法（選択的ラムダリフティング）を提案しているため、IN1・IN2・IN3を満たさず、EX-A（目的がデコンパイルではない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "prenner_runbugrun_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文は自動プログラム修復（APR）用データセットの提供と修復手法の評価が主目的であり、バイナリから高級言語を復元するデコンパイル研究ではない（EX-A3）。ML/DL は修復モデルに利用されるが、デコンパイルやコード高級化が目的ではないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kulshrestha_vlad-grasp_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がロボットのグリップ検出であり、バイナリやアセンブリから高級言語コードを復元することとは無関係（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "cheng_lps-gnn_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は大規模グラフ上の表現学習を目的としたGNNフレームワークの提案であり、バイナリやアセンブリから高級言語コードを復元するデコンパイルが主目的ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_striderspd_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究の主目的はバイナリのセキュリティパッチ検出という分類タスクであり、ソースコード復元や擬似コードの高級化を行わないため、除外基準 EX-A3 に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_comprehension_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A4: 論文はLLMのシンボリック計算・推論能力の分析・説明が主目的で、デコンパイルやバイナリからの高級コード復元は対象外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "su_source_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ要約と関数名復元であり、ソースコードや高級擬似コードの復元・高級化が主目的ではない（EX-A4: summarization／EX-A1: identification）ため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_learning_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はCコードからx86アセンブリへのコンパイルであり、出力は低レベルのアセンブリでソースコードや高級擬似コードの復元ではない（EX‑B1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qiu_tenspiler_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はソースコードからテンソルIRへの変換を目的とし、バイナリから高級言語を復元するデコンパイルではなく、ML/DLが中心技術でもないため、IR‑onlyの変換（EX‑B1）に該当しスコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "kang_3d_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は2D姿勢から3D姿勢への推定（pose lifting）を目的としており、バイナリやアセンブリからソースコードを復元するデコンパイル研究ではないため、目的がEX-A（デコンパイルが副次的または不在）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "angermann_random_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は3次元画像分割のためのニューラルネットワーク手法を提案しており、デコンパイルやバイナリから高級言語コードの復元を目的としていないため、EX-A（目的が別タスク）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gao_pr2_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本研究はCからRustへのソース変換を目的としており、バイナリやアセンブリから高級言語を復元するデコンパイル研究のスコープ（EX‑B4）に該当しない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_semguard_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はLLMによるコード生成をリアルタイムで修正する手法を提案しており、入力は自然言語や生成中のコード、出力も修正されたコードである。バイナリやアセンブリから高級言語ソースを復元するデコンパイルが主目的ではなく、目的がコード生成支援（デコンパイル以外）のため、IN2を満たさずEX-A（デコンパイルが副次的タスク）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "haghighi_trlf_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "本研究は画像の透かし埋め込みと改ざん検出・復元を対象としており、バイナリやアセンブリから高級言語ソースコードを復元するデコンパイル目的ではないため、スクリーニング基準のIN2・IN3を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shirani_non-interactive_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は情報理論の非対話型ソースシミュレーションに関する研究で、機械学習・ディープラーニングやバイナリ/アセンブリからの高級コード復元を目的としていないため、スクリーニング基準のIN1–IN3を満たさず除外対象（EX-A系）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_no_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がコード生成の品質評価であり、バイナリから高級言語へ復元するデコンパイルとは無関係（EX-A4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_themis_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "本論文はオンデバイスDLモデルの知的財産保護を目的としており、デコンパイルや高級言語コードの復元が主目的ではなく、出力もコードではなくモデルの可書き換え版であるため、除外基準 EX-B3 に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "armengol-estape_forklift_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "目的はアセンブリから LLVM IR への変換であり、ソースコードや高級擬似コードの復元・高級化ではなく、低レベルIRへのリフティングに止まっている（EX-B1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhou_programming_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はLLMの事前学習データを改善する手法を提案しており、バイナリやアセンブリから高級言語ソースを復元するデコンパイルが目的ではない。したがってIN2を満たさず、EX‑A（目的がデコンパイル以外）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bressan_theory_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はディープニューラルネットワークを決定木で近似する手法の理論的解析であり、バイナリやアセンブリから高級言語ソースを復元することを目的としていないため、デコンパイル研究のスコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_repomaster_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はGitHubリポジトリの探索とコードエージェントによるタスク解決が主目的であり、バイナリやアセンブリから高級言語ソースを復元するデコンパイル研究ではない（EX-A1: 主目的がコード探索・タスク実行）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aguirre_pre-expectation_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は確率的プログラムの感度解析手法を提案しており、ML/DL を用いたデコンパイルや高級コード復元が目的ではないため、除外基準 EX-A に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_energy-efficient_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A: 目的がバイナリデコンパイルや高級コード復元ではなく、エッジ推論のエネルギー最適化・ビームフォーミングに関する研究であるため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hu_optimizing_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が分類モデルの最適化であり、デコンパイルや高級コード復元が主目的ではない（EX-A1）。また、ML/DL が中心手法でもなく、SAT/MaxSAT の最適化手法を用いているため IN1 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "stojnic_capacity_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はML/DLを用いたデコンパイルやソースコード復元を目的としておらず、バイナリ/アセンブリから高級言語への変換に関する記述がないため、除外基準 EX-A に該当する",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tepper_procrustean_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は類似検索向けハッシュ手法の提案であり、バイナリやアセンブリから高級言語コードを復元することが目的ではない（IN2を満たさず）。ML/DL が使用されてもデコンパイルが主要タスクでないため、除外（EX‑A）となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_parameterized_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文は動的論理の理論構築と検証フレームワークの提案であり、ML/DL を用いたデコンパイルや高級コード復元を目的としていない（IN1・IN2 未満）。したがってスコープ外のため除外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "delabeye_unsupervised_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリやアセンブリから高級言語コードを復元するデコンパイルではなく、センサーデータからアクティベーション列を抽出する信号処理タスクであるため (EX-A)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "heunen_quantum_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本文は量子プログラミング言語とコンパイラの設計を扱っており、機械学習/ディープラーニングは使用されていない。目的もバイナリやアセンブリから高級言語ソースを復元するデコンパイルではなく、抽象的な量子言語の提案であるため、IN1・IN2を満たさず除外対象となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mayoral-vilches_cybersecurity_2026": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はバイナリやアセンブリから高級言語コードを復元することを目的としておらず、攻撃・防御のゲーム理論的ガイダンス層を用いたペネトレーションテスト支援が主目的であるため、除外基準 EX-A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gross_sift_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本研究はLLMを用いた情報検索・ランキングで脆弱性の優先順位付けを行うことが主目的であり、バイナリから高級言語ソースや擬似コードを復元するデコンパイル研究ではない（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "paul_masked_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿はフェデレーテッド継続学習とマスクオートエンコーダの表現学習が主目的で、バイナリやアセンブリから高級言語ソースコードを復元するデコンパイルとは無関係。ML/DL は使用されるが目的がEX‑A（デコンパイルが手段ではなく全く別タスク）に該当するため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alrabaee_bindeep_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリ関数とソース関数のマッチング・検索であり、デコンパイルや高級コード復元が主目的ではない（EX‑A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gao_grayscale_2010": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的が画像のウォーターマーキングであり、バイナリから高級言語コードを復元するデコンパイル研究ではないため（IN2未達）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_binaryai_2024-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はバイナリとソースコードのマッチングによるソフトウェア構成分析（SCA）を主目的としており、バイナリから高級言語ソースや擬似コードを復元することが目的ではないため、除外（EX-A3）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "tehranijamsaz_graphbinmatch_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がバイナリとソースコードのマッチング（類似度学習）であり、デコンパイルや高級コード復元が主目的ではない（EX-A2）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "donisi_machine_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がバイオ信号によるリスク分類であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "prisco_feasibility_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A1: 目的が姿勢の安全性分類という機械学習ベースの分類タスクであり、デコンパイルや高級コード復元は対象外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "boufama_deep-learning_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的は作業認識と姿勢評価であり、デコンパイルや高級コード復元とは無関係（EX-A1）。MLは使用されているが、対象がバイナリ/アセンブリではなく動画データで、入出力もコード変換ではないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xu_biomechtronic_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がロボットの設計・制御であり、バイナリからのコード復元やデコンパイルに関する研究ではないため（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "delpreto_sharing_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は筋電活動の分類によるロボット制御が主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（EX-A1: classification が中心）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "postma_electromagnetic_1998": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はロボットグリッパのハードウェア設計と磁気解析が主目的であり、機械学習やデコンパイル・高級コード復元に関する記述が全くないため、IN1‑IN3 を満たさず、EX‑A（デコンパイルが目的でない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "feng_novel_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がCTS検出の二値分類であり、MLは診断用の分類器として使われている。デコンパイルや高級コード復元とは無関係で、入力もバイナリやアセンブリではなく biomechanical 時系列データ。したがって EX-A1 (classification) に該当し除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hosseini_assessing_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は姿勢推定による作業リスク評価が目的であり、バイナリやアセンブリからのコード復元とは無関係。入力も映像/姿勢データで、MLはコード変換ではなく姿勢推定に使用されているため、IN2 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "donisi_feasibility_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がリスク分類であり、デコンパイルや高級コード復元が主目的でない（EX-A1: classification）。入力は生体信号、出力はリスクラベルで、IN1‑IN3 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "majewski_building_2016": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は音声インターフェースと制御システムの研究であり、バイナリやアセンブリから高級言語コードを復元することが目的ではなく、デコンパイルは対象外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "atef_simulation-based_2010": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は風力タービン建設のシミュレーションと風速予測に関するもので、バイナリやアセンブリから高級言語コードを復元するデコンパイルやMLを用いたコード生成を目的としていない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sable_customized_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は顔認識と画像特徴抽出に関する研究であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル目的やMLを用いたコード生成は含まれない（IN2, IN3 未達成）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "park_object-aware_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文はロボットのインピーダンス制御とオンラインパラメータ推定に関する研究であり、デコンパイルや高級コード復元を目的としていない。入力・出力はバイナリやアセンブリでもなく、ML/DL は将来の拡張として言及されるだけで主軸ではないため、除外基準 EX‑A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_dga_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が変圧器の故障診断であり、コード復元やデコンパイルとは無関係。機械学習/ディープラーニングも使用していないため、EX‑A1（分類・識別が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "adapa_fatigue_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的は筋電信号の疲労分類・オンセット推定であり、デコンパイルや高級コード復元とは無関係。MLは分類に用いられるが、EX-A1(分類タスク)に該当するため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chubbuck_metal_1930": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "本文は電気スイッチギアの技術紹介であり、機械学習やデコンパイルに関する記述が全くないため、IN1・IN2・IN3 を満たさず除外対象 (EX-A 系列) です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jose_robust_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的は筋電図信号の分類による診断支援であり、デコンパイルやコード復元とは無関係な分類タスク（EX-A1）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lutska_monitoring_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はベーカリーのプレドウ製造品質予測のための機械学習モデル構築を扱っており、バイナリ解析やデコンパイル・高級コード復元とは無関係であるため、除外基準（EX-A系）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lee_overflow-detectable_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文は浮動小数点完全同型暗号の提案であり、機械学習やデコンパイル・高級言語復元は目的でも手段でもなく、IN2（デコンパイルが主目的）を満たさないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "noauthor_table_2014": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習／深層学習が中心手法として記載されず、デコンパイルや高級コード復元が目的でもないため、除外（EX-A1／EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_gigl_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がバイナリやアセンブリから高級言語コードを復元するデコンパイルではなく、グラフニューラルネットワークを用いたレコメンデーション等のビジネスタスクであり、入力もバイナリ/アセンブリではなく大規模グラフデータなので除外（EX-A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "han_neural_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はバイナリやアセンブリから高級言語ソースを復元することを目的としておらず、MLは皮膚変形のモデリングに使われているだけで、デコンパイルやコード生成は対象外です。したがってIN2・IN3を満たさず、目的が別タスク（EX-A）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hu_zipzap_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がブロックチェーン取引の不正検出という分類タスクであり、デコンパイルや高級コード復元が主目的ではない（EX-A1/EX-A2に該当）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_control_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はBPニューラルネットを用いた機械制御手法の提案であり、バイナリやアセンブリから高級言語コードを復元することを目的としていない（EX-A: 目的が別タスク）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_research_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はサプライチェーン金融の信用リスク予測モデル構築を目的としており、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（MLはリスク予測に使用）。したがって除外基準 EX-A1（分類・予測が主目的）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zheng_deep_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "サーベイ論文であり、機械学習を用いた新規デコンパイル手法の提案や評価がなく、対象外（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_research_2024-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "論文は深層学習で針灸技術を分類することが主目的であり、バイナリやアセンブリからのソース復元・擬似コード高級化とは無関係（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_construction_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が炭素排出予測であり、バイナリから高級言語コードを復元するデコンパイル研究ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sun_investigation_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が作業者の筋骨格障害予測であり、デコンパイルやバイナリからの高級コード復元ではない（EX-A1: 分類・予測タスク）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qiu_path_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は英語コロケーション検索のためのパスプランニングアルゴリズムであり、バイナリやアセンブリから高級言語コードを復元することを目的としていない（デコンパイル目的外）。MLは使用されているが、目的がデコンパイルではないため除外基準 EX-A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_recent_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "サーベイ論文であり、新規なMLベースのデコンパイル手法や実装は提示していない（EX-C1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wei_towards_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "EX-A1: 本研究は医療データの分類・診断が主目的であり、バイナリやアセンブリからソースコードを復元するデコンパイル研究ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_binaryai_2024-2": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的はバイナリとソースコードのマッチングによるソフトウェア構成分析（SCA）であり、ソースコードの復元や擬似コードの高級化が主目的ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "asvadishirehjini_ginn_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的がニューラルネットの訓練における完全性保証であり、デコンパイルや高級コード復元とは無関係",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_guided_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.85,
+      "ai_reason": "入力がバイナリ・アセンブリではなく既存の高級言語コードで、目的がDSLへのコードリフトであるため、デコンパイル研究の範囲外（EX-B4）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lamprou_guarding_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.86,
+      "ai_reason": "論文はLLMによるソフトウェア変換の安全性ガードレール構築が主目的で、デコンパイルや高級コード復元は副次的なタスクに過ぎず、復元が主要目標ではない（EX-A3: verification）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "deshpande_stackbert_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はスタックフレームサイズ予測というバイナリ解析タスクが主目的であり、ソースコードや高級擬似コードの復元・高級化を行わないため、IN2を満たさずEX-A（デコンパイルは手段であり目的ではない）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zeng_obfusx_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究はハードウェア配線の難読化とMLによる説明可能性分析が主目的であり、バイナリやアセンブリから高級言語ソースを復元するデコンパイル研究ではない (EX-B4)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shoji_poster_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がHVACシミュレーションの状態推定であり、コードのデコンパイルやソース復元とは無関係（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "malhotra_decoding_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がEEG信号による身体ジェスチャ分類であり、デコンパイルや高級コード復元とは無関係なため除外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "buet-golfouse_lifting_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は金融モデルのカーネル関数を機械学習で近似しマルコフ化することが主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイルとは無関係。出力もコードや擬似コードではなく数式的なカーネルであり、IN2・IN3を満たさないため除外対象（EX-B3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "devarakonda_design_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "IN2を満たさず、デコンパイルや高級コード復元が目的でないため（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chang_lifting_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が薄壁変形体の切断を扱う物理シミュレーション用ニューラルフィールドの構築であり、バイナリやアセンブリから高級言語ソースを復元するデコンパイル研究ではない（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zebaze_bearing_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "ML/DLは使用しているが、目的は風力タービンのベアリング損失予測であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bagga_real-time_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "EX-A1: 本研究は姿勢検出・リスク評価が主目的で、バイナリからのコード復元やデコンパイルとは無関係",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_prediction_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は航空警官の身体性能予測を目的としており、デコンパイルや高級コード復元は対象外。目的がデコンパイルではなく予測モデル構築（EX-A）に該当するため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xiao_intelligent_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿は電力網建設用機械の制御・監視に関する研究であり、バイナリやアセンブリから高級言語コードを復元することを目的としていない。機械学習はAI制御に使用されているが、デコンパイルやコード生成は対象外であるため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "toledo_deeper_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が画像 DNN の正しさ特性（検証・仕様生成）であり、バイナリやアセンブリから高級言語コードを復元することではない（EX-A3: verification 系タスク）。入力・出力もコードではなく画像と属性で、スクリーニング基準を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gao_research_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェアコードの分類であり、デコンパイルや高級コード復元は主目的ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_support_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はDNN検証のための近似構築手法を提案しており、バイナリやアセンブリから高級言語コードを復元するデコンパイルが主目的ではないため、除外基準EX‑Aに該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "collie_program_2024": {
+      "ai_decision": "uncertain",
+      "ai_confidence": 0.6,
+      "ai_reason": "Abstractに機械学習/深層学習の使用が明示されておらず、IN1（ML/DLが中核）の有無が判定できないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "huang_functional_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は医療機器の機能評価と意思決定支援が主目的であり、バイナリから高級言語コードを復元するデコンパイル研究ではないため除外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jain_contextual_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がテストの検出結果予測であり、デコンパイルやソースコード復元ではなく分類タスク（EX‑A1）に該当するため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ibrahim_space-time_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿はバイナリやアセンブリから高級言語ソースを復元するデコンパイルを目的としておらず、PDE解法のための物理情報付きニューラルオペレータを用いた並列アルゴリズムの提案であるため、IN2を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lyu_non-collocated_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "デコンパイルやコード復元が主目的ではなく、人体動作検出とペイロード推定の分類タスクであるため（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "takahira_insitutale_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿は物理オブジェクトを用いたデータストーリーテリングシステムの提案であり、MLはVision‑LLMによるイベント検出に使われているが、バイナリ/アセンブリから高級言語ソースや擬似コードを復元・高級化することが主目的ではない（IN2未達成）。したがってデコンパイル研究のスコープ外で除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yongfeng_method_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は電力設備の搬送手法と実験結果を扱うもので、機械学習/ディープラーニングやバイナリからのコード復元・高級化といった目的が全く含まれないため、除外対象（EX-A・EX-B）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hula_understanding_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究の主目的はSAT問題に対するGNNの解釈・説明であり、バイナリやアセンブリからのソースコード復元・デコンパイルとは無関係（EX-A4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "egan_dog_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がヒューマンモーションからクアドロペッドモーションへのマッピングであり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yang_dgpl_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は自動運転向けのBEVセマンティックセグメンテーション手法であり、デコンパイルや高級コード復元を目的としていないため対象外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "li_queryable_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は3Dシーン表現とロボットタスク計画が目的で、デコンパイルや高級コード復元に関する研究ではないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_hebridge_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DL を中核に用いたデコンパイル研究ではなく、同型暗号のアルゴリズム改善が目的であり、入力・出力もバイナリやコードではなく暗号平文空間なので、IN1・IN2・IN3 を満たさない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fan_reducing_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿はタッチイベントの低遅延検出と分類が目的であり、バイナリ/アセンブリから高級言語コードを復元するデコンパイル研究ではない（目的がデコンパイルではなく、EX‑B4に該当）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dai_mseva_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究はEMG信号を用いたリハビリ評価で、LSTMによる分類が主目的（EX-A1）。バイナリやアセンブリから高級言語コードを復元するデコンパイル目的ではなく、コード復元・高級化に関する要素が全くないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "amirtha_varshini_real-time_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は手勢の分類（画像認識）を目的としており、デコンパイルや高級コード復元とは無関係なため、EX-A1（分類タスク）に該当し除外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "guichoux_2d_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は音声からジェスチャを生成する研究であり、バイナリやアセンブリから高級言語ソースコードを復元することが目的ではない。目的がデコンパイル以外のタスクであるため、除外基準 EX‑A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "amara_nearest_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "目的が近傍探索の精度向上（ベクトル再構成）であり、デコンパイルやソースコード復元が主目的でないため（EX-A2）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ying_retouchingffhq_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的が顔リタッチ検出であり、デコンパイルや高級コード復元とは無関係なため（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_design_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はホバークラフトの設計・制御に関する研究で、機械学習は制御決定に用いられるが、バイナリやアセンブリからのソースコード復元・高級化は目的でも入力・出力でもないため、除外基準EX-Aに該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_exploiting_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は高次元データの圧縮と高速クエリを目的としており、機械学習/ディープラーニングは主要手法ではなく、出力も圧縮コードでありコード復元や擬似コード高級化とは無関係（EX‑B3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "thangamani_lifting_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文に機械学習・深層学習の利用が示されず、目的もバイナリから高級言語を復元するデコンパイルではなく、心臓シミュレーション用コード生成・最適化であるため、IN1を満たさず除外（EX-B1）となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mehmood_safe_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本稿は制御システムの安全性検証が主目的であり、バイナリから高級言語ソースを復元するデコンパイル研究とは無関係。機械学習は制御器に使用されているが、デコンパイルは目的でも手段でもないため除外対象（EX‑A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mack_tutorial_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文は異種ヘテロジニアスアーキテクチャ向けランタイム環境の紹介であり、機械学習／ディープラーニングを用いたデコンパイルや高級コード復元が目的ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "shafiei_position_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的がマルウェアの対抗的生成・回避であり、デコンパイルや高級コード復元ではない（EX-A3）。抽象にはMLを用いた検出回避に関する議論しかなく、入力・出力がバイナリからソースコードへの変換を示さない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "srinivasan_pluto_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は可視化ツールのテキスト・チャート共同執筆支援が主目的であり、バイナリやアセンブリからの高級コード復元・デコンパイルとは無関係（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "saber_latibari_iret_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はバイナリやアセンブリから高級言語ソースコードを復元することを目的としておらず、エネルギー効率化のための Vision Transformer のトークン剪定手法を提案しているため、IN2（デコンパイルが主目的）を満たさず除外（EX-A）と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wicaksono_idiffpose_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文はディフュージョン・グラフを用いた姿勢推定が主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_toothfairy_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DL が主要手法ではなく、バイナリやアセンブリから高級コードを復元するデコンパイル研究でもないため、IN1・IN2・IN3 をすべて満たさず除外対象です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "dinella_inferring_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本文からは機械学習／深層学習を用いたことが示されず、目的はコードから前提条件を推定する解析手法であり、デコンパイルや高級コード復元とは無関係です。したがってIN1・IN2を満たさず、EX-Aに該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "vasilenko_safe_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的は確率的計算の検証であり、コード復元やデコンパイルは主目的ではない（EX-A3）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "watson_financial_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が画像文書中の表抽出であり、バイナリやアセンブリからソースコードを復元するデコンパイル研究ではないため、EX-Aに該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "fothi_skel3d_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "論文はバイナリやアセンブリから高級言語コードを復元することを目的としておらず、モノクラー画像から新視点画像を生成する手法を提案している。デコンパイルやコード高級化が主目的でないため、除外基準EX-Aに該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wei_large-area_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "研究は光学デザインとニューラルリソグラフィー予測であり、バイナリ/アセンブリから高級コードを復元することを目的としていない（EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ahmad_vector_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本稿はプログラム合成による命令選択手法を提案しており、機械学習／ディープラーニングを中核に用いたデコンパイルや高級コード復元が目的ではないため、IN1 を満たさず除外 (目的がコンパイル最適化) と判断した。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aguirre_pre-expectation_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文は確率的プログラムの感度解析手法を提案しており、デコンパイルやバイナリから高級コードへの復元が目的ではない。機械学習／深層学習を中核に用いた手法でもなく、入力・出力もバイナリや擬似コードとは無関係なため、除外基準 EX-A に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_unite_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究はマーケティングの処置効果推定であり、バイナリから高級言語コードを復元することが目的ではなく、デコンパイルは全く対象外なのでIN2を満たさず除外（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lemercier_storm_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "研究目的は音声強調・デリバーブであり、バイナリやアセンブリから高級言語コードを復元するデコンパイルとは無関係。MLは使用されているが、IN2（デコンパイルが主目的）を満たさないため除外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "guo_real-time_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究はクレーンの障害物回避のための DQN に基づく経路計画であり、デコンパイルやバイナリから高級言語の復元が目的ではない（IN2未達成）ため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qiu_ivt_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が3D姿勢推定であり、デコンパイルや高級コード復元とは無関係（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xu_mechanical_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "機械構造設計と制御系の論文で、ML/DLやバイナリからのコード復元は含まれず、デコンパイル研究のスコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jang_toonify3d_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文はStyleGANを用いた3次元顔生成が主目的であり、バイナリやアセンブリからソースコードを復元するデコンパイル研究ではない（目的がEX-Aに該当）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_precise_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本研究はバイナリ/アセンブリから高級言語コードを復元することを目的としておらず、シミュレーション用ニューラルフィールドの構築が主目的であるため除外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_distracted_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "目的が電話の手持ち使用検知という分類タスクであり、デコンパイルや高級コード復元が主目的ではない（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "wang_design_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文に機械学習／深層学習の利用やバイナリから高級言語コードを復元する目的が記載されておらず、デコンパイル研究の対象外であるため（IN1, IN2 が満たされない）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "hartfill_emg-based_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はEMGによるジェスチャ認識であり、機械学習・深層学習が主目的でもなく、バイナリやアセンブリから高級コードを復元するデコンパイル研究ではないため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "xu_phrase-gesture_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はスマートフォンのジェスチャー入力システムで、MLは言語モデルによるジェスチャーデコーダに使用されているが、バイナリやアセンブリから高級言語コードを復元するデコンパイル目的ではない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mao_research_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "機械学習やデコンパイルが主目的ではなく、物流システム統合の研究でありIN1・IN2を満たさないため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "baumer_finding_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "本論文は SSH プロトコルの状態機械をブラックボックス学習で解析する研究で、機械学習／深層学習は使用せず、デコンパイルや高級言語コード復元も目的としていないため、IN1・IN2 を満たさず除外対象 (EX‑A 系列) となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chu_research_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "目的がロボットの歩行制御であり、デコンパイルや高級コード復元とは無関係。機械学習・深層学習も使用していないためIN1を満たさない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhang_design_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はトマト収穫ロボットの制御・ビジョンシステム設計であり、バイナリやアセンブリから高級言語ソースコードを復元することが目的ではない。ML/DL が用いられていても decompilation が主目的でないため、スクリーニング基準の EX‑A（デコンパイルが目的でない）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "little_polymorphic_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本稿は動的計画法の代数的導出手法を提案しており、機械学習／ディープラーニングの利用やバイナリから高級言語への復元・高級化を目的としていないため、EX-A系（目的がデコンパイルではなくアルゴリズム設計）に該当し除外します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_matcha_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はTFHEゲートの高速化を目的としたハードウェアアクセラレータであり、機械学習を用いたバイナリ/アセンブリからの高級言語復元や擬似コード高級化を主目的としていないため、IN2を満たさずEX-B4（デコンパイル対象外）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bangaru_systematically_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本文はパラメトリック不連続性の微分手法と新しい微分プログラミング言語の提案であり、入力・出力共にバイナリやコード復元を対象としておらず、ソースコード生成・擬似コード高級化が目的ではない（EX‑B3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sato_formal_2019": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は確率的プログラムの形式検証に関するロジック構築が主目的であり、機械学習・ディープラーニングを中核に用いたバイナリから高級言語への復元・高級化は含まれない。入力も出力もバイナリやアセンブリとは無関係で、除外条件 EX-A3（検証・形式検証が主目的）に該当するため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "mio_beyond_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.97,
+      "ai_reason": "IN1 not satisfied (論文はML/DLを用いた手法を提案しておらず、デコンパイルや高級コード復元とは無関係)",
+      "manual_decision": null,
+      "note": ""
+    },
+    "granskog_neural_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はバイナリやアセンブリから高級言語コードを復元することを目的としておらず、MLはシーンレンダリングに用いられるだけなので、スコープ外（EX-A）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sharma_graspui_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がオブジェクト中心ジェスチャーの設計・評価であり、デコンパイルや高級コード復元とは無関係。ML/DL が主要手法でもなく、スコープ外のため除外 (EX-A)。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gevay_power_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はバイナリ/アセンブリの高級化やソース復元を目的としておらず、ML/DL を利用したデコンパイル研究でもないため、除外基準 EX-B4（対象がスコープ外）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_enhancing_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はホームエクササイズ向けディスプレイの高さ自動調整に関する研究で、ML/DL を用いたバイナリからの高級言語復元や擬似コード高級化が目的ではなく、デコンパイルは対象外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jiang_latent-space_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はMRI画像復元を目的としており、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではないため。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "sun_sonispace_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は身体動作の可視化・音響化に関するインタラクション研究であり、ML/DL を用いたバイナリからのソースコード復元や擬似コード高級化という目的・入力・出力が全く存在しないため、スクリーニング基準のIN1‑IN3を満たさず除外対象となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ning_control_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はロボット巡回システムの設計・実装が主目的で、ML/DLを用いたバイナリ/アセンブリからのソース復元やデコンパイルは対象外であるため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "baronetto_simulation_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はバイナリやアセンブリから高級コードを復元する研究ではなく、衣服埋め込みセンサのシミュレーション手法を提示している。ML/DL をデコンパイルに用いる目的もなく、入力・出力もバイナリ等ではないため、全ての採択条件 (IN1‑IN3) を満たさず除外対象 (EX‑A/EX‑B/EX‑C) に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bai_speech_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は音声から顔画像を生成する研究で、バイナリやアセンブリから高級言語コードを復元するデコンパイルとは無関係であり、スコープ外です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bustany_specpart_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はバイナリやアセンブリから高級言語ソースを復元することを目的としておらず、ハイパーグラフ分割という別領域の最適化手法を提案している。したがってIN2を満たさず、スコープ外で除外とする。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aso_portable_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が3D姿勢推定であり、バイナリやアセンブリからソースコード復元・高級化を行うデコンパイル研究ではない（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "chen_automata-based_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本研究は量子回路の検証・バグ検出が主目的であり、ML/DL を中核に用いたバイナリから高級言語への復元や擬似コード高級化とは無関係（EX-A3・EX-B4）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "colaco_constructive_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "要旨に機械学習・ディープラーニングが使われていない上、デコンパイルや高級コード復元が目的ではなく、言語意味論とインタプリタの構築が主旨であるため",
+      "manual_decision": null,
+      "note": ""
+    },
+    "alexandru_intrinsically_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿はCubical Agdaによる整列アルゴリズムの形式的証明を扱うもので、機械学習/深層学習の利用やバイナリから高級言語への復元・デコンパイルが目的ではなく、対象外（EX-A・EX-B）です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aranovich_beyond_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的がサイバーセキュリティ情報の統合・抽出であり、デコンパイルや高級コード復元とは無関係（EX-A4）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "futami_method_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "研究の主目的は赤外線センサによる顔ジェスチャ認識であり、デコンパイルや高級コード生成とは無関係。ML/DL が主要手法かどうかも抽象からは不明で、IN1・IN2・IN3 を満たさないため除外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "heidari_allocating_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は機械学習やディープラーニングを用いたデコンパイル・ソース復元を目的としておらず、社会経済モデルの最適配分が主題であるため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yoon_formal_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は機械学習／深層学習を用いた手法を提案しておらず、デコンパイルや高級言語復元を目的としていないため、IN1・IN2 を満たさず、目的がデコンパイル以外（形式的モナドインタプリタの理論構築）である点から EX-A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "aguirre_higher-order_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は機械学習・深層学習を使用せず、バイナリから高級言語への復元や擬似コード高級化を目的としていないため、IN1・IN2・IN3 を満たさず除外対象となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "arranz_olmos_preservation_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はコンパイラのスペキュレーティブ・コンスタントタイム特性の保持を形式的に検証するもので、機械学習・ディープラーニングは使用されず、バイナリから高級言語コードを復元することも目的としていないため、EX-A3（検証・安全性保証系）に該当し除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "carvalho_semantic_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DL が使用されておらず、デコンパイルや高級コード復元が研究目的ではないため、IN1・IN2・IN3 を満たさず除外されます。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "lu_grisette_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文はシンボリックコンパイルと制約ソルバ用評価フレームワークを提案しており、目的はバイナリやアセンブリから高級言語コードを復元することではなく、プログラムを制約に変換することにあるため、デコンパイル研究の範囲外（EX-A）。ML/DL 手法も使用していない。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jeffrey_leaky_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文はリラックスドメモリモデルの形式的手法を提案しており、機械学習/ディープラーニングやバイナリからのソース復元は目的でも手法でも登場しないため、IN1・IN2を満たさず、EX-A（デコンパイルが目的でない）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ullrich__2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "ML/DLを使用せず、デコンパイル（バイナリから高級コード復元）が主目的でないため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "gu_3d_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "本論文は3Dヒューマンポーズ推定というコンピュータビジョン課題であり、バイナリやアセンブリから高級言語を復元することを目的としていない（IN2・IN3 を満たさない）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "spies_quiver_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文献はML/DLを用いた手法ではなく、バイナリから高級コードを復元するデコンパイルが主目的でもないため、IN1・IN2を満たさず除外となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "trevithick_real-time_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は単一画像から3D表現を生成することが目的で、バイナリやアセンブリから高級言語コードを復元するデコンパイルとは無関係です。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jeong_massive_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がマルウェアの分類であり、デコンパイルや高級コード復元が主目的ではない（EX-A1: classification）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "ramamoorthy_linux_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的がマルウェア変種の分類であり、デコンパイルや高級コード復元ではなく分類タスク（EX-A1）に該当するため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "donisi_work-related_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がバイナリデコンパイルではなく、ウェアラブルセンサデータのリスク分類（機械学習による二値分類）であるため、EX-A1（分類タスク）に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "prisco_capability_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "目的が姿勢の安全/不安全分類であり、デコンパイルやソースコード復元が主目的ではない（EX-A1: classification）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "falconer_condition_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がファイバーロープの状態分類であり、デコンパイルや高級コード復元とは無関係（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "stahl_toward_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が航空翼の流れ分離検出であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではないため（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "haghighi_effective_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "本論文の目的は画像透かしによる改ざん検出・復元であり、デコンパイルや高級言語コードの復元とは無関係。MLはFNNを用いた特徴抽出だが、デコンパイルは主目的外（EX-A3）であるため除外する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "islam_neural_2018": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文は画像透かし技術であり、機械語バイナリやアセンブリの高級言語復元を目的としていない。MLは使用されているが、デコンパイル・高級化が目的ではないため除外（EX-A1）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "horvath_pragmatic_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.96,
+      "ai_reason": "ML/DLが中心でなく、目的がSysMLモデルの検証・妥当性確認（verification/validation）であり、デコンパイルやソースコード復元とは無関係なため（EX-A3）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "jang_transformer-based_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "本論文は建設現場の動画から作業を認識することを目的としており、バイナリ/アセンブリからのコード復元や擬似コード高級化とは無関係であるため、デコンパイル研究のスコープ外（EX-A）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "rhim_binary_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.98,
+      "ai_reason": "論文は光学マルチプレクサの設計・実装について述べており、機械学習/深層学習の活用やバイナリから高級コードへの復元・高級化を目的としていない（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhao_research_2024-1": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本稿は原子炉の熱・制御特性シミュレーションであり、ML/DL を用いたデコンパイルや高級コード復元が目的ではないため、除外基準 EX‑A に該当します。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "zhou_modeling_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "本論文は船舶ブロック結合装置の制御手法を提案しており、MLはRBFニューラルネットを制御に利用しているが、デコンパイルや高級言語ソース復元が主目的ではない（IN2未達）。したがって目的が別タスクであり除外対象となる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "he_formalizing_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.93,
+      "ai_reason": "EX-B2: 本稿は G‑code を立方体や点群に変換して解析するアルゴリズムを提案しており、機械学習は使われず、出力も高級言語ソースや擬似コードの高級化ではなく、コードの可視化・評価に留まるため除外",
+      "manual_decision": null,
+      "note": ""
+    },
+    "agrawal_leveraging_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "機械学習・ディープラーニングを用いず、デコンパイルやバイナリから高級コード復元を目的としていないため、スクリーニング基準のIN1〜IN3を満たさず除外対象となります。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liew_interpretable_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が低背痛の状態分類であり、デコンパイルや高級コード復元が主目的ではないため（EX-A1: 分類タスク）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "qin_directed_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "目的は脆弱性検出とグレイボックスファジングであり、デコンパイルや高級言語コードの復元が主目的ではない（EX-A3・EX-B1）。MLは類似度比較とターゲット選択に使用されているが、出力はコードではなく脆弱関数の特定・テスト対象であるため基準から外れる。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "liu_headland_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的が農業機械の走行支援のための画像・ステレオビジョンによるヘッドランド検出であり、デコンパイルやコード復元とは無関係（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "bu_overview_2021": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本文は航空エンジンファンノイズの測定手法のレビューであり、デコンパイルやバイナリからの高級コード復元を目的としていない。機械学習は測定技術の補助として言及されるだけで、ML/DL が主目的ではなく、対象外タスク（EX-A）に該当する。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "schwarz_co-evolutionary_2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本論文はタンパク質構造予測・柔軟性解析が目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイル研究ではない（目的がデコンパイルではないためEX‑Aに該当）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "khan_plane_2023": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "目的がCT画像のセグメンテーションであり、デコンパイルや高級コード復元とは無関係（EX-A）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "castellanos_fault_2020": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は決定木による故障検出・分類が主目的であり、バイナリやアセンブリから高級言語コードを復元するデコンパイルとは無関係です（EX-A1）。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "yin_artificial_2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.99,
+      "ai_reason": "本研究は医療データからサルコペニアを予測する分類タスクであり、デコンパイルやコード復元を目的としていない（EX-A1）。入力はバイナリ/アセンブリではなく人口統計・機能指標、出力も疾病リスク予測であるためスコープ外。",
+      "manual_decision": null,
+      "note": ""
+    },
+    "guan_study_2025": {
+      "ai_decision": "exclude",
+      "ai_confidence": 1.0,
+      "ai_reason": "研究目的は慢性疾患患者におけるうつ症状要因の特定・予測であり、バイナリやアセンブリから高級コードを復元するデコンパイルとは無関係（EX‑A1）",
+      "manual_decision": null,
+      "note": ""
+    }
+  }
+}

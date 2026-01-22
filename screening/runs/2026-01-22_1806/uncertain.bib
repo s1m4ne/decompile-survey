@@ -1,0 +1,14 @@
+@inproceedings{collie_program_2024,
+ abstract = {Porting specialized application components to new platforms is difficult. This is particularly true if the components depend on proprietary libraries, or specific hardware. To tackle this, existing work has sought to recover high-level descriptions of application components to ease their retargeting. However, existing schemes are either too limited, targeting just one application domain, or too weak, making them ill-suited to recovering real-world programs. Additionally, many rely on help in the form of problem-specific user annotations or complex specifications.This paper develops a new approach using gray-box program synthesis, which recovers code by automatically constructing a program to match the behavior of an unknown component. However, unlike other synthesis approaches, it exploits the dynamic or gray-box behavior of a component to guide recovery. For example, the execution time, memory access patterns or observed instruction traces can all be used to direct synthesis.We evaluate our technique (Haze) extensively against existing program synthesizers and a domain-specific lifter. Our scheme is able to generalize effectively across domains, synthesizing and lifting more programs than prior techniques, without any external assistance. We validate our methodology using bounded model checking, demonstrating that our synthesized programs are correct. Finally, we apply our approach to machine learning workloads, obtaining significant speedups automatically.},
+ author = {Collie, Bruce and O'Boyle, Michael F.P.},
+ booktitle = {Proceedings of the 30th {International} {Conference} on {Parallel} {Architectures} and {Compilation} {Techniques}},
+ doi = {10.1109/PACT52795.2021.00012},
+ isbn = {978-1-6654-4278-7},
+ keywords = {program synthesis, compilers, lifting},
+ pages = {60--74},
+ publisher = {IEEE Press},
+ series = {{PACT} '21},
+ title = {Program {Lifting} using {Gray}-{Box} {Behavior}},
+ url = {https://doi.org/10.1109/PACT52795.2021.00012},
+ year = {2024}
+}

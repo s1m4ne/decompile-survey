@@ -1,0 +1,11 @@
+{
+  "run_id": "2026-01-22_1756",
+  "created_at": "2026-01-22T17:56:33.334301",
+  "model": "openai/gpt-oss-120b",
+  "provider": "local",
+  "concurrency": 10,
+  "input_file": "/Users/matsulab/univ/lab/decompile_survey/decompile-survey/imports/arXiv/arXiv_decompil_20260115_1917.bib",
+  "input_file_abs": "/Users/matsulab/univ/lab/decompile_survey/decompile-survey/imports/arXiv/arXiv_decompil_20260115_1917.bib",
+  "rules_file": "/Users/matsulab/univ/lab/decompile_survey/decompile-survey/screening/rules/decompile_v3.md",
+  "rules_file_abs": "/Users/matsulab/univ/lab/decompile_survey/decompile-survey/screening/rules/decompile_v3.md"
+}

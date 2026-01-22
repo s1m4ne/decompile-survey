@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "run_id": "2026-01-22_1755",
+    "source_input": "input.bib",
+    "created_at": "2026-01-22T17:55:35.110257",
+    "updated_at": "2026-01-22T17:55:35.110375",
+    "stats": {
+      "total": 2,
+      "reviewed": 0
+    }
+  },
+  "papers": {
+    "Enders2022": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.95,
+      "ai_reason": "ML/DL が主要手法として使われておらず、IN1 を満たさないため除外（新規MLベースの復元手法が提示されていない）",
+      "manual_decision": null,
+      "note": ""
+    },
+    "Udeshi2024": {
+      "ai_decision": "exclude",
+      "ai_confidence": 0.92,
+      "ai_reason": "摘要に機械学習／ディープラーニング手法の使用が示されておらず、IN1（ML/DLが中核）を満たさないため除外",
+      "manual_decision": null,
+      "note": ""
+    }
+  }
+}
