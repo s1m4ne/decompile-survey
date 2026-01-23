@@ -213,8 +213,8 @@ class AIScreeningHandler(StepHandler):
                 },
                 "model": {
                     "type": "string",
-                    "enum": ["gpt-oss-120b", "gpt-5-nano-2025-08-07"],
-                    "default": "gpt-oss-120b",
+                    "enum": ["openai/gpt-oss-120b", "gpt-5-nano-2025-08-07"],
+                    "default": "openai/gpt-oss-120b",
                     "description": "LLM model to use",
                 },
                 "provider": {
@@ -242,9 +242,12 @@ class AIScreeningHandler(StepHandler):
     def run(self, input_entries: list[dict], config: dict) -> StepResult:
         """Run AI screening on input entries."""
         rules_id = config.get("rules", "decompile_v4")
-        model = config.get("model", "gpt-oss-120b")
+        model = config.get("model", "openai/gpt-oss-120b")
         provider = config.get("provider", "local")
         local_base_url = config.get("local_base_url")
+
+        if provider == "local" and "/" not in model:
+            model = f"openai/{model}"
 
         # Set concurrency based on provider
         if provider == "local":

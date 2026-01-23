@@ -194,7 +194,7 @@ export function StepConfigModal({
     if (key === 'model' && step.type === 'ai-screening') {
       const provider = (config.provider ?? 'local') as string;
       const modelOptions =
-        provider === 'openai' ? ['gpt-5-nano-2025-08-07'] : ['gpt-oss-120b'];
+        provider === 'openai' ? ['gpt-5-nano-2025-08-07'] : ['openai/gpt-oss-120b'];
       return (
         <div key={key} className="space-y-1">
           <label className="block text-sm font-medium">
