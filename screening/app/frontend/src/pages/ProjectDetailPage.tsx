@@ -7,13 +7,10 @@ import {
   Settings,
   ChevronRight,
   Database,
-  CheckCircle,
-  Clock,
-  AlertCircle,
   Loader2,
   X,
 } from 'lucide-react';
-import { Badge } from '../components/ui/Badge';
+import { StepStatusBadge, StepStatusIcon } from '../components/StepStatus';
 import {
   projectsApi,
   pipelineApi,
@@ -242,32 +239,6 @@ function StepCard({
   const outputCount = meta?.stats.passed_count || 0;
   const diff = meta?.stats.removed_count || 0;
 
-  const getStatusIcon = () => {
-    switch (status) {
-      case 'completed':
-        return <CheckCircle className="w-5 h-5 text-[hsl(var(--status-success))]" />;
-      case 'running':
-        return <Loader2 className="w-5 h-5 text-[hsl(var(--status-info))] animate-spin" />;
-      case 'failed':
-        return <AlertCircle className="w-5 h-5 text-[hsl(var(--status-danger))]" />;
-      default:
-        return <Clock className="w-5 h-5 text-[hsl(var(--muted-foreground))]" />;
-    }
-  };
-
-  const getStatusBadge = () => {
-    switch (status) {
-      case 'completed':
-        return <Badge variant="success">Completed</Badge>;
-      case 'running':
-        return <Badge variant="warning">Running</Badge>;
-      case 'failed':
-        return <Badge variant="destructive">Failed</Badge>;
-      default:
-        return <Badge variant="outline">Pending</Badge>;
-    }
-  };
-
   return (
     <div className={`relative group ${!step.enabled ? 'opacity-50' : ''}`}>
       {/* Connection line */}
@@ -294,7 +265,7 @@ function StepCard({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-[hsl(var(--secondary))] rounded-lg flex items-center justify-center">
-              {getStatusIcon()}
+              <StepStatusIcon status={status} />
             </div>
             <div>
               <div className="font-medium text-[hsl(var(--card-foreground))]">
@@ -315,7 +286,7 @@ function StepCard({
                 )}
               </div>
             )}
-            {getStatusBadge()}
+            <StepStatusBadge status={status} />
 
             <Link
               to={`/projects/${projectId}/steps/${step.id}`}

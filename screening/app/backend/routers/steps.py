@@ -237,6 +237,26 @@ def save_changes(project_id: str, step_id: str, changes: list) -> None:
             f.write(json.dumps(asdict(change), ensure_ascii=False) + "\n")
 
 
+def summarize_changes(changes: list) -> tuple[dict[str, int], dict[str, int] | None]:
+    """Summarize action/decision counts from changes."""
+    action_counts = {"keep": 0, "remove": 0, "modify": 0}
+    decision_counts = {"include": 0, "exclude": 0, "uncertain": 0}
+    has_decision = False
+
+    for change in changes:
+        action = getattr(change, "action", None)
+        if action in action_counts:
+            action_counts[action] += 1
+
+        details = getattr(change, "details", {}) or {}
+        decision = details.get("decision")
+        if decision in decision_counts:
+            decision_counts[decision] += 1
+            has_decision = True
+
+    return action_counts, decision_counts if has_decision else None
+
+
 @router.post("/{step_id}/run")
 def run_step(project_id: str, step_id: str) -> StepMeta:
     """Run a step."""
@@ -288,10 +308,15 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
         completed_at = datetime.now()
         duration = (completed_at - started_at).total_seconds()
 
-        # Calculate stats
-        passed_entries = result.outputs.get("passed", [])
-        passed_count = len(passed_entries) if isinstance(passed_entries, list) else 0
+        # Calculate stats (counts derived from changes)
+        action_counts, decision_counts = summarize_changes(result.changes)
         total_output = sum(len(entries) for entries in result.outputs.values())
+        if decision_counts:
+            passed_count = decision_counts["include"]
+            removed_count = decision_counts["exclude"]
+        else:
+            passed_count = action_counts["keep"]
+            removed_count = action_counts["remove"]
 
         meta = StepMeta(
             step_id=step_id,
@@ -303,7 +328,7 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
                 input_count=input_meta.count,
                 total_output_count=total_output,
                 passed_count=passed_count,
-                removed_count=input_meta.count - passed_count,
+                removed_count=removed_count,
             ),
             execution=StepExecution(
                 status=StepStatus.COMPLETED,

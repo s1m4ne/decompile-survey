@@ -75,6 +75,10 @@ export function StepOutputViewer({
     : outputData?.entries || []) as BibEntry[];
   const isLoadingTab = activeTab === 'input' ? isInputLoading : isLoading;
 
+  const changesByKey = useMemo(() => {
+    return new Map(changes.map((change) => [change.key, change]));
+  }, [changes]);
+
   // Build filter options
   const filterOptions = useMemo(() => {
     if (!buildFilters) return [];
@@ -100,13 +104,13 @@ export function StepOutputViewer({
     // Apply custom filters
     if (filterEntry && activeFilters.length > 0) {
       result = result.filter((entry) => {
-        const change = changes.find((c) => c.key === entry.ID);
+        const change = changesByKey.get(entry.ID || '') as ChangeRecord | undefined;
         return filterEntry(entry, change, activeFilters);
       });
     }
 
     return result;
-  }, [entries, searchQuery, filterEntry, activeFilters, changes]);
+  }, [entries, searchQuery, filterEntry, activeFilters, changesByKey]);
 
   // Paginate entries
   const paginatedEntries = useMemo(() => {
@@ -201,10 +205,10 @@ export function StepOutputViewer({
               setCurrentPage(1);
             }}
             className={cn(
-              'flex items-center gap-2 px-4 py-2 text-sm border-b-2 -mb-px transition-colors',
+              'flex items-center gap-2 px-4 py-2 text-sm border-b-2 -mb-px transition-colors rounded-t-md',
               activeTab === tab.id
-                ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))]'
-                : 'border-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]'
+                ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))] bg-[hsl(var(--muted))]'
+                : 'border-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]'
             )}
           >
             {tab.icon}
@@ -214,9 +218,7 @@ export function StepOutputViewer({
                 'px-2 py-0.5 text-xs rounded-full',
                 tone
                   ? toneClasses.badge
-                  : activeTab === tab.id
-                    ? 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]'
-                    : 'bg-[hsl(var(--muted))]'
+                  : 'bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
               )}
             >
               {tab.count}
