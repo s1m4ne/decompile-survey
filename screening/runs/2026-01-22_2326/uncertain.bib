@@ -1,0 +1,10 @@
+@article{Ahmed2021,
+ abstract = {Much software, whether beneficent or malevolent, is distributed only as binaries, sans source code. Absent source code, understanding binaries' behavior can be quite challenging, especially when compiled under higher levels of compiler optimization. These optimizations can transform comprehensible, "natural" source constructions into something entirely unrecognizable. Reverse engineering binaries, especially those suspected of being malevolent or guilty of intellectual property theft, are important and time-consuming tasks. There is a great deal of interest in tools to "decompile" binaries back into more natural source code to aid reverse engineering. Decompilation involves several desirable steps, including recreating source-language constructions, variable names, and perhaps even comments. One central step in creating binaries is optimizing function calls, using steps such as inlining. Recovering these (possibly inlined) function calls from optimized binaries is an essential task that most state-of-the-art decompiler tools try to do but do not perform very well. In this paper, we evaluate a supervised learning approach to the problem of recovering optimized function calls. We leverage open-source software and develop an automated labeling scheme to generate a reasonably large dataset of binaries labeled with actual function usages. We augment this large but limited labeled dataset with a pre-training step, which learns the decompiled code statistics from a much larger unlabeled dataset. Thus augmented, our learned labeling model can be combined with an existing decompilation tool, Ghidra, to achieve substantially improved performance in function call recovery, especially at higher levels of optimization. },
+ author = {Ahmed, Toufique AND Devanbu, Premkumar AND Sawant, Ashok, Anand},
+ doi = {https://doi.org/10.48550/arXiv.2103.05221},
+ howpublished = {\url{https://arxiv.org/pdf/2103.05221}},
+ month = {sep},
+ note = {},
+ title = {Learning to Find Usages of Library Functions in Optimized Binaries},
+ year = {2021}
+}

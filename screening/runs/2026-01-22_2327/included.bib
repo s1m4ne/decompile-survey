@@ -1,0 +1,668 @@
+@article{alcocer_use_2024,
+ abstract = {Adequately selecting variable names is a difficult activity for practitioners. In 2018, Jaffe et al. proposed the use of statistical machine translation (SMT) to suggest descriptive variable names for decompiled code. A large corpus of decompiled C code was used to train the SMT model. Our paper presents the results of a partial replication of Jaffe's experiment. We apply the same technique and methodology to a dataset made of code written in the Pharo programming language. We selected Pharo since its syntax is simple - it fits on half of a postcard - and because the optimizations performed by the compiler are limited to method scope. Our results indicate that SMT may recover between 8.9\% and 69.88\% of the variable names depending on the training set. Our replication concludes that: (i) the accuracy depends on the code similarity between the training and testing sets; (ii) the simplicity of the Pharo syntax and the satisfactory decompiled code alignment have a positive impact on predicting variable names; and (iii) a relatively small code corpus is sufficient to train the SMT model, which shows the applicability of the approach to less popular programming languages. Additionally, to assess SMT's potential in improving original variable names, ten Pharo developers reviewed 400 SMT name suggestions, with four reviews per variable. Only 15 suggestions (3.75\%) were unanimously viewed as improvements, while 45 (11.25\%) were perceived as improvements by at least two reviewers, highlighting SMT's limitations in providing suitable alternatives.},
+ address = {125 London Wall, London, ENGLAND},
+ author = {Alcocer, Juan Pablo Sandoval and Camacho-Jaimes, Harold and Galindo-Gutierrez, Geraldine and Neyem, Andres and Bergel, Alexandre and Ducasse, Stephane},
+ doi = {10.1016/j.cola.2024.101271},
+ issn = {2590-1184},
+ journal = {JOURNAL OF COMPUTER LANGUAGES},
+ keywords = {Decompiled code, Identifiers, Readability, Statistical machine translation, Variable names},
+ language = {English},
+ month = {June},
+ note = {Type: Article},
+ publisher = {ELSEVIER SCI LTD},
+ title = {On the use of statistical machine translation for suggesting variable names for decompiled code: {The} {Pharo} case},
+ volume = {79},
+ year = {2024}
+}
+
+@inproceedings{armengol-estape_slade_2024,
+ abstract = {Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. Nevertheless, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect.This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence Transformer trained over real-world code and augmented with a type inference engine. We utilize a novel tokenizer, dropout-free regularization, and type inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code.We evaluate SLaDe on over 4,000 ExeBench functions on two ISAs and at two optimization levels. SLaDe is up to 6× more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4× more accurate than the large language model ChatGPT and generates significantly more readable code than both.},
+ author = {Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F. P.},
+ booktitle = {Proceedings of the 2024 {IEEE}/{ACM} {International} {Symposium} on {Code} {Generation} and {Optimization}},
+ doi = {10.1109/CGO57630.2024.10444788},
+ isbn = {979-8-3503-9509-9},
+ keywords = {decompilation, neural decompilation, language models, transformer, type inference},
+ pages = {67--80},
+ publisher = {IEEE Press},
+ series = {{CGO} '24},
+ title = {{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}},
+ url = {https://doi.org/10.1109/CGO57630.2024.10444788},
+ year = {2024}
+}
+
+@inproceedings{armengol-estape_slade_2024-1,
+ abstract = {Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. Nevertheless, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect. This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence Transformer trained over real-world code and augmented with a type inference engine. We utilize a novel tokenizer, dropout-free regularization, and type inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code. We evaluate SLaDe on over 4,000 ExeBench functions on two ISAs and at two optimization levels. SLaDe is up to 6× more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4× more accurate than the large language model ChatGPT and generates significantly more readable code than both.},
+ author = {Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F.P.},
+ booktitle = {2024 {IEEE}/{ACM} {International} {Symposium} on {Code} {Generation} and {Optimization} ({CGO})},
+ doi = {10.1109/CGO57630.2024.10444788},
+ issn = {2643-2838},
+ keywords = {Codes, Security, Optimization, Task analysis, Transformers, Standards, decompilation, Engines, neural decompilation, language models, type inference, Transformer},
+ month = {March},
+ pages = {67--80},
+ title = {{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}},
+ year = {2024}
+}
+
+@article{armengol-estape_slade_2024-2,
+ abstract = {Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. However, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect. This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence transformer trained over real-world code. We develop a novel tokenizer and exploit no-dropout training to produce high-quality code. We utilize type-inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code. We evaluate SLaDe on over 4,000 functions from ExeBench on two ISAs and at two optimizations levels. SLaDe is up to 6 times more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4 times more accurate than the large language model ChatGPT and generates significantly more readable code than both.},
+ author = {Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, P., F., Michael},
+ doi = {https://doi.org/10.48550/arXiv.2305.12520},
+ month = {February},
+ title = {{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}},
+ url = {https://arxiv.org/pdf/2305.12520},
+ year = {2024}
+}
+
+@article{banerjee_variable_2021,
+ abstract = {Decompilation is the procedure of transforming binary programs into a high-level representation, such as source code, for human analysts to examine. While modern decompilers can reconstruct and recover much information that is discarded during compilation, inferring variable names is still extremely difficult. Inspired by recent advances in natural language processing, we propose a novel solution to infer variable names in decompiled code based on Masked Language Modeling, Byte-Pair Encoding, and neural architectures such as Transformers and BERT. Our solution takes {\textbackslash}textit\{raw\} decompiler output, the less semantically meaningful code, as input, and enriches it using our proposed {\textbackslash}textit\{finetuning\} technique, Constrained Masked Language Modeling. Using Constrained Masked Language Modeling introduces the challenge of predicting the number of masked tokens for the original variable name. We address this {\textbackslash}textit\{count of token prediction\} challenge with our post-processing algorithm. Compared to the state-of-the-art approaches, our trained VarBERT model is simpler and of much better performance. We evaluated our model on an existing large-scale data set with 164,632 binaries and showed that it can predict variable names identical to the ones present in the original source code up to 84.15\% of the time.},
+ annote = {Work In Progress},
+ author = {Banerjee, Pratyay and Pal, Kumar, Kuntal and Wang, Fish and Baral, Chitta},
+ doi = {https://doi.org/10.48550/arXiv.2103.12801},
+ month = {March},
+ title = {Variable {Name} {Recovery} in {Decompiled} {Binary} {Code} using {Constrained} {Masked} {Language} {Modeling}},
+ url = {https://arxiv.org/pdf/2103.12801},
+ year = {2021}
+}
+
+@article{bojic_modernizing_2025,
+ abstract = {Legacy software, particularly from the 1990s, often becomes obsolete due to aging hardware and outdated software environments. Traditionally, software modernization required extensive manual effort, involving reverse engineering, code rewriting, and re-architecting. However, advancements in large language models (LLMs) have introduced new possibilities for automating software translation and modernization. This paper explores the feasibility of using LLMs for modernizing 90s-era Windows applications, specifically migrating legacy C and C++ code to Python. Our methodology includes decompilation, source code analysis, automated translation using ChatGPT, and user interface reconstruction. We empirically evaluate three software projects by analyzing LLM-based translation accuracy across different code structures, including algorithmic logic, file handling, and graphical interfaces. Results indicate that while LLMs achieve high translation accuracy (-88\%) for structured code, challenges persist in handling decompiled code and user interface generation. The study provides insights into the effectiveness and limitations of LLMs in real-world software renovation, offering guidelines for leveraging machine learning in legacy system modernization. These findings contribute to both academic research and practical applications, suggesting a pathway for cost-effective and scalable legacy software migration.},
+ address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
+ author = {Bojic, Dragan and Draskovic, Drazen},
+ doi = {10.1142/S021819402550024X},
+ issn = {0218-1940},
+ journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
+ keywords = {Decompilation, machine learning, software translation},
+ language = {English},
+ month = {August},
+ note = {Type: Article},
+ number = {08},
+ pages = {1099--1119},
+ publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
+ title = {Modernizing 90s {Era} {Software} to a {New} {Language} and {Environment} {Using} {LLMs} - {An} {Empirical} {Investigation}},
+ volume = {35},
+ year = {2025}
+}
+
+@inproceedings{cao_boosting_2022,
+ abstract = {Decompilation aims to transform a low-level program language (LPL) (eg., binary file) into its functionally-equivalent high-level program language (HPL) (e.g., C/C++). It is a core technology in software security, especially in vulnerability discovery and malware analysis. In recent years, with the successful application of neural machine translation (NMT) models in natural language processing (NLP), researchers have tried to build neural decompilers by borrowing the idea of NMT. They formulate the decompilation process as a translation problem between LPL and HPL, aiming to reduce the human cost required to develop decompilation tools and improve their generalizability. However, state-of-the-art learning-based decompilers do not cope well with compiler-optimized binaries. Since real-world binaries are mostly compiler-optimized, decompilers that do not consider optimized binaries have limited practical significance. In this paper, we propose a novel learning-based approach named NeurDP, that targets compiler-optimized binaries. NeurDP uses a graph neural network (GNN) model to convert LPL to an intermediate representation (IR), which bridges the gap between source code and optimized binary. We also design an Optimized Translation Unit (OTU) to split functions into smaller code fragments for better translation performance. Evaluation results on datasets containing various types of statements show that NeurDP can decompile optimized binaries with 45.21\% higher accuracy than state-of-the-art neural decompilation frameworks.},
+ address = {New York, NY, USA},
+ author = {Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei},
+ booktitle = {Proceedings of the 38th {Annual} {Computer} {Security} {Applications} {Conference}},
+ doi = {10.1145/3564625.3567998},
+ isbn = {978-1-4503-9759-9},
+ pages = {508--518},
+ publisher = {Association for Computing Machinery},
+ series = {{ACSAC} '22},
+ title = {Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}},
+ url = {https://doi.org/10.1145/3564625.3567998},
+ year = {2022}
+}
+
+@article{cao_boosting_2023,
+ abstract = {Decompilation aims to transform a low-level program language (LPL) (eg., binary file) into its functionally-equivalent high-level program language (HPL) (e.g., C/C++). It is a core technology in software security, especially in vulnerability discovery and malware analysis. In recent years, with the successful application of neural machine translation (NMT) models in natural language processing (NLP), researchers have tried to build neural decompilers by borrowing the idea of NMT. They formulate the decompilation process as a translation problem between LPL and HPL, aiming to reduce the human cost required to develop decompilation tools and improve their generalizability. However, state-of-the-art learning-based decompilers do not cope well with compiler-optimized binaries. Since real-world binaries are mostly compiler-optimized, decompilers that do not consider optimized binaries have limited practical significance. In this paper, we propose a novel learning-based approach named NeurDP, that targets compiler-optimized binaries. NeurDP uses a graph neural network (GNN) model to convert LPL to an intermediate representation (IR), which bridges the gap between source code and optimized binary. We also design an Optimized Translation Unit (OTU) to split functions into smaller code fragments for better translation performance. Evaluation results on datasets containing various types of statements show that NeurDP can decompile optimized binaries with 45.21\% higher accuracy than state-of-the-art neural decompilation frameworks.},
+ author = {Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei},
+ doi = {https://doi.org/10.48550/arXiv.2301.00969},
+ month = {January},
+ title = {Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}},
+ url = {https://arxiv.org/pdf/2301.00969},
+ year = {2023}
+}
+
+@inproceedings{cao_revisiting_2023,
+ abstract = {Compiled binary executables are often the only available artifact in reverse engineering, malware analysis, and software systems maintenance. Unfortunately, the lack of semantic information like variable types makes comprehending binaries difficult. In efforts to improve the comprehensibility of binaries, researchers have recently used machine learning techniques to predict semantic information contained in the original source code. Chen et al. implemented DIRTY, a Transformer-based Encoder-Decoder architecture capable of augmenting decompiled code with variable names and types by leveraging decompiler output tokens and variable size information. Chen et al. were able to demonstrate a substantial increase in name and type extraction accuracy on Hex-Rays decompiler outputs compared to existing static analysis and AI-based techniques. We extend the original DIRTY results by re-training the DIRTY model on a dataset produced by the open-source Ghidra decompiler. Although Chen et al. concluded that Ghidra was not a suitable decompiler candidate due to its difficulty in parsing and incorporating DWARF symbols during analysis, we demonstrate that straightforward parsing of variable data generated by Ghidra results in similar retyping performance. We hope this work inspires further interest and adoption of the Ghidra decompiler for use in research projects.},
+ author = {Cao, Kevin and Leach, Kevin},
+ booktitle = {2023 {IEEE}/{ACM} 31st {International} {Conference} on {Program} {Comprehension} ({ICPC})},
+ doi = {10.1109/ICPC58990.2023.00042},
+ issn = {2643-7171},
+ keywords = {Source coding, Reverse engineering, Transformers, Training, Semantics, Static analysis, Machine Learning, Computer architecture, Ghidra, Hex-Rays, Symbols},
+ month = {May},
+ pages = {275--279},
+ title = {Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}},
+ year = {2023}
+}
+
+@article{cao_revisiting_2023-1,
+ abstract = {Compiled binary executables are often the only available artifact in reverse engineering, malware analysis, and software systems maintenance. Unfortunately, the lack of semantic information like variable types makes comprehending binaries difficult. In efforts to improve the comprehensibility of binaries, researchers have recently used machine learning techniques to predict semantic information contained in the original source code. Chen et al. implemented DIRTY, a Transformer-based Encoder-Decoder architecture capable of augmenting decompiled code with variable names and types by leveraging decompiler output tokens and variable size information. Chen et al. were able to demonstrate a substantial increase in name and type extraction accuracy on Hex-Rays decompiler outputs compared to existing static analysis and AI-based techniques. We extend the original DIRTY results by re-training the DIRTY model on a dataset produced by the open-source Ghidra decompiler. Although Chen et al. concluded that Ghidra was not a suitable decompiler candidate due to its difficulty in parsing and incorporating DWARF symbols during analysis, we demonstrate that straightforward parsing of variable data generated by Ghidra results in similar retyping performance. We hope this work inspires further interest and adoption of the Ghidra decompiler for use in research projects.},
+ annote = {In The 31st International Conference on Program Comprehension(ICPC 2023 RENE)},
+ author = {Cao, Kevin and Leach, Kevin},
+ doi = {https://doi.org/10.48550/arXiv.2304.03854},
+ month = {April},
+ title = {Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}},
+ url = {https://arxiv.org/pdf/2304.03854},
+ year = {2023}
+}
+
+@article{chen_augmenting_2021,
+ abstract = {A common tool used by security professionals for reverse-engineering binaries found in the wild is the decompiler. A decompiler attempts to reverse compilation, transforming a binary to a higher-level language such as C. High-level languages ease reasoning about programs by providing useful abstractions such as loops, typed variables, and comments, but these abstractions are lost during compilation. Decompilers are able to deterministically reconstruct structural properties of code, but comments, variable names, and custom variable types are technically impossible to recover. In this paper we present DIRTY (DecompIled variable ReTYper), a novel technique for improving the quality of decompiler output that automatically generates meaningful variable names and types. Empirical evaluation on a novel dataset of C code mined from GitHub shows that DIRTY outperforms prior work approaches by a sizable margin, recovering the original names written by developers 66.4\% of the time and the original types 75.8\% of the time.},
+ annote = {17 pages to be published in USENIX Security '22},
+ author = {Chen, Qibin and Lacomis, Jeremy and Schwartz, J., Edward and Goues, Le, Claire and Neubig, Graham and Vasilescu, Bogdan},
+ doi = {https://doi.org/10.48550/arXiv.2108.06363},
+ month = {August},
+ title = {Augmenting {Decompiler} {Output} with {Learned} {Variable} {Names} and {Types}},
+ url = {https://arxiv.org/pdf/2108.06363},
+ year = {2021}
+}
+
+@inproceedings{chen_suigpt_2025,
+ abstract = {The vision of Web3 is to improve user control over data and assets, but one challenge that complicates this vision is the prevalence of non-transparent, scam-prone applications and vulnerable smart contracts that put Web3 users at risk. While code audits are one solution to this problem, the lack of smart contracts source code on many blockchain platforms, such as Sui, hinders the ease of auditing. A promising approach to this issue is the use of a decompiler to reverse-engineer smart contract bytecode. However, existing decompilers for Sui produce code that is difficult to understand and cannot be directly recompiled. To address this, we developed the SuiGPT Move AI Decompiler (MAD), a Large Language Model (LLM)-powered web application that decompiles smart contract bytecodes on Sui into logically correct, human-readable, and re-compilable source code with prompt engineering. Our evaluation shows that MAD's output successfully passes original unit tests and achieves a 73.33\% recompilation success rate on real-world smart contracts. Additionally, newer models tend to deliver improved performance, suggesting that MAD's approach will become increasingly effective as LLMs continue to advance. In a user study involving 12 developers, we found that MAD significantly reduced the auditing workload compared to using traditional decompilers. Participants found MAD's outputs comparable to the original source code, improving accessibility for understanding and auditing non-open-source smart contracts. Through qualitative interviews with these developers and Web3 projects, we further discussed the strengths and concerns of MAD. MAD has practical implications for blockchain smart contract transparency, auditing, and education. It empowers users to easily and independently review and audit non-open-source smart contracts, fostering accountability and decentralization. Moreover, MAD's methodology could potentially extend to other smart contract languages, like Solidity, further enhancing Web3 transparency.},
+ address = {New York, NY, USA},
+ author = {Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Wu, Tingguan and Wang, Siyun and Chalkias, Kostas Kryptos},
+ booktitle = {Proceedings of the {ACM} on {Web} {Conference} 2025},
+ doi = {10.1145/3696410.3714790},
+ isbn = {979-8-4007-1274-6},
+ keywords = {smart contract, auditing tools, large language models, move, prompt engineering, sui, transparency, web applications, web3},
+ pages = {1567--1576},
+ publisher = {Association for Computing Machinery},
+ series = {{WWW} '25},
+ title = {{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}},
+ url = {https://doi.org/10.1145/3696410.3714790},
+ year = {2025}
+}
+
+@article{chen_suigpt_2025-1,
+ abstract = {The vision of Web3 is to improve user control over data and assets, but one challenge that complicates this vision is the prevalence of non-transparent, scam-prone applications and vulnerable smart contracts that put Web3 users at risk. While code audits are one solution to this problem, the lack of smart contracts source code on many blockchain platforms, such as Sui, hinders the ease of auditing. A promising approach to this issue is the use of a decompiler to reverse-engineer smart contract bytecode. However, existing decompilers for Sui produce code that is difficult to understand and cannot be directly recompiled. To address this, we developed the SuiGPT Move AI Decompiler (MAD), a Large Language Model (LLM)-powered web application that decompiles smart contract bytecodes on Sui into logically correct, human-readable, and re-compilable source code with prompt engineering. Our evaluation shows that MAD's output successfully passes original unit tests and achieves a 73.33\% recompilation success rate on real-world smart contracts. Additionally, newer models tend to deliver improved performance, suggesting that MAD's approach will become increasingly effective as LLMs continue to advance. In a user study involving 12 developers, we found that MAD significantly reduced the auditing workload compared to using traditional decompilers. Participants found MAD's outputs comparable to the original source code, improving accessibility for understanding and auditing non-open-source smart contracts. Through qualitative interviews with these developers and Web3 projects, we further discussed the strengths and concerns of MAD. MAD has practical implications for blockchain smart contract transparency, auditing, and education. It empowers users to easily and independently review and audit non-open-source smart contracts, fostering accountability and decentralization},
+ annote = {Paper accepted at ACM The Web Conference 2025},
+ author = {Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Tingguan, Wu and Wang, Siyun and Chalkias, Kryptos, Kostas},
+ doi = {https://doi.org/10.48550/arXiv.2410.15275},
+ month = {January},
+ title = {{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}},
+ url = {https://arxiv.org/pdf/2410.15275},
+ year = {2025}
+}
+
+@article{david_decompiling_2025,
+ abstract = {The widespread lack of broad source code verification on blockchain explorers such as Etherscan, where despite 78,047,845 smart contracts deployed on Ethereum (as of May 26, 2025), a mere 767,520 ({\textless} 1\%) are open source, presents a severe impediment to blockchain security. This opacity necessitates the automated semantic analysis of on-chain smart contract bytecode, a fundamental research challenge with direct implications for identifying vulnerabilities and understanding malicious behavior. Prevailing decompilers struggle to reverse bytecode in a readable manner, often yielding convoluted code that critically hampers vulnerability analysis and thwarts efforts to dissect contract functionalities for security auditing. This paper addresses this challenge by introducing a pioneering decompilation pipeline that, for the first time, successfully leverages Large Language Models (LLMs) to transform Ethereum Virtual Machine (EVM) bytecode into human-readable and semantically faithful Solidity code. Our novel methodology first employs rigorous static program analysis to convert bytecode into a structured three-address code (TAC) representation. This intermediate representation then guides a Llama-3.2-3B model, specifically fine-tuned on a comprehensive dataset of 238,446 TAC-to-Solidity function pairs, to generate high-quality Solidity. This approach uniquely recovers meaningful variable names, intricate control flow, and precise function signatures. Our extensive empirical evaluation demonstrates a significant leap beyond traditional decompilers, achieving an average semantic similarity of 0.82 with original source and markedly superior readability. The practical viability and effectiveness of our research are demonstrated through its implementation in a publicly accessible system, available at https://evmdecompiler.com.},
+ author = {David, Isaac and Zhou, Liyi and Song, Dawn and Gervais, Arthur and Qin, Kaihua},
+ doi = {https://doi.org/10.48550/arXiv.2506.19624},
+ month = {June},
+ title = {Decompiling {Smart} {Contracts} with a {Large} {Language} {Model}},
+ url = {https://arxiv.org/pdf/2506.19624},
+ year = {2025}
+}
+
+@article{dramko_dire_2023,
+ abstract = {The decompiler is one of the most common tools for examining executable binaries without the corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Unfortunately, decompiler output is far from readable because the decompilation process is often incomplete. State-of-the-art techniques use machine learning to predict missing information like variable names. While these approaches are often able to suggest good variable names in context, no existing work examines how the selection of training data influences these machine learning models. We investigate how data provenance and the quality of training data affect performance, and how well, if at all, trained models generalize across software domains. We focus on the variable renaming problem using one such machine learning model, DIRE. We first describe DIRE in detail and the accompanying technique used to generate training data from raw code. We also evaluate DIRE’s overall performance without respect to data quality. Next, we show how training on more popular, possibly higher quality code (measured using GitHub stars) leads to a more generalizable model because popular code tends to have more diverse variable names. Finally, we evaluate how well DIRE predicts domain-specific identifiers, propose a modification to incorporate domain information, and show that it can predict identifiers in domain-specific scenarios 23\% more frequently than the original DIRE model.},
+ address = {New York, NY, USA},
+ author = {Dramko, Luke and Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Ed and Allamanis, Miltiadis and Neubig, Graham and Vasilescu, Bogdan and Le Goues, Claire},
+ doi = {10.1145/3546946},
+ issn = {1049-331X},
+ journal = {ACM Trans. Softw. Eng. Methodol.},
+ keywords = {decompilation, Machine learning, data provenance},
+ month = {March},
+ number = {2},
+ publisher = {Association for Computing Machinery},
+ title = {{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}},
+ url = {https://doi.org/10.1145/3546946},
+ volume = {32},
+ year = {2023}
+}
+
+@article{dramko_dire_2023-1,
+ abstract = {The decompiler is one of the most common tools for examining executable binaries without the corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Unfortunately, decompiler output is far from readable because the decompilation process is often incomplete. State-of-the-art techniques use machine learning to predict missing information like variable names. While these approaches are often able to suggest good variable names in context, no existing work examines how the selection of training data influences these machine learning models. We investigate how data provenance and the quality of training data affect performance, and how well, if at all, trained models generalize across software domains. We focus on the variable renaming problem using one such machine learning model, DIRE. We first describe DIRE in detail and the accompanying technique used to generate training data from raw code. We also evaluate DIRE's overall performance without respect to data quality. Next, we show how training on more popular, possibly higher quality code (measured using GitHub stars) leads to a more generalizable model because popular code tends to have more diverse variable names. Finally, we evaluate how well DIRE predicts domain-specific identifiers, propose a modification to incorporate domain information, and show that it can predict identifiers in domain-specific scenarios 23\% more frequently than the original DIRE model.},
+ address = {1601 Broadway, 10th Floor, NEW YORK, NY USA},
+ author = {Dramko, Luke and Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Ed and Allamanis, Miltiadis and Neubig, Graham and Vasilescu, Bogdan and Le Goues, Claire},
+ doi = {10.1145/3546946},
+ issn = {1049-331X},
+ journal = {ACM TRANSACTIONS ON SOFTWARE ENGINEERING AND METHODOLOGY},
+ keywords = {decompilation, Machine learning, data provenance},
+ language = {English},
+ month = {April},
+ note = {Type: Article},
+ number = {2},
+ publisher = {ASSOC COMPUTING MACHINERY},
+ title = {{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}},
+ volume = {32},
+ year = {2023}
+}
+
+@article{dramko_idioms_2025,
+ abstract = {Decompilers are important tools for reverse engineers that help them analyze software at a higher level of abstraction than assembly code. Unfortunately, because compilation is lossy, deterministic decompilers produce code that is missing many of the details that make source code readable in the first place, like variable names and types. Neural decompilers, on the other hand, offer the ability to statistically fill in these details. Existing work in neural decompilation, however, suffers from substantial limitations that preclude its use on real code, such as the inability to define composite types, which is essential to fully specify function semantics. In this work, we introduce a new dataset, Realtype, that includes substantially more complicated and realistic types than existing neural decompilation benchmarks, and Idioms, a new neural decompilation approach to finetune any LLM into a neural decompiler capable of generating the appropriate user-defined type definitions alongside the decompiled code. We show that our approach yields state-of-the-art results in neural decompilation. On the most challenging existing benchmark, ExeBench, our model achieves 54.4\% accuracy vs. 46.3\% for LLM4Decompile and 37.5\% for Nova; on Realtype, our model performs at least 95\% better.},
+ author = {Dramko, Luke and Goues, Le, Claire and Schwartz, J., Edward},
+ doi = {https://doi.org/10.48550/arXiv.2502.04536},
+ month = {June},
+ title = {Idioms: {Neural} {Decompilation} {With} {Joint} {Code} and {Type} {Definition} {Prediction}},
+ url = {https://arxiv.org/pdf/2502.04536},
+ year = {2025}
+}
+
+@article{fang_stacksight_2024,
+ abstract = {WebAssembly enables near-native execution in web applications and is increasingly adopted for tasks that demand high performance and robust security. However, its assembly-like syntax, implicit stack machine, and low-level data types make it extremely difficult for human developers to understand, spurring the need for effective WebAssembly reverse engineering techniques. In this paper, we propose StackSight, a novel neurosymbolic approach that combines Large Language Models (LLMs) with advanced program analysis to decompile complex WebAssembly code into readable C++ snippets. StackSight visualizes and tracks virtual stack alterations via a static analysis algorithm and then applies chain-of-thought prompting to harness LLM's complex reasoning capabilities. Evaluation results show that StackSight significantly improves WebAssembly decompilation. Our user study also demonstrates that code snippets generated by StackSight have significantly higher win rates and enable a better grasp of code semantics.},
+ annote = {9 pages. In the Proceedings of the 41st International Conference on Machine Learning (ICML' 24)},
+ author = {Fang, Weike and Zhou, Zhejian and He, Junzhou and Wang, Weihang},
+ doi = {https://doi.org/10.48550/arXiv.2406.04568},
+ month = {June},
+ title = {{StackSight}: {Unveiling} {WebAssembly} through {Large} {Language} {Models} and {Neurosymbolic} {Chain}-of-{Thought} {Decompilation}},
+ url = {https://arxiv.org/pdf/2406.04568},
+ year = {2024}
+}
+
+@article{feng_interactive_2025,
+ abstract = {The goal of decompilation is to convert compiled low-level code (e.g., assembly code) back into high-level programming languages, enabling analysis in scenarios where source code is unavailable. This task supports various reverse engineering applications, such as vulnerability identification, malware analysis, and legacy software migration. The end-to-end decompilation method based on large language models (LLMs) reduces reliance on additional tools and minimizes manual intervention due to its inherent properties. However, previous end-to-end methods often lose critical information necessary for reconstructing control flow structures and variables when processing binary files, making it challenging to accurately recover the program's logic. To address these issues, we propose the ReF Decompile method, which incorporates the following innovations: (1) The Relabeling strategy replaces jump target addresses with labels, preserving control flow clarity. (2) The Function Call strategy infers variable types and retrieves missing variable information from binary files. Experimental results on the Humaneval-Decompile Benchmark demonstrate that ReF Decompile surpasses comparable baselines and achieves state-of-the-art (SOTA) performance of 61.43\%.},
+ address = {MDPI AG, Grosspeteranlage 5, CH-4052 BASEL, SWITZERLAND},
+ author = {Feng, Yunlong and Li, Bohan and Shi, Xiaoming and Zhu, Qingfu and Che, Wanxiang},
+ doi = {10.3390/electronics14224442},
+ issn = {2079-9292},
+ journal = {ELECTRONICS},
+ keywords = {large language model, code generation},
+ language = {English},
+ month = {November},
+ note = {Type: Article},
+ number = {22},
+ publisher = {MDPI},
+ title = {Interactive {End}-to-{End} {Decompilation} via {Large} {Language} {Models}},
+ volume = {14},
+ year = {2025}
+}
+
+@article{feng_ref_2025,
+ abstract = {The goal of decompilation is to convert compiled low-level code (e.g., assembly code) back into high-level programming languages, enabling analysis in scenarios where source code is unavailable. This task supports various reverse engineering applications, such as vulnerability identification, malware analysis, and legacy software migration. The end-to-end decompile method based on large langauge models (LLMs) reduces reliance on additional tools and minimizes manual intervention due to its inherent properties. However, previous end-to-end methods often lose critical information necessary for reconstructing control flow structures and variables when processing binary files, making it challenging to accurately recover the program's logic. To address these issues, we propose the {\textbackslash}textbf\{ReF Decompile\} method, which incorporates the following innovations: (1) The Relabelling strategy replaces jump target addresses with labels, preserving control flow clarity. (2) The Function Call strategy infers variable types and retrieves missing variable information from binary files. Experimental results on the Humaneval-Decompile Benchmark demonstrate that ReF Decompile surpasses comparable baselines and achieves state-of-the-art (SOTA) performance of 61.43\%.},
+ author = {Feng, Yunlong and Li, Bohan and Shi, Xiaoming and Zhu, Qingfu and Che, Wanxiang},
+ doi = {https://doi.org/10.48550/arXiv.2502.12221},
+ month = {February},
+ title = {{ReF} {Decompile}: {Relabeling} and {Function} {Call} {Enhanced} {Decompile}},
+ url = {https://arxiv.org/pdf/2502.12221},
+ year = {2025}
+}
+
+@article{feng_self-constructed_2024,
+ abstract = {Decompilation transforms compiled code back into a high-level programming language for analysis when source code is unavailable. Previous work has primarily focused on enhancing decompilation performance by increasing the scale of model parameters or training data for pre-training. Based on the characteristics of the decompilation task, we propose two methods: (1) Without fine-tuning, the Self-Constructed Context Decompilation (sc{\textasciicircum}2dec) method recompiles the LLM's decompilation results to construct pairs for in-context learning, helping the model improve decompilation performance. (2) Fine-grained Alignment Enhancement (FAE), which meticulously aligns assembly code with source code at the statement level by leveraging debugging information, is employed during the fine-tuning phase to achieve further improvements in decompilation. By integrating these two methods, we achieved a Re-Executability performance improvement of approximately 3.90\% on the Decompile-Eval benchmark, establishing a new state-of-the-art performance of 52.41\%. The code, data, and models are available at https://github.com/AlongWY/sccdec.},
+ annote = {EMNLP 2024 Findings},
+ author = {Feng, Yunlong and Teng, Dechuan and Xu, Yang and Mu, Honglin and Xu, Xiao and Qin, Libo and Zhu, Qingfu and Che, Wanxiang},
+ doi = {https://doi.org/10.48550/arXiv.2406.17233},
+ month = {October},
+ title = {Self-{Constructed} {Context} {Decompilation} with {Fined}-grained {Alignment} {Enhancement}},
+ url = {https://arxiv.org/pdf/2406.17233},
+ year = {2024}
+}
+
+@article{fu_neural-based_2019,
+ abstract = {Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda, the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior performance compared to baseline approaches. We assess Coda's performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82\% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0\% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by a margin of 70\% program accuracy.},
+ author = {Fu, Cheng and Chen, Huili and Liu, Haolan and Chen, Xinyun and Tian, Yuandong and Koushanfar, Farinaz and Zhao, Jishen},
+ doi = {https://doi.org/10.48550/arXiv.1906.12029},
+ month = {June},
+ title = {A {Neural}-based {Program} {Decompiler}},
+ url = {https://arxiv.org/pdf/1906.12029},
+ year = {2019}
+}
+
+@article{hosseini_beyond_2022,
+ abstract = {The problem of reversing the compilation process, decompilation, is an important tool in reverse engineering of computer software. Recently, researchers have proposed using techniques from neural machine translation to automate the process in decompilation. Although such techniques hold the promise of targeting a wider range of source and assembly languages, to date they have primarily targeted C code. In this paper we argue that existing neural decompilers have achieved higher accuracy at the cost of requiring language-specific domain knowledge such as tokenizers and parsers to build an abstract syntax tree (AST) for the source language, which increases the overhead of supporting new languages. We explore a different tradeoff that, to the extent possible, treats the assembly and source languages as plain text, and show that this allows us to build a decompiler that is easily retargetable to new languages. We evaluate our prototype decompiler, Beyond The C (BTC), on Go, Fortran, OCaml, and C, and examine the impact of parameters such as tokenization and training data selection on the quality of decompilation, finding that it achieves comparable decompilation results to prior work in neural decompilation with significantly less domain knowledge. We will release our training data, trained decompilation models, and code to help encourage future research into language-agnostic decompilation.},
+ author = {Hosseini, Iman and Dolan-Gavitt, Brendan},
+ doi = {https://doi.org/10.48550/arXiv.2212.08950},
+ month = {February},
+ title = {Beyond the {C}: {Retargetable} {Decompilation} using {Neural} {Machine} {Translation}},
+ url = {https://arxiv.org/pdf/2212.08950},
+ year = {2022}
+}
+
+@inproceedings{izrailov_gremc_2024,
+ abstract = {The article is devoted to the problem of security of cyber-physical systems as part of production according to the Industry 4.0 concept. For this purpose, the author's approach of “Genetic Reverse Engineering of Machine Code” (GREMC) is proposed. The essence of this approach lies in the use of artificial intelligence in the field of genetic algorithms to restore the source code of software executed in the form of machine code on cyber-physical devices for Industry 4.0. The resulting code can then be analysed for vulnerabilities by an expert. One issue that arises during genetic reverse engineering is predicting the size of the source code based on its machine representation (i.e., in an object or executable file). The article is devoted to solving this problem for functions in the C programming language. To do this, a method for obtaining a relationship between the sizes of the source and machine code of individual functions is described, which consists of steps such as loading a dataset with C-functions, isolating the function code in it, preprocessing them, compiling them into machine code, calculating the required sizes, building dependencies between each source code size and the corresponding machine code sizes, generating the final table and determining the dependency formula. An experiment is carried out using a software prototype that implements the method; ExeBench with 83 thousand C-functions is taken as a dataset. Justifications are given regarding the appearance of abnormal machine code sizes and their impact on the dependence formula.},
+ author = {Izrailov, Konstantin},
+ booktitle = {2024 {International} {Russian} {Smart} {Industry} {Conference} ({SmartIndustryCon})},
+ doi = {10.1109/SmartIndustryCon61328.2024.10515515},
+ keywords = {Codes, Source coding, Software, Reverse engineering, decompilation, Genetics, machine code, Production, Prototypes, reverse-engineering, size dependence, source code},
+ month = {March},
+ pages = {622--628},
+ title = {{GREMC}: {Genetic} {Reverse}-{Engineering} of {Machine} {Code} to {Search} {Vulnerabilities} in {Software} for {Industry} 4.0. {Predicting} the {Size} of the {Decompiling} {Source} {Code}},
+ year = {2024}
+}
+
+@inproceedings{jaffe_meaningful_2018,
+ abstract = {When code is compiled, information is lost, including some of the structure of the original source code as well as local identifier names. Existing decompilers can reconstruct much of the original source code, but typically use meaningless placeholder variables for identifier names. Using variable names which are more natural in the given context can make the code much easier to interpret, despite the fact that variable names have no effect on the execution of the program. In theory, it is impossible to recover the original identifier names since that information has been lost. However, most code is natural: it is highly repetitive and predictable based on the context. In this paper we propose a technique that assigns variables meaningful names by taking advantage of this naturalness property. We consider decompiler output to be a noisy distortion of the original source code, where the original source code is transformed into the decompiler output. Using this noisy channel model, we apply standard statistical machine translation approaches to choose natural identifiers, combining a translation model trained on a parallel corpus with a language model trained on unmodified C code. We generate a large parallel corpus from 1.2 TB of C source code obtained from GitHub. Under the most conservative assumptions, our technique is still able to recover the original variable names up to 16.2\% of the time, which represents a lower bound for performance.},
+ address = {New York, NY, USA},
+ author = {Jaffe, Alan and Lacomis, Jeremy and Schwartz, Edward J. and Le Goues, Claire and Vasilescu, Bogdan},
+ booktitle = {Proceedings of the 26th {Conference} on {Program} {Comprehension}},
+ doi = {10.1145/3196321.3196330},
+ isbn = {978-1-4503-5714-2},
+ keywords = {Codes, Source coding, Decompilation, Channel models, Distortion, Lower bound, Machine translation, Noise measurement, Renaming Identifiers, Software development management, Standards, Statistical Machine Translation, Translation, Understandability},
+ pages = {20--30},
+ publisher = {Association for Computing Machinery},
+ series = {{ICPC} '18},
+ title = {Meaningful variable names for decompiled code: a machine translation approach},
+ url = {https://doi.org/10.1145/3196321.3196330},
+ year = {2018}
+}
+
+@article{katz_towards_2019,
+ abstract = {We address the problem of automatic decompilation, converting a program in low-level representation back to a higher-level human-readable programming language. The problem of decompilation is extremely important for security researchers. Finding vulnerabilities and understanding how malware operates is much easier when done over source code. The importance of decompilation has motivated the construction of hand-crafted rule-based decompilers. Such decompilers have been designed by experts to detect specific control-flow structures and idioms in low-level code and lift them to source level. The cost of supporting additional languages or new language features in these models is very high. We present a novel approach to decompilation based on neural machine translation. The main idea is to automatically learn a decompiler from a given compiler. Given a compiler from a source language S to a target language T , our approach automatically trains a decompiler that can translate (decompile) T back to S . We used our framework to decompile both LLVM IR and x86 assembly to C code with high success rates. Using our LLVM and x86 instantiations, we were able to successfully decompile over 97\% and 88\% of our benchmarks respectively.},
+ author = {Katz, Omer and Olshaker, Yuval and Goldberg, Yoav and Yahav, Eran},
+ doi = {https://doi.org/10.48550/arXiv.1905.08325},
+ month = {May},
+ title = {Towards {Neural} {Decompilation}},
+ url = {https://arxiv.org/pdf/1905.08325},
+ year = {2019}
+}
+
+@inproceedings{katz_using_2018,
+ abstract = {Decompilation, recovering source code from binary, is useful in many situations where it is necessary to analyze or understand software for which source code is not available. Source code is much easier for humans to read than binary code, and there are many tools available to analyze source code. Existing decompilation techniques often generate source code that is difficult for humans to understand because the generated code often does not use the coding idioms that programmers use. Differences from human-written code also reduce the effectiveness of analysis tools on the decompiled source code. To address the problem of differences between decompiled code and human-written code, we present a novel technique for decompiling binary code snippets using a model based on Recurrent Neural Networks. The model learns properties and patterns that occur in source code and uses them to produce decompilation output. We train and evaluate our technique on snippets of binary machine code compiled from C source code. The general approach we outline in this paper is not language-specific and requires little or no domain knowledge of a language and its properties or how a compiler operates, making the approach easily extensible to new languages and constructs. Furthermore, the technique can be extended and applied in situations to which traditional decompilers are not targeted, such as for decompilation of isolated binary snippets; fast, on-demand decompilation; domain-specific learned decompilation; optimizing for readability of decompilation; and recovering control flow constructs, comments, and variable or function names. We show that the translations produced by this technique are often accurate or close and can provide a useful picture of the snippet's behavior.},
+ author = {Katz, Deborah S. and Ruchti, Jason and Schulte, Eric},
+ booktitle = {2018 {IEEE} 25th {International} {Conference} on {Software} {Analysis}, {Evolution} and {Reengineering} ({SANER})},
+ doi = {10.1109/SANER.2018.8330222},
+ keywords = {Binary codes, Data models, Recurrent neural networks, Tools, Training, decompilation, Decoding, deep learning, Natural languages, recurrent neural networks, translation},
+ month = {March},
+ pages = {346--356},
+ title = {Using recurrent neural networks for decompilation},
+ year = {2018}
+}
+
+@inproceedings{lacomis_dire_2019,
+ abstract = {The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub. Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\% of the time.},
+ author = {Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan},
+ booktitle = {2019 34th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering} ({ASE})},
+ doi = {10.1109/ASE.2019.00064},
+ issn = {2643-1572},
+ keywords = {Software, Decompilation, Reverse engineering, Analytical models, Deep learning, Recurrent neural networks, Tools, Training},
+ month = {January},
+ pages = {628--639},
+ title = {{DIRE}: {A} {Neural} {Approach} to {Decompiled} {Identifier} {Naming}},
+ year = {2019}
+}
+
+@article{lacomis_dire_2019-1,
+ abstract = {The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub. Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\% of the time.},
+ annote = {2019 International Conference on Automated Software Engineering},
+ author = {Lacomis, Jeremy and Yin, Pengcheng and Schwartz, J., Edward and Allamanis, Miltiadis and Goues, Le, Claire and Neubig, Graham and Vasilescu, Bogdan},
+ doi = {https://doi.org/10.48550/arXiv.1909.09029},
+ month = {October},
+ title = {{DIRE}: {A} {Neural} {Approach} to {Decompiled} {Identifier} {Naming}},
+ url = {https://arxiv.org/pdf/1909.09029},
+ year = {2019}
+}
+
+@inproceedings{lacomis_dire_2020,
+ abstract = {The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub.1 Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\% of the time.},
+ author = {Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan},
+ booktitle = {Proceedings of the 34th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
+ doi = {10.1109/ASE.2019.00064},
+ isbn = {978-1-7281-2508-4},
+ pages = {628--639},
+ publisher = {IEEE Press},
+ series = {{ASE} '19},
+ title = {{DIRE}: a neural approach to decompiled identifier naming},
+ url = {https://doi.org/10.1109/ASE.2019.00064},
+ year = {2020}
+}
+
+@article{li_adabot_2019,
+ abstract = {Reverse Engineering(RE) has been a fundamental task in software engineering. However, most of the traditional Java reverse engineering tools are strictly rule defined, thus are not fault-tolerant, which pose serious problem when noise and interference were introduced into the system. In this paper, we view reverse engineering as a statistical machine translation task instead of rule-based task, and propose a fault-tolerant Java decompiler based on machine translation models. Our model is based on attention-based Neural Machine Translation (NMT) and Transformer architectures. First, we measure the translation quality on both the redundant and purified datasets. Next, we evaluate the fault-tolerance(anti-noise ability) of our framework on test sets with different unit error probability (UEP). In addition, we compare the suitability of different word segmentation algorithms for decompilation task. Experimental results demonstrate that our model is more robust and fault-tolerant compared to traditional Abstract Syntax Tree (AST) based decompilers. Specifically, in terms of BLEU-4 and Word Error Rate (WER), our performance has reached 94.50\% and 2.65\% on the redundant test set; 92.30\% and 3.48\% on the purified test set.},
+ annote = {8 pages},
+ author = {Li, Zhiming and Wu, Qing and Qian, Kun},
+ doi = {https://doi.org/10.48550/arXiv.1908.06748},
+ month = {October},
+ title = {Adabot: {Fault}-{Tolerant} {Java} {Decompiler}},
+ url = {https://arxiv.org/pdf/1908.06748},
+ year = {2019}
+}
+
+@article{li_neurodex_2025,
+ abstract = {On-device deep learning models have extensive real world demands. Deep learning compilers efficiently compile models into executables for deployment on edge devices, but these executables may face the threat of reverse engineering. Previous studies have attempted to decompile DNN executables, but they face challenges in handling compilation optimizations and analyzing quantized compiled models. In this paper, we present NeuroDeX to unlock diverse support in decompiling DNN executables. NeuroDeX leverages the semantic understanding capabilities of LLMs along with dynamic analysis to accurately and efficiently perform operator type recognition, operator attribute recovery and model reconstruction. NeuroDeX can recover DNN executables into high-level models towards compilation optimizations, different architectures and quantized compiled models. We conduct experiments on 96 DNN executables across 12 common DNN models. Extensive experimental results demonstrate that NeuroDeX can decompile non-quantized executables into nearly identical high-level models. NeuroDeX can recover functionally similar high-level models for quantized executables, achieving an average top-1 accuracy of 72\%. NeuroDeX offers a more comprehensive and effective solution compared to previous DNN executables decompilers.},
+ author = {Li, Yilin and Meng, Guozhu and Sun, Mingyang and Wang, Yanzhong and Sun, Kun and Chang, Hailong and Li, Yuekang},
+ doi = {https://doi.org/10.48550/arXiv.2509.06402},
+ month = {January},
+ title = {{NeuroDeX}: {Unlocking} {Diverse} {Support} in {Decompiling} {Deep} {Neural} {Network} {Executables}},
+ url = {https://arxiv.org/pdf/2509.06402},
+ year = {2025}
+}
+
+@article{liang_neutron_2021,
+ abstract = {Decompilation aims to analyze and transform low-level program language (PL) codes such as binary code or assembly code to obtain an equivalent high-level PL. Decompilation plays a vital role in the cyberspace security fields such as software vulnerability discovery and analysis, malicious code detection and analysis, and software engineering fields such as source code analysis, optimization, and cross-language cross-operating system migration. Unfortunately, the existing decompilers mainly rely on experts to write rules, which leads to bottlenecks such as low scalability, development difficulties, and long cycles. The generated high-level PL codes often violate the code writing specifications. Further, their readability is still relatively low. The problems mentioned above hinder the efficiency of advanced applications (e.g., vulnerability discovery) based on decompiled high-level PL codes.In this paper, we propose a decompilation approach based on the attention-based neural machine translation (NMT) mechanism, which converts low-level PL into high-level PL while acquiring legibility and keeping functionally similar. To compensate for the information asymmetry between the low-level and high-level PL, a translation method based on basic operations of low-level PL is designed. This method improves the generalization of the NMT model and captures the translation rules between PLs more accurately and efficiently. Besides, we implement a neural decompilation framework called Neutron. The evaluation of two practical applications shows that Neutron's average program accuracy is 96.96\%, which is better than the traditional NMT model.},
+ address = {CAMPUS, 4 CRINAN ST, LONDON, N1 9XW, ENGLAND},
+ author = {Liang, Ruigang and Cao, Ying and Hu, Peiwei and Chen, Kai},
+ doi = {10.1186/s42400-021-00070-0},
+ issn = {2523-3246},
+ journal = {CYBERSECURITY},
+ keywords = {Decompilation, Translation, Attention, LSTM},
+ language = {English},
+ month = {March},
+ note = {Type: Article},
+ number = {1},
+ publisher = {SPRINGERNATURE},
+ title = {Neutron: an attention-based neural decompiler},
+ volume = {4},
+ year = {2021}
+}
+
+@article{liang_semantics-recovering_2021,
+ abstract = {Decompilation transforms low-level program languages (PL) (e.g., binary code) into high-level PLs (e.g., C/C++). It has been widely used when analysts perform security analysis on software (systems) whose source code is unavailable, such as vulnerability search and malware analysis. However, current decompilation tools usually need lots of experts' efforts, even for years, to generate the rules for decompilation, which also requires long-term maintenance as the syntax of high-level PL or low-level PL changes. Also, an ideal decompiler should concisely generate high-level PL with similar functionality to the source low-level PL and semantic information (e.g., meaningful variable names), just like human-written code. Unfortunately, existing manually-defined rule-based decompilation techniques only functionally restore the low-level PL to a similar high-level PL and are still powerless to recover semantic information. In this paper, we propose a novel neural decompilation approach to translate low-level PL into accurate and user-friendly high-level PL, effectively improving its readability and understandability. Furthermore, we implement the proposed approaches called SEAM. Evaluations on four real-world applications show that SEAM has an average accuracy of 94.41\%, which is much better than prior neural machine translation (NMT) models. Finally, we evaluate the effectiveness of semantic information recovery through a questionnaire survey, and the average accuracy is 92.64\%, which is comparable or superior to the state-of-the-art compilers.},
+ author = {Liang, Ruigang and Cao, Ying and Hu, Peiwei and He, Jinwen and Chen, Kai},
+ doi = {https://doi.org/10.48550/arXiv.2112.15491},
+ month = {February},
+ title = {Semantics-{Recovering} {Decompilation} through {Neural} {Machine} {Translation}},
+ url = {https://arxiv.org/pdf/2112.15491},
+ year = {2021}
+}
+
+@article{liao_augmenting_2025,
+ abstract = {Decompiler is a specialized type of reverse engineering tool extensively employed in program analysis tasks, particularly in program comprehension and vulnerability detection. However, current Solidity smart contract decompilers face significant limitations in reconstructing the original source code. In particular, the bottleneck of SOTA decompilers lies in inaccurate function identification, incorrect variable type recovery, and missing contract attributes. These deficiencies hinder downstream tasks and understanding of the program logic. To address these challenges, we propose SmartHalo, a new framework that enhances decompiler output by combining static analysis (SA) and large language models (LLM). SmartHalo leverages the complementary strengths of SA’s accuracy in control and data flow analysis and LLM’s capability in semantic prediction. More specifically, SmartHalo constructs a new data structure - Dependency Graph (DG), to extract semantic dependencies via static analysis. Then, it takes DG to create prompts for LLM optimization. Finally, the correctness of LLM outputs is validated through symbolic execution and formal verification. Evaluation on a dataset consisting of 465 randomly selected smart contract functions shows that SmartHalo significantly improves the quality of the decompiled code, compared to SOTA decompilers (e.g., Gigahorse). Notably, integrating GPT-4o mini with SmartHalo further enhances its performance, achieving a precision of 91.32\% and a recall of 87.38\% for function boundaries, a precision of 90.40\% and a recall of 88.82\% for variable types, and a precision of 80.66\% and a recall of 91.78\% for contract attributes.},
+ annote = {This is the author version of the article accepted for publication in IEEE Transactions on Software Engineering},
+ author = {Liao, Zeqin and Nan, Yuhong and Gao, Zixu and Liang, Henglong and Hao, Sicheng and Ren, Peifan and Zheng, Zibin},
+ doi = {10.1109/TSE.2025.3623325},
+ issn = {1939-3520},
+ journal = {IEEE Transactions on Software Engineering},
+ keywords = {Codes, Source coding, Optimization, Training, Semantics, Accuracy, decompilation, large language model, Large language models, Static analysis, Annotations, static analysis, Smart contracts, Smart contract},
+ month = {February},
+ number = {12},
+ pages = {3574--3590},
+ title = {Augmenting {Smart} {Contract} {Decompiler} {Output} {Through} {Fine}-{Grained} {Dependency} {Analysis} and {LLM}-{Facilitated} {Semantic} {Recovery}},
+ volume = {51},
+ year = {2025}
+}
+
+@article{liu_codeinverter_2025,
+ abstract = {Binary decompilation plays a vital role in various cybersecurity and software engineering tasks. Recently, end-to-end decompilation methods powered by large language models (LLMs) have garnered significant attention due to their ability to generate highly readable source code with minimal human intervention. However, existing LLM-based approaches face several critical challenges, including limited capability in reconstructing code structure and logic, low accuracy in data recovery, concerns over data security and privacy, and high computational resource requirements. To address these issues, we develop the CodeInverter Suite, making three contributions: (1) the CodeInverter Workflow (CIW) is a novel prompt engineering workflow that incorporates control flow graphs (CFG) and explicit data mappings to improve LLM-based decompilation. (2) Using CIW on well-known source code datasets, we curate the CodeInverter Dataset (CID), a domain-specific dataset containing 8.69 million samples that contains CFGs and data mapping tables. (3) We train the CoderInverter Models (CIMs) on CID, generating two lightweight LLMs (with 1.3B and 6.7B parameters) intended for efficient inference in privacy-sensitive or resource-constrained environments. Extensive experiments on two benchmarks demonstrate that the CIW substantially enhances the performance of various LLMs across multiple metrics. Our CIM-6.7B can achieve state-of-the-art decompilation performance, outperforming existing LLMs even with over 100x more parameters in decompilation tasks, an average improvement of 11.03\% in re-executability, 6.27\% in edit similarity.},
+ author = {Liu, Peipei and Sun, Jian and Sun, Rongkang and Chen, Li and Yan, Zhaoteng and Zhang, Peizheng and Sun, Dapeng and Wang, Dawei and Zhang, Xiaoling and Li, Dan},
+ doi = {https://doi.org/10.48550/arXiv.2503.07215},
+ month = {May},
+ title = {The {CodeInverter} {Suite}: {Control}-{Flow} and {Data}-{Mapping} {Augmented} {Binary} {Decompilation} with {LLMs}},
+ url = {https://arxiv.org/pdf/2503.07215},
+ year = {2025}
+}
+
+@article{liu_decompiling_2022,
+ abstract = {Due to their widespread use on heterogeneous hardware devices, deep learning (DL) models are compiled into executables by DL compilers to fully leverage low-level hardware primitives. This approach allows DL computations to be undertaken at low cost across a variety of computing platforms, including CPUs, GPUs, and various hardware accelerators. We present BTD (Bin to DNN), a decompiler for deep neural network (DNN) executables. BTD takes DNN executables and outputs full model specifications, including types of DNN operators, network topology, dimensions, and parameters that are (nearly) identical to those of the input models. BTD delivers a practical framework to process DNN executables compiled by different DL compilers and with full optimizations enabled on x86 platforms. It employs learning-based techniques to infer DNN operators, dynamic analysis to reveal network architectures, and symbolic execution to facilitate inferring dimensions and parameters of DNN operators. Our evaluation reveals that BTD enables accurate recovery of full specifications of complex DNNs with millions of parameters (e.g., ResNet). The recovered DNN specifications can be re-compiled into a new DNN executable exhibiting identical behavior to the input executable. We show that BTD can boost two representative attacks, adversarial example generation and knowledge stealing, against DNN executables. We also demonstrate cross-architecture legacy code reuse using BTD, and envision BTD being used for other critical downstream tasks like DNN security hardening and patching.},
+ annote = {The extended version of a paper to appear in the Proceedings of the 32nd USENIX Security Symposium, 2023, (USENIX Security '23), 25 pages},
+ author = {Liu, Zhibo and Yuan, Yuanyuan and Wang, Shuai and Xie, Xiaofei and Ma, Lei},
+ doi = {https://doi.org/10.48550/arXiv.2210.01075},
+ month = {October},
+ title = {Decompiling x86 {Deep} {Neural} {Network} {Executables}},
+ url = {https://arxiv.org/pdf/2210.01075},
+ year = {2022}
+}
+
+@inproceedings{pal_len_2024,
+ abstract = {Binary reverse engineering is an arduous and tedious task performed by skilled and expensive human analysts. Information about the source code is irrevocably lost in the compilation process. While modern decompilers attempt to generate C-style source code from a binary, they cannot recover lost variable names. Prior works have explored machine learning techniques for predicting variable names in decompiled code. However, the state-of-the-art systems, DIRE and DIRTY, generalize poorly to functions in the testing set that are not included in the training set—31.8\% for DIRE on DIRTY’s data set and 36.9\% for DIRTY on DIRTY’s data set.In this paper, we present VarBERT, a Bidirectional Encoder Representations from Transformers (BERT) to predict meaningful variable names in decompilation output. An advantage of VarBERT is that we can pre-train on human source code and then fine-tune the model to the task of predicting variable names. We also create a new data set VarCorpus, which significantly expands the size and variety of the data set. Our evaluation of VarBERT on VarCorpus, demonstrates a significant improvement in predicting the developer’s original variable names for O2 optimized binaries achieving accuracies of 54.43\% for IDA and 54.49\% for Ghidra. VarBERT is strictly better than state-of-the-art techniques: On a subset of VarCorpus, VarBERT could predict the developer’s original variable names 50.70\% of the time, while DIRE and DIRTY predicted original variable names 35.94\% and 38.00\% of the time, respectively.},
+ author = {Pal, Kuntal Kumar and Bajaj, Ati Priya and Banerjee, Pratyay and Dutcher, Audrey and Nakamura, Mutsumi and Basque, Zion Leonahenahe and Gupta, Himanshu and Sawant, Saurabh Arjun and Anantheswaran, Ujjwala and Shoshitaishvili, Yan and Doupé, Adam and Baral, Chitta and Wang, Ruoyu},
+ booktitle = {2024 {IEEE} {Symposium} on {Security} and {Privacy} ({SP})},
+ doi = {10.1109/SP54263.2024.00152},
+ issn = {2375-1207},
+ keywords = {Codes, Privacy, Source coding, Decompilation, Reverse engineering, Transformers, Training, Machine learning and computer security, Program and binary analysis, Transfer learning},
+ month = {May},
+ pages = {4069--4087},
+ title = {"{Len} or index or count, anything but v1": {Predicting} {Variable} {Names} in {Decompilation} {Output} with {Transfer} {Learning}},
+ year = {2024}
+}
+
+@inproceedings{she_wadec_2024,
+ abstract = {WebAssembly (abbreviated Wasm) has emerged as a cornerstone of web development, offering a compact binary format that allows high-performance applications to run at near-native speeds in web browsers. Despite its advantages, Wasm's binary nature presents significant challenges for developers and researchers, particularly regarding readability when debugging or analyzing web applications. Therefore, effective decompilation becomes crucial. Unfortunately, traditional decompilers often struggle with producing readable outputs. While some large language model (LLM)-based decompilers have shown good compatibility with general binary files, they still face specific challenges when dealing with Wasm.In this paper, we introduce a novel approach, WaDec, which is the first use of a fine-tuned LLM to interpret and decompile Wasm binary code into a higher-level, more comprehensible source code representation. The LLM was meticulously fine-tuned using a specialized dataset of wat-c code snippets, employing self-supervised learning techniques. This enables WaDec to effectively decompile not only complete wat functions but also finer-grained wat code snippets. Our experiments demonstrate that WaDec markedly outperforms current state-of-the-art tools, offering substantial improvements across several metrics. It achieves a code inflation rate of only 3.34\%, a dramatic 97\% reduction compared to the state-of-the-art's 116.94\%. Unlike the output of baselines that cannot be directly compiled or executed, WaDec maintains a recompilability rate of 52.11\%, a re-execution rate of 43.55\%, and an output consistency of 27.15\%. Additionally, it significantly exceeds state-of-the-art performance in AST edit distance similarity by 185\%, cyclomatic complexity by 8\%, and cosine similarity by 41\%, achieving an average code similarity above 50\%. In summary, WaDec enhances understanding of the code's structure and execution flow, facilitating automated code analysis, optimization, and security auditing.},
+ address = {New York, NY, USA},
+ author = {She, Xinyu and Zhao, Yanjie and Wang, Haoyu},
+ booktitle = {Proceedings of the 39th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
+ doi = {10.1145/3691620.3695020},
+ isbn = {979-8-4007-1248-7},
+ pages = {481--492},
+ publisher = {Association for Computing Machinery},
+ series = {{ASE} '24},
+ title = {{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}},
+ url = {https://doi.org/10.1145/3691620.3695020},
+ year = {2024}
+}
+
+@inproceedings{she_wadec_2024-1,
+ abstract = {WebAssembly (abbreviated Wasm) has emerged as a cornerstone of web development, offering a compact binary format that allows high-performance applications to run at near-native speeds in web browsers. Despite its advantages, Wasm’s binary nature presents significant challenges for developers and researchers, particularly regarding readability when debugging or analyzing web applications. Therefore, effective decompilation becomes crucial. Unfortunately, traditional decompilers often struggle with producing readable outputs. While some large language model (LLM)-based decompilers have shown good compatibility with general binary files, they still face specific challenges when dealing with Wasm.In this paper, we introduce a novel approach, WaDec, which is the first use of a fine-tuned LLM to interpret and decompile Wasm binary code into a higher-level, more comprehensible source code representation. The LLM was meticulously fine-tuned using a specialized dataset of wat-c code snippets, employing self-supervised learning techniques. This enables WaDec to effectively decompile not only complete wat functions but also finer-grained wat code snippets. Our experiments demonstrate that WaDec markedly outperforms current state-of-the-art tools, offering substantial improvements across several metrics. It achieves a code inflation rate of only 3.34\%, a dramatic 97\% reduction compared to the state-of-the-art’s 116.94\%. Unlike the output of baselines that cannot be directly compiled or executed, WaDec maintains a recompilability rate of 52.11\%, a re-execution rate of 43.55\%, and an output consistency of 27.15\%. Additionally, it significantly exceeds state-of-the-art performance in AST edit distance similarity by 185\%, cyclomatic complexity by 8\%, and cosine similarity by 41\%, achieving an average code similarity above 50\%. In summary, WaDec enhances understanding of the code’s structure and execution flow, facilitating automated code analysis, optimization, and security auditing.},
+ author = {She, Xinyu and Zhao, Yanjie and Wang, Haoyu},
+ booktitle = {2024 39th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering} ({ASE})},
+ issn = {2643-1572},
+ keywords = {Codes, Security, Source coding, Optimization, Training, decompilation, binary, Faces, finetune, large language model, Large language models, llm, Measurement, readability, Self-supervised learning, Software engineering, wasm, webassembly},
+ month = {October},
+ pages = {481--492},
+ title = {{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}},
+ year = {2024}
+}
+
+@article{she_wadec_2024-2,
+ abstract = {WebAssembly (abbreviated Wasm) has emerged as a cornerstone of web development, offering a compact binary format that allows high-performance applications to run at near-native speeds in web browsers. Despite its advantages, Wasm's binary nature presents significant challenges for developers and researchers, particularly regarding readability when debugging or analyzing web applications. Therefore, effective decompilation becomes crucial. Unfortunately, traditional decompilers often struggle with producing readable outputs. While some large language model (LLM)-based decompilers have shown good compatibility with general binary files, they still face specific challenges when dealing with Wasm. In this paper, we introduce a novel approach, WaDec, which is the first use of a fine-tuned LLM to interpret and decompile Wasm binary code into a higher-level, more comprehensible source code representation. The LLM was meticulously fine-tuned using a specialized dataset of wat-c code snippets, employing self-supervised learning techniques. This enables WaDec to effectively decompile not only complete wat functions but also finer-grained wat code snippets. Our experiments demonstrate that WaDec markedly outperforms current state-of-the-art tools, offering substantial improvements across several metrics. It achieves a code inflation rate of only 3.34\%, a dramatic 97\% reduction compared to the state-of-the-art's 116.94\%. Unlike baselines' output that cannot be directly compiled or executed, WaDec maintains a recompilability rate of 52.11\%, a re-execution rate of 43.55\%, and an output consistency of 27.15\%. Additionally, it significantly exceeds state-of-the-art performance in AST edit distance similarity by 185\%, cyclomatic complexity by 8\%, and cosine similarity by 41\%, achieving an average code similarity above 50\%.},
+ annote = {This paper was accepted by ASE 2024},
+ author = {She, Xinyu and Zhao, Yanjie and Wang, Haoyu},
+ doi = {https://doi.org/10.48550/arXiv.2406.11346},
+ month = {September},
+ title = {{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}},
+ url = {https://arxiv.org/pdf/2406.11346},
+ year = {2024}
+}
+
+@article{su_disco_2025,
+ abstract = {Understanding the Ethereum smart contract bytecode is essential for ensuring cryptoeconomics security. However, existing decompilers primarily convert bytecode into pseudocode, which is not easily comprehensible for general users, potentially leading to misunderstanding of contract behavior and increased vulnerability to scams or exploits. In this paper, we propose DiSCo, the first LLMs-based EVM decompilation pipeline, which aims to enable LLMs to understand the opaque bytecode and lift it into smart contract code. DiSCo introduces three core technologies. First, a logic-invariant intermediate representation is proposed to reproject the low-level bytecode into high-level abstracted units. The second technique involves semantic enhancement based on a novel type-aware graph model to infer stripped variables during compilation, enhancing the lifting effect. The third technology is a flexible method incorporating code specifications to construct LLM-comprehensible prompts for source code generation. Extensive experiments illustrate that our generated code guarantees a high compilability rate at 75\%, with differential fuzzing pass rate averaging at 50\%. Manual validation results further indicate that the generated solidity contracts significantly outperforms baseline methods in tasks such as code comprehension and attack reproduction.},
+ address = {New York, NY, USA},
+ author = {Su, Xing and Liang, Hanzhong and Wu, Hao and Niu, Ben and Xu, Fengyuan and Zhong, Sheng},
+ doi = {10.1145/3729373},
+ journal = {Proc. ACM Softw. Eng.},
+ keywords = {Decompilation, EVM bytecode, Large Language Models, Smart Contract, Source Code Generation},
+ month = {June},
+ number = {FSE},
+ publisher = {Association for Computing Machinery},
+ title = {{DiSCo}: {Towards} {Decompiling} {EVM} {Bytecode} to {Source} {Code} using {Large} {Language} {Models}},
+ url = {https://doi.org/10.1145/3729373},
+ volume = {2},
+ year = {2025}
+}
+
+@article{tan_llm4decompile_2024,
+ abstract = {Decompilation aims to convert binary code to high-level source code, but traditional tools like Ghidra often produce results that are difficult to read and execute. Motivated by the advancements in Large Language Models (LLMs), we propose LLM4Decompile, the first and largest open-source LLM series (1.3B to 33B) trained to decompile binary code. We optimize the LLM training process and introduce the LLM4Decompile-End models to decompile binary directly. The resulting models significantly outperform GPT-4o and Ghidra on the HumanEval and ExeBench benchmarks by over 100\% in terms of re-executability rate. Additionally, we improve the standard refinement approach to fine-tune the LLM4Decompile-Ref models, enabling them to effectively refine the decompiled code from Ghidra and achieve a further 16.2\% improvement over the LLM4Decompile-End. LLM4Decompile demonstrates the potential of LLMs to revolutionize binary code decompilation, delivering remarkable improvements in readability and executability while complementing conventional tools for optimal results. Our code, dataset, and models are released at https://github.com/albertan017/LLM4Decompile},
+ author = {Tan, Hanzhuo and Luo, Qi and Li, Jing and Zhang, Yuqun},
+ doi = {https://doi.org/10.48550/arXiv.2403.05286},
+ month = {October},
+ title = {{LLM4Decompile}: {Decompiling} {Binary} {Code} with {Large} {Language} {Models}},
+ url = {https://arxiv.org/pdf/2403.05286},
+ year = {2024}
+}
+
+@article{tan_sk2decompile_2025,
+ abstract = {Large Language Models (LLMs) have emerged as a promising approach for binary decompilation. However, the existing LLM-based decompilers still are somewhat limited in effectively presenting a program's source-level structure with its original identifiers. To mitigate this, we introduce SK2Decompile, a novel two-phase approach to decompile from the skeleton (semantic structure) to the skin (identifier) of programs. Specifically, we first apply a Structure Recovery model to translate a program's binary code to an Intermediate Representation (IR) as deriving the program's "skeleton", i.e., preserving control flow and data structures while obfuscating all identifiers with generic placeholders. We also apply reinforcement learning to reward the model for producing program structures that adhere to the syntactic and semantic rules expected by compilers. Second, we apply an Identifier Naming model to produce meaningful identifiers which reflect actual program semantics as deriving the program's "skin". We train the Identifier Naming model with a separate reinforcement learning objective that rewards the semantic similarity between its predictions and the reference code. Such a two-phase decompilation process facilitates advancing the correctness and readability of decompilation independently. Our evaluations indicate that SK2Decompile, significantly outperforms the SOTA baselines, achieving 21.6\% average re-executability rate gain over GPT-5-mini on the HumanEval dataset and 29.4\% average R2I improvement over Idioms on the GitHub2025 benchmark.},
+ author = {Tan, Hanzhuo and Li, Weihao and Tian, Xiaolong and Wang, Siyi and Liu, Jiaming and Li, Jing and Zhang, Yuqun},
+ doi = {https://doi.org/10.48550/arXiv.2509.22114},
+ month = {September},
+ title = {{SK2Decompile}: {LLM}-based {Two}-{Phase} {Binary} {Decompilation} from {Skeleton} to {Skin}},
+ url = {https://arxiv.org/pdf/2509.22114},
+ year = {2025}
+}
+
+@article{udeshi_remend_2025,
+ abstract = {Analysis of binary executables implementing mathematical equations can benefit from the reverse engineering of semantic information about the implementation. Traditional algorithmic reverse engineering tools either do not recover semantic information or rely on dynamic analysis and symbolic execution with high reverse engineering time. Algorithmic tools also require significant re-engineering effort to target new platforms and languages. Recently, neural methods for decompilation have been developed to recover human-like source code, but they do not extract semantic information explicitly. We develop REMEND, a neural decompilation framework to reverse engineer math equations from binaries to explicitly recover program semantics like data flow and order of operations. REMEND combines a transformer encoder-decoder model for neural decompilation with algorithmic processing for enhanced symbolic reasoning necessary for math equations. REMEND is the first work to demonstrate that transformers for neural decompilation go beyond source code and reason about program semantics in the form of math equations. We train on a synthetically generated dataset containing multiple implementations and compilations of math equations to produce a robust neural decompilation model and demonstrate retargettability. REMEND obtains an accuracy of 89.8\% to 92.4\% across three Instruction Set Architectures (ISAs), three optimization levels, and two programming languages with a single trained model, extending the capability of state-of-the-art neural decompilers. We achieve high accuracy with a small model of upto 12 million parameters and an average execution time of 0.132 seconds per function. On a real-world dataset collected from open-source programs, REMEND generalizes better than state-of-the-art neural decompilers despite being trained with synthetic data, achieving 8\% higher accuracy. The synthetic and real-world datasets are provided at .},
+ address = {New York, NY, USA},
+ annote = {Just Accepted},
+ author = {Udeshi, Meet and Krishnamurthy, Prashanth and Karri, Ramesh and Khorrami, Farshad},
+ doi = {10.1145/3749988},
+ issn = {2157-6904},
+ journal = {ACM Trans. Intell. Syst. Technol.},
+ keywords = {reverse engineering, math equations, neural decompilation},
+ month = {July},
+ publisher = {Association for Computing Machinery},
+ title = {{REMEND}: {Neural} {Decompilation} for {Reverse} {Engineering} {Math} {Equations} from {Binary} {Executables}},
+ url = {https://doi.org/10.1145/3749988},
+ year = {2025}
+}
+
+@article{wang_context-guided_2025,
+ abstract = {Binary decompilation plays an important role in software security analysis, reverse engineering, and malware understanding when source code is unavailable. However, existing decompilation techniques often fail to produce source code that can be successfully recompiled and re-executed, particularly for optimized binaries. Recent advances in large language models (LLMs) have enabled neural approaches to decompilation, but the generated code is typically only semantically plausible rather than truly executable, limiting their practical reliability. These shortcomings arise from compiler optimizations and the loss of semantic cues in compiled code, which LLMs struggle to recover without contextual guidance. To address this challenge, we propose ICL4Decomp, a hybrid decompilation framework that leverages in-context learning (ICL) to guide LLMs toward generating re-executable source code. We evaluate our method across multiple datasets, optimization levels, and compilers, demonstrating around 40\% improvement in re-executability over state-of-the-art decompilation methods while maintaining robustness.},
+ author = {Wang, Xiaohan and Hu, Yuxin and Leach, Kevin},
+ doi = {https://doi.org/10.48550/arXiv.2511.01763},
+ month = {January},
+ title = {Context-{Guided} {Decompilation}: {A} {Step} {Towards} {Re}-executability},
+ url = {https://arxiv.org/pdf/2511.01763},
+ year = {2025}
+}
+
+@article{wang_salt4decompile_2025,
+ abstract = {Decompilation is widely used in reverse engineering to recover high-level language code from binary executables. While recent approaches leveraging Large Language Models (LLMs) have shown promising progress, they typically treat assembly code as a linear sequence of instructions, overlooking arbitrary jump patterns and isolated data segments inherent to binary files. This limitation significantly hinders their ability to correctly infer source code semantics from assembly code. To address this limitation, we propose {\textbackslash}saltm, a novel binary decompilation method that abstracts stable logical features shared between binary and source code. The core idea of {\textbackslash}saltm is to abstract selected binary-level operations, such as specific jumps, into a high-level logic framework that better guides LLMs in semantic recovery. Given a binary function, {\textbackslash}saltm constructs a Source-level Abstract Logic Tree ({\textbackslash}salt) from assembly code to approximate the logic structure of high-level language. It then fine-tunes an LLM using the reconstructed {\textbackslash}salt to generate decompiled code. Finally, the output is refined through error correction and symbol recovery to improve readability and correctness. We compare {\textbackslash}saltm to three categories of baselines (general-purpose LLMs, commercial decompilers, and decompilation methods) using three well-known datasets (Decompile-Eval, MBPP, Exebench). Our experimental results demonstrate that {\textbackslash}saltm is highly effective in recovering the logic of the source code, significantly outperforming state-of-the-art methods (e.g., 70.4\% TCP rate on Decompile-Eval with a 10.6\% improvement). The results further validate its robustness against four commonly used obfuscation techniques. Additionally, analyses of real-world software and a user study confirm that our decompiled output offers superior assistance to human analysts in comprehending binary functions.},
+ annote = {13 pages, 7 figures},
+ author = {Wang, Yongpan and Xu, Xin and Zhu, Xiaojie and Gu, Xiaodong and Shen, Beijun},
+ doi = {https://doi.org/10.48550/arXiv.2509.14646},
+ month = {September},
+ title = {{SALT4Decompile}: {Inferring} {Source}-level {Abstract} {Logic} {Tree} for {LLM}-{Based} {Binary} {Decompilation}},
+ url = {https://arxiv.org/pdf/2509.14646},
+ year = {2025}
+}
+
+@inproceedings{wiedemeier_pylingual_2025,
+ abstract = {Python is one of the most popular programming languages among both industry developers and malware authors. Despite demand for Python decompilers, community efforts to maintain automatic Python decompilation tools have been hindered by Python's aggressive language improvements and unstable bytecode specification. Every year, language features are added, code generation undergoes significant changes, and opcodes are added, deleted, and modified. Our research aims to integrate Natural Language Processing (NLP) techniques with classical Programming Language (PL) theory to create a Python decompiler that accomodates evolving language features and changes to the bytecode specification with minimal human maintenance effort. PyLINGUAL plugs in data-driven NLP components to a version-agnostic core to automatically absorb superficial bytecode and compiler changes, while leveraging programmatic components for abstract control flow reconstruction. To establish trust in the decompilation results, we introduce a stringent correctness measure based on “perfect decompilation”, a statically verifiable refinement of semantic equivalence. We demonstrate the efficacy of our approach with extensive real-world datasets of benign and malicious Python source code and their corresponding compiled PYC binaries. Our research makes three major contributions: (1) we present PyLINGUAL, a scalable, data-driven decompilation framework with state-of-the-art support for Python versions 3.6 through 3.12, improving the perfect decompilation rate by an average of 45\% over the best results of existing decompiler across four datasets; (2) we provide a Python decompiler evaluation framework that verifies decompilation results with perfect decompilation; and (3) we launch PyLINGUAL as a public online service.},
+ author = {Wiedemeier, Josh and Tarbet, Elliot and Zheng, Max and Ko, Sangsoo and Ouyang, Jessica and Cha, Sang Kil and Jee, Kangkook},
+ booktitle = {2025 {IEEE} {Symposium} on {Security} and {Privacy} ({SP})},
+ doi = {10.1109/SP61157.2025.00052},
+ issn = {2375-1207},
+ keywords = {Codes, Security, Source coding, Program processors, Reverse engineering, Semantics, Translation, reverse engineering, Syntactics, Natural language processing, decompiler, nlp, python, Python},
+ month = {May},
+ pages = {2976--2994},
+ title = {{PyLingual}: {Toward} {Perfect} {Decompilation} of {Evolving} {High}-{Level} {Languages}},
+ year = {2025}
+}
+
+@article{wong_decllm_2025,
+ abstract = {Decompilers are widely used in reverse engineering (RE) to convert compiled executables into human-readable pseudocode and support various security analysis tasks. Existing decompilers, such as IDA Pro and Ghidra, focus on enhancing the readability of decompiled code rather than its recompilability, which limits further programmatic use, such as for CodeQL-based vulnerability analysis that requires compilable versions of the decompiled code. Recent LLM-based approaches for enhancing decompilation results, while useful for human RE analysts, unfortunately also follow the same path. In this paper, we explore, for the first time, how off-the-shelf large language models (LLMs) can be used to enable recompilable decompilation—automatically correcting decompiler outputs into compilable versions. We first show that this is non-trivial through a pilot study examining existing rule-based and LLM-based approaches. Based on the lessons learned, we design DecLLM, an iterative LLM-based repair loop that utilizes both static recompilation and dynamic runtime feedback as oracles to iteratively fix decompiler outputs. We test DecLLM on popular C benchmarks and real-world binaries using two mainstream LLMs, GPT-3.5 and GPT-4, and show that off-the-shelf LLMs can achieve an upper bound of around 70\% recompilation success rate, i.e., 70 out of 100 originally non-recompilable decompiler outputs are now recompilable. We also demonstrate the practical applicability of the recompilable code for CodeQL-based vulnerability analysis, which is impossible to perform directly on binaries. For the remaining 30\% of hard cases, we further delve into their errors to gain insights for future improvements in decompilation-oriented LLM design.},
+ address = {New York, NY, USA},
+ author = {Wong, Wai Kin and Wu, Daoyuan and Wang, Huaijin and Li, Zongjie and Liu, Zhibo and Wang, Shuai and Tang, Qiyi and Nie, Sen and Wu, Shi},
+ doi = {10.1145/3728958},
+ journal = {Proc. ACM Softw. Eng.},
+ keywords = {Reverse Engineering, Large Language Model, Recompilable Decompilation},
+ month = {June},
+ number = {ISSTA},
+ publisher = {Association for Computing Machinery},
+ title = {{DecLLM}: {LLM}-{Augmented} {Recompilable} {Decompilation} for {Enabling} {Programmatic} {Use} of {Decompiled} {Code}},
+ url = {https://doi.org/10.1145/3728958},
+ volume = {2},
+ year = {2025}
+}
+
+@article{wong_refining_2023,
+ abstract = {A C decompiler converts an executable into source code. The recovered C source code, once re-compiled, is expected to produce an executable with the same functionality as the original executable. With over twenty years of development, C decompilers have been widely used in production to support reverse engineering applications. Despite the prosperous development of C decompilers, it is widely acknowledged that decompiler outputs are mainly used for human consumption, and are not suitable for automatic recompilation. Often, a substantial amount of manual effort is required to fix the decompiler outputs before they can be recompiled and executed properly. This paper is motived by the recent success of large language models (LLMs) in comprehending dense corpus of natural language. To alleviate the tedious, costly and often error-prone manual effort in fixing decompiler outputs, we investigate the feasibility of using LLMs to augment decompiler outputs, thus delivering recompilable decompilation. Note that different from previous efforts that focus on augmenting decompiler outputs with higher readability (e.g., recovering type/variable names), we focus on augmenting decompiler outputs with recompilability, meaning to generate code that can be recompiled into an executable with the same functionality as the original executable. We conduct a pilot study to characterize the obstacles in recompiling the outputs of the de facto commercial C decompiler – IDA-Pro. We then propose a two-step, hybrid approach to augmenting decompiler outputs with LLMs. We evaluate our approach on a set of popular C test cases, and show that our approach can deliver a high recompilation success rate to over 75\% with moderate effort, whereas none of the IDA-Pro's original outputs can be recompiled. We conclude with a discussion on the limitations of our approach and promising future research directions.},
+ author = {Wong, Kin, Wai and Wang, Huaijin and Li, Zongjie and Liu, Zhibo and Wang, Shuai and Tang, Qiyi and Nie, Sen and Wu, Shi},
+ doi = {https://doi.org/10.48550/arXiv.2310.06530},
+ month = {January},
+ title = {Refining {Decompiled} {C} {Code} with {Large} {Language} {Models}},
+ url = {https://arxiv.org/pdf/2310.06530},
+ year = {2023}
+}
+
+@inproceedings{xiong_hext5_2024,
+ abstract = {Decompilation is a widely used process for reverse engineers to significantly enhance code readability by lifting assembly code to a higher-level C-like language, pseudo-code. Nevertheless, the process of compilation and stripping irreversibly discards high-level semantic information that is crucial to code comprehension, such as comments, identifier names, and types. Existing approaches typically recover only one type of information, making them suboptimal for semantic inference. In this paper, we treat pseudo-code as a special programming language, then present a unified pre-trained model, HexT5, that is trained on vast amounts of natural language comments, source identifiers, and pseudo-code using novel pseudo-code-based pretraining objectives. We fine-tune HexT5 on various downstream tasks, including code summarization, variable name recovery, function name recovery, and similarity detection. Comprehensive experiments show that HexT5 achieves state-of-the-art performance on four downstream tasks, and it demonstrates the robust effectiveness and generalizability of HexT5 for binary-related tasks.},
+ author = {Xiong, Jiaqi and Chen, Guoqiang and Chen, Kejiang and Gao, Han and Cheng, Shaoyin and Zhang, Weiming},
+ booktitle = {Proceedings of the 38th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
+ doi = {10.1109/ASE56229.2023.00099},
+ isbn = {979-8-3503-2996-4},
+ keywords = {Binary codes, Task analysis, Deep Learning, Reverse Engineering, Semantics, deep learning, Natural languages, reverse engineering, Data mining, Computer languages, binary diffing, information inference, programming language model, Object recognition, Binary Diffing, Information Inference, Programming Language Model},
+ pages = {774--786},
+ publisher = {IEEE Press},
+ series = {{ASE} '23},
+ title = {{HexT5}: {Unified} {Pre}-{Training} for {Stripped} {Binary} {Code} {Information} {Inference}},
+ url = {https://doi.org/10.1109/ASE56229.2023.00099},
+ year = {2024}
+}
+
+@article{zhou_fidelitygpt_2025,
+ abstract = {Decompilation converts machine code into human-readable form, enabling analysis and debugging without source code. However, fidelity issues often degrade the readability and semantic accuracy of decompiled output. Existing methods, such as variable renaming or structural simplification, provide partial improvements but lack robust detection and correction, particularly for complex closed-source binaries. We present FidelityGPT, a framework that enhances decompiled code accuracy and readability by systematically detecting and correcting semantic distortions. FidelityGPT introduces distortion-aware prompt templates tailored to closed-source settings and integrates Retrieval-Augmented Generation (RAG) with a dynamic semantic intensity algorithm to locate distorted lines and retrieve semantically similar code from a database. A variable dependency algorithm further mitigates long-context limitations by analyzing redundant variables and integrating their dependencies into the prompt context. Evaluated on 620 function pairs from a binary similarity benchmark, FidelityGPT achieved an average detection accuracy of 89\% and a precision of 83\%. Compared to the state-of-the-art DeGPT (Fix Rate 83\%, Corrected Fix Rate 37\%), FidelityGPT attained 94\% FR and 64\% CFR, demonstrating significant gains in accuracy and readability. These results highlight its potential to advance LLM-based decompilation and reverse engineering.},
+ author = {Zhou, Zhiping and Li, Xiaohong and Feng, Ruitao and Zhang, Yao and Li, Yuekang and Feng, Wenbu and Wang, Yunqian and Li, Yuqing},
+ doi = {https://doi.org/10.48550/arXiv.2510.19615},
+ month = {October},
+ title = {{FidelityGPT}: {Correcting} {Decompilation} {Distortions} with {Retrieval} {Augmented} {Generation}},
+ url = {https://arxiv.org/pdf/2510.19615},
+ year = {2025}
+}
+
+@article{zou_d-lift_2025,
+ abstract = {As one of the key tools in many security tasks, decompilers reconstruct human-readable source code from binaries. Yet, despite recent advances, their outputs often suffer from syntactic and semantic errors and remain difficult to read. Recently, with the advent of large language models (LLMs), researchers began to explore the potential of LLMs to refine decompiler output. Nevertheless, our study of these approaches reveals their problems, such as introducing new errors and relying on unreliable accuracy validation. In this paper, we present D-LIFT, an enhanced decompiler-LLM pipeline with a fine-tuned LLM using code quality-aware reinforcement learning. Unlike prior work that overlooks preserving accuracy, D-LIFT adheres to a key principle for enhancing the quality of decompiled code: preserving accuracy while improving readability. Central to D-LIFT, we propose D-Score, an integrated code quality assessment system to score the decompiled source code from multiple aspects, and use it to guide reinforcement learning fine-tuning and to select the best output during inference. In line with our principle, D-Score assigns low scores to any inaccurate output and only awards higher scores for readability to code that passes the accuracy check. Our implementation, based on Ghidra and a range of LLMs, demonstrates significant improvements for the accurate decompiled code from the coreutils and util-linux projects. Compared to baseline LLMs without D-Score-driven fine-tuning, our trained LLMs produce 55.3\% more improved decompiled functions, as measured by D-Score. Overall, D-LIFT improves the quality of 68.2\% of all the functions produced by the native decompiler.},
+ author = {Zou, Muqi and Cai, Hongyu and Wu, Hongwei and Basque, Leonahenahe, Zion and Khan, Arslan and Celik, Berkay and {Dave} and {Tian} and Bianchi, Antonio and {Ruoyu} and {Wang} and Xu, Dongyan},
+ doi = {https://doi.org/10.48550/arXiv.2506.10125},
+ month = {August},
+ title = {D-{LiFT}: {Improving} {LLM}-based {Decompiler} {Backend} via {Code} {Quality}-driven {Fine}-tuning},
+ url = {https://arxiv.org/pdf/2506.10125},
+ year = {2025}
+}

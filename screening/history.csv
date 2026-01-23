@@ -8,3 +8,5 @@ run_id,date,model,total,included,excluded,uncertain,input_file,notes
 2026-01-22_1756,2026-01-22,openai/gpt-oss-120b,100,30,70,0,/Users/matsulab/univ/lab/decompile_survey/decompile-survey/imports/arXiv/arXiv_decompil_20260115_1917.bib,
 2026-01-22_1802,2026-01-22,openai/gpt-oss-120b,655,51,602,2,/Users/matsulab/Downloads/decompile-survey.bib,
 2026-01-22_1806,2026-01-22,openai/gpt-oss-120b,655,53,601,1,/Users/matsulab/Downloads/decompile-survey.bib,
+2026-01-22_2326,2026-01-22,openai/gpt-oss-120b,100,29,70,1,/Users/matsulab/univ/lab/decompile_survey/decompile-survey/imports/arXiv/arXiv_decompil_20260115_1917.bib,
+2026-01-22_2327,2026-01-22,openai/gpt-oss-120b,655,53,600,2,/Users/matsulab/Downloads/decompile-survey.bib,
