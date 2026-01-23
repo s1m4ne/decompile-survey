@@ -233,9 +233,11 @@ export const stepTypesApi = {
 
 // Sources
 export interface PickFileResponse {
-  path: string | null;
-  filename: string | null;
+  paths: string[] | null;
+  filenames: string[] | null;
   cancelled: boolean;
+  modified_at?: string[] | null;
+  created_at?: (string | null)[] | null;
 }
 
 export const sourcesApi = {
@@ -247,18 +249,38 @@ export const sourcesApi = {
       method: 'POST',
     }),
 
-  addFromPath: (projectId: string, path: string, category: string, database?: string) =>
+  addFromPath: (
+    projectId: string,
+    path: string,
+    category: string,
+    database?: string,
+    search_query?: string,
+    search_date?: string
+  ) =>
     fetchApi<SourceFile>(`/projects/${projectId}/sources/add-from-path`, {
       method: 'POST',
-      body: JSON.stringify({ path, category, database }),
+      body: JSON.stringify({ path, category, database, search_query, search_date }),
     }),
 
-  upload: async (projectId: string, file: File, category: string, database?: string) => {
+  upload: async (
+    projectId: string,
+    file: File,
+    category: string,
+    database?: string,
+    search_query?: string,
+    search_date?: string
+  ) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('category', category);
     if (database) {
       formData.append('database', database);
+    }
+    if (search_query) {
+      formData.append('search_query', search_query);
+    }
+    if (search_date) {
+      formData.append('search_date', search_date);
     }
 
     const response = await fetch(`${API_BASE}/projects/${projectId}/sources/upload`, {
@@ -282,6 +304,11 @@ export const sourcesApi = {
   getEntries: (projectId: string, category: string, filename: string) =>
     fetchApi<{ entries: Record<string, unknown>[]; count: number }>(
       `/projects/${projectId}/sources/${category}/${filename}/entries`
+    ),
+
+  getStat: (projectId: string, category: string, filename: string) =>
+    fetchApi<{ filename: string; category: string; modified_at: string; created_at: string | null }>(
+      `/projects/${projectId}/sources/${category}/${filename}/stat`
     ),
 };
 

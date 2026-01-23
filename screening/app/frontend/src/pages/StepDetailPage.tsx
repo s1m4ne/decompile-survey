@@ -21,6 +21,7 @@ import { stepsApi, pipelineApi, StepMeta, PipelineStep } from '../lib/api';
 import { Badge } from '../components/ui/Badge';
 import { StepOutputViewer, ColumnDefinition, BibEntry, ChangeRecord, FilterOption } from '../components/papers';
 import { StepConfigModal } from '../components/StepConfigModal';
+import { normalizeBibtexText } from '../components/BibtexText';
 
 // Step type specific configuration
 interface StepTypeConfig {
@@ -37,8 +38,8 @@ const dedupDoiColumns: ColumnDefinition<BibEntry>[] = [
     header: 'Title',
     width: 'flex-1 min-w-0',
     render: (entry) => (
-      <span className="line-clamp-2" title={entry.title}>
-        {entry.title || '(No title)'}
+      <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
+        {normalizeBibtexText(entry.title) || '(No title)'}
       </span>
     ),
   },
@@ -62,20 +63,25 @@ const dedupDoiColumns: ColumnDefinition<BibEntry>[] = [
     id: 'doi',
     header: 'DOI',
     width: 'w-48',
-    render: (entry) =>
-      entry.doi ? (
+    render: (entry) => {
+      if (!entry.doi) {
+        return <span className="text-[hsl(var(--muted-foreground))] text-xs">No DOI</span>;
+      }
+      const doiUrl = entry.doi.startsWith('http')
+        ? entry.doi
+        : `https://doi.org/${entry.doi}`;
+      return (
         <a
-          href={`https://doi.org/${entry.doi}`}
+          href={doiUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-[hsl(var(--status-info))] hover:underline line-clamp-1"
           onClick={(e) => e.stopPropagation()}
         >
-          {entry.doi}
+          {doiUrl}
         </a>
-      ) : (
-        <span className="text-[hsl(var(--muted-foreground))] text-xs">No DOI</span>
-      ),
+      );
+    },
   },
   {
     id: 'reason',
@@ -143,8 +149,8 @@ const aiScreeningColumns: ColumnDefinition<BibEntry>[] = [
     header: 'Title',
     width: 'flex-1 min-w-0',
     render: (entry) => (
-      <span className="line-clamp-2" title={entry.title}>
-        {entry.title || '(No title)'}
+      <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
+        {normalizeBibtexText(entry.title) || '(No title)'}
       </span>
     ),
   },

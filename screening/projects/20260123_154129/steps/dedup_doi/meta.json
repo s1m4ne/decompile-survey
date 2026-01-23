@@ -6,12 +6,12 @@
     "from": "sources",
     "output": "combined",
     "file": "sources",
-    "count": 43
+    "count": 655
   },
   "outputs": {
     "passed": {
       "file": "steps/dedup_doi/outputs/passed.bib",
-      "count": 38,
+      "count": 650,
       "description": "Unique entries (first occurrence of each DOI + entries without DOI)"
     },
     "duplicates": {
@@ -21,16 +21,16 @@
     }
   },
   "stats": {
-    "input_count": 43,
-    "total_output_count": 43,
-    "passed_count": 38,
+    "input_count": 655,
+    "total_output_count": 655,
+    "passed_count": 650,
     "removed_count": 5
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-23T18:40:49.437268",
-    "completed_at": "2026-01-23T18:40:49.500970",
-    "duration_sec": 0.063702,
+    "started_at": "2026-01-24T02:17:46.415114",
+    "completed_at": "2026-01-24T02:17:47.297824",
+    "duration_sec": 0.88271,
     "error": null
   }
 }

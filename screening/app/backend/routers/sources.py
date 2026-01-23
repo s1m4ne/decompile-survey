@@ -8,6 +8,7 @@ import shutil
 from pathlib import Path
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
+from datetime import datetime
 
 router = APIRouter(prefix="/projects/{project_id}/sources", tags=["sources"])
 
@@ -81,17 +82,23 @@ def get_sources(project_id: str) -> SourcesMeta:
 
 class PickFileResponse(BaseModel):
     """Response from file picker."""
-    path: str | None
-    filename: str | None
+    paths: list[str] | None
+    filenames: list[str] | None
     cancelled: bool
+    modified_at: list[str] | None = None
+    created_at: list[str | None] | None = None
 
 
 @router.post("/pick-file")
 async def pick_file(project_id: str) -> PickFileResponse:
     """Open macOS Finder to pick a BibTeX file."""
     script = '''
-    set theFile to choose file with prompt "BibTeXファイルを選択してください" of type {"bib"}
-    return POSIX path of theFile
+    set theFiles to choose file with prompt "BibTeXファイルを選択してください" of type {"bib"} with multiple selections allowed
+    set filePaths to ""
+    repeat with aFile in theFiles
+        set filePaths to filePaths & (POSIX path of aFile) & "\\n"
+    end repeat
+    return filePaths
     '''
 
     try:
@@ -103,20 +110,36 @@ async def pick_file(project_id: str) -> PickFileResponse:
         stdout, stderr = await process.communicate()
 
         if process.returncode != 0:
-            return PickFileResponse(path=None, filename=None, cancelled=True)
+            return PickFileResponse(paths=None, filenames=None, cancelled=True)
 
-        file_path = stdout.decode("utf-8").strip()
-        if not file_path:
-            return PickFileResponse(path=None, filename=None, cancelled=True)
+        raw_paths = stdout.decode("utf-8").strip()
+        if not raw_paths:
+            return PickFileResponse(paths=None, filenames=None, cancelled=True)
 
-        path = Path(file_path)
-        if not path.exists():
-            raise HTTPException(status_code=404, detail=f"File not found: {file_path}")
+        paths = [p for p in raw_paths.split("\n") if p.strip()]
+        file_paths: list[Path] = []
+        for p in paths:
+            path = Path(p)
+            if not path.exists():
+                raise HTTPException(status_code=404, detail=f"File not found: {p}")
+            file_paths.append(path)
+
+        modified_at: list[str] = []
+        created_at: list[str | None] = []
+        for path in file_paths:
+            stat = path.stat()
+            modified_at.append(datetime.fromtimestamp(stat.st_mtime).isoformat())
+            if hasattr(stat, "st_birthtime"):
+                created_at.append(datetime.fromtimestamp(stat.st_birthtime).isoformat())
+            else:
+                created_at.append(None)
 
         return PickFileResponse(
-            path=file_path,
-            filename=path.name,
-            cancelled=False
+            paths=[str(p) for p in file_paths],
+            filenames=[p.name for p in file_paths],
+            cancelled=False,
+            modified_at=modified_at,
+            created_at=created_at,
         )
 
     except Exception as e:
@@ -128,6 +151,8 @@ class AddFromPathRequest(BaseModel):
     path: str
     category: str = "databases"
     database: str | None = None
+    search_query: str | None = None
+    search_date: str | None = None
 
 
 @router.post("/add-from-path")
@@ -163,6 +188,8 @@ def add_from_path(project_id: str, request: AddFromPathRequest) -> SourceFile:
         category=request.category,
         count=entry_count,
         database=request.database,
+        search_query=request.search_query,
+        search_date=request.search_date,
     )
 
     if request.category == "databases":
@@ -188,6 +215,8 @@ async def upload_source(
     file: UploadFile = File(...),
     category: str = Form("databases"),
     database: str = Form(None),
+    search_query: str = Form(None),
+    search_date: str = Form(None),
 ) -> SourceFile:
     """Upload a BibTeX source file."""
     if not file.filename.endswith(".bib"):
@@ -217,6 +246,8 @@ async def upload_source(
         category=category,
         count=entry_count,
         database=database,
+        search_query=search_query,
+        search_date=search_date,
     )
 
     if category == "databases":
@@ -287,3 +318,37 @@ def get_source_entries(project_id: str, category: str, filename: str) -> dict:
         bib_db = bibtexparser.load(f)
 
     return {"entries": bib_db.entries, "count": len(bib_db.entries)}
+
+
+class SourceFileStat(BaseModel):
+    """File stat information."""
+    filename: str
+    category: str
+    modified_at: str
+    created_at: str | None = None
+
+
+@router.get("/{category}/{filename}/stat")
+def get_source_stat(project_id: str, category: str, filename: str) -> SourceFileStat:
+    """Get file stat metadata (modified/created timestamps)."""
+    if category not in ("databases", "other"):
+        raise HTTPException(status_code=400, detail="Category must be 'databases' or 'other'")
+
+    sources_dir = get_sources_dir(project_id)
+    target_file = sources_dir / category / filename
+
+    if not target_file.exists():
+        raise HTTPException(status_code=404, detail=f"File not found: {filename}")
+
+    stat = target_file.stat()
+    modified_at = datetime.fromtimestamp(stat.st_mtime).isoformat()
+    created_at = None
+    if hasattr(stat, "st_birthtime"):
+        created_at = datetime.fromtimestamp(stat.st_birthtime).isoformat()
+
+    return SourceFileStat(
+        filename=filename,
+        category=category,
+        modified_at=modified_at,
+        created_at=created_at,
+    )

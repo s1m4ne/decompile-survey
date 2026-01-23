@@ -5,25 +5,19 @@ import {
   ArrowLeft,
   Plus,
   Settings,
-  ChevronDown,
   ChevronRight,
   Database,
-  FileText,
   CheckCircle,
   Clock,
   AlertCircle,
   Loader2,
-  Trash2,
-  FolderOpen,
   X,
 } from 'lucide-react';
 import { Badge } from '../components/ui/Badge';
 import {
   projectsApi,
   pipelineApi,
-  stepsApi,
   stepTypesApi,
-  sourcesApi,
   StepMeta,
   PipelineStep,
   StepTypeInfo,
@@ -165,49 +159,13 @@ function SourcesCard({
   projectId: string;
   sources: SourcesMeta | undefined;
 }) {
-  const [expanded, setExpanded] = useState(true);
-  const queryClient = useQueryClient();
-
-  const pickFileMutation = useMutation({
-    mutationFn: async () => {
-      const result = await sourcesApi.pickFile(projectId);
-      if (result.cancelled || !result.path) {
-        return null;
-      }
-      return sourcesApi.addFromPath(projectId, result.path, 'databases');
-    },
-    onSuccess: (data) => {
-      if (data) {
-        queryClient.invalidateQueries({ queryKey: ['sources', projectId] });
-        queryClient.invalidateQueries({ queryKey: ['project', projectId] });
-      }
-    },
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: ({ category, filename }: { category: string; filename: string }) =>
-      sourcesApi.delete(projectId, category, filename),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sources', projectId] });
-      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
-    },
-  });
-
-  const handleDelete = (e: React.MouseEvent, category: string, filename: string) => {
-    e.stopPropagation();
-    if (confirm(`Delete "${filename}"?`)) {
-      deleteMutation.mutate({ category, filename });
-    }
-  };
-
   const totalCount = sources?.totals.combined || 0;
+  const databaseCount = sources?.totals.databases || 0;
+  const otherCount = sources?.totals.other || 0;
 
   return (
     <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg overflow-hidden">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full p-4 flex items-center justify-between hover:bg-[hsl(var(--muted))] transition-colors"
-      >
+      <div className="w-full p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[hsl(var(--secondary))] rounded-lg flex items-center justify-center">
             <Database className="w-5 h-5 text-[hsl(var(--secondary-foreground))]" />
@@ -223,78 +181,18 @@ function SourcesCard({
           <span className="px-2 py-1 bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] text-xs rounded">
             {totalCount}
           </span>
-          {expanded ? (
-            <ChevronDown className="w-5 h-5 text-[hsl(var(--muted-foreground))]" />
-          ) : (
-            <ChevronRight className="w-5 h-5 text-[hsl(var(--muted-foreground))]" />
-          )}
-        </div>
-      </button>
-
-      {expanded && (
-        <div className="border-t border-[hsl(var(--border))] p-4 space-y-3">
-          {sources?.databases.length === 0 && sources?.other.length === 0 ? (
-            <p className="text-sm text-[hsl(var(--muted-foreground))] text-center py-2">
-              No sources added yet
-            </p>
-          ) : (
-            <>
-              {sources?.databases.map(file => (
-                <div key={file.filename} className="flex items-center justify-between text-sm group">
-                  <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[hsl(var(--muted-foreground))]" />
-                    <span className="text-[hsl(var(--card-foreground))]">{file.filename}</span>
-                    {file.database && (
-                      <span className="text-xs text-[hsl(var(--muted-foreground))]">
-                        ({file.database})
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[hsl(var(--muted-foreground))]">{file.count}</span>
-                    <button
-                      onClick={(e) => handleDelete(e, 'databases', file.filename)}
-                      className="p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--destructive))] opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-              {sources?.other.map(file => (
-                <div key={file.filename} className="flex items-center justify-between text-sm group">
-                  <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[hsl(var(--muted-foreground))]" />
-                    <span className="text-[hsl(var(--card-foreground))]">{file.filename}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[hsl(var(--muted-foreground))]">{file.count}</span>
-                    <button
-                      onClick={(e) => handleDelete(e, 'other', file.filename)}
-                      className="p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--destructive))] opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
-
-          <button
-            onClick={() => pickFileMutation.mutate()}
-            disabled={pickFileMutation.isPending}
-            className="w-full mt-2 flex items-center justify-center gap-2 px-3 py-2 text-sm border border-dashed border-[hsl(var(--border))] rounded-md text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--ring))] hover:text-[hsl(var(--foreground))] transition-colors disabled:opacity-50"
+          <Link
+            to={`/projects/${projectId}/sources`}
+            className="px-3 py-2 text-xs border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] transition-colors"
           >
-            {pickFileMutation.isPending ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <FolderOpen className="w-4 h-4" />
-            )}
-            {pickFileMutation.isPending ? 'Adding...' : 'Add BibTeX File'}
-          </button>
+            Manage sources
+          </Link>
         </div>
-      )}
+      </div>
+      <div className="border-t border-[hsl(var(--border))] px-4 py-3 text-sm text-[hsl(var(--muted-foreground))] flex items-center gap-3">
+        <span>Databases {databaseCount}</span>
+        <span>Other {otherCount}</span>
+      </div>
     </div>
   );
 }

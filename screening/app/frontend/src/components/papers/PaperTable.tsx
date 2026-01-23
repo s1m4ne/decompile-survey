@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import { ChevronDown, ChevronRight, ExternalLink } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Badge } from '../ui/Badge';
+import { normalizeBibtexText } from '../BibtexText';
 
 // Column definition for step-specific columns
 export interface ColumnDefinition<T = Record<string, unknown>> {
@@ -55,8 +56,8 @@ const defaultColumns: ColumnDefinition<BibEntry>[] = [
     header: 'Title',
     width: 'flex-1 min-w-0',
     render: (entry) => (
-      <span className="line-clamp-2" title={entry.title}>
-        {entry.title || '(No title)'}
+      <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
+        {normalizeBibtexText(entry.title) || '(No title)'}
       </span>
     ),
   },
@@ -315,7 +316,9 @@ function PaperDetails({
     <div className="space-y-4">
       {/* Title and basic info */}
       <div>
-        <h4 className="font-medium text-lg">{entry.title}</h4>
+        <h4 className="font-medium text-lg">
+          {normalizeBibtexText(entry.title) || '(No title)'}
+        </h4>
         <p className="text-[hsl(var(--muted-foreground))]">{entry.author}</p>
         <p className="text-sm text-[hsl(var(--muted-foreground))]">
           {entry.year}
@@ -328,12 +331,12 @@ function PaperDetails({
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium">DOI:</span>
           <a
-            href={`https://doi.org/${entry.doi}`}
+            href={entry.doi.startsWith('http') ? entry.doi : `https://doi.org/${entry.doi}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-[hsl(var(--status-info))] hover:underline flex items-center gap-1"
           >
-            {entry.doi}
+            {entry.doi.startsWith('http') ? entry.doi : `https://doi.org/${entry.doi}`}
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>
