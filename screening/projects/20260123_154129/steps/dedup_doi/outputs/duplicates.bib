@@ -1,0 +1,54 @@
+@article{Cao2023,
+  abstract = {Decompilation aims to transform a low-level program language (LPL) (eg., binary file) into its functionally-equivalent high-level program language (HPL) (e.g., C/C++). It is a core technology in software security, especially in vulnerability discovery and malware analysis. In recent years, with the successful application of neural machine translation (NMT) models in natural language processing (NLP), researchers have tried to build neural decompilers by borrowing the idea of NMT. They formulate the decompilation process as a translation problem between LPL and HPL, aiming to reduce the human cost required to develop decompilation tools and improve their generalizability. However, state-of-the-art learning-based decompilers do not cope well with compiler-optimized binaries. Since real-world binaries are mostly compiler-optimized, decompilers that do not consider optimized binaries have limited practical significance. In this paper, we propose a novel learning-based approach named NeurDP, that targets compiler-optimized binaries. NeurDP uses a graph neural network (GNN) model to convert LPL to an intermediate representation (IR), which bridges the gap between source code and optimized binary. We also design an Optimized Translation Unit (OTU) to split functions into smaller code fragments for better translation performance. Evaluation results on datasets containing various types of statements show that NeurDP can decompile optimized binaries with 45.21% higher accuracy than state-of-the-art neural decompilation frameworks. },
+  author = {Cao, Ying AND Liang, Ruigang AND Chen, Kai AND Hu, Peiwei},
+  doi = {https://doi.org/10.48550/arXiv.2301.00969},
+  howpublished = {\url{https://arxiv.org/pdf/2301.00969}},
+  month = {jan},
+  note = {},
+  title = {Boosting Neural Networks to Decompile Optimized Binaries},
+  year = {2023}
+}
+
+@article{Chen2025,
+  abstract = {The vision of Web3 is to improve user control over data and assets, but one challenge that complicates this vision is the prevalence of non-transparent, scam-prone applications and vulnerable smart contracts that put Web3 users at risk. While code audits are one solution to this problem, the lack of smart contracts source code on many blockchain platforms, such as Sui, hinders the ease of auditing. A promising approach to this issue is the use of a decompiler to reverse-engineer smart contract bytecode. However, existing decompilers for Sui produce code that is difficult to understand and cannot be directly recompiled. To address this, we developed the SuiGPT Move AI Decompiler (MAD), a Large Language Model (LLM)-powered web application that decompiles smart contract bytecodes on Sui into logically correct, human-readable, and re-compilable source code with prompt engineering. Our evaluation shows that MAD's output successfully passes original unit tests and achieves a 73.33% recompilation success rate on real-world smart contracts. Additionally, newer models tend to deliver improved performance, suggesting that MAD's approach will become increasingly effective as LLMs continue to advance. In a user study involving 12 developers, we found that MAD significantly reduced the auditing workload compared to using traditional decompilers. Participants found MAD's outputs comparable to the original source code, improving accessibility for understanding and auditing non-open-source smart contracts. Through qualitative interviews with these developers and Web3 projects, we further discussed the strengths and concerns of MAD. MAD has practical implications for blockchain smart contract transparency, auditing, and education. It empowers users to easily and independently review and audit non-open-source smart contracts, fostering accountability and decentralization },
+  author = {Chen, Eason AND Tang, Xinyi AND Xiao, Zimo AND Li, Chuangji AND Li, Shizhuo AND Tingguan, Wu AND Wang, Siyun AND Chalkias, Kryptos, Kostas},
+  doi = {https://doi.org/10.48550/arXiv.2410.15275},
+  howpublished = {\url{https://arxiv.org/pdf/2410.15275}},
+  month = {jan},
+  note = {Paper accepted at ACM The Web Conference 2025},
+  title = {SuiGPT MAD: Move AI Decompiler to Improve Transparency and Auditability on Non-Open-Source Blockchain Smart Contract},
+  year = {2025}
+}
+
+@article{Dramko2025,
+  abstract = {Neural decompilers are machine learning models that reconstruct the source code from an executable program. Critical to the lifecycle of any machine learning model is an evaluation of its effectiveness. However, existing techniques for evaluating neural decompilation models have substantial weaknesses, especially when it comes to showing the correctness of the neural decompiler's predictions. To address this, we introduce codealign, a novel instruction-level code equivalence technique designed for neural decompilers. We provide a formal definition of a relation between equivalent instructions, which we term an equivalence alignment. We show how codealign generates equivalence alignments, then evaluate codealign by comparing it with symbolic execution. Finally, we show how the information codealign provides-which parts of the functions are equivalent and how well the variable names match-is substantially more detailed than existing state-of-the-art evaluation metrics, which report unitless numbers measuring similarity. },
+  author = {Dramko, Luke AND Goues, Le, Claire AND Schwartz, J., Edward},
+  doi = {https://doi.org/10.48550/arXiv.2501.04811},
+  howpublished = {\url{https://arxiv.org/pdf/2501.04811}},
+  month = {jan},
+  note = {},
+  title = {Fast, Fine-Grained Equivalence Checking for Neural Decompilers},
+  year = {2025}
+}
+
+@article{Wang2025,
+  abstract = {Ethereum smart contracts hold tens of billions of USD in DeFi and NFTs, yet comprehensive security analysis remains difficult due to unverified code, proxy-based architectures, and the reliance on manual inspection of complex execution traces. Existing approaches fall into two main categories: anomaly transaction detection, which flags suspicious transactions but offers limited insight into specific attack strategies hidden in execution traces inside transactions, and code vulnerability detection, which cannot analyze unverified contracts and struggles to show how identified flaws are exploited in real incidents. As a result, analysts must still manually align transaction traces with contract code to reconstruct attack scenarios and conduct forensics. To address this gap, TraceLLM is proposed as a framework that leverages LLMs to integrate execution trace-level detection with decompiled contract code. We introduce a new anomaly execution path identification algorithm and an LLM-refined decompile tool to identify vulnerable functions and provide explicit attack paths to LLM. TraceLLM establishes the first benchmark for joint trace and contract code-driven security analysis. For comparison, proxy baselines are created by jointly transmitting the results of three representative code analysis along with raw traces to LLM. TraceLLM identifies attacker and victim addresses with 85.19\% precision and produces automated reports with 70.37\% factual precision across 27 cases with ground truth expert reports, achieving 25.93\% higher accuracy than the best baseline. Moreover, across 148 real-world Ethereum incidents, TraceLLM automatically generates reports with 66.22\% expert-verified accuracy, demonstrating strong generalizability. },
+  author = {Wang, Shuzheng AND Huang, Yue AND Xu, Zhuoer AND Huang, Yuming AND Tang, Jing},
+  doi = {https://doi.org/10.48550/arXiv.2509.03037},
+  howpublished = {\url{https://arxiv.org/pdf/2509.03037}},
+  month = {sep},
+  note = {},
+  title = {TraceLLM: Security Diagnosis Through Traces and Smart Contracts in Ethereum},
+  year = {2025}
+}
+
+@article{Wang2025,
+  abstract = {Ethereum smart contracts hold tens of billions of USD in DeFi and NFTs, yet comprehensive security analysis remains difficult due to unverified code, proxy-based architectures, and the reliance on manual inspection of complex execution traces. Existing approaches fall into two main categories: anomaly transaction detection, which flags suspicious transactions but offers limited insight into specific attack strategies hidden in execution traces inside transactions, and code vulnerability detection, which cannot analyze unverified contracts and struggles to show how identified flaws are exploited in real incidents. As a result, analysts must still manually align transaction traces with contract code to reconstruct attack scenarios and conduct forensics. To address this gap, TraceLLM is proposed as a framework that leverages LLMs to integrate execution trace-level detection with decompiled contract code. We introduce a new anomaly execution path identification algorithm and an LLM-refined decompile tool to identify vulnerable functions and provide explicit attack paths to LLM. TraceLLM establishes the first benchmark for joint trace and contract code-driven security analysis. For comparison, proxy baselines are created by jointly transmitting the results of three representative code analysis along with raw traces to LLM. TraceLLM identifies attacker and victim addresses with 85.19\% precision and produces automated reports with 70.37\% factual precision across 27 cases with ground truth expert reports, achieving 25.93\% higher accuracy than the best baseline. Moreover, across 148 real-world Ethereum incidents, TraceLLM automatically generates reports with 66.22\% expert-verified accuracy, demonstrating strong generalizability. },
+  author = {Wang, Shuzheng AND Huang, Yue AND Xu, Zhuoer AND Huang, Yuming AND Tang, Jing},
+  doi = {https://doi.org/10.48550/arXiv.2509.03037},
+  howpublished = {\url{https://arxiv.org/pdf/2509.03037}},
+  month = {sep},
+  note = {},
+  title = {TraceLLM: Security Diagnosis Through Traces and Smart Contracts in Ethereum},
+  year = {2025}
+}

@@ -9,14 +9,14 @@ function Badge({ className, variant = 'default', ...props }: BadgeProps) {
   return (
     <div
       className={cn(
-        'inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2',
+        'inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[hsl(var(--ring))] focus:ring-offset-2',
         {
-          'border-transparent bg-gray-900 text-gray-50': variant === 'default',
-          'border-transparent bg-gray-100 text-gray-900': variant === 'secondary',
-          'text-gray-950 border-gray-200': variant === 'outline',
-          'border-transparent bg-green-100 text-green-800': variant === 'success',
-          'border-transparent bg-yellow-100 text-yellow-800': variant === 'warning',
-          'border-transparent bg-red-100 text-red-800': variant === 'destructive',
+          'border-transparent bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]': variant === 'default',
+          'border-transparent bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))]': variant === 'secondary',
+          'border-[hsl(var(--border))] text-[hsl(var(--foreground))]': variant === 'outline',
+          'border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]': variant === 'success',
+          'border-[hsl(var(--status-warning-border))] bg-[hsl(var(--status-warning-bg))] text-[hsl(var(--status-warning-fg))]': variant === 'warning',
+          'border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]': variant === 'destructive',
         },
         className
       )}

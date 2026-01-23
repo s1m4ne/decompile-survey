@@ -1,0 +1,43 @@
+{"key": "Ahmed2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2103.05221"}}
+{"key": "Arasteh2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2503.03969"}}
+{"key": "Armengol-Estapé2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2305.12520"}}
+{"key": "Banerjee2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2103.12801"}}
+{"key": "Cao2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2301.00969"}}
+{"key": "Cao2023", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2301.00969", "original_key": "Cao2023", "message": "Duplicate DOI: https://doi.org/10.48550/arXiv.2301.00969"}}
+{"key": "Chen2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2108.06363"}}
+{"key": "Chen2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2410.15275"}}
+{"key": "Chen2025", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2410.15275", "original_key": "Chen2025", "message": "Duplicate DOI: https://doi.org/10.48550/arXiv.2410.15275"}}
+{"key": "Chukkol2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2408.07181"}}
+{"key": "David2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2506.19624"}}
+{"key": "Dramko2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2501.04811"}}
+{"key": "Dramko2025", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2501.04811", "original_key": "Dramko2025", "message": "Duplicate DOI: https://doi.org/10.48550/arXiv.2501.04811"}}
+{"key": "Escalada2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2101.08116"}}
+{"key": "Fang2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2406.04568"}}
+{"key": "Feng2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2406.17233"}}
+{"key": "Feng2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2502.12221"}}
+{"key": "Fu2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.1906.12029"}}
+{"key": "Green2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2407.02733"}}
+{"key": "Hosseini2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2212.08950"}}
+{"key": "Jiang2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2311.13721"}}
+{"key": "Katz2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.1905.08325"}}
+{"key": "Lacomis2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.1909.09029"}}
+{"key": "Li2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.1908.06748"}}
+{"key": "Li2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2509.06052"}}
+{"key": "Liang2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2112.15491"}}
+{"key": "Liao2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2501.08670"}}
+{"key": "Liu2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2210.01075"}}
+{"key": "Liu2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2503.07215"}}
+{"key": "Manuel2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2507.22066"}}
+{"key": "She2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2406.11346"}}
+{"key": "Szafraniec2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2207.03578"}}
+{"key": "Tan2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2403.05286"}}
+{"key": "Tan2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2505.12668"}}
+{"key": "Thurnherr2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2410.00061"}}
+{"key": "Wan2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2511.00076"}}
+{"key": "Wang2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2509.03037"}}
+{"key": "Wang2025", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2509.03037", "original_key": "Wang2025", "message": "Duplicate DOI: https://doi.org/10.48550/arXiv.2509.03037"}}
+{"key": "Wang2025", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2509.03037", "original_key": "Wang2025", "message": "Duplicate DOI: https://doi.org/10.48550/arXiv.2509.03037"}}
+{"key": "Wong2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2310.06530"}}
+{"key": "Xu2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2306.02546"}}
+{"key": "Zhou2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2507.18792"}}
+{"key": "Zou2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "https://doi.org/10.48550/arXiv.2506.10125"}}

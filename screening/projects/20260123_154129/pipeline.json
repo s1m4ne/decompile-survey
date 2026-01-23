@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "dedup_doi",
+      "type": "dedup-doi",
+      "name": "DOI Deduplication",
+      "enabled": true,
+      "input_from": "sources",
+      "config": {
+        "case_sensitive": false,
+        "keep_no_doi": true
+      }
+    },
+    {
+      "id": "ai_screening",
+      "type": "ai-screening",
+      "name": "AI Screening",
+      "enabled": true,
+      "input_from": "dedup_doi",
+      "config": {
+        "model": "gpt-oss-120b",
+        "concurrency": 500,
+        "rules": "decompile_v4",
+        "provider": "local",
+        "local_base_url": "http://192.168.50.100:8000/v1"
+      }
+    }
+  ],
+  "final_output": null
+}

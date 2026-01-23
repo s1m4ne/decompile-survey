@@ -2,33 +2,133 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
+  --foreground: 0 0% 9%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 3.9%;
+  --card-foreground: 0 0% 9%;
   --primary: 0 0% 9%;
   --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96.1%;
+  --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 96.1%;
-  --muted-foreground: 0 0% 45.1%;
-  --accent: 0 0% 96.1%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 96%;
   --accent-foreground: 0 0% 9%;
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 89.8%;
-  --input: 0 0% 89.8%;
-  --ring: 0 0% 3.9%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 0% 9%;
   --radius: 0.5rem;
+  --status-success: 142 70% 45%;
+  --status-success-bg: 142 76% 92%;
+  --status-success-fg: 142 64% 28%;
+  --status-success-border: 142 65% 80%;
+  --status-success-solid: 142 70% 40%;
+  --status-success-solid-foreground: 0 0% 100%;
+  --status-warning: 45 93% 47%;
+  --status-warning-bg: 48 96% 90%;
+  --status-warning-fg: 43 96% 26%;
+  --status-warning-border: 48 96% 80%;
+  --status-warning-solid: 45 93% 45%;
+  --status-warning-solid-foreground: 0 0% 100%;
+  --status-danger: 0 84% 60%;
+  --status-danger-bg: 0 93% 94%;
+  --status-danger-fg: 0 74% 36%;
+  --status-danger-border: 0 93% 85%;
+  --status-danger-solid: 0 84% 55%;
+  --status-danger-solid-foreground: 0 0% 100%;
+  --status-info: 217 91% 60%;
+  --status-info-bg: 213 94% 92%;
+  --status-info-fg: 217 91% 30%;
+  --status-info-border: 213 94% 80%;
+  --status-info-solid: 217 91% 55%;
+  --status-info-solid-foreground: 0 0% 100%;
+  --status-neutral: 220 9% 46%;
+  --status-neutral-bg: 210 20% 96%;
+  --status-neutral-fg: 220 9% 28%;
+  --status-neutral-border: 220 13% 85%;
+}
+
+.dark {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 95%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 95%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 0% 85%;
+  --status-success: 142 70% 60%;
+  --status-success-bg: 142 30% 20%;
+  --status-success-fg: 142 70% 70%;
+  --status-success-border: 142 30% 35%;
+  --status-success-solid: 142 65% 50%;
+  --status-success-solid-foreground: 0 0% 98%;
+  --status-warning: 45 93% 60%;
+  --status-warning-bg: 45 30% 20%;
+  --status-warning-fg: 45 90% 70%;
+  --status-warning-border: 45 30% 35%;
+  --status-warning-solid: 45 90% 55%;
+  --status-warning-solid-foreground: 0 0% 98%;
+  --status-danger: 0 78% 60%;
+  --status-danger-bg: 0 35% 20%;
+  --status-danger-fg: 0 75% 70%;
+  --status-danger-border: 0 35% 35%;
+  --status-danger-solid: 0 78% 55%;
+  --status-danger-solid-foreground: 0 0% 98%;
+  --status-info: 217 91% 65%;
+  --status-info-bg: 217 35% 20%;
+  --status-info-fg: 217 90% 75%;
+  --status-info-border: 217 35% 35%;
+  --status-info-solid: 217 91% 60%;
+  --status-info-solid-foreground: 0 0% 98%;
+  --status-neutral: 220 10% 70%;
+  --status-neutral-bg: 220 10% 20%;
+  --status-neutral-fg: 220 10% 80%;
+  --status-neutral-border: 220 10% 35%;
+}
+
+* {
+  border-color: hsl(var(--border));
 }
 
 body {
   margin: 0;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
 }

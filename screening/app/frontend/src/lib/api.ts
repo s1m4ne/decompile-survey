@@ -10,204 +10,316 @@ async function fetchApi<T>(path: string, options?: RequestInit): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+    throw new Error(error.detail || `API Error: ${response.status}`);
   }
 
   return response.json();
 }
 
-// Runs API
-export interface RunSummary {
+// ============================================================================
+// Types
+// ============================================================================
+
+// Project
+export interface Project {
   id: string;
-  rules_file: string;
-  stats: {
-    total: number;
-    included: number;
-    excluded: number;
-    uncertain: number;
-  };
-  input_file?: string | null;
-  model?: string | null;
-  created_at?: string | null;
-}
-
-export interface Paper {
-  citation_key: string;
-  title: string;
-  abstract: string;
-  year: string;
-  author: string;
-  doi: string;
-  url: string;
-  ai_decision?: string;
-  ai_confidence?: number;
-  ai_reason?: string;
-}
-
-export interface RunMeta {
-  run_id: string;
-  created_at: string;
-  model: string;
-  concurrency: number;
-  input_file: string;
-  input_file_abs: string;
-  rules_file: string;
-  rules_file_abs: string;
-}
-
-export interface RunDetail {
-  id: string;
-  papers: Paper[];
-  rules: string;
-  stats: {
-    total: number;
-    included: number;
-    excluded: number;
-    uncertain: number;
-  };
-  meta?: RunMeta | null;
-}
-
-export const runsApi = {
-  list: () => fetchApi<RunSummary[]>('/runs'),
-  get: (id: string) => fetchApi<RunDetail>(`/runs/${id}`),
-  getRules: (id: string) => fetchApi<{ content: string }>(`/runs/${id}/rules`),
-};
-
-// Imports API
-export interface BibFile {
-  filename: string;
-  path: string;
-  count: number;
-}
-
-export interface Database {
   name: string;
-  files: BibFile[];
-  total_files: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  pipeline_summary: Record<string, { input?: number; outputs?: Record<string, number> }>;
 }
 
-export interface ImportDetail {
-  database: string;
-  filename: string;
-  papers: Paper[];
+export interface ProjectCreate {
+  name: string;
+  description?: string;
+}
+
+export interface ProjectUpdate {
+  name?: string;
+  description?: string;
+}
+
+// Pipeline
+export interface PipelineStep {
+  id: string;
+  type: string;
+  name: string;
+  enabled: boolean;
+  input_from: string | { step: string; output: string };
+  config: Record<string, unknown>;
+}
+
+export interface Pipeline {
+  version: string;
+  steps: PipelineStep[];
+  final_output: { step: string; output: string } | null;
+}
+
+// Step
+export type StepStatus = 'pending' | 'running' | 'completed' | 'failed';
+
+export interface StepOutput {
+  file: string;
   count: number;
+  description: string;
 }
 
-export const importsApi = {
-  list: () => fetchApi<Database[]>('/imports'),
-  get: (database: string, filename: string) =>
-    fetchApi<ImportDetail>(`/imports/${database}/${filename}`),
-};
-
-// Reviews API
-export interface PaperReview {
-  ai_decision: string;
-  ai_confidence: number;
-  ai_reason: string;
-  manual_decision: string | null;  // null = not reviewed, "ai" = approved AI, "include"/"exclude"/"uncertain" = human override
-  note: string;
+export interface StepExecution {
+  status: StepStatus;
+  started_at: string | null;
+  completed_at: string | null;
+  duration_sec: number | null;
+  error: string | null;
 }
 
-export interface Review {
-  meta: {
-    run_id: string;
-    source_input: string;
-    created_at: string;
-    updated_at: string;
-    stats: {
-      total: number;
-      reviewed: number;
-    };
+export interface StepMeta {
+  step_id: string;
+  step_type: string;
+  name: string;
+  input: {
+    from: string;
+    output: string;
+    file: string;
+    count: number;
+  } | null;
+  outputs: Record<string, StepOutput>;
+  stats: {
+    input_count: number;
+    total_output_count: number;
+    passed_count: number;
+    removed_count: number;
   };
-  papers: Record<string, PaperReview>;
+  execution: StepExecution;
+  is_latest: boolean;
 }
 
-export interface UpdatePaperRequest {
-  manual_decision?: string | null;
-  note?: string;
-  reset?: boolean;  // true to reset manual_decision to null
+// Step Type
+export interface OutputDefinition {
+  name: string;
+  description: string;
+  required: boolean;
 }
 
-export interface BulkUpdateRequest {
-  citation_keys: string[];
-  manual_decision?: string | null;
-  reset?: boolean;
+export interface StepTypeInfo {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  outputs: OutputDefinition[];
+  config_schema: Record<string, unknown>;
 }
 
-export const reviewsApi = {
-  get: (runId: string) => fetchApi<Review>(`/reviews/${runId}`),
-  updatePaper: (runId: string, citationKey: string, data: UpdatePaperRequest) =>
-    fetchApi<PaperReview>(`/reviews/${runId}/papers/${citationKey}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-    }),
-  bulkUpdate: (runId: string, data: BulkUpdateRequest) =>
-    fetchApi<{ updated: string[]; count: number }>(`/reviews/${runId}/bulk-update`, {
+// Sources
+export interface SourceFile {
+  filename: string;
+  category: string;
+  count: number;
+  database: string | null;
+  search_query: string | null;
+  search_date: string | null;
+}
+
+export interface SourcesMeta {
+  databases: SourceFile[];
+  other: SourceFile[];
+  totals: {
+    databases: number;
+    other: number;
+    combined: number;
+  };
+}
+
+// ============================================================================
+// API Functions
+// ============================================================================
+
+// Projects
+export const projectsApi = {
+  list: () => fetchApi<Project[]>('/projects'),
+
+  create: (data: ProjectCreate) =>
+    fetchApi<Project>('/projects', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
-  export: (runId: string) => fetchApi<unknown>(`/reviews/${runId}/export`),
+
+  get: (id: string) => fetchApi<Project>(`/projects/${id}`),
+
+  update: (id: string, data: ProjectUpdate) =>
+    fetchApi<Project>(`/projects/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+
+  delete: (id: string) =>
+    fetchApi<{ status: string }>(`/projects/${id}`, {
+      method: 'DELETE',
+    }),
 };
 
-// Screening API
-export interface RuleFile {
-  filename: string;
-}
+// Pipeline
+export const pipelineApi = {
+  get: (projectId: string) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline`),
 
-export interface RuleDetail {
-  filename: string;
-  content: string;
-}
+  update: (projectId: string, pipeline: Pipeline) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline`, {
+      method: 'PUT',
+      body: JSON.stringify(pipeline),
+    }),
 
-export interface InputFile {
-  path: string;
-  database: string;
-  filename: string;
-}
+  addStep: (projectId: string, step: PipelineStep) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps`, {
+      method: 'POST',
+      body: JSON.stringify(step),
+    }),
 
-export interface ScreeningRequest {
-  input_file: string;
-  rules_file: string;
-  model?: string;
-  concurrency?: number;
-  provider?: 'openai' | 'local';
-}
+  updateStep: (projectId: string, stepId: string, step: PipelineStep) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps/${stepId}`, {
+      method: 'PUT',
+      body: JSON.stringify(step),
+    }),
 
-export interface CreateRuleRequest {
-  filename: string;
-  content: string;
-}
+  removeStep: (projectId: string, stepId: string) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps/${stepId}`, {
+      method: 'DELETE',
+    }),
 
+  moveStep: (projectId: string, stepId: string, newIndex: number) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps/${stepId}/move?new_index=${newIndex}`, {
+      method: 'POST',
+    }),
+};
+
+// Steps
+export const stepsApi = {
+  list: (projectId: string) =>
+    fetchApi<StepMeta[]>(`/projects/${projectId}/steps`),
+
+  get: (projectId: string, stepId: string) =>
+    fetchApi<StepMeta>(`/projects/${projectId}/steps/${stepId}`),
+
+  run: (projectId: string, stepId: string) =>
+    fetchApi<StepMeta>(`/projects/${projectId}/steps/${stepId}/run`, {
+      method: 'POST',
+    }),
+
+  reset: (projectId: string, stepId: string) =>
+    fetchApi<StepMeta>(`/projects/${projectId}/steps/${stepId}/reset`, {
+      method: 'POST',
+    }),
+
+  delete: (projectId: string, stepId: string) =>
+    fetchApi<{ success: boolean; deleted_step_id: string }>(`/projects/${projectId}/steps/${stepId}`, {
+      method: 'DELETE',
+    }),
+
+  getOutput: (projectId: string, stepId: string, outputName: string) =>
+    fetchApi<{ entries: Record<string, unknown>[]; count: number }>(
+      `/projects/${projectId}/steps/${stepId}/outputs/${outputName}`
+    ),
+
+  getChanges: (projectId: string, stepId: string) =>
+    fetchApi<Record<string, unknown>[]>(`/projects/${projectId}/steps/${stepId}/changes`),
+};
+
+// Step Types
+export const stepTypesApi = {
+  list: () => fetchApi<StepTypeInfo[]>('/step-types'),
+  get: (type: string) => fetchApi<StepTypeInfo>(`/step-types/${type}`),
+};
+
+// Sources
 export interface PickFileResponse {
   path: string | null;
+  filename: string | null;
   cancelled: boolean;
 }
 
-export interface LocalServerStatus {
+export const sourcesApi = {
+  get: (projectId: string) =>
+    fetchApi<SourcesMeta>(`/projects/${projectId}/sources`),
+
+  pickFile: (projectId: string) =>
+    fetchApi<PickFileResponse>(`/projects/${projectId}/sources/pick-file`, {
+      method: 'POST',
+    }),
+
+  addFromPath: (projectId: string, path: string, category: string, database?: string) =>
+    fetchApi<SourceFile>(`/projects/${projectId}/sources/add-from-path`, {
+      method: 'POST',
+      body: JSON.stringify({ path, category, database }),
+    }),
+
+  upload: async (projectId: string, file: File, category: string, database?: string) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('category', category);
+    if (database) {
+      formData.append('database', database);
+    }
+
+    const response = await fetch(`${API_BASE}/projects/${projectId}/sources/upload`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+      throw new Error(error.detail || `API Error: ${response.status}`);
+    }
+
+    return response.json() as Promise<SourceFile>;
+  },
+
+  delete: (projectId: string, category: string, filename: string) =>
+    fetchApi<{ status: string }>(`/projects/${projectId}/sources/${category}/${filename}`, {
+      method: 'DELETE',
+    }),
+
+  getEntries: (projectId: string, category: string, filename: string) =>
+    fetchApi<{ entries: Record<string, unknown>[]; count: number }>(
+      `/projects/${projectId}/sources/${category}/${filename}/entries`
+    ),
+};
+
+// Rules
+export interface RuleInfo {
+  id: string;
+  filename: string;
+  path: string;
+}
+
+export interface RuleContent {
+  id: string;
+  filename: string;
+  content: string;
+}
+
+export const rulesApi = {
+  list: () => fetchApi<RuleInfo[]>('/rules'),
+  get: (ruleId: string) => fetchApi<RuleContent>(`/rules/${ruleId}`),
+};
+
+// LLM
+export interface LocalLLMCheckResponse {
   connected: boolean;
   url: string;
   models: { id: string; owned_by: string }[];
   error: string | null;
 }
 
-export const screeningApi = {
-  listRules: () => fetchApi<RuleFile[]>('/screening/rules'),
-  getRule: (filename: string) => fetchApi<RuleDetail>(`/screening/rules/${filename}`),
-  createRule: (data: CreateRuleRequest) =>
-    fetchApi<RuleDetail>('/screening/rules', {
+export const llmApi = {
+  checkLocal: (baseUrl: string) =>
+    fetchApi<LocalLLMCheckResponse>('/llm/check-local', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ base_url: baseUrl }),
     }),
-  listInputs: () => fetchApi<InputFile[]>('/screening/inputs'),
-  pickFile: () =>
-    fetchApi<PickFileResponse>('/screening/pick-file', {
-      method: 'POST',
-    }),
-  checkLocalServer: () => fetchApi<LocalServerStatus>('/screening/check-local-server'),
-  run: (data: ScreeningRequest) =>
-    fetchApi<{ status: string; run_id: string; output: string }>('/screening/run', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
+};
+
+// Health
+export const healthApi = {
+  check: () => fetchApi<{ status: string; version: string }>('/health'),
 };

@@ -1,6 +1,6 @@
 # Screening App
 
-論文スクリーニングのためのWebアプリケーション。AIによる自動スクリーニング結果のレビュー、手動修正、BibTeX閲覧などを行う。
+論文スクリーニングのためのWebアプリケーション。プロジェクト単位でパイプラインを構築し、DOI重複排除、AIスクリーニング、手動レビューなどを行う。
 
 ## 起動方法
 
@@ -23,166 +23,331 @@ cd screening/app/frontend
 npm run dev
 ```
 
+## アーキテクチャ
+
+### プロジェクト中心設計
+
+各プロジェクトは独立したスクリーニングワークフローを持つ。
+
+```
+projects/
+└── {project_id}/
+    ├── project.json          # プロジェクトメタデータ
+    ├── pipeline.json         # パイプライン定義
+    ├── sources/              # 入力BibTeXファイル
+    │   ├── meta.json
+    │   ├── databases/        # 学術DB検索結果
+    │   └── other/            # その他
+    └── steps/                # ステップ実行結果
+        └── {step_id}/
+            ├── meta.json     # ステップメタデータ
+            ├── changes.jsonl # 各エントリの変更履歴
+            └── outputs/      # 出力BibTeXファイル
+                ├── passed.bib
+                └── duplicates.bib
+```
+
+### パイプラインステップ
+
+各ステップは入力を受け取り、複数の出力（passed/removed等）を生成する。
+
+```json
+{
+  "steps": [
+    {
+      "id": "dedup_doi",
+      "type": "dedup-doi",
+      "name": "DOI Deduplication",
+      "enabled": true,
+      "input_from": "sources",
+      "config": {}
+    }
+  ]
+}
+```
+
 ## 機能
 
-### 1. Reviews（レビュー）
+### 1. Projects（プロジェクト管理）
 
-`runs/` ディレクトリのスクリーニング結果を閲覧・レビューする。
-
-**機能:**
-- AI判定結果の確認（include / exclude / uncertain）
-- AI判定理由の表示
-- 手動で分類を変更（AIの結果は保持したまま）
-- チェック済みフラグの設定
-- 論文ごとにメモを追加
-- 複数選択して一括操作
-- フィルタリング（判定結果、チェック状態）
-- キーワード検索（タイトル、著者、アブストラクト）
-- 進捗バー表示
-- スクリーニングルールの表示
-
-**データの保存先:**
-- AI判定結果: `runs/{run_id}/decisions.jsonl`（読み取りのみ）
-- 手動レビュー: `reviews/{run_id}/review.json`（読み書き）
-
-### 2. Imports（インポート閲覧）
-
-`imports/` ディレクトリのBibTeXファイルを閲覧する。
+スクリーニングプロジェクトを作成・管理する。
 
 **機能:**
-- データベース別にBibTeXファイルを一覧表示
-- 論文一覧の表示
-- 論文詳細（タイトル、著者、年、アブストラクト）
-- 外部リンク（DOI、arXiv等）
-- キーワード検索
+- プロジェクト一覧表示
+- 新規プロジェクト作成
+- プロジェクト詳細（ソース、パイプライン、ステップ状態）
+- ダークモード対応
 
-### 3. Run Screening（スクリーニング実行）
+### 2. Sources（ソース管理）
 
-アプリ内から `screen.py` を実行する。
+BibTeXファイルをプロジェクトに追加する。
 
-**設定項目:**
-- 入力ファイル: `imports/` 内のBibTeXファイル
-- ルールファイル: `rules/` 内のMarkdownファイル
-- モデル: gpt-4o-mini（デフォルト）、gpt-4o など
-- 並列数: 同時API呼び出し数（デフォルト: 10）
+**機能:**
+- macOS Finderでファイル選択
+- データベース別カテゴリ分け（databases / other）
+- エントリ数の自動カウント
+
+### 3. Pipeline（パイプライン）
+
+スクリーニングステップを定義・実行する。
+
+**ステップタイプ:**
+- `dedup-doi`: DOI重複排除（DOIがないエントリは保持）
+
+**計画中:**
+- `normalize`: 正規化による重複排除
+- `title-similarity`: タイトル類似度
+- `ai-screening`: AIスクリーニング
+- `venue-filter`: 会議/ジャーナル絞り込み
+
+### 4. Step Detail（ステップ詳細）
+
+各ステップの実行結果を詳細表示する。
+
+**機能:**
+- Input/Output切り替えタブ
+- 論文一覧テーブル（展開で詳細表示）
+- 検索（タイトル、著者、DOI）
+- フィルタリング
+- ページネーション
+- 変更理由・アクションの表示
 
 ## ディレクトリ構成
 
 ```
 screening/app/
 ├── README.md
-├── start.sh              # 起動スクリプト
-├── backend/              # FastAPI バックエンド
-│   ├── main.py           # エントリーポイント
-│   ├── pyproject.toml    # Python依存関係
-│   └── routers/
-│       ├── runs.py       # runs/ API
-│       ├── imports.py    # imports/ API
-│       ├── reviews.py    # レビュー API
-│       └── screening.py  # スクリーニング実行 API
-└── frontend/             # React フロントエンド
+├── start.sh                    # 起動スクリプト
+├── backend/                    # FastAPI バックエンド
+│   ├── main.py
+│   ├── pyproject.toml
+│   ├── models/                 # Pydanticモデル
+│   │   ├── project.py
+│   │   ├── pipeline.py
+│   │   └── step.py
+│   ├── routers/                # APIルーター
+│   │   ├── projects.py
+│   │   ├── pipeline.py
+│   │   ├── steps.py
+│   │   ├── sources.py
+│   │   └── step_types.py
+│   └── step_handlers/          # ステップハンドラー
+│       ├── base.py             # 基底クラス
+│       └── dedup_doi.py        # DOI重複排除
+└── frontend/                   # React フロントエンド
     ├── package.json
     └── src/
-        ├── components/   # UIコンポーネント
-        ├── pages/        # ページ
-        └── lib/          # API・ユーティリティ
+        ├── App.tsx
+        ├── lib/
+        │   ├── api.ts          # API関数
+        │   ├── theme.tsx       # テーマ（ダークモード）
+        │   └── utils.ts
+        ├── components/
+        │   ├── Layout.tsx
+        │   ├── ui/             # 汎用UIコンポーネント
+        │   │   ├── Badge.tsx
+        │   │   ├── Button.tsx
+        │   │   ├── Card.tsx
+        │   │   └── Input.tsx
+        │   └── papers/         # 論文表示コンポーネント
+        │       ├── PaperTable.tsx
+        │       ├── SearchFilter.tsx
+        │       ├── Pagination.tsx
+        │       └── StepOutputViewer.tsx
+        └── pages/
+            ├── ProjectsPage.tsx
+            ├── ProjectDetailPage.tsx
+            ├── StepDetailPage.tsx
+            └── StepTypesPage.tsx
 ```
 
 ## データ構造
 
-### reviews/{run_id}/review.json
-
-手動レビューデータの保存形式。
+### project.json
 
 ```json
 {
-  "meta": {
-    "run_id": "2026-01-22_0146",
-    "source_rules": "デコンパイル研究 v2",
-    "created_at": "2026-01-22T10:00:00",
-    "updated_at": "2026-01-22T12:30:00",
-    "stats": {
-      "total": 100,
-      "checked": 45,
-      "modified": 5
+  "id": "20260123_154129",
+  "name": "Decompilation Survey",
+  "description": "SLR for decompilation research",
+  "created_at": "2026-01-23T15:41:29",
+  "updated_at": "2026-01-23T15:49:25"
+}
+```
+
+### pipeline.json
+
+```json
+{
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "dedup_doi",
+      "type": "dedup-doi",
+      "name": "DOI Deduplication",
+      "enabled": true,
+      "input_from": "sources",
+      "config": {
+        "case_sensitive": false,
+        "keep_no_doi": true
+      }
+    }
+  ],
+  "final_output": { "step": "dedup_doi", "output": "passed" }
+}
+```
+
+### steps/{step_id}/meta.json
+
+```json
+{
+  "step_id": "dedup_doi",
+  "step_type": "dedup-doi",
+  "name": "DOI Deduplication",
+  "input": {
+    "from": "sources",
+    "output": "combined",
+    "file": "sources",
+    "count": 43
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/dedup_doi/outputs/passed.bib",
+      "count": 38,
+      "description": "Unique entries"
+    },
+    "duplicates": {
+      "file": "steps/dedup_doi/outputs/duplicates.bib",
+      "count": 5,
+      "description": "Duplicate entries"
     }
   },
-  "papers": {
-    "Chen2023Decompiling": {
-      "ai_decision": "include",
-      "ai_confidence": 0.85,
-      "ai_reason": "LLMを使用してbinaryからCコードを生成...",
-      "manual_decision": null,
-      "checked": true,
-      "note": ""
-    },
-    "Wang2024Binary": {
-      "ai_decision": "include",
-      "ai_confidence": 0.78,
-      "ai_reason": "Transformerでassemblyからソースコード復元...",
-      "manual_decision": "exclude",
-      "checked": true,
-      "note": "よく読むとvulnerability detection目的"
-    }
+  "stats": {
+    "input_count": 43,
+    "total_output_count": 43,
+    "passed_count": 38,
+    "removed_count": 5
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-01-23T15:49:25",
+    "completed_at": "2026-01-23T15:49:25",
+    "duration_sec": 0.08
   }
 }
 ```
 
-**フィールド説明:**
+### steps/{step_id}/changes.jsonl
 
-| フィールド | 説明 | 編集 |
-|-----------|------|------|
-| `ai_decision` | AIの判定結果 | 不可 |
-| `ai_confidence` | AIの確信度 (0-1) | 不可 |
-| `ai_reason` | AIの判定理由 | 不可 |
-| `manual_decision` | 手動修正後の判定（nullならAI採用） | 可 |
-| `checked` | 確認済みフラグ | 可 |
-| `note` | メモ | 可 |
+各エントリの処理結果を記録。
 
-**最終判定の決定:**
-```
-final_decision = manual_decision ?? ai_decision
+```jsonl
+{"key": "Chen2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/..."}}
+{"key": "Wang2024", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1145/...", "original_key": "Chen2023"}}
+{"key": "Li2022", "action": "keep", "reason": "no_doi", "details": {"message": "No DOI - kept"}}
 ```
 
 ## API エンドポイント
 
-### Runs
+### Projects
 
 | Method | Path | 説明 |
 |--------|------|------|
-| GET | `/api/runs` | run一覧を取得 |
-| GET | `/api/runs/{run_id}` | run詳細（論文一覧含む）を取得 |
-| GET | `/api/runs/{run_id}/rules` | ルールファイルを取得 |
+| GET | `/api/projects` | プロジェクト一覧 |
+| POST | `/api/projects` | プロジェクト作成 |
+| GET | `/api/projects/{id}` | プロジェクト詳細 |
+| PUT | `/api/projects/{id}` | プロジェクト更新 |
+| DELETE | `/api/projects/{id}` | プロジェクト削除 |
 
-### Imports
-
-| Method | Path | 説明 |
-|--------|------|------|
-| GET | `/api/imports` | データベース・ファイル一覧を取得 |
-| GET | `/api/imports/{database}/{filename}` | BibTeXファイルの内容を取得 |
-
-### Reviews
+### Sources
 
 | Method | Path | 説明 |
 |--------|------|------|
-| GET | `/api/reviews/{run_id}` | レビューを取得（なければ初期化） |
-| PUT | `/api/reviews/{run_id}/papers/{citation_key}` | 論文のレビューを更新 |
-| POST | `/api/reviews/{run_id}/bulk-update` | 複数論文を一括更新 |
-| GET | `/api/reviews/{run_id}/export` | レビュー結果をエクスポート |
+| GET | `/api/projects/{id}/sources` | ソース一覧 |
+| POST | `/api/projects/{id}/sources/pick-file` | Finderでファイル選択 |
+| POST | `/api/projects/{id}/sources/add-from-path` | ファイル追加 |
+| DELETE | `/api/projects/{id}/sources/{category}/{filename}` | ファイル削除 |
 
-### Screening
+### Pipeline
 
 | Method | Path | 説明 |
 |--------|------|------|
-| GET | `/api/screening/rules` | 利用可能なルール一覧 |
-| GET | `/api/screening/inputs` | 利用可能な入力ファイル一覧 |
-| POST | `/api/screening/run` | スクリーニングを実行 |
+| GET | `/api/projects/{id}/pipeline` | パイプライン取得 |
+| PUT | `/api/projects/{id}/pipeline` | パイプライン更新 |
+| POST | `/api/projects/{id}/pipeline/steps` | ステップ追加 |
+| DELETE | `/api/projects/{id}/pipeline/steps/{step_id}` | ステップ削除 |
+
+### Steps
+
+| Method | Path | 説明 |
+|--------|------|------|
+| GET | `/api/projects/{id}/steps` | ステップ一覧 |
+| GET | `/api/projects/{id}/steps/{step_id}` | ステップ詳細 |
+| POST | `/api/projects/{id}/steps/{step_id}/run` | ステップ実行 |
+| POST | `/api/projects/{id}/steps/{step_id}/reset` | ステップリセット |
+| GET | `/api/projects/{id}/steps/{step_id}/outputs/{name}` | 出力取得 |
+| GET | `/api/projects/{id}/steps/{step_id}/changes` | 変更履歴取得 |
+
+### Step Types
+
+| Method | Path | 説明 |
+|--------|------|------|
+| GET | `/api/step-types` | 利用可能なステップタイプ一覧 |
+| GET | `/api/step-types/{type}` | ステップタイプ詳細 |
+
+## ステップハンドラーの実装
+
+新しいステップタイプを追加するには:
+
+```python
+# step_handlers/my_step.py
+from .base import StepHandler, StepResult, OutputDefinition, Change
+from . import register_step_type
+
+@register_step_type
+class MyStepHandler(StepHandler):
+    step_type = "my-step"
+    name = "My Step"
+    description = "Description of what this step does"
+    icon = "IconName"  # Lucide icon name
+    output_definitions = [
+        OutputDefinition(name="passed", description="...", required=True),
+        OutputDefinition(name="rejected", description="...", required=True),
+    ]
+
+    @classmethod
+    def get_config_schema(cls) -> dict:
+        return {
+            "type": "object",
+            "properties": {
+                "option1": {"type": "boolean", "default": True}
+            }
+        }
+
+    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+        passed, rejected, changes = [], [], []
+
+        for entry in input_entries:
+            # Process entry
+            if should_pass(entry):
+                passed.append(entry)
+                changes.append(Change(key=entry["ID"], action="keep", reason="..."))
+            else:
+                rejected.append(entry)
+                changes.append(Change(key=entry["ID"], action="remove", reason="..."))
+
+        return StepResult(
+            outputs={"passed": passed, "rejected": rejected},
+            changes=changes,
+        )
+```
 
 ## 技術スタック
 
 **バックエンド:**
 - Python 3.11+
 - FastAPI
+- Pydantic v2
 - bibtexparser
 - uvicorn
 
@@ -213,3 +378,21 @@ npm install               # 依存関係インストール
 npm run dev               # 開発サーバー起動
 npm run build             # ビルド
 ```
+
+---
+
+## 旧機能（Legacy）
+
+以下は旧バージョンの機能です。新しいプロジェクトベースの機能に移行予定です。
+
+### Reviews（レビュー）
+
+`runs/` ディレクトリのスクリーニング結果を閲覧・レビューする。
+
+### Imports（インポート閲覧）
+
+`imports/` ディレクトリのBibTeXファイルを閲覧する。
+
+### Run Screening（スクリーニング実行）
+
+アプリ内から `screen.py` を実行する。
