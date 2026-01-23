@@ -1,7 +1,7 @@
 /**
  * Modal for configuring and running a step.
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { X, Play, Loader2 } from 'lucide-react';
 import { stepTypesApi, rulesApi, llmApi, PipelineStep, StepTypeInfo, LocalLLMCheckResponse } from '../lib/api';
@@ -66,43 +66,40 @@ export function StepConfigModal({
     }
   }, [stepTypeInfo]);
 
-  // Provider-specific defaults for AI screening
+  const previousProviderRef = useRef<string | null>(null);
+
+  // Provider-specific defaults for AI screening (from backend schema)
   useEffect(() => {
     if (step.type !== 'ai-screening') return;
+    const schema = stepTypeInfo?.config_schema as {
+      properties?: Record<string, { default?: unknown }>;
+      'x-provider-defaults'?: Record<string, { model?: string; concurrency?: number }>;
+    } | undefined;
+
+    const providerDefaults = schema?.['x-provider-defaults'] ?? {};
     const provider = (config.provider ??
-      (stepTypeInfo?.config_schema as { properties?: Record<string, { default?: unknown }> })
-        ?.properties?.provider?.default ??
+      schema?.properties?.provider?.default ??
       'local') as string;
 
-    const localDefaults = {
-      model: 'gpt-oss-120b',
-      concurrency: 256,
-    };
-    const openaiDefaults = {
-      model: 'gpt-5-nano-2025-08-07',
-      concurrency: 10,
-    };
+    const previousProvider = previousProviderRef.current;
+    previousProviderRef.current = provider;
 
     setConfig((prev) => {
       const next = { ...prev };
       let changed = false;
 
-      if (provider === 'local') {
-        if (prev.model === undefined || prev.model === openaiDefaults.model) {
-          next.model = localDefaults.model;
+      const defaults = providerDefaults[provider] ?? {};
+      const previousDefaults = previousProvider ? providerDefaults[previousProvider] ?? {} : {};
+
+      if (prev.model === undefined || prev.model === previousDefaults.model) {
+        if (defaults.model !== undefined) {
+          next.model = defaults.model;
           changed = true;
         }
-        if (prev.concurrency === undefined || prev.concurrency === openaiDefaults.concurrency) {
-          next.concurrency = localDefaults.concurrency;
-          changed = true;
-        }
-      } else if (provider === 'openai') {
-        if (prev.model === undefined || prev.model === localDefaults.model) {
-          next.model = openaiDefaults.model;
-          changed = true;
-        }
-        if (prev.concurrency === undefined || prev.concurrency === localDefaults.concurrency) {
-          next.concurrency = openaiDefaults.concurrency;
+      }
+      if (prev.concurrency === undefined || prev.concurrency === previousDefaults.concurrency) {
+        if (defaults.concurrency !== undefined) {
+          next.concurrency = defaults.concurrency;
           changed = true;
         }
       }
@@ -193,15 +190,17 @@ export function StepConfigModal({
 
     if (key === 'model' && step.type === 'ai-screening') {
       const provider = (config.provider ?? 'local') as string;
-      const modelOptions =
-        provider === 'openai' ? ['gpt-5-nano-2025-08-07'] : ['openai/gpt-oss-120b'];
+      const providerModels = (stepTypeInfo?.config_schema as {
+        'x-provider-models'?: Record<string, string[]>;
+      })?.['x-provider-models'];
+      const modelOptions = providerModels?.[provider] ?? enumValues ?? [];
       return (
         <div key={key} className="space-y-1">
           <label className="block text-sm font-medium">
             {formatLabel(key)}
           </label>
           <select
-            value={(value as string) || modelOptions[0]}
+            value={(value as string) || modelOptions[0] || ''}
             onChange={(e) => updateConfig(key, e.target.value)}
             className="w-full px-3 py-2 rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-sm"
           >

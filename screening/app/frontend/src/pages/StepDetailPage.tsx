@@ -10,6 +10,7 @@ import {
   Play,
   RotateCcw,
   Loader2,
+  Clock,
   AlertTriangle,
 } from 'lucide-react';
 import { stepsApi, pipelineApi, StepMeta, PipelineStep } from '../lib/api';

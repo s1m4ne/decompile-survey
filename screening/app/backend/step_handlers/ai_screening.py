@@ -21,6 +21,8 @@ LOCAL_LLM_BASE_URL = os.getenv("LOCAL_LLM_BASE_URL", "http://192.168.50.100:8000
 # Default concurrency
 OPENAI_CONCURRENCY = 10
 LOCAL_CONCURRENCY = 256
+OPENAI_DEFAULT_MODEL = "gpt-5-nano-2025-08-07"
+LOCAL_DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 # Rules directory
 RULES_DIR = Path(__file__).parent.parent.parent.parent / "rules"
@@ -202,6 +204,21 @@ class AIScreeningHandler(StepHandler):
         rules = get_available_rules()
         rule_ids = [r["id"] for r in rules] if rules else ["decompile_v4"]
 
+        provider_defaults = {
+            "local": {
+                "model": LOCAL_DEFAULT_MODEL,
+                "concurrency": LOCAL_CONCURRENCY,
+            },
+            "openai": {
+                "model": OPENAI_DEFAULT_MODEL,
+                "concurrency": OPENAI_CONCURRENCY,
+            },
+        }
+        provider_models = {
+            "local": [LOCAL_DEFAULT_MODEL],
+            "openai": [OPENAI_DEFAULT_MODEL],
+        }
+
         return {
             "type": "object",
             "properties": {
@@ -213,8 +230,8 @@ class AIScreeningHandler(StepHandler):
                 },
                 "model": {
                     "type": "string",
-                    "enum": ["openai/gpt-oss-120b", "gpt-5-nano-2025-08-07"],
-                    "default": "openai/gpt-oss-120b",
+                    "enum": [LOCAL_DEFAULT_MODEL, OPENAI_DEFAULT_MODEL],
+                    "default": LOCAL_DEFAULT_MODEL,
                     "description": "LLM model to use",
                 },
                 "provider": {
@@ -236,18 +253,25 @@ class AIScreeningHandler(StepHandler):
                     "description": "Base URL for local LLM server (used when provider=local)",
                 },
             },
+            "x-provider-defaults": provider_defaults,
+            "x-provider-models": provider_models,
             "required": ["rules"],
         }
 
     def run(self, input_entries: list[dict], config: dict) -> StepResult:
         """Run AI screening on input entries."""
         rules_id = config.get("rules", "decompile_v4")
-        model = config.get("model", "openai/gpt-oss-120b")
         provider = config.get("provider", "local")
         local_base_url = config.get("local_base_url")
 
-        if provider == "local" and "/" not in model:
-            model = f"openai/{model}"
+        if provider == "openai":
+            model = config.get("model") or OPENAI_DEFAULT_MODEL
+            if model.startswith("openai/"):
+                model = model.split("/", 1)[1]
+        else:
+            model = config.get("model") or LOCAL_DEFAULT_MODEL
+            if "/" not in model:
+                model = f"openai/{model}"
 
         # Set concurrency based on provider
         if provider == "local":
