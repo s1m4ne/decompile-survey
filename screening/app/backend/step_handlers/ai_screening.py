@@ -20,7 +20,7 @@ LOCAL_LLM_BASE_URL = os.getenv("LOCAL_LLM_BASE_URL", "http://192.168.50.100:8000
 
 # Default concurrency
 OPENAI_CONCURRENCY = 10
-LOCAL_CONCURRENCY = 500
+LOCAL_CONCURRENCY = 256
 
 # Rules directory
 RULES_DIR = Path(__file__).parent.parent.parent.parent / "rules"

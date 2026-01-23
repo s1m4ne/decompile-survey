@@ -76,7 +76,7 @@ export function StepConfigModal({
 
     const localDefaults = {
       model: 'gpt-oss-120b',
-      concurrency: 500,
+      concurrency: 256,
     };
     const openaiDefaults = {
       model: 'gpt-5-nano-2025-08-07',

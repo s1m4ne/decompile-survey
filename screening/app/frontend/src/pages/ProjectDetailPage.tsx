@@ -17,7 +17,9 @@ import { Badge } from '../components/ui/Badge';
 import {
   projectsApi,
   pipelineApi,
+  stepsApi,
   stepTypesApi,
+  sourcesApi,
   StepMeta,
   PipelineStep,
   StepTypeInfo,
@@ -45,12 +47,18 @@ export function ProjectDetailPage() {
     queryKey: ['steps', projectId],
     queryFn: () => stepsApi.list(projectId!),
     enabled: !!projectId,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
+    staleTime: 0,
   });
 
   const { data: sources } = useQuery({
     queryKey: ['sources', projectId],
     queryFn: () => sourcesApi.get(projectId!),
     enabled: !!projectId,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
+    staleTime: 0,
   });
 
   const { data: stepTypes } = useQuery({

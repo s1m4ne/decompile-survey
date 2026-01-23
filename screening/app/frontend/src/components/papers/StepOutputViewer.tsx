@@ -56,18 +56,24 @@ export function StepOutputViewer({
   const { data: outputData, isLoading } = useQuery({
     queryKey: ['step-output', projectId, stepId, activeTab],
     queryFn: async () => {
-      if (activeTab === 'input') {
-        // For input, we need to load from the input source
-        // This would need a separate API endpoint or we can skip for now
-        return { entries: [], count: 0 };
-      }
       const result = await stepsApi.getOutput(projectId, stepId, activeTab);
       return result as { entries: BibEntry[]; count: number };
     },
     enabled: activeTab !== 'input' && stepMeta.execution.status === 'completed',
   });
+  const { data: inputData, isLoading: isInputLoading } = useQuery({
+    queryKey: ['step-input', projectId, stepId],
+    queryFn: async () => {
+      const result = await stepsApi.getInput(projectId, stepId);
+      return result as { entries: BibEntry[]; count: number };
+    },
+    enabled: activeTab === 'input' && stepMeta.execution.status === 'completed',
+  });
 
-  const entries = (outputData?.entries || []) as BibEntry[];
+  const entries = (activeTab === 'input'
+    ? inputData?.entries || []
+    : outputData?.entries || []) as BibEntry[];
+  const isLoadingTab = activeTab === 'input' ? isInputLoading : isLoading;
 
   // Build filter options
   const filterOptions = useMemo(() => {
@@ -109,6 +115,29 @@ export function StepOutputViewer({
   }, [filteredEntries, currentPage, pageSize]);
 
   const totalPages = Math.ceil(filteredEntries.length / pageSize);
+  const hasSourceInfo = useMemo(
+    () => entries.some((entry) => Boolean(entry._source_file)),
+    [entries]
+  );
+  const inputColumns = useMemo(() => {
+    if (!columns || !hasSourceInfo) return columns;
+    return [
+      ...columns,
+      {
+        id: 'source',
+        header: 'Source',
+        width: 'w-40',
+        render: (entry: BibEntry) => {
+          const filename = (entry as BibEntry & { _source_file?: string })._source_file;
+          return (
+            <span className="text-xs text-[hsl(var(--muted-foreground))]">
+              {filename || '-'}
+            </span>
+          );
+        },
+      },
+    ] as ColumnDefinition<BibEntry>[];
+  }, [columns, hasSourceInfo]);
 
   // Reset page when filters change
   const handleSearchChange = (query: string) => {
@@ -208,16 +237,16 @@ export function StepOutputViewer({
       />
 
       {/* Loading state */}
-      {isLoading && (
+      {isLoadingTab && (
         <div className="flex items-center justify-center py-12">
           <Loader2 className="w-6 h-6 animate-spin text-[hsl(var(--muted-foreground))]" />
         </div>
       )}
 
       {/* Input tab placeholder */}
-      {activeTab === 'input' && !isLoading && (
+      {activeTab === 'input' && !isLoadingTab && entries.length === 0 && (
         <div className="text-center py-8 text-[hsl(var(--muted-foreground))]">
-          Input viewing is not yet implemented.
+          Input not available for this step.
           <br />
           <span className="text-sm">
             Input: {stepMeta.input?.from} ({stepMeta.input?.count} entries)
@@ -226,12 +255,12 @@ export function StepOutputViewer({
       )}
 
       {/* Paper table */}
-      {activeTab !== 'input' && !isLoading && (
+      {!isLoadingTab && (activeTab !== 'input' || entries.length > 0) && (
         <>
           <PaperTable
             entries={paginatedEntries}
             changes={changes}
-            columns={columns}
+            columns={activeTab === 'input' ? inputColumns : columns}
             emptyMessage={
               searchQuery || activeFilters.length > 0
                 ? 'No papers match your search/filter criteria'

@@ -214,6 +214,18 @@ def save_output_entries(project_id: str, step_id: str, output_name: str, entries
     return output_file
 
 
+def save_input_entries(project_id: str, step_id: str, entries: list[dict]) -> Path:
+    """Save input entries (with source metadata) to a JSON file."""
+    step_dir = get_step_dir(project_id, step_id)
+    step_dir.mkdir(parents=True, exist_ok=True)
+
+    input_file = step_dir / "input.json"
+    with open(input_file, "w", encoding="utf-8") as f:
+        json.dump(entries, f, indent=2, ensure_ascii=False)
+
+    return input_file
+
+
 def save_changes(project_id: str, step_id: str, changes: list) -> None:
     """Save changes to JSONL file."""
     step_dir = PROJECTS_DIR / project_id / "steps" / step_id
@@ -251,6 +263,7 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
     try:
         # Load input entries
         input_entries, input_meta = load_input_entries(project_id, step_def.input_from)
+        save_input_entries(project_id, step_id, input_entries)
 
         # Create handler and run
         handler = handler_class()
@@ -433,6 +446,21 @@ def get_step_output(project_id: str, step_id: str, output_name: str) -> dict:
         bib_db = bibtexparser.load(f)
 
     return {"entries": bib_db.entries, "count": len(bib_db.entries)}
+
+
+@router.get("/{step_id}/input")
+def get_step_input(project_id: str, step_id: str) -> dict:
+    """Get a step input (original entries as JSON)."""
+    step_dir = get_step_dir(project_id, step_id)
+    input_file = step_dir / "input.json"
+
+    if not input_file.exists():
+        raise HTTPException(status_code=404, detail="Input not saved for this step")
+
+    with open(input_file, encoding="utf-8") as f:
+        entries = json.load(f)
+
+    return {"entries": entries, "count": len(entries)}
 
 
 @router.get("/{step_id}/changes")

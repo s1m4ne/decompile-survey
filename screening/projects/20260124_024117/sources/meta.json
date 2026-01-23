@@ -4,9 +4,9 @@
       "filename": "decompile-survey.bib",
       "category": "databases",
       "count": 655,
-      "database": null,
-      "search_query": null,
-      "search_date": null
+      "database": "IEEE",
+      "search_query": "select",
+      "search_date": "2026-01-21"
     }
   ],
   "other": [],

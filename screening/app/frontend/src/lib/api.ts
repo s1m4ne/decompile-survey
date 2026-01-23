@@ -221,6 +221,11 @@ export const stepsApi = {
       `/projects/${projectId}/steps/${stepId}/outputs/${outputName}`
     ),
 
+  getInput: (projectId: string, stepId: string) =>
+    fetchApi<{ entries: Record<string, unknown>[]; count: number }>(
+      `/projects/${projectId}/steps/${stepId}/input`
+    ),
+
   getChanges: (projectId: string, stepId: string) =>
     fetchApi<Record<string, unknown>[]>(`/projects/${projectId}/steps/${stepId}/changes`),
 };
