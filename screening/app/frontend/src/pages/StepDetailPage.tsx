@@ -660,13 +660,31 @@ export function StepDetailPage() {
       second: '2-digit',
     });
   }, [stepMeta?.execution.completed_at, stepMeta?.step_type]);
-  const aiReviewTabs = useMemo(() => ([
-    { id: 'ai_passed', label: 'AI Passed', count: decisionCounts.include, tone: 'success' as const },
-    { id: 'human_passed', label: 'Human Passed', count: humanDecisionCounts.include, tone: 'success' as const },
-    { id: 'ai_excluded', label: 'AI Excluded', count: decisionCounts.exclude, tone: 'danger' as const },
-    { id: 'human_excluded', label: 'Human Excluded', count: humanDecisionCounts.exclude, tone: 'danger' as const },
-    { id: 'ai_uncertain', label: 'AI Uncertain', count: decisionCounts.uncertain, tone: 'warning' as const },
-    { id: 'human_uncertain', label: 'Human Uncertain', count: humanDecisionCounts.uncertain, tone: 'warning' as const },
+  const aiReviewTabGroups = useMemo(() => ([
+    {
+      id: 'passed',
+      label: 'Passed',
+      tabs: [
+        { id: 'ai_passed', label: 'AI', count: decisionCounts.include, tone: 'success' as const },
+        { id: 'human_passed', label: 'Human', count: humanDecisionCounts.include, tone: 'success' as const },
+      ],
+    },
+    {
+      id: 'excluded',
+      label: 'Excluded',
+      tabs: [
+        { id: 'ai_excluded', label: 'AI', count: decisionCounts.exclude, tone: 'danger' as const },
+        { id: 'human_excluded', label: 'Human', count: humanDecisionCounts.exclude, tone: 'danger' as const },
+      ],
+    },
+    {
+      id: 'uncertain',
+      label: 'Uncertain',
+      tabs: [
+        { id: 'ai_uncertain', label: 'AI', count: decisionCounts.uncertain, tone: 'warning' as const },
+        { id: 'human_uncertain', label: 'Human', count: humanDecisionCounts.uncertain, tone: 'warning' as const },
+      ],
+    },
   ]), [
     decisionCounts.exclude,
     decisionCounts.include,
@@ -1224,7 +1242,7 @@ export function StepDetailPage() {
             changes={changes}
             actionCounts={actionCounts}
             decisionCounts={decisionCounts}
-            tabs={aiReviewTabs}
+            tabGroups={aiReviewTabGroups}
             includeInputTab={false}
             columns={config.columns}
             buildFilters={config.buildFilters}
