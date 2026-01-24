@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { Plus, FolderOpen, Trash2, Clock, ArrowRight } from 'lucide-react';
+import { Plus, FolderOpen, Trash2, Clock, ArrowRight, X, ChevronRight } from 'lucide-react';
 import { projectsApi, Project } from '../lib/api';
 
 export function ProjectsPage() {
@@ -59,7 +59,7 @@ export function ProjectsPage() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ja-JP', {
+    return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -126,8 +126,15 @@ export function ProjectsPage() {
             <Link
               key={project.id}
               to={`/projects/${project.id}`}
-              className="block p-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg hover:border-[hsl(var(--ring))] transition-colors group"
+              className="relative block p-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg hover:border-[hsl(var(--ring))] transition-colors group"
             >
+              <button
+                onClick={(e) => handleDelete(e, project)}
+                className="absolute -top-3 -right-3 p-2 rounded-full bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] shadow-sm hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--background))] opacity-0 group-hover:opacity-100 transition-opacity"
+                title="Delete project"
+              >
+                <X className="w-4 h-4" />
+              </button>
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-medium text-[hsl(var(--card-foreground))] truncate">
@@ -151,18 +158,94 @@ export function ProjectsPage() {
                     )}
                   </div>
                 </div>
-                <button
-                  onClick={(e) => handleDelete(e, project)}
-                  className="p-2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--destructive))] opacity-0 group-hover:opacity-100 transition-opacity"
-                  title="Delete project"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+              </div>
+              <div
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md transition-colors"
+                title="View details"
+              >
+                <ChevronRight className="w-4 h-4" />
               </div>
             </Link>
           ))}
         </div>
       )}
+
+      <div className="mt-10">
+        <div className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--secondary))] via-transparent to-[hsl(var(--muted))] opacity-70" />
+          <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-[hsl(var(--primary))] opacity-10" />
+          <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[hsl(var(--ring))] opacity-10" />
+          <div className="relative space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-[hsl(var(--foreground))]">
+                Quick Guide
+              </h3>
+              <p className="text-sm text-[hsl(var(--muted-foreground))] mt-1">
+                Create a project, add sources, then chain steps to narrow your SLR set.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                <div className="text-xs uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
+                  1. Start
+                </div>
+                <div className="mt-2 text-sm font-medium text-[hsl(var(--foreground))]">
+                  Create a project
+                </div>
+                <div className="mt-2 text-xs text-[hsl(var(--muted-foreground))]">
+                  Give it a clear name and add a short description.
+                </div>
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                <div className="text-xs uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
+                  2. Inputs
+                </div>
+                <div className="mt-2 text-sm font-medium text-[hsl(var(--foreground))]">
+                  Import BibTeX sources
+                </div>
+                <div className="mt-2 text-xs text-[hsl(var(--muted-foreground))]">
+                  Split by database or other, then check counts.
+                </div>
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                <div className="text-xs uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
+                  3. Pipeline
+                </div>
+                <div className="mt-2 text-sm font-medium text-[hsl(var(--foreground))]">
+                  Add screening steps
+                </div>
+                <div className="mt-2 text-xs text-[hsl(var(--muted-foreground))]">
+                  Dedup first, then AI screening, then human review.
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                <div className="text-sm font-semibold text-[hsl(var(--foreground))]">
+                  Guidelines
+                </div>
+                <ul className="mt-2 space-y-2 text-xs text-[hsl(var(--muted-foreground))]">
+                  <li>Keep raw sources untouched; work on step outputs.</li>
+                  <li>Use consistent rules for AI screening and record changes.</li>
+                  <li>Review uncertain papers before final export.</li>
+                </ul>
+              </div>
+              <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                <div className="text-sm font-semibold text-[hsl(var(--foreground))]">
+                  Tip
+                </div>
+                <p className="mt-2 text-xs text-[hsl(var(--muted-foreground))]">
+                  You can reorder steps later, but deleting a step removes its outputs.
+                </p>
+                <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--muted))] px-3 py-1 text-xs text-[hsl(var(--foreground))]">
+                  <span className="h-2 w-2 rounded-full bg-[hsl(var(--status-success-solid))]" />
+                  Keep pipeline steps minimal and reversible.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Create Modal */}
       {showCreateModal && (

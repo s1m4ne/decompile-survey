@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
@@ -27,6 +27,7 @@ export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const queryClient = useQueryClient();
   const [showAddStepModal, setShowAddStepModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const { data: project, isLoading: projectLoading } = useQuery({
     queryKey: ['project', projectId],
@@ -105,7 +106,10 @@ export function ProjectDetailPage() {
               </p>
             )}
           </div>
-          <button className="p-2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md transition-colors">
+          <button
+            onClick={() => setShowSettingsModal(true)}
+            className="p-2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md transition-colors"
+          >
             <Settings className="w-5 h-5" />
           </button>
         </div>
@@ -151,6 +155,14 @@ export function ProjectDetailPage() {
           stepTypes={stepTypes || []}
           existingSteps={pipeline?.steps || []}
           onClose={() => setShowAddStepModal(false)}
+        />
+      )}
+
+      {showSettingsModal && (
+        <ProjectSettingsModal
+          projectId={projectId!}
+          projectName={project.name}
+          onClose={() => setShowSettingsModal(false)}
         />
       )}
     </div>
@@ -238,7 +250,9 @@ function StepCard({
   const status = meta?.execution.status || 'pending';
   const inputCount = meta?.input?.count || meta?.stats.input_count || 0;
   const outputCount = meta?.stats.passed_count || 0;
-  const diff = meta?.stats.removed_count || 0;
+  const removedCount = meta?.stats.removed_count || 0;
+  const uncertainCount = Math.max(0, inputCount - outputCount - removedCount);
+  const outputCountDisplay = outputCount + uncertainCount;
 
   return (
     <div className={`relative group ${!step.enabled ? 'opacity-50' : ''}`}>
@@ -281,10 +295,16 @@ function StepCard({
           <div className="flex items-center gap-3">
             {status === 'completed' && (
               <div className="text-sm text-[hsl(var(--muted-foreground))]">
-                {inputCount} → {outputCount}
-                {diff > 0 && (
-                  <span className="text-[hsl(var(--status-danger-fg))] ml-1">(-{diff})</span>
-                )}
+                {inputCount} → {outputCountDisplay}
+                <span
+                  className={`ml-1 ${
+                    removedCount > 0
+                      ? 'text-[hsl(var(--status-danger-fg))]'
+                      : 'text-[hsl(var(--foreground))]'
+                  }`}
+                >
+                  {removedCount > 0 ? `(-${removedCount})` : '(+0)'}
+                </span>
               </div>
             )}
             <StepStatusBadge status={status} />
@@ -463,6 +483,117 @@ function AddStepModal({
               {addMutation.isPending ? 'Adding...' : 'Add Step'}
             </button>
           )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectSettingsModal({
+  projectId,
+  projectName,
+  onClose,
+}: {
+  projectId: string;
+  projectName: string;
+  onClose: () => void;
+}) {
+  const queryClient = useQueryClient();
+  const [name, setName] = useState(projectName);
+
+  useEffect(() => {
+    setName(projectName);
+  }, [projectName]);
+
+  const renameMutation = useMutation({
+    mutationFn: (nextName: string) => projectsApi.update(projectId, { name: nextName }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
+      onClose();
+    },
+  });
+
+  const clearStepsMutation = useMutation({
+    mutationFn: () => pipelineApi.clearSteps(projectId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['pipeline', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['steps', projectId] });
+    },
+  });
+
+  const handleRename = () => {
+    const nextName = name.trim();
+    if (!nextName || nextName === projectName) {
+      onClose();
+      return;
+    }
+    renameMutation.mutate(nextName);
+  };
+
+  const handleClearSteps = () => {
+    if (!window.confirm('Delete all steps and their outputs? This cannot be undone.')) {
+      return;
+    }
+    clearStepsMutation.mutate();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[hsl(var(--card))] rounded-lg w-full max-w-lg overflow-hidden">
+        <div className="p-4 border-b border-[hsl(var(--border))] flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-[hsl(var(--card-foreground))]">
+            Project Settings
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[hsl(var(--foreground))]">
+              Project name
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-3 py-2 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--ring))]"
+            />
+            <div className="flex justify-end gap-2 pt-2">
+              <button
+                onClick={onClose}
+                className="px-3 py-2 text-sm border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleRename}
+                className="px-3 py-2 text-sm bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-md hover:opacity-90 disabled:opacity-50"
+                disabled={renameMutation.isPending}
+              >
+                {renameMutation.isPending ? 'Saving...' : 'Save'}
+              </button>
+            </div>
+          </div>
+
+          <div className="border-t border-[hsl(var(--border))] pt-4 space-y-2">
+            <div className="text-sm font-medium text-[hsl(var(--foreground))]">Danger zone</div>
+            <p className="text-xs text-[hsl(var(--muted-foreground))]">
+              Removes all steps and their outputs from this project.
+            </p>
+            <button
+              onClick={handleClearSteps}
+              className="px-3 py-2 text-sm bg-[hsl(var(--status-danger-solid))] text-[hsl(var(--status-danger-solid-foreground))] rounded-md hover:opacity-90 disabled:opacity-50"
+              disabled={clearStepsMutation.isPending}
+            >
+              {clearStepsMutation.isPending ? 'Deleting...' : 'Delete all steps'}
+            </button>
+          </div>
         </div>
       </div>
     </div>

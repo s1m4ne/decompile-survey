@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
 import { useTheme } from '../lib/theme';
-import { FolderOpen, Layers, Sun, Moon, Monitor } from 'lucide-react';
+import { FolderOpen, Layers, Sun, Moon, Monitor, Github } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             <Link to="/" className="flex items-center gap-2 text-lg font-semibold text-[hsl(var(--foreground))]">
-              <img src="/brain.svg" alt="" className="h-5 w-5" />
+              <img src="/brain.svg" alt="" className="h-6 w-6" />
               SLR Pipeline
             </Link>
 
@@ -81,10 +81,27 @@ export function Layout({ children }: LayoutProps) {
         </div>
       </header>
 
-      {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {children}
-      </main>
+      <div className="flex min-h-[calc(100vh-3.5rem)] flex-col">
+        {/* Main content */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+          {children}
+        </main>
+        <footer className="border-t border-[hsl(var(--border))]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-[hsl(var(--muted-foreground))] flex items-center justify-end gap-3">
+            <a
+              href="https://github.com/s1m4ne/decompile-survey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-[hsl(var(--foreground))] transition-colors"
+            >
+              <Github className="h-3.5 w-3.5" />
+              Repository
+            </a>
+            <span className="text-[hsl(var(--border))]">•</span>
+            <span>© 2026 s1m4ne. MIT License.</span>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

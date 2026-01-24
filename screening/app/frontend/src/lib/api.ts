@@ -191,6 +191,11 @@ export const pipelineApi = {
     fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps/${stepId}/move?new_index=${newIndex}`, {
       method: 'POST',
     }),
+
+  clearSteps: (projectId: string) =>
+    fetchApi<Pipeline>(`/projects/${projectId}/pipeline/steps`, {
+      method: 'DELETE',
+    }),
 };
 
 // Steps

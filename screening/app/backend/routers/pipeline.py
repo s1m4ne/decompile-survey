@@ -5,6 +5,7 @@ Pipeline API - Pipeline definition and management.
 import json
 from pathlib import Path
 from fastapi import APIRouter, HTTPException
+import shutil
 
 from models.pipeline import Pipeline, PipelineStep
 
@@ -126,4 +127,23 @@ def move_step(project_id: str, step_id: str, new_index: int) -> Pipeline:
     pipeline.steps.insert(new_index, step)
 
     save_pipeline(project_id, pipeline)
+    return pipeline
+
+
+@router.delete("/steps")
+def clear_steps(project_id: str) -> Pipeline:
+    """Remove all steps from the pipeline and delete step outputs."""
+    pipeline = load_pipeline(project_id)
+
+    # Clear pipeline steps and final output
+    pipeline.steps = []
+    pipeline.final_output = None
+    save_pipeline(project_id, pipeline)
+
+    # Remove step directories
+    steps_dir = PROJECTS_DIR / project_id / "steps"
+    if steps_dir.exists():
+        shutil.rmtree(steps_dir)
+    steps_dir.mkdir(parents=True, exist_ok=True)
+
     return pipeline
