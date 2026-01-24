@@ -11,26 +11,26 @@
   "outputs": {
     "passed": {
       "file": "steps/dedup_author/outputs/passed.bib",
-      "count": 602,
+      "count": 625,
       "description": "Representative entries kept after author clustering"
     },
     "removed": {
       "file": "steps/dedup_author/outputs/removed.bib",
-      "count": 23,
+      "count": 0,
       "description": "Entries removed as author duplicates"
     }
   },
   "stats": {
     "input_count": 625,
     "total_output_count": 625,
-    "passed_count": 602,
-    "removed_count": 23
+    "passed_count": 625,
+    "removed_count": 0
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-24T16:31:44.898447",
-    "completed_at": "2026-01-24T16:31:45.890862",
-    "duration_sec": 0.992415,
+    "started_at": "2026-01-24T20:11:21.319602",
+    "completed_at": "2026-01-24T20:11:22.276343",
+    "duration_sec": 0.956741,
     "error": null
   }
 }

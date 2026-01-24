@@ -1,18 +1,43 @@
 {
   "clusters": [
     {
+      "id": "cluster-596",
+      "size": 2,
+      "representative_id": "zhang_novel_2024",
+      "representative_title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "zhang_novel_2024",
+          "title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
+          "authors": "Zhang, Lixia and Liu, Tianxu and Shen, Kaihui and Chen, Cheng",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "zhang_novel_2024-1",
+          "title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
+          "authors": "Zhang, Lixia and Liu, Tianxu and Shen, Kaihui and Chen, Cheng",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
       "id": "cluster-7",
       "size": 2,
       "representative_id": "aguirre_pre-expectation_2021",
       "representative_title": "A pre-expectation calculus for probabilistic sensitivity",
-      "average_similarity": 1,
+      "average_similarity": 1.0,
       "members": [
         {
           "id": "aguirre_pre-expectation_2019",
           "title": "A {Pre}-{Expectation} {Calculus} for {Probabilistic} {Sensitivity}",
           "authors": "Aguirre, Alejandro and Barthe, Gilles and Hsu, Justin and Kaminski, Benjamin Lucien and Katoen, Joost-Pieter and Matheja, Christoph",
           "year": "2019",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "remove"
         },
         {
@@ -20,409 +45,32 @@
           "title": "A pre-expectation calculus for probabilistic sensitivity",
           "authors": "Aguirre, Alejandro and Barthe, Gilles and Hsu, Justin and Kaminski, Benjamin Lucien and Katoen, Joost-Pieter and Matheja, Christoph",
           "year": "2021",
-          "similarity": 1,
-          "action": "keep"
-        }
-      ],
-      "reviewed": true
-    },
-    {
-      "id": "cluster-13",
-      "size": 2,
-      "representative_id": "al-kaswan_extending_2023",
-      "representative_title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "al-kaswan_extending_2023",
-          "title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
-          "authors": "Al-Kaswan, Ali and Ahmed, Toufique and Izadi, Maliheh and Sawant, Anand Ashok and Devanbu, Premkumar and van Deursen, Arie",
-          "year": "2023",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "al-kaswan_extending_2023-1",
-          "title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
-          "authors": "Al-Kaswan, Ali and Ahmed, Toufique and Izadi, Maliheh and Sawant, Ashok, Anand and Devanbu, Premkumar and Deursen, van, Arie",
-          "year": "2023",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-32",
-      "size": 2,
-      "representative_id": "armengol-estape_learning_2022",
-      "representative_title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "armengol-estape_learning_2021",
-          "title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
-          "authors": "Armengol-Estapé, Jordi and O'Boyle, Michael F. P.",
-          "year": "2021",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "armengol-estape_learning_2022",
-          "title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
-          "authors": "Armengol-Estapé, Jordi and O'Boyle, P., F., Michael",
-          "year": "2022",
-          "similarity": 1,
-          "action": "keep"
-        }
-      ],
-      "reviewed": true
-    },
-    {
-      "id": "cluster-33",
-      "size": 2,
-      "representative_id": "armengol-estape_slade_2024",
-      "representative_title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "armengol-estape_slade_2024",
-          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
-          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F. P.",
-          "year": "2024",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "armengol-estape_slade_2024-2",
-          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
-          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, P., F., Michael",
-          "year": "2024",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-77",
-      "size": 2,
-      "representative_id": "cao_boosting_2023",
-      "representative_title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "cao_boosting_2022",
-          "title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
-          "authors": "Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei",
-          "year": "2022",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "cao_boosting_2023",
-          "title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
-          "authors": "Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei",
-          "year": "2023",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "keep"
         }
       ]
     },
     {
-      "id": "cluster-79",
+      "id": "cluster-450",
       "size": 2,
-      "representative_id": "cao_revisiting_2023",
-      "representative_title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
-      "average_similarity": 1,
+      "representative_id": "slawinski_applications_2019",
+      "representative_title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
+      "average_similarity": 1.0,
       "members": [
         {
-          "id": "cao_revisiting_2023",
-          "title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
-          "authors": "Cao, Kevin and Leach, Kevin",
-          "year": "2023",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "cao_revisiting_2023-1",
-          "title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
-          "authors": "Cao, Kevin and Leach, Kevin",
-          "year": "2023",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-97",
-      "size": 2,
-      "representative_id": "chen_suigpt_2025",
-      "representative_title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "chen_suigpt_2025",
-          "title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
-          "authors": "Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Wu, Tingguan and Wang, Siyun and Chalkias, Kostas Kryptos",
-          "year": "2025",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "chen_suigpt_2025-1",
-          "title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
-          "authors": "Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Tingguan, Wu and Wang, Siyun and Chalkias, Kryptos, Kostas",
-          "year": "2025",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-112",
-      "size": 2,
-      "representative_id": "cotroneo_can_2025",
-      "representative_title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "cotroneo_can_2025",
-          "title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
-          "authors": "Cotroneo, Domenico and Grasso, Francesco C. and Natella, Roberto and Orbinato, Vittorio",
-          "year": "2025",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "cotroneo_can_2025-1",
-          "title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
-          "authors": "Cotroneo, D. and Grasso, C., F. and Natella, R. and Orbinato, V.",
-          "year": "2025",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-142",
-      "size": 2,
-      "representative_id": "erinfolami_declassifier_2019",
-      "representative_title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "erinfolami_declassifier_2019",
-          "title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
-          "authors": "Erinfolami, Rukayat Ayomide and Prakash, Aravind",
+          "id": "slawinski_applications_2019",
+          "title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
+          "authors": "Slawinski, Michael and Wortman, Andy",
           "year": "2019",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "keep"
         },
         {
-          "id": "erinfolami_declassifier_2019-1",
-          "title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
-          "authors": "Erinfolami, Ayomide, Rukayat and Prakash, Aravind",
+          "id": "slawinski_applications_2019-1",
+          "title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
+          "authors": "Slawinski, A., Michael and Wortman, Andy",
           "year": "2019",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-143",
-      "size": 2,
-      "representative_id": "erinfolami_devil_2020",
-      "representative_title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "erinfolami_devil_2020",
-          "title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
-          "authors": "Erinfolami, Rukayat Ayomide and Prakash, Aravind",
-          "year": "2020",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "erinfolami_devil_2020-1",
-          "title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
-          "authors": "Erinfolami, Ayomide, Rukayat and Prakash, Aravind",
-          "year": "2020",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-177",
-      "size": 2,
-      "representative_id": "gregorio_e-apk_2023",
-      "representative_title": "E-{APK}: {Energy} pattern detection in decompiled android applications",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "gregorio_e-apk_2022",
-          "title": "E-{APK}: {Energy} {Pattern} {Detection} in {Decompiled} {Android} {Applications}",
-          "authors": "Gregório, Nelson and Fernandes, João Paulo and Bispo, João and Medeiros, Sérgio",
-          "year": "2022",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "gregorio_e-apk_2023",
-          "title": "E-{APK}: {Energy} pattern detection in decompiled android applications",
-          "authors": "Gregorio, Nelson and Bispo, Joao and Fernandes, Joao Paulo and de Medeiros, Sergio Queiroz",
-          "year": "2023",
-          "similarity": 1,
-          "action": "keep"
-        }
-      ]
-    },
-    {
-      "id": "cluster-197",
-      "size": 2,
-      "representative_id": "harrand_strengths_2019",
-      "representative_title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "harrand_strengths_2019",
-          "title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
-          "authors": "Harrand, Nicolas and Soto-Valero, César and Monperrus, Martin and Baudry, Benoit",
-          "year": "2019",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "harrand_strengths_2019-1",
-          "title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
-          "authors": "Harrand, Nicolas and Soto-Valero, César and Monperrus, Martin and Baudry, Benoit",
-          "year": "2019",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-200",
-      "size": 2,
-      "representative_id": "he_benchmarking_2025",
-      "representative_title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "he_benchmarking_2025",
-          "title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
-          "authors": "He, Yiling and She, Hongyu and Qian, Xingzhi and Zheng, Xinran and Chen, Zhuo and Qin, Zhan and Cavallaro, Lorenzo",
-          "year": "2025",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "he_benchmarking_2025-1",
-          "title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
-          "authors": "He, Yiling and She, Hongyu and Qian, Xingzhi and Zheng, Xinran and Chen, Zhuo and Qin, Zhan and Cavallaro, Lorenzo",
-          "year": "2025",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-236",
-      "size": 2,
-      "representative_id": "jiang_binaryai_2024-1",
-      "representative_title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "jiang_binaryai_2024",
-          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
-          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
-          "year": "2024",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "jiang_binaryai_2024-1",
-          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
-          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
-          "year": "2024",
-          "similarity": 1,
-          "action": "keep"
-        }
-      ]
-    },
-    {
-      "id": "cluster-269",
-      "size": 2,
-      "representative_id": "lacomis_dire_2020",
-      "representative_title": "{DIRE}: a neural approach to decompiled identifier naming",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "lacomis_dire_2019-1",
-          "title": "{DIRE}: {A} {Neural} {Approach} to {Decompiled} {Identifier} {Naming}",
-          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, J., Edward and Allamanis, Miltiadis and Goues, Le, Claire and Neubig, Graham and Vasilescu, Bogdan",
-          "year": "2019",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "lacomis_dire_2020",
-          "title": "{DIRE}: a neural approach to decompiled identifier naming",
-          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan",
-          "year": "2020",
-          "similarity": 1,
-          "action": "keep"
-        }
-      ]
-    },
-    {
-      "id": "cluster-293",
-      "size": 2,
-      "representative_id": "li_stan_2020",
-      "representative_title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "li_stan_2020",
-          "title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
-          "authors": "Li, Xiaoqi and Chen, Ting and Luo, Xiapu and Zhang, Tao and Yu, Le and Xu, Zhou",
-          "year": "2020",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "li_stan_2020-1",
-          "title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
-          "authors": "Li, Xiaoqi and Chen, Ting and Luo, Xiapu and Zhang, Tao and Yu, Le and Xu, Zhou",
-          "year": "2020",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-362",
-      "size": 2,
-      "representative_id": "nandi_synthesizing_2020",
-      "representative_title": "Synthesizing structured {CAD} models with equality saturation and inverse transformations",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "nandi_synthesizing_2020",
-          "title": "Synthesizing structured {CAD} models with equality saturation and inverse transformations",
-          "authors": "Nandi, Chandrakana and Willsey, Max and Anderson, Adam and Wilcox, James R. and Darulova, Eva and Grossman, Dan and Tatlock, Zachary",
-          "year": "2020",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "nandi_synthesizing_2020-1",
-          "title": "Synthesizing {Structured} {CAD} {Models} with {Equality} {Saturation} and {Inverse} {Transformations}",
-          "authors": "Nandi, Chandrakana and Willsey, Max and Anderson, Adam and Wilcox, R., James and Darulova, Eva and Grossman, Dan and Tatlock, Zachary",
-          "year": "2020",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "remove"
         }
       ]
@@ -432,14 +80,14 @@
       "size": 2,
       "representative_id": "reiter_automatically_2025",
       "representative_title": "Automatically {Mitigating} {Vulnerabilities} in {Binary} {Programs} via {Partially} {Recompilable} {Decompilation}",
-      "average_similarity": 1,
+      "average_similarity": 1.0,
       "members": [
         {
           "id": "reiter_automatically_2023",
           "title": "Automatically {Mitigating} {Vulnerabilities} in {Binary} {Programs} via {Partially} {Recompilable} {Decompilation}",
           "authors": "Reiter, Pemma and Tay, Jun, Hui and Weimer, Westley and Doupé, Adam and Wang, Ruoyu and Forrest, Stephanie",
           "year": "2023",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "remove"
         },
         {
@@ -447,90 +95,232 @@
           "title": "Automatically {Mitigating} {Vulnerabilities} in {Binary} {Programs} via {Partially} {Recompilable} {Decompilation}",
           "authors": "Reiter, Pemma and Tay, Hui Jun and Weimer, Westley and Doupé, Adam and Wang, Ruoyu and Forrest, Stephanie",
           "year": "2025",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "keep"
         }
       ]
     },
     {
-      "id": "cluster-414",
+      "id": "cluster-236",
       "size": 2,
-      "representative_id": "ringer_proof_2021",
-      "representative_title": "Proof repair across type equivalences",
-      "average_similarity": 1,
+      "representative_id": "jiang_binaryai_2024-1",
+      "representative_title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+      "average_similarity": 1.0,
       "members": [
         {
-          "id": "ringer_proof_2021",
-          "title": "Proof repair across type equivalences",
-          "authors": "Ringer, Talia and Porter, RanDair and Yazdani, Nathaniel and Leo, John and Grossman, Dan",
-          "year": "2021",
-          "similarity": 1,
-          "action": "keep"
+          "id": "jiang_binaryai_2024",
+          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "remove"
         },
         {
-          "id": "ringer_proof_2021-1",
-          "title": "Proof {Repair} across {Type} {Equivalences}",
-          "authors": "Ringer, Talia and Porter, RanDair and Yazdani, Nathaniel and Leo, John and Grossman, Dan",
-          "year": "2021",
-          "similarity": 1,
-          "action": "remove"
+          "id": "jiang_binaryai_2024-1",
+          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "keep"
         }
       ]
     },
     {
-      "id": "cluster-441",
-      "size": 3,
-      "representative_id": "she_wadec_2024",
-      "representative_title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
-      "average_similarity": 1,
-      "members": [
-        {
-          "id": "she_wadec_2024",
-          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
-          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
-          "year": "2024",
-          "similarity": 1,
-          "action": "keep"
-        },
-        {
-          "id": "she_wadec_2024-1",
-          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
-          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
-          "year": "2024",
-          "similarity": 1,
-          "action": "remove"
-        },
-        {
-          "id": "she_wadec_2024-2",
-          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
-          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
-          "year": "2024",
-          "similarity": 1,
-          "action": "remove"
-        }
-      ]
-    },
-    {
-      "id": "cluster-450",
+      "id": "cluster-77",
       "size": 2,
-      "representative_id": "slawinski_applications_2019",
-      "representative_title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
-      "average_similarity": 1,
+      "representative_id": "cao_boosting_2023",
+      "representative_title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
+      "average_similarity": 1.0,
       "members": [
         {
-          "id": "slawinski_applications_2019",
-          "title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
-          "authors": "Slawinski, Michael and Wortman, Andy",
-          "year": "2019",
-          "similarity": 1,
+          "id": "cao_boosting_2022",
+          "title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
+          "authors": "Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei",
+          "year": "2022",
+          "similarity": 1.0,
+          "action": "remove"
+        },
+        {
+          "id": "cao_boosting_2023",
+          "title": "Boosting {Neural} {Networks} to {Decompile} {Optimized} {Binaries}",
+          "authors": "Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "keep"
+        }
+      ]
+    },
+    {
+      "id": "cluster-112",
+      "size": 2,
+      "representative_id": "cotroneo_can_2025",
+      "representative_title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "cotroneo_can_2025",
+          "title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
+          "authors": "Cotroneo, Domenico and Grasso, Francesco C. and Natella, Roberto and Orbinato, Vittorio",
+          "year": "2025",
+          "similarity": 1.0,
           "action": "keep"
         },
         {
-          "id": "slawinski_applications_2019-1",
-          "title": "Applications of {Graph} {Integration} to {Function} {Comparison} and {Malware} {Classification}",
-          "authors": "Slawinski, A., Michael and Wortman, Andy",
+          "id": "cotroneo_can_2025-1",
+          "title": "Can {Neural} {Decompilation} {Assist} {Vulnerability} {Prediction} on {Binary} {Code}?",
+          "authors": "Cotroneo, D. and Grasso, C., F. and Natella, R. and Orbinato, V.",
+          "year": "2025",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-142",
+      "size": 2,
+      "representative_id": "erinfolami_declassifier_2019",
+      "representative_title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "erinfolami_declassifier_2019",
+          "title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
+          "authors": "Erinfolami, Rukayat Ayomide and Prakash, Aravind",
           "year": "2019",
-          "similarity": 1,
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "erinfolami_declassifier_2019-1",
+          "title": "{DeClassifier}: {Class}-{Inheritance} {Inference} {Engine} for {Optimized} {C}++ {Binaries}",
+          "authors": "Erinfolami, Ayomide, Rukayat and Prakash, Aravind",
+          "year": "2019",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-143",
+      "size": 2,
+      "representative_id": "erinfolami_devil_2020",
+      "representative_title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "erinfolami_devil_2020",
+          "title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
+          "authors": "Erinfolami, Rukayat Ayomide and Prakash, Aravind",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "erinfolami_devil_2020-1",
+          "title": "Devil is {Virtual}: {Reversing} {Virtual} {Inheritance} in {C}++ {Binaries}",
+          "authors": "Erinfolami, Ayomide, Rukayat and Prakash, Aravind",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-269",
+      "size": 2,
+      "representative_id": "lacomis_dire_2020",
+      "representative_title": "{DIRE}: a neural approach to decompiled identifier naming",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "lacomis_dire_2019-1",
+          "title": "{DIRE}: {A} {Neural} {Approach} to {Decompiled} {Identifier} {Naming}",
+          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, J., Edward and Allamanis, Miltiadis and Goues, Le, Claire and Neubig, Graham and Vasilescu, Bogdan",
+          "year": "2019",
+          "similarity": 1.0,
+          "action": "remove"
+        },
+        {
+          "id": "lacomis_dire_2020",
+          "title": "{DIRE}: a neural approach to decompiled identifier naming",
+          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "keep"
+        }
+      ]
+    },
+    {
+      "id": "cluster-177",
+      "size": 2,
+      "representative_id": "gregorio_e-apk_2023",
+      "representative_title": "E-{APK}: {Energy} pattern detection in decompiled android applications",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "gregorio_e-apk_2022",
+          "title": "E-{APK}: {Energy} {Pattern} {Detection} in {Decompiled} {Android} {Applications}",
+          "authors": "Gregório, Nelson and Fernandes, João Paulo and Bispo, João and Medeiros, Sérgio",
+          "year": "2022",
+          "similarity": 1.0,
+          "action": "remove"
+        },
+        {
+          "id": "gregorio_e-apk_2023",
+          "title": "E-{APK}: {Energy} pattern detection in decompiled android applications",
+          "authors": "Gregorio, Nelson and Bispo, Joao and Fernandes, Joao Paulo and de Medeiros, Sergio Queiroz",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "keep"
+        }
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "size": 2,
+      "representative_id": "al-kaswan_extending_2023",
+      "representative_title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "al-kaswan_extending_2023",
+          "title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
+          "authors": "Al-Kaswan, Ali and Ahmed, Toufique and Izadi, Maliheh and Sawant, Anand Ashok and Devanbu, Premkumar and van Deursen, Arie",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "al-kaswan_extending_2023-1",
+          "title": "Extending {Source} {Code} {Pre}-{Trained} {Language} {Models} to {Summarise} {Decompiled} {Binaries}",
+          "authors": "Al-Kaswan, Ali and Ahmed, Toufique and Izadi, Maliheh and Sawant, Ashok, Anand and Devanbu, Premkumar and Deursen, van, Arie",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-496",
+      "size": 2,
+      "representative_id": "verbeek_formally_2025",
+      "representative_title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "verbeek_formally_2025",
+          "title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
+          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "year": "2025",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "verbeek_formally_2025-2",
+          "title": "Formally {Verified} {Binary}-level {Pointer} {Analysis}",
+          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "year": "2025",
+          "similarity": 1.0,
           "action": "remove"
         }
       ]
@@ -540,14 +330,14 @@
       "size": 2,
       "representative_id": "tehranijamsaz_graphbinmatch_2024",
       "representative_title": "{GraphBinMatch}: {Graph}-{Based} {Similarity} {Learning} for {Cross}-{Language} {Binary} and {Source} {Code} {Matching}",
-      "average_similarity": 1,
+      "average_similarity": 1.0,
       "members": [
         {
           "id": "tehranijamsaz_graphbinmatch_2023",
           "title": "{GraphBinMatch}: {Graph}-based {Similarity} {Learning} for {Cross}-{Language} {Binary} and {Source} {Code} {Matching}",
           "authors": "TehraniJamsaz, Ali and Chen, Hanze and Jannesari, Ali",
           "year": "2023",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "remove"
         },
         {
@@ -555,57 +345,265 @@
           "title": "{GraphBinMatch}: {Graph}-{Based} {Similarity} {Learning} for {Cross}-{Language} {Binary} and {Source} {Code} {Matching}",
           "authors": "TehraniJamsaz, Ali and Chen, Hanze and Jannesari, Ali",
           "year": "2024",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "keep"
         }
       ]
     },
     {
-      "id": "cluster-496",
+      "id": "cluster-32",
       "size": 2,
-      "representative_id": "verbeek_formally_2025",
-      "representative_title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
-      "average_similarity": 1,
+      "representative_id": "armengol-estape_learning_2022",
+      "representative_title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
+      "average_similarity": 1.0,
       "members": [
         {
-          "id": "verbeek_formally_2025",
-          "title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
-          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "id": "armengol-estape_learning_2021",
+          "title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
+          "authors": "Armengol-Estapé, Jordi and O'Boyle, Michael F. P.",
+          "year": "2021",
+          "similarity": 1.0,
+          "action": "remove"
+        },
+        {
+          "id": "armengol-estape_learning_2022",
+          "title": "Learning {C} to x86 {Translation}: {An} {Experiment} in {Neural} {Compilation}",
+          "authors": "Armengol-Estapé, Jordi and O'Boyle, P., F., Michael",
+          "year": "2022",
+          "similarity": 1.0,
+          "action": "keep"
+        }
+      ]
+    },
+    {
+      "id": "cluster-200",
+      "size": 2,
+      "representative_id": "he_benchmarking_2025",
+      "representative_title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "he_benchmarking_2025",
+          "title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
+          "authors": "He, Yiling and She, Hongyu and Qian, Xingzhi and Zheng, Xinran and Chen, Zhuo and Qin, Zhan and Cavallaro, Lorenzo",
           "year": "2025",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "keep"
         },
         {
-          "id": "verbeek_formally_2025-2",
-          "title": "Formally {Verified} {Binary}-level {Pointer} {Analysis}",
-          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "id": "he_benchmarking_2025-1",
+          "title": "On {Benchmarking} {Code} {LLMs} for {Android} {Malware} {Analysis}",
+          "authors": "He, Yiling and She, Hongyu and Qian, Xingzhi and Zheng, Xinran and Chen, Zhuo and Qin, Zhan and Cavallaro, Lorenzo",
           "year": "2025",
-          "similarity": 1,
+          "similarity": 1.0,
           "action": "remove"
         }
       ]
     },
     {
-      "id": "cluster-596",
+      "id": "cluster-414",
       "size": 2,
-      "representative_id": "zhang_novel_2024",
-      "representative_title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
-      "average_similarity": 1,
+      "representative_id": "ringer_proof_2021",
+      "representative_title": "Proof repair across type equivalences",
+      "average_similarity": 1.0,
       "members": [
         {
-          "id": "zhang_novel_2024",
-          "title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
-          "authors": "Zhang, Lixia and Liu, Tianxu and Shen, Kaihui and Chen, Cheng",
-          "year": "2024",
-          "similarity": 1,
+          "id": "ringer_proof_2021",
+          "title": "Proof repair across type equivalences",
+          "authors": "Ringer, Talia and Porter, RanDair and Yazdani, Nathaniel and Leo, John and Grossman, Dan",
+          "year": "2021",
+          "similarity": 1.0,
           "action": "keep"
         },
         {
-          "id": "zhang_novel_2024-1",
-          "title": "A {Novel} {Approach} to {Malicious} {Code} {Detection} {Using} {CNN}-{BiLSTM} and {Feature} {Fusion}",
-          "authors": "Zhang, Lixia and Liu, Tianxu and Shen, Kaihui and Chen, Cheng",
+          "id": "ringer_proof_2021-1",
+          "title": "Proof {Repair} across {Type} {Equivalences}",
+          "authors": "Ringer, Talia and Porter, RanDair and Yazdani, Nathaniel and Leo, John and Grossman, Dan",
+          "year": "2021",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-79",
+      "size": 2,
+      "representative_id": "cao_revisiting_2023",
+      "representative_title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "cao_revisiting_2023",
+          "title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
+          "authors": "Cao, Kevin and Leach, Kevin",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "cao_revisiting_2023-1",
+          "title": "Revisiting {Deep} {Learning} for {Variable} {Type} {Recovery}",
+          "authors": "Cao, Kevin and Leach, Kevin",
+          "year": "2023",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-33",
+      "size": 2,
+      "representative_id": "armengol-estape_slade_2024",
+      "representative_title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "armengol-estape_slade_2024",
+          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F. P.",
           "year": "2024",
-          "similarity": 1,
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "armengol-estape_slade_2024-2",
+          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, P., F., Michael",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-293",
+      "size": 2,
+      "representative_id": "li_stan_2020",
+      "representative_title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "li_stan_2020",
+          "title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
+          "authors": "Li, Xiaoqi and Chen, Ting and Luo, Xiapu and Zhang, Tao and Yu, Le and Xu, Zhou",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "li_stan_2020-1",
+          "title": "{STAN}: {Towards} {Describing} {Bytecodes} of {Smart} {Contract}",
+          "authors": "Li, Xiaoqi and Chen, Ting and Luo, Xiapu and Zhang, Tao and Yu, Le and Xu, Zhou",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-97",
+      "size": 2,
+      "representative_id": "chen_suigpt_2025",
+      "representative_title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "chen_suigpt_2025",
+          "title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
+          "authors": "Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Wu, Tingguan and Wang, Siyun and Chalkias, Kostas Kryptos",
+          "year": "2025",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "chen_suigpt_2025-1",
+          "title": "{SuiGPT} {MAD}: {Move} {AI} {Decompiler} to {Improve} {Transparency} and {Auditability} on {Non}-{Open}-{Source} {Blockchain} {Smart} {Contract}",
+          "authors": "Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Tingguan, Wu and Wang, Siyun and Chalkias, Kryptos, Kostas",
+          "year": "2025",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-362",
+      "size": 2,
+      "representative_id": "nandi_synthesizing_2020",
+      "representative_title": "Synthesizing structured {CAD} models with equality saturation and inverse transformations",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "nandi_synthesizing_2020",
+          "title": "Synthesizing structured {CAD} models with equality saturation and inverse transformations",
+          "authors": "Nandi, Chandrakana and Willsey, Max and Anderson, Adam and Wilcox, James R. and Darulova, Eva and Grossman, Dan and Tatlock, Zachary",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "nandi_synthesizing_2020-1",
+          "title": "Synthesizing {Structured} {CAD} {Models} with {Equality} {Saturation} and {Inverse} {Transformations}",
+          "authors": "Nandi, Chandrakana and Willsey, Max and Anderson, Adam and Wilcox, R., James and Darulova, Eva and Grossman, Dan and Tatlock, Zachary",
+          "year": "2020",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-197",
+      "size": 2,
+      "representative_id": "harrand_strengths_2019",
+      "representative_title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "harrand_strengths_2019",
+          "title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
+          "authors": "Harrand, Nicolas and Soto-Valero, César and Monperrus, Martin and Baudry, Benoit",
+          "year": "2019",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "harrand_strengths_2019-1",
+          "title": "The {Strengths} and {Behavioral} {Quirks} of {Java} {Bytecode} {Decompilers}",
+          "authors": "Harrand, Nicolas and Soto-Valero, César and Monperrus, Martin and Baudry, Benoit",
+          "year": "2019",
+          "similarity": 1.0,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "cluster-441",
+      "size": 3,
+      "representative_id": "she_wadec_2024",
+      "representative_title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
+      "average_similarity": 1.0,
+      "members": [
+        {
+          "id": "she_wadec_2024",
+          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
+          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "keep"
+        },
+        {
+          "id": "she_wadec_2024-1",
+          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
+          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
+          "year": "2024",
+          "similarity": 1.0,
+          "action": "remove"
+        },
+        {
+          "id": "she_wadec_2024-2",
+          "title": "{WaDec}: {Decompiling} {WebAssembly} {Using} {Large} {Language} {Model}",
+          "authors": "She, Xinyu and Zhao, Yanjie and Wang, Haoyu",
+          "year": "2024",
+          "similarity": 1.0,
           "action": "remove"
         }
       ]

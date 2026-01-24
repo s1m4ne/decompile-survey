@@ -10,6 +10,12 @@ import re
 
 from .base import StepHandler, StepResult, OutputDefinition, Change
 from . import register_step_type
+from .dedup_utils import (
+    normalize_title,
+    title_similarity,
+    pick_representative,
+    cluster_by_threshold,
+)
 
 
 def normalize_author_token(token: str) -> str:
@@ -23,10 +29,17 @@ def extract_last_names(author_field: str) -> set[str]:
     parts = re.split(r"\s+and\s+|;", author_field)
     last_names: set[str] = set()
     for part in parts:
-        tokens = [t for t in part.strip().split() if t]
-        if not tokens:
+        cleaned_part = part.strip()
+        if not cleaned_part:
             continue
-        last_name = normalize_author_token(tokens[-1])
+        if "," in cleaned_part:
+            last_part = cleaned_part.split(",", 1)[0].strip()
+        else:
+            tokens = [t for t in cleaned_part.split() if t]
+            if not tokens:
+                continue
+            last_part = tokens[-1]
+        last_name = normalize_author_token(last_part)
         if last_name:
             last_names.add(last_name)
     return last_names
@@ -38,49 +51,6 @@ def author_similarity(a: set[str], b: set[str]) -> float:
     intersection = a.intersection(b)
     union = a.union(b)
     return len(intersection) / len(union) if union else 0.0
-
-
-def completeness_score(entry: dict) -> int:
-  fields = ["title", "author", "year", "abstract", "doi", "journal", "booktitle"]
-  return sum(1 for field in fields if entry.get(field))
-
-def parse_year(entry: dict) -> int:
-    raw_year = entry.get("year", "")
-    try:
-        return int(str(raw_year).strip())
-    except ValueError:
-        return 0
-
-
-def cluster_entries(entries: list[dict], threshold: float) -> list[list[int]]:
-    parent = list(range(len(entries)))
-
-    def find(x: int) -> int:
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-
-    def union(a: int, b: int) -> None:
-        ra = find(a)
-        rb = find(b)
-        if ra != rb:
-            parent[rb] = ra
-
-    author_sets = [extract_last_names(entry.get("author", "")) for entry in entries]
-
-    for i in range(len(entries)):
-        for j in range(i + 1, len(entries)):
-            similarity = author_similarity(author_sets[i], author_sets[j])
-            if similarity >= threshold:
-                union(i, j)
-
-    clusters: dict[int, list[int]] = {}
-    for idx in range(len(entries)):
-        root = find(idx)
-        clusters.setdefault(root, []).append(idx)
-
-    return list(clusters.values())
 
 
 @register_step_type
@@ -121,7 +91,9 @@ class DedupAuthorHandler(StepHandler):
 
     def run(self, input_entries: list[dict], config: dict) -> StepResult:
         threshold = float(config.get("similarity_threshold", 0.8))
-        clusters = cluster_entries(input_entries, threshold)
+        author_sets = [extract_last_names(entry.get("author", "")) for entry in input_entries]
+        normalized_titles = [normalize_title(entry.get("title", "")) for entry in input_entries]
+        clusters = cluster_by_threshold(author_sets, threshold, author_similarity)
 
         passed: list[dict] = []
         removed: list[dict] = []
@@ -142,14 +114,12 @@ class DedupAuthorHandler(StepHandler):
                 ))
                 continue
 
-            representative_index = sorted(
-                member_indices,
-                key=lambda idx: (-parse_year(input_entries[idx]), -completeness_score(input_entries[idx]), idx),
-            )[0]
+            representative_index = pick_representative(member_indices, input_entries)
             representative = input_entries[representative_index]
             rep_key = representative.get("ID", "unknown")
             cluster_id = f"cluster-{index}"
             rep_authors = extract_last_names(representative.get("author", ""))
+            rep_title = normalized_titles[representative_index]
 
             passed.append(representative)
             changes.append(Change(
@@ -163,18 +133,26 @@ class DedupAuthorHandler(StepHandler):
             ))
 
             cluster_members_payload = []
-            for idx in member_indices:
+            title_similarities: list[float] = []
+            member_similarity = [
+                (author_similarity(rep_authors, author_sets[idx]), idx)
+                for idx in member_indices
+            ]
+            member_similarity.sort(key=lambda item: item[0])
+
+            for similarity, idx in member_similarity:
                 entry = input_entries[idx]
                 entry_key = entry.get("ID", "unknown")
-                similarity = author_similarity(rep_authors, extract_last_names(entry.get("author", "")))
+                title_similarity_value = title_similarity(rep_title, normalized_titles[idx])
+                title_similarities.append(title_similarity_value)
                 if idx == representative_index:
                     action = "keep"
                 else:
-                    action = "remove"
-                    removed.append(entry)
+                    action = "keep"
+                    passed.append(entry)
                     changes.append(Change(
                         key=entry_key,
-                        action="remove",
+                        action="keep",
                         reason="duplicate_author",
                         details={
                             "cluster_id": cluster_id,
@@ -188,18 +166,34 @@ class DedupAuthorHandler(StepHandler):
                     "title": entry.get("title", ""),
                     "authors": entry.get("author", ""),
                     "year": entry.get("year", ""),
+                    "abstract": entry.get("abstract", ""),
                     "similarity": similarity,
                     "action": action,
                 })
 
+            title_average = (
+                sum(title_similarities) / len(title_similarities)
+                if title_similarities
+                else 0.0
+            )
             clusters_payload.append({
                 "id": cluster_id,
                 "size": len(member_indices),
                 "representative_id": rep_key,
                 "representative_title": representative.get("title", ""),
                 "average_similarity": sum(m["similarity"] for m in cluster_members_payload) / len(cluster_members_payload),
+                "title_average_similarity": title_average,
                 "members": cluster_members_payload,
             })
+
+        clusters_payload.sort(
+            key=lambda item: (
+                -item["size"],
+                -item["title_average_similarity"],
+                -item["average_similarity"],
+                normalize_title(item["representative_title"]),
+            )
+        )
 
         return StepResult(
             outputs={

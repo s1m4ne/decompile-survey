@@ -12,12 +12,12 @@
     "passed": {
       "file": "steps/dedup_title/outputs/passed.bib",
       "count": 625,
-      "description": "Representative entries kept after manual clustering"
+      "description": "Representative entries kept after title clustering"
     },
     "removed": {
       "file": "steps/dedup_title/outputs/removed.bib",
       "count": 25,
-      "description": "Entries removed after manual clustering"
+      "description": "Entries removed as title duplicates"
     }
   },
   "stats": {
@@ -28,9 +28,9 @@
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-24T16:29:42.794559",
-    "completed_at": "2026-01-24T16:29:58.078702",
-    "duration_sec": 15.284143,
+    "started_at": "2026-01-24T17:19:47.987123",
+    "completed_at": "2026-01-24T17:20:02.760052",
+    "duration_sec": 14.772929,
     "error": null
   }
 }

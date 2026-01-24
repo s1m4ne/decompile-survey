@@ -2,7 +2,7 @@
  * Step detail page - shows step info and paper list.
  * Routes to specific step type viewers based on step type.
  */
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
@@ -12,6 +12,7 @@ import {
   Loader2,
   Clock,
   AlertTriangle,
+  Info,
 } from 'lucide-react';
 import { stepsApi, pipelineApi, StepMeta, PipelineStep } from '../lib/api';
 import { StepOutputViewer, ChangeRecord } from '../components/papers';
@@ -26,6 +27,7 @@ export function StepDetailPage() {
   const queryClient = useQueryClient();
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+  const [showRunNotice, setShowRunNotice] = useState(false);
 
   // Fetch step meta
   const {
@@ -63,46 +65,75 @@ export function StepDetailPage() {
     enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
   });
   const { data: inputData } = useQuery({
-    queryKey: ['step-input', projectId, stepId, 'doi-clusters'],
+    queryKey: ['step-input', projectId, stepId, 'cluster-input'],
     queryFn: () => stepsApi.getInput(projectId!, stepId!),
-    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && stepMeta?.step_type === 'dedup-doi',
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
   });
   const clusters = useMemo(() => {
+    const inputEntries = (inputData?.entries ?? []) as {
+      ID?: string;
+      title?: string;
+      author?: string;
+      year?: string;
+      abstract?: string;
+    }[];
+    const inputEntryMap = new Map(inputEntries.map((entry) => [entry.ID ?? '', entry]));
     const storedClusters = (clustersData?.clusters ?? []) as {
       id: string;
       size: number;
       representative_id: string;
       representative_title: string;
       average_similarity: number;
+      title_average_similarity?: number;
       reviewed?: boolean;
       members: {
         id: string;
         title: string;
         authors: string;
         year: string;
+        abstract?: string;
         similarity: number;
         action: string;
       }[];
     }[];
     if (storedClusters.length > 0) {
-      return storedClusters.filter((cluster) => cluster.size > 1);
+      const hydrated = storedClusters.map((cluster) => ({
+        ...cluster,
+        members: cluster.members.map((member) => {
+          if (member.abstract) return member;
+          const entry = inputEntryMap.get(member.id);
+          return {
+            ...member,
+            abstract: entry?.abstract ?? '',
+          };
+        }),
+      }));
+      const filtered = hydrated.filter((cluster) => cluster.size > 1);
+      if (stepMeta?.step_type === 'dedup-author') {
+        return [...filtered].sort((a, b) => {
+          if (a.size !== b.size) return b.size - a.size;
+          const aTitleAvg = a.title_average_similarity ?? 0;
+          const bTitleAvg = b.title_average_similarity ?? 0;
+          if (aTitleAvg !== bTitleAvg) return bTitleAvg - aTitleAvg;
+          if (a.average_similarity !== b.average_similarity) {
+            return b.average_similarity - a.average_similarity;
+          }
+          return normalizeBibtexText(a.representative_title)
+            .localeCompare(normalizeBibtexText(b.representative_title));
+        });
+      }
+      return filtered;
     }
 
     if (stepMeta?.step_type !== 'dedup-doi') {
       return storedClusters;
     }
 
-    const inputEntries = (inputData?.entries ?? []) as {
-      ID?: string;
-      title?: string;
-      author?: string;
-      year?: string;
-    }[];
     if (inputEntries.length === 0) {
       return [];
     }
 
-    const entryMap = new Map(inputEntries.map((entry) => [entry.ID ?? '', entry]));
+    const entryMap = inputEntryMap;
     const changeMap = new Map(changes.map((change) => [change.key, change]));
     const doiGroups = new Map<string, Set<string>>();
     const doiRepresentatives = new Map<string, string>();
@@ -140,6 +171,7 @@ export function StepDetailPage() {
           title: entry?.title ?? '',
           authors: entry?.author ?? '',
           year: entry?.year ?? '',
+          abstract: entry?.abstract ?? '',
           similarity: 1,
           action,
         };
@@ -166,6 +198,7 @@ export function StepDetailPage() {
     clusterId: string;
     memberId: string;
   } | null>(null);
+  const [expandedMemberIds, setExpandedMemberIds] = useState<Set<string>>(new Set());
   useEffect(() => {
     const next = clusters;
     const nextKey = JSON.stringify(next);
@@ -395,6 +428,18 @@ export function StepDetailPage() {
     });
   };
 
+  const toggleMemberDetails = (memberId: string) => {
+    setExpandedMemberIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(memberId)) {
+        next.delete(memberId);
+      } else {
+        next.add(memberId);
+      }
+      return next;
+    });
+  };
+
 
   // Get current step from pipeline
   const pipelineStep = pipeline?.steps.find((s) => s.id === stepId);
@@ -413,6 +458,9 @@ export function StepDetailPage() {
     mutationFn: () => stepsApi.run(projectId!, stepId!),
     onSuccess: () => {
       setIsConfigModalOpen(false);
+      if (isDuplicateGroupStep) {
+        setShowRunNotice(true);
+      }
       queryClient.invalidateQueries({ queryKey: ['step', projectId, stepId] });
       queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
       queryClient.invalidateQueries({ queryKey: ['step-changes', projectId, stepId] });
@@ -591,10 +639,20 @@ export function StepDetailPage() {
       {/* Non-latest step notice */}
       {!isLatest && (isCompleted || isFailed) && (
         <div className="p-4 rounded-lg bg-[hsl(var(--status-info-bg))] border border-[hsl(var(--status-info-border))]">
-          <p className="text-[hsl(var(--status-info-fg))] text-sm">
-            This is an intermediate step. Reset and Delete are only available for the latest step
-            because subsequent steps depend on this step's output.
-          </p>
+          <div className="flex items-start gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[hsl(var(--status-info-bg))] border border-[hsl(var(--status-info-border))]">
+              <Info className="h-5 w-5 text-[hsl(var(--status-info-fg))]" />
+            </div>
+            <div className="space-y-1">
+              <div className="text-sm font-semibold text-[hsl(var(--status-info-fg))]">
+                Intermediate Step
+              </div>
+              <p className="text-[hsl(var(--status-info-fg))] text-sm">
+                Reset and Delete are only available for the latest step because subsequent steps
+                depend on this output.
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
@@ -649,6 +707,9 @@ export function StepDetailPage() {
               )}
             </div>
           </div>
+          <p className="text-sm text-[hsl(var(--muted-foreground))]">
+            All items are set to Keep by default. Change only the ones you want to remove.
+          </p>
           {clusters.length === 0 ? (
             <div className="text-sm text-[hsl(var(--muted-foreground))]">
               No clusters found.
@@ -692,7 +753,12 @@ export function StepDetailPage() {
                         </div>
                       </div>
                       <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
-                        Avg similarity {(cluster.average_similarity * 100).toFixed(1)}%
+                        Author similarity {(cluster.average_similarity * 100).toFixed(1)}%
+                        {typeof cluster.title_average_similarity === 'number' && (
+                          <span className="ml-2">
+                            Title similarity {(cluster.title_average_similarity * 100).toFixed(1)}%
+                          </span>
+                        )}
                       </div>
                       {isActive && (
                         <div className="text-[10px] text-[hsl(var(--primary))] mt-1">
@@ -742,61 +808,83 @@ export function StepDetailPage() {
                           const authorLine = member.authors
                             ? member.authors.replace(/\s+and\s+/g, ', ')
                             : '-';
+                          const isExpanded = expandedMemberIds.has(member.id);
                           return (
-                            <tr key={member.id} className="align-top">
-                              <td className="py-3 pr-3">
-                                <div className="font-semibold whitespace-normal break-words">
-                                  {normalizeBibtexText(member.title) || '(No title)'}
-                                </div>
-                                <div className="text-xs text-[hsl(var(--muted-foreground))]">
-                                  {authorLine} {member.year ? `· ${member.year}` : ''}
-                                </div>
-                                {change?.reason && (
-                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
-                                    {change.reason}
+                            <Fragment key={member.id}>
+                              <tr className="align-top">
+                                <td className="py-3 pr-3">
+                                  <div className="font-semibold whitespace-normal break-words">
+                                    {normalizeBibtexText(member.title) || '(No title)'}
                                   </div>
-                                )}
-                                {(change?.details as { representative_id?: string } | undefined)?.representative_id && (
-                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
-                                    Representative: {(change?.details as { representative_id?: string }).representative_id}
+                                  <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                                    {authorLine} {member.year ? `· ${member.year}` : ''}
                                   </div>
-                                )}
-                                {member.id && (
-                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
-                                    ID: {member.id}
-                                  </div>
-                                )}
-                              </td>
-                              <td className="py-3 pr-3 text-xs text-[hsl(var(--muted-foreground))]">
-                                {(member.similarity * 100).toFixed(1)}%
-                              </td>
-                              <td className="py-3 pr-3">
-                                <div className="flex items-center gap-2">
+                                  {change?.reason && (
+                                    <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                      {change.reason}
+                                    </div>
+                                  )}
+                                  {(change?.details as { representative_id?: string } | undefined)?.representative_id && (
+                                    <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                      Representative: {(change?.details as { representative_id?: string }).representative_id}
+                                    </div>
+                                  )}
+                                  {member.id && (
+                                    <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                      ID: {member.id}
+                                    </div>
+                                  )}
                                   <button
                                     type="button"
-                                    onClick={() => setMemberAction(selectedCluster.id, member.id, 'keep')}
-                                    className={
-                                      isKeep
-                                        ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]'
-                                        : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
-                                    }
+                                    onClick={() => toggleMemberDetails(member.id)}
+                                    className="mt-2 text-xs text-[hsl(var(--primary))] hover:underline"
                                   >
-                                    Keep
+                                    {isExpanded ? 'Hide details' : 'View details'}
                                   </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => setMemberAction(selectedCluster.id, member.id, 'remove')}
-                                    className={
-                                      !isKeep
-                                        ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]'
-                                        : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
-                                    }
+                                </td>
+                                <td className="py-3 pr-3 text-xs text-[hsl(var(--muted-foreground))]">
+                                  {(member.similarity * 100).toFixed(1)}%
+                                </td>
+                                <td className="py-3 pr-3">
+                                  <div className="flex items-center gap-2">
+                                    <button
+                                      type="button"
+                                      onClick={() => setMemberAction(selectedCluster.id, member.id, 'keep')}
+                                      className={
+                                        isKeep
+                                          ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]'
+                                          : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
+                                      }
+                                    >
+                                      Keep
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setMemberAction(selectedCluster.id, member.id, 'remove')}
+                                      className={
+                                        !isKeep
+                                          ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]'
+                                          : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
+                                      }
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                              {isExpanded && (
+                                <tr>
+                                  <td
+                                    colSpan={3}
+                                    className="pb-3 pt-0 text-xs text-[hsl(var(--muted-foreground))]"
                                   >
-                                    Remove
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
+                                    <div className="rounded-md bg-[hsl(var(--muted))] p-3 whitespace-pre-wrap">
+                                      {member.abstract ? normalizeBibtexText(member.abstract) : 'No abstract available.'}
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </Fragment>
                           );
                         })}
                       </tbody>
@@ -832,6 +920,29 @@ export function StepDetailPage() {
                 className="px-4 py-2 bg-[hsl(var(--status-danger-solid))] text-[hsl(var(--status-danger-solid-foreground))] rounded-lg hover:opacity-90"
               >
                 Set all to Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showRunNotice && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setShowRunNotice(false)}
+          />
+          <div className="relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full max-w-md mx-4 p-6">
+            <div className="text-lg font-semibold mb-2">Run completed</div>
+            <p className="text-sm text-[hsl(var(--muted-foreground))] mb-6">
+              Default decisions are set to Keep. Change them only if needed.
+            </p>
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowRunNotice(false)}
+                className="px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-md hover:opacity-90"
+              >
+                OK
               </button>
             </div>
           </div>
