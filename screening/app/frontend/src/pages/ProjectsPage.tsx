@@ -9,6 +9,7 @@ export function ProjectsPage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newProjectName, setNewProjectName] = useState('');
   const [newProjectDescription, setNewProjectDescription] = useState('');
+  const [pendingDelete, setPendingDelete] = useState<Project | null>(null);
 
   const { data: projects, isLoading } = useQuery({
     queryKey: ['projects'],
@@ -53,9 +54,7 @@ export function ProjectsPage() {
   const handleDelete = (e: React.MouseEvent, project: Project) => {
     e.preventDefault();
     e.stopPropagation();
-    if (confirm(`Delete project "${project.name}"?`)) {
-      deleteMutation.mutate(project.id);
-    }
+    setPendingDelete(project);
   };
 
   const formatDate = (dateString: string) => {
@@ -299,6 +298,70 @@ export function ProjectsPage() {
           </div>
         </div>
       )}
+
+      {pendingDelete && (
+        <ConfirmModal
+          title="Delete project"
+          description={`Delete "${pendingDelete.name}"? This cannot be undone.`}
+          confirmLabel="Delete"
+          onCancel={() => setPendingDelete(null)}
+          onConfirm={() => {
+            deleteMutation.mutate(pendingDelete.id);
+            setPendingDelete(null);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function ConfirmModal({
+  title,
+  description,
+  confirmLabel,
+  onCancel,
+  onConfirm,
+}: {
+  title: string;
+  description: string;
+  confirmLabel: string;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[hsl(var(--card))] rounded-lg w-full max-w-md overflow-hidden">
+        <div className="p-4 border-b border-[hsl(var(--border))] flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-[hsl(var(--card-foreground))]">
+            {title}
+          </h2>
+          <button
+            onClick={onCancel}
+            className="p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="p-4 space-y-4">
+          <p className="text-sm text-[hsl(var(--muted-foreground))]">
+            {description}
+          </p>
+          <div className="flex justify-end gap-2">
+            <button
+              onClick={onCancel}
+              className="px-3 py-2 text-sm border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onConfirm}
+              className="px-3 py-2 text-sm bg-[hsl(var(--status-danger-solid))] text-[hsl(var(--status-danger-solid-foreground))] rounded-md hover:opacity-90"
+            >
+              {confirmLabel}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

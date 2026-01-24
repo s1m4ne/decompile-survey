@@ -230,6 +230,7 @@ function StepCard({
   isLast: boolean;
 }) {
   const queryClient = useQueryClient();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const deleteMutation = useMutation({
     mutationFn: () => pipelineApi.removeStep(projectId, step.id),
@@ -237,14 +238,13 @@ function StepCard({
       queryClient.invalidateQueries({ queryKey: ['pipeline', projectId] });
       queryClient.invalidateQueries({ queryKey: ['steps', projectId] });
       queryClient.invalidateQueries({ queryKey: ['project', projectId] });
+      setShowDeleteConfirm(false);
     },
   });
 
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm(`Delete step "${step.name}"?`)) {
-      deleteMutation.mutate();
-    }
+    setShowDeleteConfirm(true);
   };
 
   const status = meta?.execution.status || 'pending';
@@ -319,6 +319,16 @@ function StepCard({
           </div>
         </div>
       </div>
+
+      {showDeleteConfirm && (
+        <ConfirmModal
+          title="Delete step"
+          description={`Delete "${step.name}"? This cannot be undone.`}
+          confirmLabel="Delete"
+          onCancel={() => setShowDeleteConfirm(false)}
+          onConfirm={() => deleteMutation.mutate()}
+        />
+      )}
     </div>
   );
 }
@@ -483,6 +493,57 @@ function AddStepModal({
               {addMutation.isPending ? 'Adding...' : 'Add Step'}
             </button>
           )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ConfirmModal({
+  title,
+  description,
+  confirmLabel,
+  onCancel,
+  onConfirm,
+}: {
+  title: string;
+  description: string;
+  confirmLabel: string;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[hsl(var(--card))] rounded-lg w-full max-w-md overflow-hidden">
+        <div className="p-4 border-b border-[hsl(var(--border))] flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-[hsl(var(--card-foreground))]">
+            {title}
+          </h2>
+          <button
+            onClick={onCancel}
+            className="p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] rounded-md"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="p-4 space-y-4">
+          <p className="text-sm text-[hsl(var(--muted-foreground))]">
+            {description}
+          </p>
+          <div className="flex justify-end gap-2">
+            <button
+              onClick={onCancel}
+              className="px-3 py-2 text-sm border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onConfirm}
+              className="px-3 py-2 text-sm bg-[hsl(var(--status-danger-solid))] text-[hsl(var(--status-danger-solid-foreground))] rounded-md hover:opacity-90"
+            >
+              {confirmLabel}
+            </button>
+          </div>
         </div>
       </div>
     </div>

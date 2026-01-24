@@ -1,3 +1,51 @@
+{"key": "liang_semantics-recovering_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-76"}}
+{"key": "cao_boosting_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-76"}}
+{"key": "liang_neutron_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-76"}}
+{"key": "zhang_optimizing_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-76"}}
+{"key": "cao_evaluating_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-76"}}
+{"key": "han_binary_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-181"}}
+{"key": "han_binary_2022", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-181"}}
+{"key": "zhu_similarity_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-181"}}
+{"key": "udeshi_remaqe_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-468"}}
+{"key": "udeshi_remend_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-468"}}
+{"key": "prisco_feasibility_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-380"}}
+{"key": "prisco_capability_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-380"}}
+{"key": "haghighi_effective_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-180"}}
+{"key": "haghighi_trlf_2018", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-180"}}
+{"key": "wang_graph_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-492"}}
+{"key": "wang_smart_2022", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-492"}}
+{"key": "grech_madmax_2018", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-167"}}
+{"key": "grech_madmax_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-167"}}
+{"key": "chang_lifting_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-82"}}
+{"key": "liu_precise_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-82"}}
+{"key": "alsabbagh_control_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-21"}}
+{"key": "alsabbagh_stealth_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-21"}}
+{"key": "rodriguez-bazan_android_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-398"}}
+{"key": "rodriguez-bazan_android_2023-1", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-398"}}
+{"key": "erinfolami_declassifier_2019", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-137"}}
+{"key": "erinfolami_devil_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-137"}}
+{"key": "lacomis_dire_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-128"}}
+{"key": "dramko_dire_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-128"}}
+{"key": "donisi_work-related_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-126"}}
+{"key": "donisi_machine_2022", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-126"}}
+{"key": "wang_cobordism_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-484"}}
+{"key": "wang_proton_2022", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-484"}}
+{"key": "kalhauge_binary_2019", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-235"}}
+{"key": "kalhauge_logical_2021", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-235"}}
+{"key": "domas_advanced_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-122"}}
+{"key": "domas_decompilation_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-122"}}
+{"key": "feng_interactive_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-145"}}
+{"key": "feng_ref_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-145"}}
+{"key": "zhang_comprehension_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-569"}}
+{"key": "zhang_parameterized_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-569"}}
+{"key": "wong_decllm_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-511"}}
+{"key": "wong_refining_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-511"}}
+{"key": "yan_detecting_2018", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-540"}}
+{"key": "yan_lstm-based_2018", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-540"}}
+{"key": "harrand_java_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-186"}}
+{"key": "harrand_strengths_2019", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-186"}}
+{"key": "behner_sok_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-48"}}
+{"key": "enders_jump-table-agnostic_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "cluster-48"}}
 {"key": "abuhamad_large-scale_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "adamec_malware_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "adams_blockchain_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -18,8 +66,6 @@
 {"key": "aljebreen_binary-source_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "alrabaee_bindeep_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "alrabaee_survey_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "alsabbagh_control_2021", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-21", "similarity": 1.0}}
-{"key": "alsabbagh_stealth_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-21", "representative_id": "alsabbagh_control_2021", "similarity": 1.0}}
 {"key": "altamura_assessing_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "amara_nearest_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "aminuddin_android_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -46,8 +92,6 @@
 {"key": "bangaru_systematically_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "baronetto_simulation_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "baumer_finding_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "behner_sok_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-48", "similarity": 1.0}}
-{"key": "enders_jump-table-agnostic_2025", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-48", "representative_id": "behner_sok_2025", "similarity": 1.0}}
 {"key": "berge_anti-games_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "bhattacharjee_hybrid_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "bibi_secure_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -75,18 +119,11 @@
 {"key": "buet-golfouse_lifting_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "bustany_specpart_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "butz_sum-product_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "cao_evaluating_2024", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-76", "similarity": 1.0}}
-{"key": "liang_semantics-recovering_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-76", "representative_id": "cao_evaluating_2024", "similarity": 0.5}}
-{"key": "cao_boosting_2023", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-76", "representative_id": "cao_evaluating_2024", "similarity": 0.6}}
-{"key": "liang_neutron_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-76", "representative_id": "cao_evaluating_2024", "similarity": 0.6}}
-{"key": "zhang_optimizing_2024", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-76", "representative_id": "cao_evaluating_2024", "similarity": 0.8}}
 {"key": "cao_revisiting_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "carvalho_semantic_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "casolare_steaelergon_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "castellanos_fault_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "chakraborty_architecture_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "chang_lifting_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-82", "similarity": 1.0}}
-{"key": "liu_precise_2025", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-82", "representative_id": "chang_lifting_2025", "similarity": 1.0}}
 {"key": "chawla_decompilation-driven_2026", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "chen_android_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "chen_augmenting_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -126,16 +163,10 @@
 {"key": "devarakonda_design_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "dinella_inferring_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "ding_android_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "domas_advanced_2024", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-122", "similarity": 1.0}}
-{"key": "domas_decompilation_2024", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-122", "representative_id": "domas_advanced_2024", "similarity": 1.0}}
 {"key": "dong_defect_2018", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "dong_pilot_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "donisi_feasibility_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "donisi_machine_2022", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-126", "similarity": 1.0}}
-{"key": "donisi_work-related_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-126", "representative_id": "donisi_machine_2022", "similarity": 0.8333333333333334}}
 {"key": "drabent_how_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "dramko_dire_2023", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-128", "similarity": 1.0}}
-{"key": "lacomis_dire_2020", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-128", "representative_id": "dramko_dire_2023", "similarity": 0.875}}
 {"key": "dramko_fast_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "dramko_idioms_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "du_mobile_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -144,8 +175,6 @@
 {"key": "enders_dewolf_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "enders_pidarci_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "eom_r2i_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "erinfolami_devil_2020", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-137", "similarity": 1.0}}
-{"key": "erinfolami_declassifier_2019", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-137", "representative_id": "erinfolami_devil_2020", "similarity": 1.0}}
 {"key": "escalada_improving_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "falconer_condition_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "fan_reducing_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -153,8 +182,6 @@
 {"key": "fang_stacksight_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "fang_wasserstein_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "feichtner_automated_2018", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "feng_interactive_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-145", "similarity": 1.0}}
-{"key": "feng_ref_2025", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-145", "representative_id": "feng_interactive_2025", "similarity": 1.0}}
 {"key": "feng_novel_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "feng_research_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "feng_self-constructed_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -176,8 +203,6 @@
 {"key": "granskog_neural_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "grech_elipmoc_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "grech_gigahorse_2019", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "grech_madmax_2020", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-167", "similarity": 1.0}}
-{"key": "grech_madmax_2018", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-167", "representative_id": "grech_madmax_2020", "similarity": 1.0}}
 {"key": "green_stride_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "gregorio_e-apk_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "gribkov_analysis_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -190,17 +215,10 @@
 {"key": "guo_android_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "guo_real-time_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "gussoni_comb_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "haghighi_effective_2020", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-180", "similarity": 1.0}}
-{"key": "haghighi_trlf_2018", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-180", "representative_id": "haghighi_effective_2020", "similarity": 1.0}}
-{"key": "han_binary_2022", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-181", "similarity": 1.0}}
-{"key": "han_binary_2020", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-181", "representative_id": "han_binary_2022", "similarity": 1.0}}
-{"key": "zhu_similarity_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-181", "representative_id": "han_binary_2022", "similarity": 1.0}}
 {"key": "han_neural_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "han_queryx_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "han_research_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "han_systematic_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "harrand_java_2020", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-186", "similarity": 1.0}}
-{"key": "harrand_strengths_2019", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-186", "representative_id": "harrand_java_2020", "similarity": 1.0}}
 {"key": "hartfill_emg-based_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "hartman_cross-architecture_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "he_benchmarking_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -249,8 +267,6 @@
 {"key": "johri_amadel_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "jose_robust_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "joshi_neuro-lift_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "kalhauge_logical_2021", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-235", "similarity": 1.0}}
-{"key": "kalhauge_binary_2019", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-235", "representative_id": "kalhauge_logical_2021", "similarity": 1.0}}
 {"key": "kang_3d_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "kang_obfus_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "karamitas_recover_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -395,8 +411,6 @@
 {"key": "prasad_andromd_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "prenner_runbugrun_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "priambodo_malqwen_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "prisco_capability_2024", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-380", "similarity": 1.0}}
-{"key": "prisco_feasibility_2023", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-380", "representative_id": "prisco_capability_2024", "similarity": 0.8571428571428571}}
 {"key": "qasim_control_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "qin_demystifying_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "qin_directed_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -414,8 +428,6 @@
 {"key": "ren_low_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "rhim_binary_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "ringer_proof_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "rodriguez-bazan_android_2023", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-398", "similarity": 1.0}}
-{"key": "rodriguez-bazan_android_2023-1", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-398", "representative_id": "rodriguez-bazan_android_2023", "similarity": 1.0}}
 {"key": "roessle_formally_2019", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "rohleder_hands-ghidra_2019", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "s_reverse_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -485,8 +497,6 @@
 {"key": "tirkey_anatomizing_2019", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "toledo_deeper_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "trevithick_real-time_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "udeshi_remend_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-468", "similarity": 1.0}}
-{"key": "udeshi_remaqe_2024", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-468", "representative_id": "udeshi_remend_2025", "similarity": 0.8}}
 {"key": "ullah_clone_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "ullah_detection_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "ullah_iot-based_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -502,8 +512,6 @@
 {"key": "wan_bridging_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_automated_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_binvuldet_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "wang_proton_2022", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-484", "similarity": 1.0}}
-{"key": "wang_cobordism_2021", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-484", "representative_id": "wang_proton_2022", "similarity": 1.0}}
 {"key": "wang_context-guided_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_deep_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_design_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -511,8 +519,6 @@
 {"key": "wang_distracted_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_falx_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_gauge_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "wang_graph_2023", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-492", "similarity": 1.0}}
-{"key": "wang_smart_2022", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-492", "representative_id": "wang_graph_2023", "similarity": 1.0}}
 {"key": "wang_lift_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_orcas_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wang_repomaster_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -531,8 +537,6 @@
 {"key": "wicaksono_idiffpose_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wiedemeier_pylingual_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wiedemeier_walking_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "wong_decllm_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-511", "similarity": 1.0}}
-{"key": "wong_refining_2023", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-511", "representative_id": "wong_decllm_2025", "similarity": 1.0}}
 {"key": "wong_faster_2018", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wood_novel_2021", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "wu_android_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -561,8 +565,6 @@
 {"key": "xu_symbol_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "xylogiannopoulos_text_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "yama_machine_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "yan_detecting_2018", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-540", "similarity": 1.0}}
-{"key": "yan_lstm-based_2018", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-540", "representative_id": "yan_detecting_2018", "similarity": 1.0}}
 {"key": "yan_eshield_2020", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "yan_repackaged_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "yan_uefuzzer_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
@@ -591,8 +593,6 @@
 {"key": "zhang_bian_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "zhang_cf-gkat_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "zhang_chunked_2023", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
-{"key": "zhang_comprehension_2025", "action": "keep", "reason": "duplicate_author_representative", "details": {"cluster_id": "cluster-569", "similarity": 1.0}}
-{"key": "zhang_parameterized_2024", "action": "keep", "reason": "duplicate_author", "details": {"cluster_id": "cluster-569", "representative_id": "zhang_comprehension_2025", "similarity": 1.0}}
 {"key": "zhang_design_2025", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "zhang_fault_2022", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
 {"key": "zhang_hebridge_2024", "action": "keep", "reason": "unique_author", "details": {"cluster_id": null}}
