@@ -662,6 +662,13 @@ export function StepDetailPage() {
   }, [stepMeta?.execution.completed_at, stepMeta?.step_type]);
   const aiReviewTabGroups = useMemo(() => ([
     {
+      id: 'input',
+      label: '',
+      tabs: [
+        { id: 'input', label: 'Input', count: stepMeta?.input?.count ?? 0 },
+      ],
+    },
+    {
       id: 'passed',
       label: 'Passed',
       tabs: [
@@ -692,6 +699,7 @@ export function StepDetailPage() {
     humanDecisionCounts.exclude,
     humanDecisionCounts.include,
     humanDecisionCounts.uncertain,
+    stepMeta?.input?.count,
   ]);
 
   // Handle run with config
