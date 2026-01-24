@@ -228,6 +228,15 @@ export const stepsApi = {
 
   getChanges: (projectId: string, stepId: string) =>
     fetchApi<Record<string, unknown>[]>(`/projects/${projectId}/steps/${stepId}/changes`),
+
+  getClusters: (projectId: string, stepId: string) =>
+    fetchApi<{ clusters: Record<string, unknown>[] }>(`/projects/${projectId}/steps/${stepId}/clusters`),
+
+  updateClusters: (projectId: string, stepId: string, clusters: Record<string, unknown>[]) =>
+    fetchApi<{ status: string; clusters: number }>(`/projects/${projectId}/steps/${stepId}/clusters`, {
+      method: 'POST',
+      body: JSON.stringify({ clusters }),
+    }),
 };
 
 // Step Types

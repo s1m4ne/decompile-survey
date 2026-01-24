@@ -2,7 +2,7 @@
  * Common paper table component for displaying BibTeX entries.
  * Used across all step types with customizable columns.
  */
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { ChevronDown, ChevronRight, ExternalLink } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Badge } from '../ui/Badge';
@@ -218,9 +218,8 @@ export function PaperTable<T extends BibEntry = BibEntry>({
             const isSelected = selectedKeys?.has(entry.ID);
 
             return (
-              <>
+              <Fragment key={entry.ID}>
                 <tr
-                  key={entry.ID}
                   className={cn(
                     'border-b border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]',
                     isSelected && 'bg-[hsl(var(--accent))]',
@@ -289,13 +288,13 @@ export function PaperTable<T extends BibEntry = BibEntry>({
 
                 {/* Expanded details row */}
                 {isExpanded && (
-                  <tr key={`${entry.ID}-details`} className="bg-[hsl(var(--muted))]">
+                  <tr className="bg-[hsl(var(--muted))]">
                     <td colSpan={100} className="p-4">
                       <PaperDetails entry={entry} change={change} />
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             );
           })}
         </tbody>

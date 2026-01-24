@@ -2,8 +2,8 @@
  * Step detail page - shows step info and paper list.
  * Routes to specific step type viewers based on step type.
  */
-import { useMemo, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   ArrowLeft,
@@ -18,9 +18,11 @@ import { StepOutputViewer, ChangeRecord } from '../components/papers';
 import { StepConfigModal } from '../components/StepConfigModal';
 import { StepStatusBadge } from '../components/StepStatus';
 import { stepTypeConfigs } from '../steps/stepTypeConfigs';
+import { normalizeBibtexText } from '../components/BibtexText';
 
 export function StepDetailPage() {
   const { projectId, stepId } = useParams<{ projectId: string; stepId: string }>();
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
@@ -51,6 +53,345 @@ export function StepDetailPage() {
     },
     enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed',
   });
+
+  const isDuplicateGroupStep = stepMeta?.step_type === 'dedup-title'
+    || stepMeta?.step_type === 'dedup-author'
+    || stepMeta?.step_type === 'dedup-doi';
+  const { data: clustersData } = useQuery({
+    queryKey: ['step-clusters', projectId, stepId],
+    queryFn: () => stepsApi.getClusters(projectId!, stepId!),
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
+  });
+  const { data: inputData } = useQuery({
+    queryKey: ['step-input', projectId, stepId, 'doi-clusters'],
+    queryFn: () => stepsApi.getInput(projectId!, stepId!),
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && stepMeta?.step_type === 'dedup-doi',
+  });
+  const clusters = useMemo(() => {
+    const storedClusters = (clustersData?.clusters ?? []) as {
+      id: string;
+      size: number;
+      representative_id: string;
+      representative_title: string;
+      average_similarity: number;
+      reviewed?: boolean;
+      members: {
+        id: string;
+        title: string;
+        authors: string;
+        year: string;
+        similarity: number;
+        action: string;
+      }[];
+    }[];
+    if (storedClusters.length > 0) {
+      return storedClusters.filter((cluster) => cluster.size > 1);
+    }
+
+    if (stepMeta?.step_type !== 'dedup-doi') {
+      return storedClusters;
+    }
+
+    const inputEntries = (inputData?.entries ?? []) as {
+      ID?: string;
+      title?: string;
+      author?: string;
+      year?: string;
+    }[];
+    if (inputEntries.length === 0) {
+      return [];
+    }
+
+    const entryMap = new Map(inputEntries.map((entry) => [entry.ID ?? '', entry]));
+    const changeMap = new Map(changes.map((change) => [change.key, change]));
+    const doiGroups = new Map<string, Set<string>>();
+    const doiRepresentatives = new Map<string, string>();
+
+    for (const change of changes) {
+      if (change.reason === 'unique_doi' || change.reason === 'duplicate_doi') {
+        const doi = (change.details?.doi as string | undefined)?.trim();
+        if (!doi) continue;
+        const group = doiGroups.get(doi) ?? new Set<string>();
+        group.add(change.key);
+        const originalKey = change.details?.original_key as string | undefined;
+        if (originalKey) {
+          doiRepresentatives.set(doi, originalKey);
+          group.add(originalKey);
+        }
+        if (change.reason === 'unique_doi') {
+          doiRepresentatives.set(doi, change.key);
+        }
+        doiGroups.set(doi, group);
+      }
+    }
+
+    const clustersFromDoi = Array.from(doiGroups.entries())
+      .filter(([, members]) => members.size > 1)
+      .map(([doi, members], index) => {
+      const memberIds = Array.from(members);
+      const representativeId = doiRepresentatives.get(doi) ?? memberIds[0];
+      const representativeEntry = entryMap.get(representativeId);
+      const membersPayload = memberIds.map((id) => {
+        const entry = entryMap.get(id);
+        const change = changeMap.get(id);
+        const action = change?.action ?? (id === representativeId ? 'keep' : 'remove');
+        return {
+          id,
+          title: entry?.title ?? '',
+          authors: entry?.author ?? '',
+          year: entry?.year ?? '',
+          similarity: 1,
+          action,
+        };
+      });
+
+      return {
+        id: `doi-group-${index + 1}`,
+        size: memberIds.length,
+        representative_id: representativeId,
+        representative_title: representativeEntry?.title ?? doi,
+        average_similarity: 1,
+        members: membersPayload,
+      };
+    });
+
+    return clustersFromDoi;
+  }, [clustersData?.clusters, changes, inputData?.entries, stepMeta?.step_type]);
+  const [selectedClusterId, setSelectedClusterId] = useState<string | null>(null);
+  const [draftClusters, setDraftClusters] = useState(clusters);
+  const baselineRef = useRef('');
+  const draftClustersRef = useRef(draftClusters);
+  const [confirmState, setConfirmState] = useState<{
+    isOpen: boolean;
+    clusterId: string;
+    memberId: string;
+  } | null>(null);
+  useEffect(() => {
+    const next = clusters;
+    const nextKey = JSON.stringify(next);
+    if (next.length === 0 && draftClustersRef.current.length > 0) {
+      return;
+    }
+    if (baselineRef.current === nextKey) {
+      return;
+    }
+    setDraftClusters(next);
+    setSelectedClusterId(next[0]?.id ?? null);
+    baselineRef.current = nextKey;
+  }, [clusters]);
+  useEffect(() => {
+    draftClustersRef.current = draftClusters;
+  }, [draftClusters]);
+
+  const selectedCluster = draftClusters.find((cluster) => cluster.id === selectedClusterId) ?? draftClusters[0] ?? null;
+
+  const buildClusterChanges = (nextClusters: typeof draftClusters) => {
+    const nextChanges: ChangeRecord[] = [];
+    let keepCount = 0;
+    let removeCount = 0;
+
+    for (const cluster of nextClusters) {
+      const members = cluster.members ?? [];
+      const representativeId = cluster.representative_id ?? members[0]?.id;
+      for (const member of members) {
+        const action = (member.action as 'keep' | 'remove' | undefined)
+          ?? (member.id === representativeId ? 'keep' : 'remove');
+        if (action === 'keep') {
+          keepCount += 1;
+        } else {
+          removeCount += 1;
+        }
+        nextChanges.push({
+          key: member.id,
+          action,
+          reason: action === 'keep' ? 'manual_cluster_keep' : 'manual_cluster_remove',
+          details: {
+            cluster_id: cluster.id,
+            representative_id: representativeId,
+          },
+        } as ChangeRecord);
+      }
+    }
+
+    return { nextChanges, keepCount, removeCount };
+  };
+
+  const updateClustersMutation = useMutation({
+    mutationFn: ({ clusters: nextClusters }: { clusters: typeof draftClusters; mode: 'reviewed' | 'decision' }) =>
+      stepsApi.updateClusters(projectId!, stepId!, nextClusters),
+    onMutate: async ({ clusters: nextClusters, mode }) => {
+      const previousClusters = queryClient.getQueryData(['step-clusters', projectId, stepId]);
+
+      if (mode === 'reviewed') {
+        queryClient.setQueryData(['step-clusters', projectId, stepId], { clusters: nextClusters });
+        return { previousClusters, mode };
+      }
+
+      await queryClient.cancelQueries({ queryKey: ['step', projectId, stepId] });
+      await queryClient.cancelQueries({ queryKey: ['step-changes', projectId, stepId] });
+      await queryClient.cancelQueries({ queryKey: ['step-output', projectId, stepId] });
+
+      const previousStep = queryClient.getQueryData(['step', projectId, stepId]);
+      const previousChanges = queryClient.getQueryData(['step-changes', projectId, stepId]);
+
+      const { nextChanges, keepCount, removeCount } = buildClusterChanges(nextClusters);
+
+      queryClient.setQueryData(['step-changes', projectId, stepId], nextChanges);
+      queryClient.setQueryData(['step', projectId, stepId], (prev: StepMeta | undefined) => {
+        if (!prev) return prev;
+        const outputs = { ...prev.outputs };
+        if (outputs.passed) {
+          outputs.passed = { ...outputs.passed, count: keepCount };
+        }
+        if (outputs.removed) {
+          outputs.removed = { ...outputs.removed, count: removeCount };
+        }
+        return {
+          ...prev,
+          outputs,
+          stats: {
+            ...prev.stats,
+            passed_count: keepCount,
+            removed_count: removeCount,
+            total_output_count: keepCount + removeCount,
+          },
+        };
+      });
+
+      queryClient.setQueryData(['step-clusters', projectId, stepId], { clusters: nextClusters });
+      return { previousStep, previousChanges, previousClusters, mode };
+    },
+    onError: (_error, _payload, context) => {
+      if (context?.previousClusters) {
+        queryClient.setQueryData(['step-clusters', projectId, stepId], context.previousClusters);
+      }
+      if (context?.mode === 'decision') {
+        if (context?.previousStep) {
+          queryClient.setQueryData(['step', projectId, stepId], context.previousStep);
+        }
+        if (context?.previousChanges) {
+          queryClient.setQueryData(['step-changes', projectId, stepId], context.previousChanges);
+        }
+      }
+    },
+    onSuccess: (_data, payload) => {
+      baselineRef.current = JSON.stringify(payload.clusters);
+      setDraftClusters(payload.clusters);
+      if (payload.mode === 'decision') {
+        queryClient.invalidateQueries({ queryKey: ['step-changes', projectId, stepId] });
+        queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
+        queryClient.invalidateQueries({ queryKey: ['step', projectId, stepId] });
+        queryClient.invalidateQueries({ queryKey: ['steps', projectId] });
+      }
+    },
+    onSettled: (_data, _error, payload) => {
+      if (payload?.mode === 'decision') {
+        queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
+      }
+    },
+  });
+  const changesByKey = useMemo(() => {
+    return new Map(changes.map((change) => [change.key, change]));
+  }, [changes]);
+
+  const setMemberAction = (clusterId: string, memberId: string, action: 'keep' | 'remove') => {
+    setDraftClusters((prev) => {
+      const next = prev.map((cluster) =>
+        cluster.id === clusterId
+          ? {
+              ...cluster,
+              members: cluster.members.map((member) =>
+                member.id === memberId ? { ...member, action } : member
+              ),
+            }
+          : cluster
+      );
+      const target = next.find((cluster) => cluster.id === clusterId);
+      if (target) {
+        const hasKeep = target.members.some((member) => (member.action ?? 'keep') === 'keep');
+        if (!hasKeep) {
+          setConfirmState({ isOpen: true, clusterId, memberId });
+          return prev;
+        }
+      }
+      updateClustersMutation.mutate({ clusters: next, mode: 'decision' });
+      return next;
+    });
+  };
+
+  const toggleReviewed = (clusterId: string, nextReviewed: boolean) => {
+    setDraftClusters((prev) => {
+      const next = prev.map((cluster) =>
+        cluster.id === clusterId ? { ...cluster, reviewed: nextReviewed } : cluster
+      );
+      updateClustersMutation.mutate({ clusters: next, mode: 'reviewed' });
+      return next;
+    });
+  };
+
+  const confirmAllRemove = () => {
+    if (!confirmState) return;
+    const { clusterId, memberId } = confirmState;
+    setConfirmState(null);
+    setDraftClusters((prev) => {
+      const next = prev.map((cluster) =>
+        cluster.id === clusterId
+          ? {
+              ...cluster,
+              members: cluster.members.map((member) =>
+                member.id === memberId ? { ...member, action: 'remove' } : member
+              ),
+            }
+          : cluster
+      );
+      updateClustersMutation.mutate({ clusters: next, mode: 'decision' });
+      return next;
+    });
+  };
+
+  const splitMember = (clusterId: string, memberId: string) => {
+    setDraftClusters((prev) => {
+      const next: typeof prev = [];
+      for (const cluster of prev) {
+        if (cluster.id !== clusterId) {
+          next.push(cluster);
+          continue;
+        }
+        const remainingMembers = cluster.members.filter((member) => member.id !== memberId);
+        if (remainingMembers.length > 0) {
+          const representative_id = cluster.representative_id === memberId
+            ? remainingMembers[0]?.id
+            : cluster.representative_id;
+          next.push({
+            ...cluster,
+            members: remainingMembers,
+            size: remainingMembers.length,
+            representative_id,
+          });
+        }
+
+        const splitMemberEntry = cluster.members.find((member) => member.id === memberId);
+        if (splitMemberEntry) {
+          next.push({
+            id: `manual-${Date.now()}-${memberId}`,
+            size: 1,
+            representative_id: memberId,
+            representative_title: splitMemberEntry.title,
+            average_similarity: 1,
+            members: [
+              {
+                ...splitMemberEntry,
+                similarity: 1,
+                action: 'keep',
+              },
+            ],
+          });
+        }
+      }
+      return next;
+    });
+  };
+
 
   // Get current step from pipeline
   const pipelineStep = pipeline?.steps.find((s) => s.id === stepId);
@@ -167,7 +508,7 @@ export function StepDetailPage() {
   if (error || !stepMeta) {
     return (
       <div className="text-center py-12">
-        <p className="text-[hsl(var(--status-danger))]">
+        <p className="text-[hsl(var(--status-danger-fg))]">
           Failed to load step: {(error as Error)?.message}
         </p>
       </div>
@@ -188,12 +529,20 @@ export function StepDetailPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link
-            to={`/projects/${projectId}`}
+          <button
+            type="button"
+            onClick={() => {
+              if (window.history.length > 1) {
+                navigate(-1);
+                return;
+              }
+              navigate(projectId ? `/projects/${projectId}` : '/');
+            }}
             className="p-2 hover:bg-[hsl(var(--muted))] rounded-lg"
+            aria-label="Back to project"
           >
             <ArrowLeft className="w-5 h-5" />
-          </Link>
+          </button>
           <div className="flex items-center gap-3">
             {config.icon}
             <div>
@@ -254,13 +603,13 @@ export function StepDetailPage() {
             <div className="text-sm text-[hsl(var(--muted-foreground))]">Input</div>
           </div>
           <div className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
-            <div className="text-2xl font-bold text-[hsl(var(--status-success))]">
+            <div className="text-2xl font-bold text-[hsl(var(--status-success-fg))]">
               {passedCount}
             </div>
             <div className="text-sm text-[hsl(var(--muted-foreground))]">Passed</div>
           </div>
           <div className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
-            <div className="text-2xl font-bold text-[hsl(var(--status-danger))]">
+            <div className="text-2xl font-bold text-[hsl(var(--status-danger-fg))]">
               {removedCount}
             </div>
             <div className="text-sm text-[hsl(var(--muted-foreground))]">Removed</div>
@@ -280,6 +629,208 @@ export function StepDetailPage() {
                 API at {apiCompletedAt}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {isCompleted && isDuplicateGroupStep && (
+        <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Duplicate Groups</h2>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[hsl(var(--muted-foreground))]">
+                {draftClusters.length} clusters
+              </span>
+              {updateClustersMutation.isPending && (
+                <span className="text-xs text-[hsl(var(--muted-foreground))]">Saving...</span>
+              )}
+            </div>
+          </div>
+          {clusters.length === 0 ? (
+            <div className="text-sm text-[hsl(var(--muted-foreground))]">
+              No clusters found.
+            </div>
+          ) : (
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-2">
+                <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                  Select a group to review
+                </div>
+                {draftClusters.map((cluster) => {
+                  const isActive = cluster.id === (selectedCluster?.id ?? '');
+                  const isReviewed = Boolean(cluster.reviewed);
+                  return (
+                    <button
+                      key={cluster.id}
+                      onClick={() => setSelectedClusterId(cluster.id)}
+                      className={`w-full text-left rounded-md border px-3 py-2 transition-colors ${
+                        isActive
+                          ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                          : 'border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-2 min-w-0">
+                          <input
+                            type="checkbox"
+                            checked={isReviewed}
+                            onChange={(event) => {
+                              event.stopPropagation();
+                              toggleReviewed(cluster.id, event.target.checked);
+                            }}
+                            className="mt-0.5"
+                          />
+                          <div className={`text-sm font-medium whitespace-normal break-words ${isReviewed ? 'line-through text-[hsl(var(--muted-foreground))]' : ''}`}>
+                          {normalizeBibtexText(cluster.representative_title) || cluster.id}
+                        </div>
+                        </div>
+                        <div className="text-xs text-[hsl(var(--muted-foreground))] shrink-0 min-w-[64px] text-right">
+                          {cluster.size} items
+                        </div>
+                      </div>
+                      <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                        Avg similarity {(cluster.average_similarity * 100).toFixed(1)}%
+                      </div>
+                      {isActive && (
+                        <div className="text-[10px] text-[hsl(var(--primary))] mt-1">
+                          Selected
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              {selectedCluster && (
+                <div className="rounded-md border border-[hsl(var(--border))] p-3 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="text-sm font-medium whitespace-normal break-words">
+                      Decision Panel
+                    </div>
+                    <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                      {selectedCluster.size} candidates
+                    </div>
+                  </div>
+                  <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                    Keep/Remove is already set automatically. Change only if needed.
+                  </div>
+                  <label className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(selectedCluster.reviewed)}
+                      onChange={(event) => toggleReviewed(selectedCluster.id, event.target.checked)}
+                    />
+                    Mark this group as reviewed
+                  </label>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead className="text-xs text-[hsl(var(--muted-foreground))]">
+                        <tr className="border-b border-[hsl(var(--border))]">
+                          <th className="py-2 text-left font-medium">Paper</th>
+                          <th className="py-2 text-left font-medium">Similarity</th>
+                          <th className="py-2 text-left font-medium">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[hsl(var(--border))]">
+                        {selectedCluster.members.map((member) => {
+                          const representativeId = selectedCluster.representative_id ?? selectedCluster.members[0]?.id;
+                          const memberAction = (member.action as 'keep' | 'remove' | undefined) ?? (member.id === representativeId ? 'keep' : 'remove');
+                          const isKeep = memberAction === 'keep';
+                          const change = changesByKey.get(member.id);
+                          const authorLine = member.authors
+                            ? member.authors.replace(/\s+and\s+/g, ', ')
+                            : '-';
+                          return (
+                            <tr key={member.id} className="align-top">
+                              <td className="py-3 pr-3">
+                                <div className="font-semibold whitespace-normal break-words">
+                                  {normalizeBibtexText(member.title) || '(No title)'}
+                                </div>
+                                <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                                  {authorLine} {member.year ? `· ${member.year}` : ''}
+                                </div>
+                                {change?.reason && (
+                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                    {change.reason}
+                                  </div>
+                                )}
+                                {(change?.details as { representative_id?: string } | undefined)?.representative_id && (
+                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                    Representative: {(change?.details as { representative_id?: string }).representative_id}
+                                  </div>
+                                )}
+                                {member.id && (
+                                  <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
+                                    ID: {member.id}
+                                  </div>
+                                )}
+                              </td>
+                              <td className="py-3 pr-3 text-xs text-[hsl(var(--muted-foreground))]">
+                                {(member.similarity * 100).toFixed(1)}%
+                              </td>
+                              <td className="py-3 pr-3">
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => setMemberAction(selectedCluster.id, member.id, 'keep')}
+                                    className={
+                                      isKeep
+                                        ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]'
+                                        : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
+                                    }
+                                  >
+                                    Keep
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => setMemberAction(selectedCluster.id, member.id, 'remove')}
+                                    className={
+                                      !isKeep
+                                        ? 'px-2 py-1 rounded-full border border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]'
+                                        : 'px-2 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]'
+                                    }
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {confirmState?.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setConfirmState(null)}
+          />
+          <div className="relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full max-w-md mx-4 p-6">
+            <div className="text-lg font-semibold mb-2">Confirm Remove</div>
+            <p className="text-sm text-[hsl(var(--muted-foreground))] mb-6">
+              This will set all papers in this group to Remove. Are you sure?
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setConfirmState(null)}
+                className="px-4 py-2 border border-[hsl(var(--border))] rounded-lg hover:bg-[hsl(var(--muted))]"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmAllRemove}
+                className="px-4 py-2 bg-[hsl(var(--status-danger-solid))] text-[hsl(var(--status-danger-solid-foreground))] rounded-lg hover:opacity-90"
+              >
+                Set all to Remove
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -339,7 +890,7 @@ export function StepDetailPage() {
           <div className="relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full max-w-md mx-4 p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-full bg-[hsl(var(--status-warning-bg))]">
-                <AlertTriangle className="w-6 h-6 text-[hsl(var(--status-warning))]" />
+                <AlertTriangle className="w-6 h-6 text-[hsl(var(--status-warning-fg))]" />
               </div>
               <h2 className="text-lg font-semibold">Reset Step</h2>
             </div>

@@ -165,6 +165,12 @@ cd screening/app && ./start.sh
 # http://localhost:5173 でアクセス
 ```
 
+#### Webアプリの補足
+
+- Sources管理: プロジェクト画面から「Manage sources」でインポート画面へ遷移
+- インポート時に Database / Search query / Search date を付与できる
+- AIスクリーニングはローカルLLMをデフォルトで使用（`LOCAL_LLM_BASE_URL` を参照）
+
 詳細は `screening/README.md` を参照。
 
 ### 4. 文献管理ツールへのインポート
@@ -180,3 +186,4 @@ BibTeXファイルをZoteroなどの文献管理ツールにインポートす�
 - データベース名は `imports/` のディレクトリ名と必ず一致させる
 - 件数はダウンロード時の検索結果画面から手動で確認した値を使用する
 - BibTeXのパース時に `}` などの特殊文字がエスケープされていない場合、インポートエラーが発生することがある
+- AIスクリーニングのローカルLLM接続先は `LOCAL_LLM_BASE_URL` で変更可能

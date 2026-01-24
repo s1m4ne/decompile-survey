@@ -12,6 +12,7 @@ from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.bibdatabase import BibDatabase
 
 from models.step import StepMeta, StepStatus, StepExecution, StepInput, StepOutput, StepStats
+from step_handlers.base import Change
 
 router = APIRouter(prefix="/projects/{project_id}/steps", tags=["steps"])
 
@@ -237,6 +238,16 @@ def save_changes(project_id: str, step_id: str, changes: list) -> None:
             f.write(json.dumps(asdict(change), ensure_ascii=False) + "\n")
 
 
+def save_clusters(project_id: str, step_id: str, clusters: list[dict]) -> None:
+    """Save clustering metadata to JSON file."""
+    step_dir = get_step_dir(project_id, step_id)
+    step_dir.mkdir(parents=True, exist_ok=True)
+
+    clusters_file = step_dir / "clusters.json"
+    with open(clusters_file, "w", encoding="utf-8") as f:
+        json.dump({"clusters": clusters}, f, indent=2, ensure_ascii=False)
+
+
 def summarize_changes(changes: list) -> tuple[dict[str, int], dict[str, int] | None]:
     """Summarize action/decision counts from changes."""
     action_counts = {"keep": 0, "remove": 0, "modify": 0}
@@ -304,6 +315,10 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
 
         # Save changes
         save_changes(project_id, step_id, result.changes)
+
+        # Save clusters if provided
+        if isinstance(result.details, dict) and isinstance(result.details.get("clusters"), list):
+            save_clusters(project_id, step_id, result.details["clusters"])
 
         completed_at = datetime.now()
         duration = (completed_at - started_at).total_seconds()
@@ -504,3 +519,122 @@ def get_step_changes(project_id: str, step_id: str) -> list[dict]:
                 changes.append(json.loads(line))
 
     return changes
+
+
+@router.get("/{step_id}/clusters")
+def get_step_clusters(project_id: str, step_id: str) -> dict:
+    """Get step clusters (from clusters.json)."""
+    step_dir = get_step_dir(project_id, step_id)
+    clusters_file = step_dir / "clusters.json"
+
+    if not clusters_file.exists():
+        return {"clusters": []}
+
+    with open(clusters_file, encoding="utf-8") as f:
+        return json.load(f)
+
+
+@router.post("/{step_id}/clusters")
+def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
+    """Update step clusters and regenerate outputs/changes from manual decisions."""
+    meta = load_step_meta(project_id, step_id)
+    if meta is None:
+        raise HTTPException(status_code=404, detail="Step meta not found")
+
+    step_dir = get_step_dir(project_id, step_id)
+    input_file = step_dir / "input.json"
+    if not input_file.exists():
+        raise HTTPException(status_code=400, detail="Input not saved for this step")
+
+    with open(input_file, encoding="utf-8") as f:
+        input_entries = json.load(f)
+
+    clusters = payload.get("clusters", [])
+    entry_map = {entry.get("ID", ""): entry for entry in input_entries}
+
+    passed: list[dict] = []
+    removed: list[dict] = []
+    changes: list[Change] = []
+
+    for cluster in clusters:
+        members = cluster.get("members", [])
+        if not members:
+            continue
+        member_ids = [member.get("id") for member in members if member.get("id")]
+        if not member_ids:
+            continue
+        representative_id = cluster.get("representative_id") or member_ids[0]
+        cluster_id = cluster.get("id")
+
+        for member in members:
+            member_id = member.get("id")
+            if not member_id:
+                continue
+            entry = entry_map.get(member_id)
+            if not entry:
+                continue
+            action = member.get("action")
+            if action not in ("keep", "remove"):
+                action = "keep" if member_id == representative_id else "remove"
+
+            if action == "keep":
+                passed.append(entry)
+                changes.append(Change(
+                    key=member_id,
+                    action="keep",
+                    reason="manual_cluster_keep",
+                    details={"cluster_id": cluster_id},
+                ))
+            else:
+                removed.append(entry)
+                changes.append(Change(
+                    key=member_id,
+                    action="remove",
+                    reason="manual_cluster_remove",
+                    details={
+                        "cluster_id": cluster_id,
+                        "representative_id": representative_id,
+                    },
+                ))
+
+    removed_output_name = "removed"
+    if "duplicates" in meta.outputs:
+        removed_output_name = "duplicates"
+
+    outputs = {
+        "passed": StepOutput(
+            file=f"steps/{step_id}/outputs/passed.bib",
+            count=len(passed),
+            description="Representative entries kept after manual clustering",
+        ),
+        removed_output_name: StepOutput(
+            file=f"steps/{step_id}/outputs/{removed_output_name}.bib",
+            count=len(removed),
+            description="Entries removed after manual clustering",
+        ),
+    }
+
+    save_output_entries(project_id, step_id, "passed", passed)
+    save_output_entries(project_id, step_id, removed_output_name, removed)
+    save_changes(project_id, step_id, changes)
+    save_clusters(project_id, step_id, clusters)
+
+    action_counts, decision_counts = summarize_changes(changes)
+    total_output = len(passed) + len(removed)
+    if decision_counts:
+        passed_count = decision_counts["include"]
+        removed_count = decision_counts["exclude"]
+    else:
+        passed_count = action_counts["keep"]
+        removed_count = action_counts["remove"]
+
+    meta.outputs = outputs
+    meta.stats = StepStats(
+        input_count=meta.stats.input_count,
+        total_output_count=total_output,
+        passed_count=passed_count,
+        removed_count=removed_count,
+    )
+    save_step_meta(project_id, step_id, meta)
+
+    return {"status": "updated", "clusters": len(clusters)}

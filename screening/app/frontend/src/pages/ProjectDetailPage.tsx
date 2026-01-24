@@ -63,6 +63,7 @@ export function ProjectDetailPage() {
     queryFn: stepTypesApi.list,
   });
 
+
   if (projectLoading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -118,20 +119,20 @@ export function ProjectDetailPage() {
           sources={sources}
         />
 
-        {/* Steps */}
-        {pipeline?.steps.map((step, index) => {
-          const stepMeta = steps?.find(s => s.step_id === step.id);
-          return (
-            <StepCard
-              key={step.id}
-              projectId={projectId!}
-              step={step}
-              meta={stepMeta}
-              isFirst={index === 0}
-              isLast={index === pipeline.steps.length - 1}
-            />
-          );
-        })}
+      {/* Steps */}
+      {pipeline?.steps.map((step, index) => {
+        const stepMeta = steps?.find(s => s.step_id === step.id);
+        return (
+          <StepCard
+            key={step.id}
+            projectId={projectId!}
+            step={step}
+            meta={stepMeta}
+            isFirst={index === 0}
+            isLast={index === pipeline.steps.length - 1}
+          />
+        );
+      })}
 
         {/* Add Step Button */}
         <button
@@ -282,7 +283,7 @@ function StepCard({
               <div className="text-sm text-[hsl(var(--muted-foreground))]">
                 {inputCount} → {outputCount}
                 {diff > 0 && (
-                  <span className="text-[hsl(var(--status-danger))] ml-1">(-{diff})</span>
+                  <span className="text-[hsl(var(--status-danger-fg))] ml-1">(-{diff})</span>
                 )}
               </div>
             )}
@@ -379,7 +380,19 @@ function AddStepModal({
                   No step types available. Implement step handlers to add them.
                 </p>
               ) : (
-                stepTypes.map(type => (
+                [...stepTypes]
+                  .sort((a, b) => {
+                    const dedupTypes = new Set(['dedup-doi', 'dedup-title', 'dedup-author']);
+                    const aIsDedup = dedupTypes.has(a.id);
+                    const bIsDedup = dedupTypes.has(b.id);
+                    if (aIsDedup && bIsDedup) return 0;
+                    if (aIsDedup) return -1;
+                    if (bIsDedup) return 1;
+                    if (a.id === 'ai-screening') return 1;
+                    if (b.id === 'ai-screening') return -1;
+                    return 0;
+                  })
+                  .map(type => (
                   <button
                     key={type.id}
                     onClick={() => handleSelectType(type)}

@@ -13,16 +13,36 @@
       }
     },
     {
+      "id": "dedup_title",
+      "type": "dedup-title",
+      "name": "Title Deduplication",
+      "enabled": true,
+      "input_from": "dedup_doi",
+      "config": {
+        "similarity_threshold": 0.92
+      }
+    },
+    {
+      "id": "dedup_author",
+      "type": "dedup-author",
+      "name": "Author Deduplication",
+      "enabled": true,
+      "input_from": "dedup_title",
+      "config": {
+        "similarity_threshold": 0.8
+      }
+    },
+    {
       "id": "ai_screening",
       "type": "ai-screening",
       "name": "AI Screening",
       "enabled": true,
-      "input_from": "dedup_doi",
+      "input_from": "dedup_author",
       "config": {
-        "model": "gpt-oss-120b",
-        "concurrency": 100,
         "rules": "decompile_v4",
+        "model": "openai/gpt-oss-120b",
         "provider": "local",
+        "concurrency": 256,
         "local_base_url": "http://192.168.50.100:8000/v1"
       }
     }

@@ -351,7 +351,7 @@ function getToneClasses(tone: OutputTone | null): { label: string; badge: string
   }
   const base = `--status-${tone}`;
   return {
-    label: `text-[hsl(var(${base}))]`,
+    label: `text-[hsl(var(${base}-fg))]`,
     badge: `border border-[hsl(var(${base}-border))] bg-[hsl(var(${base}-bg))] text-[hsl(var(${base}-fg))]`,
   };
 }

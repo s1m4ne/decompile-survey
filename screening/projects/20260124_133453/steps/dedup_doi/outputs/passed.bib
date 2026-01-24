@@ -1,0 +1,73 @@
+@inproceedings{armengol-estape_slade_2024,
+  abstract = {Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. Nevertheless, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect.This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence Transformer trained over real-world code and augmented with a type inference engine. We utilize a novel tokenizer, dropout-free regularization, and type inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code.We evaluate SLaDe on over 4,000 ExeBench functions on two ISAs and at two optimization levels. SLaDe is up to 6× more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4× more accurate than the large language model ChatGPT and generates significantly more readable code than both.},
+  author = {Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F. P.},
+  booktitle = {Proceedings of the 2024 {IEEE}/{ACM} {International} {Symposium} on {Code} {Generation} and {Optimization}},
+  doi = {10.1109/CGO57630.2024.10444788},
+  isbn = {979-8-3503-9509-9},
+  keywords = {decompilation, neural decompilation, language models, transformer, type inference},
+  pages = {67--80},
+  publisher = {IEEE Press},
+  series = {{CGO} '24},
+  title = {{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}},
+  url = {https://doi.org/10.1109/CGO57630.2024.10444788},
+  year = {2024}
+}
+
+@article{dramko_dire_2023,
+  abstract = {The decompiler is one of the most common tools for examining executable binaries without the corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Unfortunately, decompiler output is far from readable because the decompilation process is often incomplete. State-of-the-art techniques use machine learning to predict missing information like variable names. While these approaches are often able to suggest good variable names in context, no existing work examines how the selection of training data influences these machine learning models. We investigate how data provenance and the quality of training data affect performance, and how well, if at all, trained models generalize across software domains. We focus on the variable renaming problem using one such machine learning model, DIRE. We first describe DIRE in detail and the accompanying technique used to generate training data from raw code. We also evaluate DIRE’s overall performance without respect to data quality. Next, we show how training on more popular, possibly higher quality code (measured using GitHub stars) leads to a more generalizable model because popular code tends to have more diverse variable names. Finally, we evaluate how well DIRE predicts domain-specific identifiers, propose a modification to incorporate domain information, and show that it can predict identifiers in domain-specific scenarios 23\% more frequently than the original DIRE model.},
+  address = {New York, NY, USA},
+  author = {Dramko, Luke and Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Ed and Allamanis, Miltiadis and Neubig, Graham and Vasilescu, Bogdan and Le Goues, Claire},
+  doi = {10.1145/3546946},
+  issn = {1049-331X},
+  journal = {ACM Trans. Softw. Eng. Methodol.},
+  keywords = {decompilation, Machine learning, data provenance},
+  month = {March},
+  number = {2},
+  publisher = {Association for Computing Machinery},
+  title = {{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}},
+  url = {https://doi.org/10.1145/3546946},
+  volume = {32},
+  year = {2023}
+}
+
+@inproceedings{jiang_binaryai_2024-1,
+  abstract = {While third-party libraries (TPLs) are extensively reused to enhance productivity during software development, they can also introduce potential security risks such as vulnerability propagation. Software composition analysis (SCA), proposed to identify reused TPLs for reducing such risks, has become an essential procedure within modern DevSecOps. As one of the mainstream SCA techniques, binary-to-source SCA identifies the third-party source projects contained in binary files via binary source code matching, which is a major challenge in reverse engineering since binary and source code exhibit substantial disparities after compilation. The existing binary-to-source SCA techniques leverage basic syntactic features that suffer from redundancy and lack robustness in the large-scale TPL dataset, leading to inevitable false positives and compromised recall. To mitigate these limitations, we introduce BinaryAI, a novel binary-to-source SCA technique with two-phase binary source code matching to capture both syntactic and semantic code features. First, BinaryAI trains a transformer-based model to produce function-level embeddings and obtain similar source functions for each binary function accordingly. Then by applying the link-time locality to facilitate function matching, BinaryAI detects the reused TPLs based on the ratio of matched source functions. Our experimental results demonstrate the superior performance of BinaryAI in terms of binary source code matching and the downstream SCA task. Specifically, our embedding model outperforms the state-of-the-art model CodeCMR, i.e., achieving 22.54\% recall@l and 0.34 MRR compared with 10.75\% and 0.17 respectively. Additionally, BinaryAI outperforms all existing binary-to-source SCA tools in TPL detection, increasing the precision from 73.36\% to 85.84\% and recall from 59.81\% to 64.98\% compared with the well-recognized commercial SCA product Black Duck. E-https://www.binaryai.net},
+  author = {Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun},
+  booktitle = {2024 {IEEE}/{ACM} 46th {International} {Conference} on {Software} {Engineering} ({ICSE})},
+  doi = {10.1145/3597503.3639100},
+  issn = {1558-1225},
+  keywords = {Codes, Source coding, Software, Transformers, Semantics, Syntactics, Redundancy, Software Composition Analysis, Static Binary Analysis},
+  month = {April},
+  pages = {2771--2783},
+  title = {{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}},
+  year = {2024}
+}
+
+@inproceedings{lacomis_dire_2020,
+  abstract = {The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub.1 Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\% of the time.},
+  author = {Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan},
+  booktitle = {Proceedings of the 34th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
+  doi = {10.1109/ASE.2019.00064},
+  isbn = {978-1-7281-2508-4},
+  pages = {628--639},
+  publisher = {IEEE Press},
+  series = {{ASE} '19},
+  title = {{DIRE}: a neural approach to decompiled identifier naming},
+  url = {https://doi.org/10.1109/ASE.2019.00064},
+  year = {2020}
+}
+
+@inproceedings{verbeek_formally_2025,
+  abstract = {Binary-level pointer analysis can be of use in symbolic execution, testing, verification, and decompilation of software binaries. In various such contexts, it is crucial that the result is trustworthy, i.e., it can be formally established that the pointer designations are overapproximative. This paper presents an approach to formally proven correct binary-level pointer analysis. A salient property of our approach is that it first generically considers what proof obligations a generic abstract domain for pointer analysis must satisfy. This allows easy instantiation of different domains, varying in precision, while preserving the correctness of the analysis. In the tradeoff between scalability and precision, such customization allows "meaningful" precision (sufficiently precise to ensure basic sanity properties, such as that relevant parts of the stack frame are not overwritten during function execution) while also allowing coarse analysis when pointer computations have become too obfuscated during compilation for sound and accurate bounds analysis. We experiment with three different abstract domains with high, medium, and low precision. Evaluation shows that our approach is able to derive designations for memory writes soundly in COTS binaries, in a context-sensitive interprocedural fashion.},
+  author = {Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy},
+  booktitle = {Proceedings of the {IEEE}/{ACM} 47th {International} {Conference} on {Software} {Engineering}},
+  doi = {10.1109/ICSE55347.2025.00231},
+  isbn = {979-8-3315-0569-1},
+  keywords = {binary analysis, formal methods, pointer analysis},
+  pages = {42--53},
+  publisher = {IEEE Press},
+  series = {{ICSE} '25},
+  title = {Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}},
+  url = {https://doi.org/10.1109/ICSE55347.2025.00231},
+  year = {2025}
+}

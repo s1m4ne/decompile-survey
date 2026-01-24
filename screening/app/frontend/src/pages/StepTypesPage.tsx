@@ -41,7 +41,19 @@ export function StepTypesPage() {
         </div>
       ) : (
         <div className="grid gap-4">
-          {stepTypes?.map((type) => (
+          {[...(stepTypes ?? [])]
+            .sort((a, b) => {
+              const dedupTypes = new Set(['dedup-doi', 'dedup-title', 'dedup-author']);
+              const aIsDedup = dedupTypes.has(a.id);
+              const bIsDedup = dedupTypes.has(b.id);
+              if (aIsDedup && bIsDedup) return 0;
+              if (aIsDedup) return -1;
+              if (bIsDedup) return 1;
+              if (a.id === 'ai-screening') return 1;
+              if (b.id === 'ai-screening') return -1;
+              return 0;
+            })
+            .map((type) => (
             <div
               key={type.id}
               className="p-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg"

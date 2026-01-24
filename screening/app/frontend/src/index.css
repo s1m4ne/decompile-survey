@@ -21,7 +21,7 @@
   --radius: 0.5rem;
   --status-success: 142 70% 45%;
   --status-success-bg: 142 76% 92%;
-  --status-success-fg: 142 64% 28%;
+  --status-success-fg: 142 64% 40%;
   --status-success-border: 142 65% 80%;
   --status-success-solid: 142 70% 40%;
   --status-success-solid-foreground: 0 0% 100%;
@@ -33,7 +33,7 @@
   --status-warning-solid-foreground: 0 0% 100%;
   --status-danger: 0 84% 60%;
   --status-danger-bg: 0 93% 94%;
-  --status-danger-fg: 0 74% 36%;
+  --status-danger-fg: 0 74% 48%;
   --status-danger-border: 0 93% 85%;
   --status-danger-solid: 0 84% 55%;
   --status-danger-solid-foreground: 0 0% 100%;

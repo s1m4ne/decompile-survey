@@ -43,4 +43,6 @@ def list_step_types() -> list[StepTypeInfo]:
 # (Add imports here as handlers are implemented)
 from . import dedup_doi
 from . import ai_screening
+from . import dedup_title
+from . import dedup_author
 # from . import normalize

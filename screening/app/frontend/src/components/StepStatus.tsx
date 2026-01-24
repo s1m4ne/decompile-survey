@@ -6,11 +6,11 @@ export type StepStatus = 'pending' | 'running' | 'completed' | 'failed';
 export function StepStatusIcon({ status }: { status: StepStatus }) {
   switch (status) {
     case 'completed':
-      return <CheckCircle className="w-5 h-5 text-[hsl(var(--status-success))]" />;
+      return <CheckCircle className="w-5 h-5 text-[hsl(var(--status-success-fg))]" />;
     case 'running':
       return <Loader2 className="w-5 h-5 animate-spin text-[hsl(var(--status-info))]" />;
     case 'failed':
-      return <AlertCircle className="w-5 h-5 text-[hsl(var(--status-danger))]" />;
+      return <AlertCircle className="w-5 h-5 text-[hsl(var(--status-danger-fg))]" />;
     default:
       return <Clock className="w-5 h-5 text-[hsl(var(--status-neutral))]" />;
   }

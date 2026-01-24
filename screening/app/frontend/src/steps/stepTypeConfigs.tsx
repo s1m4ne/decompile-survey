@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ColumnDefinition, BibEntry, ChangeRecord, FilterOption } from '../components/papers';
 import { Badge } from '../components/ui/Badge';
-import { Fingerprint, Brain } from 'lucide-react';
+import { Fingerprint, Brain, Type, Users } from 'lucide-react';
 import { normalizeBibtexText } from '../components/BibtexText';
 
 // Step type specific configuration
@@ -12,78 +12,92 @@ export interface StepTypeConfig {
   filterEntry?: (entry: BibEntry, change: ChangeRecord | undefined, activeFilters: string[]) => boolean;
 }
 
-// DOI Deduplication specific columns
-const dedupDoiColumns: ColumnDefinition<BibEntry>[] = [
-  {
-    id: 'title',
-    header: 'Title',
-    width: 'flex-1 min-w-0',
-    render: (entry) => (
-      <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
-        {normalizeBibtexText(entry.title) || '(No title)'}
-      </span>
-    ),
-  },
-  {
-    id: 'author',
-    header: 'Authors',
-    width: 'w-40',
-    render: (entry) => (
-      <span className="line-clamp-1 text-sm text-[hsl(var(--muted-foreground))]" title={entry.author}>
-        {entry.author ? formatAuthors(entry.author) : '-'}
-      </span>
-    ),
-  },
-  {
-    id: 'year',
-    header: 'Year',
-    width: 'w-16 text-center',
-    render: (entry) => entry.year || '-',
-  },
-  {
-    id: 'doi',
-    header: 'DOI',
-    width: 'w-48',
-    render: (entry) => {
-      if (!entry.doi) {
-        return <span className="text-[hsl(var(--muted-foreground))] text-xs">No DOI</span>;
-      }
-      const doiUrl = entry.doi.startsWith('http')
-        ? entry.doi
-        : `https://doi.org/${entry.doi}`;
-      return (
-        <a
-          href={doiUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-[hsl(var(--status-info))] hover:underline line-clamp-1"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {doiUrl}
-        </a>
-      );
-    },
-  },
-  {
-    id: 'reason',
-    header: 'Reason',
-    width: 'w-32',
-    render: (_, change) => {
-      if (!change) return '-';
-      const reasonLabels: Record<string, string> = {
-        unique_doi: 'Unique DOI',
-        no_doi: 'No DOI',
-        duplicate_doi: 'Duplicate',
-        no_doi_removed: 'No DOI (removed)',
-      };
-      return (
-        <span className="text-xs text-[hsl(var(--muted-foreground))]">
-          {reasonLabels[change.reason] || change.reason}
+function buildDedupColumns(reasonLabels: Record<string, string>): ColumnDefinition<BibEntry>[] {
+  return [
+    {
+      id: 'title',
+      header: 'Title',
+      width: 'flex-1 min-w-0',
+      render: (entry) => (
+        <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
+          {normalizeBibtexText(entry.title) || '(No title)'}
         </span>
-      );
+      ),
     },
-  },
-];
+    {
+      id: 'author',
+      header: 'Authors',
+      width: 'w-40',
+      render: (entry) => (
+        <span className="line-clamp-1 text-sm text-[hsl(var(--muted-foreground))]" title={entry.author}>
+          {entry.author ? formatAuthors(entry.author) : '-'}
+        </span>
+      ),
+    },
+    {
+      id: 'year',
+      header: 'Year',
+      width: 'w-16 text-center',
+      render: (entry) => entry.year || '-',
+    },
+    {
+      id: 'doi',
+      header: 'DOI',
+      width: 'w-48',
+      render: (entry) => {
+        if (!entry.doi) {
+          return <span className="text-[hsl(var(--muted-foreground))] text-xs">No DOI</span>;
+        }
+        const doiUrl = entry.doi.startsWith('http')
+          ? entry.doi
+          : `https://doi.org/${entry.doi}`;
+        return (
+          <a
+            href={doiUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-[hsl(var(--status-info))] hover:underline line-clamp-1"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {doiUrl}
+          </a>
+        );
+      },
+    },
+    {
+      id: 'reason',
+      header: 'Reason',
+      width: 'w-36',
+      render: (_, change) => {
+        if (!change) return '-';
+        return (
+          <span className="text-xs text-[hsl(var(--muted-foreground))]">
+            {reasonLabels[change.reason] || change.reason}
+          </span>
+        );
+      },
+    },
+  ];
+}
+
+const dedupDoiColumns = buildDedupColumns({
+  unique_doi: 'Unique DOI',
+  no_doi: 'No DOI',
+  duplicate_doi: 'Duplicate',
+  no_doi_removed: 'No DOI (removed)',
+});
+
+const dedupTitleColumns = buildDedupColumns({
+  unique_title: 'Unique title',
+  duplicate_title: 'Duplicate title',
+  duplicate_title_representative: 'Representative',
+});
+
+const dedupAuthorColumns = buildDedupColumns({
+  unique_author: 'Unique author',
+  duplicate_author: 'Duplicate author',
+  duplicate_author_representative: 'Representative',
+});
 
 // DOI Deduplication filter builder
 function buildDedupDoiFilters(entries: BibEntry[], changes: ChangeRecord[]): FilterOption[] {
@@ -237,6 +251,14 @@ export const stepTypeConfigs: Record<string, StepTypeConfig> = {
     columns: aiScreeningColumns,
     buildFilters: buildAIScreeningFilters,
     filterEntry: filterAIScreeningEntry,
+  },
+  'dedup-title': {
+    icon: <Type className="w-5 h-5" />,
+    columns: dedupTitleColumns,
+  },
+  'dedup-author': {
+    icon: <Users className="w-5 h-5" />,
+    columns: dedupAuthorColumns,
   },
 };
 
