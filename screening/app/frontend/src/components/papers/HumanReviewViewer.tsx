@@ -271,6 +271,21 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
     });
   };
 
+  const expandAllVisible = () => {
+    setExpandedRows((prev) => {
+      const next = new Set(prev);
+      for (const entry of visibleEntries) {
+        const key = entry.ID ?? '';
+        if (key) next.add(key);
+      }
+      return next;
+    });
+  };
+
+  const collapseAll = () => {
+    setExpandedRows(new Set());
+  };
+
   const renderDecisionBadge = (decision?: string) => {
     if (!decision) return '-';
     if (decision === 'include') return <Badge variant="success">Keep</Badge>;
@@ -326,6 +341,22 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
         onSearchChange={setSearchQuery}
         placeholder="Search by title, author, key, or DOI..."
       />
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={expandAllVisible}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--border))] rounded-md hover:bg-[hsl(var(--muted))]"
+        >
+          Expand details
+        </button>
+        <button
+          type="button"
+          onClick={collapseAll}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--border))] rounded-md hover:bg-[hsl(var(--muted))]"
+        >
+          Collapse details
+        </button>
+      </div>
 
       {visibleEntries.length === 0 && (
         <div className="text-center py-8 text-[hsl(var(--muted-foreground))]">
