@@ -12,3 +12,6 @@ export type { PaginationProps } from './Pagination';
 
 export { StepOutputViewer } from './StepOutputViewer';
 export type { StepOutputViewerProps } from './StepOutputViewer';
+
+export { HumanReviewViewer } from './HumanReviewViewer';
+export type { HumanReviewViewerProps } from './HumanReviewViewer';

@@ -40,25 +40,6 @@
   year = {2021}
 }
 
-@article{bojic_modernizing_2025,
-  abstract = {Legacy software, particularly from the 1990s, often becomes obsolete due to aging hardware and outdated software environments. Traditionally, software modernization required extensive manual effort, involving reverse engineering, code rewriting, and re-architecting. However, advancements in large language models (LLMs) have introduced new possibilities for automating software translation and modernization. This paper explores the feasibility of using LLMs for modernizing 90s-era Windows applications, specifically migrating legacy C and C++ code to Python. Our methodology includes decompilation, source code analysis, automated translation using ChatGPT, and user interface reconstruction. We empirically evaluate three software projects by analyzing LLM-based translation accuracy across different code structures, including algorithmic logic, file handling, and graphical interfaces. Results indicate that while LLMs achieve high translation accuracy (-88\%) for structured code, challenges persist in handling decompiled code and user interface generation. The study provides insights into the effectiveness and limitations of LLMs in real-world software renovation, offering guidelines for leveraging machine learning in legacy system modernization. These findings contribute to both academic research and practical applications, suggesting a pathway for cost-effective and scalable legacy software migration.},
-  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
-  author = {Bojic, Dragan and Draskovic, Drazen},
-  doi = {10.1142/S021819402550024X},
-  issn = {0218-1940},
-  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
-  keywords = {Decompilation, machine learning, software translation},
-  language = {English},
-  month = {August},
-  note = {Type: Article},
-  number = {08},
-  pages = {1099--1119},
-  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
-  title = {Modernizing 90s {Era} {Software} to a {New} {Language} and {Environment} {Using} {LLMs} - {An} {Empirical} {Investigation}},
-  volume = {35},
-  year = {2025}
-}
-
 @article{cao_boosting_2023,
   abstract = {Decompilation aims to transform a low-level program language (LPL) (eg., binary file) into its functionally-equivalent high-level program language (HPL) (e.g., C/C++). It is a core technology in software security, especially in vulnerability discovery and malware analysis. In recent years, with the successful application of neural machine translation (NMT) models in natural language processing (NLP), researchers have tried to build neural decompilers by borrowing the idea of NMT. They formulate the decompilation process as a translation problem between LPL and HPL, aiming to reduce the human cost required to develop decompilation tools and improve their generalizability. However, state-of-the-art learning-based decompilers do not cope well with compiler-optimized binaries. Since real-world binaries are mostly compiler-optimized, decompilers that do not consider optimized binaries have limited practical significance. In this paper, we propose a novel learning-based approach named NeurDP, that targets compiler-optimized binaries. NeurDP uses a graph neural network (GNN) model to convert LPL to an intermediate representation (IR), which bridges the gap between source code and optimized binary. We also design an Optimized Translation Unit (OTU) to split functions into smaller code fragments for better translation performance. Evaluation results on datasets containing various types of statements show that NeurDP can decompile optimized binaries with 45.21\% higher accuracy than state-of-the-art neural decompilation frameworks.},
   author = {Cao, Ying and Liang, Ruigang and Chen, Kai and Hu, Peiwei},
@@ -91,6 +72,16 @@
   title = {Augmenting {Decompiler} {Output} with {Learned} {Variable} {Names} and {Types}},
   url = {https://arxiv.org/pdf/2108.06363},
   year = {2021}
+}
+
+@article{chen_recopilot_2025,
+  abstract = {Binary analysis plays a pivotal role in security domains such as malware detection and vulnerability discovery, yet it remains labor-intensive and heavily reliant on expert knowledge. General-purpose large language models (LLMs) perform well in programming analysis on source code, while binaryspecific LLMs are underexplored. In this work, we present ReCopilot, an expert LLM designed for binary analysis tasks. ReCopilot integrates binary code knowledge through a meticulously constructed dataset, encompassing continue pretraining (CPT), supervised fine-tuning (SFT), and direct preference optimization (DPO) stages. It leverages variable data flow and call graph to enhance context awareness and employs test-time scaling to improve reasoning capabilities. Evaluations on a comprehensive binary analysis benchmark demonstrate that ReCopilot achieves state-of-the-art performance in tasks such as function name recovery and variable type inference on the decompiled pseudo code, outperforming both existing tools and LLMs by 13\%. Our findings highlight the effectiveness of domain-specific training and context enhancement, while also revealing challenges in building super long chain-of-thought. ReCopilot represents a significant step toward automating binary analysis with interpretable and scalable AI assistance in this domain.},
+  author = {Chen, Guoqiang and Sun, Huiqi and Liu, Daguang and Wang, Zhiqi and Wang, Qiang and Yin, Bin and Liu, Lu and Ying, Lingyun},
+  doi = {https://doi.org/10.48550/arXiv.2505.16366},
+  month = {May},
+  title = {{ReCopilot}: {Reverse} {Engineering} {Copilot} in {Binary} {Analysis}},
+  url = {https://arxiv.org/pdf/2505.16366},
+  year = {2025}
 }
 
 @inproceedings{chen_suigpt_2025,
@@ -291,25 +282,6 @@
   year = {2019}
 }
 
-@article{li_iradt_2024,
-  abstract = {Decompilation is a widely utilized technique in reverse engineering, aimed at restoring binary code to human-readable high-level language code. However, the readability of the output from traditional decompilers is often poor. With advancements in language models, several learning-based decompilation methods have emerged. Nevertheless, the probabilistic nature of language models leads to outputs whose correctness cannot be guaranteed, necessitating further analysis by engineers to identify the corresponding functionality of the code. Inspired by compiler toolchains, we propose a novel approach to enhance the effectiveness of language models in decompilation tasks. Traditional rule-based methods and learning-based techniques are fused together in our approach, drawing insights from both paradigms. Specifically, we present a pre-trained sequence-to-sequence model called IRaDT tailored to refine decompilation outputs at the intermediate representation level. Through this hybridization, we aim to address the limitations of existing methodologies and achieve more accurate and robust decompilation. We construct a diverse decompilation dataset targeting IR and evaluated IRaDT based on this dataset. The experimental results indicate that IRaDT has the ability to improve the readability of IR while ensuring its compileability, achieving a 74\% improvement compared to RetDec and a 93\% improvement compared to ChatGPT.},
-  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
-  author = {Li, Yuzhang and Xu, Tao and Wang, Chunlu},
-  doi = {10.1142/S0218194024500463},
-  issn = {0218-1940},
-  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
-  keywords = {Decompilation, LLVM immediate representation, neural machine translation, pre-trained language model},
-  language = {English},
-  month = {February},
-  note = {Type: Article},
-  number = {12},
-  pages = {1971--1992},
-  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
-  title = {{IRaDT}: {LLVM} {IR} as {Target} for {Efficient} {Neural} {Decompilation}},
-  volume = {34},
-  year = {2024}
-}
-
 @article{li_neurodex_2025,
   abstract = {On-device deep learning models have extensive real world demands. Deep learning compilers efficiently compile models into executables for deployment on edge devices, but these executables may face the threat of reverse engineering. Previous studies have attempted to decompile DNN executables, but they face challenges in handling compilation optimizations and analyzing quantized compiled models. In this paper, we present NeuroDeX to unlock diverse support in decompiling DNN executables. NeuroDeX leverages the semantic understanding capabilities of LLMs along with dynamic analysis to accurately and efficiently perform operator type recognition, operator attribute recovery and model reconstruction. NeuroDeX can recover DNN executables into high-level models towards compilation optimizations, different architectures and quantized compiled models. We conduct experiments on 96 DNN executables across 12 common DNN models. Extensive experimental results demonstrate that NeuroDeX can decompile non-quantized executables into nearly identical high-level models. NeuroDeX can recover functionally similar high-level models for quantized executables, achieving an average top-1 accuracy of 72\%. NeuroDeX offers a more comprehensive and effective solution compared to previous DNN executables decompilers.},
   author = {Li, Yilin and Meng, Guozhu and Sun, Mingyang and Wang, Yanzhong and Sun, Kun and Chang, Hailong and Li, Yuekang},
@@ -396,21 +368,6 @@
   pages = {4069--4087},
   title = {"{Len} or index or count, anything but v1": {Predicting} {Variable} {Names} in {Decompilation} {Output} with {Transfer} {Learning}},
   year = {2024}
-}
-
-@article{sateanpattanakul_java_2022,
-  abstract = {Decompilation is the main process of software development, which is very important when a program tries to retrieve lost source codes. Although decompiling Java bytecode is easier than bytecode, many Java decompilers cannot recover originally lost sources, especially the selection statement, i.e., if statement. This deficiency affects directly decompilation performance. In this paper, we propose the methodology for guiding Java decompiler to deal with the aforementioned problem. In the framework, Java bytecode is transformed into two kinds of features called frame feature and latent semantic feature. The former is extracted directly from the bytecode. The latter is achieved by two-step transforming the Java bytecode to bigram and then term frequency-inverse document frequency (TFIDF). After that, both of them are fed to the genetic algorithm to reduce their dimensions. The proposed feature is achieved by converting the selected TFIDF to a latent semantic feature and concatenating it with the selected frame feature. Finally, KNN is used to classify the proposed feature. The experimental results show that the decompilation accuracy is 93.68 percent, which is obviously better than Java Decompiler.},
-  author = {Sateanpattanakul, Siwadol and Jetpipattanapong, Duangpen and Mathulaprangsan, Seksan},
-  doi = {10.13052/jmm1550-4646.1822},
-  issn = {1550-4654},
-  journal = {Journal of Mobile Multimedia},
-  keywords = {Source coding, Decompilation, Semantics, Accuracy, Feature extraction, Nearest neighbor methods, Software development management, Java, feature selection, genetic algorithm, Genetic algorithms, Indexing, latent semantic indexing},
-  month = {March},
-  number = {2},
-  pages = {179--202},
-  title = {Java {Bytecode} {Control} {Flow} {Classification}: {Framework} for {Guiding} {Java} {Decompilation}},
-  volume = {18},
-  year = {2022}
 }
 
 @inproceedings{she_wadec_2024,
@@ -501,19 +458,6 @@
   year = {2025}
 }
 
-@inproceedings{wiedemeier_pylingual_2025,
-  abstract = {Python is one of the most popular programming languages among both industry developers and malware authors. Despite demand for Python decompilers, community efforts to maintain automatic Python decompilation tools have been hindered by Python's aggressive language improvements and unstable bytecode specification. Every year, language features are added, code generation undergoes significant changes, and opcodes are added, deleted, and modified. Our research aims to integrate Natural Language Processing (NLP) techniques with classical Programming Language (PL) theory to create a Python decompiler that accomodates evolving language features and changes to the bytecode specification with minimal human maintenance effort. PyLINGUAL plugs in data-driven NLP components to a version-agnostic core to automatically absorb superficial bytecode and compiler changes, while leveraging programmatic components for abstract control flow reconstruction. To establish trust in the decompilation results, we introduce a stringent correctness measure based on “perfect decompilation”, a statically verifiable refinement of semantic equivalence. We demonstrate the efficacy of our approach with extensive real-world datasets of benign and malicious Python source code and their corresponding compiled PYC binaries. Our research makes three major contributions: (1) we present PyLINGUAL, a scalable, data-driven decompilation framework with state-of-the-art support for Python versions 3.6 through 3.12, improving the perfect decompilation rate by an average of 45\% over the best results of existing decompiler across four datasets; (2) we provide a Python decompiler evaluation framework that verifies decompilation results with perfect decompilation; and (3) we launch PyLINGUAL as a public online service.},
-  author = {Wiedemeier, Josh and Tarbet, Elliot and Zheng, Max and Ko, Sangsoo and Ouyang, Jessica and Cha, Sang Kil and Jee, Kangkook},
-  booktitle = {2025 {IEEE} {Symposium} on {Security} and {Privacy} ({SP})},
-  doi = {10.1109/SP61157.2025.00052},
-  issn = {2375-1207},
-  keywords = {Codes, Security, Source coding, Program processors, Reverse engineering, Semantics, Translation, reverse engineering, Syntactics, Natural language processing, decompiler, nlp, python, Python},
-  month = {May},
-  pages = {2976--2994},
-  title = {{PyLingual}: {Toward} {Perfect} {Decompilation} of {Evolving} {High}-{Level} {Languages}},
-  year = {2025}
-}
-
 @article{wong_decllm_2025,
   abstract = {Decompilers are widely used in reverse engineering (RE) to convert compiled executables into human-readable pseudocode and support various security analysis tasks. Existing decompilers, such as IDA Pro and Ghidra, focus on enhancing the readability of decompiled code rather than its recompilability, which limits further programmatic use, such as for CodeQL-based vulnerability analysis that requires compilable versions of the decompiled code. Recent LLM-based approaches for enhancing decompilation results, while useful for human RE analysts, unfortunately also follow the same path. In this paper, we explore, for the first time, how off-the-shelf large language models (LLMs) can be used to enable recompilable decompilation—automatically correcting decompiler outputs into compilable versions. We first show that this is non-trivial through a pilot study examining existing rule-based and LLM-based approaches. Based on the lessons learned, we design DecLLM, an iterative LLM-based repair loop that utilizes both static recompilation and dynamic runtime feedback as oracles to iteratively fix decompiler outputs. We test DecLLM on popular C benchmarks and real-world binaries using two mainstream LLMs, GPT-3.5 and GPT-4, and show that off-the-shelf LLMs can achieve an upper bound of around 70\% recompilation success rate, i.e., 70 out of 100 originally non-recompilable decompiler outputs are now recompilable. We also demonstrate the practical applicability of the recompilable code for CodeQL-based vulnerability analysis, which is impossible to perform directly on binaries. For the remaining 30\% of hard cases, we further delve into their errors to gain insights for future improvements in decompilation-oriented LLM design.},
   address = {New York, NY, USA},
@@ -540,34 +484,13 @@
   year = {2023}
 }
 
-@inproceedings{xie_resym_2024,
-  abstract = {Decompilation aims to recover a binary executable to the source code form and hence has a wide range of applications in cyber security, such as malware analysis and legacy code hardening. A prominent challenge is to recover variable symbols, including both primitive and complex types such as user-defined data structures, along with their symbol information such as names and types. Existing efforts focus on solving parts of the problem, e.g., recovering only types (without names) or only local variables (without user-defined structures). In this paper, we propose ReSym, a novel hybrid technique that combines Large Language Models (LLMs) and program analysis to recover both names and types for local variables and user-defined data structures. Our method encompasses fine-tuning two LLMs to handle local variables and structures, respectively. To overcome the token limitations inherent in current LLMs, we devise a novel Prolog-based algorithm to aggregate and cross-check results from multiple LLM queries, suppressing uncertainty and hallucinations. Our experiments show that ReSym is effective in recovering variable information and user-defined data structures, substantially outperforming the state-of-the-art methods.},
-  address = {New York, NY, USA},
-  author = {Xie, Danning and Zhang, Zhuo and Jiang, Nan and Xu, Xiangzhe and Tan, Lin and Zhang, Xiangyu},
-  booktitle = {Proceedings of the 2024 on {ACM} {SIGSAC} {Conference} on {Computer} and {Communications} {Security}},
-  doi = {10.1145/3658644.3670340},
-  isbn = {979-8-4007-0636-3},
-  keywords = {program analysis, reverse engineering, large language models},
-  pages = {4554--4568},
-  publisher = {Association for Computing Machinery},
-  series = {{CCS} '24},
-  title = {{ReSym}: {Harnessing} {LLMs} to {Recover} {Variable} and {Data} {Structure} {Symbols} from {Stripped} {Binaries}},
-  url = {https://doi.org/10.1145/3658644.3670340},
-  year = {2024}
-}
-
-@inproceedings{xiong_hext5_2024,
-  abstract = {Decompilation is a widely used process for reverse engineers to significantly enhance code readability by lifting assembly code to a higher-level C-like language, pseudo-code. Nevertheless, the process of compilation and stripping irreversibly discards high-level semantic information that is crucial to code comprehension, such as comments, identifier names, and types. Existing approaches typically recover only one type of information, making them suboptimal for semantic inference. In this paper, we treat pseudo-code as a special programming language, then present a unified pre-trained model, HexT5, that is trained on vast amounts of natural language comments, source identifiers, and pseudo-code using novel pseudo-code-based pretraining objectives. We fine-tune HexT5 on various downstream tasks, including code summarization, variable name recovery, function name recovery, and similarity detection. Comprehensive experiments show that HexT5 achieves state-of-the-art performance on four downstream tasks, and it demonstrates the robust effectiveness and generalizability of HexT5 for binary-related tasks.},
-  author = {Xiong, Jiaqi and Chen, Guoqiang and Chen, Kejiang and Gao, Han and Cheng, Shaoyin and Zhang, Weiming},
-  booktitle = {Proceedings of the 38th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
-  doi = {10.1109/ASE56229.2023.00099},
-  isbn = {979-8-3503-2996-4},
-  keywords = {Binary codes, Task analysis, Deep Learning, Reverse Engineering, Semantics, deep learning, Natural languages, reverse engineering, Data mining, Computer languages, binary diffing, information inference, programming language model, Object recognition, Binary Diffing, Information Inference, Programming Language Model},
-  pages = {774--786},
-  publisher = {IEEE Press},
-  series = {{ASE} '23},
-  title = {{HexT5}: {Unified} {Pre}-{Training} for {Stripped} {Binary} {Code} {Information} {Inference}},
-  url = {https://doi.org/10.1109/ASE56229.2023.00099},
+@article{xu_symbol_2024,
+  abstract = {Decompilation aims to recover the source code form of a binary executable. It has many security applications, such as malware analysis, vulnerability detection, and code hardening. A prominent challenge in decompilation is to recover variable names. We propose a novel technique that leverages the strengths of generative models while mitigating model biases. We build a prototype, GenNm, from pre-trained generative models CodeGemma-2B, CodeLlama-7B, and CodeLlama-34B. We finetune GenNm on decompiled functions and teach models to leverage contextual information. GenNm includes names from callers and callees while querying a function, providing rich contextual information within the model's input token limitation. We mitigate model biases by aligning the output distribution of models with symbol preferences of developers. Our results show that GenNm improves the state-of-the-art name recovery precision by 5.6-11.4 percentage points on two commonly used datasets and improves the state-of-the-art by 32\% (from 17.3\% to 22.8\%) in the most challenging setup where ground-truth variable names are not seen in the training dataset.},
+  author = {Xu, Xiangzhe and Zhang, Zhuo and Su, Zian and Huang, Ziyang and Feng, Shiwei and Ye, Yapeng and Jiang, Nan and Xie, Danning and Cheng, Siyuan and Tan, Lin and Zhang, Xiangyu},
+  doi = {https://doi.org/10.48550/arXiv.2306.02546},
+  month = {February},
+  title = {Symbol {Preference} {Aware} {Generative} {Models} for {Recovering} {Variable} {Names} from {Stripped} {Binary}},
+  url = {https://arxiv.org/pdf/2306.02546},
   year = {2024}
 }
 

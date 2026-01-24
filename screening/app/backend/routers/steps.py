@@ -591,6 +591,13 @@ def get_step_changes(project_id: str, step_id: str) -> list[dict]:
     return changes
 
 
+@router.get("/{step_id}/changes/ai")
+def get_step_ai_changes(project_id: str, step_id: str) -> list[dict]:
+    """Get AI step changes (from changes_ai.jsonl)."""
+    step_dir = get_step_dir(project_id, step_id)
+    return load_changes_file(step_dir, "changes_ai.jsonl")
+
+
 @router.get("/{step_id}/clusters")
 def get_step_clusters(project_id: str, step_id: str) -> dict:
     """Get step clusters (from clusters.json)."""
@@ -781,19 +788,21 @@ def update_step_review(project_id: str, step_id: str, payload: dict) -> dict:
     for entry in input_entries:
         key = entry.get("ID", "")
         review = review_map.get(key, {})
-        decision = review.get("decision") or "uncertain"
+        decision = review.get("decision")
         if decision == "include":
             passed.append(entry)
         elif decision == "exclude":
             excluded.append(entry)
-        else:
+        elif decision == "uncertain":
             uncertain.append(entry)
 
     human_changes: list[Change] = []
     for entry in input_entries:
         key = entry.get("ID", "")
         review = review_map.get(key, {})
-        decision = review.get("decision") or "uncertain"
+        decision = review.get("decision")
+        if decision not in ("include", "exclude", "uncertain"):
+            continue
         action = "remove" if decision == "exclude" else "keep"
         human_changes.append(
             Change(

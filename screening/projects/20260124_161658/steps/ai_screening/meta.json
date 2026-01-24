@@ -11,12 +11,12 @@
   "outputs": {
     "passed": {
       "file": "steps/ai_screening/outputs/passed.bib",
-      "count": 46,
+      "count": 0,
       "description": "Papers judged as 'include'"
     },
     "excluded": {
       "file": "steps/ai_screening/outputs/excluded.bib",
-      "count": 579,
+      "count": 0,
       "description": "Papers judged as 'exclude'"
     },
     "uncertain": {
@@ -27,15 +27,15 @@
   },
   "stats": {
     "input_count": 625,
-    "total_output_count": 625,
-    "passed_count": 46,
-    "removed_count": 579
+    "total_output_count": 0,
+    "passed_count": 0,
+    "removed_count": 0
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-24T22:21:57.950442",
-    "completed_at": "2026-01-24T22:23:25.635222",
-    "duration_sec": 87.68478,
+    "started_at": "2026-01-25T01:01:07.295688",
+    "completed_at": "2026-01-25T01:02:38.233889",
+    "duration_sec": 90.938201,
     "error": null
   }
 }

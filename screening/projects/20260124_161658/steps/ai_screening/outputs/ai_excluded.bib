@@ -791,6 +791,25 @@
   year = {2018}
 }
 
+@article{bojic_modernizing_2025,
+  abstract = {Legacy software, particularly from the 1990s, often becomes obsolete due to aging hardware and outdated software environments. Traditionally, software modernization required extensive manual effort, involving reverse engineering, code rewriting, and re-architecting. However, advancements in large language models (LLMs) have introduced new possibilities for automating software translation and modernization. This paper explores the feasibility of using LLMs for modernizing 90s-era Windows applications, specifically migrating legacy C and C++ code to Python. Our methodology includes decompilation, source code analysis, automated translation using ChatGPT, and user interface reconstruction. We empirically evaluate three software projects by analyzing LLM-based translation accuracy across different code structures, including algorithmic logic, file handling, and graphical interfaces. Results indicate that while LLMs achieve high translation accuracy (-88\%) for structured code, challenges persist in handling decompiled code and user interface generation. The study provides insights into the effectiveness and limitations of LLMs in real-world software renovation, offering guidelines for leveraging machine learning in legacy system modernization. These findings contribute to both academic research and practical applications, suggesting a pathway for cost-effective and scalable legacy software migration.},
+  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
+  author = {Bojic, Dragan and Draskovic, Drazen},
+  doi = {10.1142/S021819402550024X},
+  issn = {0218-1940},
+  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
+  keywords = {Decompilation, machine learning, software translation},
+  language = {English},
+  month = {August},
+  note = {Type: Article},
+  number = {08},
+  pages = {1099--1119},
+  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
+  title = {Modernizing 90s {Era} {Software} to a {New} {Language} and {Environment} {Using} {LLMs} - {An} {Empirical} {Investigation}},
+  volume = {35},
+  year = {2025}
+}
+
 @article{bolanos_rodas_image_2022,
   abstract = {The arrival of the Bourbons to the Hispanic Monarchy brought with it new ways of conceiving of the society attached to its body politic. New laws and rights were promoted, which motivated among the free population a recognition of their status and states in the space of the localities of Hispanic America. In this sense, the present work attempts to approach the case of the integration and recognition of the free population of the city of Caloto, And the contiguous seat of Quilichao. The analysis of the census carried out in the year 1784 in Caloto and of the decompiled documentation of the General Archive of the Nation, from the colony section (Cauca populations) allows the observation and identification that in the framework of the interwoven relationships of the free or mestizo population there were some activities that influenced incorporation and the forms of participation in the community.},
   address = {CARRETERA CENTRAL DEL NORTE, TUNJA, BOY 00000, COLOMBIA},
@@ -1262,16 +1281,6 @@
   title = {Predicting {Android} malware combining permissions and {API} call sequences},
   volume = {31},
   year = {2023}
-}
-
-@article{chen_recopilot_2025,
-  abstract = {Binary analysis plays a pivotal role in security domains such as malware detection and vulnerability discovery, yet it remains labor-intensive and heavily reliant on expert knowledge. General-purpose large language models (LLMs) perform well in programming analysis on source code, while binaryspecific LLMs are underexplored. In this work, we present ReCopilot, an expert LLM designed for binary analysis tasks. ReCopilot integrates binary code knowledge through a meticulously constructed dataset, encompassing continue pretraining (CPT), supervised fine-tuning (SFT), and direct preference optimization (DPO) stages. It leverages variable data flow and call graph to enhance context awareness and employs test-time scaling to improve reasoning capabilities. Evaluations on a comprehensive binary analysis benchmark demonstrate that ReCopilot achieves state-of-the-art performance in tasks such as function name recovery and variable type inference on the decompiled pseudo code, outperforming both existing tools and LLMs by 13\%. Our findings highlight the effectiveness of domain-specific training and context enhancement, while also revealing challenges in building super long chain-of-thought. ReCopilot represents a significant step toward automating binary analysis with interpretable and scalable AI assistance in this domain.},
-  author = {Chen, Guoqiang and Sun, Huiqi and Liu, Daguang and Wang, Zhiqi and Wang, Qiang and Yin, Bin and Liu, Lu and Ying, Lingyun},
-  doi = {https://doi.org/10.48550/arXiv.2505.16366},
-  month = {May},
-  title = {{ReCopilot}: {Reverse} {Engineering} {Copilot} in {Binary} {Analysis}},
-  url = {https://arxiv.org/pdf/2505.16366},
-  year = {2025}
 }
 
 @inproceedings{chen_software_2024,
@@ -3215,17 +3224,6 @@
   year = {2022}
 }
 
-@article{jiang_nova_2025,
-  abstract = {Binary code analysis is the foundation of crucial tasks in the security domain; thus building effective binary analysis techniques is more important than ever. Large language models (LLMs) although have brought impressive improvement to source code tasks, do not directly generalize to assembly code due to the unique challenges of assembly: (1) the low information density of assembly and (2) the diverse optimizations in assembly code. To overcome these challenges, this work proposes a hierarchical attention mechanism that builds attention summaries to capture the semantics more effectively and designs contrastive learning objectives to train LLMs to learn assembly optimization. Equipped with these techniques, this work develops Nova, a generative LLM for assembly code. Nova outperforms existing techniques on binary code decompilation by up to 14.84 – 21.58\% (absolute percentage point improvement) higher Pass@1 and Pass@10, and outperforms the latest binary code similarity detection techniques by up to 6.17\% Recall@1, showing promising abilities on both assembly generation and understanding tasks.},
-  annote = {Published as a conference paper at ICLR 2025},
-  author = {Jiang, Nan and Wang, Chengxiao and Liu, Kevin and Xu, Xiangzhe and Tan, Lin and Zhang, Xiangyu and Babkin, Petr},
-  doi = {https://doi.org/10.48550/arXiv.2311.13721},
-  month = {January},
-  title = {Nova: {Generative} {Language} {Models} for {Assembly} {Code} with {Hierarchical} {Attention} and {Contrastive} {Learning}},
-  url = {https://arxiv.org/pdf/2311.13721},
-  year = {2025}
-}
-
 @inproceedings{jin_ccci_2025,
   abstract = {Unlike code generation, which involves creating code from scratch, code completion focuses on integrating new lines or blocks of code into an existing codebase. This process requires a deep understanding of the surrounding context, such as variable scope, object models, API calls, and database relations, to produce accurate results. These complex contextual dependencies make code completion a particularly challenging problem. Current models and approaches often fail to effectively incorporate such context, leading to inaccurate completions with low acceptance rates (around 30\%). For tasks like data transfer, which rely heavily on specific relationships and data structures, acceptance rates drop even further. This study introduces CCCI, a novel method for generating context-aware code completions specifically designed to address data transfer tasks. By integrating contextual information, such as database table relationships, object models, and library details into Large Language Models (LLMs), CCCI improves the accuracy of code completions. We evaluate CCCI using 289 Java snippets, extracted from over 819 operational scripts in an industrial setting. The results demonstrate that CCCI achieved a 49.1\% Build Pass rate and a 41.0\% CodeBLEU score, comparable to state-of-the-art methods that often struggle with complex task completion.},
   address = {New York, NY, USA},
@@ -3820,6 +3818,25 @@
   url = {https://doi.org/10.1145/3729330},
   volume = {9},
   year = {2025}
+}
+
+@article{li_iradt_2024,
+  abstract = {Decompilation is a widely utilized technique in reverse engineering, aimed at restoring binary code to human-readable high-level language code. However, the readability of the output from traditional decompilers is often poor. With advancements in language models, several learning-based decompilation methods have emerged. Nevertheless, the probabilistic nature of language models leads to outputs whose correctness cannot be guaranteed, necessitating further analysis by engineers to identify the corresponding functionality of the code. Inspired by compiler toolchains, we propose a novel approach to enhance the effectiveness of language models in decompilation tasks. Traditional rule-based methods and learning-based techniques are fused together in our approach, drawing insights from both paradigms. Specifically, we present a pre-trained sequence-to-sequence model called IRaDT tailored to refine decompilation outputs at the intermediate representation level. Through this hybridization, we aim to address the limitations of existing methodologies and achieve more accurate and robust decompilation. We construct a diverse decompilation dataset targeting IR and evaluated IRaDT based on this dataset. The experimental results indicate that IRaDT has the ability to improve the readability of IR while ensuring its compileability, achieving a 74\% improvement compared to RetDec and a 93\% improvement compared to ChatGPT.},
+  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
+  author = {Li, Yuzhang and Xu, Tao and Wang, Chunlu},
+  doi = {10.1142/S0218194024500463},
+  issn = {0218-1940},
+  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
+  keywords = {Decompilation, LLVM immediate representation, neural machine translation, pre-trained language model},
+  language = {English},
+  month = {February},
+  note = {Type: Article},
+  number = {12},
+  pages = {1971--1992},
+  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
+  title = {{IRaDT}: {LLVM} {IR} as {Target} for {Efficient} {Neural} {Decompilation}},
+  volume = {34},
+  year = {2024}
 }
 
 @article{li_malware_2022,
@@ -5765,6 +5782,21 @@ Type: Article; Proceedings Paper},
   year = {2021}
 }
 
+@article{sateanpattanakul_java_2022,
+  abstract = {Decompilation is the main process of software development, which is very important when a program tries to retrieve lost source codes. Although decompiling Java bytecode is easier than bytecode, many Java decompilers cannot recover originally lost sources, especially the selection statement, i.e., if statement. This deficiency affects directly decompilation performance. In this paper, we propose the methodology for guiding Java decompiler to deal with the aforementioned problem. In the framework, Java bytecode is transformed into two kinds of features called frame feature and latent semantic feature. The former is extracted directly from the bytecode. The latter is achieved by two-step transforming the Java bytecode to bigram and then term frequency-inverse document frequency (TFIDF). After that, both of them are fed to the genetic algorithm to reduce their dimensions. The proposed feature is achieved by converting the selected TFIDF to a latent semantic feature and concatenating it with the selected frame feature. Finally, KNN is used to classify the proposed feature. The experimental results show that the decompilation accuracy is 93.68 percent, which is obviously better than Java Decompiler.},
+  author = {Sateanpattanakul, Siwadol and Jetpipattanapong, Duangpen and Mathulaprangsan, Seksan},
+  doi = {10.13052/jmm1550-4646.1822},
+  issn = {1550-4654},
+  journal = {Journal of Mobile Multimedia},
+  keywords = {Source coding, Decompilation, Semantics, Accuracy, Feature extraction, Nearest neighbor methods, Software development management, Java, feature selection, genetic algorithm, Genetic algorithms, Indexing, latent semantic indexing},
+  month = {March},
+  number = {2},
+  pages = {179--202},
+  title = {Java {Bytecode} {Control} {Flow} {Classification}: {Framework} for {Guiding} {Java} {Decompilation}},
+  volume = {18},
+  year = {2022}
+}
+
 @article{sato_formal_2019,
   abstract = {Probabilistic programming provides a convenient lingua franca for writing succinct and rigorous descriptions of probabilistic models and inference tasks. Several probabilistic programming languages, including Anglican, Church or Hakaru, derive their expressiveness from a powerful combination of continuous distributions, conditioning, and higher-order functions. Although very important for practical applications, these features raise fundamental challenges for program semantics and verification. Several recent works offer promising answers to these challenges, but their primary focus is on foundational semantics issues. In this paper, we take a step further by developing a suite of logics, collectively named PPV for proving properties of programs written in an expressive probabilistic higher-order language with continuous sampling operations and primitives for conditioning distributions. Our logics mimic the comfortable reasoning style of informal proofs using carefully selected axiomatizations of key results from probability theory. The versatility of our logics is illustrated through the formal verification of several intricate examples from statistics, probabilistic inference, and machine learning. We further show expressiveness by giving sound embeddings of existing logics. In particular, we do this in a parametric way by showing how the semantics idea of (unary and relational) ⊤⊤-lifting can be internalized in our logics. The soundness of PPV follows by interpreting programs and assertions in quasi-Borel spaces (QBS), a recently proposed variant of Borel spaces with a good structure for interpreting higher order probabilistic programs.},
   address = {New York, NY, USA},
@@ -7407,6 +7439,22 @@ Type: Article; Proceedings Paper},
   year = {2025}
 }
 
+@inproceedings{xie_resym_2024,
+  abstract = {Decompilation aims to recover a binary executable to the source code form and hence has a wide range of applications in cyber security, such as malware analysis and legacy code hardening. A prominent challenge is to recover variable symbols, including both primitive and complex types such as user-defined data structures, along with their symbol information such as names and types. Existing efforts focus on solving parts of the problem, e.g., recovering only types (without names) or only local variables (without user-defined structures). In this paper, we propose ReSym, a novel hybrid technique that combines Large Language Models (LLMs) and program analysis to recover both names and types for local variables and user-defined data structures. Our method encompasses fine-tuning two LLMs to handle local variables and structures, respectively. To overcome the token limitations inherent in current LLMs, we devise a novel Prolog-based algorithm to aggregate and cross-check results from multiple LLM queries, suppressing uncertainty and hallucinations. Our experiments show that ReSym is effective in recovering variable information and user-defined data structures, substantially outperforming the state-of-the-art methods.},
+  address = {New York, NY, USA},
+  author = {Xie, Danning and Zhang, Zhuo and Jiang, Nan and Xu, Xiangzhe and Tan, Lin and Zhang, Xiangyu},
+  booktitle = {Proceedings of the 2024 on {ACM} {SIGSAC} {Conference} on {Computer} and {Communications} {Security}},
+  doi = {10.1145/3658644.3670340},
+  isbn = {979-8-4007-0636-3},
+  keywords = {program analysis, reverse engineering, large language models},
+  pages = {4554--4568},
+  publisher = {Association for Computing Machinery},
+  series = {{CCS} '24},
+  title = {{ReSym}: {Harnessing} {LLMs} to {Recover} {Variable} and {Data} {Structure} {Symbols} from {Stripped} {Binaries}},
+  url = {https://doi.org/10.1145/3658644.3670340},
+  year = {2024}
+}
+
 @article{xing_h-container_2022,
   abstract = {Edge computing is a recent computing paradigm that brings cloud services closer to the client. Among other features, edge computing offers extremely low client/server latencies. To consistently provide such low latencies, services should run on edge nodes that are physically as close as possible to their clients. Thus, when the physical location of a client changes, a service should migrate between edge nodes to maintain proximity. Differently from cloud nodes, edge nodes integrate CPUs of different Instruction Set Architectures (ISAs), hence a program natively compiled for a given ISA cannot migrate to a server equipped with a CPU of a different ISA. This hinders migration to the closest node.We introduce H-Container, a system that migrates natively compiled containerized applications across compute nodes featuring CPUs of different ISAs. H-Container advances over existing heterogeneous-ISA migration systems by being (a) highly compatible – no user’s source-code nor compiler toolchain modifications are needed; (b) easily deployable – fully implemented in user space, thus without any OS or hypervisor dependency, and (c) largely Linux-compliant – it can migrate most Linux software, including server applications and dynamically linked binaries. H-Container targets Linux and its already-compiled executables, adopts LLVM, extends CRIU, and integrates with Docker. Experiments demonstrate that H-Container adds no overheads during program execution, while 10–100\&nbsp;ms are added during migration. Furthermore, we show the benefits of H-Container in real-world scenarios, demonstrating, for example, up to 94\% increase in Redis throughput when client/server proximity is maintained through heterogeneous container migration.},
   address = {New York, NY, USA},
@@ -7478,16 +7526,6 @@ Type: Article; Proceedings Paper},
   title = {Phrase-{Gesture} {Typing} on {Smartphones}},
   url = {https://doi.org/10.1145/3526113.3545683},
   year = {2022}
-}
-
-@article{xu_symbol_2024,
-  abstract = {Decompilation aims to recover the source code form of a binary executable. It has many security applications, such as malware analysis, vulnerability detection, and code hardening. A prominent challenge in decompilation is to recover variable names. We propose a novel technique that leverages the strengths of generative models while mitigating model biases. We build a prototype, GenNm, from pre-trained generative models CodeGemma-2B, CodeLlama-7B, and CodeLlama-34B. We finetune GenNm on decompiled functions and teach models to leverage contextual information. GenNm includes names from callers and callees while querying a function, providing rich contextual information within the model's input token limitation. We mitigate model biases by aligning the output distribution of models with symbol preferences of developers. Our results show that GenNm improves the state-of-the-art name recovery precision by 5.6-11.4 percentage points on two commonly used datasets and improves the state-of-the-art by 32\% (from 17.3\% to 22.8\%) in the most challenging setup where ground-truth variable names are not seen in the training dataset.},
-  author = {Xu, Xiangzhe and Zhang, Zhuo and Su, Zian and Huang, Ziyang and Feng, Shiwei and Ye, Yapeng and Jiang, Nan and Xie, Danning and Cheng, Siyuan and Tan, Lin and Zhang, Xiangyu},
-  doi = {https://doi.org/10.48550/arXiv.2306.02546},
-  month = {February},
-  title = {Symbol {Preference} {Aware} {Generative} {Models} for {Recovering} {Variable} {Names} from {Stripped} {Binary}},
-  url = {https://arxiv.org/pdf/2306.02546},
-  year = {2024}
 }
 
 @inproceedings{xylogiannopoulos_text_2020,

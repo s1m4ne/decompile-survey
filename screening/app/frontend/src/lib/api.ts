@@ -229,6 +229,9 @@ export const stepsApi = {
   getChanges: (projectId: string, stepId: string) =>
     fetchApi<Record<string, unknown>[]>(`/projects/${projectId}/steps/${stepId}/changes`),
 
+  getAiChanges: (projectId: string, stepId: string) =>
+    fetchApi<Record<string, unknown>[]>(`/projects/${projectId}/steps/${stepId}/changes/ai`),
+
   getClusters: (projectId: string, stepId: string) =>
     fetchApi<{ clusters: Record<string, unknown>[] }>(`/projects/${projectId}/steps/${stepId}/clusters`),
 

@@ -1,0 +1,38 @@
+@article{jiang_nova_2025,
+  abstract = {Binary code analysis is the foundation of crucial tasks in the security domain; thus building effective binary analysis techniques is more important than ever. Large language models (LLMs) although have brought impressive improvement to source code tasks, do not directly generalize to assembly code due to the unique challenges of assembly: (1) the low information density of assembly and (2) the diverse optimizations in assembly code. To overcome these challenges, this work proposes a hierarchical attention mechanism that builds attention summaries to capture the semantics more effectively and designs contrastive learning objectives to train LLMs to learn assembly optimization. Equipped with these techniques, this work develops Nova, a generative LLM for assembly code. Nova outperforms existing techniques on binary code decompilation by up to 14.84 – 21.58\% (absolute percentage point improvement) higher Pass@1 and Pass@10, and outperforms the latest binary code similarity detection techniques by up to 6.17\% Recall@1, showing promising abilities on both assembly generation and understanding tasks.},
+  annote = {Published as a conference paper at ICLR 2025},
+  author = {Jiang, Nan and Wang, Chengxiao and Liu, Kevin and Xu, Xiangzhe and Tan, Lin and Zhang, Xiangyu and Babkin, Petr},
+  doi = {https://doi.org/10.48550/arXiv.2311.13721},
+  month = {January},
+  title = {Nova: {Generative} {Language} {Models} for {Assembly} {Code} with {Hierarchical} {Attention} and {Contrastive} {Learning}},
+  url = {https://arxiv.org/pdf/2311.13721},
+  year = {2025}
+}
+
+@inproceedings{wiedemeier_pylingual_2025,
+  abstract = {Python is one of the most popular programming languages among both industry developers and malware authors. Despite demand for Python decompilers, community efforts to maintain automatic Python decompilation tools have been hindered by Python's aggressive language improvements and unstable bytecode specification. Every year, language features are added, code generation undergoes significant changes, and opcodes are added, deleted, and modified. Our research aims to integrate Natural Language Processing (NLP) techniques with classical Programming Language (PL) theory to create a Python decompiler that accomodates evolving language features and changes to the bytecode specification with minimal human maintenance effort. PyLINGUAL plugs in data-driven NLP components to a version-agnostic core to automatically absorb superficial bytecode and compiler changes, while leveraging programmatic components for abstract control flow reconstruction. To establish trust in the decompilation results, we introduce a stringent correctness measure based on “perfect decompilation”, a statically verifiable refinement of semantic equivalence. We demonstrate the efficacy of our approach with extensive real-world datasets of benign and malicious Python source code and their corresponding compiled PYC binaries. Our research makes three major contributions: (1) we present PyLINGUAL, a scalable, data-driven decompilation framework with state-of-the-art support for Python versions 3.6 through 3.12, improving the perfect decompilation rate by an average of 45\% over the best results of existing decompiler across four datasets; (2) we provide a Python decompiler evaluation framework that verifies decompilation results with perfect decompilation; and (3) we launch PyLINGUAL as a public online service.},
+  author = {Wiedemeier, Josh and Tarbet, Elliot and Zheng, Max and Ko, Sangsoo and Ouyang, Jessica and Cha, Sang Kil and Jee, Kangkook},
+  booktitle = {2025 {IEEE} {Symposium} on {Security} and {Privacy} ({SP})},
+  doi = {10.1109/SP61157.2025.00052},
+  issn = {2375-1207},
+  keywords = {Codes, Security, Source coding, Program processors, Reverse engineering, Semantics, Translation, reverse engineering, Syntactics, Natural language processing, decompiler, nlp, python, Python},
+  month = {May},
+  pages = {2976--2994},
+  title = {{PyLingual}: {Toward} {Perfect} {Decompilation} of {Evolving} {High}-{Level} {Languages}},
+  year = {2025}
+}
+
+@inproceedings{xiong_hext5_2024,
+  abstract = {Decompilation is a widely used process for reverse engineers to significantly enhance code readability by lifting assembly code to a higher-level C-like language, pseudo-code. Nevertheless, the process of compilation and stripping irreversibly discards high-level semantic information that is crucial to code comprehension, such as comments, identifier names, and types. Existing approaches typically recover only one type of information, making them suboptimal for semantic inference. In this paper, we treat pseudo-code as a special programming language, then present a unified pre-trained model, HexT5, that is trained on vast amounts of natural language comments, source identifiers, and pseudo-code using novel pseudo-code-based pretraining objectives. We fine-tune HexT5 on various downstream tasks, including code summarization, variable name recovery, function name recovery, and similarity detection. Comprehensive experiments show that HexT5 achieves state-of-the-art performance on four downstream tasks, and it demonstrates the robust effectiveness and generalizability of HexT5 for binary-related tasks.},
+  author = {Xiong, Jiaqi and Chen, Guoqiang and Chen, Kejiang and Gao, Han and Cheng, Shaoyin and Zhang, Weiming},
+  booktitle = {Proceedings of the 38th {IEEE}/{ACM} {International} {Conference} on {Automated} {Software} {Engineering}},
+  doi = {10.1109/ASE56229.2023.00099},
+  isbn = {979-8-3503-2996-4},
+  keywords = {Binary codes, Task analysis, Deep Learning, Reverse Engineering, Semantics, deep learning, Natural languages, reverse engineering, Data mining, Computer languages, binary diffing, information inference, programming language model, Object recognition, Binary Diffing, Information Inference, Programming Language Model},
+  pages = {774--786},
+  publisher = {IEEE Press},
+  series = {{ASE} '23},
+  title = {{HexT5}: {Unified} {Pre}-{Training} for {Stripped} {Binary} {Code} {Information} {Inference}},
+  url = {https://doi.org/10.1109/ASE56229.2023.00099},
+  year = {2024}
+}
