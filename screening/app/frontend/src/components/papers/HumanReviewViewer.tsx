@@ -63,6 +63,8 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const [activeTab, setActiveTab] = useState<string>('all');
+  const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
+  const selectAllRef = useRef<HTMLInputElement | null>(null);
 
   const { data: inputData } = useQuery({
     queryKey: ['step-input', projectId, stepId],
@@ -229,6 +231,14 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
     () => filteredEntries.slice(0, visibleCount),
     [filteredEntries, visibleCount]
   );
+  const filteredKeys = useMemo(
+    () => filteredEntries.map((entry) => entry.ID ?? '').filter(Boolean),
+    [filteredEntries]
+  );
+  const selectedFilteredCount = useMemo(
+    () => filteredKeys.filter((key) => selectedKeys.has(key)).length,
+    [selectedKeys, filteredKeys]
+  );
 
   useEffect(() => {
     const node = sentinelRef.current;
@@ -246,6 +256,29 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
     return () => observer.disconnect();
   }, [filteredEntries.length, visibleCount]);
 
+  useEffect(() => {
+    setSelectedKeys(new Set());
+  }, [activeTab, searchQuery]);
+
+  useEffect(() => {
+    setSelectedKeys((prev) => {
+      if (prev.size === 0) return prev;
+      const next = new Set<string>();
+      for (const key of prev) {
+        if (filteredKeys.includes(key)) {
+          next.add(key);
+        }
+      }
+      return next;
+    });
+  }, [filteredKeys]);
+
+  useEffect(() => {
+    if (!selectAllRef.current) return;
+    selectAllRef.current.indeterminate =
+      selectedFilteredCount > 0 && selectedFilteredCount < filteredKeys.length;
+  }, [selectedFilteredCount, filteredKeys.length]);
+
   const setReviewDecision = (key: string, decision?: ReviewDecision) => {
     setReviewDraft((prev) => {
       const next = { ...prev };
@@ -255,6 +288,98 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
         delete next[key];
       }
       updateReviewMutation.mutate(next);
+      return next;
+    });
+  };
+
+  const applyBulkDecision = (action: 'keep' | 'remove' | 'uncertain' | 'approve_ai' | 'clear') => {
+    if (selectedKeys.size === 0) return;
+    const next = { ...reviewDraft };
+    const applyKeys = [...selectedKeys];
+    let hasOverwrite = false;
+
+    for (const key of applyKeys) {
+      const existing = next[key]?.decision;
+      let decision: ReviewDecision | undefined;
+      if (action === 'approve_ai') {
+        const aiDecision = aiDecisionMap.get(key)?.details?.decision;
+        if (aiDecision === 'include') decision = 'include';
+        else if (aiDecision === 'exclude') decision = 'exclude';
+        else if (aiDecision === 'uncertain') decision = 'uncertain';
+        else continue;
+      } else if (action === 'clear') {
+        decision = undefined;
+      } else if (action === 'keep') {
+        decision = 'include';
+      } else if (action === 'remove') {
+        decision = 'exclude';
+      } else {
+        decision = 'uncertain';
+      }
+
+      if ((existing && decision && existing !== decision) || (existing && decision === undefined)) {
+        hasOverwrite = true;
+      }
+    }
+
+    if (hasOverwrite && !window.confirm('Some papers already have decisions. Overwrite them?')) {
+      return;
+    }
+
+    for (const key of applyKeys) {
+      let decision: ReviewDecision | undefined;
+      if (action === 'approve_ai') {
+        const aiDecision = aiDecisionMap.get(key)?.details?.decision;
+        if (aiDecision === 'include') decision = 'include';
+        else if (aiDecision === 'exclude') decision = 'exclude';
+        else if (aiDecision === 'uncertain') decision = 'uncertain';
+        else continue;
+      } else if (action === 'clear') {
+        decision = undefined;
+      } else if (action === 'keep') {
+        decision = 'include';
+      } else if (action === 'remove') {
+        decision = 'exclude';
+      } else {
+        decision = 'uncertain';
+      }
+
+      if (decision) {
+        next[key] = { decision };
+      } else {
+        delete next[key];
+      }
+    }
+
+    updateReviewMutation.mutate(next);
+    setReviewDraft(next);
+  };
+
+  const toggleRowSelection = (key: string) => {
+    setSelectedKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
+
+  const toggleSelectAllVisible = () => {
+    setSelectedKeys((prev) => {
+      const next = new Set(prev);
+      const shouldSelectAll = selectedFilteredCount !== filteredKeys.length;
+      if (shouldSelectAll) {
+        for (const key of filteredKeys) {
+          next.add(key);
+        }
+      } else {
+        for (const key of filteredKeys) {
+          next.delete(key);
+        }
+      }
       return next;
     });
   };
@@ -357,6 +482,61 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
           Collapse details
         </button>
       </div>
+      <div className="sticky top-0 z-10 flex flex-wrap items-center gap-2 border border-[hsl(var(--border))] rounded-md px-3 py-2 bg-[hsl(var(--background))]">
+        <div className="flex items-center gap-2 text-sm">
+          <input
+            ref={selectAllRef}
+            type="checkbox"
+            checked={filteredKeys.length > 0 && selectedFilteredCount === filteredKeys.length}
+            onChange={toggleSelectAllVisible}
+            className="h-4 w-4"
+          />
+          <span>
+            Selected {selectedFilteredCount} / {filteredKeys.length}
+          </span>
+        </div>
+        <div className="h-4 w-px bg-[hsl(var(--border))]" />
+        <button
+          type="button"
+          onClick={() => applyBulkDecision('keep')}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))] rounded-md hover:opacity-90"
+          disabled={selectedFilteredCount === 0}
+        >
+          Keep
+        </button>
+        <button
+          type="button"
+          onClick={() => applyBulkDecision('remove')}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))] rounded-md hover:opacity-90"
+          disabled={selectedFilteredCount === 0}
+        >
+          Remove
+        </button>
+        <button
+          type="button"
+          onClick={() => applyBulkDecision('uncertain')}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--status-warning-border))] bg-[hsl(var(--status-warning-bg))] text-[hsl(var(--status-warning-fg))] rounded-md hover:opacity-90"
+          disabled={selectedFilteredCount === 0}
+        >
+          Uncertain
+        </button>
+        <button
+          type="button"
+          onClick={() => applyBulkDecision('approve_ai')}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] rounded-md hover:opacity-90"
+          disabled={selectedFilteredCount === 0}
+        >
+          Approve AI decision
+        </button>
+        <button
+          type="button"
+          onClick={() => applyBulkDecision('clear')}
+          className="px-3 py-1.5 text-xs border border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] rounded-md hover:opacity-90"
+          disabled={selectedFilteredCount === 0}
+        >
+          Clear Selection
+        </button>
+      </div>
 
       {visibleEntries.length === 0 && (
         <div className="text-center py-8 text-[hsl(var(--muted-foreground))]">
@@ -370,6 +550,14 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
             <thead className="border-b border-[hsl(var(--border))]">
               <tr className="text-left text-[hsl(var(--muted-foreground))]">
                 <th className="w-8 p-2"></th>
+                <th className="w-10 p-2 text-center">
+                  <input
+                    type="checkbox"
+                    checked={filteredKeys.length > 0 && selectedFilteredCount === filteredKeys.length}
+                    onChange={toggleSelectAllVisible}
+                    className="h-4 w-4"
+                  />
+                </th>
                 <th className="w-12 p-2 text-center">#</th>
                 <th className="w-32 p-2">Key</th>
                 <th className="p-2">Title</th>
@@ -406,6 +594,14 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
                             <ChevronRight className="w-4 h-4" />
                           )}
                         </button>
+                      </td>
+                      <td className="p-2 text-center">
+                        <input
+                          type="checkbox"
+                          checked={selectedKeys.has(key)}
+                          onChange={() => toggleRowSelection(key)}
+                          className="h-4 w-4"
+                        />
                       </td>
                       <td className="p-2 text-center text-[hsl(var(--muted-foreground))]">
                         {index + 1}
