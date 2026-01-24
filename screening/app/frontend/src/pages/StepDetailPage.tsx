@@ -28,6 +28,9 @@ export function StepDetailPage() {
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [showRunNotice, setShowRunNotice] = useState(false);
+  const [aiOutputMode, setAiOutputMode] = useState<'ai' | 'human'>('ai');
+  const [reviewDraft, setReviewDraft] = useState<Record<string, { decision?: string }>>({});
+  const [selectedReviewKey, setSelectedReviewKey] = useState<string | null>(null);
 
   // Fetch step meta
   const {
@@ -59,6 +62,7 @@ export function StepDetailPage() {
   const isDuplicateGroupStep = stepMeta?.step_type === 'dedup-title'
     || stepMeta?.step_type === 'dedup-author'
     || stepMeta?.step_type === 'dedup-doi';
+  const isAiScreening = stepMeta?.step_type === 'ai-screening';
   const { data: clustersData } = useQuery({
     queryKey: ['step-clusters', projectId, stepId],
     queryFn: () => stepsApi.getClusters(projectId!, stepId!),
@@ -68,6 +72,16 @@ export function StepDetailPage() {
     queryKey: ['step-input', projectId, stepId, 'cluster-input'],
     queryFn: () => stepsApi.getInput(projectId!, stepId!),
     enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
+  });
+  const { data: aiInputData } = useQuery({
+    queryKey: ['step-input', projectId, stepId, 'ai-review'],
+    queryFn: () => stepsApi.getInput(projectId!, stepId!),
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isAiScreening,
+  });
+  const { data: reviewData } = useQuery({
+    queryKey: ['step-review', projectId, stepId],
+    queryFn: () => stepsApi.getReview(projectId!, stepId!),
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isAiScreening,
   });
   const clusters = useMemo(() => {
     const inputEntries = (inputData?.entries ?? []) as {
@@ -219,6 +233,18 @@ export function StepDetailPage() {
     draftClustersRef.current = draftClusters;
   }, [draftClusters]);
 
+  useEffect(() => {
+    if (!isAiScreening || !reviewData?.reviews) return;
+    const next: Record<string, { decision?: string }> = {};
+    (reviewData.reviews as { key?: string; decision?: string }[]).forEach((review) => {
+      if (!review.key) return;
+      next[review.key] = {
+        decision: review.decision,
+      };
+    });
+    setReviewDraft(next);
+  }, [reviewData, isAiScreening]);
+
   const selectedCluster = draftClusters.find((cluster) => cluster.id === selectedClusterId) ?? draftClusters[0] ?? null;
 
   const buildClusterChanges = (nextClusters: typeof draftClusters) => {
@@ -250,6 +276,78 @@ export function StepDetailPage() {
     }
 
     return { nextChanges, keepCount, removeCount };
+  };
+
+  const aiReviewEntries = useMemo(() => {
+    if (!isAiScreening) return [];
+    const inputEntries = (aiInputData?.entries ?? []) as {
+      ID?: string;
+      title?: string;
+      author?: string;
+      year?: string;
+      abstract?: string;
+    }[];
+    const changeMap = new Map(changes.map((change) => [change.key, change]));
+    return inputEntries.map((entry) => {
+      const key = entry.ID ?? '';
+      const change = changeMap.get(key);
+      const decision = (change?.details as { decision?: string } | undefined)?.decision || 'uncertain';
+      const confidence = (change?.details as { confidence?: number } | undefined)?.confidence ?? null;
+      return {
+        key,
+        title: entry.title ?? '',
+        authors: entry.author ?? '',
+        year: entry.year ?? '',
+        abstract: entry.abstract ?? '',
+        aiDecision: decision,
+        aiConfidence: confidence,
+      };
+    });
+  }, [aiInputData?.entries, changes, isAiScreening]);
+
+  const updateReviewMutation = useMutation({
+    mutationFn: (nextReviews: Record<string, { decision?: string }>) => {
+      const payload = Object.entries(nextReviews).map(([key, value]) => ({
+        key,
+        decision: value.decision,
+      }));
+      return stepsApi.updateReview(projectId!, stepId!, payload);
+    },
+    onMutate: async (nextReviews) => {
+      await queryClient.cancelQueries({ queryKey: ['step-review', projectId, stepId] });
+      const previous = queryClient.getQueryData(['step-review', projectId, stepId]);
+      queryClient.setQueryData(['step-review', projectId, stepId], {
+        reviews: Object.entries(nextReviews).map(([key, value]) => ({
+          key,
+          decision: value.decision,
+        })),
+      });
+      setReviewDraft(nextReviews);
+      return { previous };
+    },
+    onError: (_error, _nextReviews, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['step-review', projectId, stepId], context.previous);
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['step', projectId, stepId] });
+      queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
+      queryClient.invalidateQueries({ queryKey: ['step-review', projectId, stepId] });
+    },
+  });
+
+  const setReviewDecision = (key: string, decision: string) => {
+    setReviewDraft((prev) => {
+      const next = {
+        ...prev,
+        [key]: {
+          decision,
+        },
+      };
+      updateReviewMutation.mutate(next);
+      return next;
+    });
   };
 
   const updateClustersMutation = useMutation({
@@ -443,6 +541,11 @@ export function StepDetailPage() {
 
   // Get current step from pipeline
   const pipelineStep = pipeline?.steps.find((s) => s.id === stepId);
+  useEffect(() => {
+    if (!isAiScreening) return;
+    const mode = (pipelineStep?.config?.output_mode as 'ai' | 'human' | undefined) ?? 'ai';
+    setAiOutputMode(mode);
+  }, [pipelineStep?.config, isAiScreening]);
 
   // Update step config mutation
   const updateStepMutation = useMutation({
@@ -452,6 +555,22 @@ export function StepDetailPage() {
       queryClient.invalidateQueries({ queryKey: ['pipeline', projectId] });
     },
   });
+
+  const applyOutputMode = async (mode: 'ai' | 'human') => {
+    if (!pipelineStep) return;
+    await updateStepMutation.mutateAsync({
+      ...pipelineStep,
+      config: {
+        ...pipelineStep.config,
+        output_mode: mode,
+      },
+    });
+    await stepsApi.applyOutputMode(projectId!, stepId!, mode);
+    queryClient.invalidateQueries({ queryKey: ['step', projectId, stepId] });
+    queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
+    queryClient.invalidateQueries({ queryKey: ['step-review', projectId, stepId] });
+    setAiOutputMode(mode);
+  };
 
   // Run step mutation
   const runMutation = useMutation({
@@ -503,6 +622,22 @@ export function StepDetailPage() {
       { include: 0, exclude: 0, uncertain: 0 }
     );
   }, [changes]);
+  const humanDecisionCounts = useMemo(() => {
+    if (!isAiScreening) {
+      return { include: 0, exclude: 0, uncertain: 0 };
+    }
+    const counts = { include: 0, exclude: 0, uncertain: 0 };
+    const values = Object.values(reviewDraft);
+    if (values.length === 0) {
+      return counts;
+    }
+    for (const value of values) {
+      if (value?.decision === 'include') counts.include += 1;
+      else if (value?.decision === 'exclude') counts.exclude += 1;
+      else if (value?.decision === 'uncertain') counts.uncertain += 1;
+    }
+    return counts;
+  }, [isAiScreening, reviewDraft]);
   const apiLatency = useMemo(() => {
     if (stepMeta?.step_type !== 'ai-screening') return null;
     let totalMs = 0;
@@ -533,6 +668,22 @@ export function StepDetailPage() {
       second: '2-digit',
     });
   }, [stepMeta?.execution.completed_at, stepMeta?.step_type]);
+  const aiDecisionCounts = decisionCounts ?? { include: 0, exclude: 0, uncertain: 0 };
+  const aiReviewTabs = useMemo(() => ([
+    { id: 'ai_passed', label: 'AI Passed', count: aiDecisionCounts.include, tone: 'success' },
+    { id: 'human_passed', label: 'Human Passed', count: humanDecisionCounts.include, tone: 'success' },
+    { id: 'ai_excluded', label: 'AI Excluded', count: aiDecisionCounts.exclude, tone: 'danger' },
+    { id: 'human_excluded', label: 'Human Excluded', count: humanDecisionCounts.exclude, tone: 'danger' },
+    { id: 'ai_uncertain', label: 'AI Uncertain', count: aiDecisionCounts.uncertain, tone: 'warning' },
+    { id: 'human_uncertain', label: 'Human Uncertain', count: humanDecisionCounts.uncertain, tone: 'warning' },
+  ]), [
+    aiDecisionCounts.exclude,
+    aiDecisionCounts.include,
+    aiDecisionCounts.uncertain,
+    humanDecisionCounts.exclude,
+    humanDecisionCounts.include,
+    humanDecisionCounts.uncertain,
+  ]);
 
   // Handle run with config
   const handleRunWithConfig = async (config: Record<string, unknown>) => {
@@ -574,6 +725,7 @@ export function StepDetailPage() {
   const isLatest = stepMeta.is_latest;
   const passedCount = stepMeta.stats.passed_count;
   const removedCount = stepMeta.stats.removed_count;
+  const selectedReviewEntry = aiReviewEntries.find((entry) => entry.key === selectedReviewKey) ?? null;
 
   return (
     <div className="space-y-6">
@@ -949,6 +1101,75 @@ export function StepDetailPage() {
         </div>
       )}
 
+      {selectedReviewEntry && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setSelectedReviewKey(null)}
+          />
+          <div className="relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full max-w-2xl mx-4 p-6 space-y-4">
+            <div>
+              <div className="text-lg font-semibold">
+                {normalizeBibtexText(selectedReviewEntry.title) || '(No title)'}
+              </div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                {selectedReviewEntry.authors
+                  ? selectedReviewEntry.authors.replace(/\s+and\s+/g, ', ')
+                  : '-'}
+                {selectedReviewEntry.year ? ` · ${selectedReviewEntry.year}` : ''}
+              </div>
+            </div>
+            <div className="text-xs text-[hsl(var(--muted-foreground))]">
+              AI Decision: {selectedReviewEntry.aiDecision}
+            </div>
+            <div className="rounded-md bg-[hsl(var(--muted))] p-4 text-sm whitespace-pre-wrap">
+              {selectedReviewEntry.abstract
+                ? normalizeBibtexText(selectedReviewEntry.abstract)
+                : 'No abstract available.'}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setReviewDecision(selectedReviewEntry.key, 'include')}
+                className="px-3 py-1 rounded-full border border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]"
+              >
+                Include
+              </button>
+              <button
+                type="button"
+                onClick={() => setReviewDecision(selectedReviewEntry.key, 'exclude')}
+                className="px-3 py-1 rounded-full border border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]"
+              >
+                Exclude
+              </button>
+              <button
+                type="button"
+                onClick={() => setReviewDecision(selectedReviewEntry.key, 'uncertain')}
+                className="px-3 py-1 rounded-full border border-[hsl(var(--status-warning-border))] bg-[hsl(var(--status-warning-bg))] text-[hsl(var(--status-warning-fg))]"
+              >
+                Uncertain
+              </button>
+              <button
+                type="button"
+                onClick={() => setReviewDecision(selectedReviewEntry.key, '')}
+                className="px-3 py-1 rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]"
+              >
+                Clear
+              </button>
+            </div>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={() => setSelectedReviewKey(null)}
+                className="px-4 py-2 border border-[hsl(var(--border))] rounded-lg hover:bg-[hsl(var(--muted))]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Error message */}
       {stepMeta.execution.status === 'failed' && stepMeta.execution.error && (
         <div className="p-4 rounded-lg bg-[hsl(var(--status-danger-bg))] border border-[hsl(var(--status-danger-border))]">
@@ -965,8 +1186,64 @@ export function StepDetailPage() {
         </div>
       )}
 
+      {isCompleted && isAiScreening && (
+        <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
+          <div className="text-sm font-semibold text-[hsl(var(--foreground))] mb-3">
+            Output Source
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => applyOutputMode('ai')}
+              className={`rounded-lg border px-4 py-4 text-left transition-colors ${
+                aiOutputMode === 'ai'
+                  ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                  : 'border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+              }`}
+            >
+              <div className="text-base font-semibold">Use AI Output</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                Current AI results are passed to the next step.
+              </div>
+            </button>
+            <button
+              type="button"
+              onClick={() => applyOutputMode('human')}
+              className={`rounded-lg border px-4 py-4 text-left transition-colors ${
+                aiOutputMode === 'human'
+                  ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                  : 'border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+              }`}
+            >
+              <div className="text-base font-semibold">Use Human Review Output</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                Human decisions overwrite the output for downstream steps.
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isCompleted && isAiScreening && aiOutputMode === 'human' && (
+        <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
+          <StepOutputViewer
+            projectId={projectId!}
+            stepId={stepId!}
+            stepMeta={stepMeta}
+            changes={changes}
+            actionCounts={actionCounts}
+            decisionCounts={decisionCounts}
+            tabs={aiReviewTabs}
+            includeInputTab={false}
+            columns={config.columns}
+            buildFilters={config.buildFilters}
+            filterEntry={config.filterEntry}
+          />
+        </div>
+      )}
+
       {/* Paper list */}
-      {isCompleted && (
+      {isCompleted && (!isAiScreening || aiOutputMode === 'ai') && (
         <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
           <StepOutputViewer
             projectId={projectId!}

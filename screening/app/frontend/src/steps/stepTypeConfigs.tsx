@@ -166,17 +166,6 @@ const aiScreeningColumns: ColumnDefinition<BibEntry>[] = [
     render: (entry) => entry.year || '-',
   },
   {
-    id: 'decision',
-    header: 'Decision',
-    width: 'w-24',
-    render: (_, change) => {
-      if (!change?.details) return '-';
-      const decision = change.details.decision as string;
-      const badgeVariant = decision === 'include' ? 'success' : decision === 'exclude' ? 'destructive' : 'warning';
-      return <Badge variant={badgeVariant}>{decision}</Badge>;
-    },
-  },
-  {
     id: 'confidence',
     header: 'Conf.',
     width: 'w-16 text-center',
@@ -218,9 +207,9 @@ function buildAIScreeningFilters(_entries: BibEntry[], changes: ChangeRecord[]):
   }
 
   return [
-    { id: 'include', label: 'Include', value: 'include', count: stats.include },
-    { id: 'exclude', label: 'Exclude', value: 'exclude', count: stats.exclude },
-    { id: 'uncertain', label: 'Uncertain', value: 'uncertain', count: stats.uncertain },
+    { id: 'include', label: 'Include', value: 'include', count: stats.include, tone: 'success' },
+    { id: 'exclude', label: 'Exclude', value: 'exclude', count: stats.exclude, tone: 'danger' },
+    { id: 'uncertain', label: 'Uncertain', value: 'uncertain', count: stats.uncertain, tone: 'warning' },
   ];
 }
 
@@ -249,8 +238,6 @@ export const stepTypeConfigs: Record<string, StepTypeConfig> = {
   'ai-screening': {
     icon: <Brain className="w-5 h-5" />,
     columns: aiScreeningColumns,
-    buildFilters: buildAIScreeningFilters,
-    filterEntry: filterAIScreeningEntry,
   },
   'dedup-title': {
     icon: <Type className="w-5 h-5" />,

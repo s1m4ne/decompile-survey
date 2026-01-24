@@ -215,6 +215,14 @@ def save_output_entries(project_id: str, step_id: str, output_name: str, entries
     return output_file
 
 
+def load_output_entries_from_file(output_file: Path) -> list[dict]:
+    if not output_file.exists():
+        return []
+    with open(output_file, encoding="utf-8") as f:
+        bib_db = bibtexparser.load(f)
+    return bib_db.entries
+
+
 def save_input_entries(project_id: str, step_id: str, entries: list[dict]) -> Path:
     """Save input entries (with source metadata) to a JSON file."""
     step_dir = get_step_dir(project_id, step_id)
@@ -236,6 +244,55 @@ def save_changes(project_id: str, step_id: str, changes: list) -> None:
     with open(changes_file, "w", encoding="utf-8") as f:
         for change in changes:
             f.write(json.dumps(asdict(change), ensure_ascii=False) + "\n")
+
+
+def load_changes_file(step_dir: Path) -> list[dict]:
+    changes_file = step_dir / "changes.jsonl"
+    if not changes_file.exists():
+        return []
+    changes: list[dict] = []
+    with open(changes_file, encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            try:
+                changes.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return changes
+
+
+def load_review_file(step_dir: Path) -> list[dict]:
+    review_file = step_dir / "review.jsonl"
+    if not review_file.exists():
+        return []
+    reviews: list[dict] = []
+    with open(review_file, encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            try:
+                reviews.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return reviews
+
+
+def save_review_file(step_dir: Path, reviews: list[dict]) -> None:
+    review_file = step_dir / "review.jsonl"
+    with open(review_file, "w", encoding="utf-8") as f:
+        for review in reviews:
+            f.write(json.dumps(review, ensure_ascii=False) + "\n")
+
+
+def get_step_config(project_id: str, step_id: str) -> dict:
+    from .pipeline import load_pipeline
+
+    pipeline = load_pipeline(project_id)
+    for step in pipeline.steps:
+        if step.id == step_id:
+            return step.config or {}
+    return {}
 
 
 def save_clusters(project_id: str, step_id: str, clusters: list[dict]) -> None:
@@ -312,6 +369,8 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
                     "",
                 ),
             )
+            if step_def.type == "ai-screening":
+                save_output_entries(project_id, step_id, f"ai_{output_name}", entries)
 
         # Save changes
         save_changes(project_id, step_id, result.changes)
@@ -673,3 +732,146 @@ def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
     save_step_meta(project_id, step_id, meta)
 
     return {"status": "updated", "clusters": len(clusters)}
+
+
+@router.get("/{step_id}/review")
+def get_step_review(project_id: str, step_id: str) -> dict:
+    step_dir = get_step_dir(project_id, step_id)
+    return {"reviews": load_review_file(step_dir)}
+
+
+@router.post("/{step_id}/review")
+def update_step_review(project_id: str, step_id: str, payload: dict) -> dict:
+    meta = load_step_meta(project_id, step_id)
+    if meta is None:
+        raise HTTPException(status_code=404, detail="Step meta not found")
+    if meta.step_type != "ai-screening":
+        raise HTTPException(status_code=400, detail="Review is only supported for ai-screening")
+
+    step_dir = get_step_dir(project_id, step_id)
+    input_file = step_dir / "input.json"
+    if not input_file.exists():
+        raise HTTPException(status_code=400, detail="Input not saved for this step")
+
+    with open(input_file, encoding="utf-8") as f:
+        input_entries = json.load(f)
+
+    ai_changes = load_changes_file(step_dir)
+    ai_decisions: dict[str, str] = {}
+    for change in ai_changes:
+        decision = change.get("details", {}).get("decision")
+        key = change.get("key")
+        if key and decision:
+            ai_decisions[key] = decision
+
+    reviews = payload.get("reviews", [])
+    review_map: dict[str, dict] = {}
+    for review in reviews:
+        key = review.get("key")
+        if key:
+            review_map[key] = review
+
+    passed: list[dict] = []
+    excluded: list[dict] = []
+    uncertain: list[dict] = []
+
+    for entry in input_entries:
+        key = entry.get("ID", "")
+        review = review_map.get(key, {})
+        decision = review.get("decision") or "uncertain"
+        if decision == "include":
+            passed.append(entry)
+        elif decision == "exclude":
+            excluded.append(entry)
+        else:
+            uncertain.append(entry)
+
+    save_output_entries(project_id, step_id, "human_passed", passed)
+    save_output_entries(project_id, step_id, "human_excluded", excluded)
+    save_output_entries(project_id, step_id, "human_uncertain", uncertain)
+    save_review_file(step_dir, reviews)
+
+    config = get_step_config(project_id, step_id)
+    output_mode = config.get("output_mode", "ai")
+    if output_mode == "human":
+        outputs = {
+            "passed": StepOutput(
+                file=f"steps/{step_id}/outputs/passed.bib",
+                count=len(passed),
+                description="Papers judged as 'include'",
+            ),
+            "excluded": StepOutput(
+                file=f"steps/{step_id}/outputs/excluded.bib",
+                count=len(excluded),
+                description="Papers judged as 'exclude'",
+            ),
+            "uncertain": StepOutput(
+                file=f"steps/{step_id}/outputs/uncertain.bib",
+                count=len(uncertain),
+                description="Papers judged as 'uncertain'",
+            ),
+        }
+        save_output_entries(project_id, step_id, "passed", passed)
+        save_output_entries(project_id, step_id, "excluded", excluded)
+        save_output_entries(project_id, step_id, "uncertain", uncertain)
+        meta.outputs = outputs
+        meta.stats = StepStats(
+            input_count=meta.stats.input_count,
+            total_output_count=len(passed) + len(excluded) + len(uncertain),
+            passed_count=len(passed),
+            removed_count=len(excluded),
+        )
+        save_step_meta(project_id, step_id, meta)
+
+    return {"status": "updated", "reviewed": sum(1 for r in reviews if r.get("decision"))}
+
+
+@router.post("/{step_id}/output-mode")
+def apply_output_mode(project_id: str, step_id: str, payload: dict) -> dict:
+    meta = load_step_meta(project_id, step_id)
+    if meta is None:
+        raise HTTPException(status_code=404, detail="Step meta not found")
+    if meta.step_type != "ai-screening":
+        raise HTTPException(status_code=400, detail="Output mode is only supported for ai-screening")
+
+    mode = payload.get("mode")
+    if mode not in ("ai", "human"):
+        raise HTTPException(status_code=400, detail="Invalid output mode")
+
+    step_dir = get_step_dir(project_id, step_id)
+    outputs: dict[str, StepOutput] = {}
+    total_count = 0
+    passed_count = 0
+    removed_count = 0
+
+    for output_name in ("passed", "excluded", "uncertain"):
+        prefix = "ai_" if mode == "ai" else "human_"
+        source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
+        entries = load_output_entries_from_file(source_file)
+        output_file = save_output_entries(project_id, step_id, output_name, entries)
+        description = {
+            "passed": "Papers judged as 'include'",
+            "excluded": "Papers judged as 'exclude'",
+            "uncertain": "Papers judged as 'uncertain'",
+        }.get(output_name, "")
+        outputs[output_name] = StepOutput(
+            file=str(output_file.relative_to(PROJECTS_DIR / project_id)),
+            count=len(entries),
+            description=description,
+        )
+        total_count += len(entries)
+        if output_name == "passed":
+            passed_count = len(entries)
+        if output_name == "excluded":
+            removed_count = len(entries)
+
+    meta.outputs = outputs
+    meta.stats = StepStats(
+        input_count=meta.stats.input_count,
+        total_output_count=total_count,
+        passed_count=passed_count,
+        removed_count=removed_count,
+    )
+    save_step_meta(project_id, step_id, meta)
+
+    return {"status": "updated", "mode": mode}

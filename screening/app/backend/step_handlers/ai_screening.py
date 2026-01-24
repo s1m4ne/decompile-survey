@@ -20,7 +20,7 @@ LOCAL_LLM_BASE_URL = os.getenv("LOCAL_LLM_BASE_URL", "http://192.168.50.100:8000
 
 # Default concurrency
 OPENAI_CONCURRENCY = 10
-LOCAL_CONCURRENCY = 256
+LOCAL_CONCURRENCY = 100
 OPENAI_DEFAULT_MODEL = "gpt-5-nano-2025-08-07"
 LOCAL_DEFAULT_MODEL = "openai/gpt-oss-120b"
 
@@ -246,6 +246,12 @@ class AIScreeningHandler(StepHandler):
                     "maximum": 1000,
                     "default": LOCAL_CONCURRENCY,
                     "description": "Number of parallel API requests",
+                },
+                "output_mode": {
+                    "type": "string",
+                    "enum": ["ai", "human"],
+                    "default": "ai",
+                    "description": "Output mode for downstream steps",
                 },
                 "local_base_url": {
                     "type": "string",

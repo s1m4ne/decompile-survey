@@ -141,6 +141,10 @@ export function StepConfigModal({
     const defaultValue = schema.default;
     const value = config[key] ?? defaultValue;
 
+    if (key === 'output_mode' && step.type === 'ai-screening') {
+      return null;
+    }
+
     // Special handling for rules field - use fetched rules list
     if (key === 'rules' && step.type === 'ai-screening' && rules.length > 0) {
       return (

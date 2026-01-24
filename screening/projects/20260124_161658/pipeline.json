@@ -43,6 +43,7 @@
         "model": "openai/gpt-oss-120b",
         "provider": "local",
         "concurrency": 106,
+        "output_mode": "human",
         "local_base_url": "http://192.168.50.100:8000/v1"
       }
     }

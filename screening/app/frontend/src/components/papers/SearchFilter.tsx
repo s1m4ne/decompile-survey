@@ -10,6 +10,7 @@ export interface FilterOption {
   label: string;
   value: string;
   count?: number;
+  tone?: 'success' | 'warning' | 'danger';
 }
 
 export interface SearchFilterProps {
@@ -59,6 +60,7 @@ export function SearchFilter({
           <Filter className="w-4 h-4 text-[hsl(var(--muted-foreground))]" />
           {filters.map((filter) => {
             const isActive = activeFilters.includes(filter.id);
+            const toneClasses = getToneClasses(filter.tone);
             return (
               <button
                 key={filter.id}
@@ -66,8 +68,8 @@ export function SearchFilter({
                 className={cn(
                   'px-3 py-1 text-sm rounded-full border transition-colors',
                   isActive
-                    ? 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] border-[hsl(var(--primary))]'
-                    : 'bg-[hsl(var(--background))] text-[hsl(var(--foreground))] border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+                    ? toneClasses.active
+                    : toneClasses.inactive
                 )}
               >
                 {filter.label}
@@ -81,4 +83,32 @@ export function SearchFilter({
       )}
     </div>
   );
+}
+
+function getToneClasses(tone?: 'success' | 'warning' | 'danger') {
+  if (!tone) {
+    return {
+      active: 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] border-[hsl(var(--primary))]',
+      inactive: 'bg-[hsl(var(--background))] text-[hsl(var(--foreground))] border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]',
+    };
+  }
+
+  if (tone === 'success') {
+    return {
+      active: 'border-[hsl(var(--status-success-border))] bg-[hsl(var(--status-success-bg))] text-[hsl(var(--status-success-fg))]',
+      inactive: 'border-[hsl(var(--status-success-border))] text-[hsl(var(--status-success-fg))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--status-success-bg))]',
+    };
+  }
+
+  if (tone === 'warning') {
+    return {
+      active: 'border-[hsl(var(--status-warning-border))] bg-[hsl(var(--status-warning-bg))] text-[hsl(var(--status-warning-fg))]',
+      inactive: 'border-[hsl(var(--status-warning-border))] text-[hsl(var(--status-warning-fg))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--status-warning-bg))]',
+    };
+  }
+
+  return {
+    active: 'border-[hsl(var(--status-danger-border))] bg-[hsl(var(--status-danger-bg))] text-[hsl(var(--status-danger-fg))]',
+    inactive: 'border-[hsl(var(--status-danger-border))] text-[hsl(var(--status-danger-fg))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--status-danger-bg))]',
+  };
 }

@@ -1,7 +1,7 @@
 /**
  * Step output viewer - displays papers from step inputs/outputs with tabs.
  */
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Loader2, FileInput, FileOutput } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -18,6 +18,10 @@ export interface StepOutputViewerProps {
   actionCounts: { keep: number; remove: number; modify: number };
   decisionCounts?: { include: number; exclude: number; uncertain: number };
   countSource?: 'action' | 'decision' | 'output';
+  outputNameResolver?: (outputName: string) => string;
+  tabs?: TabConfig[];
+  tabGroups?: TabGroup[];
+  includeInputTab?: boolean;
   columns?: ColumnDefinition<BibEntry>[];
   buildFilters?: (entries: BibEntry[], changes: ChangeRecord[]) => FilterOption[];
   filterEntry?: (entry: BibEntry, change: ChangeRecord | undefined, activeFilters: string[]) => boolean;
@@ -25,6 +29,18 @@ export interface StepOutputViewerProps {
 
 type TabType = 'input' | string; // 'input' or output name
 type OutputTone = 'success' | 'warning' | 'danger';
+type TabConfig = {
+  id: TabType;
+  label: string;
+  count: number;
+  icon?: React.ReactNode;
+  tone?: OutputTone;
+};
+type TabGroup = {
+  id: string;
+  label: string;
+  tabs: TabConfig[];
+};
 
 export function StepOutputViewer({
   projectId,
@@ -34,15 +50,63 @@ export function StepOutputViewer({
   actionCounts,
   decisionCounts,
   countSource = 'action',
+  outputNameResolver,
+  tabs,
+  tabGroups,
+  includeInputTab = true,
   columns,
   buildFilters,
   filterEntry,
 }: StepOutputViewerProps) {
+  const outputNames = useMemo(() => Object.keys(stepMeta.outputs), [stepMeta.outputs]);
+
+  const defaultTabs = useMemo(() => {
+    const nextTabs: TabConfig[] = [];
+    if (includeInputTab && stepMeta.input) {
+      nextTabs.push({
+        id: 'input',
+        label: 'Input',
+        count: stepMeta.input.count,
+        icon: <FileInput className="w-4 h-4" />,
+      });
+    }
+
+    Object.entries(stepMeta.outputs).forEach(([name, output]) => {
+      const actionCount = countSource === 'action' ? getOutputActionCount(name, actionCounts) : null;
+      const decisionCount = countSource === 'decision'
+        ? getDecisionCount(name, decisionCounts)
+        : null;
+      nextTabs.push({
+        id: name,
+        label: formatOutputName(name),
+        count: decisionCount ?? actionCount ?? output.count,
+        icon: <FileOutput className="w-4 h-4" />,
+      });
+    });
+
+    return nextTabs;
+  }, [actionCounts, countSource, decisionCounts, includeInputTab, outputNames, stepMeta.input, stepMeta.outputs]);
+
+  const availableTabs = useMemo(() => {
+    if (tabGroups) {
+      return tabGroups.flatMap((group) => group.tabs);
+    }
+    if (tabs) {
+      return tabs;
+    }
+    return defaultTabs;
+  }, [defaultTabs, tabGroups, tabs]);
+
+  const defaultOutputTab = availableTabs[0]?.id ?? (outputNames.includes('passed') ? 'passed' : outputNames[0] || 'input');
+
   // Active tab (input or output name)
-  const [activeTab, setActiveTab] = useState<TabType>(() => {
-    const outputNames = Object.keys(stepMeta.outputs);
-    return outputNames.includes('passed') ? 'passed' : outputNames[0] || 'input';
-  });
+  const [activeTab, setActiveTab] = useState<TabType>(defaultOutputTab);
+
+  useEffect(() => {
+    if (!availableTabs.some((tab) => tab.id === activeTab)) {
+      setActiveTab(defaultOutputTab);
+    }
+  }, [activeTab, availableTabs, defaultOutputTab, stepId]);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,12 +116,25 @@ export function StepOutputViewer({
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
+  const resolvedOutputName = useMemo(() => {
+    if (activeTab === 'input') return 'input';
+    return outputNameResolver ? outputNameResolver(String(activeTab)) : String(activeTab);
+  }, [activeTab, outputNameResolver]);
+
   // Fetch output entries for active tab
   const { data: outputData, isLoading } = useQuery({
-    queryKey: ['step-output', projectId, stepId, activeTab],
+    queryKey: ['step-output', projectId, stepId, resolvedOutputName],
     queryFn: async () => {
-      const result = await stepsApi.getOutput(projectId, stepId, activeTab);
-      return result as { entries: BibEntry[]; count: number };
+      try {
+        const result = await stepsApi.getOutput(projectId, stepId, resolvedOutputName);
+        return result as { entries: BibEntry[]; count: number };
+      } catch (error) {
+        const message = error instanceof Error ? error.message : '';
+        if (message.includes('Output not found')) {
+          return { entries: [], count: 0 };
+        }
+        throw error;
+      }
     },
     enabled: activeTab !== 'input' && stepMeta.execution.status === 'completed',
   });
@@ -163,70 +240,89 @@ export function StepOutputViewer({
     setCurrentPage(1);
   };
 
-  // Build tabs
-  const tabs: { id: TabType; label: string; count: number; icon: React.ReactNode }[] = [];
-
-  // Input tab
-  if (stepMeta.input) {
-    tabs.push({
-      id: 'input',
-      label: 'Input',
-      count: stepMeta.input.count,
-      icon: <FileInput className="w-4 h-4" />,
-    });
-  }
-
-  // Output tabs
-  Object.entries(stepMeta.outputs).forEach(([name, output]) => {
-    const actionCount = countSource === 'action' ? getOutputActionCount(name, actionCounts) : null;
-    const decisionCount = countSource === 'decision'
-      ? getDecisionCount(name, decisionCounts)
-      : null;
-    tabs.push({
-      id: name,
-      label: formatOutputName(name),
-      count: decisionCount ?? actionCount ?? output.count,
-      icon: <FileOutput className="w-4 h-4" />,
-    });
-  });
-
   return (
     <div className="space-y-4">
       {/* Tab bar */}
-      <div className="flex items-center gap-1 border-b border-[hsl(var(--border))]">
-        {tabs.map((tab) => {
-          const tone = getOutputTone(String(tab.id));
-          const toneClasses = getToneClasses(tone);
-          return (
-          <button
-            key={tab.id}
-            onClick={() => {
-              setActiveTab(tab.id);
-              setCurrentPage(1);
-            }}
-            className={cn(
-              'flex items-center gap-2 px-4 py-2 text-sm border-b-2 -mb-px transition-colors rounded-t-md',
-              activeTab === tab.id
-                ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))] bg-[hsl(var(--muted))]'
-                : 'border-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]'
-            )}
-          >
-            {tab.icon}
-            <span className={toneClasses.label}>{tab.label}</span>
-            <span
-              className={cn(
-                'px-2 py-0.5 text-xs rounded-full',
-                tone
-                  ? toneClasses.badge
-                  : 'bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
-              )}
-            >
-              {tab.count}
-            </span>
-          </button>
-          );
-        })}
-      </div>
+      {tabGroups ? (
+        <div className="space-y-2">
+          {tabGroups.map((group) => (
+            <div key={group.id} className="flex items-center gap-3">
+              <div className="w-20 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase">
+                {group.label}
+              </div>
+              <div className="flex items-center gap-1">
+                {group.tabs.map((tab) => {
+                  const tone = tab.tone ?? getOutputTone(String(tab.id));
+                  const toneClasses = getToneClasses(tone);
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => {
+                        setActiveTab(tab.id);
+                        setCurrentPage(1);
+                      }}
+                      className={cn(
+                        'flex items-center gap-2 px-4 py-2 text-sm border rounded-md transition-colors',
+                        activeTab === tab.id
+                          ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))] bg-[hsl(var(--muted))]'
+                          : 'border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]'
+                      )}
+                    >
+                      {tab.icon}
+                      <span className={toneClasses.label}>{tab.label}</span>
+                      <span
+                        className={cn(
+                          'px-2 py-0.5 text-xs rounded-full',
+                          tone
+                            ? toneClasses.badge
+                            : 'bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
+                        )}
+                      >
+                        {tab.count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex items-center gap-1 border-b border-[hsl(var(--border))]">
+          {availableTabs.map((tab) => {
+            const tone = tab.tone ?? getOutputTone(String(tab.id));
+            const toneClasses = getToneClasses(tone);
+            return (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  setCurrentPage(1);
+                }}
+                className={cn(
+                  'flex items-center gap-2 px-4 py-2 text-sm border-b-2 -mb-px transition-colors rounded-t-md',
+                  activeTab === tab.id
+                    ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))] bg-[hsl(var(--muted))]'
+                    : 'border-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]'
+                )}
+              >
+                {tab.icon}
+                <span className={toneClasses.label}>{tab.label}</span>
+                <span
+                  className={cn(
+                    'px-2 py-0.5 text-xs rounded-full',
+                    tone
+                      ? toneClasses.badge
+                      : 'bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
+                  )}
+                >
+                  {tab.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Search and filters */}
       <SearchFilter
@@ -302,6 +398,8 @@ function getOutputActionCount(
     case 'passed':
       return actionCounts.keep;
     case 'removed':
+    case 'excluded':
+    case 'exclude':
       return actionCounts.remove;
     case 'modified':
       return actionCounts.modify;
@@ -334,6 +432,8 @@ function getOutputTone(name: string): OutputTone | null {
     case 'passed':
       return 'success';
     case 'removed':
+    case 'excluded':
+    case 'exclude':
       return 'danger';
     case 'warning':
     case 'uncertain':

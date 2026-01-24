@@ -237,6 +237,21 @@ export const stepsApi = {
       method: 'POST',
       body: JSON.stringify({ clusters }),
     }),
+
+  getReview: (projectId: string, stepId: string) =>
+    fetchApi<{ reviews: Record<string, unknown>[] }>(`/projects/${projectId}/steps/${stepId}/review`),
+
+  updateReview: (projectId: string, stepId: string, reviews: Record<string, unknown>[]) =>
+    fetchApi<{ status: string; reviewed: number }>(`/projects/${projectId}/steps/${stepId}/review`, {
+      method: 'POST',
+      body: JSON.stringify({ reviews }),
+    }),
+
+  applyOutputMode: (projectId: string, stepId: string, mode: string) =>
+    fetchApi<{ status: string; mode: string }>(`/projects/${projectId}/steps/${stepId}/output-mode`, {
+      method: 'POST',
+      body: JSON.stringify({ mode }),
+    }),
 };
 
 // Step Types

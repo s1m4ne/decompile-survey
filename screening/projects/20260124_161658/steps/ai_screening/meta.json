@@ -11,31 +11,31 @@
   "outputs": {
     "passed": {
       "file": "steps/ai_screening/outputs/passed.bib",
-      "count": 46,
-      "description": "Papers judged as 'include' by AI"
+      "count": 0,
+      "description": "Papers judged as 'include'"
     },
     "excluded": {
       "file": "steps/ai_screening/outputs/excluded.bib",
-      "count": 579,
-      "description": "Papers judged as 'exclude' by AI"
+      "count": 0,
+      "description": "Papers judged as 'exclude'"
     },
     "uncertain": {
       "file": "steps/ai_screening/outputs/uncertain.bib",
       "count": 0,
-      "description": "Papers judged as 'uncertain' or failed to process"
+      "description": "Papers judged as 'uncertain'"
     }
   },
   "stats": {
     "input_count": 625,
-    "total_output_count": 625,
-    "passed_count": 46,
-    "removed_count": 579
+    "total_output_count": 0,
+    "passed_count": 0,
+    "removed_count": 0
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-24T20:50:57.926953",
-    "completed_at": "2026-01-24T20:52:21.318373",
-    "duration_sec": 83.39142,
+    "started_at": "2026-01-24T22:21:57.950442",
+    "completed_at": "2026-01-24T22:23:25.635222",
+    "duration_sec": 87.68478,
     "error": null
   }
 }
