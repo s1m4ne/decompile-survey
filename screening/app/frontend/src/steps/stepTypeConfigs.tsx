@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { ColumnDefinition, BibEntry, ChangeRecord, FilterOption } from '../components/papers';
+import type { ColumnDefinition, BibEntry } from '../components/papers';
 import { Badge } from '../components/ui/Badge';
 import { Fingerprint, Brain, Type, Users } from 'lucide-react';
 import { normalizeBibtexText } from '../components/BibtexText';
@@ -8,8 +8,6 @@ import { normalizeBibtexText } from '../components/BibtexText';
 export interface StepTypeConfig {
   icon: ReactNode;
   columns?: ColumnDefinition<BibEntry>[];
-  buildFilters?: (entries: BibEntry[], changes: ChangeRecord[]) => FilterOption[];
-  filterEntry?: (entry: BibEntry, change: ChangeRecord | undefined, activeFilters: string[]) => boolean;
 }
 
 function buildDedupColumns(reasonLabels: Record<string, string>): ColumnDefinition<BibEntry>[] {
@@ -99,44 +97,6 @@ const dedupAuthorColumns = buildDedupColumns({
   duplicate_author_representative: 'Representative',
 });
 
-// DOI Deduplication filter builder
-function buildDedupDoiFilters(entries: BibEntry[], changes: ChangeRecord[]): FilterOption[] {
-  const stats = {
-    unique_doi: 0,
-    no_doi: 0,
-    duplicate_doi: 0,
-    has_doi: 0,
-    no_doi_entries: 0,
-  };
-
-  for (const change of changes) {
-    if (change.reason === 'unique_doi') stats.unique_doi++;
-    if (change.reason === 'no_doi') stats.no_doi++;
-    if (change.reason === 'duplicate_doi') stats.duplicate_doi++;
-  }
-
-  for (const entry of entries) {
-    if (entry.doi) stats.has_doi++;
-    else stats.no_doi_entries++;
-  }
-
-  return [
-    { id: 'has_doi', label: 'Has DOI', value: 'has_doi', count: stats.has_doi },
-    { id: 'no_doi', label: 'No DOI', value: 'no_doi', count: stats.no_doi_entries },
-  ];
-}
-
-// DOI Deduplication filter function
-function filterDedupDoiEntry(
-  entry: BibEntry,
-  _change: ChangeRecord | undefined,
-  activeFilters: string[]
-): boolean {
-  if (activeFilters.includes('has_doi') && !entry.doi) return false;
-  if (activeFilters.includes('no_doi') && entry.doi) return false;
-  return true;
-}
-
 // AI Screening specific columns
 const aiScreeningColumns: ColumnDefinition<BibEntry>[] = [
   {
@@ -195,51 +155,15 @@ const aiScreeningColumns: ColumnDefinition<BibEntry>[] = [
   },
 ];
 
-// AI Screening filter builder
-function buildAIScreeningFilters(_entries: BibEntry[], changes: ChangeRecord[]): FilterOption[] {
-  const stats = { include: 0, exclude: 0, uncertain: 0 };
-
-  for (const change of changes) {
-    const decision = change.details?.decision as string;
-    if (decision === 'include') stats.include++;
-    else if (decision === 'exclude') stats.exclude++;
-    else stats.uncertain++;
-  }
-
-  return [
-    { id: 'include', label: 'Include', value: 'include', count: stats.include, tone: 'success' },
-    { id: 'exclude', label: 'Exclude', value: 'exclude', count: stats.exclude, tone: 'danger' },
-    { id: 'uncertain', label: 'Uncertain', value: 'uncertain', count: stats.uncertain, tone: 'warning' },
-  ];
-}
-
-// AI Screening filter function
-function filterAIScreeningEntry(
-  _entry: BibEntry,
-  change: ChangeRecord | undefined,
-  activeFilters: string[]
-): boolean {
-  if (!change?.details) return true;
-  const decision = change.details.decision as string;
-  if (activeFilters.includes('include') && decision !== 'include') return false;
-  if (activeFilters.includes('exclude') && decision !== 'exclude') return false;
-  if (activeFilters.includes('uncertain') && decision !== 'uncertain') return false;
-  return true;
-}
-
 // Step type configurations
 export const stepTypeConfigs: Record<string, StepTypeConfig> = {
   'dedup-doi': {
     icon: <Fingerprint className="w-5 h-5" />,
     columns: dedupDoiColumns,
-    buildFilters: buildDedupDoiFilters,
-    filterEntry: filterDedupDoiEntry,
   },
   'ai-screening': {
     icon: <Brain className="w-5 h-5" />,
     columns: aiScreeningColumns,
-    buildFilters: buildAIScreeningFilters,
-    filterEntry: filterAIScreeningEntry,
   },
   'dedup-title': {
     icon: <Type className="w-5 h-5" />,

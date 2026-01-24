@@ -742,6 +742,12 @@ export function StepDetailPage() {
   const isLatest = stepMeta.is_latest;
   const passedCount = stepMeta.stats.passed_count;
   const removedCount = stepMeta.stats.removed_count;
+  const displayPassedCount = (isAiScreening && aiOutputMode === 'human')
+    ? humanDecisionCounts.include
+    : passedCount;
+  const displayRemovedCount = (isAiScreening && aiOutputMode === 'human')
+    ? humanDecisionCounts.exclude
+    : removedCount;
   const selectedReviewEntry = aiReviewEntries.find((entry) => entry.key === selectedReviewKey) ?? null;
 
   return (
@@ -834,13 +840,13 @@ export function StepDetailPage() {
           </div>
           <div className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
             <div className="text-2xl font-bold text-[hsl(var(--status-success-fg))]">
-              {passedCount}
+              {displayPassedCount}
             </div>
             <div className="text-sm text-[hsl(var(--muted-foreground))]">Passed</div>
           </div>
           <div className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
             <div className="text-2xl font-bold text-[hsl(var(--status-danger-fg))]">
-              {removedCount}
+              {displayRemovedCount}
             </div>
             <div className="text-sm text-[hsl(var(--muted-foreground))]">Removed</div>
           </div>
@@ -1253,8 +1259,6 @@ export function StepDetailPage() {
             tabGroups={aiReviewTabGroups}
             includeInputTab={false}
             columns={config.columns}
-            buildFilters={config.buildFilters}
-            filterEntry={config.filterEntry}
           />
         </div>
       )}
@@ -1271,8 +1275,6 @@ export function StepDetailPage() {
             decisionCounts={decisionCounts}
             countSource="output"
             columns={config.columns}
-            buildFilters={config.buildFilters}
-            filterEntry={config.filterEntry}
           />
         </div>
       )}

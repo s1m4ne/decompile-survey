@@ -7,7 +7,7 @@ import { Loader2, FileInput, FileOutput } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { stepsApi, StepMeta } from '../../lib/api';
 import { PaperTable, BibEntry, ChangeRecord, ColumnDefinition } from './PaperTable';
-import { SearchFilter, FilterOption } from './SearchFilter';
+import { SearchFilter } from './SearchFilter';
 import { Pagination } from './Pagination';
 
 export interface StepOutputViewerProps {
@@ -23,8 +23,6 @@ export interface StepOutputViewerProps {
   tabGroups?: TabGroup[];
   includeInputTab?: boolean;
   columns?: ColumnDefinition<BibEntry>[];
-  buildFilters?: (entries: BibEntry[], changes: ChangeRecord[]) => FilterOption[];
-  filterEntry?: (entry: BibEntry, change: ChangeRecord | undefined, activeFilters: string[]) => boolean;
 }
 
 type TabType = 'input' | string; // 'input' or output name
@@ -55,8 +53,6 @@ export function StepOutputViewer({
   tabGroups,
   includeInputTab = true,
   columns,
-  buildFilters,
-  filterEntry,
 }: StepOutputViewerProps) {
   const outputNames = useMemo(() => Object.keys(stepMeta.outputs), [stepMeta.outputs]);
 
@@ -114,7 +110,6 @@ export function StepOutputViewer({
 
   // Search and filter state
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const resolvedOutputName = useMemo(() => {
     if (activeTab === 'input') return 'input';
@@ -152,16 +147,6 @@ export function StepOutputViewer({
     : outputData?.entries || []) as BibEntry[];
   const isLoadingTab = activeTab === 'input' ? isInputLoading : isLoading;
 
-  const changesByKey = useMemo(() => {
-    return new Map(changes.map((change) => [change.key, change]));
-  }, [changes]);
-
-  // Build filter options
-  const filterOptions = useMemo(() => {
-    if (!buildFilters) return [];
-    return buildFilters(entries, changes);
-  }, [entries, changes, buildFilters]);
-
   // Filter entries
   const filteredEntries = useMemo(() => {
     let result = entries;
@@ -178,16 +163,8 @@ export function StepOutputViewer({
       );
     }
 
-    // Apply custom filters
-    if (filterEntry && activeFilters.length > 0) {
-      result = result.filter((entry) => {
-        const change = changesByKey.get(entry.ID || '') as ChangeRecord | undefined;
-        return filterEntry(entry, change, activeFilters);
-      });
-    }
-
     return result;
-  }, [entries, searchQuery, filterEntry, activeFilters, changesByKey]);
+  }, [entries, searchQuery]);
 
   // Paginate entries
   const paginatedEntries = useMemo(() => {
@@ -223,15 +200,6 @@ export function StepOutputViewer({
   // Reset page when filters change
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
-    setCurrentPage(1);
-  };
-
-  const handleFilterChange = (filterId: string) => {
-    setActiveFilters((prev) =>
-      prev.includes(filterId)
-        ? prev.filter((f) => f !== filterId)
-        : [...prev, filterId]
-    );
     setCurrentPage(1);
   };
 
@@ -329,9 +297,6 @@ export function StepOutputViewer({
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
         placeholder="Search by title, author, key, or DOI..."
-        filters={filterOptions}
-        activeFilters={activeFilters}
-        onFilterChange={handleFilterChange}
       />
 
       {/* Loading state */}
@@ -360,8 +325,8 @@ export function StepOutputViewer({
             changes={changes}
             columns={activeTab === 'input' ? inputColumns : columns}
             emptyMessage={
-              searchQuery || activeFilters.length > 0
-                ? 'No papers match your search/filter criteria'
+              searchQuery
+                ? 'No papers match your search criteria'
                 : 'No papers in this output'
             }
           />

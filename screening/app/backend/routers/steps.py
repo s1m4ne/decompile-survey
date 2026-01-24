@@ -371,6 +371,11 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
             )
             if step_def.type == "ai-screening":
                 save_output_entries(project_id, step_id, f"ai_{output_name}", entries)
+        if step_def.type == "ai-screening":
+            for output_name in ("passed", "excluded", "uncertain"):
+                human_file = PROJECTS_DIR / project_id / "steps" / step_id / "outputs" / f"human_{output_name}.bib"
+                if not human_file.exists():
+                    save_output_entries(project_id, step_id, f"human_{output_name}", [])
 
         # Save changes
         save_changes(project_id, step_id, result.changes)

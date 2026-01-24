@@ -5,7 +5,7 @@ export { PaperTable } from './PaperTable';
 export type { PaperTableProps, BibEntry, ChangeRecord, ColumnDefinition } from './PaperTable';
 
 export { SearchFilter } from './SearchFilter';
-export type { SearchFilterProps, FilterOption } from './SearchFilter';
+export type { SearchFilterProps } from './SearchFilter';
 
 export { Pagination } from './Pagination';
 export type { PaginationProps } from './Pagination';
