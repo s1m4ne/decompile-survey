@@ -235,19 +235,20 @@ def save_input_entries(project_id: str, step_id: str, entries: list[dict]) -> Pa
     return input_file
 
 
-def save_changes(project_id: str, step_id: str, changes: list) -> None:
+def save_changes(project_id: str, step_id: str, changes: list, filename: str = "changes.jsonl") -> None:
     """Save changes to JSONL file."""
     step_dir = PROJECTS_DIR / project_id / "steps" / step_id
     step_dir.mkdir(parents=True, exist_ok=True)
 
-    changes_file = step_dir / "changes.jsonl"
+    changes_file = step_dir / filename
     with open(changes_file, "w", encoding="utf-8") as f:
         for change in changes:
-            f.write(json.dumps(asdict(change), ensure_ascii=False) + "\n")
+            payload = change if isinstance(change, dict) else asdict(change)
+            f.write(json.dumps(payload, ensure_ascii=False) + "\n")
 
 
-def load_changes_file(step_dir: Path) -> list[dict]:
-    changes_file = step_dir / "changes.jsonl"
+def load_changes_file(step_dir: Path, filename: str = "changes.jsonl") -> list[dict]:
+    changes_file = step_dir / filename
     if not changes_file.exists():
         return []
     changes: list[dict] = []
@@ -378,7 +379,12 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
                     save_output_entries(project_id, step_id, f"human_{output_name}", [])
 
         # Save changes
-        save_changes(project_id, step_id, result.changes)
+        if step_def.type == "ai-screening":
+            save_changes(project_id, step_id, result.changes, filename="changes_ai.jsonl")
+            save_changes(project_id, step_id, result.changes, filename="changes.jsonl")
+            save_changes(project_id, step_id, [], filename="changes_human.jsonl")
+        else:
+            save_changes(project_id, step_id, result.changes)
 
         # Save clusters if provided
         if isinstance(result.details, dict) and isinstance(result.details.get("clusters"), list):
@@ -761,14 +767,6 @@ def update_step_review(project_id: str, step_id: str, payload: dict) -> dict:
     with open(input_file, encoding="utf-8") as f:
         input_entries = json.load(f)
 
-    ai_changes = load_changes_file(step_dir)
-    ai_decisions: dict[str, str] = {}
-    for change in ai_changes:
-        decision = change.get("details", {}).get("decision")
-        key = change.get("key")
-        if key and decision:
-            ai_decisions[key] = decision
-
     reviews = payload.get("reviews", [])
     review_map: dict[str, dict] = {}
     for review in reviews:
@@ -791,14 +789,33 @@ def update_step_review(project_id: str, step_id: str, payload: dict) -> dict:
         else:
             uncertain.append(entry)
 
+    human_changes: list[Change] = []
+    for entry in input_entries:
+        key = entry.get("ID", "")
+        review = review_map.get(key, {})
+        decision = review.get("decision") or "uncertain"
+        action = "remove" if decision == "exclude" else "keep"
+        human_changes.append(
+            Change(
+                key=key,
+                action=action,
+                reason=f"human_{decision}",
+                details={
+                    "decision": decision,
+                },
+            )
+        )
+
     save_output_entries(project_id, step_id, "human_passed", passed)
     save_output_entries(project_id, step_id, "human_excluded", excluded)
     save_output_entries(project_id, step_id, "human_uncertain", uncertain)
     save_review_file(step_dir, reviews)
+    save_changes(project_id, step_id, human_changes, filename="changes_human.jsonl")
 
     config = get_step_config(project_id, step_id)
     output_mode = config.get("output_mode", "ai")
     if output_mode == "human":
+        save_changes(project_id, step_id, human_changes, filename="changes.jsonl")
         outputs = {
             "passed": StepOutput(
                 file=f"steps/{step_id}/outputs/passed.bib",
@@ -882,6 +899,10 @@ def apply_output_mode(project_id: str, step_id: str, payload: dict) -> dict:
             passed_count = len(entries)
         if output_name == "excluded":
             removed_count = len(entries)
+
+    changes_source = "changes_ai.jsonl" if mode == "ai" else "changes_human.jsonl"
+    changes = load_changes_file(step_dir, changes_source)
+    save_changes(project_id, step_id, changes, filename="changes.jsonl")
 
     meta.outputs = outputs
     meta.stats = StepStats(
