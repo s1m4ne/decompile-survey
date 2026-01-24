@@ -244,10 +244,10 @@ export function StepOutputViewer({
     <div className="space-y-4">
       {/* Tab bar */}
       {tabGroups ? (
-        <div className="space-y-2">
+        <div className="flex items-start gap-6">
           {tabGroups.map((group) => (
-            <div key={group.id} className="flex items-center gap-3">
-              <div className="w-20 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase">
+            <div key={group.id} className="flex flex-col gap-1">
+              <div className="text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase">
                 {group.label}
               </div>
               <div className="flex items-center gap-1">
@@ -262,7 +262,7 @@ export function StepOutputViewer({
                         setCurrentPage(1);
                       }}
                       className={cn(
-                        'flex items-center gap-2 px-4 py-2 text-sm border rounded-md transition-colors',
+                        'flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md transition-colors',
                         activeTab === tab.id
                           ? 'border-[hsl(var(--primary))] text-[hsl(var(--foreground))] bg-[hsl(var(--muted))]'
                           : 'border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))]'
