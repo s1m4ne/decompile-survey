@@ -481,7 +481,7 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
                                       <button
                                         type="button"
                                         onClick={() => setReviewDecision(key, aiDecision as ReviewDecision)}
-                                        className="px-3 py-1 rounded-full border border-[hsl(var(--foreground))] bg-[hsl(var(--foreground))] text-[hsl(var(--background))] text-xs hover:opacity-90"
+                                        className="px-3 py-1 rounded-full border transition-colors border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--background))]"
                                       >
                                         Approve AI decision
                                       </button>
@@ -538,8 +538,8 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
                                   className={cn(
                                     'px-3 py-1 rounded-full border transition-colors',
                                     !humanDecision
-                                      ? 'border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
-                                      : 'border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] opacity-70 hover:opacity-100'
+                                      ? 'border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--background))]'
+                                      : 'border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] opacity-70 hover:opacity-100 hover:bg-[hsl(var(--background))]'
                                   )}
                                 >
                                   Clear Selection
