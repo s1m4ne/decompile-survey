@@ -69,14 +69,9 @@ export function StepDetailPage() {
     enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
   });
   const { data: inputData } = useQuery({
-    queryKey: ['step-input', projectId, stepId, 'cluster-input'],
+    queryKey: ['step-input', projectId, stepId],
     queryFn: () => stepsApi.getInput(projectId!, stepId!),
-    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isDuplicateGroupStep,
-  });
-  const { data: aiInputData } = useQuery({
-    queryKey: ['step-input', projectId, stepId, 'ai-review'],
-    queryFn: () => stepsApi.getInput(projectId!, stepId!),
-    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && isAiScreening,
+    enabled: !!projectId && !!stepId && stepMeta?.execution.status === 'completed' && (isDuplicateGroupStep || isAiScreening),
   });
   const { data: reviewData } = useQuery({
     queryKey: ['step-review', projectId, stepId],
@@ -280,7 +275,7 @@ export function StepDetailPage() {
 
   const aiReviewEntries = useMemo(() => {
     if (!isAiScreening) return [];
-    const inputEntries = (aiInputData?.entries ?? []) as {
+    const inputEntries = (inputData?.entries ?? []) as {
       ID?: string;
       title?: string;
       author?: string;
@@ -303,7 +298,7 @@ export function StepDetailPage() {
         aiConfidence: confidence,
       };
     });
-  }, [aiInputData?.entries, changes, isAiScreening]);
+  }, [inputData?.entries, changes, isAiScreening]);
 
   const updateReviewMutation = useMutation({
     mutationFn: (nextReviews: Record<string, { decision?: string }>) => {
@@ -623,21 +618,18 @@ export function StepDetailPage() {
     );
   }, [changes]);
   const humanDecisionCounts = useMemo(() => {
-    if (!isAiScreening) {
+    if (!isAiScreening || !reviewData?.reviews) {
       return { include: 0, exclude: 0, uncertain: 0 };
     }
     const counts = { include: 0, exclude: 0, uncertain: 0 };
-    const values = Object.values(reviewDraft);
-    if (values.length === 0) {
-      return counts;
-    }
-    for (const value of values) {
-      if (value?.decision === 'include') counts.include += 1;
-      else if (value?.decision === 'exclude') counts.exclude += 1;
-      else if (value?.decision === 'uncertain') counts.uncertain += 1;
+    const reviews = reviewData.reviews as { decision?: string }[];
+    for (const review of reviews) {
+      if (review.decision === 'include') counts.include += 1;
+      else if (review.decision === 'exclude') counts.exclude += 1;
+      else if (review.decision === 'uncertain') counts.uncertain += 1;
     }
     return counts;
-  }, [isAiScreening, reviewDraft]);
+  }, [isAiScreening, reviewData?.reviews]);
   const apiLatency = useMemo(() => {
     if (stepMeta?.step_type !== 'ai-screening') return null;
     let totalMs = 0;
@@ -668,18 +660,17 @@ export function StepDetailPage() {
       second: '2-digit',
     });
   }, [stepMeta?.execution.completed_at, stepMeta?.step_type]);
-  const aiDecisionCounts = decisionCounts ?? { include: 0, exclude: 0, uncertain: 0 };
   const aiReviewTabs = useMemo(() => ([
-    { id: 'ai_passed', label: 'AI Passed', count: aiDecisionCounts.include, tone: 'success' },
-    { id: 'human_passed', label: 'Human Passed', count: humanDecisionCounts.include, tone: 'success' },
-    { id: 'ai_excluded', label: 'AI Excluded', count: aiDecisionCounts.exclude, tone: 'danger' },
-    { id: 'human_excluded', label: 'Human Excluded', count: humanDecisionCounts.exclude, tone: 'danger' },
-    { id: 'ai_uncertain', label: 'AI Uncertain', count: aiDecisionCounts.uncertain, tone: 'warning' },
-    { id: 'human_uncertain', label: 'Human Uncertain', count: humanDecisionCounts.uncertain, tone: 'warning' },
+    { id: 'ai_passed', label: 'AI Passed', count: decisionCounts.include, tone: 'success' as const },
+    { id: 'human_passed', label: 'Human Passed', count: humanDecisionCounts.include, tone: 'success' as const },
+    { id: 'ai_excluded', label: 'AI Excluded', count: decisionCounts.exclude, tone: 'danger' as const },
+    { id: 'human_excluded', label: 'Human Excluded', count: humanDecisionCounts.exclude, tone: 'danger' as const },
+    { id: 'ai_uncertain', label: 'AI Uncertain', count: decisionCounts.uncertain, tone: 'warning' as const },
+    { id: 'human_uncertain', label: 'Human Uncertain', count: humanDecisionCounts.uncertain, tone: 'warning' as const },
   ]), [
-    aiDecisionCounts.exclude,
-    aiDecisionCounts.include,
-    aiDecisionCounts.uncertain,
+    decisionCounts.exclude,
+    decisionCounts.include,
+    decisionCounts.uncertain,
     humanDecisionCounts.exclude,
     humanDecisionCounts.include,
     humanDecisionCounts.uncertain,
