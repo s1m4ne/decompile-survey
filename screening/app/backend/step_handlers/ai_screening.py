@@ -107,8 +107,20 @@ async def screen_paper(
             )
 
             latency_ms = int((time.time() - start_time) * 1000)
-            result = json.loads(response.choices[0].message.content)
             tokens_used = response.usage.total_tokens if response.usage else 0
+
+            # Validate response structure
+            if not response.choices:
+                raise ValueError("Empty choices in response")
+            content = response.choices[0].message.content
+            if not content:
+                raise ValueError("Empty content in response")
+
+            # Parse JSON response
+            try:
+                result = json.loads(content)
+            except json.JSONDecodeError as e:
+                raise ValueError(f"Invalid JSON response: {e}")
 
             return {
                 "key": entry_key,
@@ -289,16 +301,28 @@ class AIScreeningHandler(StepHandler):
         rules = load_rules(rules_id)
 
         # Run async screening
-        results = asyncio.run(
-            screen_papers_async(
-                entries=input_entries,
-                rules=rules,
-                model=model,
-                provider=provider,
-                concurrency=concurrency,
-                local_base_url=local_base_url if provider == "local" else None,
-            )
+        # Handle case where event loop may already be running (e.g., in FastAPI)
+        coro = screen_papers_async(
+            entries=input_entries,
+            rules=rules,
+            model=model,
+            provider=provider,
+            concurrency=concurrency,
+            local_base_url=local_base_url if provider == "local" else None,
         )
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = None
+
+        if loop and loop.is_running():
+            # Already in async context - create new loop in thread
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(asyncio.run, coro)
+                results = future.result()
+        else:
+            results = asyncio.run(coro)
 
         # Categorize results
         passed = []
