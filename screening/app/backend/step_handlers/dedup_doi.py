@@ -24,7 +24,7 @@ class DedupDoiHandler(StepHandler):
             required=True,
         ),
         OutputDefinition(
-            name="duplicates",
+            name="removed",
             description="Duplicate entries (later occurrences of same DOI)",
             required=True,
         ),
@@ -57,13 +57,13 @@ class DedupDoiHandler(StepHandler):
             config: Step configuration
 
         Returns:
-            StepResult with passed and duplicates outputs
+            StepResult with passed and removed outputs
         """
         case_sensitive = config.get("case_sensitive", False)
         keep_no_doi = config.get("keep_no_doi", True)
 
         passed = []
-        duplicates = []
+        removed = []
         changes = []
 
         # Track seen DOIs
@@ -87,17 +87,17 @@ class DedupDoiHandler(StepHandler):
                         details={"message": "No DOI - kept in passed"},
                     ))
                 else:
-                    duplicates.append(entry)
+                    removed.append(entry)
                     changes.append(Change(
                         key=entry_key,
                         action="remove",
                         reason="no_doi_removed",
-                        details={"message": "No DOI - moved to duplicates"},
+                        details={"message": "No DOI - moved to removed"},
                     ))
             elif normalized_doi in seen_dois:
                 # Duplicate DOI
                 original = seen_dois[normalized_doi]
-                duplicates.append(entry)
+                removed.append(entry)
                 changes.append(Change(
                     key=entry_key,
                     action="remove",
@@ -122,13 +122,13 @@ class DedupDoiHandler(StepHandler):
         return StepResult(
             outputs={
                 "passed": passed,
-                "duplicates": duplicates,
+                "removed": removed,
             },
             changes=changes,
             details={
                 "total_input": len(input_entries),
                 "unique_count": len(passed),
-                "duplicate_count": len(duplicates),
+                "duplicate_count": len(removed),
                 "unique_dois": len(seen_dois),
                 "entries_without_doi": sum(
                     1 for c in changes if c.reason in ("no_doi", "no_doi_removed")

@@ -40,6 +40,16 @@ export function ProjectsPage() {
     });
   };
 
+  const openCreateModal = () => {
+    const projectCount = projects?.length ?? 0;
+    const defaultName = projectCount === 0
+      ? 'My Project'
+      : `My Project ${projectCount + 1}`;
+    setNewProjectName(defaultName);
+    setNewProjectDescription('');
+    setShowCreateModal(true);
+  };
+
   const handleDelete = (e: React.MouseEvent, project: Project) => {
     e.preventDefault();
     e.stopPropagation();
@@ -87,7 +97,7 @@ export function ProjectsPage() {
           </p>
         </div>
         <button
-          onClick={() => setShowCreateModal(true)}
+          onClick={openCreateModal}
           className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-lg hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" />
@@ -104,7 +114,7 @@ export function ProjectsPage() {
           <FolderOpen className="w-12 h-12 mx-auto text-[hsl(var(--muted-foreground))] mb-4" />
           <p className="text-[hsl(var(--muted-foreground))]">No projects yet</p>
           <button
-            onClick={() => setShowCreateModal(true)}
+            onClick={openCreateModal}
             className="mt-4 text-[hsl(var(--primary))] hover:underline"
           >
             Create your first project
@@ -170,7 +180,7 @@ export function ProjectsPage() {
                   type="text"
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
-                  placeholder="My Screening Project"
+                  placeholder="My Project"
                   className="w-full px-3 py-2 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-md text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted-foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--ring))]"
                   autoFocus
                 />

@@ -24,7 +24,7 @@
           "action": "keep"
         }
       ],
-      "reviewed": false
+      "reviewed": true
     },
     {
       "id": "cluster-13",
@@ -74,7 +74,8 @@
           "similarity": 1,
           "action": "keep"
         }
-      ]
+      ],
+      "reviewed": true
     },
     {
       "id": "cluster-33",

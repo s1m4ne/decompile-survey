@@ -302,7 +302,6 @@ function getOutputActionCount(
     case 'passed':
       return actionCounts.keep;
     case 'removed':
-    case 'duplicates':
       return actionCounts.remove;
     case 'modified':
       return actionCounts.modify;
@@ -335,7 +334,6 @@ function getOutputTone(name: string): OutputTone | null {
     case 'passed':
       return 'success';
     case 'removed':
-    case 'duplicates':
       return 'danger';
     case 'warning':
     case 'uncertain':

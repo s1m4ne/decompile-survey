@@ -549,12 +549,28 @@ def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
     with open(input_file, encoding="utf-8") as f:
         input_entries = json.load(f)
 
+    existing_changes: dict[str, dict] = {}
+    changes_file = step_dir / "changes.jsonl"
+    if changes_file.exists():
+        with open(changes_file, encoding="utf-8") as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                try:
+                    change = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                key = change.get("key")
+                if key:
+                    existing_changes[key] = change
+
     clusters = payload.get("clusters", [])
     entry_map = {entry.get("ID", ""): entry for entry in input_entries}
 
     passed: list[dict] = []
     removed: list[dict] = []
     changes: list[Change] = []
+    handled_ids: set[str] = set()
 
     for cluster in clusters:
         members = cluster.get("members", [])
@@ -573,6 +589,7 @@ def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
             entry = entry_map.get(member_id)
             if not entry:
                 continue
+            handled_ids.add(member_id)
             action = member.get("action")
             if action not in ("keep", "remove"):
                 action = "keep" if member_id == representative_id else "remove"
@@ -597,9 +614,27 @@ def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
                     },
                 ))
 
-    removed_output_name = "removed"
-    if "duplicates" in meta.outputs:
-        removed_output_name = "duplicates"
+    for entry in input_entries:
+        entry_id = entry.get("ID")
+        if not entry_id or entry_id in handled_ids:
+            continue
+        existing = existing_changes.get(entry_id, {})
+        action = existing.get("action", "keep")
+        reason = existing.get("reason", "manual_cluster_keep")
+        details = existing.get("details", {"cluster_id": None})
+
+        if action == "remove":
+            removed.append(entry)
+        else:
+            passed.append(entry)
+            action = "keep"
+
+        changes.append(Change(
+            key=entry_id,
+            action=action,
+            reason=reason,
+            details=details if isinstance(details, dict) else {"cluster_id": None},
+        ))
 
     outputs = {
         "passed": StepOutput(
@@ -607,15 +642,15 @@ def update_step_clusters(project_id: str, step_id: str, payload: dict) -> dict:
             count=len(passed),
             description="Representative entries kept after manual clustering",
         ),
-        removed_output_name: StepOutput(
-            file=f"steps/{step_id}/outputs/{removed_output_name}.bib",
+        "removed": StepOutput(
+            file=f"steps/{step_id}/outputs/removed.bib",
             count=len(removed),
             description="Entries removed after manual clustering",
         ),
     }
 
     save_output_entries(project_id, step_id, "passed", passed)
-    save_output_entries(project_id, step_id, removed_output_name, removed)
+    save_output_entries(project_id, step_id, "removed", removed)
     save_changes(project_id, step_id, changes)
     save_clusters(project_id, step_id, clusters)
 

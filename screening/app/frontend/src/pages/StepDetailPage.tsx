@@ -176,7 +176,10 @@ export function StepDetailPage() {
       return;
     }
     setDraftClusters(next);
-    setSelectedClusterId(next[0]?.id ?? null);
+    setSelectedClusterId((prev) => {
+      if (!prev) return next[0]?.id ?? null;
+      return next.some((cluster) => cluster.id === prev) ? prev : (next[0]?.id ?? null);
+    });
     baselineRef.current = nextKey;
   }, [clusters]);
   useEffect(() => {

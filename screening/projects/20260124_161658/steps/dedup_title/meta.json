@@ -11,7 +11,7 @@
   "outputs": {
     "passed": {
       "file": "steps/dedup_title/outputs/passed.bib",
-      "count": 24,
+      "count": 625,
       "description": "Representative entries kept after manual clustering"
     },
     "removed": {
@@ -22,15 +22,15 @@
   },
   "stats": {
     "input_count": 650,
-    "total_output_count": 49,
-    "passed_count": 24,
+    "total_output_count": 650,
+    "passed_count": 625,
     "removed_count": 25
   },
   "execution": {
     "status": "completed",
-    "started_at": "2026-01-24T15:27:13.086039",
-    "completed_at": "2026-01-24T15:27:28.417697",
-    "duration_sec": 15.331658,
+    "started_at": "2026-01-24T16:29:42.794559",
+    "completed_at": "2026-01-24T16:29:58.078702",
+    "duration_sec": 15.284143,
     "error": null
   }
 }
