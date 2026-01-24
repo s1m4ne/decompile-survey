@@ -13,6 +13,9 @@ import {
   Clock,
   AlertTriangle,
   Info,
+  Brain,
+  User,
+  FileInput,
 } from 'lucide-react';
 import { stepsApi, pipelineApi, StepMeta, PipelineStep } from '../lib/api';
 import { StepOutputViewer, ChangeRecord } from '../components/papers';
@@ -665,31 +668,31 @@ export function StepDetailPage() {
       id: 'input',
       label: '',
       tabs: [
-        { id: 'input', label: 'Input', count: stepMeta?.input?.count ?? 0 },
+        { id: 'input', label: 'Input', count: stepMeta?.input?.count ?? 0, icon: <FileInput className="w-4 h-4" /> },
       ],
     },
     {
       id: 'passed',
       label: 'Passed',
       tabs: [
-        { id: 'ai_passed', label: 'AI', count: decisionCounts.include, tone: 'success' as const },
-        { id: 'human_passed', label: 'Human', count: humanDecisionCounts.include, tone: 'success' as const },
+        { id: 'ai_passed', label: 'AI', count: decisionCounts.include, tone: 'success' as const, icon: <Brain className="w-4 h-4" /> },
+        { id: 'human_passed', label: 'Human', count: humanDecisionCounts.include, tone: 'success' as const, icon: <User className="w-4 h-4" /> },
       ],
     },
     {
       id: 'excluded',
       label: 'Excluded',
       tabs: [
-        { id: 'ai_excluded', label: 'AI', count: decisionCounts.exclude, tone: 'danger' as const },
-        { id: 'human_excluded', label: 'Human', count: humanDecisionCounts.exclude, tone: 'danger' as const },
+        { id: 'ai_excluded', label: 'AI', count: decisionCounts.exclude, tone: 'danger' as const, icon: <Brain className="w-4 h-4" /> },
+        { id: 'human_excluded', label: 'Human', count: humanDecisionCounts.exclude, tone: 'danger' as const, icon: <User className="w-4 h-4" /> },
       ],
     },
     {
       id: 'uncertain',
       label: 'Uncertain',
       tabs: [
-        { id: 'ai_uncertain', label: 'AI', count: decisionCounts.uncertain, tone: 'warning' as const },
-        { id: 'human_uncertain', label: 'Human', count: humanDecisionCounts.uncertain, tone: 'warning' as const },
+        { id: 'ai_uncertain', label: 'AI', count: decisionCounts.uncertain, tone: 'warning' as const, icon: <Brain className="w-4 h-4" /> },
+        { id: 'human_uncertain', label: 'Human', count: humanDecisionCounts.uncertain, tone: 'warning' as const, icon: <User className="w-4 h-4" /> },
       ],
     },
   ]), [
