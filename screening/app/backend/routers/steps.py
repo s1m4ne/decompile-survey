@@ -839,13 +839,26 @@ def apply_output_mode(project_id: str, step_id: str, payload: dict) -> dict:
         raise HTTPException(status_code=400, detail="Invalid output mode")
 
     step_dir = get_step_dir(project_id, step_id)
+
+    # Validate that source files exist for the selected mode
+    prefix = "ai_" if mode == "ai" else "human_"
+    missing_files = []
+    for output_name in ("passed", "excluded", "uncertain"):
+        source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
+        if not source_file.exists():
+            missing_files.append(f"{prefix}{output_name}.bib")
+    if missing_files:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Cannot switch to '{mode}' mode: missing files {missing_files}"
+        )
+
     outputs: dict[str, StepOutput] = {}
     total_count = 0
     passed_count = 0
     removed_count = 0
 
     for output_name in ("passed", "excluded", "uncertain"):
-        prefix = "ai_" if mode == "ai" else "human_"
         source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
         entries = load_output_entries_from_file(source_file)
         output_file = save_output_entries(project_id, step_id, output_name, entries)

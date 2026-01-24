@@ -238,6 +238,8 @@ export const stepTypeConfigs: Record<string, StepTypeConfig> = {
   'ai-screening': {
     icon: <Brain className="w-5 h-5" />,
     columns: aiScreeningColumns,
+    buildFilters: buildAIScreeningFilters,
+    filterEntry: filterAIScreeningEntry,
   },
   'dedup-title': {
     icon: <Type className="w-5 h-5" />,

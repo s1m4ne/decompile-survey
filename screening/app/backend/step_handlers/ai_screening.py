@@ -6,9 +6,12 @@ Uses LLM to screen papers based on rules.
 
 import asyncio
 import json
+import logging
 import os
 import time
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 from openai import AsyncOpenAI
 
@@ -335,11 +338,13 @@ class AIScreeningHandler(StepHandler):
 
         total_tokens = 0
         total_latency = 0
+        skipped_keys = []
 
         for result in results:
             key = result["key"]
             entry = entry_map.get(key)
             if not entry:
+                skipped_keys.append(key)
                 continue
 
             decision = result["decision"]
@@ -372,6 +377,13 @@ class AIScreeningHandler(StepHandler):
                 )
             )
 
+        # Log warning if any results were skipped due to ID mismatch
+        if skipped_keys:
+            logger.warning(
+                f"Skipped {len(skipped_keys)} results due to ID mismatch: {skipped_keys[:5]}"
+                + (f" (and {len(skipped_keys) - 5} more)" if len(skipped_keys) > 5 else "")
+            )
+
         return StepResult(
             outputs={
                 "passed": passed,
@@ -384,6 +396,7 @@ class AIScreeningHandler(StepHandler):
                 "passed_count": len(passed),
                 "excluded_count": len(excluded),
                 "uncertain_count": len(uncertain),
+                "skipped_count": len(skipped_keys),
                 "model": model,
                 "provider": provider,
                 "concurrency": concurrency,
