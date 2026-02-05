@@ -30,6 +30,27 @@ LOCAL_DEFAULT_MODEL = "openai/gpt-oss-120b"
 # Rules directory
 RULES_DIR = Path(__file__).parent.parent.parent.parent / "screening" / "rules"
 
+# Reason codes definition (fixed in code for consistent output)
+REASON_CODES = {
+    # Include codes (in_*)
+    "in_core": "Core decompilation research - LLM/ML generates high-level code from low-level input",
+    "in_decompiler_enhancement": "LLM enhances existing decompiler output (readability, typing, naming)",
+    "in_type_recovery": "Type recovery/inference for decompiled code",
+    "in_variable_naming": "Variable/function name recovery for decompiled code",
+    "in_control_structure": "Control structure recovery/reconstruction",
+    # Exclude codes (ex_*)
+    "ex_no_ml": "No ML/LLM used - traditional/rule-based approach only",
+    "ex_no_lowlevel_input": "Input is not low-level (source-to-source, no binary/asm/bytecode)",
+    "ex_no_code_generation": "No code generation - classification/detection/similarity only",
+    "ex_survey_or_meta": "Survey, review, or meta-analysis paper",
+    "ex_out_of_scope": "Topic outside decompilation scope",
+    # Uncertain codes (uns_*)
+    "uns_unclear_method": "Cannot determine if ML/LLM is used from abstract",
+    "uns_unclear_input": "Cannot determine input type from abstract",
+    "uns_unclear_output": "Cannot determine output type from abstract",
+    "uns_need_fulltext": "Need full text to make decision",
+}
+
 
 def get_available_rules() -> list[dict]:
     """Get list of available rule files."""
@@ -73,16 +94,25 @@ async def screen_paper(
             "key": entry_key,
             "decision": "uncertain",
             "confidence": 0.0,
-            "reason": "No abstract available",
+            "reason_codes": [{"code": "uns_need_fulltext", "evidence": "No abstract"}],
+            "reason": "アブストラクトが存在しないため判定不可。フルテキストの確認が必要。",
             "tokens_used": 0,
             "latency_ms": 0,
         }
+
+    # Build reason codes description for prompt
+    reason_codes_desc = "\n".join(
+        f"- {code}: {desc}" for code, desc in REASON_CODES.items()
+    )
 
     prompt = f"""あなたは学術論文のスクリーニングを行うアシスタントです。
 以下のスクリーニング基準に基づいて、論文を判定してください。
 
 ## スクリーニング基準
 {rules}
+
+## 使用可能な理由コード
+{reason_codes_desc}
 
 ## 論文情報
 タイトル: {title}
@@ -92,11 +122,23 @@ async def screen_paper(
 
 ## 出力形式
 以下のJSON形式で出力してください。他の文字は含めないでください。
+
 {{
     "decision": "include" または "exclude" または "uncertain",
-    "confidence": 0.0〜1.0の数値,
-    "reason": "判定理由（日本語で簡潔に）"
+    "confidence": 0.0〜1.0の数値（include/excludeは0.7以上、uncertainは0.3-0.69）,
+    "reason_codes": [
+        {{
+            "code": "上記の理由コードから選択",
+            "evidence": "アブストラクトから該当箇所を短く引用（英語のまま、20語以内）"
+        }}
+    ],
+    "reason": "判定理由の詳細説明（日本語で2-3文）"
 }}
+
+注意:
+- reason_codesは該当するものを全て列挙（1-3個程度）
+- evidenceはアブストラクトの原文から引用
+- decisionがincludeならin_*コード、excludeならex_*コード、uncertainならuns_*コードを使用
 """
 
     start_time = time.time()
@@ -129,6 +171,7 @@ async def screen_paper(
                 "key": entry_key,
                 "decision": result.get("decision", "uncertain"),
                 "confidence": result.get("confidence", 0.5),
+                "reason_codes": result.get("reason_codes", []),
                 "reason": result.get("reason", ""),
                 "tokens_used": tokens_used,
                 "latency_ms": latency_ms,
@@ -140,7 +183,8 @@ async def screen_paper(
                 "key": entry_key,
                 "decision": "uncertain",
                 "confidence": 0.0,
-                "reason": f"API error: {str(e)}",
+                "reason_codes": [{"code": "uns_need_fulltext", "evidence": "API error"}],
+                "reason": f"APIエラーにより判定不可: {str(e)}",
                 "tokens_used": 0,
                 "latency_ms": latency_ms,
             }
@@ -361,14 +405,19 @@ class AIScreeningHandler(StepHandler):
                 uncertain.append(entry)
                 action = "keep"  # uncertain goes to uncertain output but action is "keep"
 
+            # Extract first reason code for the reason field
+            reason_codes = result.get("reason_codes", [])
+            primary_code = reason_codes[0]["code"] if reason_codes else f"ai_{decision}"
+
             changes.append(
                 Change(
                     key=key,
                     action=action,
-                    reason=f"ai_{decision}",
+                    reason=primary_code,
                     details={
                         "decision": decision,
                         "confidence": result.get("confidence", 0),
+                        "reason_codes": reason_codes,
                         "reasoning": result.get("reason", ""),
                         "model": model,
                         "tokens_used": result.get("tokens_used", 0),
