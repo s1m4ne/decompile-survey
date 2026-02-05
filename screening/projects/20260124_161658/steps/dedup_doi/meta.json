@@ -12,12 +12,12 @@
     "passed": {
       "file": "steps/dedup_doi/outputs/passed.bib",
       "count": 650,
-      "description": "Unique entries (first occurrence of each DOI + entries without DOI)"
+      "description": "Representative entries kept after manual clustering"
     },
     "removed": {
       "file": "steps/dedup_doi/outputs/removed.bib",
       "count": 5,
-      "description": "Duplicate entries (later occurrences of same DOI)"
+      "description": "Entries removed after manual clustering"
     }
   },
   "stats": {

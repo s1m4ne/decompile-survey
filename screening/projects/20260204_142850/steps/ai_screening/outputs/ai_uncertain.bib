@@ -1,0 +1,380 @@
+@inproceedings{10.1145/3719027.3760714,
+  abstract = {This poster introduces HarvETHter, a smart contract decompiler for EVM-based platforms such as Ethereum, Binance, and Polygon. We present the corpus completeness hypothesis, which we investigate through HarvETHter. Relying on our hypothesis, HarvETHter sources knowledge of the Ethereum blockchain and leverages it to decompile smart contracts to Solidity source code.},
+  address = {New York, NY, USA},
+  author = {Giesen, Jens-Rene and Scholz, Christian and Davi, Lucas},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3760714},
+  isbn = {9798400715259},
+  keywords = {decompilation, provenance &amp; security, smart contracts},
+  location = {Taipei, Taiwan},
+  numpages = {3},
+  pages = {4752–4754},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Poster: Code HarvETHter: Corpus-Driven Decompilation of Ethereum Smart Contracts},
+  url = {https://doi.org/10.1145/3719027.3760714},
+  year = {2025}
+}
+
+@inproceedings{10.1145/3719027.3765089,
+  abstract = {Recovering function signatures is a cornerstone of binary program analysis, yet it remains a challenging task. Existing methods either rely on disassembly-based constraints, which struggle with cross-architecture compatibility and scalability, or adopt learning-based approaches that are resource-intensive and often inaccurate. In this paper, we present CDA, a novel decompilation-based method for recovering function signatures that combines the strengths of multiple decompilers while mitigating their limitations. The core idea behind CDA is leveraging probabilistic constraints to estimate the likelihood of each function signature recovery result produced by decompilers, guided by inference rules specifically designed to address the limitations of decompilers. Based on these probabilities, CDA selects the recovery results with the highest likelihood as the final outcomes. We extensively evaluate CDA across five tasks --- variadic function/position detection, parameter identification, return value detection, and parameter type recovery --- comparing it against state-of-the-art tools, including IDA, Ghidra, Binary Ninja, and TYGR. Experimental results show that CDA outperforms baseline tools across multiple architectures (x64, x86, AArch64, Arm, and Mips) and optimization levels (O0-O3), highlighting its robustness and reliability in diverse compilation environments.},
+  address = {New York, NY, USA},
+  author = {Huang, Haohui and Liu, Yue and Cheng, Yuxi and Wei, Haiyang and Liu, Jiamu and Wang, Yu and Wang, Linzhang},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3765089},
+  isbn = {9798400715259},
+  keywords = {function signature recovery, probabilistic constraint, reverse engineering},
+  location = {Taipei, Taiwan},
+  numpages = {15},
+  pages = {3386–3400},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Recover Function Signature from Combined Constraints},
+  url = {https://doi.org/10.1145/3719027.3765089},
+  year = {2025}
+}
+
+@inproceedings{11028410,
+  abstract = {Modern industry is built, among other things, on software, the presence of vulnerabilities in which is a significant problem. It is more rational to search for vulnerabilities in those representations of the program (source code, algorithms, architecture, etc.) on the basis of which they were developed. However, as a rule, there is difficult-to-analyze machine code available. Obtaining higher-level representations is possible by reverse engineering, carried out in various ways, such as expert, algorithmic, intelligent, enumeration and logging. The qualitative comparison of these representations is given. The current study is devoted to a new method of reverse engineering based on the use of genetic algorithms. The course of the research and the following main scientific results are briefly described: the methodology of reverse engineering of a software system, the model of the life cycle of a program with multi-level vulnerabilities, the concept of genetic de-evolution of program representations, scientific, methodological and algorithmic instrumentation for genetic decompilation, an architectural block for conducting genetic de-evolution of representations with functionality for searching for multi-level vulnerabilities. All results are novel, as well as theoretically and practically significant.},
+  author = {Izrailov, Konstantin and Kotenko, Igor and Buinevich, Mikhail},
+  booktitle = {2025 International Conference on Industrial Engineering, Applications and Manufacturing (ICIEAM)},
+  doi = {10.1109/ICIEAM65163.2025.11028410},
+  issn = {2993-4060},
+  keywords = {Industries;Source coding;Instruments;Reverse engineering;Software algorithms;Information security;Genetics;Software systems;Manufacturing;Genetic algorithms;software;vulnerability;information security;reverse engineering;genetic algorithms},
+  month = {May},
+  number = {},
+  pages = {918-923},
+  title = {Reengineering Modern Industrial Software to Find Vulnerabilities Based on Genetic Algorithms},
+  volume = {},
+  year = {2025}
+}
+
+@inproceedings{11118682,
+  abstract = {As cyber threats become more complex, the need for innovative tools in cybersecurity is paramount. MAIA (Malware Analysis and Intelligence Assistant), addresses this demand by automating malware reverse engineering to enhance threat analysis capabilities. It integrates advanced unpacking techniques, decompilation using Ghidra, and artificial intelligence analysis allowing for an indepth understanding of its structure, behaviors, and concealed functions. By enabling detailed static analysis and AI-driven insights, it assists cybersecurity teams in rapidly identifying and countering malicious tactics. Through comprehensive report generation and an interactive user interface, it equips cybersecurity professionals with actionable data to strengthen digital defenses. MAIA exemplifies the integration of AI with traditional malware analysis, aiming to bolster proactive threat mitigation and incident response efforts.},
+  author = {Naliapara, Heli and Singhvi, Puru and Shukla, Pratham and Mirkar, Sulalah},
+  booktitle = {2025 IEEE International Conference on Emerging Technologies and Applications (MPSec ICETA)},
+  doi = {10.1109/MPSecICETA64837.2025.11118682},
+  issn = {},
+  keywords = {Codes;Automation;Prevention and mitigation;Reverse engineering;Static analysis;Manuals;User interfaces;Malware;Computer security;Artificial intelligence;Malware Analysis;Reverse Engineering;Artificial Intelligence;Incident Response;Static Code Analysis;Threat Intelligence;Automated Malware Analysis;Cyber Threat Mitigation;Cyber Defense Tools;AI-driven Cybersecurity Solutions},
+  month = {Feb},
+  number = {},
+  pages = {1-6},
+  title = {MAIA - Malware Analysis and Intelligence Assistant},
+  volume = {},
+  year = {2025}
+}
+
+@inproceedings{11352404,
+  abstract = {Over the past decade, PHP has consistently been one of the most popular server-side programming languages among developers for web development. To protect intellectual property, various PHP source code obfuscation and encryption methods have been developed, which has led to difficulties in performing security analysis on PHP source code. Previous work has demonstrated the feasibility of recovering source code by extracting bytecode from PHP during dynamic execution. However, there is still a lack of a universal decompilation method for this kind of bytecode, tailored to PHP’s unique syntax. Thus, we propose a systematic decompilation framework for PHP bytecode. First, we design a unified intermediate representation that eliminates the differences between bytecodes from different PHP versions. Then, we introduce a structural analysis algorithm specifically for PHP syntax, improving upon existing methods to better accommodate PHP’s unique syntax. We use over 3 million lines of PHP code as a dataset and compiled it into PHP bytecode. After decompiling it with our method, we successfully recovered 92% of the classes and 85% of the methods. Furthermore, from the encrypted dataset containing 37 SQL injection and 31 XSS vulnerability patterns, we fully restored the original vulnerability patterns and reconstructed the exploitation chains. Furthermore, we identified a series of vulnerabilities in real-world projects and were assigned 6 new CVE IDs1, demonstrating the correctness of our method and its ability to assist in static analysis for vulnerability discovery.1CVE-2025-45046, CVE-2025-45047, CVE-2025-45048, CVE-2025-45049, CVE-2025-45050, CVE-2025-45052},
+  author = {Zhao, Shiwu and Zheng, Ningjun and Li, Haoyu and Feng, Ruizhi and Chen, Xingchen and Tan, Ru and Liu, Qixu},
+  booktitle = {2025 28th International Symposium on Research in Attacks, Intrusions and Defenses (RAID)},
+  doi = {10.1109/RAID67961.2025.00032},
+  issn = {},
+  keywords = {Codes;Systematics;Source coding;Trees (botanical);Process control;Static analysis;Intellectual property;Syntactics;SQL injection;Protection;decompilation;structural analysis;code protection;PHP bytecode;vulnerability detection},
+  month = {Oct},
+  number = {},
+  pages = {77-91},
+  title = {DEPHP: A Source Code Recovery Method for PHP Bytecode with Improved Structural Analysis},
+  volume = {},
+  year = {2025}
+}
+
+@inproceedings{9647781,
+  abstract = {Analysis of binary code is a building block of computer security. Especially in malware or firmware analysis where source code oftentimes is not available, techniques like decompilation are utilized to Figure out the functionality of binaries. During the optimization phase in modern compilers, human-readable expressions are often transformed into instruction sequences (compiler idioms or idioms) that may be more efficient in terms of speed or size than the direct translation. However, these transformations are often considerably worse in terms of readability for the analyst. Such compiler specific sequences are not only significantly longer than the apparent translation of the original high-level language operation but also have no trivial correlation to the original expression’s semantics. Modern decompilers address this issue by reverting idioms using static, manually crafted rules. In this paper, we introduce a novel approach to find and annotate arithmetic idioms with their corresponding high-level language expressions to significantly simplify manual analysis. In contrast to previous approaches, our method does not require manual work to create the patterns for matching idioms and significantly less manual labour to derive the transformation rules to calculate the original constants. In our evaluation, we compared the results of PIdARCI against the current academic and commercial state-of-the-art Ghidra, RetDec, and Hex Rays / IDA Pro. We show that PIdARCI matches more than 99% of all considered idioms, exceeding the matching rate of the other approaches.},
+  author = {Enders, Steffen and Rybalka, Mariia and Padilla, Elmar},
+  booktitle = {2021 18th International Conference on Privacy, Security and Trust (PST)},
+  doi = {10.1109/PST52912.2021.9647781},
+  issn = {},
+  keywords = {Matched filters;Databases;Semantics;Manuals;Malware;High level languages;Pattern matching},
+  month = {Dec},
+  number = {},
+  pages = {1-7},
+  title = {PIdARCI: Using Assembly Instruction Patterns to Identify, Annotate, and Revert Compiler Idioms},
+  volume = {},
+  year = {2021}
+}
+
+@article{Jiang2025,
+  abstract = {Binary code analysis is the foundation of crucial tasks in the security domain; thus building effective binary analysis techniques is more important than ever. Large language models (LLMs) although have brought impressive improvement to source code tasks, do not directly generalize to assembly code due to the unique challenges of assembly: (1) the low information density of assembly and (2) the diverse optimizations in assembly code. To overcome these challenges, this work proposes a hierarchical attention mechanism that builds attention summaries to capture the semantics more effectively and designs contrastive learning objectives to train LLMs to learn assembly optimization. Equipped with these techniques, this work develops Nova, a generative LLM for assembly code. Nova outperforms existing techniques on binary code decompilation by up to 14.84 -- 21.58% (absolute percentage point improvement) higher Pass@1 and Pass@10, and outperforms the latest binary code similarity detection techniques by up to 6.17% Recall@1, showing promising abilities on both assembly generation and understanding tasks. },
+  author = {Jiang, Nan AND Wang, Chengxiao AND Liu, Kevin AND Xu, Xiangzhe AND Tan, Lin AND Zhang, Xiangyu AND Babkin, Petr},
+  doi = {https://doi.org/10.48550/arXiv.2311.13721},
+  howpublished = {\url{https://arxiv.org/pdf/2311.13721}},
+  month = {nov},
+  note = {Published as a conference paper at ICLR 2025},
+  title = {Nova: Generative Language Models for Assembly Code with Hierarchical Attention and Contrastive Learning},
+  year = {2025}
+}
+
+@article{WOS:001368390400002,
+  abstract = {Cybersecurity attacks on embedded devices for industrial control systems
+and cyber-physical systems may cause catastrophic physical damage as
+well as economic loss. This could be achieved by infecting device
+binaries with malware that modifies the physical characteristics of the
+system operation. Mitigating such attacks benefits from reverse
+engineering tools that recover sufficient semantic knowledge in terms of
+mathematical equations of the implemented algorithm. Conventional
+reverse engineering tools can decompile binaries to low-level code, but
+offer little semantic insight. This article proposes the REMaQE
+automated framework for reverse engineering of math equations from
+binary executables. Improving over state-of-the-art, REMaQE handles
+equation parameters accessed via registers, the stack, global memory, or
+pointers, and can reverse engineer equations from object-oriented
+implementations such as C++ classes. Using REMaQE, we discovered a bug
+in the Linux kernel thermal monitoring tool ``tmon.{''} To evaluate
+REMaQE, we generate a dataset of 25,096 binaries with math equations
+implemented in C and Simulink. REMaQE successfully recovers a
+semantically matching equation for all 25,096 binaries. REMaQE executes
+in 0.48 seconds on average and in up to 2 seconds for complex equations.
+Real-time execution enables integration in an interactive math-oriented
+reverse engineering workflow.},
+  address = {1601 Broadway, 10th Floor, NEW YORK, NY USA},
+  affiliation = {Udeshi, M (Corresponding Author), NYU, Tandon Sch Engn, ECE, Brooklyn, NY 10012 USA.
+Udeshi, Meet; Krishnamurthy, Prashanth, NYU, Tandon Sch Engn, ECE, Brooklyn, NY 10012 USA.
+Pearce, Hammond, UNSW, Sch Comp Sci \& Engn, Sydney, Australia.
+Karri, Ramesh; Khorrami, Farshad, NYU Tandon Sch Engn, ECE, Brooklyn, NY USA.},
+  affiliations = {New York University; New York University Tandon School of Engineering;
+University of New South Wales Sydney; New York University; New York
+University Tandon School of Engineering},
+  article-number = {43},
+  author = {Udeshi, Meet and Krishnamurthy, Prashanth and Pearce, Hammond and Karri,
+Ramesh and Khorrami, Farshad},
+  author-email = {m.udeshi@nyu.edu
+prashanth.krishnamurthy@nyu.edu
+hammond.pearce@unsw.edu.au
+rkarri@nyu.edu
+khorrami@nyu.edu},
+  cited-references = {Altawy R, 2017, ACM TRANS CYBER-PHYS, V1, DOI 10.1145/3001836.
+Ardupilot, 2023, Choosing a Ground Station.
+Badenshop CW, 2019, ACM TRANS CYBER-PHYS, V3, DOI 10.1145/3285030.
+Bourbouh H, 2021, ACM TRANS CYBER-PHYS, V5, DOI 10.1145/3461668.
+Cadar C., 2008, KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.
+Cha SK, 2012, P IEEE S SECUR PRIV, P380, DOI 10.1109/SP.2012.31.
+Cifuentes Cristina., 1994, Reverse compilation techniques.
+David R, 2016, 2016 IEEE 23RD INTERNATIONAL CONFERENCE ON SOFTWARE ANALYSIS, EVOLUTION, AND REENGINEERING (SANER), VOL 1, P653, DOI 10.1109/SANER.2016.43.
+Hex-Rays SA., 2008, Hex-Rays Decompiler-User Manual.
+International Electrotechnical Commission, 2003, IEC 61131-3:2003.
+Jha S., 2010, P 32 ACMIEEE INT C S, P215.
+Kalle Sushma, 2019, P WORKSH BIN AN RES, P74.
+Keliris A, 2019, 26TH ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2019), DOI 10.14722/ndss.2019.23271.
+Khorrami F, 2016, IEEE DES TEST, V33, P75, DOI 10.1109/MDAT.2016.2594178.
+Kim Taegyu, 2022, MobiSys `22: Proceedings of the 20th Annual International Conference on Mobile Systems, Applications and Services, P69, DOI 10.1145/3498361.3538938.
+Konstantinou C, 2015, 2015 20TH IEEE EUROPEAN TEST SYMPOSIUM (ETS), DOI 10.1109/ets.2015.7138763.
+Krishnamurthy P, 2018, IEEE T INF FOREN SEC, V13, P2761, DOI 10.1109/TIFS.2018.2833063.
+Lample G., 2020, P INT C LEARN REPR I.
+Langner R, 2011, IEEE SECUR PRIV, V9, P49, DOI 10.1109/MSP.2011.67.
+Lee R.M., 2016, Electricity Information Sharing and Analysis Center (E-ISAC).
+Lv XF, 2017, 2017 IEEE 2ND ADVANCED INFORMATION TECHNOLOGY, ELECTRONIC AND AUTOMATION CONTROL CONFERENCE (IAEAC), P252, DOI 10.1109/IAEAC.2017.8054016.
+MathWorks, 2023, Simulink-Simulation and Model-Based Design.
+MCCLUSKEY EJ, 1956, BELL SYST TECH J, V35, P1417, DOI 10.1002/j.1538-7305.1956.tb03835.x.
+McLaughlin S, 2014, 21ST ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2014), DOI 10.14722/ndss.2014.23043.
+McLaughlin Stephen, 2011, P USENIX C HOT TOP S, P10.
+Meurer A, 2017, PEERJ COMPUT SCI, DOI 10.7717/peerj-cs.103.
+NSA, 2023, Ghidra.
+O'Kane P, 2011, IEEE SECUR PRIV, V9, P41, DOI 10.1109/MSP.2011.98.
+Qasim SA, 2019, LECT NOTES COMPUT SC, V11723, P402, DOI 10.1007/978-3-030-30215-3\_20.
+Quine W., 1952, American Mathematical Monthly, V59, P521, DOI DOI 10.1080/00029890.1952.11988183.
+Senthivel S, 2018, PROCEEDINGS OF THE EIGHTH ACM CONFERENCE ON DATA AND APPLICATION SECURITY AND PRIVACY (CODASPY'18), P319, DOI 10.1145/3176258.3176319.
+Shoshitaishvili Y, 2015, 22ND ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2015), DOI 10.14722/ndss.2015.23294.
+Shoshitaishvili Y, 2016, P IEEE S SECUR PRIV, P138, DOI 10.1109/SP.2016.17.
+Stephens N, 2016, 23RD ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2016), DOI 10.14722/ndss.2016.23368.
+Sun PF, 2019, I C DEPEND SYS NETWO, P349, DOI 10.1109/DSN.2019.00045.
+Sun RM, 2021, 2021 IEEE EUROPEAN SYMPOSIUM ON SECURITY AND PRIVACY (EUROS\&P 2021), P385, DOI 10.1109/EuroSP51992.2021.00034.
+Udeshi Meet, 2023, IEEE Dataport, DOI {[}10.21227/r7-6-bk48, DOI 10.21227/R7-6-BK48].
+Waymo, 2023, City Cash.
+Weideman Nicolaas, 2021, Checkmate `21: Proceedings of the 2021 Research on offensive and defensive techniques in the Context of Man At The End (MATE) Attacks, P59, DOI 10.1145/3465413.3488575.
+Yang ZY, 2022, IEEE INTERNET THINGS, V9, P9934, DOI 10.1109/JIOT.2022.3164723.},
+  da = {2026-02-04},
+  doc-delivery-number = {O0U8T},
+  doi = {10.1145/3699674},
+  eissn = {2378-9638},
+  funding-acknowledgement = {Office of Naval Research {[}N00014-22-1-2153]; National Science
+Foundation {[}2039615]},
+  funding-text = {This work was supported in part by the Sponsor Office of Naval Research
+under the Grant \#N00014-22-1-2153 and the Sponsor National Science
+Foundation under the Grant \#2039615.},
+  issn = {2378-962X},
+  journal = {ACM TRANSACTIONS ON CYBER-PHYSICAL SYSTEMS},
+  journal-iso = {ACM Trans. Cyber-Phys. Syst.},
+  keywords = {binary reverse engineering; embedded systems; symbolic execution;
+mathematical equations},
+  language = {English},
+  month = {NOV},
+  number = {4},
+  number-of-cited-references = {40},
+  oa = {Bronze},
+  orcid-numbers = {Komarasamy, Ramesh/0000-0002-5164-9323
+Karri, Ramesh/0000-0001-7989-5617
+Udeshi, Meet/0000-0001-7297-0880},
+  publisher = {ASSOC COMPUTING MACHINERY},
+  research-areas = {Computer Science},
+  researcherid-numbers = {Pearce, Hammond/AAJ-1986-2020
+Udeshi, Meet/MBI-1785-2025},
+  times-cited = {0},
+  title = {REMaQE: Reverse Engineering Math Equations from Executables},
+  type = {Article},
+  unique-id = {WOS:001368390400002},
+  usage-count-last-180-days = {1},
+  usage-count-since-2013 = {1},
+  volume = {8},
+  web-of-science-categories = {Computer Science, Interdisciplinary Applications},
+  web-of-science-index = {Emerging Sources Citation Index (ESCI)},
+  year = {2024}
+}
+
+@article{WOS:001488140900040,
+  abstract = {Vulnerabilities are challenging to locate and repair, especially when
+source code is unavailable and binary patching is required. Manual
+methods are time-consuming, require significant expertise, and do not
+scale to the rate at which new vulnerabilities are discovered. Automated
+methods are an attractive alternative, and we propose Partially
+Recompilable Decompilation (PRD) to help automate the process. PRD lifts
+suspect binary functions to source, available for analysis, revision, or
+review, and creates a patched binary using source- and binary-level
+techniques. Although decompilation and recompilation do not typically
+succeed on an entire binary, our approach does because it is limited to
+a few functions, such as those identified by our binary fault
+localization. We evaluate the assumptions underlying our approach and
+find that, without any grammar or compilation restrictions, up to 79\%
+of individual functions are successfully decompiled and recompiled. In
+comparison, only 1.7\% of the full C-binaries succeed. When
+recompilation succeeds, PRD produces test-equivalent binaries 93.0\% of
+the time. We evaluate PRD in two contexts: a fully automated process
+incorporating source-level Automated Program Repair (APR) methods; and
+human-edited source-level repairs. When evaluated on DARPA Cyber Grand
+Challenge (CGC) binaries, we find that PRD-enabled APR tools, operating
+only on binaries, perform as well as, and sometimes better than
+full-source tools, collectively mitigating 85 of the 148 scenarios, a
+success rate consistent with the same tools operating with access to the
+entire source code. PRD achieves similar success rates as the winning
+CGC entries, sometimes finding higher-quality mitigations than those
+produced by top CGC teams. For generality, the evaluation includes two
+independently developed APR tools and C++, Rode0day, and real-world
+binaries.},
+  address = {10662 LOS VAQUEROS CIRCLE, PO BOX 3014, LOS ALAMITOS, CA 90720-1314 USA},
+  affiliation = {Reiter, P (Corresponding Author), Arizona State Univ, Tempe, AZ 85004 USA.
+Reiter, Pemma; Tay, Hui Jun; Doupe, Adam; Wang, Ruoyu; Forrest, Stephanie, Arizona State Univ, Tempe, AZ 85004 USA.
+Weimer, Westley, Univ Michigan, Ann Arbor, MI 48109 USA.},
+  affiliations = {Arizona State University; Arizona State University-Tempe; University of
+Michigan System; University of Michigan},
+  author = {Reiter, Pemma and Tay, Hui Jun and Weimer, Westley and Doupe, Adam and
+Wang, Ruoyu and Forrest, Stephanie},
+  author-email = {pdreiter@asu.edu
+htay2@asu.edu
+weimerw@umich.edu
+doupe@asu.edu
+fishw@asu.edu
+steph@asu.edu},
+  cited-references = {Abreu R, 2009, IEEE INT CONF AUTOM, P88, DOI 10.1109/ASE.2009.25.
+Abreu R, 2009, J SYST SOFTWARE, V82, P1780, DOI 10.1016/j.jss.2009.06.035.
+Andriesse D, 2017, 2017 IEEE EUROPEAN SYMPOSIUM ON SECURITY AND PRIVACY (EUROS\&P), P177, DOI 10.1109/EuroSP.2017.11.
+de Araujo RPA, 2014, 2014 IEEE SEVENTH INTERNATIONAL CONFERENCE ON SOFTWARE TESTING, VERIFICATION AND VALIDATION (ICST), P81, DOI 10.1109/ICST.2014.19.
+Anh NT, 2018, IEEE SECUR PRIV, V16, P42, DOI 10.1109/MSP.2018.1870876.
+{[}Anonymous], 2011, P INT S COD GEN OPT, pxxi.
+Avgerinos T, 2018, IEEE SECUR PRIV, V16, P52, DOI 10.1109/MSP.2018.1870873.
+Botacin Marcus, 2020, P ACM REV OFF OR TRE, DOI {[}10.1145/3375894.3375895, DOI 10.1145/3375894.3375895].
+Duan RA, 2019, 26TH ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2019), DOI 10.14722/ndss.2019.23126.
+Duck GJ, 2020, PROCEEDINGS OF THE 41ST ACM SIGPLAN CONFERENCE ON PROGRAMMING LANGUAGE DESIGN AND IMPLEMENTATION (PLDI `20), P151, DOI 10.1145/3385412.3385972.
+Flores-Montoya A, 2020, PROCEEDINGS OF THE 29TH USENIX SECURITY SYMPOSIUM, P1075.
+Fu M, 2022, PROCEEDINGS OF THE 30TH ACM JOINT MEETING EUROPEAN SOFTWARE ENGINEERING CONFERENCE AND SYMPOSIUM ON THE FOUNDATIONS OF SOFTWARE ENGINEERING, ESEC/FSE 2022, P935, DOI 10.1145/3540250.3549098.
+Gazzola L, 2019, IEEE T SOFTWARE ENG, V45, P34, DOI 10.1109/TSE.2017.2755013.
+github, Matthias-wandel/jhead.
+Gussoni Andrea, 2020, ASIA CCS `20: Proceedings of the 15th ACM Asia Conference on Computer and Communications Security, P637, DOI 10.1145/3320269.3384766.
+Harrand N, 2020, J SYST SOFTWARE, V168, DOI 10.1016/j.jss.2020.110645.
+Hirsch Thomas, 2020, 2020 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW), P139, DOI 10.1109/ISSREW51248.2020.00053.
+Hu YK, 2019, IEEE ACCESS, V7, P28170, DOI 10.1109/ACCESS.2019.2901951.
+HUTCHINS M, 1994, PROC INT CONF SOFTW, P191, DOI 10.1109/ICSE.1994.296778.
+Jones JA, 2002, ICSE 2002: PROCEEDINGS OF THE 24TH INTERNATIONAL CONFERENCE ON SOFTWARE ENGINEERING, P467, DOI 10.1109/ICSE.2002.1007991.
+LARUS JR, 1995, SIGPLAN NOTICES, V30, P291, DOI 10.1145/223428.207163.
+Le Goues C, 2019, COMMUN ACM, V62, P56, DOI 10.1145/3318162.
+Le Goues C, 2012, IEEE T SOFTWARE ENG, V38, P54, DOI 10.1109/TSE.2011.104.
+Le Goues C, 2012, PROC INT CONF SOFTW, P3, DOI 10.1109/ICSE.2012.6227211.
+Le XBD, 2018, PROCEEDINGS 2018 IEEE/ACM 40TH INTERNATIONAL CONFERENCE ON SOFTWARE ENGINEERING (ICSE), P163, DOI 10.1145/3180155.3182536.
+Lin SL, 2010, WILEY INTERDISCIP RE, V2, P555, DOI 10.1002/wics.111.
+Liu ZB, 2020, PROCEEDINGS OF THE 29TH ACM SIGSOFT INTERNATIONAL SYMPOSIUM ON SOFTWARE TESTING AND ANALYSIS, ISSTA 2020, P475, DOI 10.1145/3395363.3397370.
+Long F, 2015, 2015 10TH JOINT MEETING OF THE EUROPEAN SOFTWARE ENGINEERING CONFERENCE AND THE ACM SIGSOFT SYMPOSIUM ON THE FOUNDATIONS OF SOFTWARE ENGINEERING (ESEC/FSE 2015) PROCEEDINGS, P166, DOI 10.1145/2786805.2786811.
+Long F, 2016, ACM SIGPLAN NOTICES, V51, P298, DOI 10.1145/2914770.2837617.
+Luk CK, 2005, ACM SIGPLAN NOTICES, V40, P190, DOI 10.1145/1064978.1065034.
+Lutellier T, 2020, PROCEEDINGS OF THE 29TH ACM SIGSOFT INTERNATIONAL SYMPOSIUM ON SOFTWARE TESTING AND ANALYSIS, ISSTA 2020, P101, DOI 10.1145/3395363.3397369.
+Maier A, 2019, LECT NOTES COMPUT SC, V11543, P288, DOI 10.1007/978-3-030-22038-9\_14.
+Masri W, 2010, SOFTW TEST VERIF REL, V20, P121, DOI 10.1002/stvr.409.
+Mechtaev S, 2016, PROC INT CONF SOFTW, P691, DOI 10.1145/2884781.2884807.
+Monperrus M., 2018, Technical Report hal- 01956501.
+Monperrus M, 2018, ACM COMPUT SURV, V51, DOI 10.1145/3105906.
+Motwani M, 2022, Arxiv, DOI arXiv:2011.08340.
+Naish L, 2011, ACM T SOFTW ENG METH, V20, DOI 10.1145/2000791.2000795.
+Nethercote N, 2007, PLDI'07: PROCEEDINGS OF THE 2007 ACM SIGPLAN CONFERENCE ON PROGRAMMING LANGUAGE DESIGN AND IMPLEMENTATION, P89, DOI 10.1145/1250734.1250746.
+Noonan M, 2016, ACM SIGPLAN NOTICES, V51, P27, DOI {[}10.1145/2980983.2908119, 10.1145/2908080.2908119].
+Oliveira VPL, 2018, EMPIR SOFTW ENG, V23, P2980, DOI 10.1007/s10664-017-9562-9.
+Orlov M, 2017, PROCEEDINGS OF THE 2017 GENETIC AND EVOLUTIONARY COMPUTATION CONFERENCE COMPANION (GECCO'17 COMPANION), P1539, DOI 10.1145/3067695.3082521.
+Orlov Michael., 2009, Proceedings of the 11th Annual conference on Genetic and evolutionary computation, P1043, DOI {[}10.1145/1569901.1570042, DOI 10.1145/1569901.1570042].
+Qi YH, 2014, 36TH INTERNATIONAL CONFERENCE ON SOFTWARE ENGINEERING (ICSE 2014), P254, DOI 10.1145/2568225.2568254.
+Qi Z., 2015, Proceedings of the 2015 International Symposium on Software Testing and Analysis ISSTA 2015, P24, DOI DOI 10.1145/2771783.2771791.
+Qiao R, 2017, I C DEPEND SYS NETWO, P201, DOI 10.1109/DSN.2017.29.
+Reiter P., About us.
+Reiter P, 2022, PROCEEDINGS OF THE 2022 GENETIC AND EVOLUTIONARY COMPUTATION CONFERENCE (GECCO'22), P1336, DOI 10.1145/3512290.3528864.
+rode0day.mit, Rode0day.
+Schulte E., 2010, P IEEEACM INT C AUTO, P313, DOI DOI 10.1145/1858996.1859059.
+Schulte E., 2018, P WORKSH BIN AN RES.
+Schulte E, 2013, ACM SIGPLAN NOTICES, V48, P317, DOI 10.1145/2499368.2451151.
+Schulte EricM., 2015, P COMPANION PUBLICAT, P847, DOI DOI 10.1145/2739482.2768427.
+Schwartz Edward J., 2013, Proceedings of the 22nd USENIX Security Symposium. Security `13, P353.
+Shen SQ, 2021, ASIA CCS'21: PROCEEDINGS OF THE 2021 ACM ASIA CONFERENCE ON COMPUTER AND COMMUNICATIONS SECURITY, P537, DOI 10.1145/3433210.3437528.
+Shoshitaishvili Y, 2018, IEEE SECUR PRIV, V16, P12, DOI 10.1109/MSP.2018.1870858.
+Sidiroglou-Douskos S, 2017, ESEC/FSE 2017: PROCEEDINGS OF THE 2017 11TH JOINT MEETING ON FOUNDATIONS OF SOFTWARE ENGINEERING, P95, DOI 10.1145/3106237.3106269.
+Sidiroglou-Douskos S, 2015, ACM SIGPLAN NOTICES, V50, P43, DOI {[}10.1145/2813885.2737988, 10.1145/2737924.2737988].
+Smith EK, 2015, 2015 10TH JOINT MEETING OF THE EUROPEAN SOFTWARE ENGINEERING CONFERENCE AND THE ACM SIGSOFT SYMPOSIUM ON THE FOUNDATIONS OF SOFTWARE ENGINEERING (ESEC/FSE 2015) PROCEEDINGS, P532, DOI 10.1145/2786805.2786825.
+Song J, 2015, IEEE SECUR PRIV, V13, P72, DOI 10.1109/MSP.2015.132.
+sourceforge, Podofo download.
+Thomas R., 2017, Lief - library to instrument executable formats.
+trailofbits, 2017, Trailofbits/cb-multios: DARPA challenges sets for linux, windows, and macos.
+Le V, 2014, ACM SIGPLAN NOTICES, V49, P216, DOI {[}10.1145/2666356.2594334, 10.1145/2594291.2594334].
+Wang RY, 2017, 24TH ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2017), DOI 10.14722/ndss.2017.23225.
+Weimer W, 2013, IEEE INT CONF AUTOM, P356, DOI 10.1109/ASE.2013.6693094.
+Williams-King D, 2020, TWENTY-FIFTH INTERNATIONAL CONFERENCE ON ARCHITECTURAL SUPPORT FOR PROGRAMMING LANGUAGES AND OPERATING SYSTEMS (ASPLOS XXV), P133, DOI 10.1145/3373376.3378470.
+Wong WE, 2014, IEEE T RELIAB, V63, P290, DOI 10.1109/TR.2013.2285319.
+Xu ZW, 2017, LECT NOTES COMPUT SC, V10610, P430, DOI 10.1007/978-3-319-68690-5\_26.
+Yakdan K, 2015, 22ND ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2015), DOI 10.14722/ndss.2015.23185.
+Ye H, 2022, PROC INT CONF SOFTW, P1506, DOI 10.1145/3510003.3510222.
+Yin Zuoning., 2011, P 19 ACM SIGSOFT S 1, P26, DOI {[}DOI 10.1145/2025113.2025121, 10.1145/2025113 .2025121].
+Zhu H, 2017, PROCEDIA COMPUT SCI, V107, P871, DOI 10.1016/j.procs.2017.03.186.},
+  da = {2026-02-04},
+  doc-delivery-number = {2PJ9R},
+  doi = {10.1109/TDSC.2024.3482413},
+  eissn = {1941-0018},
+  funding-acknowledgement = {NSF {[}CCF 1908633, OAC 2115075]; DARPA {[}FA8750-19C-0003,
+N6600120C4020]; Santa Fe Institute},
+  funding-text = {This work was supported in part by NSF under Grant CCF 1908633 and Grant
+OAC 2115075, in part by DARPA under Grant FA8750-19C-0003 and Grant
+N6600120C4020, and in part by the Santa Fe Institute.},
+  issn = {1545-5971},
+  journal = {IEEE TRANSACTIONS ON DEPENDABLE AND SECURE COMPUTING},
+  journal-iso = {IEEE Trans. Dependable Secur. Comput.},
+  keywords = {Maintenance engineering; Source coding; Codes; Location awareness;
+Software; Computer bugs; Prototypes; Measurement; Grammar; C plus plus
+languages; Software engineering; software maintenance},
+  keywords-plus = {CODE TRANSFER; FAULT},
+  language = {English},
+  month = {MAY-JUN},
+  number = {3},
+  number-of-cited-references = {73},
+  orcid-numbers = {Forrest, Stephanie/0000-0002-5904-1646
+Weimer, Westley/0000-0001-6749-2204
+Doupé, Adam/0000-0003-2634-3901
+Reiter, Pemma/0000-0003-1425-7811},
+  pages = {2270-2282},
+  publisher = {IEEE COMPUTER SOC},
+  research-areas = {Computer Science},
+  researcherid-numbers = {Wang, Ruoyu/I-6026-2018},
+  times-cited = {1},
+  title = {Automatically Mitigating Vulnerabilities in Binary Programs via
+Partially Recompilable Decompilation},
+  type = {Article},
+  unique-id = {WOS:001488140900040},
+  usage-count-last-180-days = {1},
+  usage-count-since-2013 = {2},
+  volume = {22},
+  web-of-science-categories = {Computer Science, Hardware \& Architecture; Computer Science,
+Information Systems; Computer Science, Software Engineering},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2025}
+}

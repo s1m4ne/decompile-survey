@@ -1,3 +1,13 @@
+{"key": "armengol-estape_slade_2024", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "doi-group-1"}}
+{"key": "armengol-estape_slade_2024-1", "action": "remove", "reason": "manual_cluster_remove", "details": {"cluster_id": "doi-group-1", "representative_id": "armengol-estape_slade_2024"}}
+{"key": "dramko_dire_2023", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "doi-group-2"}}
+{"key": "dramko_dire_2023-1", "action": "remove", "reason": "manual_cluster_remove", "details": {"cluster_id": "doi-group-2", "representative_id": "dramko_dire_2023"}}
+{"key": "lacomis_dire_2020", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "doi-group-3"}}
+{"key": "lacomis_dire_2019", "action": "remove", "reason": "manual_cluster_remove", "details": {"cluster_id": "doi-group-3", "representative_id": "lacomis_dire_2020"}}
+{"key": "verbeek_formally_2025", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "doi-group-4"}}
+{"key": "verbeek_formally_2025-1", "action": "remove", "reason": "manual_cluster_remove", "details": {"cluster_id": "doi-group-4", "representative_id": "verbeek_formally_2025"}}
+{"key": "jiang_binaryai_2024-1", "action": "keep", "reason": "manual_cluster_keep", "details": {"cluster_id": "doi-group-5"}}
+{"key": "jiang_binaryai_2024-2", "action": "remove", "reason": "manual_cluster_remove", "details": {"cluster_id": "doi-group-5", "representative_id": "jiang_binaryai_2024-1"}}
 {"key": "wiedemeier_walking_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3719027.3765040"}}
 {"key": "giesen_poster_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3719027.3760714"}}
 {"key": "dramko_fast_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3772368"}}
@@ -14,9 +24,7 @@
 {"key": "cao_evaluating_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3650212.3652144"}}
 {"key": "eom_r2i_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3643744"}}
 {"key": "lu_understanding_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3649860"}}
-{"key": "armengol-estape_slade_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/CGO57630.2024.10444788"}}
 {"key": "sisco_loop_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3591237"}}
-{"key": "dramko_dire_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3546946"}}
 {"key": "tan_splendid_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3582016.3582058"}}
 {"key": "cao_boosting_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3564625.3567998"}}
 {"key": "gregorio_e-apk_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3561320.3561328"}}
@@ -26,7 +34,6 @@
 {"key": "jaffe_meaningful_2018", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3196321.3196330"}}
 {"key": "nandi_functional_2018", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3236794"}}
 {"key": "botacin_revenge_2020", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3375894.3375895"}}
-{"key": "lacomis_dire_2020", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ASE.2019.00064"}}
 {"key": "jang_kerberoid_2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3319535.3363255"}}
 {"key": "grech_gigahorse_2019", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ICSE.2019.00120"}}
 {"key": "zhong_hardening_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3719027.3765144"}}
@@ -53,7 +60,6 @@
 {"key": "chen_ponzihunter_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3735971"}}
 {"key": "mudraje_reverse_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3722572.3727926"}}
 {"key": "liu_demystifying_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3702977"}}
-{"key": "verbeek_formally_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ICSE55347.2025.00231"}}
 {"key": "berge_anti-games_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3723498.3723739"}}
 {"key": "brossard_automatic_2025", "action": "keep", "reason": "no_doi", "details": {"message": "No DOI - kept in passed"}}
 {"key": "yan_uefuzzer_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3732365.3732428"}}
@@ -167,7 +173,6 @@
 {"key": "ahad_pyfet_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SP46215.2023.10179370"}}
 {"key": "sateanpattanakul_java_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.13052/jmm1550-4646.1822"}}
 {"key": "sharikov_methodology_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SmartIndustryCon65166.2025.10986108"}}
-{"key": "lacomis_dire_2019", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1109/ASE.2019.00064", "original_key": "lacomis_dire_2020", "message": "Duplicate DOI: 10.1109/ASE.2019.00064"}}
 {"key": "al-kaswan_extending_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SANER56733.2023.00033"}}
 {"key": "alsabbagh_control_2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/IECON48115.2021.9589721"}}
 {"key": "liao_augmenting_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/TSE.2025.3623325"}}
@@ -175,7 +180,6 @@
 {"key": "park_static_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/TSE.2023.3241639"}}
 {"key": "yang_human_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/DSN64029.2025.00026"}}
 {"key": "zhang_optimizing_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ICSME58944.2024.00015"}}
-{"key": "armengol-estape_slade_2024-1", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1109/CGO57630.2024.10444788", "original_key": "armengol-estape_slade_2024", "message": "Duplicate DOI: 10.1109/CGO57630.2024.10444788"}}
 {"key": "pal_len_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SP54263.2024.00152"}}
 {"key": "reiter_automatically_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/TDSC.2024.3482413"}}
 {"key": "sang_control_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/TIFS.2024.3402117"}}
@@ -258,7 +262,6 @@
 {"key": "lin_reifunc_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SANER60148.2024.00074"}}
 {"key": "seixas_high-accuracy_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ACDSA65407.2025.11166547"}}
 {"key": "luo_binary_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ICSP65755.2025.11086752"}}
-{"key": "verbeek_formally_2025-1", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1109/ICSE55347.2025.00231", "original_key": "verbeek_formally_2025", "message": "Duplicate DOI: 10.1109/ICSE55347.2025.00231"}}
 {"key": "ghimire_survey_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/ACCESS.2025.3593456"}}
 {"key": "rajendran_ai-based_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/iTechSECOM64750.2025.11307212"}}
 {"key": "wang_typeforge_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/SP61157.2025.00193"}}
@@ -277,7 +280,6 @@
 {"key": "alcocer_use_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1016/j.cola.2024.101271"}}
 {"key": "gribkov_analysis_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.3103/S0146411623080060"}}
 {"key": "gregorio_e-apk_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1016/j.cola.2023.101220"}}
-{"key": "dramko_dire_2023-1", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1145/3546946", "original_key": "dramko_dire_2023", "message": "Duplicate DOI: 10.1145/3546946"}}
 {"key": "kargen_android_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1007/s10664-022-10281-9"}}
 {"key": "wang_binvuldet_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1016/j.cose.2022.103023"}}
 {"key": "liang_neutron_2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1186/s42400-021-00070-0"}}
@@ -495,7 +497,6 @@
 {"key": "paul_masked_2023", "action": "keep", "reason": "no_doi", "details": {"message": "No DOI - kept in passed"}}
 {"key": "alrabaee_bindeep_2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/TrustCom53373.2021.00150"}}
 {"key": "gao_grayscale_2010", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/WCICA.2010.5554891"}}
-{"key": "jiang_binaryai_2024-1", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3597503.3639100"}}
 {"key": "tehranijamsaz_graphbinmatch_2024", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/IPDPSW63119.2024.00103"}}
 {"key": "donisi_machine_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/MetroXRAINE54828.2022.9967528"}}
 {"key": "prisco_feasibility_2023", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1109/MetroXRAINE58569.2023.10405830"}}
@@ -529,7 +530,6 @@
 {"key": "qiu_path_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3544109.3544996"}}
 {"key": "liu_recent_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3524497"}}
 {"key": "wei_towards_2021", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3442536.3442549"}}
-{"key": "jiang_binaryai_2024-2", "action": "remove", "reason": "duplicate_doi", "details": {"doi": "10.1145/3597503.3639100", "original_key": "jiang_binaryai_2024-1", "message": "Duplicate DOI: 10.1145/3597503.3639100"}}
 {"key": "asvadishirehjini_ginn_2022", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3508398.3511503"}}
 {"key": "li_guided_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3729330"}}
 {"key": "lamprou_guarding_2025", "action": "keep", "reason": "unique_doi", "details": {"doi": "10.1145/3766882.3767171"}}

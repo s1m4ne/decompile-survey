@@ -22,17 +22,9 @@ screening/
 │       ├── included.bib     # 採択論文
 │       ├── excluded.bib     # 除外論文
 │       └── uncertain.bib    # 要確認論文
-├── reviews/                 # レビューデータ
-│   └── {run_id}/
-│       └── review.json      # 手動レビュー結果
-└── app/                     # レビュー用Webアプリ
-    ├── README.md
-    ├── start.sh             # 起動スクリプト
-    ├── backend/             # FastAPI
-    │   ├── main.py
-    │   └── routers/
-    └── frontend/            # React + TypeScript
-        └── src/
+└── reviews/                 # レビューデータ
+    └── {run_id}/
+        └── review.json      # 手動レビュー結果
 ```
 
 ## セットアップ
@@ -134,7 +126,7 @@ AIスクリーニング結果を手動でレビュー・修正するためのWeb
 ### 起動方法
 
 ```bash
-cd screening/app
+cd app
 ./start.sh
 ```
 
@@ -176,4 +168,4 @@ cd screening/app
 
 最終判定: `final_decision = manual_decision ?? ai_decision`
 
-詳細は `app/README.md` を参照。
+Webアプリはリポジトリルートの `app/` に移動しました。詳細は `../app/README.md` を参照。

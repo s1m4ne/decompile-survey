@@ -1,0 +1,139 @@
+{
+  "clusters": [
+    {
+      "id": "doi-group-1",
+      "size": 2,
+      "representative_id": "armengol-estape_slade_2024",
+      "representative_title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+      "average_similarity": 1,
+      "members": [
+        {
+          "id": "armengol-estape_slade_2024",
+          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F. P.",
+          "year": "2024",
+          "abstract": "Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. Nevertheless, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect.This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence Transformer trained over real-world code and augmented with a type inference engine. We utilize a novel tokenizer, dropout-free regularization, and type inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code.We evaluate SLaDe on over 4,000 ExeBench functions on two ISAs and at two optimization levels. SLaDe is up to 6× more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4× more accurate than the large language model ChatGPT and generates significantly more readable code than both.",
+          "similarity": 1,
+          "action": "keep"
+        },
+        {
+          "id": "armengol-estape_slade_2024-1",
+          "title": "{SLaDe}: {A} {Portable} {Small} {Language} {Model} {Decompiler} for {Optimized} {Assembly}",
+          "authors": "Armengol-Estapé, Jordi and Woodruff, Jackson and Cummins, Chris and O'Boyle, Michael F.P.",
+          "year": "2024",
+          "abstract": "Decompilation is a well-studied area with numerous high-quality tools available. These are frequently used for security tasks and to port legacy code. However, they regularly generate difficult-to-read programs and require a large amount of engineering effort to support new programming languages and ISAs. Recent interest in neural approaches has produced portable tools that generate readable code. Nevertheless, to-date such techniques are usually restricted to synthetic programs without optimization, and no models have evaluated their portability. Furthermore, while the code generated may be more readable, it is usually incorrect. This paper presents SLaDe, a Small Language model Decompiler based on a sequence-to-sequence Transformer trained over real-world code and augmented with a type inference engine. We utilize a novel tokenizer, dropout-free regularization, and type inference to generate programs that are more readable and accurate than standard analytic and recent neural approaches. Unlike standard approaches, SLaDe can infer out-of-context types and unlike neural approaches, it generates correct code. We evaluate SLaDe on over 4,000 ExeBench functions on two ISAs and at two optimization levels. SLaDe is up to 6× more accurate than Ghidra, a state-of-the-art, industrial-strength decompiler and up to 4× more accurate than the large language model ChatGPT and generates significantly more readable code than both.",
+          "similarity": 1,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "doi-group-2",
+      "size": 2,
+      "representative_id": "dramko_dire_2023",
+      "representative_title": "{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}",
+      "average_similarity": 1,
+      "members": [
+        {
+          "id": "dramko_dire_2023",
+          "title": "{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}",
+          "authors": "Dramko, Luke and Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Ed and Allamanis, Miltiadis and Neubig, Graham and Vasilescu, Bogdan and Le Goues, Claire",
+          "year": "2023",
+          "abstract": "The decompiler is one of the most common tools for examining executable binaries without the corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Unfortunately, decompiler output is far from readable because the decompilation process is often incomplete. State-of-the-art techniques use machine learning to predict missing information like variable names. While these approaches are often able to suggest good variable names in context, no existing work examines how the selection of training data influences these machine learning models. We investigate how data provenance and the quality of training data affect performance, and how well, if at all, trained models generalize across software domains. We focus on the variable renaming problem using one such machine learning model, DIRE. We first describe DIRE in detail and the accompanying technique used to generate training data from raw code. We also evaluate DIRE’s overall performance without respect to data quality. Next, we show how training on more popular, possibly higher quality code (measured using GitHub stars) leads to a more generalizable model because popular code tends to have more diverse variable names. Finally, we evaluate how well DIRE predicts domain-specific identifiers, propose a modification to incorporate domain information, and show that it can predict identifiers in domain-specific scenarios 23\\% more frequently than the original DIRE model.",
+          "similarity": 1,
+          "action": "keep"
+        },
+        {
+          "id": "dramko_dire_2023-1",
+          "title": "{DIRE} and its {Data}: {Neural} {Decompiled} {Variable} {Renamings} with {Respect} to {Software} {Class}",
+          "authors": "Dramko, Luke and Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Ed and Allamanis, Miltiadis and Neubig, Graham and Vasilescu, Bogdan and Le Goues, Claire",
+          "year": "2023",
+          "abstract": "The decompiler is one of the most common tools for examining executable binaries without the corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Unfortunately, decompiler output is far from readable because the decompilation process is often incomplete. State-of-the-art techniques use machine learning to predict missing information like variable names. While these approaches are often able to suggest good variable names in context, no existing work examines how the selection of training data influences these machine learning models. We investigate how data provenance and the quality of training data affect performance, and how well, if at all, trained models generalize across software domains. We focus on the variable renaming problem using one such machine learning model, DIRE. We first describe DIRE in detail and the accompanying technique used to generate training data from raw code. We also evaluate DIRE's overall performance without respect to data quality. Next, we show how training on more popular, possibly higher quality code (measured using GitHub stars) leads to a more generalizable model because popular code tends to have more diverse variable names. Finally, we evaluate how well DIRE predicts domain-specific identifiers, propose a modification to incorporate domain information, and show that it can predict identifiers in domain-specific scenarios 23\\% more frequently than the original DIRE model.",
+          "similarity": 1,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "doi-group-3",
+      "size": 2,
+      "representative_id": "lacomis_dire_2020",
+      "representative_title": "{DIRE}: a neural approach to decompiled identifier naming",
+      "average_similarity": 1,
+      "members": [
+        {
+          "id": "lacomis_dire_2020",
+          "title": "{DIRE}: a neural approach to decompiled identifier naming",
+          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan",
+          "year": "2020",
+          "abstract": "The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub.1 Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\\% of the time.",
+          "similarity": 1,
+          "action": "keep"
+        },
+        {
+          "id": "lacomis_dire_2019",
+          "title": "{DIRE}: {A} {Neural} {Approach} to {Decompiled} {Identifier} {Naming}",
+          "authors": "Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan",
+          "year": "2019",
+          "abstract": "The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub. Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3\\% of the time.",
+          "similarity": 1,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "doi-group-4",
+      "size": 2,
+      "representative_id": "verbeek_formally_2025",
+      "representative_title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
+      "average_similarity": 1,
+      "members": [
+        {
+          "id": "verbeek_formally_2025",
+          "title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
+          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "year": "2025",
+          "abstract": "Binary-level pointer analysis can be of use in symbolic execution, testing, verification, and decompilation of software binaries. In various such contexts, it is crucial that the result is trustworthy, i.e., it can be formally established that the pointer designations are overapproximative. This paper presents an approach to formally proven correct binary-level pointer analysis. A salient property of our approach is that it first generically considers what proof obligations a generic abstract domain for pointer analysis must satisfy. This allows easy instantiation of different domains, varying in precision, while preserving the correctness of the analysis. In the tradeoff between scalability and precision, such customization allows \"meaningful\" precision (sufficiently precise to ensure basic sanity properties, such as that relevant parts of the stack frame are not overwritten during function execution) while also allowing coarse analysis when pointer computations have become too obfuscated during compilation for sound and accurate bounds analysis. We experiment with three different abstract domains with high, medium, and low precision. Evaluation shows that our approach is able to derive designations for memory writes soundly in COTS binaries, in a context-sensitive interprocedural fashion.",
+          "similarity": 1,
+          "action": "keep"
+        },
+        {
+          "id": "verbeek_formally_2025-1",
+          "title": "Formally {Verified} {Binary}-{Level} {Pointer} {Analysis}",
+          "authors": "Verbeek, Freek and Shokri, Ali and Engel, Daniel and Ravindran, Binoy",
+          "year": "2025",
+          "abstract": "Binary-level pointer analysis can be of use in symbolic execution, testing, verification, and decompilation of software binaries. In various such contexts, it is crucial that the result is trustworthy, i.e., it can be formally established that the pointer designations are overapproximative. This paper presents an approach to formally proven correct binary-level pointer analysis. A salient property of our approach is that it first generically considers what proof obligations a generic abstract domain for pointer analysis must satisfy. This allows easy instantiation of different domains, varying in precision, while preserving the correctness of the analysis. In the trade-off between scalability and precision, such customization allows “meaningful” precision (sufficiently precise to ensure basic sanity properties, such as that relevant parts of the stack frame are not overwritten during function execution) while also allowing coarse analysis when pointer computations have become too obfuscated during compilation for sound and accurate bounds analysis. We experiment with three different abstract domains with high, medium, and low precision. Evaluation shows that our approach is able to derive designations for memory writes soundly in COTS binaries, in a context-sensitive interprocedural fashion.",
+          "similarity": 1,
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "id": "doi-group-5",
+      "size": 2,
+      "representative_id": "jiang_binaryai_2024-1",
+      "representative_title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+      "average_similarity": 1,
+      "members": [
+        {
+          "id": "jiang_binaryai_2024-1",
+          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
+          "year": "2024",
+          "abstract": "While third-party libraries (TPLs) are extensively reused to enhance productivity during software development, they can also introduce potential security risks such as vulnerability propagation. Software composition analysis (SCA), proposed to identify reused TPLs for reducing such risks, has become an essential procedure within modern DevSecOps. As one of the mainstream SCA techniques, binary-to-source SCA identifies the third-party source projects contained in binary files via binary source code matching, which is a major challenge in reverse engineering since binary and source code exhibit substantial disparities after compilation. The existing binary-to-source SCA techniques leverage basic syntactic features that suffer from redundancy and lack robustness in the large-scale TPL dataset, leading to inevitable false positives and compromised recall. To mitigate these limitations, we introduce BinaryAI, a novel binary-to-source SCA technique with two-phase binary source code matching to capture both syntactic and semantic code features. First, BinaryAI trains a transformer-based model to produce function-level embeddings and obtain similar source functions for each binary function accordingly. Then by applying the link-time locality to facilitate function matching, BinaryAI detects the reused TPLs based on the ratio of matched source functions. Our experimental results demonstrate the superior performance of BinaryAI in terms of binary source code matching and the downstream SCA task. Specifically, our embedding model outperforms the state-of-the-art model CodeCMR, i.e., achieving 22.54\\% recall@l and 0.34 MRR compared with 10.75\\% and 0.17 respectively. Additionally, BinaryAI outperforms all existing binary-to-source SCA tools in TPL detection, increasing the precision from 73.36\\% to 85.84\\% and recall from 59.81\\% to 64.98\\% compared with the well-recognized commercial SCA product Black Duck. E-https://www.binaryai.net",
+          "similarity": 1,
+          "action": "keep"
+        },
+        {
+          "id": "jiang_binaryai_2024-2",
+          "title": "{BinaryAI}: {Binary} {Software} {Composition} {Analysis} via {Intelligent} {Binary} {Source} {Code} {Matching}",
+          "authors": "Jiang, Ling and An, Junwen and Huang, Huihui and Tang, Qiyi and Nie, Sen and Wu, Shi and Zhang, Yuqun",
+          "year": "2024",
+          "abstract": "While third-party libraries (TPLs) are extensively reused to enhance productivity during software development, they can also introduce potential security risks such as vulnerability propagation. Software composition analysis (SCA), proposed to identify reused TPLs for reducing such risks, has become an essential procedure within modern DevSecOps. As one of the mainstream SCA techniques, binary-to-source SCA identifies the third-party source projects contained in binary files via binary source code matching, which is a major challenge in reverse engineering since binary and source code exhibit substantial disparities after compilation. The existing binary-to-source SCA techniques leverage basic syntactic features that suffer from redundancy and lack robustness in the large-scale TPL dataset, leading to inevitable false positives and compromised recall. To mitigate these limitations, we introduce BinaryAI, a novel binary-to-source SCA technique with two-phase binary source code matching to capture both syntactic and semantic code features. First, BinaryAI trains a transformer-based model to produce function-level embeddings and obtain similar source functions for each binary function accordingly. Then by applying the link-time locality to facilitate function matching, BinaryAI detects the reused TPLs based on the ratio of matched source functions. Our experimental results demonstrate the superior performance of BinaryAI in terms of binary source code matching and the downstream SCA task. Specifically, our embedding model outperforms the state-of-the-art model CodeCMR, i.e., achieving 22.54\\% recall@1 and 0.34 MRR compared with 10.75\\% and 0.17 respectively. Additionally, BinaryAI outperforms all existing binary-to-source SCA tools in TPL detection, increasing the precision from 73.36\\% to 85.84\\% and recall from 59.81\\% to 64.98\\% compared with the well-recognized commercial SCA product Black Duck.https://www.binaryai.net",
+          "similarity": 1,
+          "action": "remove"
+        }
+      ]
+    }
+  ]
+}

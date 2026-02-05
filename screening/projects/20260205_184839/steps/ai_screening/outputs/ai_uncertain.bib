@@ -1,0 +1,265 @@
+@inproceedings{10.1109/ASE56229.2023.00099,
+  abstract = {Decompilation is a widely used process for reverse engineers to significantly enhance code readability by lifting assembly code to a higher-level C-like language, pseudo-code. Nevertheless, the process of compilation and stripping irreversibly discards high-level semantic information that is crucial to code comprehension, such as comments, identifier names, and types. Existing approaches typically recover only one type of information, making them suboptimal for semantic inference. In this paper, we treat pseudo-code as a special programming language, then present a unified pre-trained model, HexT5, that is trained on vast amounts of natural language comments, source identifiers, and pseudo-code using novel pseudo-code-based pretraining objectives. We fine-tune HexT5 on various downstream tasks, including code summarization, variable name recovery, function name recovery, and similarity detection. Comprehensive experiments show that HexT5 achieves state-of-the-art performance on four downstream tasks, and it demonstrates the robust effectiveness and generalizability of HexT5 for binary-related tasks.},
+  author = {Xiong, Jiaqi and Chen, Guoqiang and Chen, Kejiang and Gao, Han and Cheng, Shaoyin and Zhang, Weiming},
+  booktitle = {Proceedings of the 38th IEEE/ACM International Conference on Automated Software Engineering},
+  doi = {10.1109/ASE56229.2023.00099},
+  isbn = {9798350329964},
+  keywords = {reverse engineering, deep learning, binary diffing, information inference, programming language model},
+  location = {Echternach, Luxembourg},
+  numpages = {13},
+  pages = {774–786},
+  publisher = {IEEE Press},
+  series = {ASE '23},
+  title = {HexT5: Unified Pre-Training for Stripped Binary Code Information Inference},
+  url = {https://doi.org/10.1109/ASE56229.2023.00099},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3293880.3294102,
+  abstract = {This paper presents a methodology for generating formally proven equivalence theorems between decompiled x86-64 machine code and big step semantics. These proofs are built on top of two additional contributions. First, a robust and tested formal x86-64 machine model containing small step semantics for 1625 instructions. Second, a decompilation-into-logic methodology supporting both x86-64 assembly and machine code at large scale. This work enables black-box binary verification, i.e., formal verification of a binary where source code is unavailable. As such, it can be applied to safety-critical systems that consist of legacy components, or components whose source code is unavailable due to proprietary reasons. The methodology minimizes the trusted code base by leveraging machine-learned semantics to build a formal machine model. We apply the methodology to several case studies, including binaries that heavily rely on the SSE2 floating-point instruction set, and binaries that are obtained by compiling code that is obtained by inlining assembly into C code.},
+  address = {New York, NY, USA},
+  author = {Roessle, Ian and Verbeek, Freek and Ravindran, Binoy},
+  booktitle = {Proceedings of the 8th ACM SIGPLAN International Conference on Certified Programs and Proofs},
+  doi = {10.1145/3293880.3294102},
+  isbn = {9781450362221},
+  keywords = {x86-64, theorem proving, semantics},
+  location = {Cascais, Portugal},
+  numpages = {15},
+  pages = {181–195},
+  publisher = {Association for Computing Machinery},
+  series = {CPP 2019},
+  title = {Formally verified big step semantics out of x86-64 binaries},
+  url = {https://doi.org/10.1145/3293880.3294102},
+  year = {2019}
+}
+
+@inproceedings{10.1145/3650212.3680301,
+  abstract = {Jump tables are a common source of indirect jumps in binary code. Resolving these indirect jumps is critical for constructing a complete control-flow graph, which is an essential first step for most applications involving binaries, including binary hardening and instrumentation, binary analysis and fuzzing for vulnerability discovery, malware analysis and reverse engineering. Existing techniques for jump table analysis generally prioritize performance over soundness. While lack of soundness may be acceptable for applications such as decompilation, it can cause unpredictable runtime failures in binary instrumentation applications. We therefore present SJA, a new jump table analysis technique in this paper that is sound and scalable. Our analysis uses a novel abstract domain to systematically track the "structure" of computed code pointers without relying on syntactic pattern-matching that is common in previous works. In addition, we present a bounds analysis that efficiently and losslessly reasons about equality and inequality relations that arise in the context of jump tables. As a result, our system reduces miss rate by 35\texttimes{} over the next best technique. When evaluated on error rate based on F1-score, our technique outperforms the best previous techniques by 3\texttimes{}.},
+  address = {New York, NY, USA},
+  author = {Nguyen, Huan and Priyadarshan, Soumyakant and Sekar, R.},
+  booktitle = {Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis},
+  doi = {10.1145/3650212.3680301},
+  isbn = {9798400706127},
+  keywords = {reverse engineering, static analysis},
+  location = {Vienna, Austria},
+  numpages = {12},
+  pages = {541–552},
+  publisher = {Association for Computing Machinery},
+  series = {ISSTA 2024},
+  title = {Scalable, Sound, and Accurate Jump Table Analysis},
+  url = {https://doi.org/10.1145/3650212.3680301},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3650215.3650347,
+  abstract = {Binary function naming is a code analysis task that generates functional descriptions of functions, and its results can be applied in the fields of malicious code analysis, vulnerability causation analysis, and algorithm governance. Aiming at the shortcomings of the pseudocode abstract syntax tree being difficult to extract and the binary function naming scheme having low accuracy rate, a binary function naming prediction model A2N based on variable alignment and sequence translation model is proposed. First, A2N extracts the function variable features of binary files from debugging information and performs variable alignment with the pseudocode obtained from decompiling; then, it obtains the hierarchical structure of the binary functions and designs the node extraction rules to generate an abstract syntax tree AST for each function; then, extract the paths between the leaf nodes of the AST and serialize the tree structure to represent it; finally, with the help of the neural network translation model, establish a mapping between the AST and the binary function names to realize the prediction function. The experimental results show that compared with Dire, Nero and XFL models, the F1 value of A2N is improved by 84%, 44% and 14% on file-level isolation experiments respectively, and the F1 value reaches 80.94% on function-level isolation experiments.},
+  address = {New York, NY, USA},
+  author = {Xia, Bing and Yin, Jiabin and Ge, Yunxiang and Yang, Ruinan},
+  booktitle = {Proceedings of the 2023 4th International Conference on Machine Learning and Computer Application},
+  doi = {10.1145/3650215.3650347},
+  isbn = {9798400709449},
+  location = {Hangzhou, China},
+  numpages = {5},
+  pages = {757–761},
+  publisher = {Association for Computing Machinery},
+  series = {ICMLCA '23},
+  title = {A Binary Function Name Prediction Method Based on Variable Alignment and Translation Model},
+  url = {https://doi.org/10.1145/3650215.3650347},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3691620.3695502,
+  abstract = {Type recovery in stripped binaries is a critical and challenging task in reverse engineering, as it is the basis for many security applications (e.g., vulnerability detection). Traditional analysis methods are limited by software complexity and emerging types in real-world projects. To address these limitations, machine learning methods have been explored. However, the existing supervised learning approaches struggle with analyzing complicated and uncommon types due to the limited availability of samples. Additionally, none of the existing works can capture fine-grained and inter-procedural features in the binaries. In this paper, we present TypeFSL, a framework that addresses the challenge of imbalanced type distributions by incorporating few-shot learning and captures inter-procedural semantics through program slicing. Moreover, based on a dataset with 3,003,117 functions, TypeFSL achieves an average of 77.9% and 84.6% accuracy across all architecture and optimizations in 20-way 5-shot and 10-shot classification tasks. Our prototype outperforms existing techniques in prediction accuracy and obfuscation resistance. Finally, the case studies demonstrate how TypeFSL predicts uncommon and complicated types in practical analysis.},
+  address = {New York, NY, USA},
+  author = {Song, Zirui and Zhou, YuTong and Dong, Shuaike and Zhang, Ke and Zhang, Kehuan},
+  booktitle = {Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering},
+  doi = {10.1145/3691620.3695502},
+  isbn = {9798400712487},
+  keywords = {reverse engineering, type recovery, few-shot learning},
+  location = {Sacramento, CA, USA},
+  numpages = {13},
+  pages = {1269–1281},
+  publisher = {Association for Computing Machinery},
+  series = {ASE '24},
+  title = {TypeFSL: Type Prediction from Binaries via Inter-procedural Data-flow Analysis and Few-shot Learning},
+  url = {https://doi.org/10.1145/3691620.3695502},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3719027.3760714,
+  abstract = {This poster introduces HarvETHter, a smart contract decompiler for EVM-based platforms such as Ethereum, Binance, and Polygon. We present the corpus completeness hypothesis, which we investigate through HarvETHter. Relying on our hypothesis, HarvETHter sources knowledge of the Ethereum blockchain and leverages it to decompile smart contracts to Solidity source code.},
+  address = {New York, NY, USA},
+  author = {Giesen, Jens-Rene and Scholz, Christian and Davi, Lucas},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3760714},
+  isbn = {9798400715259},
+  keywords = {decompilation, provenance &amp; security, smart contracts},
+  location = {Taipei, Taiwan},
+  numpages = {3},
+  pages = {4752–4754},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Poster: Code HarvETHter: Corpus-Driven Decompilation of Ethereum Smart Contracts},
+  url = {https://doi.org/10.1145/3719027.3760714},
+  year = {2025}
+}
+
+@inproceedings{10.1145/3719027.3765089,
+  abstract = {Recovering function signatures is a cornerstone of binary program analysis, yet it remains a challenging task. Existing methods either rely on disassembly-based constraints, which struggle with cross-architecture compatibility and scalability, or adopt learning-based approaches that are resource-intensive and often inaccurate. In this paper, we present CDA, a novel decompilation-based method for recovering function signatures that combines the strengths of multiple decompilers while mitigating their limitations. The core idea behind CDA is leveraging probabilistic constraints to estimate the likelihood of each function signature recovery result produced by decompilers, guided by inference rules specifically designed to address the limitations of decompilers. Based on these probabilities, CDA selects the recovery results with the highest likelihood as the final outcomes. We extensively evaluate CDA across five tasks --- variadic function/position detection, parameter identification, return value detection, and parameter type recovery --- comparing it against state-of-the-art tools, including IDA, Ghidra, Binary Ninja, and TYGR. Experimental results show that CDA outperforms baseline tools across multiple architectures (x64, x86, AArch64, Arm, and Mips) and optimization levels (O0-O3), highlighting its robustness and reliability in diverse compilation environments.},
+  address = {New York, NY, USA},
+  author = {Huang, Haohui and Liu, Yue and Cheng, Yuxi and Wei, Haiyang and Liu, Jiamu and Wang, Yu and Wang, Linzhang},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3765089},
+  isbn = {9798400715259},
+  keywords = {function signature recovery, probabilistic constraint, reverse engineering},
+  location = {Taipei, Taiwan},
+  numpages = {15},
+  pages = {3386–3400},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Recover Function Signature from Combined Constraints},
+  url = {https://doi.org/10.1145/3719027.3765089},
+  year = {2025}
+}
+
+@inproceedings{10.1145/3733822.3764673,
+  abstract = {Recovering semantic information from binary code is a fundamental challenge in reverse engineering, especially when source-level information is unavailable. We aim to analyze the types and roles of structural elements from the binary observed in the compiled program, focusing on their contextual usage patterns and associations to other members.We refer to such semantic aspects as structural semantics , meaning that cooccurring patterns of jointly updated structure members reveal the functional roles that can be inferred from their coupling, throughout this paper. Recent approaches have applied graph neural networks (GNNs) to data-flow graphs (DFGs) for variable type inference, but most rely on a single model architecture, such as the relational graph convolutional network (R-GCN). While effective, such models may overlook alternative patterns of structure member behavior. In this paper, we investigate the effectiveness of three alternative GNN architectures gated graph neural networks (GGNN), graph attention networks (GAT), and standard graph convolutional networks (GCN) in capturing structural semantics from binary-level data-flow graphs. We evaluate these models on real-world binaries compiled at multiple optimization levels, measuring their ability to infer semantic properties of structure members. Our results show that these architectures capture complementary aspects of structural semantics. GGNN is effective at modeling long-range dependencies, GAT suppresses irrelevant connections, and GCN offers computational simplicity. Different model architectures emphasize distinct aspects of structural semantics, capturing complementary patterns of how structure members are accessed together in memory. This demonstrates that architectural diversity provides richer perspectives for semantic inference in binary analysis.},
+  address = {New York, NY, USA},
+  author = {Sakamoto, Noriki and Takeuchi, Kazuhiro},
+  booktitle = {Proceedings of the 2025 Workshop on Software Understanding and Reverse Engineering},
+  doi = {10.1145/3733822.3764673},
+  isbn = {9798400719103},
+  keywords = {Decompiler, Reverse Engineering},
+  location = {},
+  numpages = {12},
+  pages = {102–113},
+  publisher = {Association for Computing Machinery},
+  series = {SURE '25},
+  title = {Toward Inferring Structural Semantics from Binary Code Using Graph Neural Networks},
+  url = {https://doi.org/10.1145/3733822.3764673},
+  year = {2025}
+}
+
+@inproceedings{10.1145/3755881.3755883,
+  abstract = {The growing popularity of smart contracts has spurred an increasing demand for efficient analysis of their bytecode. Reverse engineering plays a critical role in understanding and auditing smart contracts, with function identification being a key aspect. However, existing function identification techniques often struggle with scalability, accuracy, and adaptability across different contract versions. This paper presents FIRE (Smart Contract Bytecode Function Identification via Graph-Refined Hybrid Encoding), a novel approach to function identification in Ethereum smart contract bytecode. By leveraging hybrid encoding of basic blocks and incorporating a graph neural network (GNN) based on control flow graph (CFG), our method improves the effectiveness of function identification. The approach demonstrates strong generalization across contract versions and significantly reduces runtime. We evaluate FIRE on multiple datasets and show its superior performance compared to existing techniques, highlighting its potential for efficient smart contract bytecode analysis.},
+  address = {New York, NY, USA},
+  author = {Sun, Yu and Bao, Lingfeng and Yang, Xiaohu},
+  booktitle = {Proceedings of the 16th International Conference on Internetware},
+  doi = {10.1145/3755881.3755883},
+  isbn = {9798400719264},
+  keywords = {Smart Contract, Reverse Engineering, Function Identification, Machine Learning, Graph Neural Network},
+  location = {},
+  numpages = {11},
+  pages = {378–388},
+  publisher = {Association for Computing Machinery},
+  series = {Internetware '25},
+  title = {FIRE: Smart Contract Bytecode Function Identification via Graph-Refined Hybrid Feature Encoding},
+  url = {https://doi.org/10.1145/3755881.3755883},
+  year = {2025}
+}
+
+@article{Green2024,
+  abstract = {Decompilers are widely used by security researchers and developers to reverse engineer executable code. While modern decompilers are adept at recovering instructions, control flow, and function boundaries, some useful information from the original source code, such as variable types and names, is lost during the compilation process. Our work aims to predict these variable types and names from the remaining information. We propose STRIDE, a lightweight technique that predicts variable names and types by matching sequences of decompiler tokens to those found in training data. We evaluate it on three benchmark datasets and find that STRIDE achieves comparable performance to state-of-the-art machine learning models for both variable retyping and renaming while being much simpler and faster. We perform a detailed comparison with two recent SOTA transformer-based models in order to understand the specific factors that make our technique effective. We implemented STRIDE in fewer than 1000 lines of Python and have open-sourced it under a permissive license at https://github.com/hgarrereyn/STRIDE. },
+  author = {Green, Harrison AND Schwartz, J., Edward AND Goues, Le, Claire AND Vasilescu, Bogdan},
+  doi = {https://doi.org/10.48550/arXiv.2407.02733},
+  howpublished = {\url{https://arxiv.org/pdf/2407.02733}},
+  month = {jul},
+  note = {},
+  title = {STRIDE: Simple Type Recognition In Decompiled Executables},
+  year = {2024}
+}
+
+@article{Shokri2023,
+  abstract = {We introduce a novel approach to automatically synthesize a mathematical representation of the control algorithms implemented in industrial cyber-physical systems (CPS), given the embedded system binary. The output model can be used by subject matter experts to assess the system's compliance with the expected behavior and for a variety of forensic applications. Our approach first performs static analysis on decompiled binary files of the controller to create a sketch of the mathematical representation. Then, we perform an evolutionary-based search to find the correct semantic for the created representation, i.e., the control law. We demonstrate the effectiveness of the introduced approach in practice via three case studies conducted on two real-life industrial CPS. },
+  author = {Shokri, Ali AND Perez, Alexandre AND Chowdhury, Souma AND Zeng, Chen AND Kaloor, Gerald AND Matei, Ion AND Schneider, Peter-Patel AND Gunasekaran, Akshith AND Rane, Shantanu},
+  doi = {https://doi.org/10.48550/arXiv.2308.00250},
+  howpublished = {\url{https://arxiv.org/pdf/2308.00250}},
+  month = {jul},
+  note = {},
+  title = {CONSTRUCT: A Program Synthesis Approach for Reconstructing Control Algorithms from Embedded System Binaries in Cyber-Physical Systems},
+  year = {2023}
+}
+
+@article{WOS:000415662500002,
+  abstract = {Existing decompilers use rule-based algorithms to transform unstructured
+Control flow graph (CFG) into equivalent high-level programming language
+constructs with ``goto{''} statements. One problem of such approaches is
+that they generate a large number of ``goto{''}s in the output code,
+which reduce the readability and hinder the understanding of input
+binaries. A global search algorithm is proposed based on structural
+analysis. This algorithm restructures a CFG and generates fewer number
+of ``goto{''} statements than the rule-based algorithm does. We also
+present a Genetic algorithm (GA) for the global search approach to
+locate near optimal solutions for large CFGs. Evaluation results on a
+set of real CFGs show that the genetic algorithm-based heuristic for
+global search is capable of finding high-quality solutions.},
+  address = {26-28 AU PUI WAN ST, STE 1102, FO TAN INDUSTRIAL CENTRE, FO TAN, SHATIN,
+00000, PEOPLES R CHINA},
+  affiliation = {Ji, WX (Corresponding Author), Beijing Inst Technol, Beijing 100081, Peoples R China.
+Ji Weixing; Huo Yuanhong; Wang Yizhuo; Gao Yujin; Shi Feng, Beijing Inst Technol, Beijing 100081, Peoples R China.},
+  affiliations = {Beijing Institute of Technology},
+  author = {Ji Weixing and Huo Yuanhong and Wang Yizhuo and Gao Yujin and Shi Feng},
+  author-email = {jwx@bit.edu.cn
+hyh@bit.edu.cn
+frankwyz@bit.edu.cn
+paulgyj@bit.edu.cn
+bitsf@bit.edu.cn},
+  cited-references = {AMMARGUELLAT Z, 1992, IEEE T SOFTWARE ENG, V18, P237, DOI 10.1109/32.126773.
+ARM Ltd. and ARM Germany GmbH, 2015, KEIL C51 C COMP.
+Ashcroft E., 1979, CLASSICS SOFTWARE EN.
+BAKER AL, 1980, IEEE T SOFTWARE ENG, V6, P506, DOI 10.1109/TSE.1980.230799.
+BAKER BS, 1977, J ACM, V24, P98, DOI 10.1145/321992.321999.
+Bao T, 2014, PROCEEDINGS OF THE 23RD USENIX SECURITY SYMPOSIUM, P845.
+{[}陈芳园 Chen Fangyuan], 2012, {[}电子学报, Acta Electronica Sinica], V40, P1372.
+Chen GBA, 2013, SOFTWARE PRACT EXPER, V43, P1337, DOI 10.1002/spe.2138.
+Chen Ping, 2010, Acta Electronica Sinica, V38, P1741.
+Cifuentes C., 1992, P 19 C LAT INF, P257.
+Cifuentes Cristina, 1993, P 19 C LAT INF AT, P267.
+EROSA AM, 1994, PROCEEDINGS OF THE 1994 INTERNATIONAL CONFERENCE ON COMPUTER LANGUAGES, P229, DOI 10.1109/ICCL.1994.288377.
+Flatassembler, 2015, FLAT ASS.
+Guthaus MR, 2001, WWC-4: IEEE INTERNATIONAL WORKSHOP ON WORKLOAD CHARACTERIZATION, P3, DOI 10.1109/WWC.2001.990739.
+Holland J., 1975, Adaptive in Natural and artificial Systems.
+Knuth D. E., 1971, Information Processing Letters, V1, P23, DOI 10.1016/0020-0190(71)90018-4.
+LICHTBLAU U, 1985, PROC INT JOINT C, V185, P284.
+Muchnick S.S., 1997, Advanced Compiler Design and Implementation.
+Naeem NA, 2006, INT C PROGRAM COMPRE, P327, DOI 10.1109/ICPC.2006.40.
+OULSNAM G, 1982, COMPUT J, V25, P379, DOI 10.1093/comjnl/25.3.379.
+Pfeffer T.F., 2014, P 7 INT C SEC INF NE, P345.
+RAMSHAW L, 1988, J ACM, V35, P893, DOI 10.1145/48014.48021.
+{[}任武 Ren Wu], 2013, {[}电子学报, Acta Electronica Sinica], V41, P1412.
+Troshina K., 2009, P INT WORKSHOP PROGR, P18.
+Williams M.H., 1997, COMPUT J, V20, P45.
+WILLIAMS MH, 1985, COMPUT J, V28, P134, DOI 10.1093/comjnl/28.2.134.},
+  da = {2026-02-04},
+  doc-delivery-number = {FN0IW},
+  doi = {10.1049/cje.2017.09.003},
+  eissn = {2075-5597},
+  funding-acknowledgement = {National Natural Science Foundation of China {[}61300010]},
+  funding-text = {This work is supported by the National Natural Science Foundation of
+China (No.61300010).},
+  issn = {1022-4653},
+  journal = {CHINESE JOURNAL OF ELECTRONICS},
+  journal-iso = {Chin. J. Electron.},
+  keywords = {Decompiling; Control flow graph restructuring; Structural analysis;
+Genetic algorithm (GA)},
+  keywords-plus = {PROGRAMS},
+  language = {English},
+  month = {NOV},
+  number = {6},
+  number-of-cited-references = {26},
+  oa = {Bronze},
+  pages = {1118-1124},
+  publisher = {TECHNOLOGY EXCHANGE LIMITED HONG KONG},
+  research-areas = {Engineering},
+  researcherid-numbers = {wang, yizhuo/LXW-7659-2024},
+  times-cited = {0},
+  title = {Control Structure Analysis and Recovery of Embedded Binaries},
+  type = {Article},
+  unique-id = {WOS:000415662500002},
+  usage-count-last-180-days = {0},
+  usage-count-since-2013 = {11},
+  volume = {26},
+  web-of-science-categories = {Engineering, Electrical \& Electronic},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2017}
+}

@@ -1,0 +1,41 @@
+{
+  "step_id": "ai_screening",
+  "step_type": "ai-screening",
+  "name": "AI Screening",
+  "input": {
+    "from": "dedup_author",
+    "output": "passed",
+    "file": "steps/dedup_author/outputs/passed.bib",
+    "count": 460
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/ai_screening/outputs/passed.bib",
+      "count": 66,
+      "description": "Papers judged as 'include'"
+    },
+    "excluded": {
+      "file": "steps/ai_screening/outputs/excluded.bib",
+      "count": 382,
+      "description": "Papers judged as 'exclude'"
+    },
+    "uncertain": {
+      "file": "steps/ai_screening/outputs/uncertain.bib",
+      "count": 12,
+      "description": "Papers judged as 'uncertain'"
+    }
+  },
+  "stats": {
+    "input_count": 460,
+    "total_output_count": 460,
+    "passed_count": 66,
+    "removed_count": 382
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-02-05T18:48:52.849335",
+    "completed_at": "2026-02-05T18:50:09.302908",
+    "duration_sec": 76.453573,
+    "error": null
+  }
+}

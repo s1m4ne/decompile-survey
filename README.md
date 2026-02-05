@@ -32,15 +32,16 @@ decompile-survey/
 │   │   └── parse_pdf.py
 │   └── pdf2md_mistral/         # Mistral OCRでPDF→Markdown変換
 │       └── parse_pdf.py
+├── app/                        # レビュー用Webアプリ
+│   ├── backend/                # FastAPI
+│   ├── frontend/               # React + TypeScript
+│   └── start.sh                # 起動スクリプト
 ├── screening/                  # 論文スクリーニング
 │   ├── scripts/                # スクリーニングスクリプト
 │   │   └── screen.py           # LLMによる論文スクリーニング
 │   ├── rules/                  # スクリーニングルール
 │   ├── runs/                   # 実行結果
 │   ├── reviews/                # レビューデータ
-│   ├── app/                    # レビュー用Webアプリ
-│   │   ├── backend/            # FastAPI
-│   │   └── frontend/           # React + TypeScript
 │   └── history.csv             # 実行履歴
 ├── .gitignore
 └── README.md
@@ -161,7 +162,7 @@ uv run python screening/scripts/screen.py \
   -r screening/rules/decompile_v2.md
 
 # Webアプリでレビュー
-cd screening/app && ./start.sh
+cd app && ./start.sh
 # http://localhost:5173 でアクセス
 ```
 
@@ -171,7 +172,7 @@ cd screening/app && ./start.sh
 - インポート時に Database / Search query / Search date を付与できる
 - AIスクリーニングはローカルLLMをデフォルトで使用（`LOCAL_LLM_BASE_URL` を参照）
 
-詳細は `screening/README.md` を参照。
+詳細は `screening/README.md` および `app/README.md` を参照。
 
 ### 4. 文献管理ツールへのインポート
 

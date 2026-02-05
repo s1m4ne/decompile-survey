@@ -1,0 +1,36 @@
+{
+  "step_id": "dedup_doi",
+  "step_type": "dedup-doi",
+  "name": "DOI Deduplication",
+  "input": {
+    "from": "sources",
+    "output": "combined",
+    "file": "imports",
+    "count": 540
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/dedup_doi/outputs/passed.bib",
+      "count": 498,
+      "description": "Unique entries (first occurrence of each DOI + entries without DOI)"
+    },
+    "removed": {
+      "file": "steps/dedup_doi/outputs/removed.bib",
+      "count": 42,
+      "description": "Duplicate entries (later occurrences of same DOI)"
+    }
+  },
+  "stats": {
+    "input_count": 540,
+    "total_output_count": 540,
+    "passed_count": 498,
+    "removed_count": 42
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-02-05T14:14:57.057980",
+    "completed_at": "2026-02-05T14:14:57.837235",
+    "duration_sec": 0.779255,
+    "error": null
+  }
+}
