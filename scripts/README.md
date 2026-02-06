@@ -35,3 +35,14 @@ python3 parse_pdf.py paper.pdf
 ```
 
 詳細: [pdf2md_mistral/README.md](pdf2md_mistral/README.md)
+
+### bibtex_extractor/
+
+BibTeXファイルからtitleとabstractのみを抽出するスクリプト。
+
+```bash
+python3 extract_title_abstract.py input.bib
+python3 extract_title_abstract.py input.bib -o output.txt  # 出力先指定
+```
+
+詳細: [bibtex_extractor/README.md](bibtex_extractor/README.md)

@@ -1,0 +1,39 @@
+@inproceedings{10.1145/3719027.3760714,
+  abstract = {This poster introduces HarvETHter, a smart contract decompiler for EVM-based platforms such as Ethereum, Binance, and Polygon. We present the corpus completeness hypothesis, which we investigate through HarvETHter. Relying on our hypothesis, HarvETHter sources knowledge of the Ethereum blockchain and leverages it to decompile smart contracts to Solidity source code.},
+  address = {New York, NY, USA},
+  author = {Giesen, Jens-Rene and Scholz, Christian and Davi, Lucas},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3760714},
+  isbn = {9798400715259},
+  keywords = {decompilation, provenance &amp; security, smart contracts},
+  location = {Taipei, Taiwan},
+  numpages = {3},
+  pages = {4752–4754},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Poster: Code HarvETHter: Corpus-Driven Decompilation of Ethereum Smart Contracts},
+  url = {https://doi.org/10.1145/3719027.3760714},
+  year = {2025}
+}
+
+@article{Xu2024,
+  abstract = {Decompilation aims to recover the source code form of a binary executable. It has many security applications, such as malware analysis, vulnerability detection, and code hardening. A prominent challenge in decompilation is to recover variable names. We propose a novel technique that leverages the strengths of generative models while mitigating model biases. We build a prototype, GenNm, from pre-trained generative models CodeGemma-2B, CodeLlama-7B, and CodeLlama-34B. We finetune GenNm on decompiled functions and teach models to leverage contextual information. GenNm includes names from callers and callees while querying a function, providing rich contextual information within the model's input token limitation. We mitigate model biases by aligning the output distribution of models with symbol preferences of developers. Our results show that GenNm improves the state-of-the-art name recovery precision by 5.6-11.4 percentage points on two commonly used datasets and improves the state-of-the-art by 32% (from 17.3% to 22.8%) in the most challenging setup where ground-truth variable names are not seen in the training dataset. },
+  author = {Xu, Xiangzhe AND Zhang, Zhuo AND Su, Zian AND Huang, Ziyang AND Feng, Shiwei AND Ye, Yapeng AND Jiang, Nan AND Xie, Danning AND Cheng, Siyuan AND Tan, Lin AND Zhang, Xiangyu},
+  doi = {https://doi.org/10.48550/arXiv.2306.02546},
+  howpublished = {\url{https://arxiv.org/pdf/2306.02546}},
+  month = {dec},
+  note = {},
+  title = {Symbol Preference Aware Generative Models for Recovering Variable Names from Stripped Binary},
+  year = {2024}
+}
+
+@article{Zhou2025,
+  abstract = {Decompiling Rust binaries is challenging due to the language's rich type system, aggressive compiler optimizations, and widespread use of high-level abstractions. In this work, we conduct a benchmark-driven evaluation of decompilation quality across core Rust features and compiler build modes. Our automated scoring framework shows that generic types, trait methods, and error handling constructs significantly reduce decompilation quality, especially in release builds. Through representative case studies, we analyze how specific language constructs affect control flow, variable naming, and type information recovery. Our findings provide actionable insights for tool developers and highlight the need for Rust-aware decompilation strategies. },
+  author = {Zhou, Zixu},
+  doi = {https://doi.org/10.48550/arXiv.2507.18792},
+  howpublished = {\url{https://arxiv.org/pdf/2507.18792}},
+  month = {jul},
+  note = {},
+  title = {Decompiling Rust: An Empirical Study of Compiler Optimizations and Reverse Engineering Challenges},
+  year = {2025}
+}

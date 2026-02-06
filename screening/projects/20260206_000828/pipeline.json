@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "dedup_doi",
+      "type": "dedup-doi",
+      "name": "DOI Deduplication",
+      "enabled": true,
+      "input_from": "sources",
+      "config": {
+        "case_sensitive": false,
+        "keep_no_doi": true
+      }
+    },
+    {
+      "id": "dedup_title",
+      "type": "dedup-title",
+      "name": "Title Deduplication",
+      "enabled": true,
+      "input_from": "dedup_doi",
+      "config": {
+        "similarity_threshold": 0.9
+      }
+    },
+    {
+      "id": "dedup_author",
+      "type": "dedup-author",
+      "name": "Author Deduplication",
+      "enabled": true,
+      "input_from": "dedup_title",
+      "config": {
+        "similarity_threshold": 0.8
+      }
+    },
+    {
+      "id": "ai_screening",
+      "type": "ai-screening",
+      "name": "AI Screening",
+      "enabled": true,
+      "input_from": "dedup_author",
+      "config": {
+        "rules": "decompile_v8_L3",
+        "model": "openai/gpt-oss-120b",
+        "provider": "local",
+        "concurrency": 100,
+        "output_mode": "ai",
+        "local_base_url": "http://192.168.50.100:8000/v1"
+      }
+    }
+  ],
+  "final_output": null
+}

@@ -94,7 +94,11 @@ async def screen_paper(
             "key": entry_key,
             "decision": "uncertain",
             "confidence": 0.0,
-            "reason_codes": [{"code": "uns_need_fulltext", "evidence": "No abstract"}],
+            "reason_codes": [{
+                "code": "uns_need_fulltext",
+                "evidence": "No abstract",
+                "explanation": "アブストラクトが無く、判断根拠が確認できないため。",
+            }],
             "reason": "アブストラクトが存在しないため判定不可。フルテキストの確認が必要。",
             "tokens_used": 0,
             "latency_ms": 0,
@@ -129,7 +133,8 @@ async def screen_paper(
     "reason_codes": [
         {{
             "code": "上記の理由コードから選択",
-            "evidence": "アブストラクトから該当箇所を短く引用（英語のまま、20語以内）"
+            "evidence": "アブストラクトから該当箇所を短く引用（英語のまま、20語以内）",
+            "explanation": "その引用がこの理由コードに該当すると判断した理由（日本語で1文）"
         }}
     ],
     "reason": "判定理由の詳細説明（日本語で2-3文）"
@@ -138,6 +143,7 @@ async def screen_paper(
 注意:
 - reason_codesは該当するものを全て列挙（1-3個程度）
 - evidenceはアブストラクトの原文から引用
+- explanationでevidenceと理由コードの対応を説明
 - decisionがincludeならin_*コード、excludeならex_*コード、uncertainならuns_*コードを使用
 """
 
@@ -183,7 +189,11 @@ async def screen_paper(
                 "key": entry_key,
                 "decision": "uncertain",
                 "confidence": 0.0,
-                "reason_codes": [{"code": "uns_need_fulltext", "evidence": "API error"}],
+                "reason_codes": [{
+                    "code": "uns_need_fulltext",
+                    "evidence": "API error",
+                    "explanation": "APIエラーにより内容確認ができず判断不能のため。",
+                }],
                 "reason": f"APIエラーにより判定不可: {str(e)}",
                 "tokens_used": 0,
                 "latency_ms": latency_ms,

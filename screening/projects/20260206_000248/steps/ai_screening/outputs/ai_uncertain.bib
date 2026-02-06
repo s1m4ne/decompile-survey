@@ -1,0 +1,329 @@
+@inproceedings{10.1109/ASE.2019.00064,
+  abstract = {The decompiler is one of the most common tools for examining binaries without corresponding source code. It transforms binaries into high-level code, reversing the compilation process. Decompilers can reconstruct much of the information that is lost during the compilation process (e.g., structure and type information). Unfortunately, they do not reconstruct semantically meaningful variable names, which are known to increase code understandability. We propose the Decompiled Identifier Renaming Engine (DIRE), a novel probabilistic technique for variable name recovery that uses both lexical and structural information recovered by the decompiler. We also present a technique for generating corpora suitable for training and evaluating models of decompiled code renaming, which we use to create a corpus of 164,632 unique x86-64 binaries generated from C projects mined from GitHub.1 Our results show that on this corpus DIRE can predict variable names identical to the names in the original source code up to 74.3% of the time.},
+  author = {Lacomis, Jeremy and Yin, Pengcheng and Schwartz, Edward J. and Allamanis, Miltiadis and Le Goues, Claire and Neubig, Graham and Vasilescu, Bogdan},
+  booktitle = {Proceedings of the 34th IEEE/ACM International Conference on Automated Software Engineering},
+  doi = {10.1109/ASE.2019.00064},
+  isbn = {9781728125084},
+  location = {San Diego, California},
+  numpages = {12},
+  pages = {628–639},
+  publisher = {IEEE Press},
+  series = {ASE '19},
+  title = {DIRE: a neural approach to decompiled identifier naming},
+  url = {https://doi.org/10.1109/ASE.2019.00064},
+  year = {2020}
+}
+
+@inproceedings{10.1109/ASE56229.2023.00099,
+  abstract = {Decompilation is a widely used process for reverse engineers to significantly enhance code readability by lifting assembly code to a higher-level C-like language, pseudo-code. Nevertheless, the process of compilation and stripping irreversibly discards high-level semantic information that is crucial to code comprehension, such as comments, identifier names, and types. Existing approaches typically recover only one type of information, making them suboptimal for semantic inference. In this paper, we treat pseudo-code as a special programming language, then present a unified pre-trained model, HexT5, that is trained on vast amounts of natural language comments, source identifiers, and pseudo-code using novel pseudo-code-based pretraining objectives. We fine-tune HexT5 on various downstream tasks, including code summarization, variable name recovery, function name recovery, and similarity detection. Comprehensive experiments show that HexT5 achieves state-of-the-art performance on four downstream tasks, and it demonstrates the robust effectiveness and generalizability of HexT5 for binary-related tasks.},
+  author = {Xiong, Jiaqi and Chen, Guoqiang and Chen, Kejiang and Gao, Han and Cheng, Shaoyin and Zhang, Weiming},
+  booktitle = {Proceedings of the 38th IEEE/ACM International Conference on Automated Software Engineering},
+  doi = {10.1109/ASE56229.2023.00099},
+  isbn = {9798350329964},
+  keywords = {reverse engineering, deep learning, binary diffing, information inference, programming language model},
+  location = {Echternach, Luxembourg},
+  numpages = {13},
+  pages = {774–786},
+  publisher = {IEEE Press},
+  series = {ASE '23},
+  title = {HexT5: Unified Pre-Training for Stripped Binary Code Information Inference},
+  url = {https://doi.org/10.1109/ASE56229.2023.00099},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3196321.3196330,
+  abstract = {When code is compiled, information is lost, including some of the structure of the original source code as well as local identifier names. Existing decompilers can reconstruct much of the original source code, but typically use meaningless placeholder variables for identifier names. Using variable names which are more natural in the given context can make the code much easier to interpret, despite the fact that variable names have no effect on the execution of the program. In theory, it is impossible to recover the original identifier names since that information has been lost. However, most code is natural: it is highly repetitive and predictable based on the context. In this paper we propose a technique that assigns variables meaningful names by taking advantage of this naturalness property. We consider decompiler output to be a noisy distortion of the original source code, where the original source code is transformed into the decompiler output. Using this noisy channel model, we apply standard statistical machine translation approaches to choose natural identifiers, combining a translation model trained on a parallel corpus with a language model trained on unmodified C code. We generate a large parallel corpus from 1.2 TB of C source code obtained from GitHub. Under the most conservative assumptions, our technique is still able to recover the original variable names up to 16.2% of the time, which represents a lower bound for performance.},
+  address = {New York, NY, USA},
+  author = {Jaffe, Alan and Lacomis, Jeremy and Schwartz, Edward J. and Le Goues, Claire and Vasilescu, Bogdan},
+  booktitle = {Proceedings of the 26th Conference on Program Comprehension},
+  doi = {10.1145/3196321.3196330},
+  isbn = {9781450357142},
+  location = {Gothenburg, Sweden},
+  numpages = {11},
+  pages = {20–30},
+  publisher = {Association for Computing Machinery},
+  series = {ICPC '18},
+  title = {Meaningful variable names for decompiled code: a machine translation approach},
+  url = {https://doi.org/10.1145/3196321.3196330},
+  year = {2018}
+}
+
+@inproceedings{10.1145/3719027.3760714,
+  abstract = {This poster introduces HarvETHter, a smart contract decompiler for EVM-based platforms such as Ethereum, Binance, and Polygon. We present the corpus completeness hypothesis, which we investigate through HarvETHter. Relying on our hypothesis, HarvETHter sources knowledge of the Ethereum blockchain and leverages it to decompile smart contracts to Solidity source code.},
+  address = {New York, NY, USA},
+  author = {Giesen, Jens-Rene and Scholz, Christian and Davi, Lucas},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3760714},
+  isbn = {9798400715259},
+  keywords = {decompilation, provenance &amp; security, smart contracts},
+  location = {Taipei, Taiwan},
+  numpages = {3},
+  pages = {4752–4754},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Poster: Code HarvETHter: Corpus-Driven Decompilation of Ethereum Smart Contracts},
+  url = {https://doi.org/10.1145/3719027.3760714},
+  year = {2025}
+}
+
+@inproceedings{10.1145/3719027.3765089,
+  abstract = {Recovering function signatures is a cornerstone of binary program analysis, yet it remains a challenging task. Existing methods either rely on disassembly-based constraints, which struggle with cross-architecture compatibility and scalability, or adopt learning-based approaches that are resource-intensive and often inaccurate. In this paper, we present CDA, a novel decompilation-based method for recovering function signatures that combines the strengths of multiple decompilers while mitigating their limitations. The core idea behind CDA is leveraging probabilistic constraints to estimate the likelihood of each function signature recovery result produced by decompilers, guided by inference rules specifically designed to address the limitations of decompilers. Based on these probabilities, CDA selects the recovery results with the highest likelihood as the final outcomes. We extensively evaluate CDA across five tasks --- variadic function/position detection, parameter identification, return value detection, and parameter type recovery --- comparing it against state-of-the-art tools, including IDA, Ghidra, Binary Ninja, and TYGR. Experimental results show that CDA outperforms baseline tools across multiple architectures (x64, x86, AArch64, Arm, and Mips) and optimization levels (O0-O3), highlighting its robustness and reliability in diverse compilation environments.},
+  address = {New York, NY, USA},
+  author = {Huang, Haohui and Liu, Yue and Cheng, Yuxi and Wei, Haiyang and Liu, Jiamu and Wang, Yu and Wang, Linzhang},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3719027.3765089},
+  isbn = {9798400715259},
+  keywords = {function signature recovery, probabilistic constraint, reverse engineering},
+  location = {Taipei, Taiwan},
+  numpages = {15},
+  pages = {3386–3400},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '25},
+  title = {Recover Function Signature from Combined Constraints},
+  url = {https://doi.org/10.1145/3719027.3765089},
+  year = {2025}
+}
+
+@inproceedings{11028410,
+  abstract = {Modern industry is built, among other things, on software, the presence of vulnerabilities in which is a significant problem. It is more rational to search for vulnerabilities in those representations of the program (source code, algorithms, architecture, etc.) on the basis of which they were developed. However, as a rule, there is difficult-to-analyze machine code available. Obtaining higher-level representations is possible by reverse engineering, carried out in various ways, such as expert, algorithmic, intelligent, enumeration and logging. The qualitative comparison of these representations is given. The current study is devoted to a new method of reverse engineering based on the use of genetic algorithms. The course of the research and the following main scientific results are briefly described: the methodology of reverse engineering of a software system, the model of the life cycle of a program with multi-level vulnerabilities, the concept of genetic de-evolution of program representations, scientific, methodological and algorithmic instrumentation for genetic decompilation, an architectural block for conducting genetic de-evolution of representations with functionality for searching for multi-level vulnerabilities. All results are novel, as well as theoretically and practically significant.},
+  author = {Izrailov, Konstantin and Kotenko, Igor and Buinevich, Mikhail},
+  booktitle = {2025 International Conference on Industrial Engineering, Applications and Manufacturing (ICIEAM)},
+  doi = {10.1109/ICIEAM65163.2025.11028410},
+  issn = {2993-4060},
+  keywords = {Industries;Source coding;Instruments;Reverse engineering;Software algorithms;Information security;Genetics;Software systems;Manufacturing;Genetic algorithms;software;vulnerability;information security;reverse engineering;genetic algorithms},
+  month = {May},
+  number = {},
+  pages = {918-923},
+  title = {Reengineering Modern Industrial Software to Find Vulnerabilities Based on Genetic Algorithms},
+  volume = {},
+  year = {2025}
+}
+
+@article{Green2024,
+  abstract = {Decompilers are widely used by security researchers and developers to reverse engineer executable code. While modern decompilers are adept at recovering instructions, control flow, and function boundaries, some useful information from the original source code, such as variable types and names, is lost during the compilation process. Our work aims to predict these variable types and names from the remaining information. We propose STRIDE, a lightweight technique that predicts variable names and types by matching sequences of decompiler tokens to those found in training data. We evaluate it on three benchmark datasets and find that STRIDE achieves comparable performance to state-of-the-art machine learning models for both variable retyping and renaming while being much simpler and faster. We perform a detailed comparison with two recent SOTA transformer-based models in order to understand the specific factors that make our technique effective. We implemented STRIDE in fewer than 1000 lines of Python and have open-sourced it under a permissive license at https://github.com/hgarrereyn/STRIDE. },
+  author = {Green, Harrison AND Schwartz, J., Edward AND Goues, Le, Claire AND Vasilescu, Bogdan},
+  doi = {https://doi.org/10.48550/arXiv.2407.02733},
+  howpublished = {\url{https://arxiv.org/pdf/2407.02733}},
+  month = {jul},
+  note = {},
+  title = {STRIDE: Simple Type Recognition In Decompiled Executables},
+  year = {2024}
+}
+
+@article{Tan2025,
+  abstract = {Recent advances in LLM-based decompilers have been shown effective to convert low-level binaries into human-readable source code. However, there still lacks a comprehensive benchmark that provides large-scale binary-source function pairs, which is critical for advancing the LLM decompilation technology. Creating accurate binary-source mappings incurs severe issues caused by complex compilation settings and widespread function inlining that obscure the correspondence between binaries and their original source code. Previous efforts have either relied on used contest-style benchmarks, synthetic binary-source mappings that diverge significantly from the mappings in real world, or partially matched binaries with only code lines or variable names, compromising the effectiveness of analyzing the binary functionality. To alleviate these issues, we introduce Decompile-Bench, the first open-source dataset comprising two million binary-source function pairs condensed from 100 million collected function pairs, i.e., 450GB of binaries compiled from permissively licensed GitHub projects. For the evaluation purposes, we also developed a benchmark Decompile-Bench-Eval including manually crafted binaries from the well-established HumanEval and MBPP, alongside the compiled GitHub repositories released after 2025 to mitigate data leakage issues. We further explore commonly-used evaluation metrics to provide a thorough assessment of the studied LLM decompilers and find that fine-tuning with Decompile-Bench causes a 20% improvement over previous benchmarks in terms of the re-executability rate. Our code and data has been released in HuggingFace and Github. https://github.com/albertan017/LLM4Decompile },
+  author = {Tan, Hanzhuo AND Tian, Xiaolong AND Qi, Hanrui AND Liu, Jiaming AND Gao, Zuchen AND Wang, Siyi AND Luo, Qi AND Li, Jing AND Zhang, Yuqun},
+  doi = {https://doi.org/10.48550/arXiv.2505.12668},
+  howpublished = {\url{https://arxiv.org/pdf/2505.12668}},
+  month = {oct},
+  note = {},
+  title = {Decompile-Bench: Million-Scale Binary-Source Function Pairs for Real-World Binary Decompilation},
+  year = {2025}
+}
+
+@article{WOS:000569691600001,
+  abstract = {Deep learning methods are gaining popularity in different application
+domains, and especially in natural language processing. It is commonly
+believed that using a large enough dataset and an adequate network
+architecture, almost any processing problem can be solved. A frequent
+and widely used typology is the encoder-decoder architecture, where the
+input data is transformed into an intermediate code by means of an
+encoder, and then a decoder takes this code to produce its output.
+Different types of networks can be used in the encoder and the decoder,
+depending on the problem of interest, such as convolutional neural
+networks (CNN) or long-short term memories (LSTM). This paper uses for
+the encoder a method recently proposed, called Causal Feature Extractor
+(CFE). It is based on causal convolutions (i.e., convolutions that
+depend only on one direction of the input), dilatation (i.e., increasing
+the aperture size of the convolutions) and bidirectionality (i.e.,
+independent networks in both directions). Some preliminary results are
+presented on three different tasks and compared with state-of-the-art
+methods: bilingual translation, LaTeX decompilation and audio
+transcription. The proposed method achieves promising results, showing
+its ubiquity to work with text, audio and images. Moreover, it has a
+shorter training time, requiring less time per iteration, and a good use
+of the attention mechanisms based on attention matrices.},
+  address = {ST ALBAN-ANLAGE 66, CH-4052 BASEL, SWITZERLAND},
+  affiliation = {García-Mateos, G (Corresponding Author), Univ Murcia, Dept Comp Sci \& Syst, Murcia 30100, Spain.
+Javaloy, Adrian, Max Planck Inst Intelligent Syst, D-72076 Tubingen, Germany.
+Garcia-Mateos, Gines, Univ Murcia, Dept Comp Sci \& Syst, Murcia 30100, Spain.},
+  affiliations = {Max Planck Society; University of Murcia},
+  article-number = {5772},
+  author = {Javaloy, Adrian and Garcia-Mateos, Gines},
+  author-email = {adrian.javaloy@tuebingen.mpg.de
+ginesgm@um.es},
+  cited-references = {{[}Anonymous], 2019, ARXIV190202181.
+Bahdanau D., 2014, P 3 INT C LEARNING R.
+Baldi P, 2014, ARTIF INTELL, V210, P78, DOI 10.1016/j.artint.2014.02.004.
+Bergstra J, 2012, J MACH LEARN RES, V13, P281.
+Chan W, 2016, INT CONF ACOUST SPEE, P4960, DOI 10.1109/ICASSP.2016.7472621.
+Daudaravicius V., 2019, P WORKSH EXTR STRUCT, P72.
+Deng Y, 2019, EURASIP J IMAGE VIDE, DOI 10.1186/s13640-018-0400-9.
+Gehring J, 2017, PR MACH LEARN RES, V70.
+Hochreiter S., 1997, Neural Computation, V9, P1735, DOI DOI 10.1162/NECO.1997.9.8.1735.2.
+Javaloy A, 2020, APPL SCI-BASEL, V10, DOI 10.3390/app10134551.
+Kameoka H, 2020, IEEE-ACM T AUDIO SPE, V28, P1849, DOI 10.1109/TASLP.2020.3001456.
+LeCun Y, 1999, LECT NOTES COMPUT SC, V1681, P319, DOI 10.1007/3-540-46805-6\_19.
+Lipton ZC, 2019, Queue, V17, P45, DOI {[}10.1145/3317287.3328534, 10.1145/3317287.3328534].
+Nabhan AR, 2005, PROCEEDINGS OF THE 2005 IEEE INTERNATIONAL CONFERENCE ON INFORMATION REUSE AND INTEGRATION, P338.
+Oord A. v. d., 2016, SPEECH SYNTH WORKSH.
+Papineni K, 2002, 40TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, PROCEEDINGS OF THE CONFERENCE, P311, DOI 10.3115/1073083.1073135.
+Pascanu R., 2013, PROC 30 INT C MACHIN, P1310, DOI {[}DOI 10.48550/ARXIV.1211.5063, 10.48550/arXiv.1211.5063].
+Riezler Stefan., 2005, P ACL WORKSHOP INTRI, P57.
+Salimans T, 2016, ADV NEUR IN, V29.
+Shrestha A, 2019, IEEE ACCESS, V7, P53040, DOI 10.1109/ACCESS.2019.2912200.
+Srivastava N, 2014, J MACH LEARN RES, V15, P1929.
+Yang S., 2020, A survey of deep learning techniques for neural machine translation.
+Zhou P, 2016, PROCEEDINGS OF THE 54TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS (ACL 2016), VOL 2, P207, DOI 10.18653/v1/p16-2034.},
+  da = {2026-02-04},
+  doc-delivery-number = {NO7TQ},
+  doi = {10.3390/app10175772},
+  eissn = {2076-3417},
+  funding-acknowledgement = {Spanish Ministry of Science, Innovation and Universities, FEDER funds
+{[}RTI2018-095855-B-I00]},
+  funding-text = {This research was funded by Spanish Ministry of Science, Innovation and
+Universities, FEDER funds, under grant RTI2018-095855-B-I00 (G.G.-M.).},
+  journal = {APPLIED SCIENCES-BASEL},
+  journal-iso = {Appl. Sci.-Basel},
+  keywords = {natural language processing; deep neural networks; causal encoder;
+bilingual translation; speech-to-text; LaTeX decompilation},
+  keywords-plus = {DROPOUT},
+  language = {English},
+  month = {SEP},
+  number = {17},
+  number-of-cited-references = {23},
+  oa = {Green Submitted, gold},
+  orcid-numbers = {García-Mateos, Ginés/0000-0003-2521-4454
+Javaloy, Aián/0000-0002-5184-4460},
+  publisher = {MDPI},
+  research-areas = {Chemistry; Engineering; Materials Science; Physics},
+  researcherid-numbers = {García-Mateos, Ginés/G-7779-2015},
+  times-cited = {4},
+  title = {Preliminary Results on Different Text Processing Tasks Using
+Encoder-Decoder Networks and the Causal Feature Extractor},
+  type = {Article},
+  unique-id = {WOS:000569691600001},
+  usage-count-last-180-days = {0},
+  usage-count-since-2013 = {3},
+  volume = {10},
+  web-of-science-categories = {Chemistry, Multidisciplinary; Engineering, Multidisciplinary; Materials
+Science, Multidisciplinary; Physics, Applied},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2020}
+}
+
+@article{WOS:001368390400002,
+  abstract = {Cybersecurity attacks on embedded devices for industrial control systems
+and cyber-physical systems may cause catastrophic physical damage as
+well as economic loss. This could be achieved by infecting device
+binaries with malware that modifies the physical characteristics of the
+system operation. Mitigating such attacks benefits from reverse
+engineering tools that recover sufficient semantic knowledge in terms of
+mathematical equations of the implemented algorithm. Conventional
+reverse engineering tools can decompile binaries to low-level code, but
+offer little semantic insight. This article proposes the REMaQE
+automated framework for reverse engineering of math equations from
+binary executables. Improving over state-of-the-art, REMaQE handles
+equation parameters accessed via registers, the stack, global memory, or
+pointers, and can reverse engineer equations from object-oriented
+implementations such as C++ classes. Using REMaQE, we discovered a bug
+in the Linux kernel thermal monitoring tool ``tmon.{''} To evaluate
+REMaQE, we generate a dataset of 25,096 binaries with math equations
+implemented in C and Simulink. REMaQE successfully recovers a
+semantically matching equation for all 25,096 binaries. REMaQE executes
+in 0.48 seconds on average and in up to 2 seconds for complex equations.
+Real-time execution enables integration in an interactive math-oriented
+reverse engineering workflow.},
+  address = {1601 Broadway, 10th Floor, NEW YORK, NY USA},
+  affiliation = {Udeshi, M (Corresponding Author), NYU, Tandon Sch Engn, ECE, Brooklyn, NY 10012 USA.
+Udeshi, Meet; Krishnamurthy, Prashanth, NYU, Tandon Sch Engn, ECE, Brooklyn, NY 10012 USA.
+Pearce, Hammond, UNSW, Sch Comp Sci \& Engn, Sydney, Australia.
+Karri, Ramesh; Khorrami, Farshad, NYU Tandon Sch Engn, ECE, Brooklyn, NY USA.},
+  affiliations = {New York University; New York University Tandon School of Engineering;
+University of New South Wales Sydney; New York University; New York
+University Tandon School of Engineering},
+  article-number = {43},
+  author = {Udeshi, Meet and Krishnamurthy, Prashanth and Pearce, Hammond and Karri,
+Ramesh and Khorrami, Farshad},
+  author-email = {m.udeshi@nyu.edu
+prashanth.krishnamurthy@nyu.edu
+hammond.pearce@unsw.edu.au
+rkarri@nyu.edu
+khorrami@nyu.edu},
+  cited-references = {Altawy R, 2017, ACM TRANS CYBER-PHYS, V1, DOI 10.1145/3001836.
+Ardupilot, 2023, Choosing a Ground Station.
+Badenshop CW, 2019, ACM TRANS CYBER-PHYS, V3, DOI 10.1145/3285030.
+Bourbouh H, 2021, ACM TRANS CYBER-PHYS, V5, DOI 10.1145/3461668.
+Cadar C., 2008, KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.
+Cha SK, 2012, P IEEE S SECUR PRIV, P380, DOI 10.1109/SP.2012.31.
+Cifuentes Cristina., 1994, Reverse compilation techniques.
+David R, 2016, 2016 IEEE 23RD INTERNATIONAL CONFERENCE ON SOFTWARE ANALYSIS, EVOLUTION, AND REENGINEERING (SANER), VOL 1, P653, DOI 10.1109/SANER.2016.43.
+Hex-Rays SA., 2008, Hex-Rays Decompiler-User Manual.
+International Electrotechnical Commission, 2003, IEC 61131-3:2003.
+Jha S., 2010, P 32 ACMIEEE INT C S, P215.
+Kalle Sushma, 2019, P WORKSH BIN AN RES, P74.
+Keliris A, 2019, 26TH ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2019), DOI 10.14722/ndss.2019.23271.
+Khorrami F, 2016, IEEE DES TEST, V33, P75, DOI 10.1109/MDAT.2016.2594178.
+Kim Taegyu, 2022, MobiSys `22: Proceedings of the 20th Annual International Conference on Mobile Systems, Applications and Services, P69, DOI 10.1145/3498361.3538938.
+Konstantinou C, 2015, 2015 20TH IEEE EUROPEAN TEST SYMPOSIUM (ETS), DOI 10.1109/ets.2015.7138763.
+Krishnamurthy P, 2018, IEEE T INF FOREN SEC, V13, P2761, DOI 10.1109/TIFS.2018.2833063.
+Lample G., 2020, P INT C LEARN REPR I.
+Langner R, 2011, IEEE SECUR PRIV, V9, P49, DOI 10.1109/MSP.2011.67.
+Lee R.M., 2016, Electricity Information Sharing and Analysis Center (E-ISAC).
+Lv XF, 2017, 2017 IEEE 2ND ADVANCED INFORMATION TECHNOLOGY, ELECTRONIC AND AUTOMATION CONTROL CONFERENCE (IAEAC), P252, DOI 10.1109/IAEAC.2017.8054016.
+MathWorks, 2023, Simulink-Simulation and Model-Based Design.
+MCCLUSKEY EJ, 1956, BELL SYST TECH J, V35, P1417, DOI 10.1002/j.1538-7305.1956.tb03835.x.
+McLaughlin S, 2014, 21ST ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2014), DOI 10.14722/ndss.2014.23043.
+McLaughlin Stephen, 2011, P USENIX C HOT TOP S, P10.
+Meurer A, 2017, PEERJ COMPUT SCI, DOI 10.7717/peerj-cs.103.
+NSA, 2023, Ghidra.
+O'Kane P, 2011, IEEE SECUR PRIV, V9, P41, DOI 10.1109/MSP.2011.98.
+Qasim SA, 2019, LECT NOTES COMPUT SC, V11723, P402, DOI 10.1007/978-3-030-30215-3\_20.
+Quine W., 1952, American Mathematical Monthly, V59, P521, DOI DOI 10.1080/00029890.1952.11988183.
+Senthivel S, 2018, PROCEEDINGS OF THE EIGHTH ACM CONFERENCE ON DATA AND APPLICATION SECURITY AND PRIVACY (CODASPY'18), P319, DOI 10.1145/3176258.3176319.
+Shoshitaishvili Y, 2015, 22ND ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2015), DOI 10.14722/ndss.2015.23294.
+Shoshitaishvili Y, 2016, P IEEE S SECUR PRIV, P138, DOI 10.1109/SP.2016.17.
+Stephens N, 2016, 23RD ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2016), DOI 10.14722/ndss.2016.23368.
+Sun PF, 2019, I C DEPEND SYS NETWO, P349, DOI 10.1109/DSN.2019.00045.
+Sun RM, 2021, 2021 IEEE EUROPEAN SYMPOSIUM ON SECURITY AND PRIVACY (EUROS\&P 2021), P385, DOI 10.1109/EuroSP51992.2021.00034.
+Udeshi Meet, 2023, IEEE Dataport, DOI {[}10.21227/r7-6-bk48, DOI 10.21227/R7-6-BK48].
+Waymo, 2023, City Cash.
+Weideman Nicolaas, 2021, Checkmate `21: Proceedings of the 2021 Research on offensive and defensive techniques in the Context of Man At The End (MATE) Attacks, P59, DOI 10.1145/3465413.3488575.
+Yang ZY, 2022, IEEE INTERNET THINGS, V9, P9934, DOI 10.1109/JIOT.2022.3164723.},
+  da = {2026-02-04},
+  doc-delivery-number = {O0U8T},
+  doi = {10.1145/3699674},
+  eissn = {2378-9638},
+  funding-acknowledgement = {Office of Naval Research {[}N00014-22-1-2153]; National Science
+Foundation {[}2039615]},
+  funding-text = {This work was supported in part by the Sponsor Office of Naval Research
+under the Grant \#N00014-22-1-2153 and the Sponsor National Science
+Foundation under the Grant \#2039615.},
+  issn = {2378-962X},
+  journal = {ACM TRANSACTIONS ON CYBER-PHYSICAL SYSTEMS},
+  journal-iso = {ACM Trans. Cyber-Phys. Syst.},
+  keywords = {binary reverse engineering; embedded systems; symbolic execution;
+mathematical equations},
+  language = {English},
+  month = {NOV},
+  number = {4},
+  number-of-cited-references = {40},
+  oa = {Bronze},
+  orcid-numbers = {Komarasamy, Ramesh/0000-0002-5164-9323
+Karri, Ramesh/0000-0001-7989-5617
+Udeshi, Meet/0000-0001-7297-0880},
+  publisher = {ASSOC COMPUTING MACHINERY},
+  research-areas = {Computer Science},
+  researcherid-numbers = {Pearce, Hammond/AAJ-1986-2020
+Udeshi, Meet/MBI-1785-2025},
+  times-cited = {0},
+  title = {REMaQE: Reverse Engineering Math Equations from Executables},
+  type = {Article},
+  unique-id = {WOS:001368390400002},
+  usage-count-last-180-days = {1},
+  usage-count-since-2013 = {1},
+  volume = {8},
+  web-of-science-categories = {Computer Science, Interdisciplinary Applications},
+  web-of-science-index = {Emerging Sources Citation Index (ESCI)},
+  year = {2024}
+}
