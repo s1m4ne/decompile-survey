@@ -24,3 +24,6 @@ papers/**/*.png
 !papers/**/notes.md
 !papers/**/README.md
 !papers/README.md
+
+# Browser profiles (Chromium data)
+screening/browser_profiles/
