@@ -6,6 +6,7 @@ from .sources import router as sources_router
 from .rules import router as rules_router
 from .llm import router as llm_router
 from .imports import router as imports_router
+from .pdf_library import router as pdf_library_router
 
 __all__ = [
     "projects_router",
@@ -16,4 +17,5 @@ __all__ = [
     "rules_router",
     "llm_router",
     "imports_router",
+    "pdf_library_router",
 ]

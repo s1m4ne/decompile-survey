@@ -3,8 +3,8 @@
  */
 import { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { X, Play, Loader2, Plus, ChevronRight } from 'lucide-react';
-import { stepTypesApi, rulesApi, llmApi, PipelineStep, StepTypeInfo, LocalLLMCheckResponse } from '../lib/api';
+import { X, Play, Loader2, Plus } from 'lucide-react';
+import { stepTypesApi, rulesApi, llmApi, PipelineStep, LocalLLMCheckResponse } from '../lib/api';
 
 interface StepConfigModalProps {
   isOpen: boolean;
@@ -478,6 +478,16 @@ export function StepConfigModal({
             <p className="text-sm text-[hsl(var(--muted-foreground))]">
               {stepTypeInfo.description}
             </p>
+          )}
+
+          {step.type === 'pdf-fetch' && (
+            <div className="rounded-md border border-[hsl(var(--status-info-border))] bg-[hsl(var(--status-info-bg))] p-3 text-xs text-[hsl(var(--status-info-fg))] space-y-1">
+              <p className="font-medium">Browser assist behavior</p>
+              <p>
+                If publisher login/challenge is needed, a browser window opens automatically.
+                Complete login/challenge there, then keep the window open until the step completes.
+              </p>
+            </div>
           )}
 
           {/* Config fields */}

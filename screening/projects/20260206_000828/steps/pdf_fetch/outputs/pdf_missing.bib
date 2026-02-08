@@ -1,0 +1,597 @@
+@inproceedings{10.1145/3293880.3294102,
+  abstract = {This paper presents a methodology for generating formally proven equivalence theorems between decompiled x86-64 machine code and big step semantics. These proofs are built on top of two additional contributions. First, a robust and tested formal x86-64 machine model containing small step semantics for 1625 instructions. Second, a decompilation-into-logic methodology supporting both x86-64 assembly and machine code at large scale. This work enables black-box binary verification, i.e., formal verification of a binary where source code is unavailable. As such, it can be applied to safety-critical systems that consist of legacy components, or components whose source code is unavailable due to proprietary reasons. The methodology minimizes the trusted code base by leveraging machine-learned semantics to build a formal machine model. We apply the methodology to several case studies, including binaries that heavily rely on the SSE2 floating-point instruction set, and binaries that are obtained by compiling code that is obtained by inlining assembly into C code.},
+  address = {New York, NY, USA},
+  author = {Roessle, Ian and Verbeek, Freek and Ravindran, Binoy},
+  booktitle = {Proceedings of the 8th ACM SIGPLAN International Conference on Certified Programs and Proofs},
+  doi = {10.1145/3293880.3294102},
+  isbn = {9781450362221},
+  keywords = {x86-64, theorem proving, semantics},
+  location = {Cascais, Portugal},
+  numpages = {15},
+  pages = {181–195},
+  publisher = {Association for Computing Machinery},
+  series = {CPP 2019},
+  title = {Formally verified big step semantics out of x86-64 binaries},
+  url = {https://doi.org/10.1145/3293880.3294102},
+  year = {2019}
+}
+
+@inproceedings{10.1145/3658644.3691386,
+  abstract = {Analysis of binary software plays a critical role in software security. Reverse engineers analyze binaries to discover vulnerabilities, patch legacy software, and detect malware. Most of the reverse engineering tools have been developed from a practical point of view, and do not provide any guarantees with their results. Recently, formally verified reverse engineering and decompilation have gained traction. These formal tools are for the most part proof-of-concept systems not yet suitable for real-world reverse-engineering tasks. In this poster, we explore the idea of formalizing part of an existing decompilation tool instead. We focus on the lifting from assembly to the IR P-Code in one of the most popular decompilers, Ghidra. This step occurs immediately after disassembly. We are developing a proof system inside the Isabelle theorem prover, to automatically prove semantical equivalence between the assembly and P-Code instructions. We leverage machine-learned x86-64 semantics, to stay as close as possible to actual CPU behavior. This approach has uncovered several shortcomings in Ghidra's P-Code and the lifting it performs. By using a theorem prover, we obtain guarantees that our system of formal semantics and lifting is internally consistent. This work brings the powerful guarantees that formal methods provide in reverse engineering research to the real world.},
+  address = {New York, NY, USA},
+  author = {Naus, Nico and Verbeek, Freek and Atla, Sagar and Ravindran, Binoy},
+  booktitle = {Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security},
+  doi = {10.1145/3658644.3691386},
+  isbn = {9798400706363},
+  keywords = {binary lifting, decompilation, formal verification, proof automation, reverse engineering, theorem provers},
+  location = {Salt Lake City, UT, USA},
+  numpages = {3},
+  pages = {4973–4975},
+  publisher = {Association for Computing Machinery},
+  series = {CCS '24},
+  title = {Poster: Formally Verified Binary Lifting to P-Code},
+  url = {https://doi.org/10.1145/3658644.3691386},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3691620.3695020,
+  abstract = {WebAssembly (abbreviated Wasm) has emerged as a cornerstone of web development, offering a compact binary format that allows high-performance applications to run at near-native speeds in web browsers. Despite its advantages, Wasm's binary nature presents significant challenges for developers and researchers, particularly regarding readability when debugging or analyzing web applications. Therefore, effective decompilation becomes crucial. Unfortunately, traditional decompilers often struggle with producing readable outputs. While some large language model (LLM)-based decompilers have shown good compatibility with general binary files, they still face specific challenges when dealing with Wasm.In this paper, we introduce a novel approach, WaDec, which is the first use of a fine-tuned LLM to interpret and decompile Wasm binary code into a higher-level, more comprehensible source code representation. The LLM was meticulously fine-tuned using a specialized dataset of wat-c code snippets, employing self-supervised learning techniques. This enables WaDec to effectively decompile not only complete wat functions but also finer-grained wat code snippets. Our experiments demonstrate that WaDec markedly outperforms current state-of-the-art tools, offering substantial improvements across several metrics. It achieves a code inflation rate of only 3.34%, a dramatic 97% reduction compared to the state-of-the-art's 116.94%. Unlike the output of baselines that cannot be directly compiled or executed, WaDec maintains a recompilability rate of 52.11%, a re-execution rate of 43.55%, and an output consistency of 27.15%. Additionally, it significantly exceeds state-of-the-art performance in AST edit distance similarity by 185%, cyclomatic complexity by 8%, and cosine similarity by 41%, achieving an average code similarity above 50%. In summary, WaDec enhances understanding of the code's structure and execution flow, facilitating automated code analysis, optimization, and security auditing.},
+  address = {New York, NY, USA},
+  author = {She, Xinyu and Zhao, Yanjie and Wang, Haoyu},
+  booktitle = {Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering},
+  doi = {10.1145/3691620.3695020},
+  isbn = {9798400712487},
+  location = {Sacramento, CA, USA},
+  numpages = {12},
+  pages = {481–492},
+  publisher = {Association for Computing Machinery},
+  series = {ASE '24},
+  title = {WaDec: Decompiling WebAssembly Using Large Language Model},
+  url = {https://doi.org/10.1145/3691620.3695020},
+  year = {2024}
+}
+
+@inproceedings{10.1145/3696410.3714790,
+  abstract = {The vision of Web3 is to improve user control over data and assets, but one challenge that complicates this vision is the prevalence of non-transparent, scam-prone applications and vulnerable smart contracts that put Web3 users at risk. While code audits are one solution to this problem, the lack of smart contracts source code on many blockchain platforms, such as Sui, hinders the ease of auditing. A promising approach to this issue is the use of a decompiler to reverse-engineer smart contract bytecode. However, existing decompilers for Sui produce code that is difficult to understand and cannot be directly recompiled. To address this, we developed the SuiGPT Move AI Decompiler (MAD), a Large Language Model (LLM)-powered web application that decompiles smart contract bytecodes on Sui into logically correct, human-readable, and re-compilable source code with prompt engineering. Our evaluation shows that MAD's output successfully passes original unit tests and achieves a 73.33% recompilation success rate on real-world smart contracts. Additionally, newer models tend to deliver improved performance, suggesting that MAD's approach will become increasingly effective as LLMs continue to advance. In a user study involving 12 developers, we found that MAD significantly reduced the auditing workload compared to using traditional decompilers. Participants found MAD's outputs comparable to the original source code, improving accessibility for understanding and auditing non-open-source smart contracts. Through qualitative interviews with these developers and Web3 projects, we further discussed the strengths and concerns of MAD. MAD has practical implications for blockchain smart contract transparency, auditing, and education. It empowers users to easily and independently review and audit non-open-source smart contracts, fostering accountability and decentralization. Moreover, MAD's methodology could potentially extend to other smart contract languages, like Solidity, further enhancing Web3 transparency.},
+  address = {New York, NY, USA},
+  author = {Chen, Eason and Tang, Xinyi and Xiao, Zimo and Li, Chuangji and Li, Shizhuo and Wu, Tingguan and Wang, Siyun and Chalkias, Kostas Kryptos},
+  booktitle = {Proceedings of the ACM on Web Conference 2025},
+  doi = {10.1145/3696410.3714790},
+  isbn = {9798400712746},
+  keywords = {auditing tools, large language models, move, prompt engineering, smart contract, sui, transparency, web applications, web3},
+  location = {Sydney NSW, Australia},
+  numpages = {10},
+  pages = {1567–1576},
+  publisher = {Association for Computing Machinery},
+  series = {WWW '25},
+  title = {SuiGPT MAD: Move AI Decompiler to Improve Transparency and Auditability on Non-Open-Source Blockchain Smart Contract},
+  url = {https://doi.org/10.1145/3696410.3714790},
+  year = {2025}
+}
+
+@article{10.1145/3729373,
+  abstract = {Understanding the Ethereum smart contract bytecode is essential for ensuring cryptoeconomics security. However, existing decompilers primarily convert bytecode into pseudocode, which is not easily comprehensible for general users, potentially leading to misunderstanding of contract behavior and increased vulnerability to scams or exploits. In this paper, we propose DiSCo, the first LLMs-based EVM decompilation pipeline, which aims to enable LLMs to understand the opaque bytecode and lift it into smart contract code. DiSCo introduces three core technologies. First, a logic-invariant intermediate representation is proposed to reproject the low-level bytecode into high-level abstracted units. The second technique involves semantic enhancement based on a novel type-aware graph model to infer stripped variables during compilation, enhancing the lifting effect. The third technology is a flexible method incorporating code specifications to construct LLM-comprehensible prompts for source code generation. Extensive experiments illustrate that our generated code guarantees a high compilability rate at 75%, with differential fuzzing pass rate averaging at 50%. Manual validation results further indicate that the generated solidity contracts significantly outperforms baseline methods in tasks such as code comprehension and attack reproduction.},
+  address = {New York, NY, USA},
+  articleno = {FSE103},
+  author = {Su, Xing and Liang, Hanzhong and Wu, Hao and Niu, Ben and Xu, Fengyuan and Zhong, Sheng},
+  doi = {10.1145/3729373},
+  issue_date = {July 2025},
+  journal = {Proc. ACM Softw. Eng.},
+  keywords = {Decompilation, EVM bytecode, Large Language Models, Smart Contract, Source Code Generation},
+  month = {June},
+  number = {FSE},
+  numpages = {24},
+  publisher = {Association for Computing Machinery},
+  title = {DiSCo: Towards Decompiling EVM Bytecode to Source Code using Large Language Models},
+  url = {https://doi.org/10.1145/3729373},
+  volume = {2},
+  year = {2025}
+}
+
+@article{10.1145/3749988,
+  abstract = {Analysis of binary executables implementing mathematical equations can benefit from the reverse engineering of semantic information about the implementation. Traditional algorithmic reverse engineering tools either do not recover semantic information or rely on dynamic analysis and symbolic execution with high reverse engineering time. Algorithmic tools also require significant re-engineering effort to target new platforms and languages. Recently, neural methods for decompilation have been developed to recover human-like source code, but they do not extract semantic information explicitly. We develop REMEND, a neural decompilation framework to reverse engineer math equations from binaries to explicitly recover program semantics like data flow and order of operations. REMEND combines a transformer encoder-decoder model for neural decompilation with algorithmic processing for enhanced symbolic reasoning necessary for math equations. REMEND is the first work to demonstrate that transformers for neural decompilation go beyond source code and reason about program semantics in the form of math equations. We train on a synthetically generated dataset containing multiple implementations and compilations of math equations to produce a robust neural decompilation model and demonstrate retargettability. REMEND obtains an accuracy of 89.8% to 92.4% across three Instruction Set Architectures (ISAs), three optimization levels, and two programming languages with a single trained model, extending the capability of state-of-the-art neural decompilers. We achieve high accuracy with a small model of upto 12 million parameters and an average execution time of 0.132 seconds per function. On a real-world dataset collected from open-source programs, REMEND generalizes better than state-of-the-art neural decompilers despite being trained with synthetic data, achieving 8% higher accuracy. The synthetic and real-world datasets are provided at .},
+  address = {New York, NY, USA},
+  author = {Udeshi, Meet and Krishnamurthy, Prashanth and Karri, Ramesh and Khorrami, Farshad},
+  doi = {10.1145/3749988},
+  issn = {2157-6904},
+  journal = {ACM Trans. Intell. Syst. Technol.},
+  keywords = {reverse engineering, neural decompilation, math equations},
+  month = {July},
+  note = {Just Accepted},
+  publisher = {Association for Computing Machinery},
+  title = {REMEND: Neural Decompilation for Reverse Engineering Math Equations from Binary Executables},
+  url = {https://doi.org/10.1145/3749988},
+  year = {2025}
+}
+
+@article{WOS:000415662500002,
+  abstract = {Existing decompilers use rule-based algorithms to transform unstructured
+Control flow graph (CFG) into equivalent high-level programming language
+constructs with ``goto{''} statements. One problem of such approaches is
+that they generate a large number of ``goto{''}s in the output code,
+which reduce the readability and hinder the understanding of input
+binaries. A global search algorithm is proposed based on structural
+analysis. This algorithm restructures a CFG and generates fewer number
+of ``goto{''} statements than the rule-based algorithm does. We also
+present a Genetic algorithm (GA) for the global search approach to
+locate near optimal solutions for large CFGs. Evaluation results on a
+set of real CFGs show that the genetic algorithm-based heuristic for
+global search is capable of finding high-quality solutions.},
+  address = {26-28 AU PUI WAN ST, STE 1102, FO TAN INDUSTRIAL CENTRE, FO TAN, SHATIN,
+00000, PEOPLES R CHINA},
+  affiliation = {Ji, WX (Corresponding Author), Beijing Inst Technol, Beijing 100081, Peoples R China.
+Ji Weixing; Huo Yuanhong; Wang Yizhuo; Gao Yujin; Shi Feng, Beijing Inst Technol, Beijing 100081, Peoples R China.},
+  affiliations = {Beijing Institute of Technology},
+  author = {Ji Weixing and Huo Yuanhong and Wang Yizhuo and Gao Yujin and Shi Feng},
+  author-email = {jwx@bit.edu.cn
+hyh@bit.edu.cn
+frankwyz@bit.edu.cn
+paulgyj@bit.edu.cn
+bitsf@bit.edu.cn},
+  cited-references = {AMMARGUELLAT Z, 1992, IEEE T SOFTWARE ENG, V18, P237, DOI 10.1109/32.126773.
+ARM Ltd. and ARM Germany GmbH, 2015, KEIL C51 C COMP.
+Ashcroft E., 1979, CLASSICS SOFTWARE EN.
+BAKER AL, 1980, IEEE T SOFTWARE ENG, V6, P506, DOI 10.1109/TSE.1980.230799.
+BAKER BS, 1977, J ACM, V24, P98, DOI 10.1145/321992.321999.
+Bao T, 2014, PROCEEDINGS OF THE 23RD USENIX SECURITY SYMPOSIUM, P845.
+{[}陈芳园 Chen Fangyuan], 2012, {[}电子学报, Acta Electronica Sinica], V40, P1372.
+Chen GBA, 2013, SOFTWARE PRACT EXPER, V43, P1337, DOI 10.1002/spe.2138.
+Chen Ping, 2010, Acta Electronica Sinica, V38, P1741.
+Cifuentes C., 1992, P 19 C LAT INF, P257.
+Cifuentes Cristina, 1993, P 19 C LAT INF AT, P267.
+EROSA AM, 1994, PROCEEDINGS OF THE 1994 INTERNATIONAL CONFERENCE ON COMPUTER LANGUAGES, P229, DOI 10.1109/ICCL.1994.288377.
+Flatassembler, 2015, FLAT ASS.
+Guthaus MR, 2001, WWC-4: IEEE INTERNATIONAL WORKSHOP ON WORKLOAD CHARACTERIZATION, P3, DOI 10.1109/WWC.2001.990739.
+Holland J., 1975, Adaptive in Natural and artificial Systems.
+Knuth D. E., 1971, Information Processing Letters, V1, P23, DOI 10.1016/0020-0190(71)90018-4.
+LICHTBLAU U, 1985, PROC INT JOINT C, V185, P284.
+Muchnick S.S., 1997, Advanced Compiler Design and Implementation.
+Naeem NA, 2006, INT C PROGRAM COMPRE, P327, DOI 10.1109/ICPC.2006.40.
+OULSNAM G, 1982, COMPUT J, V25, P379, DOI 10.1093/comjnl/25.3.379.
+Pfeffer T.F., 2014, P 7 INT C SEC INF NE, P345.
+RAMSHAW L, 1988, J ACM, V35, P893, DOI 10.1145/48014.48021.
+{[}任武 Ren Wu], 2013, {[}电子学报, Acta Electronica Sinica], V41, P1412.
+Troshina K., 2009, P INT WORKSHOP PROGR, P18.
+Williams M.H., 1997, COMPUT J, V20, P45.
+WILLIAMS MH, 1985, COMPUT J, V28, P134, DOI 10.1093/comjnl/28.2.134.},
+  da = {2026-02-04},
+  doc-delivery-number = {FN0IW},
+  doi = {10.1049/cje.2017.09.003},
+  eissn = {2075-5597},
+  funding-acknowledgement = {National Natural Science Foundation of China {[}61300010]},
+  funding-text = {This work is supported by the National Natural Science Foundation of
+China (No.61300010).},
+  issn = {1022-4653},
+  journal = {CHINESE JOURNAL OF ELECTRONICS},
+  journal-iso = {Chin. J. Electron.},
+  keywords = {Decompiling; Control flow graph restructuring; Structural analysis;
+Genetic algorithm (GA)},
+  keywords-plus = {PROGRAMS},
+  language = {English},
+  month = {NOV},
+  number = {6},
+  number-of-cited-references = {26},
+  oa = {Bronze},
+  pages = {1118-1124},
+  publisher = {TECHNOLOGY EXCHANGE LIMITED HONG KONG},
+  research-areas = {Engineering},
+  researcherid-numbers = {wang, yizhuo/LXW-7659-2024},
+  times-cited = {0},
+  title = {Control Structure Analysis and Recovery of Embedded Binaries},
+  type = {Article},
+  unique-id = {WOS:000415662500002},
+  usage-count-last-180-days = {0},
+  usage-count-since-2013 = {11},
+  volume = {26},
+  web-of-science-categories = {Engineering, Electrical \& Electronic},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2017}
+}
+
+@article{WOS:001332656400001,
+  abstract = {Decompilation is a widely utilized technique in reverse engineering,
+aimed at restoring binary code to human-readable high-level language
+code. However, the readability of the output from traditional
+decompilers is often poor. With advancements in language models, several
+learning-based decompilation methods have emerged. Nevertheless, the
+probabilistic nature of language models leads to outputs whose
+correctness cannot be guaranteed, necessitating further analysis by
+engineers to identify the corresponding functionality of the code.
+Inspired by compiler toolchains, we propose a novel approach to enhance
+the effectiveness of language models in decompilation tasks. Traditional
+rule-based methods and learning-based techniques are fused together in
+our approach, drawing insights from both paradigms. Specifically, we
+present a pre-trained sequence-to-sequence model called IRaDT tailored
+to refine decompilation outputs at the intermediate representation
+level. Through this hybridization, we aim to address the limitations of
+existing methodologies and achieve more accurate and robust
+decompilation. We construct a diverse decompilation dataset targeting IR
+and evaluated IRaDT based on this dataset. The experimental results
+indicate that IRaDT has the ability to improve the readability of IR
+while ensuring its compileability, achieving a 74\% improvement compared
+to RetDec and a 93\% improvement compared to ChatGPT.},
+  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
+  affiliation = {Li, YZ (Corresponding Author), Beijing Univ Posts \& Telecommun Beijing, Sch Cyberspace Secur, Beijing, Peoples R China.
+Li, Yuzhang; Wang, Chunlu, Beijing Univ Posts \& Telecommun Beijing, Sch Cyberspace Secur, Beijing, Peoples R China.
+Xu, Tao, Tsinghua Univ, Dept Comp Sci \& Technol, Beijing, Peoples R China.},
+  affiliations = {Tsinghua University},
+  author = {Li, Yuzhang and Xu, Tao and Wang, Chunlu},
+  author-email = {yuzhang.lee@outlook.com
+xtao@tsinghua.edu.cn
+wangcl@bupt.edu.cn},
+  cited-references = {{[}Anonymous], 2024, GHIDRA SOFTWARE REVE.
+{[}Anonymous], 2024, IDA Pro: A Powerful Disassembler, Decompiler and a Versatile Debugger.
+{[}Anonymous], 2024, Clang: A C Language Family Frontend for LLVM.
+{[}Anonymous], 2024, The LLVM Compiler Infrastructure.
+Armengol-Estapé J, 2024, INT SYM CODE GENER, P67, DOI 10.1109/CGO57630.2024.10444788.
+Cummins C., 2023, ARXIV.
+Cummins C, 2021, PR MACH LEARN RES, V139.
+da Silva AF, 2021, INT SYM CODE GENER, P378, DOI 10.1109/CGO51591.2021.9370322.
+Devlin J., 2018, arXiv.
+Feng ZY, 2020, FINDINGS OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, EMNLP 2020, P1536.
+Fu C, 2019, ADV NEUR IN, V32.
+Fu ZH, 2023, AAAI CONF ARTIF INTE, P12799.
+Guo D., 2021, INT C LEARNING REPRE.
+Guo DY, 2022, PROCEEDINGS OF THE 60TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS (ACL 2022), VOL 1: (LONG PAPERS), P7212.
+Hosseini I., 2022, P WORKSH BIN AN RES.
+Hu E.J ..., 2022, ICLR.
+Jiang N., 2023, ArXiv.
+Katz D. S., 2018, USING RECURRENT NEUR, P346.
+Lewis M., 2020, P 58 ANN M ASS COMPU, P7871, DOI 10.18653/v1/2020.acl-main.703.
+Mou LL, 2016, AAAI CONF ARTIF INTE, P1287.
+Niu CG, 2023, PROC INT CONF SOFTW, P2136, DOI 10.1109/ICSE48619.2023.00180.
+OpenAI, 2024, GPT-4 Technical Report.
+Papineni K, 2002, 40TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, PROCEEDINGS OF THE CONFERENCE, P311, DOI 10.3115/1073083.1073135.
+Radford Alec., 2019, Language Models are Unsupervised Multitask Learners, V1, P9.
+Raffel C, 2020, J MACH LEARN RES, V21.
+Retdec, 2024, RETARGETABLE MACHINE.
+Roziere B., 2022, INT C LEARN REPR.
+Shazeer N, 2018, PR MACH LEARN RES, V80.
+Song KT, 2019, PR MACH LEARN RES, V97.
+Tan H., 2024, arXiv.
+Vaswani A, 2017, ADV NEUR IN, V30.
+Wang Y, 2021, 2021 CONFERENCE ON EMPIRICAL METHODS IN NATURAL LANGUAGE PROCESSING (EMNLP 2021), P8696.},
+  da = {2026-02-04},
+  doc-delivery-number = {P1V6S},
+  doi = {10.1142/S0218194024500463},
+  earlyaccessdate = {OCT 2024},
+  eissn = {1793-6403},
+  funding-acknowledgement = {Key Laboratory of Trustworthy Distributed Computing and Service, MoE
+(Beijing University of Posts and Telecommunications)},
+  funding-text = {This research is supported by Key Laboratory of Trustworthy Distributed
+Computing and Service, MoE (Beijing University of Posts and
+Telecommunications).},
+  issn = {0218-1940},
+  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
+  journal-iso = {Int. J. Softw. Eng. Knowl. Eng.},
+  keywords = {Decompilation; LLVM immediate representation; pre-trained language
+model; neural machine translation},
+  language = {English},
+  month = {DEC},
+  number = {12},
+  number-of-cited-references = {32},
+  pages = {1971-1992},
+  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
+  research-areas = {Computer Science; Engineering},
+  times-cited = {1},
+  title = {IRaDT: LLVM IR as Target for Efficient Neural Decompilation},
+  type = {Article},
+  unique-id = {WOS:001332656400001},
+  usage-count-last-180-days = {2},
+  usage-count-since-2013 = {6},
+  volume = {34},
+  web-of-science-categories = {Computer Science, Artificial Intelligence; Computer Science, Software
+Engineering; Engineering, Electrical \& Electronic},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2024}
+}
+
+@article{WOS:001539888300001,
+  abstract = {Legacy software, particularly from the 1990s, often becomes obsolete due
+to aging hardware and outdated software environments. Traditionally,
+software modernization required extensive manual effort, involving
+reverse engineering, code rewriting, and re-architecting. However,
+advancements in large language models (LLMs) have introduced new
+possibilities for automating software translation and modernization.
+This paper explores the feasibility of using LLMs for modernizing
+90s-era Windows applications, specifically migrating legacy C and C++
+code to Python. Our methodology includes decompilation, source code
+analysis, automated translation using ChatGPT, and user interface
+reconstruction. We empirically evaluate three software projects by
+analyzing LLM-based translation accuracy across different code
+structures, including algorithmic logic, file handling, and graphical
+interfaces. Results indicate that while LLMs achieve high translation
+accuracy (-88\%) for structured code, challenges persist in handling
+decompiled code and user interface generation. The study provides
+insights into the effectiveness and limitations of LLMs in real-world
+software renovation, offering guidelines for leveraging machine learning
+in legacy system modernization. These findings contribute to both
+academic research and practical applications, suggesting a pathway for
+cost-effective and scalable legacy software migration.},
+  address = {5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE},
+  affiliation = {Draskovic, D (Corresponding Author), Univ Belgrade, Sch Elect Engn, Bulevar Kralja Aleksandra 73, Belgrade 11120, Serbia.
+Bojic, Dragan; Draskovic, Drazen, Univ Belgrade, Sch Elect Engn, Bulevar Kralja Aleksandra 73, Belgrade 11120, Serbia.},
+  affiliations = {University of Belgrade},
+  author = {Bojic, Dragan and Draskovic, Drazen},
+  author-email = {bojic@etf.bg.ac.rs
+drazen.draskovic@etf.bg.ac.rs},
+  cited-references = {{[}Anonymous], 2021, 2911942021EN ISOIECI.
+{[}Anonymous], 2019, ROCKET UNIVERSE DATA.
+archive.org, INTERNET ARCHIVE SOF.
+Boehm B., 2005, CROSSTALK J DEFENSE, V18, P20.
+Bojic DM, 2016, INT J SOFTW ENG KNOW, V26, P953, DOI 10.1142/S0218194016500327.
+Claburn T., REGISTER.
+github.com, C2RUST TRANSPILER MI.
+Ignjatovic M., 2015, TELFOR J, V7.
+informatik.hu-berlin, 2002, XCTL PROJEKT SOFTWAR.
+Jang WS, 2022, APPL SCI-BASEL, V12, DOI 10.3390/app12189310.
+Krupalija E., 2022, 24 IEEE ACIS INT WIN, P162, DOI {[}10.1109/SNPD54884.2022.10051799, DOI 10.1109/SNPD54884.2022.10051799].
+Lachaux M-A, 2020, ARXIV.
+Myers GJ, 2012, ART OF SOFTWARE TESTING, 3RD EDITION, P1.
+PARNAS DL, 1994, PROC INT CONF SOFTW, P279, DOI 10.1109/ICSE.1994.296790.
+Razavian M., 2013, THESIS VRIJE U AMSTE.
+Rohleder R, 2019, SPRO'19: PROCEEDINGS OF THE 3RD ACM WORKSHOP ON SOFTWARE PROTECTION, P77, DOI 10.1145/3338503.3357725.
+Roziere B., 2021, P INT C LEARN REPR.
+Roziere Baptiste, 2020, Advances in Neural Information Processing Systems, V33.
+Szafraniec M., 2022, P 11 INT C LEARN REP.
+Velasevic D., 1997, INFO SCI, V5, P4.
+Wang YN, 2018, ADV NEUR IN, V31.
+Zhen Yang, 2024, Proceedings of the ACM on Software Engineering, V1, DOI {[}10.1145/3660778, 10.1145/3660778].
+Zhong H., 2010, P 32 ACMIEEE INT C S, P195, DOI {[}DOI 10.1145/1806799.1806831, 10.1145/1806799.1806831].},
+  da = {2026-02-04},
+  doc-delivery-number = {6DL6W},
+  doi = {10.1142/S021819402550024X},
+  earlyaccessdate = {JUL 2025},
+  eissn = {1793-6403},
+  funding-acknowledgement = {Science Fund of the Republic of Serbia {[}11113]; Software for Text
+Offences Prevention in Serbian: Al-driven Hate Speech Detection - STOP},
+  funding-text = {This research was supported by the Science Fund of the Republic of
+Serbia, Grant No 11113, Software for Text Offences Prevention in
+Serbian: Al-driven Hate Speech Detection - STOP.},
+  issn = {0218-1940},
+  journal = {INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING},
+  journal-iso = {Int. J. Softw. Eng. Knowl. Eng.},
+  keywords = {Decompilation; software translation; machine learning},
+  language = {English},
+  month = {AUG},
+  number = {08},
+  number-of-cited-references = {23},
+  orcid-numbers = {Bojic, agan/0009-0001-3025-5886
+ašković, ažen/0000-0003-2564-4526},
+  pages = {1099-1119},
+  publisher = {WORLD SCIENTIFIC PUBL CO PTE LTD},
+  research-areas = {Computer Science; Engineering},
+  researcherid-numbers = {ašković, ažen/U-1113-2018
+Draskovic, Drazen/U-1113-2018},
+  times-cited = {0},
+  title = {Modernizing 90s Era Software to a New Language and Environment Using
+LLMs - An Empirical Investigation},
+  type = {Article},
+  unique-id = {WOS:001539888300001},
+  usage-count-last-180-days = {8},
+  usage-count-since-2013 = {8},
+  volume = {35},
+  web-of-science-categories = {Computer Science, Artificial Intelligence; Computer Science, Software
+Engineering; Engineering, Electrical \& Electronic},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2025}
+}
+
+@article{WOS:001623665300001,
+  abstract = {The goal of decompilation is to convert compiled low-level code (e.g.,
+assembly code) back into high-level programming languages, enabling
+analysis in scenarios where source code is unavailable. This task
+supports various reverse engineering applications, such as vulnerability
+identification, malware analysis, and legacy software migration. The
+end-to-end decompilation method based on large language models (LLMs)
+reduces reliance on additional tools and minimizes manual intervention
+due to its inherent properties. However, previous end-to-end methods
+often lose critical information necessary for reconstructing control
+flow structures and variables when processing binary files, making it
+challenging to accurately recover the program's logic. To address these
+issues, we propose the ReF Decompile method, which incorporates the
+following innovations: (1) The Relabeling strategy replaces jump target
+addresses with labels, preserving control flow clarity. (2) The Function
+Call strategy infers variable types and retrieves missing variable
+information from binary files. Experimental results on the
+Humaneval-Decompile Benchmark demonstrate that ReF Decompile surpasses
+comparable baselines and achieves state-of-the-art (SOTA) performance of
+61.43\%.},
+  address = {MDPI AG, Grosspeteranlage 5, CH-4052 BASEL, SWITZERLAND},
+  affiliation = {Zhu, QF; Che, WX (Corresponding Author), Harbin Inst Technol, Res Ctr Social Comp \& Interact Robot, Harbin 150001, Peoples R China.
+Feng, Yunlong; Li, Bohan; Zhu, Qingfu; Che, Wanxiang, Harbin Inst Technol, Res Ctr Social Comp \& Interact Robot, Harbin 150001, Peoples R China.
+Shi, Xiaoming, East China Normal Univ, Sch Comp Sci \& Technol, Shanghai 200062, Peoples R China.},
+  affiliations = {Harbin Institute of Technology; East China Normal University},
+  article-number = {4442},
+  author = {Feng, Yunlong and Li, Bohan and Shi, Xiaoming and Zhu, Qingfu and Che,
+Wanxiang},
+  author-email = {ylfeng@ir.hit.edu.cn
+bhli@ir.hit.edu.cn
+xmshi@cs.ecnu.edu.cn
+qfzhu@ir.hit.edu.cn
+car@ir.hit.edu.cn},
+  cited-references = {Armengol-estape Jordi, 2022, MAPS 2022: Proceedings of the 6th ACM SIGPLAN International Symposium on Machine Programming, P50, DOI 10.1145/3520312.3534867.
+Armengol-Estape J, 2024, Arxiv, DOI {[}arXiv:2305.12520, 10.48550/ARXIV.2305.12520 2305.12520, DOI 10.48550/ARXIV.2305.125202305.12520].
+Balakrishnan G, 2007, LECT NOTES COMPUT SC, V4349, P1.
+Basque ZL, 2024, PROCEEDINGS OF THE 33RD USENIX SECURITY SYMPOSIUM, SECURITY 2024, P361.
+Chen M., 2021, Evaluating large language models trained on code, DOI DOI 10.48550/ARXIV.2107.03374.
+Dao T., 2024, P INT C LEARNING REP.
+Feng YL, 2024, FINDINGS OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS: EMNLP 2024, P6603.
+Guo DY, 2024, Arxiv, DOI {[}arXiv:2401.14196, DOI 10.48550/ARXIV.2401.14196].
+Hosseini Iman., 2022, arXiv, DOI {[}DOI 10.48550/ARXIV.2212.08950, 10.48550/arXiv.2212.08950].
+Hu E.J., 2022, P INT C LEARNING REP.
+Hu P., 2024, P 2024 NETWORK DISTR, VVolume 267622140.
+Hui BY, 2024, Arxiv, DOI arXiv:2409.12186.
+Jiang N, 2024, Arxiv, DOI arXiv:2311.13721.
+Katz DS, 2018, 2018 25TH IEEE INTERNATIONAL CONFERENCE ON SOFTWARE ANALYSIS, EVOLUTION AND REENGINEERING (SANER 2018), P346, DOI 10.1109/SANER.2018.8330222.
+Kirchner K, 2017, PROCEEDINGS OF THE 12TH INTERNATIONAL CONFERENCE ON AVAILABILITY, RELIABILITY AND SECURITY (ARES 2017), DOI 10.1145/3098954.3103152.
+Lacomis Jeremy, 2019, 2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE). Proceedings, P628, DOI 10.1109/ASE.2019.00064.
+Lippincott T., 2020, P 15 ANN INT C ALLIA.
+Loshchilov I., 2019, P 7 INT C LEARNING R.
+OpenAI, 2023, Arxiv, DOI {[}arXiv:2303.08774, 10.48550/arXiv.2303.08774, DOI 10.48550/ARXIV.2303.08774].
+Roziere B, 2024, Arxiv, DOI {[}arXiv:2308.12950, DOI 10.48550/ARXIV.2308.12950].
+Schwartz Edward J., 2013, Proceedings of the 22nd USENIX Security Symposium. Security `13, P353.
+Tan HZ, 2024, 2024 CONFERENCE ON EMPIRICAL METHODS IN NATURAL LANGUAGE PROCESSING, EMNLP 2024, P3473.
+Vaswani A., 2017, ADV NEUR IN, P30, DOI DOI 10.48550/ARXIV.1706.03762.
+Wang G., 2024, P INT C LEARNING REP.
+Wang R., 2017, P NDSS.
+Wei T, 2007, LECT NOTES COMPUT SC, V4634, P170.
+Weyssow M., 2025, ACM Transactions on Software Engineering and Methodology.
+Wolf T, 2020, Arxiv, DOI {[}arXiv:1910.03771, DOI 10.48550/ARXIV.1910.03771].
+Wong WK, 2023, Arxiv, DOI {[}arXiv:2310.06530, 10.48550/arXiv.2310.06530, DOI 10.48550/ARXIV.2310.06530].
+Zheng YW, 2024, Arxiv, DOI {[}arXiv:2403.13372, DOI 10.48550/ARXIV.2403.13372].},
+  da = {2026-02-04},
+  doc-delivery-number = {F5618},
+  doi = {10.3390/electronics14224442},
+  funding-acknowledgement = {National Natural Science Foundation of China (NSFC) {[}62236004,
+62206078, 62441603, 62476073]},
+  funding-text = {This research was funded by the National Natural Science Foundation of
+China (NSFC), grant numbers 62236004, 62206078, 62441603 and 62476073.},
+  issn = {2079-9292},
+  journal = {ELECTRONICS},
+  journal-iso = {Electronics},
+  keywords = {large language model; code generation},
+  language = {English},
+  month = {NOV 14},
+  number = {22},
+  number-of-cited-references = {30},
+  oa = {gold},
+  orcid-numbers = {Li, Bohan/0000-0003-1168-8018
+冯, 云龙/0000-0002-0561-8841},
+  publisher = {MDPI},
+  research-areas = {Computer Science; Engineering; Physics},
+  researcherid-numbers = {Shi, Xiaoming/AAU-4105-2021
+XIN, WANG/KGK-5385-2024
+朱, 庆福/HGE-1466-2022},
+  times-cited = {1},
+  title = {Interactive End-to-End Decompilation via Large Language Models},
+  type = {Article},
+  unique-id = {WOS:001623665300001},
+  usage-count-last-180-days = {1},
+  usage-count-since-2013 = {1},
+  volume = {14},
+  web-of-science-categories = {Computer Science, Information Systems; Engineering, Electrical \&
+Electronic; Physics, Applied},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2025}
+}
+
+@article{WOS:001657340000001,
+  abstract = {The proliferation of binary vulnerabilities in the software supply chain
+has become a critical security challenge. Existing vulnerability
+detection approaches-including dynamic analysis, static analysis, and
+decompilation-assisted analysis-all suffer from limitations such as
+insufficient coverage, high false-positive and false-negative rates, or
+poor compatibility. Although decompilation technology can serve as a
+bridge connecting binary-code and source-code vulnerability detection
+tools, current schemes suffer from inadequate semantic restoration
+quality and lack of tool compatibility. To address these issues, this
+paper proposes LLMVulDecompiler, a binary decompilation model based on
+fine-tuned large language models designed to generate high-precision
+decompiled code that integrates directly with source-code static
+analysis tools. We construct a dedicated training and evaluation dataset
+that covers multiple compiler optimization levels (e.g., O0-O3) and a
+diverse set of program functionalities. We adopt a two-stage fine-tuning
+strategy that involves first building foundational decompilation
+capabilities, then enhancing vulnerability-specific features.
+Additionally, we design a low-cost inference pipeline and establish
+multi-dimensional evaluation criteria, including restoration similarity,
+compilation success rate, and functional correctness. Experimental
+results show that the model significantly outperforms baseline models in
+terms of average edit distance, compilation success rate, and black-box
+test pass rate on the HumanEval-C benchmark. In tests on 12 real-world
+CVE (Common Vulnerabilities and Exposures) instances, the approach
+achieved a detection accuracy of 91.7\%, with substantially reduced
+false-positive and false-negative rates. This study demonstrates the
+effectiveness of specialized fine-tuning of large language models for
+binary decompilation and vulnerability detection, offering a new pathway
+for binary security analysis.},
+  address = {MDPI AG, Grosspeteranlage 5, CH-4052 BASEL, SWITZERLAND},
+  affiliation = {Mao, DM (Corresponding Author), China Elect Technol Grp Corp, Res Inst 30, Chengdu 610093, Peoples R China.
+Wang, Yidan; Mao, Deming; Han, Ye; Tao, Rui, China Elect Technol Grp Corp, Res Inst 30, Chengdu 610093, Peoples R China.},
+  affiliations = {China Electronics Technology Group},
+  article-number = {8},
+  author = {Wang, Yidan and Mao, Deming and Han, Ye and Tao, Rui},
+  author-email = {wangyd19257@cetcsc.com
+mdm1201@126.com},
+  cited-references = {Armengol-estape Jordi, 2022, MAPS 2022: Proceedings of the 6th ACM SIGPLAN International Symposium on Machine Programming, P50, DOI 10.1145/3520312.3534867.
+Armengol-Estapé J, 2024, INT SYM CODE GENER, P67, DOI 10.1109/CGO57630.2024.10444788.
+BigCode Project, 2024, StarCoder2.
+Burk K, 2022, PROCEEDINGS OF THE 31ST USENIX SECURITY SYMPOSIUM, P2765.
+ByteDance Doubao, 2024, AI Chatbot.
+Chen M., 2021, Evaluating large language models trained on code, DOI DOI 10.48550/ARXIV.2107.03374.
+Chukkol AHA, 2024, Arxiv, DOI arXiv:2408.07181.
+Dutra R, 2024, ACM T SOFTW ENG METH, V33, DOI 10.1145/3628157.
+Engel D, 2023, LECT NOTES COMPUT SC, V14066, P3, DOI 10.1007/978-3-031-38828-6\_1.
+Feng YL, 2025, ELECTRONICS-SWITZ, V14, DOI 10.3390/electronics14224442.
+Fevid E., 2024, Authorea Prepr, DOI {[}10.36227/techrxiv.172565769.90012316, DOI 10.36227/TECHRXIV.172565769.90012316].
+github, 2025, Tencent CodeAnalysis.
+github, 2023, WPeace-HcH WPeChatGPT Version 2.3.
+Guo DY, 2024, Arxiv, DOI {[}arXiv:2401.14196, DOI 10.48550/ARXIV.2401.14196].
+He JX, 2021, CCS `21: PROCEEDINGS OF THE 2021 ACM SIGSAC CONFERENCE ON COMPUTER AND COMMUNICATIONS SECURITY, P2526, DOI 10.1145/3460120.3484813.
+Hex-Rays, 2025, SA IDA Pro: A Cross-Platform Multi-Processor Disassembler and Debugger.
+Hosseini Iman., 2022, arXiv, DOI {[}DOI 10.48550/ARXIV.2212.08950, 10.48550/arXiv.2212.08950].
+Hui BY, 2024, Arxiv, DOI arXiv:2409.12186.
+Jiang N, 2024, Arxiv, DOI arXiv:2311.13721.
+Katz DS, 2018, 2018 25TH IEEE INTERNATIONAL CONFERENCE ON SOFTWARE ANALYSIS, EVOLUTION AND REENGINEERING (SANER 2018), P346, DOI 10.1109/SANER.2018.8330222.
+Katz O, 2019, Arxiv, DOI arXiv:1905.08325.
+Li D, 2024, MACH LEARN KNOW EXTR, V6, P1087, DOI 10.3390/make6020050.
+Li RY, 2023, Arxiv, DOI arXiv:2305.06161.
+Li YZ, 2024, INT J SOFTW ENG KNOW, V34, P1971, DOI 10.1142/S0218194024500463.
+Liu Z., 2022, P INT C ALGORITHMS A, P392.
+Luo Z., 2023, P NDSS.
+Massarelli L, 2022, IEEE T DEPEND SECURE, V19, P2259, DOI 10.1109/TDSC.2021.3051852.
+Meta Code Llama, 2023, Official Webpage for Code Llama, a Code Generation LLM Developed by Meta.
+National Security Agency (NSA), 2021, Ghidra (Open-Source Reverse Engineering Tool).
+Ollama Wizard Coder, 2023, Ollama Library Webpage for Wizard Coder (Code Generation Model Based on Code Llama); Multiple Versions Available: Initial Release (2023-09-07) and 33B Version (2024-01-04).
+Poeplau S, 2021, 28TH ANNUAL NETWORK AND DISTRIBUTED SYSTEM SECURITY SYMPOSIUM (NDSS 2021), DOI 10.14722/ndss.2021.23118.
+Roziere B, 2024, Arxiv, DOI {[}arXiv:2308.12950, DOI 10.48550/ARXIV.2308.12950].
+Sang Q, 2024, P IEEE S SECUR PRIV, P3998, DOI 10.1109/SP54263.2024.00045.
+Schwartz Edward J., 2013, Proceedings of the 22nd USENIX Security Symposium. Security `13, P353.
+She XY, 2024, IEEE INT CONF AUTOM, P481, DOI 10.1145/3691620.3695020.
+Tan HZ, 2024, Arxiv, DOI arXiv:2403.05286.
+Ul Haq I, 2022, ACM COMPUT SURV, V54, DOI 10.1145/3446371.
+Verbeek F, 2024, PROCEEDINGS OF THE 2024 ACM SIGSAC CONFERENCE ON COMPUTER AND COMMUNICATIONS SECURITY, CCS 2024, P2786, DOI 10.1145/3658644.3690244.
+Wei XY, 2024, J NETW COMPUT APPL, V232, DOI 10.1016/j.jnca.2024.104020.
+Wong WK, 2023, Arxiv, DOI {[}arXiv:2310.06530, 10.48550/arXiv.2310.06530, DOI 10.48550/ARXIV.2310.06530].
+Xiao Y, 2021, 2021 IEEE INTERNATIONAL CONFERENCE ON SOFTWARE ANALYSIS, EVOLUTION AND REENGINEERING (SANER 2021), P213, DOI 10.1109/SANER50967.2021.00028.
+Yan H, 2021, COMPUT SECUR, V108, DOI 10.1016/j.cose.2021.102286.
+Yang SG, 2023, ACM T SOFTW ENG METH, V32, DOI 10.1145/3604608.
+Yang Y., 2023, P INT S DEPENDABLE S, P351.
+Zheng PL, 2022, PROCEEDINGS OF THE 31ST ACM SIGSOFT INTERNATIONAL SYMPOSIUM ON SOFTWARE TESTING AND ANALYSIS, ISSTA 2022, P740, DOI 10.1145/3533767.3534395.
+Zheng YW, 2024, Arxiv, DOI {[}arXiv:2403.13372, DOI 10.48550/ARXIV.2403.13372].},
+  da = {2026-02-04},
+  doc-delivery-number = {AU9AJ},
+  doi = {10.3390/electronics15010008},
+  funding-acknowledgement = {30th Research Institute of China Electronics Technology Group
+Corporation; Sichuan Provincial Major Scientific and Technological
+Special Project on Artificial Intelligence {[}2024ZDZX007]},
+  funding-text = {This research was funded by the Sichuan Provincial Major Scientific and
+Technological Special Project on Artificial Intelligence under Grant
+2024ZDZX007. The APC was funded by the 30th Research Institute of China
+Electronics Technology Group Corporation.},
+  issn = {2079-9292},
+  journal = {ELECTRONICS},
+  journal-iso = {Electronics},
+  keywords = {decompilation; vulnerability detection; large language models; fine
+tuning; binary code},
+  language = {English},
+  month = {DEC 19},
+  number = {1},
+  number-of-cited-references = {46},
+  oa = {gold},
+  publisher = {MDPI},
+  research-areas = {Computer Science; Engineering; Physics},
+  times-cited = {0},
+  title = {Research on Binary Decompilation Optimization Based on Fine-Tuned Large
+Language Models for Vulnerability Detection},
+  type = {Article},
+  unique-id = {WOS:001657340000001},
+  usage-count-last-180-days = {3},
+  usage-count-since-2013 = {3},
+  volume = {15},
+  web-of-science-categories = {Computer Science, Information Systems; Engineering, Electrical \&
+Electronic; Physics, Applied},
+  web-of-science-index = {Science Citation Index Expanded (SCI-EXPANDED)},
+  year = {2025}
+}

@@ -27,14 +27,28 @@ import { StepStatusBadge } from '../components/StepStatus';
 import { stepTypeConfigs } from '../steps/stepTypeConfigs';
 import { normalizeBibtexText } from '../components/BibtexText';
 
+const PDF_MISSING_REASON_LABELS: Record<string, string> = {
+  pdf_not_resolved: 'No downloadable PDF found',
+  browser_assist_unresolved: 'Browser assist timed out',
+  browser_assist_unavailable: 'Browser assist unavailable',
+  browser_assist_error: 'Browser assist failed',
+  not_found: 'PDF not resolved',
+};
+
+function formatPdfMissingReason(reason: string): string {
+  return PDF_MISSING_REASON_LABELS[reason] ?? reason;
+}
+
 export function StepDetailPage() {
   const { projectId, stepId } = useParams<{ projectId: string; stepId: string }>();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+  const [isStepPolling, setIsStepPolling] = useState(false);
   const [showRunNotice, setShowRunNotice] = useState(false);
   const [aiOutputMode, setAiOutputMode] = useState<'ai' | 'human'>('ai');
+  const [pdfPassMode, setPdfPassMode] = useState<'all' | 'pdf_only'>('all');
   const [rulesCopied, setRulesCopied] = useState(false);
 
   // Fetch step meta
@@ -46,6 +60,12 @@ export function StepDetailPage() {
     queryKey: ['step', projectId, stepId],
     queryFn: () => stepsApi.get(projectId!, stepId!),
     enabled: !!projectId && !!stepId,
+    refetchInterval: (query) => {
+      const current = (query.state.data as StepMeta | undefined)?.execution.status;
+      if (isStepPolling || current === 'running') return 1000;
+      return false;
+    },
+    refetchIntervalInBackground: true,
   });
 
   // Fetch pipeline to get step config
@@ -68,6 +88,7 @@ export function StepDetailPage() {
     || stepMeta?.step_type === 'dedup-author'
     || stepMeta?.step_type === 'dedup-doi';
   const isAiScreening = stepMeta?.step_type === 'ai-screening';
+  const isPdfFetch = stepMeta?.step_type === 'pdf-fetch';
   const { data: clustersData } = useQuery({
     queryKey: ['step-clusters', projectId, stepId],
     queryFn: () => stepsApi.getClusters(projectId!, stepId!),
@@ -461,6 +482,11 @@ export function StepDetailPage() {
     const mode = (pipelineStep?.config?.output_mode as 'ai' | 'human' | undefined) ?? 'ai';
     setAiOutputMode(mode);
   }, [pipelineStep?.config, isAiScreening]);
+  useEffect(() => {
+    if (!isPdfFetch) return;
+    const mode = (pipelineStep?.config?.pass_mode as 'all' | 'pdf_only' | undefined) ?? 'all';
+    setPdfPassMode(mode);
+  }, [pipelineStep?.config, isPdfFetch]);
 
   // Fetch screening rules for AI screening
   const rulesId = pipelineStep?.config?.rules as string | undefined;
@@ -479,25 +505,43 @@ export function StepDetailPage() {
     },
   });
 
-  const applyOutputMode = async (mode: 'ai' | 'human') => {
+  const applyOutputMode = async (mode: 'ai' | 'human' | 'all' | 'pdf_only') => {
     if (!pipelineStep) return;
+    const configKey = isAiScreening
+      ? 'output_mode'
+      : isPdfFetch
+        ? 'pass_mode'
+        : null;
+    if (!configKey) return;
+
     await updateStepMutation.mutateAsync({
       ...pipelineStep,
       config: {
         ...pipelineStep.config,
-        output_mode: mode,
+        [configKey]: mode,
       },
     });
     await stepsApi.applyOutputMode(projectId!, stepId!, mode);
     queryClient.invalidateQueries({ queryKey: ['step', projectId, stepId] });
     queryClient.invalidateQueries({ queryKey: ['step-output', projectId, stepId] });
-    queryClient.invalidateQueries({ queryKey: ['step-review', projectId, stepId] });
-    setAiOutputMode(mode);
+    queryClient.invalidateQueries({ queryKey: ['step-changes', projectId, stepId] });
+    if (isAiScreening) {
+      queryClient.invalidateQueries({ queryKey: ['step-review', projectId, stepId] });
+    }
+    if (mode === 'ai' || mode === 'human') {
+      setAiOutputMode(mode);
+    }
+    if (mode === 'all' || mode === 'pdf_only') {
+      setPdfPassMode(mode);
+    }
   };
 
   // Run step mutation
   const runMutation = useMutation({
     mutationFn: () => stepsApi.run(projectId!, stepId!),
+    onMutate: () => {
+      setIsStepPolling(true);
+    },
     onSuccess: () => {
       setIsConfigModalOpen(false);
       if (isDuplicateGroupStep) {
@@ -509,6 +553,9 @@ export function StepDetailPage() {
       queryClient.invalidateQueries({ queryKey: ['step-clusters', projectId, stepId] });
       queryClient.invalidateQueries({ queryKey: ['step-input', projectId, stepId] });
       queryClient.invalidateQueries({ queryKey: ['steps', projectId] });
+    },
+    onSettled: () => {
+      setIsStepPolling(false);
     },
   });
 
@@ -549,6 +596,54 @@ export function StepDetailPage() {
       { include: 0, exclude: 0, uncertain: 0 }
     );
   }, [changes]);
+  const pdfFetchDiagnostics = useMemo(() => {
+    if (!isPdfFetch) return null;
+    const reasonCounts = new Map<string, number>();
+    const browserCounts = new Map<string, number>();
+    const sourceCounts = new Map<string, number>();
+    let total = 0;
+    let found = 0;
+    let missing = 0;
+
+    for (const change of changes) {
+      const details = (change.details ?? {}) as Record<string, unknown>;
+      const status = typeof details.pdf_status === 'string' ? details.pdf_status : '';
+      if (!status) continue;
+
+      total += 1;
+      if (status === 'found') {
+        found += 1;
+        const source = typeof details.source === 'string' ? details.source : '';
+        if (source) {
+          sourceCounts.set(source, (sourceCounts.get(source) ?? 0) + 1);
+        }
+      } else {
+        missing += 1;
+        const reason = typeof details.missing_reason === 'string' ? details.missing_reason : 'unknown';
+        reasonCounts.set(reason, (reasonCounts.get(reason) ?? 0) + 1);
+      }
+
+      const browserResult = typeof details.browser_assist_result === 'string'
+        ? details.browser_assist_result
+        : '';
+      if (browserResult) {
+        browserCounts.set(browserResult, (browserCounts.get(browserResult) ?? 0) + 1);
+      }
+    }
+
+    if (total === 0) {
+      return null;
+    }
+
+    return {
+      total,
+      found,
+      missing,
+      reasonCounts: Array.from(reasonCounts.entries()).sort((a, b) => b[1] - a[1]),
+      browserCounts: Array.from(browserCounts.entries()).sort((a, b) => b[1] - a[1]),
+      sourceCounts: Array.from(sourceCounts.entries()).sort((a, b) => b[1] - a[1]),
+    };
+  }, [changes, isPdfFetch]);
   const apiLatency = useMemo(() => {
     if (stepMeta?.step_type !== 'ai-screening') return null;
     let totalMs = 0;
@@ -613,6 +708,7 @@ export function StepDetailPage() {
 
   const config = stepTypeConfigs[stepMeta.step_type] || { icon: null };
   const isCompleted = stepMeta.execution.status === 'completed';
+  const isRunning = stepMeta.execution.status === 'running';
   const isPending = stepMeta.execution.status === 'pending';
   const isFailed = stepMeta.execution.status === 'failed';
   const canRun = isPending || isFailed;
@@ -621,6 +717,19 @@ export function StepDetailPage() {
   const removedCount = stepMeta.stats.removed_count;
   const displayPassedCount = passedCount;
   const displayRemovedCount = removedCount;
+  const progress = stepMeta.execution.progress;
+  const progressTotal = Math.max(
+    progress?.total ?? stepMeta.input?.count ?? 0,
+    0
+  );
+  const progressCompletedRaw = Math.max(progress?.completed ?? 0, 0);
+  const progressCompleted = progressTotal > 0
+    ? Math.min(progressCompletedRaw, progressTotal)
+    : progressCompletedRaw;
+  const progressPercent = progressTotal > 0
+    ? Math.min(100, Math.max(0, Math.round((progressCompleted / progressTotal) * 100)))
+    : Math.min(100, Math.max(0, Math.round(progress?.percent ?? 0)));
+  const progressMessage = progress?.message || 'Processing entries';
 
   return (
     <div className="space-y-6">
@@ -658,17 +767,37 @@ export function StepDetailPage() {
           {canRun && (
             <button
               onClick={() => setIsConfigModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-lg hover:opacity-90"
+              disabled={runMutation.isPending || updateStepMutation.isPending}
+              className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-lg hover:opacity-90 disabled:opacity-50"
             >
-              <Play className="w-4 h-4" />
+              {runMutation.isPending ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Play className="w-4 h-4" />
+              )}
               {isFailed ? 'Retry' : 'Run Step'}
             </button>
           )}
 
           {(isCompleted || isFailed) && isLatest && (
             <button
+              onClick={() => runMutation.mutate()}
+              disabled={runMutation.isPending || updateStepMutation.isPending}
+              className="flex items-center gap-2 px-4 py-2 border border-[hsl(var(--border))] rounded-lg hover:bg-[hsl(var(--muted))] disabled:opacity-50"
+            >
+              {runMutation.isPending ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Play className="w-4 h-4" />
+              )}
+              Re-run
+            </button>
+          )}
+
+          {(isCompleted || isFailed) && isLatest && (
+            <button
               onClick={() => setIsResetDialogOpen(true)}
-              disabled={resetMutation.isPending}
+              disabled={resetMutation.isPending || runMutation.isPending}
               className="flex items-center gap-2 px-4 py-2 border border-[hsl(var(--border))] rounded-lg hover:bg-[hsl(var(--muted))] disabled:opacity-50"
             >
               {resetMutation.isPending ? (
@@ -700,6 +829,46 @@ export function StepDetailPage() {
               </p>
             </div>
           </div>
+        </div>
+      )}
+
+      {isRunning && (
+        <div className="p-4 rounded-lg border border-[hsl(var(--status-info-border))] bg-[hsl(var(--status-info-bg))] space-y-3">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[hsl(var(--status-info-fg))]">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Running
+          </div>
+          <p className="text-sm text-[hsl(var(--status-info-fg))]">{progressMessage}</p>
+          <div className="space-y-1">
+            <div className="h-2 w-full rounded-full bg-[hsl(var(--status-info-border))] overflow-hidden">
+              <div
+                className="h-full bg-[hsl(var(--status-info-solid))] transition-all duration-300"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+            <div className="text-xs text-[hsl(var(--status-info-fg))] flex items-center justify-between">
+              <span>{progressTotal > 0 ? `${progressCompleted}/${progressTotal}` : `${progressCompleted}`}</span>
+              <span>{progressPercent}%</span>
+            </div>
+          </div>
+          {isPdfFetch && (
+            <div className="rounded-md border border-[hsl(var(--status-info-border))] bg-[hsl(var(--background))] p-3">
+              <div className="flex items-start gap-2">
+                <Info className="w-4 h-4 mt-0.5 text-[hsl(var(--status-info-fg))]" />
+                <div className="space-y-1 text-xs text-[hsl(var(--muted-foreground))]">
+                  <p>
+                    PDF Fetch may open a browser window for publisher login/challenge.
+                    Keep that window open until this step is completed.
+                  </p>
+                  {progressMessage.toLowerCase().includes('browser assist') && (
+                    <p className="text-[hsl(var(--status-info-fg))] font-medium">
+                      Browser assist is active now. Complete login/challenge, then wait here.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -738,6 +907,103 @@ export function StepDetailPage() {
               </div>
             )}
           </div>
+        </div>
+      )}
+
+      {isCompleted && isPdfFetch && pdfFetchDiagnostics && (
+        <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">PDF Fetch Diagnostics</h2>
+            <span className="text-xs text-[hsl(var(--muted-foreground))]">
+              analyzed: {pdfFetchDiagnostics.total}
+            </span>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="rounded-md border border-[hsl(var(--border))] p-3 bg-[hsl(var(--background))]">
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">Found</div>
+              <div className="text-lg font-semibold text-[hsl(var(--status-success-fg))]">
+                {pdfFetchDiagnostics.found}
+              </div>
+            </div>
+            <div className="rounded-md border border-[hsl(var(--border))] p-3 bg-[hsl(var(--background))]">
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">Missing</div>
+              <div className="text-lg font-semibold text-[hsl(var(--status-danger-fg))]">
+                {pdfFetchDiagnostics.missing}
+              </div>
+            </div>
+            <div className="rounded-md border border-[hsl(var(--border))] p-3 bg-[hsl(var(--background))]">
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">Found Rate</div>
+              <div className="text-lg font-semibold">
+                {pdfFetchDiagnostics.total > 0
+                  ? `${Math.round((pdfFetchDiagnostics.found / pdfFetchDiagnostics.total) * 100)}%`
+                  : '0%'}
+              </div>
+            </div>
+          </div>
+
+          {pdfFetchDiagnostics.browserCounts.length > 0 && (
+            <div className="space-y-2">
+              <div className="text-sm font-medium">Browser Assist Results</div>
+              <div className="flex flex-wrap gap-2">
+                {pdfFetchDiagnostics.browserCounts.map(([result, count]) => (
+                  <span
+                    key={result}
+                    className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--border))] px-3 py-1 text-xs bg-[hsl(var(--background))]"
+                  >
+                    <span className="font-medium">{result}</span>
+                    <span className="text-[hsl(var(--muted-foreground))]">{count}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {pdfFetchDiagnostics.missing > 0 && (
+            <div className="space-y-2">
+              <div className="text-sm font-medium">Missing Breakdown</div>
+              <div className="space-y-1">
+                {pdfFetchDiagnostics.reasonCounts.map(([reason, count]) => (
+                  <div
+                    key={reason}
+                    className="flex items-center justify-between rounded-md border border-[hsl(var(--border))] px-3 py-2 bg-[hsl(var(--background))]"
+                  >
+                    <span className="text-sm">{formatPdfMissingReason(reason)}</span>
+                    <span className="text-xs text-[hsl(var(--muted-foreground))]">{count}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {pdfFetchDiagnostics.sourceCounts.length > 0 && (
+            <div className="space-y-2">
+              <div className="text-sm font-medium">Resolved Source</div>
+              <div className="flex flex-wrap gap-2">
+                {pdfFetchDiagnostics.sourceCounts.map(([source, count]) => (
+                  <span
+                    key={source}
+                    className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--border))] px-3 py-1 text-xs bg-[hsl(var(--background))]"
+                  >
+                    <span className="font-medium">{source}</span>
+                    <span className="text-[hsl(var(--muted-foreground))]">{count}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {pdfFetchDiagnostics.reasonCounts.some(([reason]) => reason === 'browser_assist_unresolved') && (
+            <div className="rounded-md border border-[hsl(var(--status-warning-border))] bg-[hsl(var(--status-warning-bg))] p-3">
+              <div className="flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 mt-0.5 text-[hsl(var(--status-warning-fg))]" />
+                <p className="text-xs text-[hsl(var(--status-warning-fg))]">
+                  Browser assist timed out for some entries. Re-run this step, complete publisher login/challenge in
+                  the opened browser window, and keep the window open until the step finishes.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -1081,6 +1347,44 @@ export function StepDetailPage() {
               <div className="text-base font-semibold">Use Human Review Output</div>
               <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
                 Human decisions overwrite the output for downstream steps.
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isCompleted && isPdfFetch && (
+        <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
+          <div className="text-sm font-semibold text-[hsl(var(--foreground))] mb-3">
+            Downstream Output Mode
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => applyOutputMode('all')}
+              className={`rounded-lg border px-4 py-4 text-left transition-colors ${
+                pdfPassMode === 'all'
+                  ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                  : 'border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+              }`}
+            >
+              <div className="text-base font-semibold">Pass All Entries</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                Keep all entries in <code>passed</code> while still recording PDF status.
+              </div>
+            </button>
+            <button
+              type="button"
+              onClick={() => applyOutputMode('pdf_only')}
+              className={`rounded-lg border px-4 py-4 text-left transition-colors ${
+                pdfPassMode === 'pdf_only'
+                  ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                  : 'border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]'
+              }`}
+            >
+              <div className="text-base font-semibold">Pass PDF-Only Entries</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                Send only <code>pdf_found</code> entries to downstream steps.
               </div>
             </button>
           </div>

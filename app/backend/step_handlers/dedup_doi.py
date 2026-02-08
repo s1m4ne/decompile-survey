@@ -5,7 +5,7 @@ Removes duplicate entries based on their DOI field.
 Entries without DOI are passed through.
 """
 
-from .base import StepHandler, StepResult, OutputDefinition, Change
+from .base import StepHandler, StepResult, OutputDefinition, Change, ProgressCallback
 from . import register_step_type
 
 
@@ -48,7 +48,12 @@ class DedupDoiHandler(StepHandler):
             },
         }
 
-    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+    def run(
+        self,
+        input_entries: list[dict],
+        config: dict,
+        progress_callback: ProgressCallback | None = None,
+    ) -> StepResult:
         """
         Deduplicate entries by DOI.
 
@@ -69,7 +74,11 @@ class DedupDoiHandler(StepHandler):
         # Track seen DOIs
         seen_dois: dict[str, dict] = {}
 
-        for entry in input_entries:
+        total = len(input_entries)
+        if progress_callback:
+            progress_callback(0, total, "Deduplicating DOI")
+
+        for idx, entry in enumerate(input_entries, start=1):
             entry_key = entry.get("ID", "unknown")
             doi = entry.get("doi", "").strip()
 
@@ -118,6 +127,9 @@ class DedupDoiHandler(StepHandler):
                     reason="unique_doi",
                     details={"doi": doi},
                 ))
+
+            if progress_callback:
+                progress_callback(idx, total, "Deduplicating DOI")
 
         return StepResult(
             outputs={

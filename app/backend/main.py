@@ -14,6 +14,7 @@ from routers import (
     rules_router,
     llm_router,
     imports_router,
+    pdf_library_router,
 )
 
 app = FastAPI(
@@ -40,6 +41,7 @@ app.include_router(sources_router, prefix="/api")
 app.include_router(rules_router, prefix="/api")
 app.include_router(llm_router, prefix="/api")
 app.include_router(imports_router, prefix="/api")
+app.include_router(pdf_library_router, prefix="/api")
 
 
 @app.get("/api/health")

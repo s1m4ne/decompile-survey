@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 from openai import AsyncOpenAI
 
-from .base import StepHandler, StepResult, OutputDefinition, Change
+from .base import StepHandler, StepResult, OutputDefinition, Change, ProgressCallback
 from . import register_step_type
 
 # Local LLM server settings
@@ -207,7 +207,7 @@ async def screen_papers_async(
     provider: str,
     concurrency: int,
     local_base_url: str | None = None,
-    progress_callback=None,
+    progress_callback: ProgressCallback | None = None,
 ) -> list[dict]:
     """Screen multiple papers in parallel."""
     # Setup client
@@ -227,12 +227,15 @@ async def screen_papers_async(
     results = []
     completed = 0
 
+    if progress_callback:
+        progress_callback(0, len(entries), "AI screening")
+
     async def process_entry(entry: dict) -> dict:
         nonlocal completed
         result = await screen_paper(client, model, rules, entry, semaphore)
         completed += 1
         if progress_callback:
-            progress_callback(completed, len(entries))
+            progress_callback(completed, len(entries), "AI screening")
         return result
 
     tasks = [process_entry(entry) for entry in entries]
@@ -333,7 +336,12 @@ class AIScreeningHandler(StepHandler):
             "required": ["rules"],
         }
 
-    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+    def run(
+        self,
+        input_entries: list[dict],
+        config: dict,
+        progress_callback: ProgressCallback | None = None,
+    ) -> StepResult:
         """Run AI screening on input entries."""
         rules_id = config.get("rules", "decompile_v4")
         provider = config.get("provider", "local")
@@ -366,6 +374,7 @@ class AIScreeningHandler(StepHandler):
             provider=provider,
             concurrency=concurrency,
             local_base_url=local_base_url if provider == "local" else None,
+            progress_callback=progress_callback,
         )
         try:
             loop = asyncio.get_running_loop()

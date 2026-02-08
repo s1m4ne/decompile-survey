@@ -77,6 +77,13 @@ export interface StepExecution {
   completed_at: string | null;
   duration_sec: number | null;
   error: string | null;
+  progress: {
+    completed: number;
+    total: number;
+    percent: number;
+    message: string | null;
+    updated_at: string | null;
+  } | null;
 }
 
 export interface StepMeta {
@@ -434,6 +441,39 @@ export interface ImportSourceSummary {
   updated_at: string;
 }
 
+// PDF Library
+export interface PdfLibraryRecord {
+  id: string;
+  key: string;
+  doi: string | null;
+  title: string;
+  status: 'found' | 'missing';
+  pdf_path: string | null;
+  managed_file: boolean;
+  source: string | null;
+  source_url: string | null;
+  provider: string | null;
+  content_type: string | null;
+  size_bytes: number | null;
+  project_ids: string[];
+  step_ids: string[];
+  entry_keys: string[];
+  missing_reason: string | null;
+  failure_count: number;
+  created_at: string | null;
+  updated_at: string | null;
+  last_checked_at: string | null;
+  project_ref_count: number;
+}
+
+export interface PdfLibraryStats {
+  total: number;
+  found: number;
+  missing: number;
+  managed_files: number;
+  external_refs: number;
+}
+
 // Rules
 export interface RuleInfo {
   id: string;
@@ -596,6 +636,37 @@ export const projectImportSourcesApi = {
     fetchApi<{ status: string }>(`/projects/${projectId}/import-sources/${importId}`, {
       method: 'DELETE',
     }),
+};
+
+// PDF Library
+export const pdfLibraryApi = {
+  list: (query?: { q?: string; status?: 'all' | 'found' | 'missing' }) => {
+    const params = new URLSearchParams();
+    if (query?.q) {
+      params.set('q', query.q);
+    }
+    if (query?.status) {
+      params.set('status', query.status);
+    }
+    const suffix = params.toString() ? `?${params.toString()}` : '';
+    return fetchApi<PdfLibraryRecord[]>(`/pdf-library${suffix}`);
+  },
+
+  stats: () => fetchApi<PdfLibraryStats>('/pdf-library/stats'),
+
+  viewUrl: (recordId: string) =>
+    `${API_BASE}/pdf-library/${recordId}/view`,
+
+  downloadUrl: (recordId: string) =>
+    `${API_BASE}/pdf-library/${recordId}/download`,
+
+  remove: (recordId: string, deleteFile = true) =>
+    fetchApi<{ record_id: string; removed_file: boolean; removed_path: string | null }>(
+      `/pdf-library/${recordId}?delete_file=${deleteFile ? 'true' : 'false'}`,
+      {
+        method: 'DELETE',
+      }
+    ),
 };
 
 // Health

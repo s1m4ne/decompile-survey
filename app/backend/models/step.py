@@ -29,6 +29,15 @@ class StepOutput(BaseModel):
     description: str = ""
 
 
+class StepProgress(BaseModel):
+    """Step execution progress."""
+    completed: int = 0
+    total: int = 0
+    percent: float = 0.0
+    message: str | None = None
+    updated_at: datetime | None = None
+
+
 class StepExecution(BaseModel):
     """Step execution information."""
     status: StepStatus = StepStatus.PENDING
@@ -36,6 +45,7 @@ class StepExecution(BaseModel):
     completed_at: datetime | None = None
     duration_sec: float | None = None
     error: str | None = None
+    progress: StepProgress | None = None
 
 
 class StepStats(BaseModel):

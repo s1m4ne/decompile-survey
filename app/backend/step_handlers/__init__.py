@@ -45,4 +45,5 @@ from . import dedup_doi
 from . import ai_screening
 from . import dedup_title
 from . import dedup_author
+from . import pdf_fetch
 # from . import normalize

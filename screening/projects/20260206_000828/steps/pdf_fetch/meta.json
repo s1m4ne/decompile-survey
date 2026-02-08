@@ -1,0 +1,48 @@
+{
+  "step_id": "pdf_fetch",
+  "step_type": "pdf-fetch",
+  "name": "PDF Fetch",
+  "input": {
+    "from": "ai_screening",
+    "output": "passed",
+    "file": "steps/ai_screening/outputs/passed.bib",
+    "count": 57
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/pdf_fetch/outputs/passed.bib",
+      "count": 57,
+      "description": "Entries passed to downstream step (all or PDF-only based on mode)"
+    },
+    "pdf_found": {
+      "file": "steps/pdf_fetch/outputs/pdf_found.bib",
+      "count": 46,
+      "description": "Entries with resolved PDF files"
+    },
+    "pdf_missing": {
+      "file": "steps/pdf_fetch/outputs/pdf_missing.bib",
+      "count": 11,
+      "description": "Entries without resolvable PDF"
+    }
+  },
+  "stats": {
+    "input_count": 57,
+    "total_output_count": 57,
+    "passed_count": 57,
+    "removed_count": 0
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-02-07T02:38:51.038854",
+    "completed_at": "2026-02-07T09:00:31.225919",
+    "duration_sec": 22900.187065,
+    "error": null,
+    "progress": {
+      "completed": 57,
+      "total": 57,
+      "percent": 100.0,
+      "message": "Completed",
+      "updated_at": "2026-02-07T09:00:31.225919"
+    }
+  }
+}

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import re
 
-from .base import StepHandler, StepResult, OutputDefinition, Change
+from .base import StepHandler, StepResult, OutputDefinition, Change, ProgressCallback
 from . import register_step_type
 from .dedup_utils import (
     normalize_title,
@@ -89,8 +89,16 @@ class DedupAuthorHandler(StepHandler):
             },
         }
 
-    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+    def run(
+        self,
+        input_entries: list[dict],
+        config: dict,
+        progress_callback: ProgressCallback | None = None,
+    ) -> StepResult:
         threshold = float(config.get("similarity_threshold", 0.8))
+        total_entries = len(input_entries)
+        if progress_callback:
+            progress_callback(0, total_entries, "Building author clusters")
         author_sets = [extract_last_names(entry.get("author", "")) for entry in input_entries]
         normalized_titles = [normalize_title(entry.get("title", "")) for entry in input_entries]
         clusters = cluster_by_threshold(author_sets, threshold, author_similarity)
@@ -100,6 +108,7 @@ class DedupAuthorHandler(StepHandler):
         changes: list[Change] = []
         clusters_payload: list[dict] = []
 
+        processed_entries = 0
         for index, member_indices in enumerate(clusters, start=1):
             cluster_entries_list = [input_entries[i] for i in member_indices]
             if len(member_indices) == 1:
@@ -112,6 +121,9 @@ class DedupAuthorHandler(StepHandler):
                     reason="unique_author",
                     details={"cluster_id": None},
                 ))
+                processed_entries += 1
+                if progress_callback:
+                    progress_callback(processed_entries, total_entries, "Deduplicating authors")
                 continue
 
             representative_index = pick_representative(member_indices, input_entries)
@@ -186,6 +198,9 @@ class DedupAuthorHandler(StepHandler):
                 "title_average_similarity": title_average,
                 "members": cluster_members_payload,
             })
+            processed_entries += len(member_indices)
+            if progress_callback:
+                progress_callback(processed_entries, total_entries, "Deduplicating authors")
 
         clusters_payload.sort(
             key=lambda item: (

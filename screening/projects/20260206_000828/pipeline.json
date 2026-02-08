@@ -46,6 +46,25 @@
         "output_mode": "ai",
         "local_base_url": "http://192.168.50.100:8000/v1"
       }
+    },
+    {
+      "id": "pdf_fetch",
+      "type": "pdf-fetch",
+      "name": "PDF Fetch",
+      "enabled": true,
+      "input_from": "ai_screening",
+      "config": {
+        "pass_mode": "all",
+        "reuse_cache": true,
+        "download_enabled": true,
+        "timeout_sec": 20,
+        "max_pdf_mb": 50,
+        "unpaywall_email": "",
+        "browser_assist_enabled": true,
+        "browser_assist_headed": true,
+        "browser_assist_wait_sec": 180,
+        "browser_assist_profile": "default"
+      }
     }
   ],
   "final_output": null

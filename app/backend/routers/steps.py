@@ -13,7 +13,7 @@ from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.bibdatabase import BibDatabase
 
 import re
-from models.step import StepMeta, StepStatus, StepExecution, StepInput, StepOutput, StepStats
+from models.step import StepMeta, StepStatus, StepExecution, StepProgress, StepInput, StepOutput, StepStats
 from step_handlers.base import Change
 
 router = APIRouter(prefix="/projects/{project_id}/steps", tags=["steps"])
@@ -390,17 +390,91 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
     if handler_class is None:
         raise HTTPException(status_code=400, detail=f"Unknown step type: {step_def.type}")
 
+    existing_meta = load_step_meta(project_id, step_id)
+    if existing_meta and existing_meta.execution.status == StepStatus.RUNNING:
+        raise HTTPException(status_code=409, detail=f"Step is already running: {step_id}")
+
     # Mark as running
     started_at = datetime.now()
+    running_meta = StepMeta(
+        step_id=step_id,
+        step_type=step_def.type,
+        name=step_def.name,
+        stats=StepStats(),
+        execution=StepExecution(
+            status=StepStatus.RUNNING,
+            started_at=started_at,
+            progress=StepProgress(
+                completed=0,
+                total=0,
+                percent=0.0,
+                message="Preparing input",
+                updated_at=started_at,
+            ),
+        ),
+    )
+    save_step_meta(project_id, step_id, running_meta)
 
     try:
         # Load input entries
         input_entries, input_meta = load_input_entries(project_id, step_def.input_from)
         save_input_entries(project_id, step_id, input_entries)
 
+        running_meta.input = input_meta
+        running_meta.stats = StepStats(
+            input_count=input_meta.count,
+            total_output_count=0,
+            passed_count=0,
+            removed_count=0,
+        )
+        save_step_meta(project_id, step_id, running_meta)
+
+        last_progress = {"completed": -1, "total": -1, "message": None}
+
+        def report_progress(completed: int, total: int, message: str | None = None) -> None:
+            total_value = max(int(total or 0), 0)
+            completed_value = max(int(completed or 0), 0)
+            if total_value > 0:
+                completed_value = min(completed_value, total_value)
+                percent = (completed_value / total_value) * 100.0
+            else:
+                percent = 0.0 if completed_value == 0 else 100.0
+
+            if (
+                last_progress["completed"] == completed_value
+                and last_progress["total"] == total_value
+                and last_progress["message"] == message
+            ):
+                return
+
+            now = datetime.now()
+            running_meta.execution.status = StepStatus.RUNNING
+            running_meta.execution.started_at = started_at
+            running_meta.execution.completed_at = None
+            running_meta.execution.duration_sec = None
+            running_meta.execution.error = None
+            running_meta.execution.progress = StepProgress(
+                completed=completed_value,
+                total=total_value,
+                percent=percent,
+                message=message or "Running",
+                updated_at=now,
+            )
+            save_step_meta(project_id, step_id, running_meta)
+            last_progress["completed"] = completed_value
+            last_progress["total"] = total_value
+            last_progress["message"] = message
+
+        report_progress(0, input_meta.count, "Processing entries")
+
         # Create handler and run
         handler = handler_class()
-        result = handler.run(input_entries, step_def.config)
+        handler_config = dict(step_def.config or {})
+        if step_def.type == "pdf-fetch":
+            handler_config["_project_id"] = project_id
+            handler_config["_step_id"] = step_id
+        result = handler.run(input_entries, handler_config, progress_callback=report_progress)
+        report_progress(input_meta.count, input_meta.count, "Finalizing outputs")
 
         # Save outputs
         outputs = {}
@@ -421,12 +495,34 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
                 human_file = PROJECTS_DIR / project_id / "steps" / step_id / "outputs" / f"human_{output_name}.bib"
                 if not human_file.exists():
                     save_output_entries(project_id, step_id, f"human_{output_name}", [])
+        elif step_def.type == "pdf-fetch":
+            details = result.details if isinstance(result.details, dict) else {}
+            mode_outputs = details.get("mode_outputs", {})
+            if isinstance(mode_outputs, dict):
+                for mode_name, entries in mode_outputs.items():
+                    if not isinstance(entries, list):
+                        continue
+                    save_output_entries(project_id, step_id, f"mode_{mode_name}_passed", entries)
 
         # Save changes
         if step_def.type == "ai-screening":
             save_changes(project_id, step_id, result.changes, filename="changes_ai.jsonl")
             save_changes(project_id, step_id, result.changes, filename="changes.jsonl")
             save_changes(project_id, step_id, [], filename="changes_human.jsonl")
+        elif step_def.type == "pdf-fetch":
+            details = result.details if isinstance(result.details, dict) else {}
+            mode_changes = details.get("mode_changes", {})
+            if isinstance(mode_changes, dict):
+                for mode_name, mode_change_list in mode_changes.items():
+                    if not isinstance(mode_change_list, list):
+                        continue
+                    save_changes(
+                        project_id,
+                        step_id,
+                        mode_change_list,
+                        filename=f"changes_{mode_name}.jsonl",
+                    )
+            save_changes(project_id, step_id, result.changes, filename="changes.jsonl")
         else:
             save_changes(project_id, step_id, result.changes)
 
@@ -439,13 +535,20 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
 
         # Calculate stats (counts derived from changes)
         action_counts, decision_counts = summarize_changes(result.changes)
-        total_output = sum(len(entries) for entries in result.outputs.values())
-        if decision_counts:
-            passed_count = decision_counts["include"]
-            removed_count = decision_counts["exclude"]
+        if step_def.type == "pdf-fetch":
+            details = result.details if isinstance(result.details, dict) else {}
+            stats = details.get("stats", {}) if isinstance(details, dict) else {}
+            total_output = input_meta.count
+            passed_count = int(stats.get("passed_count", action_counts["keep"]))
+            removed_count = int(stats.get("removed_count", action_counts["remove"]))
         else:
-            passed_count = action_counts["keep"]
-            removed_count = action_counts["remove"]
+            total_output = sum(len(entries) for entries in result.outputs.values())
+            if decision_counts:
+                passed_count = decision_counts["include"]
+                removed_count = decision_counts["exclude"]
+            else:
+                passed_count = action_counts["keep"]
+                removed_count = action_counts["remove"]
 
         meta = StepMeta(
             step_id=step_id,
@@ -464,29 +567,76 @@ def run_step(project_id: str, step_id: str) -> StepMeta:
                 started_at=started_at,
                 completed_at=completed_at,
                 duration_sec=duration,
+                progress=StepProgress(
+                    completed=input_meta.count,
+                    total=input_meta.count,
+                    percent=100.0,
+                    message="Completed",
+                    updated_at=completed_at,
+                ),
             ),
         )
         save_step_meta(project_id, step_id, meta)
 
         return meta
 
-    except HTTPException:
-        raise
-    except Exception as e:
-        # Mark as failed
+    except HTTPException as e:
         completed_at = datetime.now()
         duration = (completed_at - started_at).total_seconds()
+        progress = running_meta.execution.progress
+        if progress is None:
+            progress = StepProgress(
+                completed=0,
+                total=running_meta.input.count if running_meta.input else 0,
+                percent=0.0,
+                message="Failed",
+                updated_at=completed_at,
+            )
 
         meta = StepMeta(
             step_id=step_id,
             step_type=step_def.type,
             name=step_def.name,
+            input=running_meta.input,
+            stats=running_meta.stats,
+            execution=StepExecution(
+                status=StepStatus.FAILED,
+                started_at=started_at,
+                completed_at=completed_at,
+                duration_sec=duration,
+                error=str(e.detail),
+                progress=progress,
+            ),
+        )
+        save_step_meta(project_id, step_id, meta)
+        raise
+    except Exception as e:
+        # Mark as failed
+        completed_at = datetime.now()
+        duration = (completed_at - started_at).total_seconds()
+        progress = running_meta.execution.progress
+        if progress is None:
+            progress = StepProgress(
+                completed=0,
+                total=running_meta.input.count if running_meta.input else 0,
+                percent=0.0,
+                message="Failed",
+                updated_at=completed_at,
+            )
+
+        meta = StepMeta(
+            step_id=step_id,
+            step_type=step_def.type,
+            name=step_def.name,
+            input=running_meta.input,
+            stats=running_meta.stats,
             execution=StepExecution(
                 status=StepStatus.FAILED,
                 started_at=started_at,
                 completed_at=completed_at,
                 duration_sec=duration,
                 error=str(e),
+                progress=progress,
             ),
         )
         save_step_meta(project_id, step_id, meta)
@@ -957,64 +1107,112 @@ def apply_output_mode(project_id: str, step_id: str, payload: dict) -> dict:
     meta = load_step_meta(project_id, step_id)
     if meta is None:
         raise HTTPException(status_code=404, detail="Step meta not found")
-    if meta.step_type != "ai-screening":
-        raise HTTPException(status_code=400, detail="Output mode is only supported for ai-screening")
-
-    mode = payload.get("mode")
-    if mode not in ("ai", "human"):
-        raise HTTPException(status_code=400, detail="Invalid output mode")
 
     step_dir = get_step_dir(project_id, step_id)
 
-    # Validate that source files exist for the selected mode
-    prefix = "ai_" if mode == "ai" else "human_"
-    missing_files = []
-    for output_name in ("passed", "excluded", "uncertain"):
-        source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
+    if meta.step_type == "ai-screening":
+        mode = payload.get("mode")
+        if mode not in ("ai", "human"):
+            raise HTTPException(status_code=400, detail="Invalid output mode")
+
+        # Validate that source files exist for the selected mode
+        prefix = "ai_" if mode == "ai" else "human_"
+        missing_files = []
+        for output_name in ("passed", "excluded", "uncertain"):
+            source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
+            if not source_file.exists():
+                missing_files.append(f"{prefix}{output_name}.bib")
+        if missing_files:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Cannot switch to '{mode}' mode: missing files {missing_files}"
+            )
+
+        outputs: dict[str, StepOutput] = {}
+        total_count = 0
+        passed_count = 0
+        removed_count = 0
+
+        for output_name in ("passed", "excluded", "uncertain"):
+            source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
+            entries = load_output_entries_from_file(source_file)
+            output_file = save_output_entries(project_id, step_id, output_name, entries)
+            description = {
+                "passed": "Papers judged as 'include'",
+                "excluded": "Papers judged as 'exclude'",
+                "uncertain": "Papers judged as 'uncertain'",
+            }.get(output_name, "")
+            outputs[output_name] = StepOutput(
+                file=str(output_file.relative_to(PROJECTS_DIR / project_id)),
+                count=len(entries),
+                description=description,
+            )
+            total_count += len(entries)
+            if output_name == "passed":
+                passed_count = len(entries)
+            if output_name == "excluded":
+                removed_count = len(entries)
+
+        changes_source = "changes_ai.jsonl" if mode == "ai" else "changes_human.jsonl"
+        changes = load_changes_file(step_dir, changes_source)
+        save_changes(project_id, step_id, changes, filename="changes.jsonl")
+
+        meta.outputs = outputs
+        meta.stats = StepStats(
+            input_count=meta.stats.input_count,
+            total_output_count=total_count,
+            passed_count=passed_count,
+            removed_count=removed_count,
+        )
+        save_step_meta(project_id, step_id, meta)
+
+        return {"status": "updated", "mode": mode}
+
+    if meta.step_type == "pdf-fetch":
+        mode = payload.get("mode")
+        if mode not in ("all", "pdf_only"):
+            raise HTTPException(status_code=400, detail="Invalid output mode")
+
+        source_file = step_dir / "outputs" / f"mode_{mode}_passed.bib"
         if not source_file.exists():
-            missing_files.append(f"{prefix}{output_name}.bib")
-    if missing_files:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Cannot switch to '{mode}' mode: missing files {missing_files}"
+            raise HTTPException(
+                status_code=400,
+                detail=f"Cannot switch to '{mode}' mode: missing file mode_{mode}_passed.bib",
+            )
+
+        passed_entries = load_output_entries_from_file(source_file)
+        passed_file = save_output_entries(project_id, step_id, "passed", passed_entries)
+
+        outputs = dict(meta.outputs)
+        existing_passed = outputs.get("passed")
+        outputs["passed"] = StepOutput(
+            file=str(passed_file.relative_to(PROJECTS_DIR / project_id)),
+            count=len(passed_entries),
+            description=(
+                existing_passed.description
+                if isinstance(existing_passed, StepOutput)
+                else "Entries passed to downstream step"
+            ),
         )
 
-    outputs: dict[str, StepOutput] = {}
-    total_count = 0
-    passed_count = 0
-    removed_count = 0
+        changes_source = f"changes_{mode}.jsonl"
+        changes = load_changes_file(step_dir, changes_source)
+        save_changes(project_id, step_id, changes, filename="changes.jsonl")
 
-    for output_name in ("passed", "excluded", "uncertain"):
-        source_file = step_dir / "outputs" / f"{prefix}{output_name}.bib"
-        entries = load_output_entries_from_file(source_file)
-        output_file = save_output_entries(project_id, step_id, output_name, entries)
-        description = {
-            "passed": "Papers judged as 'include'",
-            "excluded": "Papers judged as 'exclude'",
-            "uncertain": "Papers judged as 'uncertain'",
-        }.get(output_name, "")
-        outputs[output_name] = StepOutput(
-            file=str(output_file.relative_to(PROJECTS_DIR / project_id)),
-            count=len(entries),
-            description=description,
+        input_count = meta.stats.input_count
+        removed_count = 0 if mode == "all" else max(0, input_count - len(passed_entries))
+        meta.outputs = outputs
+        meta.stats = StepStats(
+            input_count=input_count,
+            total_output_count=input_count,
+            passed_count=len(passed_entries),
+            removed_count=removed_count,
         )
-        total_count += len(entries)
-        if output_name == "passed":
-            passed_count = len(entries)
-        if output_name == "excluded":
-            removed_count = len(entries)
+        save_step_meta(project_id, step_id, meta)
 
-    changes_source = "changes_ai.jsonl" if mode == "ai" else "changes_human.jsonl"
-    changes = load_changes_file(step_dir, changes_source)
-    save_changes(project_id, step_id, changes, filename="changes.jsonl")
+        return {"status": "updated", "mode": mode}
 
-    meta.outputs = outputs
-    meta.stats = StepStats(
-        input_count=meta.stats.input_count,
-        total_output_count=total_count,
-        passed_count=passed_count,
-        removed_count=removed_count,
+    raise HTTPException(
+        status_code=400,
+        detail="Output mode is only supported for ai-screening and pdf-fetch",
     )
-    save_step_meta(project_id, step_id, meta)
-
-    return {"status": "updated", "mode": mode}

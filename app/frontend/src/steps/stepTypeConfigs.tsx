@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { ColumnDefinition, BibEntry } from '../components/papers';
-import { Badge } from '../components/ui/Badge';
-import { Fingerprint, Brain, Type, Users } from 'lucide-react';
+import { Fingerprint, Brain, Type, Users, FileDown } from 'lucide-react';
 import { normalizeBibtexText } from '../components/BibtexText';
 
 // Step type specific configuration
@@ -96,6 +95,182 @@ const dedupAuthorColumns = buildDedupColumns({
   duplicate_author: 'Duplicate author',
   duplicate_author_representative: 'Representative',
 });
+
+const PDF_MISSING_REASON_LABELS: Record<string, string> = {
+  pdf_not_resolved: 'No downloadable PDF found',
+  browser_assist_unresolved: 'Browser assist timed out',
+  browser_assist_unavailable: 'Browser assist unavailable',
+  browser_assist_error: 'Browser assist failed',
+  not_found: 'PDF not resolved',
+};
+
+const PDF_MISSING_REASON_HINTS: Record<string, string> = {
+  pdf_not_resolved: 'Try Re-run and complete publisher login/challenge first.',
+  browser_assist_unresolved: 'Keep browser window open until login/challenge is fully completed.',
+  browser_assist_unavailable: 'Install Playwright + Chromium in backend runtime.',
+  browser_assist_error: 'Retry once and check backend logs if this repeats.',
+  not_found: 'Try Re-run with browser assist enabled.',
+};
+
+function formatPdfMissingReason(raw: unknown, labelFromBackend: unknown): string {
+  if (typeof labelFromBackend === 'string' && labelFromBackend.trim()) {
+    return labelFromBackend;
+  }
+  const reason = typeof raw === 'string' ? raw : '';
+  if (!reason) return 'Unknown';
+  return PDF_MISSING_REASON_LABELS[reason] ?? reason;
+}
+
+const pdfFetchColumns: ColumnDefinition<BibEntry>[] = [
+  {
+    id: 'title',
+    header: 'Title',
+    width: 'flex-1 min-w-0',
+    render: (entry) => (
+      <span className="line-clamp-2" title={normalizeBibtexText(entry.title) || ''}>
+        {normalizeBibtexText(entry.title) || '(No title)'}
+      </span>
+    ),
+  },
+  {
+    id: 'author',
+    header: 'Authors',
+    width: 'w-40',
+    render: (entry) => (
+      <span className="line-clamp-1 text-sm text-[hsl(var(--muted-foreground))]" title={entry.author}>
+        {entry.author ? formatAuthors(entry.author) : '-'}
+      </span>
+    ),
+  },
+  {
+    id: 'year',
+    header: 'Year',
+    width: 'w-16 text-center',
+    render: (entry) => entry.year || '-',
+  },
+  {
+    id: 'doi',
+    header: 'DOI',
+    width: 'w-48',
+    render: (entry) => {
+      if (!entry.doi) {
+        return <span className="text-[hsl(var(--muted-foreground))] text-xs">No DOI</span>;
+      }
+      const doiUrl = entry.doi.startsWith('http')
+        ? entry.doi
+        : `https://doi.org/${entry.doi}`;
+      return (
+        <a
+          href={doiUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-[hsl(var(--status-info))] hover:underline line-clamp-1"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {doiUrl}
+        </a>
+      );
+    },
+  },
+  {
+    id: 'pdf_status',
+    header: 'PDF Status',
+    width: 'w-40',
+    render: (_, change) => {
+      const status = change?.details?.pdf_status as string | undefined;
+      const source = change?.details?.source as string | undefined;
+      if (status === 'found') {
+        return (
+          <span className="text-xs text-[hsl(var(--status-success-fg))]">
+            Found{source ? ` (${source})` : ''}
+          </span>
+        );
+      }
+      return (
+        <span className="text-xs text-[hsl(var(--status-danger-fg))] font-medium">
+          Missing
+        </span>
+      );
+    },
+  },
+  {
+    id: 'pdf_missing_reason',
+    header: 'Why Missing',
+    width: 'w-56',
+    render: (_, change) => {
+      const status = change?.details?.pdf_status as string | undefined;
+      if (status === 'found') {
+        return <span className="text-xs text-[hsl(var(--muted-foreground))]">-</span>;
+      }
+      const reasonRaw = change?.details?.missing_reason;
+      const reasonLabel = change?.details?.missing_reason_label;
+      const hintRaw = change?.details?.missing_reason_hint;
+      const reasonText = formatPdfMissingReason(reasonRaw, reasonLabel);
+      const hint = typeof hintRaw === 'string' && hintRaw.trim()
+        ? hintRaw
+        : (typeof reasonRaw === 'string' ? PDF_MISSING_REASON_HINTS[reasonRaw] : undefined);
+
+      return (
+        <div className="space-y-1">
+          <div className="text-xs text-[hsl(var(--status-danger-fg))]">{reasonText}</div>
+          {hint && (
+            <div className="text-[10px] text-[hsl(var(--muted-foreground))] line-clamp-2" title={hint}>
+              {hint}
+            </div>
+          )}
+        </div>
+      );
+    },
+  },
+  {
+    id: 'pdf_file',
+    header: 'PDF File',
+    width: 'w-28',
+    render: (_, change) => {
+      const status = change?.details?.pdf_status as string | undefined;
+      if (status !== 'found') {
+        return <span className="text-xs text-[hsl(var(--muted-foreground))]">-</span>;
+      }
+
+      const recordId = change?.details?.pdf_record_id as string | undefined;
+      const sourceUrl = change?.details?.source_url as string | undefined;
+      const downloadUrl = recordId
+        ? `/api/pdf-library/${encodeURIComponent(recordId)}/download`
+        : undefined;
+      const viewUrl = recordId
+        ? `/api/pdf-library/${encodeURIComponent(recordId)}/view`
+        : sourceUrl;
+
+      if (!viewUrl) {
+        return <span className="text-xs text-[hsl(var(--muted-foreground))]">Found</span>;
+      }
+
+      return (
+        <div className="flex flex-col gap-1">
+          <a
+            href={viewUrl}
+            target="pdf-viewer"
+            rel="noopener noreferrer"
+            className="text-xs text-[hsl(var(--status-info))] hover:underline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            View
+          </a>
+          {downloadUrl && (
+            <a
+              href={downloadUrl}
+              download
+              className="text-xs text-[hsl(var(--muted-foreground))] hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Download
+            </a>
+          )}
+        </div>
+      );
+    },
+  },
+];
 
 // Reason code display labels
 const REASON_CODE_LABELS: Record<string, { label: string; tone: 'success' | 'danger' | 'warning' }> = {
@@ -237,6 +412,10 @@ export const stepTypeConfigs: Record<string, StepTypeConfig> = {
   'dedup-author': {
     icon: <Users className="w-5 h-5" />,
     columns: dedupAuthorColumns,
+  },
+  'pdf-fetch': {
+    icon: <FileDown className="w-5 h-5" />,
+    columns: pdfFetchColumns,
   },
 };
 

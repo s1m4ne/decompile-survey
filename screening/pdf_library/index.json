@@ -1,0 +1,1600 @@
+{
+  "version": "1.0",
+  "records": {
+    "doi:10.1109/ase.2019.00064": {
+      "id": "07f3857ead9e2545",
+      "key": "doi:10.1109/ase.2019.00064",
+      "doi": "10.1109/ase.2019.00064",
+      "title": "DIRE: a neural approach to decompiled identifier naming",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/07f3857ead9e25452e348497c668c5e9b7eab458becbb40363ec6945a51ee56d.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/1909.09029",
+      "provider": "semantic_scholar",
+      "content_type": "application/pdf",
+      "size_bytes": 810346,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1109/ASE.2019.00064"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:35Z",
+      "updated_at": "2026-02-06T17:38:56Z",
+      "last_checked_at": "2026-02-06T17:38:56Z"
+    },
+    "doi:10.1109/ase56229.2023.00099": {
+      "id": "33f4a1e71a6aea2e",
+      "key": "doi:10.1109/ase56229.2023.00099",
+      "doi": "10.1109/ase56229.2023.00099",
+      "title": "HexT5: Unified Pre-Training for Stripped Binary Code Information Inference",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/33f4a1e71a6aea2e4e5e15a323ef730724598a0dd8c89eabe707c52526da8754.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10298504",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 349655,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1109/ASE56229.2023.00099"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:38Z",
+      "updated_at": "2026-02-06T17:38:56Z",
+      "last_checked_at": "2026-02-06T17:38:56Z"
+    },
+    "doi:10.1109/cgo57630.2024.10444788": {
+      "id": "36c1eb867302be72",
+      "key": "doi:10.1109/cgo57630.2024.10444788",
+      "doi": "10.1109/cgo57630.2024.10444788",
+      "title": "SLaDe: A Portable Small Language Model Decompiler for Optimized Assembly",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/36c1eb867302be725370879979fa686064705ad7d99993d1e6e32c28d57750aa.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10444788",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 385062,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1109/CGO57630.2024.10444788"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:43Z",
+      "updated_at": "2026-02-06T17:38:56Z",
+      "last_checked_at": "2026-02-06T17:38:56Z"
+    },
+    "doi:10.1145/3293880.3294102": {
+      "id": "a2ce97d9d5d2af7f",
+      "key": "doi:10.1145/3293880.3294102",
+      "doi": "10.1145/3293880.3294102",
+      "title": "Formally verified big step semantics out of x86-64 binaries",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3293880.3294102",
+        "a1",
+        "1"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 16,
+      "created_at": "2026-02-06T15:46:45Z",
+      "updated_at": "2026-02-06T17:42:05Z",
+      "last_checked_at": "2026-02-06T17:42:05Z"
+    },
+    "doi:10.1145/3658644.3691386": {
+      "id": "858b899c49845c39",
+      "key": "doi:10.1145/3658644.3691386",
+      "doi": "10.1145/3658644.3691386",
+      "title": "Poster: Formally Verified Binary Lifting to P-Code",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3658644.3691386"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:46:47Z",
+      "updated_at": "2026-02-06T17:45:13Z",
+      "last_checked_at": "2026-02-06T17:45:13Z"
+    },
+    "doi:10.1145/3691620.3695020": {
+      "id": "7774769a12eee790",
+      "key": "doi:10.1145/3691620.3695020",
+      "doi": "10.1145/3691620.3695020",
+      "title": "WaDec: Decompiling WebAssembly Using Large Language Model",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3691620.3695020"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:46:49Z",
+      "updated_at": "2026-02-06T17:48:17Z",
+      "last_checked_at": "2026-02-06T17:48:17Z"
+    },
+    "doi:10.1145/3696410.3714790": {
+      "id": "86d37750e537832c",
+      "key": "doi:10.1145/3696410.3714790",
+      "doi": "10.1145/3696410.3714790",
+      "title": "SuiGPT MAD: Move AI Decompiler to Improve Transparency and Auditability on Non-Open-Source Blockchain Smart Contract",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3696410.3714790"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:46:52Z",
+      "updated_at": "2026-02-06T17:51:23Z",
+      "last_checked_at": "2026-02-06T17:51:23Z"
+    },
+    "doi:10.1145/3729373": {
+      "id": "61ac12c7c67077d6",
+      "key": "doi:10.1145/3729373",
+      "doi": "10.1145/3729373",
+      "title": "DiSCo: Towards Decompiling EVM Bytecode to Source Code using Large Language Models",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3729373",
+        "1"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 14,
+      "created_at": "2026-02-06T15:46:53Z",
+      "updated_at": "2026-02-06T17:54:29Z",
+      "last_checked_at": "2026-02-06T17:54:29Z"
+    },
+    "doi:10.1145/3749988": {
+      "id": "eac6e31f3b6fee41",
+      "key": "doi:10.1145/3749988",
+      "doi": "10.1145/3749988",
+      "title": "REMEND: Neural Decompilation for Reverse Engineering Math Equations from Binary Executables",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10.1145/3749988"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:46:55Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/icpc58990.2023.00042": {
+      "id": "b98416d795e855d6",
+      "key": "doi:10.1109/icpc58990.2023.00042",
+      "doi": "10.1109/icpc58990.2023.00042",
+      "title": "Revisiting Deep Learning for Variable Type Recovery",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/b98416d795e855d68bf368ca6666ab116a57f1b49a4b4b69bb507c2569e6206c.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10174218",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 780095,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10174218"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:56Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/smartindustrycon61328.2024.10515515": {
+      "id": "deb4677f293af612",
+      "key": "doi:10.1109/smartindustrycon61328.2024.10515515",
+      "doi": "10.1109/smartindustrycon61328.2024.10515515",
+      "title": "GREMC: Genetic Reverse-Engineering of Machine Code to Search Vulnerabilities in Software for Industry 4.0. Predicting the Size of the Decompiling Source Code",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/deb4677f293af612d5d5cf0afd73e1d28207a6de7acb86aeebe791a72883ae4f.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10515515",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 587443,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10515515"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:57Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/sp54263.2024.00152": {
+      "id": "58eddb7c55856444",
+      "key": "doi:10.1109/sp54263.2024.00152",
+      "doi": "10.1109/sp54263.2024.00152",
+      "title": "\"Len or index or count, anything but v1\": Predicting Variable Names in Decompilation Output with Transfer Learning",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/58eddb7c558564441317592fd0b32c8791776d1ab96bee87daf8805b25f60bc5.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10646727",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 1056740,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "10646727"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:46:59Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/sp61157.2025.00052": {
+      "id": "d3bc9f4fc938ed5e",
+      "key": "doi:10.1109/sp61157.2025.00052",
+      "doi": "10.1109/sp61157.2025.00052",
+      "title": "PyLingual: Toward Perfect Decompilation of Evolving High-Level Languages",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/d3bc9f4fc938ed5e782e310303e4d4a4534c14e2446a883043b19ad31759b65a.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11023256",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 1760761,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11023256"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:00Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/sp61157.2025.00193": {
+      "id": "0d3e51d9227a730d",
+      "key": "doi:10.1109/sp61157.2025.00193",
+      "doi": "10.1109/sp61157.2025.00193",
+      "title": "TypeForge: Synthesizing and Selecting Best-Fit Composite Data Types for Stripped Binaries",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/0d3e51d9227a730d58e269b0aad29b45c43a6126e9a974706d8e40dc28416833.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11023499",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 980608,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11023499"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:01Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/icieam65163.2025.11028410": {
+      "id": "1d4723254b402013",
+      "key": "doi:10.1109/icieam65163.2025.11028410",
+      "doi": "10.1109/icieam65163.2025.11028410",
+      "title": "Reengineering Modern Industrial Software to Find Vulnerabilities Based on Genetic Algorithms",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/1d4723254b402013191aeca518ff9871ef516246bc88f56ec2344eef913958d5.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11028410",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 705626,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11028410"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:02Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/ase63991.2025.00185": {
+      "id": "489df72a9b284566",
+      "key": "doi:10.1109/ase63991.2025.00185",
+      "doi": "10.1109/ase63991.2025.00185",
+      "title": "Enhancing LLM to Decompile Optimized PTX to Readable CUDA for Tensor Programs",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/489df72a9b28456604fe01340560202c053ab401f8e099168626594dc4f74901.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11334294",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 3572806,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11334294"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:03Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/ase63991.2025.00075": {
+      "id": "dd4cc17ec9c4e4ea",
+      "key": "doi:10.1109/ase63991.2025.00075",
+      "doi": "10.1109/ase63991.2025.00075",
+      "title": "PseudoFix: Refactoring Distorted Structures in Decompiled C Pseudocode",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/dd4cc17ec9c4e4ea41852398e673cbeb433d8b2ee7c147e907f884e516fff0de.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11334626",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 1601603,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11334626"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:05Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/jiot.2026.3659328": {
+      "id": "fc0360554c235876",
+      "key": "doi:10.1109/jiot.2026.3659328",
+      "doi": "10.1109/jiot.2026.3659328",
+      "title": "DECodeT5: A Lightweight and Efficient Neural Decompiler with Assembly Semantic Assistance",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/fc0360554c2358761a5160559400f7792853f732e9cc8740137d0ac2c343a5ab.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11367734",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 1618318,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "11367734"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:06Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.1109/saner.2018.8330222": {
+      "id": "6be76519add14650",
+      "key": "doi:10.1109/saner.2018.8330222",
+      "doi": "10.1109/saner.2018.8330222",
+      "title": "Using recurrent neural networks for decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/6be76519add14650e36f8cbb4a600462a0b878dc698dc9a7b9272b590b90abb7.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=8330222",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 234931,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "8330222"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:07Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.48550/arxiv.2601.14598": {
+      "id": "5171171884c74b53",
+      "key": "doi:10.48550/arxiv.2601.14598",
+      "doi": "10.48550/arxiv.2601.14598",
+      "title": "HELIOS: Hierarchical Graph Abstraction for Structure-Aware LLM Decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/5171171884c74b532286da381e6c3193c6770f0f88e7ec91189b77d59bcc7570.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2601.14598",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 457065,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Achamyeleh2026"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:08Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "url:https://arxiv.org/abs/2509.14646v1": {
+      "id": "f3c2bd83a371fdda",
+      "key": "url:https://arxiv.org/abs/2509.14646v1",
+      "doi": null,
+      "title": "SALT4Decompile: Inferring Source-level Abstract Logic Tree for LLM-Based Binary Decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/f3c2bd83a371fddac6b300faa732a79847f625442d2aaa7345e417ecb060ee7a.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2509.14646v1",
+      "provider": "entry_arxiv",
+      "content_type": "application/pdf",
+      "size_bytes": 6175922,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "arXiv:2509.14646"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:11Z",
+      "updated_at": "2026-02-06T18:13:05Z",
+      "last_checked_at": "2026-02-06T18:13:05Z"
+    },
+    "doi:10.48550/arxiv.2103.12801": {
+      "id": "fa70980fd282db3d",
+      "key": "doi:10.48550/arxiv.2103.12801",
+      "doi": "10.48550/arxiv.2103.12801",
+      "title": "Variable Name Recovery in Decompiled Binary Code using Constrained Masked Language Modeling",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/fa70980fd282db3da73ae7708ae76bc9ecf64a3030ea61e0d5aa519032f5a844.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2103.12801",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 847363,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Banerjee2021"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:12Z",
+      "updated_at": "2026-02-06T18:31:08Z",
+      "last_checked_at": "2026-02-06T18:31:08Z"
+    },
+    "doi:10.48550/arxiv.2301.00969": {
+      "id": "8859d8a8b6011e76",
+      "key": "doi:10.48550/arxiv.2301.00969",
+      "doi": "10.48550/arxiv.2301.00969",
+      "title": "Boosting Neural Networks to Decompile Optimized Binaries",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/8859d8a8b6011e76870bbe0ad589c4641eddbe579c91763b102f4cdbab72af74.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2301.00969",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 1823448,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Cao2023"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:13Z",
+      "updated_at": "2026-02-06T19:03:56Z",
+      "last_checked_at": "2026-02-06T19:03:56Z"
+    },
+    "doi:10.48550/arxiv.2108.06363": {
+      "id": "0d6abba66650f5f0",
+      "key": "doi:10.48550/arxiv.2108.06363",
+      "doi": "10.48550/arxiv.2108.06363",
+      "title": "Augmenting Decompiler Output with Learned Variable Names and Types",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/0d6abba66650f5f0a0d26ecae1e522bb8f3b85d3ecdf27269632f8823052923c.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2108.06363",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 567713,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Chen2021"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:15Z",
+      "updated_at": "2026-02-06T19:03:57Z",
+      "last_checked_at": "2026-02-06T19:03:57Z"
+    },
+    "doi:10.48550/arxiv.2408.07181": {
+      "id": "c05e977da0f759f1",
+      "key": "doi:10.48550/arxiv.2408.07181",
+      "doi": "10.48550/arxiv.2408.07181",
+      "title": "VulCatch: Enhancing Binary Vulnerability Detection through CodeT5 Decompilation and KAN Advanced Feature Extraction",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/c05e977da0f759f12b11096d714151be1615f160c80902b52a265257c4337bb5.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2408.07181",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 2429615,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Chukkol2024"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:17Z",
+      "updated_at": "2026-02-06T19:56:30Z",
+      "last_checked_at": "2026-02-06T19:56:30Z"
+    },
+    "doi:10.48550/arxiv.2506.19624": {
+      "id": "d1f1488881fe501c",
+      "key": "doi:10.48550/arxiv.2506.19624",
+      "doi": "10.48550/arxiv.2506.19624",
+      "title": "Decompiling Smart Contracts with a Large Language Model",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/d1f1488881fe501c918822b0d5be0afc0cd6c48fc2ca97230143e7b400bb157f.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2506.19624",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 989867,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "David2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:18Z",
+      "updated_at": "2026-02-06T19:56:30Z",
+      "last_checked_at": "2026-02-06T19:56:30Z"
+    },
+    "doi:10.48550/arxiv.2406.04568": {
+      "id": "4ce3dca287dcafbb",
+      "key": "doi:10.48550/arxiv.2406.04568",
+      "doi": "10.48550/arxiv.2406.04568",
+      "title": "StackSight: Unveiling WebAssembly through Large Language Models and Neurosymbolic Chain-of-Thought Decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/4ce3dca287dcafbba36bdd1e5bd8ec1374e19648406c053e9ec9ad65d7727300.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2406.04568",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 1896064,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Fang2024"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:19Z",
+      "updated_at": "2026-02-06T19:56:32Z",
+      "last_checked_at": "2026-02-06T19:56:32Z"
+    },
+    "doi:10.48550/arxiv.2406.17233": {
+      "id": "b603b7b1705a596b",
+      "key": "doi:10.48550/arxiv.2406.17233",
+      "doi": "10.48550/arxiv.2406.17233",
+      "title": "Self-Constructed Context Decompilation with Fined-grained Alignment Enhancement",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/b603b7b1705a596bfad70027b6e60aa7c6bfcfd49c29dcc2dd48b1b0611c49a5.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2406.17233",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 724936,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Feng2024"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:20Z",
+      "updated_at": "2026-02-06T19:56:33Z",
+      "last_checked_at": "2026-02-06T19:56:33Z"
+    },
+    "doi:10.48550/arxiv.2502.12221": {
+      "id": "ecb6d28b49e346f9",
+      "key": "doi:10.48550/arxiv.2502.12221",
+      "doi": "10.48550/arxiv.2502.12221",
+      "title": "ReF Decompile: Relabeling and Function Call Enhanced Decompile",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/ecb6d28b49e346f98a71baf0ca4b9d8ac7b2cf38b17e30352fd295b7fe94d30d.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2502.12221",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 971648,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Feng2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:21Z",
+      "updated_at": "2026-02-06T19:56:34Z",
+      "last_checked_at": "2026-02-06T19:56:34Z"
+    },
+    "doi:10.48550/arxiv.1906.12029": {
+      "id": "4f62f2aeb85a13a8",
+      "key": "doi:10.48550/arxiv.1906.12029",
+      "doi": "10.48550/arxiv.1906.12029",
+      "title": "A Neural-based Program Decompiler",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/4f62f2aeb85a13a82a4134774ec76b05fabf046bc10d98a5d9416aeba5af7b73.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/1906.12029",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 556781,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Fu2019"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:23Z",
+      "updated_at": "2026-02-06T19:56:35Z",
+      "last_checked_at": "2026-02-06T19:56:35Z"
+    },
+    "doi:10.48550/arxiv.2212.08950": {
+      "id": "a1d5d326677b00f5",
+      "key": "doi:10.48550/arxiv.2212.08950",
+      "doi": "10.48550/arxiv.2212.08950",
+      "title": "Beyond the C: Retargetable Decompilation using Neural Machine Translation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/a1d5d326677b00f5e2b5b148dd2a9adcecd9e8576b5d077bd338a14da80081e1.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2212.08950",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 420011,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Hosseini2022"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:24Z",
+      "updated_at": "2026-02-06T19:56:37Z",
+      "last_checked_at": "2026-02-06T19:56:37Z"
+    },
+    "doi:10.48550/arxiv.2311.13721": {
+      "id": "457bd4760d6c12da",
+      "key": "doi:10.48550/arxiv.2311.13721",
+      "doi": "10.48550/arxiv.2311.13721",
+      "title": "Nova: Generative Language Models for Assembly Code with Hierarchical Attention and Contrastive Learning",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/457bd4760d6c12da850255910b0203497158a8bd8111e2d344954c415bd2270a.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2311.13721",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 2400417,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Jiang2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:26Z",
+      "updated_at": "2026-02-06T19:56:37Z",
+      "last_checked_at": "2026-02-06T19:56:37Z"
+    },
+    "doi:10.48550/arxiv.1905.08325": {
+      "id": "39c2e3d37999ffbf",
+      "key": "doi:10.48550/arxiv.1905.08325",
+      "doi": "10.48550/arxiv.1905.08325",
+      "title": "Towards Neural Decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/39c2e3d37999ffbf759daad9f896b2a0f3533b8b8b8de00b7a5f61ab278e8e29.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/1905.08325",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 914736,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Katz2019"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:27Z",
+      "updated_at": "2026-02-06T19:56:38Z",
+      "last_checked_at": "2026-02-06T19:56:38Z"
+    },
+    "doi:10.48550/arxiv.1908.06748": {
+      "id": "4c3625188257a561",
+      "key": "doi:10.48550/arxiv.1908.06748",
+      "doi": "10.48550/arxiv.1908.06748",
+      "title": "Adabot: Fault-Tolerant Java Decompiler",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/4c3625188257a561fd9f98c9434b4efec742076d67620b9b270c24b7da24de86.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/1908.06748",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 743309,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Li2019"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:29Z",
+      "updated_at": "2026-02-06T19:56:40Z",
+      "last_checked_at": "2026-02-06T19:56:40Z"
+    },
+    "doi:10.48550/arxiv.2509.06052": {
+      "id": "1ee764c97434bccf",
+      "key": "doi:10.48550/arxiv.2509.06052",
+      "doi": "10.48550/arxiv.2509.06052",
+      "title": "Empirical Study of Code Large Language Models for Binary Security Patch Detection",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/1ee764c97434bccfb877f3a34a021f3f04f2c48431908c4818c758bf96b4c3c6.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2509.06052",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 1704024,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Li2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:30Z",
+      "updated_at": "2026-02-06T19:56:40Z",
+      "last_checked_at": "2026-02-06T19:56:40Z"
+    },
+    "doi:10.48550/arxiv.2112.15491": {
+      "id": "27b1f9d00e680119",
+      "key": "doi:10.48550/arxiv.2112.15491",
+      "doi": "10.48550/arxiv.2112.15491",
+      "title": "Semantics-Recovering Decompilation through Neural Machine Translation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/27b1f9d00e680119e6b3055d1b4ba8fc9b98730cf48473396b48e5076689d5e6.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2112.15491",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 849648,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Liang2021"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:31Z",
+      "updated_at": "2026-02-06T19:56:41Z",
+      "last_checked_at": "2026-02-06T19:56:41Z"
+    },
+    "doi:10.48550/arxiv.2210.01075": {
+      "id": "3fe009cceb1c8eaa",
+      "key": "doi:10.48550/arxiv.2210.01075",
+      "doi": "10.48550/arxiv.2210.01075",
+      "title": "Decompiling x86 Deep Neural Network Executables",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/3fe009cceb1c8eaab565de9eeca502befb46243fcee671f32bafd49f15adf2f8.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2210.01075",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 2256659,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Liu2022"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:34Z",
+      "updated_at": "2026-02-06T19:56:43Z",
+      "last_checked_at": "2026-02-06T19:56:43Z"
+    },
+    "doi:10.48550/arxiv.2503.07215": {
+      "id": "f32c099b8b25fc09",
+      "key": "doi:10.48550/arxiv.2503.07215",
+      "doi": "10.48550/arxiv.2503.07215",
+      "title": "The CodeInverter Suite: Control-Flow and Data-Mapping Augmented Binary Decompilation with LLMs",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/f32c099b8b25fc0984e4eddf6ff4e020124bf94c38e542e8c7ef90a04b870dfd.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2503.07215",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 565705,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Liu2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:35Z",
+      "updated_at": "2026-02-06T19:56:44Z",
+      "last_checked_at": "2026-02-06T19:56:44Z"
+    },
+    "doi:10.48550/arxiv.2601.16681": {
+      "id": "7f1d94cdda8f9d59",
+      "key": "doi:10.48550/arxiv.2601.16681",
+      "doi": "10.48550/arxiv.2601.16681",
+      "title": "From Transactions to Exploits: Automated PoC Synthesis for Real-World DeFi Attacks",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/7f1d94cdda8f9d596b9887cf68d9cad62caef53ae341fdc1f5175361c8a8e426.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2601.16681",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 1003711,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Su2026"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:36Z",
+      "updated_at": "2026-02-06T19:56:44Z",
+      "last_checked_at": "2026-02-06T19:56:44Z"
+    },
+    "doi:10.48550/arxiv.2207.03578": {
+      "id": "df20e0b50eb35a2c",
+      "key": "doi:10.48550/arxiv.2207.03578",
+      "doi": "10.48550/arxiv.2207.03578",
+      "title": "Code Translation with Compiler Representations",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/df20e0b50eb35a2cd8389587290d884ccf042bd985aa2b3db7b944aee08950fb.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2207.03578",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 908754,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Szafraniec2023"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:37Z",
+      "updated_at": "2026-02-06T19:56:45Z",
+      "last_checked_at": "2026-02-06T19:56:45Z"
+    },
+    "doi:10.48550/arxiv.2403.05286": {
+      "id": "5a26e00b7038afe8",
+      "key": "doi:10.48550/arxiv.2403.05286",
+      "doi": "10.48550/arxiv.2403.05286",
+      "title": "LLM4Decompile: Decompiling Binary Code with Large Language Models",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/5a26e00b7038afe895c4b354b8b50656a4532a674930400d267b863067975ea0.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2403.05286",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 763263,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Tan2024"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:38Z",
+      "updated_at": "2026-02-06T19:56:47Z",
+      "last_checked_at": "2026-02-06T19:56:47Z"
+    },
+    "doi:10.48550/arxiv.2505.12668": {
+      "id": "cc5eaf34900b248d",
+      "key": "doi:10.48550/arxiv.2505.12668",
+      "doi": "10.48550/arxiv.2505.12668",
+      "title": "Decompile-Bench: Million-Scale Binary-Source Function Pairs for Real-World Binary Decompilation",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/cc5eaf34900b248df6f67e0f09820080db4d4ef7c47da64d0611d07334dc9da9.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2505.12668",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 734132,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Tan2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:40Z",
+      "updated_at": "2026-02-06T19:56:47Z",
+      "last_checked_at": "2026-02-06T19:56:47Z"
+    },
+    "doi:10.48550/arxiv.2410.00061": {
+      "id": "287cb11c7aae1256",
+      "key": "doi:10.48550/arxiv.2410.00061",
+      "doi": "10.48550/arxiv.2410.00061",
+      "title": "Neural Decompiling of Tracr Transformers",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/287cb11c7aae1256d3408502910cca4e24a56cfe443e4c67ba6fbf07bae76440.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2410.00061",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 677318,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Thurnherr2024"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:47:41Z",
+      "updated_at": "2026-02-06T19:56:48Z",
+      "last_checked_at": "2026-02-06T19:56:48Z"
+    },
+    "doi:10.48550/arxiv.2310.06530": {
+      "id": "9ef5ddda9a44bf9c",
+      "key": "doi:10.48550/arxiv.2310.06530",
+      "doi": "10.48550/arxiv.2310.06530",
+      "title": "Refining Decompiled C Code with Large Language Models",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/9ef5ddda9a44bf9c4faf7da0c92da02f3d5cceeec353ba26d51fbc260e38ca72.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2310.06530",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 1333025,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Wong2023"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:42Z",
+      "updated_at": "2026-02-06T19:56:50Z",
+      "last_checked_at": "2026-02-06T19:56:50Z"
+    },
+    "doi:10.1049/cje.2017.09.003": {
+      "id": "498a2b91e6dedf58",
+      "key": "doi:10.1049/cje.2017.09.003",
+      "doi": "10.1049/cje.2017.09.003",
+      "title": "Control Structure Analysis and Recovery of Embedded Binaries",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:000415662500002"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:47:43Z",
+      "updated_at": "2026-02-06T20:14:40Z",
+      "last_checked_at": "2026-02-06T20:14:40Z"
+    },
+    "doi:10.1186/s42400-021-00070-0": {
+      "id": "ac8fd3dd0a69954b",
+      "key": "doi:10.1186/s42400-021-00070-0",
+      "doi": "10.1186/s42400-021-00070-0",
+      "title": "Neutron: an attention-based neural decompiler",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/ac8fd3dd0a69954b73dd0c863af3580df94e2200e5b6e03417de74171d17b3a8.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://link.springer.com/content/pdf/10.1186/s42400-021-00070-0.pdf",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 1661695,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:000672841700001"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:50Z",
+      "updated_at": "2026-02-06T20:14:40Z",
+      "last_checked_at": "2026-02-06T20:14:40Z"
+    },
+    "doi:10.1109/tse.2021.3106572": {
+      "id": "4402ae5f1e44b621",
+      "key": "doi:10.1109/tse.2021.3106572",
+      "doi": "10.1109/tse.2021.3106572",
+      "title": "Learning to Find Usages of Library Functions in Optimized Binaries",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/4402ae5f1e44b621a21b2fa97204c64e2455f004a570b878d228d04b3c6c7c45.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2103.05221",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 4373504,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:000870301800008"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:47:55Z",
+      "updated_at": "2026-02-06T20:57:36Z",
+      "last_checked_at": "2026-02-06T20:57:36Z"
+    },
+    "doi:10.1145/3546946": {
+      "id": "c94bdf8377052bc2",
+      "key": "doi:10.1145/3546946",
+      "doi": "10.1145/3546946",
+      "title": "DIRE and its Data: Neural Decompiled Variable Renamings with Respect to\nSoftware Class",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/c94bdf8377052bc225b85aa14b76c0eba8831f6aac2316b4699feee7e6a1b27a.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://dl.acm.org/doi/pdf/10.1145/3546946",
+      "provider": "openalex",
+      "content_type": "application/pdf;charset=utf-8",
+      "size_bytes": 2167228,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:000970588900012"
+      ],
+      "missing_reason": null,
+      "failure_count": 8,
+      "created_at": "2026-02-06T15:47:56Z",
+      "updated_at": "2026-02-06T20:57:36Z",
+      "last_checked_at": "2026-02-06T20:57:36Z"
+    },
+    "doi:10.1142/s0218194024500463": {
+      "id": "d52b74613a3c0349",
+      "key": "doi:10.1142/s0218194024500463",
+      "doi": "10.1142/s0218194024500463",
+      "title": "IRaDT: LLVM IR as Target for Efficient Neural Decompilation",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:001332656400001"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:47:57Z",
+      "updated_at": "2026-02-06T21:14:43Z",
+      "last_checked_at": "2026-02-06T21:14:43Z"
+    },
+    "doi:10.1142/s021819402550024x": {
+      "id": "e57015308766c02c",
+      "key": "doi:10.1142/s021819402550024x",
+      "doi": "10.1142/s021819402550024x",
+      "title": "Modernizing 90s Era Software to a New Language and Environment Using\nLLMs - An Empirical Investigation",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:001539888300001"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:47:59Z",
+      "updated_at": "2026-02-06T21:58:44Z",
+      "last_checked_at": "2026-02-06T21:58:44Z"
+    },
+    "doi:10.3390/electronics14224442": {
+      "id": "a387b602aadec463",
+      "key": "doi:10.3390/electronics14224442",
+      "doi": "10.3390/electronics14224442",
+      "title": "Interactive End-to-End Decompilation via Large Language Models",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:001623665300001"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:48:00Z",
+      "updated_at": "2026-02-06T22:18:42Z",
+      "last_checked_at": "2026-02-06T22:18:42Z"
+    },
+    "doi:10.1109/tse.2025.3623325": {
+      "id": "a9f89869dea4e105",
+      "key": "doi:10.1109/tse.2025.3623325",
+      "doi": "10.1109/tse.2025.3623325",
+      "title": "Augmenting Smart Contract Decompiler Output Through Fine-Grained\nDependency Analysis and LLM-Facilitated Semantic Recovery",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/a9f89869dea4e105f0b70f8b335e81b06cf6d31d5ab3eaee26700b77f3706d36.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=11207559",
+      "provider": "ieee_stamp_pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 2665419,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:001639031400025"
+      ],
+      "missing_reason": null,
+      "failure_count": 1,
+      "created_at": "2026-02-06T15:48:02Z",
+      "updated_at": "2026-02-06T22:18:42Z",
+      "last_checked_at": "2026-02-06T22:18:42Z"
+    },
+    "doi:10.3390/electronics15010008": {
+      "id": "e1e9e36103d4e000",
+      "key": "doi:10.3390/electronics15010008",
+      "doi": "10.3390/electronics15010008",
+      "title": "Research on Binary Decompilation Optimization Based on Fine-Tuned Large\nLanguage Models for Vulnerability Detection",
+      "status": "missing",
+      "pdf_path": null,
+      "managed_file": false,
+      "source": null,
+      "source_url": null,
+      "provider": null,
+      "content_type": null,
+      "size_bytes": null,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "WOS:001657340000001"
+      ],
+      "missing_reason": "browser_assist_unresolved",
+      "failure_count": 12,
+      "created_at": "2026-02-06T15:48:03Z",
+      "updated_at": "2026-02-06T23:16:40Z",
+      "last_checked_at": "2026-02-06T23:16:40Z"
+    },
+    "doi:10.48550/arxiv.2312.05275": {
+      "id": "744012a05618cde9",
+      "key": "doi:10.48550/arxiv.2312.05275",
+      "doi": "10.48550/arxiv.2312.05275",
+      "title": "Exploring the Limits of ChatGPT in Software Security Applications",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/744012a05618cde941874bcc36ece96c8a02f027f919e75d44673ca9655d8a97.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2312.05275",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 2065277,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Wu2023"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:48:05Z",
+      "updated_at": "2026-02-06T23:32:54Z",
+      "last_checked_at": "2026-02-06T23:32:54Z"
+    },
+    "doi:10.48550/arxiv.2504.08310": {
+      "id": "b6c649d42ec38157",
+      "key": "doi:10.48550/arxiv.2504.08310",
+      "doi": "10.48550/arxiv.2504.08310",
+      "title": "DeQompile: quantum circuit decompilation using genetic programming for explainable quantum architecture search",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/b6c649d42ec38157b469c29fb55d5efaeacd0e4a71047003b1ca399f70c7d5ea.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2504.08310",
+      "provider": "doi_resolver_html",
+      "content_type": "application/pdf",
+      "size_bytes": 850685,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Xie2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:48:06Z",
+      "updated_at": "2026-02-07T00:00:31Z",
+      "last_checked_at": "2026-02-07T00:00:31Z"
+    },
+    "doi:10.48550/arxiv.2506.10125": {
+      "id": "f847582ce6a78e50",
+      "key": "doi:10.48550/arxiv.2506.10125",
+      "doi": "10.48550/arxiv.2506.10125",
+      "title": "D-LiFT: Improving LLM-based Decompiler Backend via Code Quality-driven Fine-tuning",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/f847582ce6a78e509ae142bf3601239f71bfb204b421e2d4608cc128479c8692.pdf",
+      "managed_file": true,
+      "source": "cache",
+      "source_url": "https://arxiv.org/pdf/2506.10125",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 1599946,
+      "project_ids": [
+        "20260206_000828"
+      ],
+      "step_ids": [
+        "pdf_fetch"
+      ],
+      "entry_keys": [
+        "Zou2025"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T15:48:08Z",
+      "updated_at": "2026-02-07T00:00:31Z",
+      "last_checked_at": "2026-02-07T00:00:31Z"
+    },
+    "doi:10.1109/5.771073": {
+      "id": "c1ccc27423f8b84a",
+      "key": "doi:10.1109/5.771073",
+      "doi": "10.1109/5.771073",
+      "title": "sample",
+      "status": "found",
+      "pdf_path": "/Users/matsulab/univ/01_lab/02_projects/decompile_survey/decompile-survey/screening/pdf_library/files/c1ccc27423f8b84a465ecc6729cec93ccd8ca08c3e77032efbfa04bf6b7543fd.pdf",
+      "managed_file": true,
+      "source": "download",
+      "source_url": "https://arxiv.org/pdf/2305.07894",
+      "provider": "openalex",
+      "content_type": "application/pdf",
+      "size_bytes": 2329515,
+      "project_ids": [],
+      "step_ids": [],
+      "entry_keys": [
+        "x1"
+      ],
+      "missing_reason": null,
+      "failure_count": 0,
+      "created_at": "2026-02-06T16:03:30Z",
+      "updated_at": "2026-02-06T16:03:30Z",
+      "last_checked_at": "2026-02-06T16:03:30Z"
+    }
+  }
+}

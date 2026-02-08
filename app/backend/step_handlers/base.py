@@ -6,7 +6,7 @@ Each step type should inherit from StepHandler and implement the run() method.
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Callable
 
 
 @dataclass
@@ -45,6 +45,9 @@ class StepTypeInfo:
     config_schema: dict[str, Any]
 
 
+ProgressCallback = Callable[[int, int, str | None], None]
+
+
 class StepHandler(ABC):
     """Base class for step handlers."""
 
@@ -64,7 +67,12 @@ class StepHandler(ABC):
         return {"type": "object", "properties": {}}
 
     @abstractmethod
-    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+    def run(
+        self,
+        input_entries: list[dict],
+        config: dict,
+        progress_callback: ProgressCallback | None = None,
+    ) -> StepResult:
         """
         Run the step on input entries.
 

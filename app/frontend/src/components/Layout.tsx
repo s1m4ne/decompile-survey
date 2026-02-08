@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
 import { useTheme } from '../lib/theme';
-import { FolderOpen, Layers, Sun, Moon, Monitor, Github, Database } from 'lucide-react';
+import { FolderOpen, Layers, Sun, Moon, Monitor, Github, Database, Library } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ export function Layout({ children }: LayoutProps) {
   const navItems = [
     { path: '/', label: 'Projects', icon: FolderOpen },
     { path: '/imports', label: 'Imports', icon: Database },
+    { path: '/pdf-library', label: 'PDF Library', icon: Library },
     { path: '/step-types', label: 'Step Types', icon: Layers },
   ];
 

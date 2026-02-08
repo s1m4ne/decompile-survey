@@ -6,7 +6,7 @@ Clusters entries by title similarity and keeps a representative entry per cluste
 
 from __future__ import annotations
 
-from .base import StepHandler, StepResult, OutputDefinition, Change
+from .base import StepHandler, StepResult, OutputDefinition, Change, ProgressCallback
 from . import register_step_type
 from .dedup_utils import (
     normalize_title,
@@ -52,8 +52,16 @@ class DedupTitleHandler(StepHandler):
             },
         }
 
-    def run(self, input_entries: list[dict], config: dict) -> StepResult:
+    def run(
+        self,
+        input_entries: list[dict],
+        config: dict,
+        progress_callback: ProgressCallback | None = None,
+    ) -> StepResult:
         threshold = float(config.get("similarity_threshold", 0.9))
+        total_entries = len(input_entries)
+        if progress_callback:
+            progress_callback(0, total_entries, "Building title clusters")
         normalized_titles = [normalize_title(entry.get("title", "")) for entry in input_entries]
         clusters = cluster_by_threshold(normalized_titles, threshold, title_similarity)
 
@@ -62,6 +70,7 @@ class DedupTitleHandler(StepHandler):
         changes: list[Change] = []
         clusters_payload: list[dict] = []
 
+        processed_entries = 0
         for index, member_indices in enumerate(clusters, start=1):
             cluster_entries_list = [input_entries[i] for i in member_indices]
             if len(member_indices) == 1:
@@ -74,6 +83,9 @@ class DedupTitleHandler(StepHandler):
                     reason="unique_title",
                     details={"cluster_id": None},
                 ))
+                processed_entries += 1
+                if progress_callback:
+                    progress_callback(processed_entries, total_entries, "Deduplicating titles")
                 continue
 
             representative_index = pick_representative(member_indices, input_entries)
@@ -137,6 +149,9 @@ class DedupTitleHandler(StepHandler):
                 "average_similarity": sum(m["similarity"] for m in cluster_members_payload) / len(cluster_members_payload),
                 "members": cluster_members_payload,
             })
+            processed_entries += len(member_indices)
+            if progress_callback:
+                progress_callback(processed_entries, total_entries, "Deduplicating titles")
 
         clusters_payload.sort(key=lambda item: (item["average_similarity"], normalize_title(item["representative_title"])))
 
