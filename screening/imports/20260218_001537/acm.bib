@@ -1,3 +1,39 @@
+@article{10.1145/3461668,
+author = {Bourbouh, Hamza and Garoche, Pierre-Lo\"{\i}c and Garion, Christophe and Thirioux, Xavier},
+title = {From Lustre to Simulink: Reverse Compilation for Embedded Systems Applications},
+year = {2021},
+issue_date = {July 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {5},
+number = {3},
+issn = {2378-962X},
+url = {https://doi.org/10.1145/3461668},
+doi = {10.1145/3461668},
+abstract = {Model-based design is now unavoidable when building embedded systems and, more specifically, controllers. Among the available model languages, the synchronous dataflow paradigm, as implemented in languages such as MATLAB Simulink or ANSYS SCADE, has become predominant in critical embedded system industries. Both of these frameworks are used to design the controller itself but also provide code generation means, enabling faster deployment to target and easier V&amp;V activities performed earlier in the design process, at the model level. Synchronous models also ease the definition of formal specification through the use of synchronous observers, attaching requirements to the model in the very same language, mastered by engineers and tooled with simulation means or code generation.However, few works address the automatic synthesis of MATLAB Simulink annotations from lower-level models or code. This article presents a compilation process from Lustre models to genuine MATLAB Simulink, without the need to rely on external C functions or MATLAB functions. This translation is based on the modular compilation of Lustre to imperative code and preserves the hierarchy of the input Lustre model within the generated Simulink one. We implemented the approach and used it to validate a compilation toolchain, mapping Simulink to Lustre and then C, thanks to equivalence testing and checking. This backward compilation from Lustre to Simulink also provides the ability to produce automatically Simulink components modeling specification, proof arguments, or test cases coverage criteria.},
+journal = {ACM Trans. Cyber-Phys. Syst.},
+month = jul,
+articleno = {31},
+numpages = {20},
+keywords = {translation validation, formal verification, equivalence checking, Simulink, Model-based design}
+}
+
+@inproceedings{10.1109/ICSE.2019.00120,
+author = {Grech, Neville and Brent, Lexi and Scholz, Bernhard and Smaragdakis, Yannis},
+title = {Gigahorse: thorough, declarative decompilation of smart contracts},
+year = {2019},
+publisher = {IEEE Press},
+url = {https://doi.org/10.1109/ICSE.2019.00120},
+doi = {10.1109/ICSE.2019.00120},
+abstract = {The rise of smart contracts---autonomous applications running on blockchains---has led to a growing number of threats, necessitating sophisticated program analysis. However, smart contracts, which transact valuable tokens and cryptocurrencies, are compiled to very low-level bytecode. This bytecode is the ultimate semantics and means of enforcement of the contract.We present the Gigahorse toolchain. At its core is a reverse compiler (i.e., a decompiler) that decompiles smart contracts from Ethereum Virtual Machine (EVM) bytecode into a high-level 3-address code representation. The new intermediate representation of smart contracts makes implicit data- and control-flow dependencies of the EVM bytecode explicit. Decompilation obviates the need for a contract's source and allows the analysis of both new and deployed contracts.Gigahorse advances the state of the art on several fronts. It gives the highest analysis precision and completeness among decompilers for Ethereum smart contracts---e.g., Gigahorse can decompile over 99.98% of deployed contracts, compared to 88% for the recently-published Vandal decompiler and under 50% for the state-of-the-practice Porosity decompiler. Importantly, Gigahorse offers a full-featured toolchain for further analyses (and a "batteries included" approach, with multiple clients already implemented), together with the highest performance and scalability. Key to these improvements is Gigahorse's use of a declarative, logic-based specification, which allows high-level insights to inform low-level decompilation.},
+booktitle = {Proceedings of the 41st International Conference on Software Engineering},
+pages = {1176–1186},
+numpages = {11},
+keywords = {blockchain, decompilation, ethereum, program analysis},
+location = {Montreal, Quebec, Canada},
+series = {ICSE '19}
+}
+
 @inproceedings{10.1145/3719027.3765040,
 author = {Wiedemeier, Joshua and Klancher, Simon and Flores, Joel and Zheng, Max and Park, Jaehyun and Cha, Sang Kil and Jee, Kangkook},
 title = {Walking The Last Mile: Studying Decompiler Output Correction in Practice},
@@ -267,7 +303,7 @@ journal = {Proc. ACM Softw. Eng.},
 month = jul,
 articleno = {18},
 numpages = {23},
-keywords = {Code Metric, Code Readability, Decompiled Code, Decompiler}
+keywords = {Code Readability, Code Metric, Decompiled Code, Decompiler}
 }
 
 @article{10.1145/3649860,
@@ -306,6 +342,24 @@ location = {Edinburgh, United Kingdom},
 series = {CGO '24}
 }
 
+@inproceedings{10.1145/3570353.3570359,
+author = {Tanabe, Yudai and Lubis, Luthfun Anshar and Aotani, Tomoyuki and Masuhara, Hidehiko},
+title = {A Step toward Programming with Versions in Real-World Functional Languages},
+year = {2022},
+isbn = {9781450399869},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3570353.3570359},
+doi = {10.1145/3570353.3570359},
+abstract = {λVL is a core calculus based on the concept of programming with versions that supports multiple versions of program definitions and values inherently in the semantics of a language. However, since λVL was not designed as a surface language, its complex syntax and semantics only provide primitive constructs to manipulate versioned values. In order to realize the programming with versions concept in a real-world language, we propose a compilation method for functional languages through λVL and discuss how real-world programs can be written in a Haskell-like functional language with versions.},
+booktitle = {Proceedings of the 14th ACM International Workshop on Context-Oriented Programming and Advanced Modularity},
+pages = {44–51},
+numpages = {8},
+keywords = {software product lines, dependencies, Program evolution, Graded modal types, Coeffects},
+location = {Berlin, Germany},
+series = {COP '22}
+}
+
 @article{10.1145/3591237,
 author = {Sisco, Zachary D. and Balkind, Jonathan and Sherwood, Timothy and Hardekopf, Ben},
 title = {Loop Rerolling for Hardware Decompilation},
@@ -322,7 +376,7 @@ journal = {Proc. ACM Program. Lang.},
 month = jun,
 articleno = {123},
 numpages = {23},
-keywords = {hardware decompilation, loop rerolling, program synthesis}
+keywords = {program synthesis, loop rerolling, hardware decompilation}
 }
 
 @article{10.1145/3546946,
@@ -342,7 +396,7 @@ journal = {ACM Trans. Softw. Eng. Methodol.},
 month = mar,
 articleno = {39},
 numpages = {34},
-keywords = {Machine learning, decompilation, data provenance}
+keywords = {data provenance, decompilation, Machine learning}
 }
 
 @inproceedings{10.1145/3582016.3582058,
@@ -358,9 +412,25 @@ abstract = {Manually writing parallel programs is difficult and error-prone.   A
 booktitle = {Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3},
 pages = {679–693},
 numpages = {15},
-keywords = {collaborative parallelization, decompilation},
+keywords = {decompilation, collaborative parallelization},
 location = {Vancouver, BC, Canada},
 series = {ASPLOS 2023}
+}
+
+@inproceedings{10.5555/1357910.1358025,
+author = {Gremzow, Carsten},
+title = {Compiled low-level virtual instruction set simulation and profiling for code partitioning and ASIP-synthesis in hardware/software co-design},
+year = {2007},
+isbn = {1565553160},
+publisher = {Society for Computer Simulation International},
+address = {San Diego, CA, USA},
+abstract = {We present ongoing work and first results in static and detailed quantitative runtime analysis of LLVM byte code for the purpose of automatic procedural level partitioning and co-synthesis of complex software systems. Runtime behaviour is captured by reverse compilation of LLVM bytecode into augmented, self-profiling ANSI-C simulator programs retaining the LLVM instruction level. The actual global data flow is captured both in quantity and value range to guide function unit layout in the synthesis of application specific processors. Currently the implemented tool LLILA (Low Level Intermediate Language Analyzer) focuses on static code analysis on the inter-procedural data flow via e.g. function parameters and global variables to uncover a program's potential paths of data exchange.},
+booktitle = {Proceedings of the 2007 Summer Computer Simulation Conference},
+pages = {741–748},
+numpages = {8},
+keywords = {quantitative dataflow analysis, profiling, instruction set architecture simulation, hardware/software co-synthesis, coarse-grained parallelism, LLVM},
+location = {San Diego, California},
+series = {SCSC '07}
 }
 
 @inproceedings{10.1145/3564625.3567998,
@@ -414,7 +484,7 @@ journal = {Proc. ACM Program. Lang.},
 month = apr,
 articleno = {77},
 numpages = {27},
-keywords = {Blockchain, Datalog, Decompilation, Ethereum, Program Analysis, Security, Smart Contracts}
+keywords = {Smart Contracts, Security, Program Analysis, Ethereum, Decompilation, Datalog, Blockchain}
 }
 
 @inproceedings{10.1145/3320269.3384766,
@@ -430,7 +500,7 @@ abstract = {Decompilers are fundamental tools to perform security assessments of
 booktitle = {Proceedings of the 15th ACM Asia Conference on Computer and Communications Security},
 pages = {637–651},
 numpages = {15},
-keywords = {control flow restructuring, decompilation, goto, reverse engineering},
+keywords = {reverse engineering, goto, decompilation, control flow restructuring},
 location = {Taipei, Taiwan},
 series = {ASIA CCS '20}
 }
@@ -448,7 +518,7 @@ abstract = {A C decompiler converts an executable (the output from a C compiler)
 booktitle = {Proceedings of the 29th ACM SIGSOFT International Symposium on Software Testing and Analysis},
 pages = {475–487},
 numpages = {13},
-keywords = {Decompiler, Reverse Engineering, Software Testing},
+keywords = {Software Testing, Reverse Engineering, Decompiler},
 location = {Virtual Event, USA},
 series = {ISSTA 2020}
 }
@@ -470,6 +540,24 @@ location = {Gothenburg, Sweden},
 series = {ICPC '18}
 }
 
+@inproceedings{10.1145/3106237.3121274,
+author = {Jaffe, Alan},
+title = {Suggesting meaningful variable names for decompiled code: a machine translation approach},
+year = {2017},
+isbn = {9781450351058},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3106237.3121274},
+doi = {10.1145/3106237.3121274},
+abstract = {Decompiled code lacks meaningful variable names. We used statistical machine translation to suggest variable names that are natural given the context. This technique has previously been successfully applied to obfuscated JavaScript code, but decompiled C code poses unique challenges in constructing an aligned corpus and selecting the best translation from among several candidates.},
+booktitle = {Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering},
+pages = {1050–1052},
+numpages = {3},
+keywords = {Statistical machine translation, Reverse engineering, Decompilation},
+location = {Paderborn, Germany},
+series = {ESEC/FSE 2017}
+}
+
 @article{10.1145/3236794,
 author = {Nandi, Chandrakana and Wilcox, James R. and Panchekha, Pavel and Blau, Taylor and Grossman, Dan and Tatlock, Zachary},
 title = {Functional programming for compiling and decompiling computer-aided design},
@@ -486,7 +574,61 @@ journal = {Proc. ACM Program. Lang.},
 month = jul,
 articleno = {99},
 numpages = {31},
-keywords = {3D printing, denotational semantics, language design, program synthesis}
+keywords = {program synthesis, language design, denotational semantics, 3D printing}
+}
+
+@inproceedings{10.1145/2856636.2856651,
+author = {Nanda, Mangala Gowri and Arun-Kumar, S.},
+title = {Decompiling Boolean Expressions from Java™ Bytecode},
+year = {2016},
+isbn = {9781450340182},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2856636.2856651},
+doi = {10.1145/2856636.2856651},
+abstract = {Java bytecode obfuscates the original structure of a Java expression in the source code. So a simple expression such as (c1 || c2) or (c1 &amp;&amp; c2) may be captured in the bytecode in 4 different ways (as shown in the paper). And correspondingly, when we reconvert the bytecode back into Java source code, there are four different ways this may happen. Further, although gotos are not permitted in the Java source code, the bytecode is full of gotos. If you were to blindly convert the bytecode into Java source code, then you would replace a goto by a labeled break. A labeled break has the advantage that it only allows you to break out of a block structure and (unlike a setjump) does not permit you to jump arbitrarily into a block structure. So while the data structures used in the regenerated Java source code are still relatively "clean" arbitrary usage of labeled breaks makes for unreadable code (as we show in the paper). And this can be a point of concern, since decompilation is generally related to debugging code.Instead of dumping arbitrary labeled breaks, we try to reconstruct the original expression, in terms of &amp;&amp; and || clauses as well as ternary operators "?:" (c0 ? c1 : c2); Thus our goal is quite simply to regenerate, without using goto or labeled breaks, the expressions as close to the original as possible (it is not possible to guarantee an exact match). In this paper we explain what is the state of the art in Java decompilers for decoding complex expressions. Then we will present our solution. We have implemented the algorithms described here in this paper and give you our experience with it.},
+booktitle = {Proceedings of the 9th India Software Engineering Conference},
+pages = {59–69},
+numpages = {11},
+keywords = {decompilation, boolean expressions, Java bytecode},
+location = {Goa, India},
+series = {ISEC '16}
+}
+
+@inproceedings{10.1145/2837614.2837633,
+author = {Robbins, Ed and King, Andy and Schrijvers, Tom},
+title = {From MinX to MinC: semantics-driven decompilation of recursive datatypes},
+year = {2016},
+isbn = {9781450335492},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2837614.2837633},
+doi = {10.1145/2837614.2837633},
+abstract = {Reconstructing the meaning of a program from its binary executable is known as reverse engineering; it has a wide range of applications in software security, exposing piracy, legacy systems, etc. Since reversing is ultimately a search for meaning, there is much interest in inferring a type (a meaning) for the elements of a binary in a consistent way. Unfortunately existing approaches do not guarantee any semantic relevance for their reconstructed types. This paper presents a new and semantically-founded approach that provides strong guarantees for the reconstructed types. Key to our approach is the derivation of a witness program in a high-level language alongside the reconstructed types. This witness has the same semantics as the binary, is type correct by construction, and it induces a (justifiable) type assignment on the binary. Moreover, the approach effectively yields a type-directed decompiler. We formalise and implement the approach for reversing MinX, an abstraction of x86, to MinC, a type-safe dialect of C with recursive datatypes. Our evaluation compiles a range of textbook C algorithms to MinX and then recovers the original structures.},
+booktitle = {Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {191–203},
+numpages = {13},
+keywords = {decompilation, recursive, reverse engineering},
+location = {St. Petersburg, FL, USA},
+series = {POPL '16}
+}
+
+@inproceedings{10.1145/2785830.2785892,
+author = {Alharbi, Khalid and Yeh, Tom},
+title = {Collect, Decompile, Extract, Stats, and Diff: Mining Design Pattern Changes in Android Apps},
+year = {2015},
+isbn = {9781450336529},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2785830.2785892},
+doi = {10.1145/2785830.2785892},
+abstract = {Mobile user interface design patterns have been widely used across different mobile platforms. UI design patterns have evolved and changed significantly as new trends emerge and fade at different times. This paper presents a data-mining approach to analyzing design pattern changes in Android apps. Over a period of 18 months, we tracked 24,436 apps and collected their versions. In total, our sample consists of 56,349 unique app versions, more than 5 million source files, and more than 25 million UI elements. We developed a dedicated infrastructure based on modern big data technologies to support our differential analyses regarding design pattern changes. Some highlights of our findings include a) some apps would switch to a design pattern even after it was deprecated, b) the adoption rate of newly introduced design patterns (e.g., Fragment) is relatively low, c) some apps would update their listing details to reflect changes in design patterns.},
+booktitle = {Proceedings of the 17th International Conference on Human-Computer Interaction with Mobile Devices and Services},
+pages = {515–524},
+numpages = {10},
+keywords = {pattern, design, apps, analysis, UI, Android},
+location = {Copenhagen, Denmark},
+series = {MobileHCI '15}
 }
 
 @inproceedings{10.1145/3375894.3375895,
@@ -535,25 +677,151 @@ abstract = {Decompilation is frequently used to analyze binary programs. In Andr
 booktitle = {Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security},
 pages = {2557–2559},
 numpages = {3},
-keywords = {android apps, decompilation, mobile security, reverse engineering},
+keywords = {reverse engineering, mobile security, decompilation, android apps},
 location = {London, United Kingdom},
 series = {CCS '19}
 }
 
-@inproceedings{10.1109/ICSE.2019.00120,
-author = {Grech, Neville and Brent, Lexi and Scholz, Bernhard and Smaragdakis, Yannis},
-title = {Gigahorse: thorough, declarative decompilation of smart contracts},
-year = {2019},
-publisher = {IEEE Press},
-url = {https://doi.org/10.1109/ICSE.2019.00120},
-doi = {10.1109/ICSE.2019.00120},
-abstract = {The rise of smart contracts---autonomous applications running on blockchains---has led to a growing number of threats, necessitating sophisticated program analysis. However, smart contracts, which transact valuable tokens and cryptocurrencies, are compiled to very low-level bytecode. This bytecode is the ultimate semantics and means of enforcement of the contract.We present the Gigahorse toolchain. At its core is a reverse compiler (i.e., a decompiler) that decompiles smart contracts from Ethereum Virtual Machine (EVM) bytecode into a high-level 3-address code representation. The new intermediate representation of smart contracts makes implicit data- and control-flow dependencies of the EVM bytecode explicit. Decompilation obviates the need for a contract's source and allows the analysis of both new and deployed contracts.Gigahorse advances the state of the art on several fronts. It gives the highest analysis precision and completeness among decompilers for Ethereum smart contracts---e.g., Gigahorse can decompile over 99.98% of deployed contracts, compared to 88% for the recently-published Vandal decompiler and under 50% for the state-of-the-practice Porosity decompiler. Importantly, Gigahorse offers a full-featured toolchain for further analyses (and a "batteries included" approach, with multiple clients already implemented), together with the highest performance and scalability. Key to these improvements is Gigahorse's use of a declarative, logic-based specification, which allows high-level insights to inform low-level decompilation.},
-booktitle = {Proceedings of the 41st International Conference on Software Engineering},
-pages = {1176–1186},
-numpages = {11},
-keywords = {blockchain, decompilation, ethereum, program analysis},
-location = {Montreal, Quebec, Canada},
-series = {ICSE '19}
+@inproceedings{10.1007/978-3-642-12251-4_16,
+author = {Berardi, Stefano and Tatsuta, Makoto},
+title = {Internal normalization, compilation and decompilation for system Fβη},
+year = {2010},
+isbn = {3642122507},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-642-12251-4_16},
+doi = {10.1007/978-3-642-12251-4_16},
+abstract = {This paper defines a family of terms of System F which is a decompiler-normalizer for an image of System F by some injective interpretation in System F. We clarify the relationship among these terms, normalization by evaluation, and beta-eta-complete models of F.},
+booktitle = {Proceedings of the 10th International Conference on Functional and Logic Programming},
+pages = {207–223},
+numpages = {17},
+location = {Sendai, Japan},
+series = {FLOPS'10}
+}
+
+@inproceedings{10.1145/1517303.1517318,
+author = {Sivadasan, Praveen and SojanLal, P and Sivadasan, Naveen},
+title = {JDATATRANS for array obfuscation in Java source codes to defeat reverse engineering from decompiled codes},
+year = {2009},
+isbn = {9781605584768},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1517303.1517318},
+doi = {10.1145/1517303.1517318},
+abstract = {Software obfuscation or obscuring a software is an approach to defeat the practice of reverse engineering a software for using its functionality illegally in the development of another software. Java applications are more amenable to reverse engineering and re-engineering attacks through methods such as decompilation because Java class files store the program in a semi complied form called 'byte' codes. The existing obfuscation systems obfuscate the Java class files. Obfuscated source code produce obfuscated byte codes and hence two level obfuscation (source code and byte code level) of the program makes it more resilient to reverse engineering attacks. But source code obfuscation is much more difficult due to richer set of programming constructs and the scope of the different variables used in the program and only very little progress has been made on this front. Hence programmers resort to adhoc manual ways of obscuring their program which makes it difficult for its maintenance and usability. To address this issue partially, we developed a user friendly tool JDATATRANS to obfuscate Java source code by obscuring the array usages. Using various array restructuring techniques such as 'array splitting', 'array folding' and 'array flattening', in addition to constant hiding, our system obfuscate the input Java source code and produce an obfuscated Java source code that is functionally equivalent to the input program. We also performed a number of experiments to measure the potency, resilience and cost incurred by our tool.},
+booktitle = {Proceedings of the 2nd Bangalore Annual Compute Conference},
+articleno = {13},
+numpages = {4},
+keywords = {source code obfuscation, reverse engineering, restructured arrays},
+location = {Bangalore, India},
+series = {COMPUTE '09}
+}
+
+@inproceedings{10.5555/1129601.1129679,
+author = {Stiff, G. and Vahid, F.},
+title = {New decompilation techniques for binary-level co-processor generation},
+year = {2005},
+isbn = {078039254X},
+publisher = {IEEE Computer Society},
+address = {USA},
+abstract = {Existing ASIPs (application-specific instruction-set processors) and compiler-based co-processor synthesis approaches meet the increasing performance requirements of embedded applications while consuming less power than high-performance gigahertz microprocessors. However, existing approaches place restrictions on software languages and compilers. Binary-level co-processor generation has previously been proposed as a complementary approach to reduce impact on tool restrictions, supporting all languages and compilers, at the cost of some decrease in performance. In a binary-level approach, decompilation recovers much of the high-level information, like loops and arrays, needed for effective synthesis, and in many cases yields hardware similar to that of a compiler-based approach. However, previous binary-level approaches have not considered the effects of software compiler optimizations on the resulting hardware. In this paper, we introduce two new decompilation techniques, strength promotion and loop rerolling, and show that they are necessary to synthesize an efficient custom hardware coprocessor from a binary in the presence of software compiler optimizations. In addition, unlike previous approaches, we show the robustness of binary-level co-processor generation by achieving order of magnitude speedups for binaries generated for three different instruction sets, MIPS, ARM, and MicroBlaze, using two different levels of compiler optimizations.},
+booktitle = {Proceedings of the 2005 IEEE/ACM International Conference on Computer-Aided Design},
+pages = {547–554},
+numpages = {8},
+location = {San Jose, CA},
+series = {ICCAD '05}
+}
+
+@inproceedings{10.1109/DATE.2005.9,
+author = {Stitt, Greg and Vahid, Frank},
+title = {A Decompilation Approach to Partitioning Software for Microprocessor/FPGA Platforms},
+year = {2005},
+isbn = {0769522882},
+publisher = {IEEE Computer Society},
+address = {USA},
+url = {https://doi.org/10.1109/DATE.2005.9},
+doi = {10.1109/DATE.2005.9},
+abstract = {In this paper, we present a software compilation approach for microprocessor/FPGA platforms that partitions a software binary onto custom hardware implemented in the FPGA. Our approach imposes less restrictions on software tool flow than previous compiler approaches, allowing software designers to use any software language and compiler. Our approach uses a back-end partitioning tool that utilizes decompilation techniques to recover important high-level information, resulting in performance comparable to high-level compiler-based approaches.},
+booktitle = {Proceedings of the Conference on Design, Automation and Test in Europe - Volume 1},
+pages = {396–397},
+numpages = {2},
+series = {DATE '05}
+}
+
+@inproceedings{10.1145/367845.368004,
+author = {Miecznikowski, Jerome and Gagnon, Etienne},
+title = {Decompile Java class files with soot! (poster session)},
+year = {2000},
+isbn = {1581133073},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/367845.368004},
+doi = {10.1145/367845.368004},
+booktitle = {Addendum to the 2000 Proceedings of the Conference on Object-Oriented Programming, Systems, Languages, and Applications (Addendum)},
+pages = {111–112},
+numpages = {2},
+location = {Minneapolis, Minnesota, USA},
+series = {OOPSLA '00}
+}
+
+@article{10.1145/186025.186093,
+author = {Breuer, Peter T. and Bowen, Jonathan P.},
+title = {Decompilation: the enumeration of types and grammars},
+year = {1994},
+issue_date = {Sept. 1994},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {16},
+number = {5},
+issn = {0164-0925},
+url = {https://doi.org/10.1145/186025.186093},
+doi = {10.1145/186025.186093},
+abstract = {While a compiler produces low-level object code from high-level source code, a decompiler produces high-level code from low-level code and has applications in the testing and validation of safety-critical software. The decompilation of an object code provides an independent demonstration of correctness that is hard to better for industrial purposes (an alternative is to prove the compiler correct). But, although compiler compilers are in common use in the software industry, a decompiler compiler is much more unusual.It turns out that a data type specification for a programming-language grammar can be remolded into a functional program that enumerates all of the abstract syntax trees of the grammar. This observation is the springboard for a general method for compiling decompilers from the specifications of (nonoptimizing) compilers.This paper deals with methods and theory, together with an application of the technique. The correctness of a decompiler generated from a simple occam-like compiler specification is demonstrated.  The basic problem of enumerating the syntax trees of grammars, and then stopping, is shown to have no recursive solution, but methods of abstract interpretation can be used to guarantee the adequacy and completeness of our technique in practical instances, including the decompiler for the language presented here.},
+journal = {ACM Trans. Program. Lang. Syst.},
+month = sep,
+pages = {1613–1647},
+numpages = {35},
+keywords = {reverse engineering, logic programming, list comprehension, functional programming, decompilation, attribute grammar, abstract interpretation}
+}
+
+@article{10.1145/3736719,
+author = {Sha, Zihan and Shu, Hui and Wang, Hao and Gao, Zeyu and Lan, Yang and Zhang, Chao},
+title = {HyRES: Recovering Data Structures in Binaries via Semantic Enhanced Hybrid Reasoning},
+year = {2026},
+issue_date = {March 2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {35},
+number = {3},
+issn = {1049-331X},
+url = {https://doi.org/10.1145/3736719},
+doi = {10.1145/3736719},
+abstract = {Binary reverse engineering is pivotal in the realm of cybersecurity, enabling critical applications such as malware analysis, legacy code hardening, and vulnerability detection. However, the challenge of recovering structural information from binaries, especially stripped ones, persists due to the significant loss of variable boundaries, types, names, and dataflow information during compilation. In this article, we introduce Hybrid REasoning for Structure Recovery (HyRES), an innovative hybrid reasoning technique that energizes static analysis, Large Language Model (LLM), and heuristic methods to recover data structures from stripped binaries. It analyzes the structure layout and proficiently infer its semantics via LLM, and utilizes semantics to perform semantic-enhanced structure aggregation, which overcomes the need for complete dataflow. HyRES outperforms State-of-the-Art (SOTA) solutions in terms of structure pointer identification and layout recovery. Specifically, HyRES achieves 65.1% higher recall and 33.4% higher accuracy than the SOTA, while also being 64.2% faster than existing SOTA solutions. Comprehensive experiments demonstrate HyRES’s superior performance and practical utility in real-world reverse engineering tasks, marking a significant advancement in binary analysis.},
+journal = {ACM Trans. Softw. Eng. Methodol.},
+month = feb,
+articleno = {69},
+numpages = {28},
+keywords = {Large Language Model, Structure Recovery, Program Comprehension, Static Analysis}
+}
+
+@article{10.1145/3735971,
+author = {Chen, Jinze and Liu, Jieli and Wu, Jianlin and Lin, Dan and Wu, Jiajing and Zheng, Zibin},
+title = {PonziHunter: Hunting Ethereum Ponzi Contract via Static Analysis and Contrastive Learning on the Bytecode Level},
+year = {2026},
+issue_date = {February 2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {35},
+number = {2},
+issn = {1049-331X},
+url = {https://doi.org/10.1145/3735971},
+doi = {10.1145/3735971},
+abstract = {In recent years, blockchain technology has developed rapidly and received widespread attention. However, its pseudonymous and decentralized nature has also attracted many criminal activities. Ponzi schemes, a kind of classic financial scam, also hide their true face in smart contracts, causing massive financial losses to blockchain users. Although several methods have been proposed to detect Ponzi contracts, there are still limitations in broad applicability, semantics understanding, and adversarial robustness. In this article, we propose PonziHunter, an intelligent framework for hunting Ponzi contracts on Ethereum. To tackle the problem of broad applicability, we train a detection model that does not require expert experience based on publicly available on-chain bytecode and off-chain contract labels. To tackle the problem of semantics understanding, we employ cross-function control flows and state variable dependencies to understand the logic of Ponzi contracts. Specifically, we decompile bytecodes into higher-order representations to analyze control flows and state variable dependencies and model the information as graph data. By combining the idea of code slicing, we identify the basic blocks related to Ponzi contract recognition. To tackle the problem of adversarial robustness, we model Ponzi contract recognition as a graph classification problem based on contrastive pre-training. We propose a data augmentation method for control flow graphs (CFGs), which preserves the basic blocks related to Ponzi contract recognition as much as possible during data perturbation. Experimental results show that PonziHunter outperforms state-of-the-art tools with average improvements of at least 4.77% on real-world ground-truth data and can newly discover 85 Ponzi contracts in the wild. More importantly, PonziHunter is robust against adversarial examples and can locate the critical basic blocks for smart Ponzi detection.},
+journal = {ACM Trans. Softw. Eng. Methodol.},
+month = jan,
+articleno = {37},
+numpages = {21},
+keywords = {Smart contract, Ponzi scheme, static analysis, contrastive learning, blockchain safety}
 }
 
 @inproceedings{10.1145/3719027.3765144,
@@ -937,20 +1205,24 @@ location = {Clarion Hotel Trondheim, Trondheim, Norway},
 series = {ISSTA Companion '25}
 }
 
-@article{10.1145/3735971,
-author = {Chen, Jinze and Liu, Jieli and Wu, Jianlin and Lin, Dan and Wu, Jiajing and Zheng, Zibin},
-title = {PonziHunter: Hunting Ethereum Ponzi Contract via Static Analysis and Contrastive Learning on the Bytecode Level},
-year = {2025},
+@article{10.1145/319682.319688,
+author = {Katz, R. H. and Wong, E.},
+title = {Decompiling CODASYL DML into retional queries},
+year = {1982},
+issue_date = {March 1982},
 publisher = {Association for Computing Machinery},
 address = {New York, NY, USA},
-issn = {1049-331X},
-url = {https://doi.org/10.1145/3735971},
-doi = {10.1145/3735971},
-abstract = {In recent years, blockchain technology has developed rapidly and received widespread attention. However, its pseudonymous and decentralized nature has also attracted many criminal activities. Ponzi schemes, a kind of classic financial scam, also hide their true face in smart contracts, causing massive financial losses to blockchain users. Although several methods have been proposed to detect Ponzi contracts, there are still limitations in broad applicability, semantics understanding, and adversarial robustness. In this paper, we propose PonziHunter, an intelligent framework for hunting Ponzi contracts on Ethereum. To tackle the problem of broad applicability, we train a detection model that does not require expert experience based on publicly available on-chain bytecode and off-chain contract labels. To tackle the problem of semantics understanding, we employ cross-function control flows and state variable dependencies to understand the logic of Ponzi contracts. Specifically, we decompile bytecodes into higher-order representations to analyze control flows and state variable dependencies and model the information as graph data. By combining the idea of code slicing, we identify the basic blocks related to Ponzi contract recognition. To tackle the problem of adversarial robustness, we model Ponzi contract recognition as a graph classification problem based on contrastive pre-training. We propose a data augmentation method for control flow graphs (CFGs), which preserves the basic blocks related to Ponzi contract recognition as much as possible during data perturbation. Experimental results show that PonziHunter outperforms state-of-the-art tools with average improvements of at least 4.77% on real-world ground-truth data, and can newly discover 85 Ponzi contracts in the wild. More importantly, PonziHunter is robust against adversarial examples and can locate the critical basic blocks for smart Ponzi detection.},
-note = {Just Accepted},
-journal = {ACM Trans. Softw. Eng. Methodol.},
-month = may,
-keywords = {Smart contract, Ponzi scheme, static analysis, contrastive learning, blockchain safety}
+volume = {7},
+number = {1},
+issn = {0362-5915},
+url = {https://doi.org/10.1145/319682.319688},
+doi = {10.1145/319682.319688},
+abstract = {A “decompilation” algorithm is developed to transform a program written with the procedural operations of CODASYL DML into one which interacts with a relational system via a nonprocedural query specification. An Access Path Model is introduced to interpret the semantic accesses performed by the program. Data flow analysis is used to determine how FIND operations implement semantic accesses. A sequence of these is mapped into a relational query and embedded into the original program. The class of programs for which the algorithm succeeds is characterized.},
+journal = {ACM Trans. Database Syst.},
+month = mar,
+pages = {1–23},
+numpages = {23},
+keywords = {semantic data models, decompilation}
 }
 
 @inproceedings{10.1145/3722572.3727926,
@@ -1060,20 +1332,6 @@ location = {
 series = {CNSSE '25}
 }
 
-@inbook{10.1145/3728725.3728761,
-author = {Fang, Yong},
-title = {Wasserstein GAN-Based Android Certificate Validation Vulnerability Detection Framework},
-year = {2025},
-isbn = {9798400713453},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3728725.3728761},
-abstract = {This paper presents an Android certificate validation vulnerability detection framework that integrates static analysis, adversarial sample training, and optimization via large language models. Centered around the Wasserstein Generative Adversarial Network, the framework aims to enhance the robustness and generalization ability of static detection models against complex and obfuscated attack patterns. Static analysis is performed on 2,000 popular Android applications from the androzoo dataset, with code and configuration features extracted, focusing on certificate-related API usage, permission declarations, and network security settings. Among them, 110 APKs are identified as containing high-risk certificate misconfigurations. Based on these features, a Transformer-based model is constructed for feature vectorization and vulnerability identification. To further improve model robustness, WGAN is employed to generate adversarial samples that mimic real-world evasive vulnerabilities, which are used for adversarial training. Additionally, large language models are used to perform In-Context Learning, enabling semantic filtering, sample refinement, and iterative generator feedback. This results in a closed-loop, self-improving detection pipeline that combines detection, optimization, and feedback. Experimental results across standard, adversarial, and cross-domain scenarios demonstrate that the proposed framework achieves an F1 score of 0.91 and reduces the false positive rate to 7.2%, significantly outperforming traditional static detection tools in both accuracy and resilience.},
-booktitle = {Proceedings of the 2025 2nd International Conference on Generative Artificial Intelligence and Information Security},
-pages = {231–236},
-numpages = {6}
-}
-
 @inproceedings{10.1145/3726101.3726103,
 author = {M S, Abhijith and Druva, K R and K, Harish and D, Geetha and Rapate, Gauri Sameer},
 title = {Detection of Mobile Malware (ANDROID) using ML and Hybrid Analysis},
@@ -1109,7 +1367,7 @@ journal = {Proc. ACM Program. Lang.},
 month = jan,
 articleno = {21},
 numpages = {27},
-keywords = {Kleene algebra, Program equivalence, control flow recovery}
+keywords = {Program equivalence, Kleene algebra, control flow recovery}
 }
 
 @inproceedings{10.1145/3658644.3691386,
@@ -1274,7 +1532,7 @@ journal = {Proc. ACM Program. Lang.},
 month = oct,
 articleno = {271},
 numpages = {29},
-keywords = {Blockchain, EVM, Solidity bytecode, smart contract, variable recovery}
+keywords = {Blockchain, smart contract, Solidity bytecode, EVM, variable recovery}
 }
 
 @inproceedings{10.1145/3678890.3678892,
@@ -1476,6 +1734,39 @@ location = {Pittsburgh, PA, USA},
 series = {CODASPY '25}
 }
 
+@inproceedings{10.1145/800182.810410,
+author = {Housel, Barron C. and Halstead, Maurice H.},
+title = {A methodology for machine language decompilation},
+year = {1974},
+isbn = {9781450374828},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/800182.810410},
+doi = {10.1145/800182.810410},
+abstract = {Machine language decompilation is the translation of machine (assembly) language instruction sequences into statements in a high-level algebraic language such as PL/1. This process can be viewed as the inverse of compilation. Decompilation can be used as an aid for program conversion and program documentation. A general methodology for decompilation that is independent of a particular source and target language is presented. The basic approach is to map the source machine language to a high-level representation, which is relatively machine and language independent, and then translate to the chosen target language. An experimental decompiler was implemented to translate Knuth's MIXAL assembly language into PL/1.},
+booktitle = {Proceedings of the 1974 Annual Conference - Volume 1},
+pages = {254–260},
+numpages = {7},
+keywords = {Program documentation., Optimization, Machine language translation, Inverse translation, Decompiling},
+series = {ACM '74}
+}
+
+@inproceedings{10.1145/1408800.1408930,
+author = {Weller, Maria F.},
+title = {A pragmatic look at decompilers},
+year = {1974},
+isbn = {9781450378505},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1408800.1408930},
+doi = {10.1145/1408800.1408930},
+abstract = {The purpose of decompilers is to minimize the cost of converting a program from assembler language to a higher level language. There exist two different objectives for the design of a decompiler. The first one is to minimize conversion time by producing a literal translation of the program. It is accomplished by a translator which is as complete as possible. The second objective considers the efficiency of the converted program an important and integral part of conversion. This is usually satisfied more adequately by what we call a resystemizer, namely a conversion tool which limits itself to listing data structures, program flow and other pertinent information required to rewrite the program while retaining the old design. Clearly there is no strict dividing line between a Resystemizer and a Translator. The former may easily evolve into the latter and the latter can be used as the former, but their original design objectives differ.},
+booktitle = {Proceedings of the 1974 Annual ACM Conference - Volume 2},
+pages = {753},
+numpages = {1},
+series = {ACM '74}
+}
+
 @article{10.1145/3631971,
 author = {Pizzolotto, Davide and Berlato, Stefano and Ceccato, Mariano},
 title = {Mitigating Debugger-based Attacks to Java Applications with Self-debugging},
@@ -1528,24 +1819,6 @@ booktitle = {Proceedings of the IEEE/ACM 46th International Conference on Softwa
 articleno = {168},
 numpages = {12},
 keywords = {smart contract, permission control, vulnerability detection},
-location = {Lisbon, Portugal},
-series = {ICSE '24}
-}
-
-@inproceedings{10.1145/3597503.3639113,
-author = {Liu, Jiakun and Zhang, Zicheng and Hu, Xing and Thung, Ferdian and Maoz, Shahar and Gao, Debin and Toch, Eran and Zhao, Zhipeng and Lo, David},
-title = {MiniMon: Minimizing Android Applications with Intelligent Monitoring-Based Debloating},
-year = {2024},
-isbn = {9798400702174},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3597503.3639113},
-doi = {10.1145/3597503.3639113},
-abstract = {The size of Android applications is getting larger to fulfill the requirements of various users. However, not all the features of the applications are needed and desired by a specific user. The unnecessary and non-desired features can increase the attack surface and consume system resources such as storage and memory. To address this issue, we propose a framework, MiniMon, to debloat unnecessary features from an Android app based on the logs of specific users' interactions with the app.However, rarely used features may not be recorded during the data collection, and users' preferences may change slightly over time. To address these challenges, we embed several solutions in our framework that can uncover user-desired features by learning and generalizing from the logs of how users interact with an application. MiniMon first collects the application methods that are executed when users interact with it. Then, given the collected executed methods and the call graph of the application, MiniMon applies 10 techniques to generalize from logs. These include three program analysis-based techniques, two graph clustering-based techniques, and five graph embedding-based techniques to identify the additional methods in an app that are similar to the logged executed methods. Finally, MiniMon generates a debloated application by removing methods that are not similar to the executed methods. To evaluate the performance of variants of MiniMon that use different generalization techniques, we create a benchmark for a controlled experiment. The results show that the graph embedding-based generalization technique that considers the information of all nodes in the call graph is the best, and can correctly uncover 75.5% of the unobserved but desired behaviors and still debloat more than half of the app. We also conducted a user study that uncovers that the use of the intelligent (generalization) method of MiniMon boosts the overall user satisfaction rate by 37.6%.},
-booktitle = {Proceedings of the IEEE/ACM 46th International Conference on Software Engineering},
-articleno = {206},
-numpages = {13},
-keywords = {android, software debloating, log analysis},
 location = {Lisbon, Portugal},
 series = {ICSE '24}
 }
@@ -1616,7 +1889,7 @@ abstract = {The past few years have witnessed a boom of miniapps, as lightweight
 booktitle = {Proceedings of the 2023 ACM Workshop on Secure and Trustworthy Superapps},
 pages = {1–9},
 numpages = {9},
-keywords = {least privilege, miniapps, security risk, vulnerabilities},
+keywords = {vulnerabilities, security risk, miniapps, least privilege},
 location = {Copenhagen, Denmark},
 series = {SaTS '23}
 }
@@ -1634,7 +1907,7 @@ abstract = {Miniapps have become an indispensable part of people's lives. Meanwh
 booktitle = {Proceedings of the 2023 ACM Workshop on Secure and Trustworthy Superapps},
 pages = {11–16},
 numpages = {6},
-keywords = {miniapp, mobile security, third-party library},
+keywords = {third-party library, mobile security, miniapp},
 location = {Copenhagen, Denmark},
 series = {SaTS '23}
 }
@@ -1725,7 +1998,7 @@ journal = {ACM Trans. Archit. Code Optim.},
 month = oct,
 articleno = {47},
 numpages = {25},
-keywords = {ReRAM, accelerator, LLVM-IR, compilation}
+keywords = {compilation, LLVM-IR, accelerator, ReRAM}
 }
 
 @inproceedings{10.1145/3623759.3624544,
@@ -1791,7 +2064,7 @@ abstract = {DeFi protocols are programs that manage high-value digital assets on
 booktitle = {Proceedings of the 32nd ACM SIGSOFT International Symposium on Software Testing and Analysis},
 pages = {1144–1156},
 numpages = {13},
-keywords = {smart contract, taint analysis, vulnerability detection},
+keywords = {vulnerability detection, taint analysis, smart contract},
 location = {Seattle, WA, USA},
 series = {ISSTA 2023}
 }
@@ -1809,7 +2082,7 @@ abstract = {The prosperous trend of deploying complex applications to web browse
 booktitle = {Proceedings of the 32nd ACM SIGSOFT International Symposium on Software Testing and Analysis},
 pages = {436–448},
 numpages = {13},
-keywords = {Compiler Optimization, Software Testing, WebAssembly},
+keywords = {WebAssembly, Software Testing, Compiler Optimization},
 location = {Seattle, WA, USA},
 series = {ISSTA 2023}
 }
@@ -1827,7 +2100,7 @@ abstract = {A reflection is a relationship between compiling and decompiling fun
 booktitle = {Proceedings of the 2023 ACM SIGPLAN International Workshop on Partial Evaluation and Program Manipulation},
 pages = {55–65},
 numpages = {11},
-keywords = {CPS translation, algebraic effects and handlers, direct style translation, reflection},
+keywords = {reflection, direct style translation, algebraic effects and handlers, CPS translation},
 location = {Boston, MA, USA},
 series = {PEPM 2023}
 }
@@ -1845,7 +2118,7 @@ abstract = {The Architecture Analysis and Design Language (AADL) is a rich langu
 booktitle = {Proceedings of the 25th International Conference on Model Driven Engineering Languages and Systems},
 pages = {55–65},
 numpages = {11},
-keywords = {AADL, cyber-physical systems, embedded systems, model-driven engineering, view-update problem},
+keywords = {view-update problem, model-driven engineering, embedded systems, cyber-physical systems, AADL},
 location = {Montreal, Quebec, Canada},
 series = {MODELS '22}
 }
@@ -1898,7 +2171,7 @@ abstract = {Background: With the boosting development of IoT technology, the sup
 booktitle = {Proceedings of the 16th ACM / IEEE International Symposium on Empirical Software Engineering and Measurement},
 pages = {205–215},
 numpages = {11},
-keywords = {Binary Code Similarity, Graph Neural Network, IoT Software Supply Chain, Vulnerability Detection},
+keywords = {Vulnerability Detection, IoT Software Supply Chain, Graph Neural Network, Binary Code Similarity},
 location = {Helsinki, Finland},
 series = {ESEM '22}
 }
@@ -1916,7 +2189,7 @@ abstract = {With the popularity of Android mobile devices and the increase of re
 booktitle = {Proceedings of the 10th International Conference on Computer and Communications Management},
 pages = {226–232},
 numpages = {7},
-keywords = {Android Malware Classification, Attention Mechanism, CNN, Deep Learning, Model Interpretation},
+keywords = {Model Interpretation, Deep Learning, CNN, Attention Mechanism, Android Malware Classification},
 location = {Okayama, Japan},
 series = {ICCCM '22}
 }
@@ -1934,7 +2207,7 @@ abstract = {With the increasing popularity of blockchain, automatically detectin
 booktitle = {Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis},
 pages = {752–764},
 numpages = {13},
-keywords = {bug finding, interprocedure analysis, smart contract, static analysis},
+keywords = {static analysis, smart contract, interprocedure analysis, bug finding},
 location = {Virtual, South Korea},
 series = {ISSTA 2022}
 }
@@ -1952,7 +2225,7 @@ abstract = {Analyzing binary programs without source code is critical for cybers
 booktitle = {Proceedings of the 27th ACM Conference on on Innovation and Technology in Computer Science Education Vol. 1},
 pages = {442–448},
 numpages = {7},
-keywords = {cybersecurity education, reverse engineering, vulnerability research},
+keywords = {vulnerability research, reverse engineering, cybersecurity education},
 location = {Dublin, Ireland},
 series = {ITiCSE '22}
 }
@@ -1974,7 +2247,7 @@ journal = {ACM Trans. Comput. Syst.},
 month = jul,
 articleno = {5},
 numpages = {36},
-keywords = {Edge, heterogeneous ISA, containers, migration}
+keywords = {migration, containers, heterogeneous ISA, Edge}
 }
 
 @inproceedings{10.1145/3498361.3538938,
@@ -1990,7 +2263,7 @@ abstract = {Unmanned Aerial Vehicles as a service (UAVaaS) has increased the fie
 booktitle = {Proceedings of the 20th Annual International Conference on Mobile Systems, Applications and Services},
 pages = {69–83},
 numpages = {15},
-keywords = {binary analysis, firmware analysis, robotic aerial vehicle, security},
+keywords = {security, robotic aerial vehicle, firmware analysis, binary analysis},
 location = {Portland, Oregon},
 series = {MobiSys '22}
 }
@@ -2025,7 +2298,7 @@ abstract = {Machine-learning promises to transform compilation and software engi
 booktitle = {Proceedings of the 6th ACM SIGPLAN International Symposium on Machine Programming},
 pages = {50–59},
 numpages = {10},
-keywords = {C, Code Dataset, Compilers, Machine Learning for Code, Mining Software Repositories, Program Synthesis},
+keywords = {Program Synthesis, Mining Software Repositories, Machine Learning for Code, Compilers, Code Dataset, C},
 location = {San Diego, CA, USA},
 series = {MAPS 2022}
 }
@@ -2043,7 +2316,7 @@ abstract = {Lifting binaries to a higher-level representation is an essential st
 booktitle = {Proceedings of the 43rd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
 pages = {934–949},
 numpages = {16},
-keywords = {Binary Analysis, Disassembly, Formal Verification},
+keywords = {Formal Verification, Disassembly, Binary Analysis},
 location = {San Diego, CA, USA},
 series = {PLDI 2022}
 }
@@ -2061,7 +2334,7 @@ abstract = {The increasing popularity of WebAssembly creates a demand for unders
 booktitle = {Proceedings of the 43rd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
 pages = {410–425},
 numpages = {16},
-keywords = {DWARF, WebAssembly, corpus, dataset, debugging information, machine learning, neural networks, reverse engineering, type prediction, type recovery},
+keywords = {type recovery, type prediction, reverse engineering, neural networks, machine learning, debugging information, dataset, corpus, WebAssembly, DWARF},
 location = {San Diego, CA, USA},
 series = {PLDI 2022}
 }
@@ -2079,7 +2352,7 @@ abstract = {Decompilers are tools designed to recover a high-level language repr
 booktitle = {Proceedings of the 2022 ACM on Asia Conference on Computer and Communications Security},
 pages = {602–615},
 numpages = {14},
-keywords = {decompiler, reversing, sast, vulnerability},
+keywords = {vulnerability, sast, reversing, decompiler},
 location = {Nagasaki, Japan},
 series = {ASIA CCS '22}
 }
@@ -2097,7 +2370,7 @@ abstract = {Android API is frequently updated, and compatibility issues may be i
 booktitle = {Proceedings of the ACM/IEEE 44th International Conference on Software Engineering: Companion Proceedings},
 pages = {1–5},
 numpages = {5},
-keywords = {API callback compatibility issues, API evolution, API invocation compatibility issues, Android},
+keywords = {Android, API invocation compatibility issues, API evolution, API callback compatibility issues},
 location = {Pittsburgh, Pennsylvania},
 series = {ICSE '22}
 }
@@ -2115,7 +2388,7 @@ abstract = {Intent is an essential inter-component communication mechanism of An
 booktitle = {Proceedings of the 15th ACM Conference on Security and Privacy in Wireless and Mobile Networks},
 pages = {20–25},
 numpages = {6},
-keywords = {android, pendingintent, vulnerability detection},
+keywords = {vulnerability detection, pendingintent, android},
 location = {San Antonio, TX, USA},
 series = {WiSec '22}
 }
@@ -2133,7 +2406,7 @@ abstract = {Using unevaluated obfuscation methods has a significant risk since t
 booktitle = {Proceedings of the 2022 5th International Conference on Software Engineering and Information Management},
 pages = {118–124},
 numpages = {7},
-keywords = {de-obfuscation, dynamic name resolution, obfuscation, resilience of the obfuscation method, reverse-transformation},
+keywords = {reverse-transformation, resilience of the obfuscation method, obfuscation, dynamic name resolution, de-obfuscation},
 location = {Yokohama, Japan},
 series = {ICSIM '22}
 }
@@ -2155,7 +2428,7 @@ journal = {ACM Comput. Surv.},
 month = jan,
 articleno = {19},
 numpages = {41},
-keywords = {Binary code analysis, reverse engineering, software security}
+keywords = {software security, reverse engineering, Binary code analysis}
 }
 
 @inproceedings{10.5555/3507788.3507824,
@@ -2168,7 +2441,7 @@ abstract = {Protecting the intellectual property of end-user software is a chall
 booktitle = {Proceedings of the 31st Annual International Conference on Computer Science and Software Engineering},
 pages = {232–236},
 numpages = {5},
-keywords = {Java virtual machine, control-flow, obfuscation, reverse engineering},
+keywords = {reverse engineering, obfuscation, control-flow, Java virtual machine},
 location = {Toronto, Canada},
 series = {CASCON '21}
 }
@@ -2190,7 +2463,7 @@ journal = {ACM Trans. Internet Technol.},
 month = oct,
 articleno = {40},
 numpages = {17},
-keywords = {Clone detection, deep learning, program dependency graph, cloud services, Internet of Things}
+keywords = {Internet of Things, cloud services, program dependency graph, deep learning, Clone detection}
 }
 
 @inproceedings{10.1145/3490725.3490733,
@@ -2206,7 +2479,7 @@ abstract = {In recent years, enormously Android malware poses a significant thre
 booktitle = {Proceedings of the 2021 4th International Conference on Machine Learning and Machine Intelligence},
 pages = {50–56},
 numpages = {7},
-keywords = {Android, Graph Neural Network, Machine learning, Malicious code localization, Malware detection},
+keywords = {Malware detection, Malicious code localization, Machine learning, Graph Neural Network, Android},
 location = {Hangzhou, China},
 series = {MLMI '21}
 }
@@ -2228,7 +2501,7 @@ journal = {ACM Trans. Internet Technol.},
 month = sep,
 articleno = {2},
 numpages = {21},
-keywords = {Volunteer computing (VC), tactile internet, android malware, deep learning (DL)}
+keywords = {deep learning (DL), android malware, tactile internet, Volunteer computing (VC)}
 }
 
 @inproceedings{10.1145/3479394.3479399,
@@ -2244,7 +2517,7 @@ abstract = {The delimited-control operator shift0 has been formally shown to cap
 booktitle = {Proceedings of the 23rd International Symposium on Principles and Practice of Declarative Programming},
 articleno = {4},
 numpages = {13},
-keywords = {continuation-passing style, delimited control, lambda calculus, reflection},
+keywords = {reflection, lambda calculus, delimited control, continuation-passing style},
 location = {Tallinn, Estonia},
 series = {PPDP '21}
 }
@@ -2262,7 +2535,7 @@ abstract = {Binary type inference is a critical reverse engineering task support
 booktitle = {Proceedings of the 29th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
 pages = {690–702},
 numpages = {13},
-keywords = {Machine Learning for Program Analysis, Reverse Engineering, Transfer Learning, Type Inference},
+keywords = {Type Inference, Transfer Learning, Reverse Engineering, Machine Learning for Program Analysis},
 location = {Athens, Greece},
 series = {ESEC/FSE 2021}
 }
@@ -2320,7 +2593,7 @@ journal = {ACM Trans. Priv. Secur.},
 month = jul,
 articleno = {23},
 numpages = {35},
-keywords = {Software authorship identification, deep learning identification, program features, software forensics}
+keywords = {software forensics, program features, deep learning identification, Software authorship identification}
 }
 
 @inproceedings{10.1145/3453483.3454091,
@@ -2336,7 +2609,7 @@ abstract = {Reducing a failure-inducing input to a smaller one is challenging fo
 booktitle = {Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
 pages = {1003–1016},
 numpages = {14},
-keywords = {input reduction, type-safe code transformation},
+keywords = {type-safe code transformation, input reduction},
 location = {Virtual, Canada},
 series = {PLDI 2021}
 }
@@ -2354,7 +2627,7 @@ abstract = {We describe a new approach to automatically repairing broken proofs 
 booktitle = {Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
 pages = {112–127},
 numpages = {16},
-keywords = {proof engineering, proof repair, proof reuse},
+keywords = {proof reuse, proof repair, proof engineering},
 location = {Virtual, Canada},
 series = {PLDI 2021}
 }
@@ -2372,7 +2645,7 @@ abstract = {Most of the existing scientific visualizations toward interpretive g
 booktitle = {Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems},
 articleno = {26},
 numpages = {13},
-keywords = {data presentation, interaction grammar, scientific visualization},
+keywords = {scientific visualization, interaction grammar, data presentation},
 location = {Yokohama, Japan},
 series = {CHI '21}
 }
@@ -2407,7 +2680,7 @@ abstract = {In this paper, we propose OBFUS, a web-based tool that can easily ap
 booktitle = {Proceedings of the Eleventh ACM Conference on Data and Application Security and Privacy},
 pages = {309–311},
 numpages = {3},
-keywords = {obuscation, software protection},
+keywords = {software protection, obuscation},
 location = {Virtual Event, USA},
 series = {CODASPY '21}
 }
@@ -2472,7 +2745,7 @@ journal = {Proc. ACM Program. Lang.},
 month = nov,
 articleno = {209},
 numpages = {30},
-keywords = {blockchain, invariants, logic and verification, program analysis, program verification, smart contracts}
+keywords = {smart contracts, program verification, program analysis, logic and verification, invariants, blockchain}
 }
 
 @inproceedings{10.1145/3372297.3417251,
@@ -2488,7 +2761,7 @@ abstract = {The complexities that arise from the implementation of object-orient
 booktitle = {Proceedings of the 2020 ACM SIGSAC Conference on Computer and Communications Security},
 pages = {133–148},
 numpages = {16},
-keywords = {class inheritance recovery, software reverse engineering, virtual inheritance recovery},
+keywords = {virtual inheritance recovery, software reverse engineering, class inheritance recovery},
 location = {Virtual Event, USA},
 series = {CCS '20}
 }
@@ -2525,7 +2798,7 @@ abstract = {Smart contracts are the back-end programs of blockchain-based applic
 booktitle = {Proceedings of the 29th ACM SIGSOFT International Symposium on Software Testing and Analysis},
 pages = {553–556},
 numpages = {4},
-keywords = {Blockchain, Ethereum, Program Analysis, Reverse Engineering, Smart Contract},
+keywords = {Smart Contract, Reverse Engineering, Program Analysis, Ethereum, Blockchain},
 location = {Virtual Event, USA},
 series = {ISSTA 2020}
 }
@@ -2543,7 +2816,7 @@ abstract = {Today in the world people are able to get all types of Android appli
 booktitle = {Proceedings of the 10th International Conference on Web Intelligence, Mining and Semantics},
 pages = {205–209},
 numpages = {5},
-keywords = {Android, Anti-malware, Cyber security, Fake anti-malware detection, Machine learning, Malware},
+keywords = {Malware, Machine learning, Fake anti-malware detection, Cyber security, Anti-malware, Android},
 location = {Biarritz, France},
 series = {WIMS 2020}
 }
@@ -2579,7 +2852,7 @@ abstract = {Malicious reverse engineering is a prominent activity conducted by a
 booktitle = {Proceedings of the 9th Workshop on Software Security, Protection, and Reverse Engineering},
 articleno = {1},
 numpages = {12},
-keywords = {code tampering, malicious reverse engineering, remote attestation},
+keywords = {remote attestation, malicious reverse engineering, code tampering},
 location = {San Juan, Puerto Rico, USA},
 series = {SSPREW9 '19}
 }
@@ -2597,7 +2870,7 @@ abstract = {In this tutorial, the Ghidra software reverse engineering framework 
 booktitle = {Proceedings of the 3rd ACM Workshop on Software Protection},
 pages = {77–78},
 numpages = {2},
-keywords = {code lifting, decompilation, disassembly, framework, reverse engineering},
+keywords = {reverse engineering, framework, disassembly, decompilation, code lifting},
 location = {London, United Kingdom},
 series = {SPRO'19}
 }
@@ -2615,7 +2888,7 @@ abstract = {Mobile phones have become nowadays a commodity to the majority of pe
 booktitle = {Proceedings of the 2019 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining},
 pages = {887–894},
 numpages = {8},
-keywords = {ARPaD, Android malware detection, LERP-RSA, malware family classification, text mining},
+keywords = {text mining, malware family classification, LERP-RSA, Android malware detection, ARPaD},
 location = {Vancouver, British Columbia, Canada},
 series = {ASONAM '19}
 }
@@ -2633,7 +2906,7 @@ abstract = {Delta debugging is a technique for reducing a failure-inducing input
 booktitle = {Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
 pages = {556–566},
 numpages = {11},
-keywords = {Debugging, dependencies, reduction},
+keywords = {reduction, dependencies, Debugging},
 location = {Tallinn, Estonia},
 series = {ESEC/FSE 2019}
 }
@@ -2651,7 +2924,7 @@ abstract = {Android is currently the most popular smartphone platform which occu
 booktitle = {Proceedings of the 15th Asian Internet Engineering Conference},
 pages = {33–40},
 numpages = {8},
-keywords = {Artificial neural network, Genetics algorithm, Maintainability, Object-Oriented Metrics, Parallel Computing},
+keywords = {Parallel Computing, Object-Oriented Metrics, Maintainability, Genetics algorithm, Artificial neural network},
 location = {Phuket, Thailand},
 series = {AINTEC '19}
 }
@@ -2669,7 +2942,7 @@ abstract = {Recovering class inheritance from C++ binaries has several security 
 booktitle = {Proceedings of the 2019 ACM Asia Conference on Computer and Communications Security},
 pages = {28–40},
 numpages = {13},
-keywords = {class hierarchy recovery, software reverse engineering},
+keywords = {software reverse engineering, class hierarchy recovery},
 location = {Auckland, New Zealand},
 series = {Asia CCS '19}
 }
@@ -2706,7 +2979,7 @@ abstract = {This paper presents a methodology for generating formally proven equ
 booktitle = {Proceedings of the 8th ACM SIGPLAN International Conference on Certified Programs and Proofs},
 pages = {181–195},
 numpages = {15},
-keywords = {semantics, theorem proving, x86-64},
+keywords = {x86-64, theorem proving, semantics},
 location = {Cascais, Portugal},
 series = {CPP 2019}
 }
@@ -2727,7 +3000,7 @@ journal = {Proc. ACM Program. Lang.},
 month = oct,
 articleno = {116},
 numpages = {27},
-keywords = {Blockchain, Program Analysis, Security, Smart Contracts}
+keywords = {Smart Contracts, Security, Program Analysis, Blockchain}
 }
 
 @inproceedings{10.1145/3212480.3212487,
@@ -2743,7 +3016,7 @@ abstract = {A wide range of mobile applications for Apple's iOS platform process
 booktitle = {Proceedings of the 11th ACM Conference on Security &amp; Privacy in Wireless and Mobile Networks},
 pages = {236–247},
 numpages = {12},
-keywords = {Cryptographic Misuse, Program Analysis, Reverse Engineering, iOS},
+keywords = {iOS, Reverse Engineering, Program Analysis, Cryptographic Misuse},
 location = {Stockholm, Sweden},
 series = {WiSec '18}
 }
@@ -2780,8 +3053,887 @@ abstract = {We present a new type of attack termed denial of engineering operati
 booktitle = {Proceedings of the Eighth ACM Conference on Data and Application Security and Privacy},
 pages = {319–329},
 numpages = {11},
-keywords = {disassembler, forensics, industrial control system, ladder logic, plc, protocol reverse engineering, scada},
+keywords = {scada, protocol reverse engineering, plc, ladder logic, industrial control system, forensics, disassembler},
 location = {Tempe, AZ, USA},
 series = {CODASPY '18}
+}
+
+@inproceedings{10.1145/3098954.3103152,
+author = {Kirchner, Kevin and Rosenthaler, Stefan},
+title = {bin2llvm: Analysis of Binary Programs Using LLVM Intermediate Representation},
+year = {2017},
+isbn = {9781450352574},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3098954.3103152},
+doi = {10.1145/3098954.3103152},
+abstract = {The analysis of programs is an important and well researched topic in information security, specifically for finding bugs in binary programs or analyzing malicious software. Many commonly used techniques rely on dynamic analysis by running samples and monitoring their behavior or are based on the cumbersome and time consuming inspection of plain assembly code.In this paper we present a novel approach for static analysis we are using in bin2llvm, a work-in-progress analysis framework, in order to find and identify cryptographic routines in binary programs. Our approach does not need to run the target of analysis in any way and is based on decompilation of binaries to an intermediate language similar to assembly code, the LLVM Intermediate Representation (IR), by using the open source decompiler Dagger. After decompilation we are able to apply various analysis techniques to the resulting code. These methods can be easily implemented and extended as optimization passes for the LLVM optimizer and can therefore benefit from its extensive API. Although we discovered certain drawbacks and issues with this approach, our results and proof of concept show that IR code is a very suitable target for analyses and it is well worth driving research further into this topic.},
+booktitle = {Proceedings of the 12th International Conference on Availability, Reliability and Security},
+articleno = {45},
+numpages = {7},
+keywords = {LLVM, Intermediate Representation, Decompiler, Cryptography, Binary, Analysis},
+location = {Reggio Calabria, Italy},
+series = {ARES '17}
+}
+
+@inproceedings{10.1145/3019612.3019926,
+author = {Kim, Gyoosik},
+title = {On computing similarity of android executables using text mining: student research abstract},
+year = {2017},
+isbn = {9781450344869},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3019612.3019926},
+doi = {10.1145/3019612.3019926},
+abstract = {According to Comscore1, Android users in the U.S spend an average of 2.8 hours per day using mobile media. On the other hand, according to Statista reports2, Android users were able to choose between 2.2 million applications on June 2016. Among these applications, there are ones reported by Google Android Security Service3 as malware, virus, or illegal theft. Many tools such as Dex2Jar4, apktool5, and jd-gui6 analyze and reverse engineer Android applications and can be used to illegally copy or transform the applications as well. In order to protect applications from piracy or illegal theft, it is necessary to detect theft by measuring application similarity. In the literature, previous studies on theft detection have measured application similarity at two levels, source or executable code level, which have some limitations. Source codes are not available if the codes are legacy one or are developed by upstream suppliers. In the case of the executable codes, application similarity is measured 1) using the source codes decompiled from the executables, or 2) using the characteristics extracted from the executables (i.e., birthmark). For example, DroidMoss [5] applied a fuzzy hashing technique to effectively localize and detect the changes from app-repackaging behavior. Reference [4] proposed software birthmarks to show the unique characteristics of a program and detected software theft based on the birthmarks.},
+booktitle = {Proceedings of the Symposium on Applied Computing},
+pages = {1761–1762},
+numpages = {2},
+location = {Marrakech, Morocco},
+series = {SAC '17}
+}
+
+@inproceedings{10.1145/2993259.2993262,
+author = {Avdiienko, Vitalii and Kuznetsov, Konstantin and Calciati, Paolo and Caiza Rom\'{a}n, Juan Carlos and Gorla, Alessandra and Zeller, Andreas},
+title = {CALAPPA: a toolchain for mining Android applications},
+year = {2016},
+isbn = {9781450343985},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2993259.2993262},
+doi = {10.1145/2993259.2993262},
+abstract = {Software engineering researchers and practitioners working on the Android ecosystem frequently have to do the same tasks over and over: retrieve data from the Google Play store to analyze it, decompile the Dalvik bytecode to understand the behavior of the app, and analyze applications metadata and user reviews. In this paper we present CALAPPA, a highly reusable and customizable toolchain that allows researchers to easily run common analysis tasks on large Android application datasets. CALAPPA includes components to retrieve the data from different Android stores, and comes with a predefined, but extensible, set of modules that can analyze apps metadata and code.},
+booktitle = {Proceedings of the International Workshop on App Market Analytics},
+pages = {22–25},
+numpages = {4},
+keywords = {App market analysis, Android app mining, Android Analysis},
+location = {Seattle, WA, USA},
+series = {WAMA 2016}
+}
+
+@inproceedings{10.1145/2995306.2995312,
+author = {Banescu, Sebastian and Lucaci, Ciprian and Kr\"{a}mer, Benjamin and Pretschner, Alexander},
+title = {VOT4CS: A Virtualization Obfuscation Tool for C#},
+year = {2016},
+isbn = {9781450345767},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2995306.2995312},
+doi = {10.1145/2995306.2995312},
+abstract = {Software protection is a difficult task especially for managed code, which executes only on a runtime environment such as C# or Java. Applications developed in such languages can be accurately decompiled, as opposed to x86 machine code. This facilitates reverse engineering attacks, with the goal of extracting proprietary algorithms. Due to the ease of distributing software copies across different jurisdictions, software developers cannot only rely on legal means for protection against reverse engineering attacks. Therefore, they have to employ technical means for software protection such as obfuscation. This paper presents an open source tool for virtualization obfuscation of programs written in the C# language, called VOT4CS. Our tool offers several possibilities for randomization that aim to confuse attacks based on pattern recognition. An evaluation of VOT4CS is performed based on several case-studies, which show the performance-security trade-off offered by the tool.},
+booktitle = {Proceedings of the 2016 ACM Workshop on Software PROtection},
+pages = {39–49},
+numpages = {11},
+keywords = {software protection, obfuscation, man-at-the-end attacks},
+location = {Vienna, Austria},
+series = {SPRO '16}
+}
+
+@inproceedings{10.1145/2976749.2978336,
+author = {Deshotels, Luke and Deaconescu, Razvan and Chiroiu, Mihai and Davi, Lucas and Enck, William and Sadeghi, Ahmad-Reza},
+title = {SandScout: Automatic Detection of Flaws in iOS Sandbox Profiles},
+year = {2016},
+isbn = {9781450341394},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2976749.2978336},
+doi = {10.1145/2976749.2978336},
+abstract = {Recent literature on iOS security has focused on the malicious potential of third-party applications, demonstrating how developers can bypass application vetting and code-level protections. In addition to these protections, iOS uses a generic sandbox profile called "container" to confine malicious or exploited third-party applications. In this paper, we present the first systematic analysis of the iOS container sandbox profile. We propose the SandScout framework to extract, decompile, formally model, and analyze iOS sandbox profiles as logic-based programs. We use our Prolog-based queries to evaluate file-based security properties of the container sandbox profile for iOS 9.0.2 and discover seven classes of exploitable vulnerabilities. These attacks affect non-jailbroken devices running later versions of iOS. We are working with Apple to resolve these attacks, and we expect that SandScout will play a significant role in the development of sandbox profiles for future versions of iOS.},
+booktitle = {Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security},
+pages = {704–716},
+numpages = {13},
+keywords = {Apple, app, iOS, iPhone, sandblaster, sandbox, seatbelt},
+location = {Vienna, Austria},
+series = {CCS '16}
+}
+
+@inproceedings{10.1145/2908080.2908119,
+author = {Noonan, Matt and Loginov, Alexey and Cok, David},
+title = {Polymorphic type inference for machine code},
+year = {2016},
+isbn = {9781450342612},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2908080.2908119},
+doi = {10.1145/2908080.2908119},
+abstract = {For many compiled languages, source-level types are erased very early in the compilation process. As a result, further compiler passes may convert type-safe source into type-unsafe machine code. Type-unsafe idioms in the original source and type-unsafe optimizations mean that type information in a stripped binary is essentially nonexistent. The problem of recovering high-level types by performing type inference over stripped machine code is called type reconstruction, and offers a useful capability in support of reverse engineering and decompilation. In this paper, we motivate and develop a novel type system and algorithm for machine-code type inference. The features of this type system were developed by surveying a wide collection of common source- and machine-code idioms, building a catalog of challenging cases for type reconstruction. We found that these idioms place a sophisticated set of requirements on the type system, inducing features such as recursively-constrained polymorphic types. Many of the features we identify are often seen only in expressive and powerful type systems used by high-level functional languages. Using these type-system features as a guideline, we have developed Retypd: a novel static type-inference algorithm for machine code that supports recursive types, polymorphism, and subtyping. Retypd yields more accurate inferred types than existing algorithms, while also enabling new capabilities such as reconstruction of pointer const annotations with 98% recall. Retypd can operate on weaker program representations than the current state of the art, removing the need for high-quality points-to information that may be impractical to compute.},
+booktitle = {Proceedings of the 37th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {27–41},
+numpages = {15},
+keywords = {Binary Analysis, Polymorphism, Pushdown Automata, Reverse Engineering, Static Analyiss, Type Systems},
+location = {Santa Barbara, CA, USA},
+series = {PLDI '16}
+}
+
+@inproceedings{10.1145/2750858.2805833,
+author = {Wang, Haoyu and Hong, Jason and Guo, Yao},
+title = {Using text mining to infer the purpose of permission use in mobile apps},
+year = {2015},
+isbn = {9781450335744},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2750858.2805833},
+doi = {10.1145/2750858.2805833},
+abstract = {Understanding the purpose of why sensitive data is used could help improve privacy as well as enable new kinds of access control. In this paper, we introduce a new technique for inferring the purpose of sensitive data usage in the context of Android smartphone apps. We extract multiple kinds of features from decompiled code, focusing on app-specific features and text-based features. These features are then used to train a machine learning classifier. We have evaluated our approach in the context of two sensitive permissions, namely ACCESS_FINE_LOCATION and READ_CONTACT_LIST, and achieved an accuracy of about 85% and 94% respectively in inferring purposes. We have also found that text-based features alone are highly effective in inferring purposes.},
+booktitle = {Proceedings of the 2015 ACM International Joint Conference on Pervasive and Ubiquitous Computing},
+pages = {1107–1118},
+numpages = {12},
+keywords = {purpose, privacy, permission, mobile applications, Android},
+location = {Osaka, Japan},
+series = {UbiComp '15}
+}
+
+@inproceedings{10.1145/2676726.2677009,
+author = {Raychev, Veselin and Vechev, Martin and Krause, Andreas},
+title = {Predicting Program Properties from "Big Code"},
+year = {2015},
+isbn = {9781450333009},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2676726.2677009},
+doi = {10.1145/2676726.2677009},
+abstract = {We present a new approach for predicting program properties from massive codebases (aka "Big Code"). Our approach first learns a probabilistic model from existing data and then uses this model to predict properties of new, unseen programs.The key idea of our work is to transform the input program into a representation which allows us to phrase the problem of inferring program properties as structured prediction in machine learning. This formulation enables us to leverage powerful probabilistic graphical models such as conditional random fields (CRFs) in order to perform joint prediction of program properties.As an example of our approach, we built a scalable prediction engine called JSNice for solving two kinds of problems in the context of JavaScript: predicting (syntactic) names of identifiers and predicting (semantic) type annotations of variables. Experimentally, JSNice predicts correct names for 63% of name identifiers and its type annotation predictions are correct in 81% of the cases. In the first week since its release, JSNice was used by more than 30,000 developers and in only few months has become a popular tool in the JavaScript developer community.By formulating the problem of inferring program properties as structured prediction and showing how to perform both learning and inference in this context, our work opens up new possibilities for attacking a wide range of difficult problems in the context of "Big Code" including invariant generation, decompilation, synthesis and others.},
+booktitle = {Proceedings of the 42nd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {111–124},
+numpages = {14},
+keywords = {types, structured prediction, program properties, names, javascript, conditional random fields, closure compiler, big code},
+location = {Mumbai, India},
+series = {POPL '15}
+}
+
+@inproceedings{10.1145/2663761.2664231,
+author = {Kang, SeongWook and Shim, Hyungjoon and Cho, Seong-je and Park, Minkyu and Han, Sangchul},
+title = {A robust and efficient birthmark-based android application filtering system},
+year = {2014},
+isbn = {9781450330602},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2663761.2664231},
+doi = {10.1145/2663761.2664231},
+abstract = {Since it is very easy to decompile and repackage Android applications (or apps), many paid apps in the official Android Market are exposed to software piracy such as illegal copy, license cracking, and illegal distribution. To address this problem, we can employ app filtering systems that can prevent OSP servers from distributing illegally copied or tampered apps. In this paper, we propose a birthmark-based Android app filtering system. The system extracts birthmarks from APK files, and compares the birthmarks to examine if a given APK file is actually identical to one of (paid) original apps, that is, the APK file is a duplicated or tampered one. The experimental results show that the system is efficient and robust in the sense that the birthmark size is very small and the tampered apps can be identified effectively.},
+booktitle = {Proceedings of the 2014 Conference on Research in Adaptive and Convergent Systems},
+pages = {253–257},
+numpages = {5},
+keywords = {robustness, piracy and security, filtering, birthmark, Android application},
+location = {Towson, Maryland},
+series = {RACS '14}
+}
+
+@inproceedings{10.1145/2591971.2592003,
+author = {Viennot, Nicolas and Garcia, Edward and Nieh, Jason},
+title = {A measurement study of google play},
+year = {2014},
+isbn = {9781450327893},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2591971.2592003},
+doi = {10.1145/2591971.2592003},
+abstract = {Although millions of users download and use third-party Android applications from the Google Play store, little information is known on an aggregated level about these applications. We have built PlayDrone, the first scalable Google Play store crawler, and used it to index and analyze over 1,100,000 applications in the Google Play store on a daily basis, the largest such index of Android applications. PlayDrone leverages various hacking techniques to circumvent Google's roadblocks for indexing Google Play store content, and makes proprietary application sources available, including source code for over 880,000 free applications. We demonstrate the usefulness of PlayDrone in decompiling and analyzing application content by exploring four previously unaddressed issues: the characterization of Google Play application content at large scale and its evolution over time, library usage in applications and its impact on application portability, duplicative application content in Google Play, and the ineffectiveness of OAuth and related service authentication mechanisms resulting in malicious users being able to easily gain unauthorized access to user data and resources on Amazon Web Services and Facebook.},
+booktitle = {The 2014 ACM International Conference on Measurement and Modeling of Computer Systems},
+pages = {221–233},
+numpages = {13},
+keywords = {security, oauth, mobile computing, google play, decompilation, clone detection, authentication, android},
+location = {Austin, Texas, USA},
+series = {SIGMETRICS '14}
+}
+
+@inproceedings{10.1145/2513228.2513308,
+author = {Ko, Jeonguk and Shim, Hyungjoon and Kim, Dongjin and Jeong, Youn-Sik and Cho, Seong-je and Park, Minkyu and Han, Sangchul and Kim, Seong Baeg},
+title = {Measuring similarity of android applications via reversing and K-gram birthmarking},
+year = {2013},
+isbn = {9781450323482},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2513228.2513308},
+doi = {10.1145/2513228.2513308},
+abstract = {By measuring similarity of programs, we can determine whether someone illegally copies a program from another program or not. If the similarity is significantly high, it means that a program is a copy of the other. This paper proposes three techniques to measure similarity of the Dalvik executable codes (DEXs) in the Android application Packages (APKs). Firstly, we decompile the DEXs of candidate applications into Java sources and compute the similarity between the decompiled sources. Secondly, candidate DEXs are disassembled and the similarities between disassembled codes are measured. Finally, we extract k-gram based software birthmark form the dissembled codes and calculate the similarity of sample DEXs by comparing the extracted birthmarks. We perform several experiments to identify effects of the three techniques. With the analysis of the experimental results, the advantages and disadvantages of each technique are discussed.},
+booktitle = {Proceedings of the 2013 Research in Adaptive and Convergent Systems},
+pages = {336–341},
+numpages = {6},
+keywords = {software theft, software similarity, reversing, K-gram, Android application},
+location = {Montreal, Quebec, Canada},
+series = {RACS '13}
+}
+
+@inproceedings{10.1145/2480362.2480556,
+author = {Alitavoli, Mohammad and Joafshani, Mahdi and Erfanian, Aida},
+title = {A novel watermarking method for Java programs},
+year = {2013},
+isbn = {9781450316569},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2480362.2480556},
+doi = {10.1145/2480362.2480556},
+abstract = {Software piracy is one of the major concerns of programmers and software developers costing them huge amounts of financial losses every year. One of the programming languages used to develop software is Java. Although Java has some advantages over other languages, programs written using it are more vulnerable to software piracy than others. This is due to the fact that decompiling Java programs to their source codes is a relatively easy task. This paper proposed a novel method of watermarking Java programs. The suggested technique aimed to embed a watermark by means of appending a spurious If statement on to it. The proposed method was then implemented and tested in order to evaluate its security and resiliency against different types of attacks. The experimental results showed that the new method is more resilient to obfuscation and decompile-recompile attacks in comparison with the methods proposed by Genevieve Arboit in A Method for Watermarking Java Programs via Opaque Predicates [7] and Monden et al in A Practical Method for Watermarking Java Programs [5].},
+booktitle = {Proceedings of the 28th Annual ACM Symposium on Applied Computing},
+pages = {1013–1018},
+numpages = {6},
+keywords = {software watermarking, software protection, software piracy, copyright law, Java protection},
+location = {Coimbra, Portugal},
+series = {SAC '13}
+}
+
+@inproceedings{10.5555/2525512.2525515,
+author = {Cesare, Silvio and Xiang, Yang},
+title = {Simseer and bugwise: web services for binary-level software similarity and defect detection},
+year = {2013},
+isbn = {9781921770258},
+publisher = {Australian Computer Society, Inc.},
+address = {AUS},
+abstract = {Simseer and Bugwise are online web services that perform binary program analysis: 1) Simseer identifies similarity between submitted executables based on similarity in the control flow of each binary. A software similarity service provides benefit in identifying malware variants and families, discovering software theft, and revealing plagiarism of software programs. Simseer additionally performs code packing detection and automated unpacking of hidden code using application-level emulation. Finally, Simseer uses the similarity information from a sample set to identify program relationships and families through visualization of an evolutionary tree. 2) Bugwise is a service that identifies software bugs and defects. To achieve this end, it performs decompilation and data flow analysis. Bugwise can identify a subset of use-after-free bugs and has already found defects in Debian Linux. Bugwise and Simseer are both built on Malwise, a platform of binary analysis.},
+booktitle = {Proceedings of the Eleventh Australasian Symposium on Parallel and Distributed Computing - Volume 140},
+pages = {21–29},
+numpages = {9},
+keywords = {software theft detection, software similarity, plagiarism detection, computer security, cloud computing, bug detection},
+location = {Adelaide, Australia},
+series = {AusPDC '13}
+}
+
+@inproceedings{10.1145/2330784.2330899,
+author = {Park, Hyun soo and Kim, Kyung Joong},
+title = {Automatic python programming using stack-based genetic programming},
+year = {2012},
+isbn = {9781450311786},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2330784.2330899},
+doi = {10.1145/2330784.2330899},
+abstract = {Traditional genetic programming uses tree-like data structure to represent a program. It should be converted into a Lisp code, or needs a custom-made virtual machine or interpreter to execute the program generated. Recently, there is a study on genetic programming directly using Java bytecode, a practical intermediate language. It evolves a series of commands that manipulate stack and registers in the virtual machine and represents them with a simple list data structure instead of tree. Evolving the intermediate language is promising because 1) it is easy to combine an existing program with an automatically generated program, 2) there are several available development tools and environments for the language including virtual machine, decompiler, optimizer and so on, and 3) incorporating the list data structure into the evolutionary algorithm is simple and straightforward. In this research, we propose to evolve bytecode of Python programming language by stack-based genetic programming. Python is a flexible and popular programming language powered by plenty of research tools. For the evolution, we developed representation and genetic operations for the Python language. We report that the proposed method produced successful Python codes for two regression problems.},
+booktitle = {Proceedings of the 14th Annual Conference Companion on Genetic and Evolutionary Computation},
+pages = {641–642},
+numpages = {2},
+keywords = {bytecode, genetic programming, python, stack-based genetic programming},
+location = {Philadelphia, Pennsylvania, USA},
+series = {GECCO '12}
+}
+
+@inproceedings{10.1145/2076732.2076784,
+author = {Lu, Kangjie and Zou, Dabi and Wen, Weiping and Gao, Debin},
+title = {deRop: removing return-oriented programming from malware},
+year = {2011},
+isbn = {9781450306720},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2076732.2076784},
+doi = {10.1145/2076732.2076784},
+abstract = {Over the last few years, malware analysis has been one of the hottest areas in security research. Many techniques and tools have been developed to assist in automatic analysis of malware. This ranges from basic tools like disassemblers and decompilers, to static and dynamic tools that analyze malware behaviors, to automatic malware clustering and classification techniques, to virtualization technologies to assist malware analysis, to signature- and anomaly-based malware detection, and many others. However, most of these techniques and tools would not work on new attacking techniques, e.g., attacks that use return-oriented programming (ROP).In this paper, we look into the possibility of enabling existing defense technologies designed for normal malware to cope with malware using return-oriented programming. We discuss difficulties in removing ROP from malware, and design and implement an automatic converter, called deRop, that converts an ROP exploit into shellcode that is semantically equivalent with the original ROP exploit but does not use ROP, which could then be analyzed by existing malware defense technologies. We apply deRop on four real ROP malwares and demonstrate success in using deRop for the automatic conversion. We further discuss applicability and limitations of deRop.},
+booktitle = {Proceedings of the 27th Annual Computer Security Applications Conference},
+pages = {363–372},
+numpages = {10},
+keywords = {return-oriented programming, malware analysis},
+location = {Orlando, Florida, USA},
+series = {ACSAC '11}
+}
+
+@inproceedings{10.1145/2002951.2002953,
+author = {Oksanen, Kenneth},
+title = {Detecting algorithms using dynamic analysis},
+year = {2011},
+isbn = {9781450308113},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2002951.2002953},
+doi = {10.1145/2002951.2002953},
+abstract = {Detecting a given algorithm in a program without access to its source code can be valuable in many tasks ranging from intellectual property management to verifying the program's security properties. Unfortunately, approaches based on decompiling or reverse-engineering the program suffer from prohibitive costlyness as well as theoretical limitations. Instead we base our work on examining the program's internal dynamic behavior and trying to find in it tell-tale signs of the given algorithm using various pattern matching and statistical analysis techniques.},
+booktitle = {Proceedings of the Ninth International Workshop on Dynamic Analysis},
+pages = {1–6},
+numpages = {6},
+keywords = {security, program traces, pattern matching, intellectual property},
+location = {Toronto, Ontario, Canada},
+series = {WODA '11}
+}
+
+@inproceedings{10.1145/2001420.2001433,
+author = {Rosenblum, Nathan and Miller, Barton P. and Zhu, Xiaojin},
+title = {Recovering the toolchain provenance of binary code},
+year = {2011},
+isbn = {9781450305624},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2001420.2001433},
+doi = {10.1145/2001420.2001433},
+abstract = {Program binaries are an artifact of a production process that begins with source code and ends with a string of bytes representing executable code. There are many reasons to want to know the specifics of this process for a given binary---for forensic investigation of malware, to diagnose the role of the compiler in crashes or performance problems, or for reverse engineering and decompilation---but binaries are not generally annotated with such provenance details. Intuitively, the binary code should exhibit properties specific to the process that produced it, but it is not at all clear how to find such properties and map them to specific elements of that process.In this paper, we present an automatic technique to recover toolchain provenance: those details, such as the source language and the compiler and compilation options, that define the transformation process through which the binary was produced. We approach provenance recovery as a classification problem, discovering characteristics of binary code that are strongly associated with particular toolchain components and developing models that can infer the likely provenance of program binaries. Our experiments show that toolchain provenance can be recovered with high accuracy, approaching 100% accuracy for some components and yielding good results (90%) even when the binaries emitted by different components appear to be very similar.},
+booktitle = {Proceedings of the 2011 International Symposium on Software Testing and Analysis},
+pages = {100–110},
+numpages = {11},
+keywords = {static binary analysis, program provenance, forensics},
+location = {Toronto, Ontario, Canada},
+series = {ISSTA '11}
+}
+
+@inproceedings{10.1145/1925805.1925818,
+author = {Vall\'{e}e-Rai, Raja and Co, Phong and Gagnon, Etienne and Hendren, Laurie and Lam, Patrick and Sundaresan, Vijay},
+title = {Soot: a Java bytecode optimization framework},
+year = {2010},
+publisher = {IBM Corp.},
+address = {USA},
+url = {https://doi.org/10.1145/1925805.1925818},
+doi = {10.1145/1925805.1925818},
+abstract = {This paper presents Soot, a framework for optimizing Java* bytecode. The framework is implemented in Java and supports three intermediate representations for representing Java bytecode: Baf, a streamlined representation of bytecode which is simple to manipulate; Jimple, a typed 3-address intermediate representation suitable for optimization; and Grimp, an aggregated version of Jimple suitable for decompilation. We describe the motivation for each representation, and the salient points in translating from one representation to another.In order to demonstrate the usefulness of the framework, we have implemented intraprocedural and whole program optimizations. To show that whole program bytecode optimization can give performance improvements, we provide experimental results for 12 large benchmarks, including 8 SPECjvm98 benchmarks running on JDK 1.2 for GNU/Linuxtm. These results show up to 8% improvement when the optimized bytecode is run using the interpreter and up to 21% when run using the JIT compiler.},
+booktitle = {CASCON First Decade High Impact Papers},
+pages = {214–224},
+numpages = {11},
+location = {Toronto, Ontario, Canada},
+series = {CASCON '10}
+}
+
+@inproceedings{10.1145/1706356.1706363,
+author = {Albert, Elvira and G\'{o}mez-Zamalloa, Miguel and Puebla, Germ\'{a}n},
+title = {PET: a partial evaluation-based test case generation tool for Java bytecode},
+year = {2010},
+isbn = {9781605587271},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1706356.1706363},
+doi = {10.1145/1706356.1706363},
+abstract = {PET is a prototype Partial Evaluation-based Test case generation tool for a subset of Java bytecode programs. It performs white-box test generation by means of two consecutive Partial Evaluations (PE). The first PE decompiles the Java bytecode program into an equivalent CLP (Constraint Logic Programming) counterpart. The second PE generates a test-case generator from the CLP program. This generator captures interesting test coverage criteria and it is able to generate further test cases on demand. For the first PE, PET incorporates an existing tool which decompiles bytecode to CLP. The main contribution of this work is the implementation of the second PE and the proof of concept of the approach. This has required the development of a partial evaluator for CLP with appropriate control strategies to ensure the required coverage criteria and to generate test-case generators. PET can be downloaded as free software from its web site, where a repository of examples and a web interface are also provided. Though PET has to be extended to be applicable to larger programs, we argue that it provides some evidence that the approach can be of practical interest.},
+booktitle = {Proceedings of the 2010 ACM SIGPLAN Workshop on Partial Evaluation and Program Manipulation},
+pages = {25–28},
+numpages = {4},
+keywords = {testing, test-case generation, symbolic execution, partial evaluation, constraint logic programming},
+location = {Madrid, Spain},
+series = {PEPM '10}
+}
+
+@inproceedings{10.5555/1862294.1862301,
+author = {Cesare, Silvio and Xiang, Yang},
+title = {Classification of malware using structured control flow},
+year = {2010},
+isbn = {9781920682880},
+publisher = {Australian Computer Society, Inc.},
+address = {AUS},
+abstract = {Malware is a pervasive problem in distributed computer and network systems. Identification of malware variants provides great benefit in early detection. Control flow has been proposed as a characteristic that can be identified across variants, resulting in flowgraph based malware classification. Static analysis is widely used for the classification but can be ineffective if malware undergoes a code packing transformation to hide its real content. This paper proposes a novel algorithm for constructing a control flow graph signature using the decompilation technique of structuring. Similarity between structured graphs can be quickly determined using string edit distances. To reverse the code packing transformation, a fast application level emulator is proposed. To demonstrate the effectiveness of the automated unpacking and flowgraph based classification, we implement a complete system and evaluate it using synthetic and real malware. The evaluation shows our system is highly effective in terms of accuracy in revealing all the hidden code, execution time for unpacking, and accuracy in classification.},
+booktitle = {Proceedings of the Eighth Australasian Symposium on Parallel and Distributed Computing - Volume 107},
+pages = {61–70},
+numpages = {10},
+keywords = {unpacking, structured control flow, network security, malware},
+location = {Brisbane, Australia},
+series = {AusPDC '10}
+}
+
+@inproceedings{10.1145/1449764.1449802,
+author = {Bellamy, Ben and Avgustinov, Pavel and de Moor, Oege and Sereni, Damien},
+title = {Efficient local type inference},
+year = {2008},
+isbn = {9781605582153},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1449764.1449802},
+doi = {10.1145/1449764.1449802},
+abstract = {Inference of static types for local variables in Java bytecode is the first step of any serious tool that manipulates bytecode, be it for decompilation, transformation or analysis. It is important, therefore, to perform that step as accurately and efficiently as possible. Previous work has sought to give solutions with good worst-case complexity.We present a novel algorithm, which is optimised for the common case rather than worst-case performance. It works by first finding a set of minimal typings that are valid for all assignments, and then checking whether these minimal typings satisfy all uses. Unlike previous algorithms, it does not explicitly build a data structure of type constraints, and it is easy to implement efficiently. We prove that the algorithm produces a typing that is both sound (obeying the rules of the language) and as tight as possible.We then go on to present extensive experiments, comparing the results of the new algorithm against the previously best known method. The experiments include bytecode that is generated in other ways than compilation of Java source. The new algorithm is always faster, typically by a factor 6, but on some real benchmarks the gain is as high as a factor of 92. Furthermore, whereas that previous method is sometimes suboptimal, our algorithm always returns a tightest possible type.We also discuss in detail how we handle primitive types, which is a difficult issue due to the discrepancy in their treatment between Java bytecode and Java source. For the application to decompilation, however, it is very important to handle this correctly.},
+booktitle = {Proceedings of the 23rd ACM SIGPLAN Conference on Object-Oriented Programming Systems Languages and Applications},
+pages = {475–492},
+numpages = {18},
+keywords = {type inference, program analysis},
+location = {Nashville, TN, USA},
+series = {OOPSLA '08}
+}
+
+@article{10.1145/1255456.1255471,
+author = {Stitt, Greg and Vahid, Frank},
+title = {Binary synthesis},
+year = {2008},
+issue_date = {August 2007},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {12},
+number = {3},
+issn = {1084-4309},
+url = {https://doi.org/10.1145/1255456.1255471},
+doi = {10.1145/1255456.1255471},
+abstract = {Recent high-level synthesis approaches and C-based hardware description languages attempt to improve the hardware design process by allowing developers to capture desired hardware functionality in a well-known high-level source language. However, these approaches have yet to achieve wide commercial success due in part to the difficulty of incorporating such approaches into software tool flows. The requirement of using a specific language, compiler, or development environment may cause many software developers to resist such approaches due to the difficulty and possible instability of changing well-established robust tool flows. Thus, in the past several years, synthesis from binaries has been introduced, both in research and in commercial tools, as a means of better integrating with tool flows by supporting all high-level languages and software compilers. Binary synthesis can be more easily integrated into a software development tool-flow by only requiring an additional backend tool, and it even enables completely transparent dynamic translation of executing binaries to configurable hardware circuits. In this article, we survey the key technologies underlying the important emerging field of binary synthesis. We compare binary synthesis to several related areas of research, and we then describe the key technologies required for effective binary synthesis: decompilation techniques necessary for binary synthesis to achieve results competitive with source-level synthesis, hardware/software partitioning methods necessary to find critical binary regions suitable for synthesis, synthesis methods for converting regions to custom circuits, and binary update methods that enable replacement of critical binary regions by circuits.},
+journal = {ACM Trans. Des. Autom. Electron. Syst.},
+month = may,
+articleno = {34},
+numpages = {30},
+keywords = {warp processors, synthesis from software binaries, hardware/software partitioning, hardware/software codesign, configurable logic, FPGA, Binary synthesis}
+}
+
+@inproceedings{10.1145/1344671.1344729,
+author = {Note, Jean-Baptiste and Rannaud, \'{E}ric},
+title = {From the bitstream to the netlist},
+year = {2008},
+isbn = {9781595939340},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1344671.1344729},
+doi = {10.1145/1344671.1344729},
+abstract = {This poster presents an in-depth analysis of the Xilinx bitstream file format. This theoretical analysis is backed by a simple and efficient implementation of a reverse-engineering tool for Xilinx bitstreams. The development process followed these lines. First, publicly available documentation from Xilinx has been analyzed; then some custom assumptions about the bitstream format have been made. This information allowed a suitable algorithm to be run on well-chosen bitstreams. The output from this automated analysis step is a database which relates raw bitstream data to low-level netlist elements. This database is subsequently used as input to an efficient bitstream compiler which can either generate a bitstream from a low-level (XDL) description of the netlist, or conversely decompile any given bitstream to its low-level netlist elements. This work has been validated for the spartan3, virtex2, virtex4 and virtex5 FPGA lines from Xilinx. Decompiling a bitstream is very fast; it is two orders of magnitude faster than the reverse operation of compilation with Xilinx' bitgen. This work aims to raise awareness about security issues for users of FPGAs. It also makes custom compilation and low-level tinkering with bitstreams - \`{a} la JBits - possible},
+booktitle = {Proceedings of the 16th International ACM/SIGDA Symposium on Field Programmable Gate Arrays},
+pages = {264},
+numpages = {1},
+keywords = {reverse-engineering, bitstream format, FPGA},
+location = {Monterey, California, USA},
+series = {FPGA '08}
+}
+
+@article{10.1145/1286821.1286827,
+author = {Ohori, Atsushi},
+title = {A proof theory for machine code},
+year = {2007},
+issue_date = {October 2007},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {29},
+number = {6},
+issn = {0164-0925},
+url = {https://doi.org/10.1145/1286821.1286827},
+doi = {10.1145/1286821.1286827},
+abstract = {This article develops a proof theory for low-level code languages. We first define a proof system, which we refer to as the sequential sequent calculus, and show that it enjoys the cut elimination property and that its expressive power is the same as that of the natural deduction proof system. We then establish the Curry-Howard isomorphism between this proof system and a low-level code language by showing the following properties: (1) the set of proofs and the set of typed codes is in one-to-one correspondence, (2) the operational semantics of the code language is directly derived from the cut elimination procedure of the proof system, and (3) compilation and decompilation algorithms between the code language and the typed lambda calculus are extracted from the proof transformations between the sequential sequent calculus and the natural deduction proof system. This logical framework serves as a basis for the development of type systems of various low-level code languages, type-preserving compilation, and static code analysis.},
+journal = {ACM Trans. Program. Lang. Syst.},
+month = oct,
+pages = {36–es},
+numpages = {35},
+keywords = {Curry-Howard isomorphism}
+}
+
+@inproceedings{10.1145/1288869.1288887,
+author = {Jacob, Matthias and Jakubowski, Mariusz H. and Venkatesan, Ramarathnam},
+title = {Towards integral binary execution: implementing oblivious hashing using overlapped instruction encodings},
+year = {2007},
+isbn = {9781595938572},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1288869.1288887},
+doi = {10.1145/1288869.1288887},
+abstract = {Executing binaries without interference by an outside adversary has been an ongoing duel between protection methods and attacks. Recently, an efficient kernel-patch attack has been presented against commonly used self-checking code techniques that use checksumming ahead of execution. While methods based on self-modifying code can defend against this attack, such techniques depend on low-level architectural details and may not be practical in the long run. An alternative defense is to use oblivious hashing (OH). Instead of checking code integrity prior to execution, OH can verify untampered runtime behavior continuously. However, earlier OH approaches have some weaknesses, particularly with binary code: Physical instruction bytes cannot be easily checked during execution, and an attacker may be able to detect and remove OH checks, since OH alone does not provide tamper-resistance or obfuscation.In our approach, we deliberately overlap a program's basic blocks so that they share instruction bytes. This increases tamper-resistance implicitly because malicious modifications affect multiple instructions simultaneously. Also, our scheme facilitates explicit anti-tampering checks via injection of OH instructions overlapped with target code, enabling OH that can verify integrity of both runtime state and executing instructions. Thus, our method addresses anti-checksum attacks without resorting to self-modifying code, and also extends OH to verify physical code, not only program state. In addition, overlapping facilitates resistance against disassembly and decompilation. Our approach works on processor architectures and byte-codes that support variable-length instructions. To our knowledge, this is the first technique that blends tamper-resistance into architecture and therefore significantly improves robustness of binaries.},
+booktitle = {Proceedings of the 9th Workshop on Multimedia &amp; Security},
+pages = {129–140},
+numpages = {12},
+keywords = {tamper-resistance, overlapped code, oblivious hashing, obfuscation, integrity checking, anti-disassembly},
+location = {Dallas, Texas, USA},
+series = {MM&amp;Sec '07}
+}
+
+@inproceedings{10.1145/1229384.1229389,
+author = {Zhao, Chuan and Alexander, Roger T.},
+title = {Testing aspect-oriented programs as object-oriented programs},
+year = {2007},
+isbn = {9781595936639},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1229384.1229389},
+doi = {10.1145/1229384.1229389},
+abstract = {Along with the evolution of the technique and use of aspect-oriented programming (AOP), the difficulty of testing the aspect-oriented programs is now receiving much attention. Besides lots of methods of testing AOP, testing the woven source code seems to be a feasible way. In this paper we discuss the feasibility of this method and propose an OOP testing method with case study for AspectJ programs in which the decompiled woven code is tested.},
+booktitle = {Proceedings of the 3rd Workshop on Testing Aspect-Oriented Programs},
+pages = {23–27},
+numpages = {5},
+keywords = {woven code, weaver, testing, decompilation, bytecode, aspect-oriented programming, JUnit, JODE, Eclipse, CodePro, AspectJ},
+location = {Vancouver, British Columbia, Canada},
+series = {WTAOP '07}
+}
+
+@inproceedings{10.1109/CGO.2007.3,
+author = {He, Haifeng and Trimble, John and Perianayagam, Somu and Debray, Saumya and Andrews, Gregory},
+title = {Code Compaction of an Operating System Kernel},
+year = {2007},
+isbn = {0769527647},
+publisher = {IEEE Computer Society},
+address = {USA},
+url = {https://doi.org/10.1109/CGO.2007.3},
+doi = {10.1109/CGO.2007.3},
+abstract = {General-purpose operating systems, such as Linux, are increasingly being used in embedded systems. Computational resources are usually limited, and embedded processors often have a limited amount of memory. This makes code size especially important. This paper describes techniques for automatically reducing the memory footprint of general-purpose operating systems on embedded platforms. The problem is complicated by the fact that kernel code tends to be quite different from ordinary application code, including the presence of a significant amount of hand-written assembly code, multiple entry points, implicit control flow paths involving interrupt handlers, and frequent indirect control flow via function pointers. We use a novel "approximate decompilation" technique to apply source-level program analysis to hand-written assembly code. A prototype implementation of our ideas on an Intel x86 platform, applied to a Linux kernel that has been configured to exclude unnecessary code, obtains a code size reduction of close to 24%.},
+booktitle = {Proceedings of the International Symposium on Code Generation and Optimization},
+pages = {283–298},
+numpages = {16},
+series = {CGO '07}
+}
+
+@inproceedings{10.1007/978-3-540-69611-7_8,
+author = {Albert, Elvira and G\'{o}mez-Zamalloa, Miguel and Hubert, Laurent and Puebla, Germ\'{a}n},
+title = {Verification of java bytecode using analysis and transformation of logic programs},
+year = {2007},
+isbn = {3540696083},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-540-69611-7_8},
+doi = {10.1007/978-3-540-69611-7_8},
+abstract = {State of the art analyzers in the Logic Programming (LP) paradigm are nowadays mature and sophisticated. They allow inferring a wide variety of global properties including termination, bounds on resource consumption, etc. The aim of this work is to automatically transfer the power of such analysis tools for LP to the analysis and verification of Java bytecode (jvml). In order to achieve our goal, we rely on well-known techniques for meta-programming and program specialization. More precisely, we propose to partially evaluate a jvml interpreter implemented in LP together with (an LP representation of) a jvml program and then analyze the residual program. Interestingly, at least for the examples we have studied, our approach produces very simple LP representations of the original jvml programs. This can be seen as a decompilation from jvml to high-level LP source. By reasoning about such residual programs, we can automatically prove in the CiaoPP system some non-trivial properties of jvml programs such as termination, run-time error freeness and infer bounds on its resource consumption. We are not aware of any other system which is able to verify such advanced properties of Java bytecode.},
+booktitle = {Proceedings of the 9th International Conference on Practical Aspects of Declarative Languages},
+pages = {124–139},
+numpages = {16},
+location = {Nice, France},
+series = {PADL'07}
+}
+
+@inproceedings{10.1007/11925071_11,
+author = {Iu, Ming-Yee and Zwaenepoel, Willy},
+title = {Queryll: Java database queries through bytecode rewriting},
+year = {2006},
+isbn = {354049023X},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/11925071_11},
+doi = {10.1007/11925071_11},
+abstract = {When interfacing Java with other systems such as databases, programmers must often program in special interface languages like SQL. Code written in these languages often needs to be embedded in strings where they cannot be error-checked at compile-time, or the Java compiler needs to be altered to directly recognize code written in these languages. We have taken a different approach to adding database query facilities to Java. Bytecode rewriting allows us to add query facilities to Java whose correctness can be checked at compile-time but which don't require any changes to the Java language, Java compilers, Java VMs, or IDEs. Like traditional object-relational mapping tools, we provide Java libraries for accessing individual database entries as objects and navigating among them. To express a query though, a programmer simply writes code that takes a Collection representing the entire contents of a database, iterates over each entry like they would with a normal Collection, and choose the entries of interest. The query is fully valid Java code that, if executed, will read through an entire database and copy entries into Java objects where they will be inspected. Executing queries in this way is obviously inefficient, but we have a special bytecode rewriting tool that can decompile Java class files, identify queries in the bytecode, and rewrite the code to use SQL instead. The rewritten bytecode can then be run using any standard Java VM. Since queries use standard Java set manipulation syntax, Java programmers do not need to learn any new syntax. Our system is able to handle complex queries that make use of all the basic relational operations and exhibits performance comparable to that of hand-written SQL.},
+booktitle = {Proceedings of the 7th ACM/IFIP/USENIX International Conference on Middleware},
+pages = {201–218},
+numpages = {18},
+location = {Melbourne, Australia},
+series = {Middleware'06}
+}
+
+@inproceedings{10.5555/1515984.1516000,
+author = {Iu, Ming-Yee and Zwaenepoel, Willy},
+title = {Queryll: Java database queries through bytecode rewriting},
+year = {2006},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {When interfacing Java with other systems such as databases, programmers must often program in special interface languages like SQL. Code written in these languages often needs to be embedded in strings where they cannot be error-checked at compile-time, or the Java compiler needs to be altered to directly recognize code written in these languages. We have taken a different approach to adding database query facilities to Java. Bytecode rewriting allows us to add query facilities to Java whose correctness can be checked at compile-time but which don't require any changes to the Java language, Java compilers, Java VMs, or IDEs. Like traditional object-relational mapping tools, we provide Java libraries for accessing individual database entries as objects and navigating among them. To express a query though, a programmer simply writes code that takes a Collection representing the entire contents of a database, iterates over each entry like they would with a normal Collection, and choose the entries of interest. The query is fully valid Java code that, if executed, will read through an entire database and copy entries into Java objects where they will be inspected. Executing queries in this way is obviously inefficient, but we have a special bytecode rewriting tool that can decompile Java class files, identify queries in the bytecode, and rewrite the code to use SQL instead. The rewritten bytecode can then be run using any standard Java VM. Since queries use standard Java set manipulation syntax, Java programmers do not need to learn any new syntax. Our system is able to handle complex queries that make use of all the basic relational operations and exhibits performance comparable to that of hand-written SQL.},
+booktitle = {Proceedings of the ACM/IFIP/USENIX 2006 International Conference on Middleware},
+pages = {201–218},
+numpages = {18},
+location = {Melbourne, Australia},
+series = {Middleware '06}
+}
+
+@inproceedings{10.1145/1082948.1082957,
+author = {Zheng, Jiang and Robinson, Brian and Williams, Laurie and Smiley, Karen},
+title = {A process for identifying changes when source code is not available},
+year = {2005},
+isbn = {1595931295},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1082948.1082957},
+doi = {10.1145/1082948.1082957},
+abstract = {Various regression test selection techniques have been developed and shown to improve fault detection effectiveness. The majority of these test selection techniques rely on access to source code for change identification. However, when new releases of COTS components are made available for integration and testing, source code is often not available to guide regression test selection. This paper describes a process for identifying changed functions when code is not available. This change information is beneficial for selecting white-box regression tests of customer/glue code. This process is applicable when COTS licensing agreements do not preclude decompilation. A feasibility study of the process was conducted with four releases of a medium-scale internal ABB product. The results of the feasibility study indicate that this process can be effective in identifying changed functions.},
+booktitle = {Proceedings of the Second International Workshop on Models and Processes for the Evaluation of Off-the-Shelf Components},
+pages = {1–4},
+numpages = {4},
+keywords = {change identification, COTS},
+location = {St. Louis, Missouri},
+series = {MPEC '05}
+}
+
+@inproceedings{10.1145/1046192.1046208,
+author = {Stitt, Greg and Guo, Zhi and Najjar, Walid and Vahid, Frank},
+title = {Techniques for synthesizing binaries to an advanced register/memory structure},
+year = {2005},
+isbn = {1595930299},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1046192.1046208},
+doi = {10.1145/1046192.1046208},
+abstract = {Recent works demonstrate several benefits of synthesizing software binaries onto FPGA hardware, including incorporating hardware design into established software tool flows with minimal impact, porting existing binaries to FPGAs, and even dynamically synthesizing software kernels to faster FPGA coprocessors. Those works showed that standard binary decompilation methods can recover enough high-level control information to result in reasonably-efficient hardware. However, recent synthesis methods for FPGAs utilize advanced memory structures, such as a "smart buffer," that require recovery of additional high-level information, specifically information about loops and arrays. We incorporate decompilation techniques into an existing binary synthesis tool flow to recover loops and arrays in order to take advantage of advanced memory structures when performing synthesis from a binary. We demonstrate through experiments on six benchmarks that our methods improve binary synthesis performance by 53%, by making effective use of smart buffers. Furthermore, we compare the binary results using smart buffers with results of synthesis directly from the original C code for the benchmarks, and show that our methods achieved almost identical performance results with only 10% area overhead.},
+booktitle = {Proceedings of the 2005 ACM/SIGDA 13th International Symposium on Field-Programmable Gate Arrays},
+pages = {118–124},
+numpages = {7},
+keywords = {synthesis, smart buffers, embedded systems, decompilation, binaries, FPGA},
+location = {Monterey, California, USA},
+series = {FPGA '05}
+}
+
+@inproceedings{10.1145/996566.1142986,
+author = {Lysecky, Roman and Stitt, Greg and Vahid, Frank},
+title = {Warp Processors},
+year = {2004},
+isbn = {1581138288},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/996566.1142986},
+doi = {10.1145/996566.1142986},
+abstract = {We describe a new processing architecture, known as a warp processor, that utilizes a field-programmable gate array (FPGA) to improve the speed and energy consumption of a software binary executing on a microprocessor. Unlike previous approaches that also improve software using an FPGA but do so using a special compiler, a warp processor achieves these improvements completely transparently and operates from a standard binary. A warp processor dynamically detects the binary's critical regions, reimplements those regions as a custom hardware circuit in the FPGA, and replaces the software region by a call to the new hardware implementation of that region. While not all benchmarks can be improved using warp processing, many can, and the improvements are dramatically better than those achievable by more traditional architecture improvements. The hardest part of warp processing is that of dynamically reimplementing code regions on an FPGA, requiring partitioning, decompilation, synthesis, placement, and routing tools, all having to execute with minimal computation time and data memory so as to coexist on chip with the main processor. We describe the results of developing our warp processor. We developed a custom FPGA fabric specifically designed to enable lean place and route tools, and we developed extremely fast and efficient versions of partitioning, decompilation, synthesis, technology mapping, placement, and routing. Warp processors achieve overall application speedups of 6.3X with energy savings of 66% across a set of embedded benchmark applications. We further show that our tools utilize acceptably small amounts of computation and memory which are far less than traditional tools. Our work illustrates the feasibility and potential of warp processing, and we can foresee the possibility of warp processing becoming a feature in a variety of computing domains, including desktop, server, and embedded applications.},
+booktitle = {Proceedings of the 41st Annual Design Automation Conference},
+pages = {659–681},
+numpages = {23},
+keywords = {just-in-time (JIT) compilation, hardware/software partitioning, hardware/software codesign, dynamic optimization, configurable logic, Warp processors, FPGA},
+location = {San Diego, CA, USA},
+series = {DAC '04}
+}
+
+@article{10.1145/1142980.1142986,
+author = {Lysecky, Roman and Stitt, Greg and Vahid, Frank},
+title = {Warp Processors},
+year = {2004},
+issue_date = {July 2006},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {11},
+number = {3},
+issn = {1084-4309},
+url = {https://doi.org/10.1145/1142980.1142986},
+doi = {10.1145/1142980.1142986},
+abstract = {We describe a new processing architecture, known as a warp processor, that utilizes a field-programmable gate array (FPGA) to improve the speed and energy consumption of a software binary executing on a microprocessor. Unlike previous approaches that also improve software using an FPGA but do so using a special compiler, a warp processor achieves these improvements completely transparently and operates from a standard binary. A warp processor dynamically detects the binary's critical regions, reimplements those regions as a custom hardware circuit in the FPGA, and replaces the software region by a call to the new hardware implementation of that region. While not all benchmarks can be improved using warp processing, many can, and the improvements are dramatically better than those achievable by more traditional architecture improvements. The hardest part of warp processing is that of dynamically reimplementing code regions on an FPGA, requiring partitioning, decompilation, synthesis, placement, and routing tools, all having to execute with minimal computation time and data memory so as to coexist on chip with the main processor. We describe the results of developing our warp processor. We developed a custom FPGA fabric specifically designed to enable lean place and route tools, and we developed extremely fast and efficient versions of partitioning, decompilation, synthesis, technology mapping, placement, and routing. Warp processors achieve overall application speedups of 6.3X with energy savings of 66% across a set of embedded benchmark applications. We further show that our tools utilize acceptably small amounts of computation and memory which are far less than traditional tools. Our work illustrates the feasibility and potential of warp processing, and we can foresee the possibility of warp processing becoming a feature in a variety of computing domains, including desktop, server, and embedded applications.},
+journal = {ACM Trans. Des. Autom. Electron. Syst.},
+month = jun,
+pages = {659–681},
+numpages = {23},
+keywords = {just-in-time (JIT) compilation, hardware/software partitioning, hardware/software codesign, dynamic optimization, configurable logic, Warp processors, FPGA}
+}
+
+@inproceedings{10.1145/948109.948149,
+author = {Linn, Cullen and Debray, Saumya},
+title = {Obfuscation of executable code to improve resistance to static disassembly},
+year = {2003},
+isbn = {1581137389},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/948109.948149},
+doi = {10.1145/948109.948149},
+abstract = {A great deal of software is distributed in the form of executable code. The ability to reverse engineer such executables can create opportunities for theft of intellectual property via software piracy, as well as security breaches by allowing attackers to discover vulnerabilities in an application. The process of reverse engineering an executable program typically begins with disassembly, which translates machine code to assembly code. This is then followed by various decompilation steps that aim to recover higher-level abstractions from the assembly code. Most of the work to date on code obfuscation has focused on disrupting or confusing the decompilation phase. This paper, by contrast, focuses on the initial disassembly phase. Our goal is to disrupt the static disassembly process so as to make programs harder to disassemble correctly. We describe two widely used static disassembly algorithms, and discuss techniques to thwart each of them. Experimental results indicate that significant portions of executables that have been obfuscated using our techniques are disassembled incorrectly, thereby showing the efficacy of our methods.},
+booktitle = {Proceedings of the 10th ACM Conference on Computer and Communications Security},
+pages = {290–299},
+numpages = {10},
+keywords = {disassembly, code obfuscation},
+location = {Washington D.C., USA},
+series = {CCS '03}
+}
+
+@inproceedings{10.5555/957289.957333,
+author = {Curran, D. and Hurley, N. J. and Cinn\'{e}ide, M. \'{O}},
+title = {Securing Java through software watermarking},
+year = {2003},
+isbn = {0954414519},
+publisher = {Computer Science Press, Inc.},
+address = {USA},
+abstract = {An important advantage of Java is its portability due to its use of bytecode. However the use of bytecode allows decompilation of Java programs to gain access to their source code. This makes it easier to pirate Java programs, infringing their copyright. This is a disadvantage of Java in comparison with programming languages that compile to native object code.Software watermarking is a relatively new approach to the problem of copyright protection that involves embedding ownership information in an executable program. Watermarking has been extensively researched in the context of multimedia and significant progress has been made toward the development of robust and secure techniques. In this paper we investigate a new software watermarking scheme. This is derived from signal detection theory which is used in multimedia watermarking.},
+booktitle = {Proceedings of the 2nd International Conference on Principles and Practice of Programming in Java},
+pages = {145–148},
+numpages = {4},
+keywords = {Java protection, copyright infringement, software watermarking, spread spectrum watermarking},
+location = {Kilkenny City, Ireland},
+series = {PPPJ '03}
+}
+
+@inproceedings{10.1145/775832.775896,
+author = {Stitt, Greg and Lysecky, Roman and Vahid, Frank},
+title = {Dynamic hardware/software partitioning: a first approach},
+year = {2003},
+isbn = {1581136889},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/775832.775896},
+doi = {10.1145/775832.775896},
+abstract = {Partitioning an application among software running on a microprocessor and hardware co-processors in on-chip configurable logic has been shown to improve performance and energy consumption in embedded systems. Meanwhile, dynamic software optimization methods have shown the usefulness and feasibility of runtime program optimization, but those optimizations do not achieve as much as partitioning. We introduce a first approach to dynamic hardware/software partitioning. We describe our system architecture and initial on-chip tools, including profiler, decompiler, synthesis, and placement and routing tools for a simplified configurable logic fabric, able to perform dynamic partitioning of real benchmarks. We show speedups averaging 2.6 for five benchmarks taken from Powerstone, NetBench, and our own benchmarks.},
+booktitle = {Proceedings of the 40th Annual Design Automation Conference},
+pages = {250–255},
+numpages = {6},
+keywords = {system-on-a-chip, synthesis, self-improving chips, platforms, hardware/software partitioning, embedded systems, dynamic optimization, codesign, FPGA},
+location = {Anaheim, CA, USA},
+series = {DAC '03}
+}
+
+@proceedings{10.1145/503032,
+title = {PEPM '02: Proceedings of the 2002 ACM SIGPLAN workshop on Partial evaluation and semantics-based program manipulation},
+year = {2002},
+isbn = {158113455X},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+abstract = {The PEPM'02 workshop is bringing together researchers working in the areas of semantics-based program manipulation and partial evaluation. The workshop focuses on techniques, supporting theory, and applications of the analysis and manipulation of programs. Technical topics include, but are not limited to Program manipulation techniques: program transformation, program specialization, type specialization, syntax-directed partial evaluation, type-directed partial evaluation, normalization, continuations, re ection, rewriting, run-time code generation. Program analysis techniques: abstract interpretation, static analysis, binding-time analysis, attribute grammars, con-straints. Related issues in language design and models of computation: imperative, functional, logical, object-oriented, parallel, distributed, mobile, secure, domain-specific. Programs as data objects: staging, meta-programming, incremental computation, mobility, tools and techniques, pro-totyping and debugging. Applications: systems programming, scientific computing, algorithmics, graphics, security checking, simulation, compiler generation, compiler optimization, decompilation. Assessment: applicability of program manipulation techniques to particular architectures and language paradigms, scalability, benchmarking, portability.Original results that bear on these and related topics were solicited.PEPM'02 is taking place on January 14th and 15th, 2002, preceding POPL 2002. It consists of 11 contributed papers, as well as invited talks delivered by Craig Chambers and Paul Hovland. These proceedings were distributed at the workshop and are published in an issue of SIGPLAN Notices. The 11 papers were selected from among 22 submissions. These submissions came from all over the world: Australia, China, Denmark, France, Germany, Italy, Japan, Korea, the Netherlands, Portugal, Singapore, Spain, USA, and UK, all from academia. The papers were selected based on 78 reviews (3.5 per submission), during a week-long electronic PC meeting. Notifications included the reviews, and, in some cases, a summary of the PC meeting discussion.},
+location = {Portland, Oregon}
+}
+
+@article{10.1145/609761.609765,
+author = {Kumar, Rajeev},
+title = {A neural net compiler system for hierarchical organization},
+year = {2001},
+issue_date = {February 2001},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {36},
+number = {2},
+issn = {0362-1340},
+url = {https://doi.org/10.1145/609761.609765},
+doi = {10.1145/609761.609765},
+abstract = {We present a language framework for handling arbitrarily complex neural computations. The software architecture - which we call an Artificial Neural Network Compiler for Hierarchical ORganization (ANCHOR) - facilitates network hierarchy and simpler sub-mappings. We define a Net Definition Language (NDL) which is implemented in object-oriented programming paradigm; a trained network is decompiled back into NDL. ANCHOR is configured around the concept of a Superneuron which is a generalized view of a neuron-processing element and designed using reuse of object-model. The indistinguishability between a superneuron and a neuron is employed in hierarchical nesting of superneurons, up to (theoretically) infinite depth within other superneurons as well as linear or tree-structured cascading. Hierarchical decomposition of simple boolean functions has been demonstrated as proof-of-concept.},
+journal = {SIGPLAN Not.},
+month = feb,
+pages = {26–36},
+numpages = {11},
+keywords = {superneuron, neural programming language, neural net definitions, hierarchical networks, compiler-decompiler}
+}
+
+@inproceedings{10.5555/781995.782008,
+author = {Vall\'{e}e-Rai, Raja and Co, Phong and Gagnon, Etienne and Hendren, Laurie and Lam, Patrick and Sundaresan, Vijay},
+title = {Soot - a Java bytecode optimization framework},
+year = {1999},
+publisher = {IBM Press},
+abstract = {This paper presents Soot, a framework for optimizing Java bytecode. The framework is implemented in Java and supports three intermediate representations for representing Java bytecode: Baf, a streamlined representation of bytecode which is simple to manipulate; Jimple, a typed 3-address intermediate representation suitable for optimization; and Grimp, an aggregated version of Jimple suitable for decompilation. We describe the motivation for each representation, and the salient points in translating from one representation to another.In order to demonstrate the usefulness of the framework, we have implemented intraprocedural and whole program optimizations. To show that whole program bytecode optimization can give performance improvements, we provide experimental results for 12 large benchmarks, including 8 SPECjvm98 benchmarks running on JDK 1.2 for GNU/Linuxtm. These results show up to 8% improvement when the optimized bytecode is run using the interpreter and up to 21% when run using the JIT compiler.},
+booktitle = {Proceedings of the 1999 Conference of the Centre for Advanced Studies on Collaborative Research},
+pages = {13},
+location = {Mississauga, Ontario, Canada},
+series = {CASCON '99}
+}
+
+@article{10.1145/332084.332092,
+author = {Low, Douglas},
+title = {Protecting Java code via code obfuscation},
+year = {1998},
+issue_date = {April 1998},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {4},
+number = {3},
+issn = {1528-4972},
+url = {https://doi.org/10.1145/332084.332092},
+doi = {10.1145/332084.332092},
+abstract = {The Java language is compiled into a platform independent bytecode format. Much of the information contained in the original source code remains in the bytecode, thus decompilation is easy. We will examine how code obfuscation can help protect Java bytecodes.},
+journal = {XRDS},
+month = apr,
+pages = {21–23},
+numpages = {3}
+}
+
+@inproceedings{10.1145/268946.268962,
+author = {Collberg, Christian and Thomborson, Clark and Low, Douglas},
+title = {Manufacturing cheap, resilient, and stealthy opaque constructs},
+year = {1998},
+isbn = {0897919793},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/268946.268962},
+doi = {10.1145/268946.268962},
+abstract = {It has become common to distribute software in forms that are isomorphic to the original source code. An important example is Java bytecode. Since such codes are easy to decompile, they increase the risk of malicious reverse engineering attacks.In this paper we describe the design of a Java code obfuscator, a tool which - through the application of code transformations - converts a Java program into an equivalent one that is more difficult to reverse engineer.We describe a number of transformations which obfuscate control-flow. Transformations are evaluated with respect to potency (To what degree is a human reader confused?), resilience (How well are automatic deobfuscation attacks resisted?), cost (How much time/space overhead is added?), and stealth (How well does obfuscated code blend in with the original code?).The resilience of many control-altering transformations rely on the resilience of opaque predicates. These are boolean valued expressions whose values are known to the obfuscator but difficult to determine for an automatic deobfuscator. We show how to construct resilient, cheap, and stealthy opaque predicates based on the intractability of certain static analysis problems such as alias analysis.},
+booktitle = {Proceedings of the 25th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {184–196},
+numpages = {13},
+location = {San Diego, California, USA},
+series = {POPL '98}
+}
+
+@article{10.1145/256167.256225,
+author = {Ramsey, Norman and Fern\'{a}ndez, Mary F.},
+title = {Specifying representations of machine instructions},
+year = {1997},
+issue_date = {May 1997},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {19},
+number = {3},
+issn = {0164-0925},
+url = {https://doi.org/10.1145/256167.256225},
+doi = {10.1145/256167.256225},
+abstract = {We present SLED, a specification language for Encoding and Decoding, which describes, abstract, binary, and assembly-language representations of machine instructions. Guided by a SLED specification, the New Jersey Machine-Code Toolkit generates bit-manipulating code for use in applications that process machine code. Programmers can write such applications at an assembly language level of abstraction, and the toolkit enables the applications to recognize and emit the binary representations used by the hardware. SLED is suitable for describing both CISC and RISC machines; we have specified representations of MIPS R3000, SPARC, Alpha, and Intel Pentium instructions, and toolkit users have written specifications for the Power PC and Motorola 68000. The article includes representative excerpts from our SPARC and Pentium specifications. SLED uses four elements; fields and tokens describe parts of instructions; patterns describe binary representations of instructions or group of instructions; and constructors map between the abstract and binary levels. By combining the elements in different ways, SLED supports machine-independent implementations of machine-level concepts like conditional assembly, span-dependent instructions, relocatable addresses, object code, sections, and relocation. SLED specifications can be checked automatically for consistency with existing assemblers. The implementation of the toolkit is largely determined by our representations of patterns and  constructors. We use a normal form that facilitates construction of encoders and decoders. The article describes the normal form and its use. The toolkit has been used to help build several applications. We have built a retargetable debugger and a retargetable, optimizing linker. Colleagues have built a dynamic code generator, a decompiler, and an execution-time analyzer. The toolkit generates efficient code; for example, the linker  emits binary up to 15% faster than it emits assembly language, making it 1.7-2 times faster to produce an a.out directly than by using the assembler.},
+journal = {ACM Trans. Program. Lang. Syst.},
+month = may,
+pages = {492–524},
+numpages = {33},
+keywords = {relocation, object code, machine description, machine code, encoding, decoding, compiler generation}
+}
+
+@inproceedings{10.1145/237721.237784,
+author = {Danvy, Olivier},
+title = {Type-directed partial evaluation},
+year = {1996},
+isbn = {0897917693},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/237721.237784},
+doi = {10.1145/237721.237784},
+abstract = {We present a strikingly simple partial evaluator, that is type-directed and reifies a compiled program into the text of a residual, specialized program. Our partial evaluator is concise (a few lines) and it handles the flagship examples of offline monovariant partial evaluation. Its source programs are constrained in two ways: they must be closed and monomorphically typable. Thus dynamic free variables need to be factored out in a "dynamic initial environment". Type-directed partial evaluation uses no symbolic evaluation for specialization, and naturally processes static computational effects.Our partial evaluator is the part of an offline partial evaluator that residualizes static values in dynamic contexts. Its restriction to the simply typed lambda-calculus coincides with Berger and Schwichtenberg's "inverse of the evaluation functional" (LICS'91), which is an instance of normalization in a logical setting. As such, type-directed partial evaluation essentially achieves lambda-calculus normalization. We extend it to produce specialized programs that are recursive and that use disjoint sums and computational effects. We also analyze its limitations: foremost, it does not handle inductive types.This paper therefore bridges partial evaluation and λ-calculus normalization through higher-order abstract syntax, and touches upon parametricity, proof theory, and type theory (including subtyping and coercions), compiler optimization, and rut-time code generation (including decompilation). It also offers a simple solution to denotational semantics-based compilation and compiler generation.},
+booktitle = {Proceedings of the 23rd ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {242–257},
+numpages = {16},
+location = {St. Petersburg Beach, Florida, USA},
+series = {POPL '96}
+}
+
+@inproceedings{10.1145/75427.1030247,
+author = {Silver, James L.},
+title = {Bach: a procedural language for specifying polyphonic music},
+year = {1989},
+isbn = {0897912993},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/75427.1030247},
+doi = {10.1145/75427.1030247},
+abstract = {The acceptance of the Musical Instrument Device Interface (MIDI) standard has encouraged rapid development in the use of computers to create and manipulate music for electronic instruments. In the standard itself, music is represented as a sequence of event records. These event records can be manipulated directly. The system described here provides an alternative to direct manipulation of MIDI event records. It consists of a procedural language, called Bach, for specifying polyphonic music; a predictive parser which generates a note stream in an intermediate format; and a linker which merges note streams to produce MIDI data streams. Under development is a tool to decompile a MIDI data stream produced by playing notes on a keyboard. This tool generates a Bach procedure which can be edited, correcting technical errors or adding expression, and merged with other Bach procedures to produce more complex pieces. Planned for future development is a graphical interface which will allow users to convert between Bach procedures and traditional music notation.},
+booktitle = {Proceedings of the 17th Conference on ACM Annual Computer Science Conference},
+pages = {423},
+numpages = {1},
+location = {Louisville, Kentucky},
+series = {CSC '89}
+}
+
+@inproceedings{10.1145/318371.318694,
+author = {Fujimoto, Richard M. and Campbell, William B.},
+title = {Direct execution models of processor behavior and performance},
+year = {1987},
+isbn = {0911801324},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/318371.318694},
+doi = {10.1145/318371.318694},
+abstract = {This paper discusses a modeling technique for creating efficient instruction level simulation models of von Neumann processors. In contrast to traditional approaches which use a software interpreter, this technique employs direct execution of application programs on the host computer. An assembly language program for the target machine is decompiled to a high level language, instrumented, and then recompiled and executed on the host computer. A prototype implementation modeling the Motorola MC68010 microprocessor is described, and the efficiency and accuracy of this prototype is reported. It is demonstrated that the direct execution technique can be used to produce highly accurate simulation models which are orders of magnitude faster than register transfer level simulators.},
+booktitle = {Proceedings of the 19th Conference on Winter Simulation},
+pages = {751–758},
+numpages = {8},
+location = {Atlanta, Georgia, USA},
+series = {WSC '87}
+}
+
+@inproceedings{10.5555/1286580.1286616,
+author = {Housel, Barron C.},
+title = {A unified approach to program and data conversion},
+year = {1977},
+publisher = {VLDB Endowment},
+abstract = {This paper addresses the problem of program conversion in the context of converting to a database management system. This conversion may be from a conventional file oriented system, from one database management system to another, or from restructuring of databases within an existing system. Substantial progress has been made in the data conversion area, however, it is widely acknowledged that major cost of application conversion is in the program conversion task. This paper presents a model for program conversion in which the data conversion mappings are used to dictate the necessary transformations required for rewriting the source programs. The model consists of four steps: 1) "decompiling" the source program to an abstract representation, 2) substituting the inverse of the source to target mappings for the program's source data, 3) simplification, and 4) recompilation. A language is given for specifying the program abstraction, and examples are used to illustrate some transformation rules used in the rewriting process.},
+booktitle = {Proceedings of the Third International Conference on Very Large Data Bases - Volume 3},
+pages = {327–336},
+numpages = {10},
+location = {Tokyo, Japan},
+series = {VLDB '77}
+}
+
+@inproceedings{10.1145/800026.808396,
+author = {Presberg, David L.},
+title = {The Paralyzer: Ivtran's Parallelism Analyzer and Synthesizer},
+year = {1975},
+isbn = {9781450373838},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/800026.808396},
+doi = {10.1145/800026.808396},
+abstract = {The ILLIAC IV Fortran compiler's Parallelism Analyzer and Synthesizer (mnemonicized as the Paralyzer) detects computations in Fortran DO loops which can be performed in parallel. It is a step of the compiling process which lies between source language parsing and target code generation, and as such can be considered as a high-level optimization step specific to the ILLIAC architecture. The Paralyzer performs its transformations within the Intermediate Language tables of the compiler. The parallel execution constructs introduced into the user's program are those which can be expressed in the extended Fortran language, IVTRAN, the source language of the compiler [1]. With a decompiler from the Intermediate Language to IVTRAN source, the Paralyzer can act as a source-to-source translater.Some pertinent characteristics of the ILLIAC IV motivate the parallelism detection methods employed by the Paralyzer. ILLIAC is in the general class of parallel processors known as array processors. That is to say, it performs identical computations in a lock-step, synchronous fashion over separate data streams. Its computational access to main memory is highly constrained: each of the 64 Processing Units can access directly only a private section of the whole memory. Data can be passed from one Processing Unit to another by a relatively expensive routing instruction. This is executed identically by all Processing Units and passes data a uniform end-around distance in the fixed ordering of the Processing Units. The machine executes most efficiently those computations which are element-by-element operations on vectors or arrays. Thus, the most fruitful sources of parallelism in Fortran programs intended for ILLIAC IV execution are DO loops containing array references with subscripts depending on the DO index variables.},
+booktitle = {Proceedings of the Conference on Programming Languages and Compilers for Parallel and Vector Machines},
+pages = {9–16},
+numpages = {8},
+location = {New York, New York}
+}
+
+@inproceedings{10.1145/1408800.1408927,
+author = {Friedman, Frank L.},
+title = {Inverse compilation feasibility},
+year = {1974},
+isbn = {9781450378505},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1408800.1408927},
+doi = {10.1145/1408800.1408927},
+abstract = {The feasibility of the use of techniques of inverse compilation (decompilation) for the solution of Software Transport problems depends to a great extent upon the level of adaptability of software systems designed to automate the decompilation process. The attainment of a sufficiently high level of adaptability requires the development of very general and &lt;u&gt;efficient&lt;/u&gt; techniques of program structure and variable usage analysis. However, while such techniques are necessary for the development of adaptable decompilation software, they are not by themselves sufficient. What is further needed is a highly sophisticated medium of program description that 1) is comparatively easy to map to and from assembly languages for a wide variety of machines, 2) is suitable for direct input to a program analyzer, and 3) is easily produced by a high-level language compiler.},
+booktitle = {Proceedings of the 1974 Annual ACM Conference - Volume 2},
+pages = {750},
+numpages = {1},
+series = {ACM '74}
+}
+
+@inproceedings{10.1145/1408800.1408926,
+author = {Hollander, Clifford R.},
+title = {A syntax-directed approach to inverse compilation},
+year = {1974},
+isbn = {9781450378505},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1408800.1408926},
+doi = {10.1145/1408800.1408926},
+abstract = {A general syntax-directed strategy is described for translating computer programs written in a machine-level source language into equivalent programs in a higher-level target language. This translation process is referred to as decompilation or inverse compilation. Work on decompilation is potentially applicable in such areas as software portability, source-level debugging and diagnostic systems, and program analysis and validation.},
+booktitle = {Proceedings of the 1974 Annual ACM Conference - Volume 2},
+pages = {750},
+numpages = {1},
+series = {ACM '74}
+}
+
+@inproceedings{10.1145/800021.808281,
+title = {A systems implementation language for small computers},
+year = {1973},
+isbn = {9781450373791},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/800021.808281},
+doi = {10.1145/800021.808281},
+abstract = {This paper concerns the development of a family of higher level languages which are to serve as the target languages in the decompiling of assembler coded modules of small computer operating systems. The main objective is the design of a machine independent language to serve as the nucleus of these higher level languages, each of which will ultimately have to possess characteristics unique to the operating system for which it was designed. The work involved in the development of the nucleus language is part of a research effort intended to show that debugged assembler coded systems programs for a specific class of byte-oriented machines can be concisely represented in a higher level language and that this higher level representation can be easily moved from one machine in this class to another. It is our primary purpose here to describe the main features of the nucleus language, and, where space permits, to suggest some of the reasons why these features were included.},
+booktitle = {Proceeding of ACM SIGPLAN - SIGOPS Interface Meeting on Programming Languages - Operating Systems},
+pages = {60–63},
+numpages = {4}
 }
 

@@ -1,0 +1,31 @@
+{
+  "id": "20260218_015453",
+  "name": "Springer検索用",
+  "description": "",
+  "files": [
+    {
+      "filename": "Springer_Q1.bib",
+      "database": "Springer",
+      "search_query": "decompilation OR decompiler OR decompiling OR \"reverse compilation\" OR \"reverse compiler\"",
+      "search_date": "2026-02-18",
+      "url": "https://link.springer.com/search?query=decompilation+OR+decompiler+OR+decompiling+OR+%22reverse+compilation%22+OR+%22reverse+compiler%22&advancedSearch=true&date=custom&dateFrom=&dateTo=2019&language=En&facet-discipline=%22Computer+Science%22&facet-discipline=%22Engineering%22&sortBy=relevance",
+      "tags": [
+        "Q1"
+      ],
+      "count": 1313
+    },
+    {
+      "filename": "Springer_Q2.bib",
+      "database": "Springer",
+      "search_query": "(\"source code recovery\" OR \"source recovery\" OR \"binary-to-source\" OR \"binary to source\"\r\n OR \"binary lifting\" OR \"instruction lifting\" OR \"lifting to IR\" OR \"lifting to LLVM\"\r\n OR \"assembly-to-C\" OR \"assembly to C\" OR \"program reconstruction\")\r\nAND\r\n(\"binary code\" OR \"machine code\" OR \"assembly code\" OR executable\r\n OR disassembly OR disassembler OR bytecode OR \"binary analysis\" OR \"stripped binary\")",
+      "search_date": "2026-02-18",
+      "url": "https://link.springer.com/search?query=%28%22source+code+recovery%22+OR+%22source+recovery%22+OR+%22binary-to-source%22+OR+%22binary+to+source%22+OR+%22binary+lifting%22+OR+%22instruction+lifting%22+OR+%22lifting+to+IR%22+OR+%22lifting+to+LLVM%22+OR+%22assembly-to-C%22+OR+%22assembly+to+C%22+OR+%22program+reconstruction%22%29+AND+%28%22binary+code%22+OR+%22machine+code%22+OR+%22assembly+code%22+OR+executable+OR+disassembly+OR+disassembler+OR+bytecode+OR+%22binary+analysis%22+OR+%22stripped+binary%22%29&advancedSearch=true&dateFrom=&dateTo=&language=En&facet-discipline=%22Computer+Science%22&facet-discipline=%22Engineering%22&sortBy=relevance",
+      "tags": [
+        "Q2"
+      ],
+      "count": 74
+    }
+  ],
+  "created_at": "2026-02-18T01:54:53.289520",
+  "updated_at": "2026-02-18T02:20:29.598290"
+}

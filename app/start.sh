@@ -8,6 +8,9 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
+# Ensure Homebrew binaries are in PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
 echo "Starting Screening App..."
 
 # Clear any activated venv to avoid conflicts with uv
@@ -16,7 +19,7 @@ unset VIRTUAL_ENV
 # Start backend
 echo "Starting backend on http://localhost:8000"
 cd backend
-uv run uvicorn main:app --reload --port 8000 &
+.venv/bin/uvicorn main:app --reload --port 8000 &
 BACKEND_PID=$!
 cd ..
 

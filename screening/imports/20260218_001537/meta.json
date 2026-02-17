@@ -1,0 +1,163 @@
+{
+  "id": "20260218_001537",
+  "name": "My Import with history",
+  "description": "",
+  "files": [
+    {
+      "filename": "acm.bib",
+      "database": "ACM",
+      "search_query": "[Title: decompil*] OR [Abstract: decompil*] OR [Title: \"reverse compilation\"] OR [Abstract: \"reverse compilation\"] OR [Title: \"reverse compiler\"] OR [Abstract: \"reverse compiler\"]",
+      "search_date": "2026-02-18",
+      "url": "https://dl.acm.org/action/doSearch?fillQuickSearch=false&target=advanced&expand=dl&AllField=Title%3A%28decompil*%29+OR+Abstract%3A%28decompil*%29+OR+Title%3A%28%22reverse+compilation%22%29+OR+Abstract%3A%28%22reverse+compilation%22%29+OR+Title%3A%28%22reverse+compiler%22%29+OR+Abstract%3A%28%22reverse+compiler%22%29#",
+      "tags": [
+        "Q1"
+      ],
+      "count": 221
+    },
+    {
+      "filename": "acm (1).bib",
+      "database": "ACM",
+      "search_query": "[[Title: \"source code recovery\"] OR [Abstract: \"source code recovery\"] OR [Title: \"source recovery\"] OR [Abstract: \"source recovery\"] OR [Title: \"binary-to-source\"] OR [Abstract: \"binary-to-source\"] OR [Title: \"binary to source\"] OR [Abstract: \"binary to source\"] OR [Title: \"binary lifting\"] OR [Abstract: \"binary lifting\"] OR [Title: \"instruction lifting\"] OR [Abstract: \"instruction lifting\"] OR [Title: \"lifting to ir\"] OR [Abstract: \"lifting to ir\"] OR [Title: \"lifting to llvm\"] OR [Abstract: \"lifting to llvm\"] OR [Title: \"assembly-to-c\"] OR [Abstract: \"assembly-to-c\"] OR [Title: \"assembly to c\"] OR [Abstract: \"assembly to c\"] OR [Title: \"program reconstruction\"] OR [Abstract: \"program reconstruction\"]] AND [[Title: \"binary code\"] OR [Abstract: \"binary code\"] OR [Title: \"machine code\"] OR [Abstract: \"machine code\"] OR [Title: \"assembly code\"] OR [Abstract: \"assembly code\"] OR [Title: executable] OR [Abstract: executable] OR [Title: disassembly] OR [Abstract: disassembly] OR [Title: disassembler] OR [Abstract: disassembler] OR [Title: bytecode] OR [Abstract: bytecode] OR [Title: \"binary analysis\"] OR [Abstract: \"binary analysis\"] OR [Title: \"stripped binary\"] OR [Abstract: \"stripped binary\"]]",
+      "search_date": "2026-02-18",
+      "url": "https://dl.acm.org/action/doSearch?fillQuickSearch=false&target=advanced&expand=dl&AllField=AllField%3A%28%28%0D%0A++Title%3A%28%22source+code+recovery%22%29+OR+Abstract%3A%28%22source+code+recovery%22%29+OR%0D%0A++Title%3A%28%22source+recovery%22%29+OR+Abstract%3A%28%22source+recovery%22%29+OR%0D%0A++Title%3A%28%22binary-to-source%22%29+OR+Abstract%3A%28%22binary-to-source%22%29+OR%0D%0A++Title%3A%28%22binary+to+source%22%29+OR+Abstract%3A%28%22binary+to+source%22%29+OR%0D%0A++Title%3A%28%22binary+lifting%22%29+OR+Abstract%3A%28%22binary+lifting%22%29+OR%0D%0A++Title%3A%28%22instruction+lifting%22%29+OR+Abstract%3A%28%22instruction+lifting%22%29+OR%0D%0A++Title%3A%28%22lifting+to+IR%22%29+OR+Abstract%3A%28%22lifting+to+IR%22%29+OR%0D%0A++Title%3A%28%22lifting+to+LLVM%22%29+OR+Abstract%3A%28%22lifting+to+LLVM%22%29+OR%0D%0A++Title%3A%28%22assembly-to-C%22%29+OR+Abstract%3A%28%22assembly-to-C%22%29+OR%0D%0A++Title%3A%28%22assembly+to+C%22%29+OR+Abstract%3A%28%22assembly+to+C%22%29+OR%0D%0A++Title%3A%28%22program+reconstruction%22%29+OR+Abstract%3A%28%22program+reconstruction%22%29%0D%0A%29%0D%0AAND%0D%0A%28%0D%0A++Title%3A%28%22binary+code%22%29+OR+Abstract%3A%28%22binary+code%22%29+OR%0D%0A++Title%3A%28%22machine+code%22%29+OR+Abstract%3A%28%22machine+code%22%29+OR%0D%0A++Title%3A%28%22assembly+code%22%29+OR+Abstract%3A%28%22assembly+code%22%29+OR%0D%0A++Title%3A%28executable%29+OR+Abstract%3A%28executable%29+OR%0D%0A++Title%3A%28disassembly%29+OR+Abstract%3A%28disassembly%29+OR%0D%0A++Title%3A%28disassembler%29+OR+Abstract%3A%28disassembler%29+OR%0D%0A++Title%3A%28bytecode%29+OR+Abstract%3A%28bytecode%29+OR%0D%0A++Title%3A%28%22binary+analysis%22%29+OR+Abstract%3A%28%22binary+analysis%22%29+OR%0D%0A++Title%3A%28%22stripped+binary%22%29+OR+Abstract%3A%28%22stripped+binary%22%29%0D%0A%29%0D%0A%29#",
+      "tags": [
+        "Q2"
+      ],
+      "count": 19
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.18.0.29.4.bib",
+      "database": "IEEE",
+      "search_query": "((\"Document Title\":decompil*) OR (\"Abstract\":decompil*) OR (\"Document Title\":\"reverse compilation\") OR (\"Abstract\":\"reverse compilation\") OR (\"Document Title\":\"reverse compiler\") OR (\"Abstract\":\"reverse compiler\"))",
+      "search_date": "2026-02-18",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&matchBoolean=true&newsearch=true&queryText=((%22Document%20Title%22:decompil*)%20OR%20(%22Abstract%22:decompil*)%20OR%20(%22Document%20Title%22:%22reverse%20compilation%22)%20OR%20(%22Abstract%22:%22reverse%20compilation%22)%20OR%20(%22Document%20Title%22:%22reverse%20compiler%22)%20OR%20(%22Abstract%22:%22reverse%20compiler%22))&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&rowsPerPage=100&pageNumber=1",
+      "tags": [
+        "Q1"
+      ],
+      "count": 100
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.18.0.30.52.bib",
+      "database": "IEEE",
+      "search_query": "((\"Document Title\":decompil*) OR (\"Abstract\":decompil*) OR (\"Document Title\":\"reverse compilation\") OR (\"Abstract\":\"reverse compilation\") OR (\"Document Title\":\"reverse compiler\") OR (\"Abstract\":\"reverse compiler\"))",
+      "search_date": "2026-02-18",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&matchBoolean=true&newsearch=true&queryText=((%22Document%20Title%22:decompil*)%20OR%20(%22Abstract%22:decompil*)%20OR%20(%22Document%20Title%22:%22reverse%20compilation%22)%20OR%20(%22Abstract%22:%22reverse%20compilation%22)%20OR%20(%22Document%20Title%22:%22reverse%20compiler%22)%20OR%20(%22Abstract%22:%22reverse%20compiler%22))&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&rowsPerPage=100&pageNumber=1",
+      "tags": [
+        "Q1"
+      ],
+      "count": 100
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.18.0.31.33.bib",
+      "database": "IEEE",
+      "search_query": "((\"Document Title\":decompil*) OR (\"Abstract\":decompil*) OR (\"Document Title\":\"reverse compilation\") OR (\"Abstract\":\"reverse compilation\") OR (\"Document Title\":\"reverse compiler\") OR (\"Abstract\":\"reverse compiler\"))",
+      "search_date": "2026-02-18",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&matchBoolean=true&newsearch=true&queryText=((%22Document%20Title%22:decompil*)%20OR%20(%22Abstract%22:decompil*)%20OR%20(%22Document%20Title%22:%22reverse%20compilation%22)%20OR%20(%22Abstract%22:%22reverse%20compilation%22)%20OR%20(%22Document%20Title%22:%22reverse%20compiler%22)%20OR%20(%22Abstract%22:%22reverse%20compiler%22))&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&rowsPerPage=100&pageNumber=1",
+      "tags": [
+        "Q1"
+      ],
+      "count": 53
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.18.0.33.23.bib",
+      "database": "IEEE",
+      "search_query": "(( (\"Document Title\":\"source code recovery\") OR (\"Abstract\":\"source code recovery\") OR (\"Document Title\":\"source recovery\") OR (\"Abstract\":\"source recovery\") OR (\"Document Title\":\"binary-to-source\") OR (\"Abstract\":\"binary-to-source\") OR (\"Document Title\":\"binary to source\") OR (\"Abstract\":\"binary to source\") OR (\"Document Title\":\"binary lifting\") OR (\"Abstract\":\"binary lifting\") OR (\"Document Title\":\"instruction lifting\") OR (\"Abstract\":\"instruction lifting\") OR (\"Document Title\":\"lifting to IR\") OR (\"Abstract\":\"lifting to IR\") OR (\"Document Title\":\"lifting to LLVM\") OR (\"Abstract\":\"lifting to LLVM\") OR (\"Document Title\":\"assembly-to-C\") OR (\"Abstract\":\"assembly-to-C\") OR (\"Document Title\":\"assembly to C\") OR (\"Abstract\":\"assembly to C\") OR (\"Document Title\":\"program reconstruction\") OR (\"Abstract\":\"program reconstruction\") ) AND ( (\"Document Title\":\"binary code\") OR (\"Abstract\":\"binary code\") OR (\"Document Title\":\"machine code\") OR (\"Abstract\":\"machine code\") OR (\"Document Title\":\"assembly code\") OR (\"Abstract\":\"assembly code\") OR (\"Document Title\":executable) OR (\"Abstract\":executable) OR (\"Document Title\":disassembly) OR (\"Abstract\":disassembly) OR (\"Document Title\":disassembler) OR (\"Abstract\":disassembler) OR (\"Document Title\":bytecode) OR (\"Abstract\":bytecode) OR (\"Document Title\":\"binary analysis\") OR (\"Abstract\":\"binary analysis\") OR (\"Document Title\":\"stripped binary\") OR (\"Abstract\":\"stripped binary\") ) )\r\n",
+      "search_date": "2026-02-18",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&matchBoolean=true&newsearch=true&queryText=((%0A%20%20(%22Document%20Title%22:%22source%20code%20recovery%22)%20OR%20(%22Abstract%22:%22source%20code%20recovery%22)%20OR%0A%20%20(%22Document%20Title%22:%22source%20recovery%22)%20OR%20(%22Abstract%22:%22source%20recovery%22)%20OR%0A%20%20(%22Document%20Title%22:%22binary-to-source%22)%20OR%20(%22Abstract%22:%22binary-to-source%22)%20OR%0A%20%20(%22Document%20Title%22:%22binary%20to%20source%22)%20OR%20(%22Abstract%22:%22binary%20to%20source%22)%20OR%0A%20%20(%22Document%20Title%22:%22binary%20lifting%22)%20OR%20(%22Abstract%22:%22binary%20lifting%22)%20OR%0A%20%20(%22Document%20Title%22:%22instruction%20lifting%22)%20OR%20(%22Abstract%22:%22instruction%20lifting%22)%20OR%0A%20%20(%22Document%20Title%22:%22lifting%20to%20IR%22)%20OR%20(%22Abstract%22:%22lifting%20to%20IR%22)%20OR%0A%20%20(%22Document%20Title%22:%22lifting%20to%20LLVM%22)%20OR%20(%22Abstract%22:%22lifting%20to%20LLVM%22)%20OR%0A%20%20(%22Document%20Title%22:%22assembly-to-C%22)%20OR%20(%22Abstract%22:%22assembly-to-C%22)%20OR%0A%20%20(%22Document%20Title%22:%22assembly%20to%20C%22)%20OR%20(%22Abstract%22:%22assembly%20to%20C%22)%20OR%0A%20%20(%22Document%20Title%22:%22program%20reconstruction%22)%20OR%20(%22Abstract%22:%22program%20reconstruction%22)%0A)%0AAND%0A(%0A%20%20(%22Document%20Title%22:%22binary%20code%22)%20OR%20(%22Abstract%22:%22binary%20code%22)%20OR%0A%20%20(%22Document%20Title%22:%22machine%20code%22)%20OR%20(%22Abstract%22:%22machine%20code%22)%20OR%0A%20%20(%22Document%20Title%22:%22assembly%20code%22)%20OR%20(%22Abstract%22:%22assembly%20code%22)%20OR%0A%20%20(%22Document%20Title%22:executable)%20OR%20(%22Abstract%22:executable)%20OR%0A%20%20(%22Document%20Title%22:disassembly)%20OR%20(%22Abstract%22:disassembly)%20OR%0A%20%20(%22Document%20Title%22:disassembler)%20OR%20(%22Abstract%22:disassembler)%20OR%0A%20%20(%22Document%20Title%22:bytecode)%20OR%20(%22Abstract%22:bytecode)%20OR%0A%20%20(%22Document%20Title%22:%22binary%20analysis%22)%20OR%20(%22Abstract%22:%22binary%20analysis%22)%20OR%0A%20%20(%22Document%20Title%22:%22stripped%20binary%22)%20OR%20(%22Abstract%22:%22stripped%20binary%22)%0A)%0A)",
+      "tags": [
+        "Q2"
+      ],
+      "count": 11
+    },
+    {
+      "filename": "savedrecs.bib",
+      "database": "Web of Science",
+      "search_query": "TI=(decompil*) OR AB=(decompil*) OR TI=(\"reverse compilation\") OR AB=(\"reverse compilation\") OR TI=(\"reverse compiler\") OR AB=(\"reverse compiler\")\r\n",
+      "search_date": "2026-02-18",
+      "url": "https://www.webofscience.com/wos/woscc/summary/1dd4c498-3bd5-419f-93ee-12e16c74be19-019f52ca18/relevance/1",
+      "tags": [
+        "Q1"
+      ],
+      "count": 189
+    },
+    {
+      "filename": "savedrecs (1).bib",
+      "database": "Web of Science",
+      "search_query": "(\r\n  TI=(\"source code recovery\") OR AB=(\"source code recovery\") OR\r\n  TI=(\"source recovery\") OR AB=(\"source recovery\") OR\r\n  TI=(\"binary-to-source\") OR AB=(\"binary-to-source\") OR\r\n  TI=(\"binary to source\") OR AB=(\"binary to source\") OR\r\n  TI=(\"binary lifting\") OR AB=(\"binary lifting\") OR\r\n  TI=(\"instruction lifting\") OR AB=(\"instruction lifting\") OR\r\n  TI=(\"lifting to IR\") OR AB=(\"lifting to IR\") OR\r\n  TI=(\"lifting to LLVM\") OR AB=(\"lifting to LLVM\") OR\r\n  TI=(\"assembly-to-C\") OR AB=(\"assembly-to-C\") OR\r\n  TI=(\"assembly to C\") OR AB=(\"assembly to C\") OR\r\n  TI=(\"program reconstruction\") OR AB=(\"program reconstruction\")\r\n)\r\nAND\r\n(\r\n  TI=(\"binary code\") OR AB=(\"binary code\") OR\r\n  TI=(\"machine code\") OR AB=(\"machine code\") OR\r\n  TI=(\"assembly code\") OR AB=(\"assembly code\") OR\r\n  TI=(executable) OR AB=(executable) OR\r\n  TI=(disassembly) OR AB=(disassembly) OR\r\n  TI=(disassembled) OR AB=(disassembled) OR\r\n  TI=(bytecode) OR AB=(bytecode) OR\r\n  TI=(\"binary analysis\") OR AB=(\"binary analysis\") OR\r\n  TI=(\"stripped binary\") OR AB=(\"stripped binary\")\r\n)",
+      "search_date": "2026-02-18",
+      "url": "https://www.webofscience.com/wos/woscc/summary/80ccee38-be33-4cb9-9a8a-344933db2fce-019f52e7ed/relevance/1",
+      "tags": [
+        "Q2"
+      ],
+      "count": 4
+    },
+    {
+      "filename": "NDSS2026_manual.bib",
+      "database": "NDSS",
+      "search_query": "個別サイトより取得(query1)",
+      "search_date": "2026-02-17",
+      "url": null,
+      "tags": [
+        "Q1"
+      ],
+      "count": 3
+    },
+    {
+      "filename": "S2_Q2_NDSS_20260217_1926.bib",
+      "database": "NDSS",
+      "search_query": "個別サイトより取得(query2)",
+      "search_date": "2026-02-17",
+      "url": null,
+      "tags": [
+        "Q2"
+      ],
+      "count": 1
+    },
+    {
+      "filename": "S2_Q1_USENIX_Security_20260217_1926.bib",
+      "database": "USENIX",
+      "search_query": "Semantic Scholar APIより取得（Q1）",
+      "search_date": "2026-02-17",
+      "url": null,
+      "tags": [
+        "Q1"
+      ],
+      "count": 8
+    },
+    {
+      "filename": "import_20260218_015453_query_results.bib",
+      "database": "Springer",
+      "search_query": "title:decompil* OR abstract:decompil* OR title:\"reverse compilation\" OR abstract:\"reverse compilation\" OR title:\"reverse compiler\" OR abstract:\"reverse compiler\"",
+      "search_date": "2026-02-18",
+      "url": "https://link.springer.com/search?query=decompilation+OR+decompiler+OR+decompiling+OR+%22reverse+compilation%22+OR+%22reverse+compiler%22&advancedSearch=true&date=custom&dateFrom=&dateTo=2019&language=En&facet-discipline=%22Computer+Science%22&facet-discipline=%22Engineering%22&sortBy=relevance",
+      "tags": [
+        "Q1"
+      ],
+      "count": 116
+    },
+    {
+      "filename": "arXiv_Q1_20260218_0256.bib",
+      "database": "arXiv",
+      "search_query": "ti:decompil* OR abs:decompil* OR ti:\"reverse compilation\" OR abs:\"reverse compilation\" OR ti:\"reverse compiler\" OR abs:\"reverse compiler\"",
+      "search_date": "2026-02-18",
+      "url": null,
+      "tags": [
+        "Q1"
+      ],
+      "count": 124
+    },
+    {
+      "filename": "arXiv_Q2_20260218_0256.bib",
+      "database": "arXiv",
+      "search_query": "(ti:\"source code recovery\" OR abs:\"source code recovery\" OR ti:\"source recovery\" OR abs:\"source recovery\" OR ti:\"binary-to-source\" OR abs:\"binary-to-source\" OR ti:\"binary to source\" OR abs:\"binary to source\" OR ti:\"binary lifting\" OR abs:\"binary lifting\" OR ti:\"instruction lifting\" OR abs:\"instruction lifting\" OR ti:\"lifting to IR\" OR abs:\"lifting to IR\" OR ti:\"lifting to LLVM\" OR abs:\"lifting to LLVM\" OR ti:\"assembly-to-C\" OR abs:\"assembly-to-C\" OR ti:\"assembly to C\" OR abs:\"assembly to C\" OR ti:\"program reconstruction\" OR abs:\"program reconstruction\") AND (ti:\"binary code\" OR abs:\"binary code\" OR ti:\"machine code\" OR abs:\"machine code\" OR ti:\"assembly code\" OR abs:\"assembly code\" OR ti:executable OR abs:executable OR ti:disassembly OR abs:disassembly OR ti:disassembler OR abs:disassembler OR ti:bytecode OR abs:bytecode OR ti:\"binary analysis\" OR abs:\"binary analysis\" OR ti:\"stripped binary\" OR abs:\"stripped binary\")",
+      "search_date": "2026-02-18",
+      "url": null,
+      "tags": [
+        "Q2"
+      ],
+      "count": 11
+    }
+  ],
+  "created_at": "2026-02-18T00:15:37.279623",
+  "updated_at": "2026-02-18T03:02:52.304015"
+}

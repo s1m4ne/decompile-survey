@@ -1,0 +1,376 @@
+﻿
+@article{ WOS:001488160700018,
+Author = {Park, Jiheee and Yun, Insu and Ryu, Sukyoung},
+Title = {Bridging the Gap between Real-World and Formal Binary Lifting through
+   Filtered-Simulation},
+Journal = {PROCEEDINGS OF THE ACM ON PROGRAMMING LANGUAGES-PACMPL},
+Year = {2025},
+Volume = {9},
+Number = {OOPSLA1, OOPLA1},
+Month = {APR},
+Abstract = {Binary lifting is a key component in binary analysis tools. In order to
+   guarantee the correctness of binary lifting, researchers have proposed
+   various formally verified lifters. However, such formally verified
+   lifters have too strict requirements on binary, which do not
+   sufficiently reflect real-world lifters. In addition, real-world lifters
+   use heuristic-based assumptions to lift binary code, which makes it
+   difficult to guarantee the correctness of the lifted code using formal
+   methods. In this paper, we propose a new interpretation of the
+   correctness of real-world binary lifting. We formalize the process of
+   binary lifting with heuristic-based assumptions used in real-world
+   lifters by dividing it into a series of transformations, where each
+   transformation represents a lift with new abstraction features. We
+   define the correctness of each transformation as filtered-simulation,
+   which is a variant of bi-simulation, between programs before and after
+   transformation. We present three essential transformations in binary
+   lifting and formalize them: (1) control flow graph reconstruction, (2)
+   abstract stack reconstruction, and (3) function input/output
+   identification. We implement our approach for x86-64 Linux binaries,
+   named FibLE, and demonstrate that it can correctly lift Coreutils and
+   CGC datasets compiled with GCC.},
+Publisher = {ASSOC COMPUTING MACHINERY},
+Address = {1601 Broadway, 10th Floor, NEW YORK, NY USA},
+Type = {Article},
+Language = {English},
+Affiliation = {Park, J (Corresponding Author), Korea Adv Inst Sci \& Technol, Daejeon, South Korea.
+   Park, Jiheee; Yun, Insu; Ryu, Sukyoung, Korea Adv Inst Sci \& Technol, Daejeon, South Korea.},
+DOI = {10.1145/3720524},
+Article-Number = {112},
+EISSN = {2475-1421},
+Keywords = {Binary lifting; formal semantics},
+Research-Areas = {Computer Science},
+Web-of-Science-Categories  = {Computer Science, Software Engineering},
+Author-Email = {jiheepark@kaist.ac.kr
+   insuyun@kaist.ac.kr
+   sryu.cs@kaist.ac.kr},
+Affiliations = {Korea Advanced Institute of Science \& Technology (KAIST)},
+ResearcherID-Numbers = {Ryu, Sukyoung/A-8543-2015
+   Yun, Insu/LDP-5305-2024},
+ORCID-Numbers = {Ryu, Sukyoung/0000-0002-0019-9772
+   Park, Jihee/0000-0001-6792-5161
+   Yun, Insu/0000-0001-8931-2833},
+Funding-Acknowledgement = {National Research Foundation of Korea (NRF) {[}RS-2021NR060080,
+   RS-2022-NR070102]; Institute for Information \& Communications
+   Technology Planning \& Evaluation (IITP) - Korea government (MSIT)
+   {[}RS-2024-00337703]; Samsung Electronics Co., Ltd {[}G01210570]},
+Funding-Text = {This research was supported by the National Research Foundation of Korea
+   (NRF) (RS-2021NR060080 and RS-2022-NR070102) , the Institute for
+   Information \& Communications Technology Planning \& Evaluation (IITP)
+   grant funded by the Korea government (MSIT) (RS-2024-00337703) , and
+   Samsung Electronics Co., Ltd (G01210570) .},
+Cited-References = {Aho A., 1986, COMPILERS PRINCIPLES.
+   Anand K., 2013, Proceedings of the 8th ACM European Conference on Computer Systems, EuroSys `13, P295, DOI DOI 10.1145/2465351.2465380.
+   Anand K, 2013, PROC IEEE INT CONF S, P90, DOI 10.1109/ICSM.2013.20.
+   Avast Software, 2017, RetDec: A Retargetable Machine-Code Decompiler.
+   Bardin S, 2011, LECT NOTES COMPUT SC, V6538, P54, DOI 10.1007/978-3-642-18275-4\_6.
+   Bellard F, 2005, USENIX Association Proceedings of the FREENIX/Open Source Track, P41.
+   Benton N, 2004, ACM SIGPLAN NOTICES, V39, P14, DOI 10.1145/982962.964003.
+   Bertot Y, 2006, LECT NOTES COMPUT SC, V3839, P66.
+   Borrello P, 2021, I C DEPEND SYS NETWO, P555, DOI 10.1109/DSN48987.2021.00064.
+   Brumley David, 2011, Computer Aided Verification. Proceedings 23rd International Conference, CAV 2011, P463, DOI 10.1007/978-3-642-22110-1\_37.
+   Cha SK, 2012, P IEEE S SECUR PRIV, P380, DOI 10.1109/SP.2012.31.
+   Christodorescu M, 2005, P IEEE S SECUR PRIV, P32, DOI 10.1109/SP.2005.20.
+   Cifuentes C, 1999, PROG COMPREHEN, P192, DOI 10.1109/WPC.1999.777758.
+   Cousot Patrick., 1979, P 6 ACM SIGACT SIGPL, P269, DOI {[}DOI 10.1145/567752.567778, 10.1145/567752.567778, 10].
+   Dasgupta S, 2020, PROCEEDINGS OF THE 41ST ACM SIGPLAN CONFERENCE ON PROGRAMMING LANGUAGE DESIGN AND IMPLEMENTATION (PLDI `20), P655, DOI 10.1145/3385412.3385964.
+   De Pasquale G, 2023, IEEE SEC PRIV WORKS, P228, DOI 10.1109/SPW59333.2023.00026.
+   Deshpande C, 2021, PROCEEDINGS OF THE 14TH ACM WORKSHOP ON ARTIFICIAL INTELLIGENCE AND SECURITY, AISEC 2021, P85, DOI 10.1145/3474369.3486865.
+   Di Federico A, 2017, CC'17: PROCEEDINGS OF THE 26TH INTERNATIONAL CONFERENCE ON COMPILER CONSTRUCTION, P131, DOI 10.1145/3033019.3033028.
+   Di Federico A, 2016, 2016 INTERNATIONAL CONFERENCE ON COMPILERS, ARCHITECTURE AND SYNTHESIS FOR EMBEDDED SYSTEMS (CASES), DOI 10.1145/2968455.2968514.
+   Dinaburg A., 2024, McSema.
+   Djoudi Adel, 2015, Tools and Algorithms for the Construction and Analysis of Systems. 21st International Conference, TACAS 2015, held as part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2015. Proceedings: LNCS 9035, P212, DOI 10.1007/978-3-662-46681-0\_17.
+   Frederiksen Carl Christian, 2002, Electronic Notes in Theoretical Computer Science, V65, P37, DOI {[}10.1016/S1571-0661(04)80395-5, DOI 10.1016/S1571-0661(04)80395-5COCV'02].
+   Giacobazzi R, 1999, THEOR COMPUT SCI, V216, P159, DOI 10.1016/S0304-3975(98)00194-7.
+   GNU, 2024, Extensions to the C Language Family-x86 Function Attributes.
+   GrammaTech, 2022, CGC Challenge Binaries.
+   Hex-Rays SA, 2024, About IDA.
+   Hex-Rays SA, 2024, IDA: What's new in 7.1.
+   Jeon HG, 2017, P INT COMP SOFTW APP, P614, DOI 10.1109/COMPSAC.2017.70.
+   Jung M., 2019, P NDSS WORKSH BIN AN, P1.
+   Kinder J, 2009, LECT NOTES COMPUT SC, V5403, P214, DOI 10.1007/978-3-540-93900-9\_19.
+   Kundu S, 2009, PLDI'09 PROCEEDINGS OF THE 2009 ACM SIGPLAN CONFERENCE ON PROGRAMMING LANGUAGE DESIGN AND IMPLEMENTATION, P327, DOI 10.1145/1542476.1542513.
+   Lacey D., 2004, Higher-Order and Symbolic Computation, V17, P173, DOI 10.1023/B:LISP.0000029444.99264.c0.
+   Lacey D, 2002, ACM SIGPLAN NOTICES, V37, P283, DOI 10.1145/565816.503299.
+   Leroy X, 2009, J AUTOM REASONING, V43, P363, DOI 10.1007/s10817-009-9155-4.
+   Li LX, 2013, LECT NOTES COMPUT SC, V8174, P403, DOI 10.1007/978-3-642-40787-1\_31.
+   Li YK, 2017, ESEC/FSE 2017: PROCEEDINGS OF THE 2017 11TH JOINT MEETING ON FOUNDATIONS OF SOFTWARE ENGINEERING, P627, DOI 10.1145/3106237.3106295.
+   Lifting Bits, 2024, Remill.
+   Liu ZB, 2022, P IEEE S SECUR PRIV, P1100, DOI {[}10.1109/SP46214.2022.9833799, 10.1109/SP46214.2022.00027].
+   Luo Zhenhao, 2023, 30 ANN NETW DISTR SY.
+   Mine A., 2006, Higher-Order and Symbolic Computation, V19, P31, DOI 10.1007/s10990-006-8609-1.
+   musl libc, 2011, About us.
+   Myreen MO, 2012, Proceedings of the 12th Conference on Formal Methods in Computer-Aided Design (FMCAD 2012), P78.
+   Myreen MO, 2008, 2008 FORMAL METHODS IN COMPUTER-AIDED DESIGN, P153.
+   National Security Agency, 2024, Ghidra P-Code description.
+   National Security Agency, 2024, Ghidra.
+   Naus N, 2023, LECT NOTES COMPUT SC, V13800, P111, DOI 10.1007/978-3-031-25803-9\_7.
+   Panchenko M, 2019, INT SYM CODE GENER, P2, DOI {[}10.1109/CGO.2019.8661201, 10.5281/zenodo.2542117].
+   Park Jihee, 2025, Zenodo.
+   Park Jihee, 2024, Extended Report, DOI DOI 10.5281/ZENODO.14922366.
+   Radare2 Team, 2017, radare2.
+   Rimsa A, 2021, SOFTWARE PRACT EXPER, V51, P353, DOI 10.1002/spe.2907.
+   Shacham H, 2007, CCS'07: PROCEEDINGS OF THE 14TH ACM CONFERENCE ON COMPUTER AND COMMUNICATIONS SECURITY, P552.
+   Shoshitaishvili Y, 2016, P IEEE S SECUR PRIV, P138, DOI 10.1109/SP.2016.17.
+   Tsang R, 2024, PROCEEDINGS OF THE 33RD USENIX SECURITY SYMPOSIUM, SECURITY 2024, P5573.
+   Verbeek F, 2022, PROCEEDINGS OF THE 43RD ACM SIGPLAN INTERNATIONAL CONFERENCE ON PROGRAMMING LANGUAGE DESIGN AND IMPLEMENTATION (PLDI `22), P934, DOI 10.1145/3519939.3523702.
+   Verbeek F, 2020, LECT NOTES COMPUT SC, V12079, P98, DOI 10.1007/978-3-030-45237-7\_6.
+   Verbeek F, 2019, 17TH ACM-IEEE INTERNATIONAL CONFERENCE ON FORMAL METHODS AND MODELS FOR SYSTEM DESIGN (MEMOCODE), DOI 10.1145/3359986.3361215.
+   Wang YZ, 2022, PROCEEDINGS OF THE 38TH ANNUAL COMPUTER SECURITY APPLICATIONS CONFERENCE, ACSAC 2022, P964, DOI 10.1145/3564625.3568001.
+   Zuo CS, 2022, PROCEEDINGS OF THE 31ST USENIX SECURITY SYMPOSIUM, P3093.},
+Number-of-Cited-References = {59},
+Times-Cited = {0},
+Usage-Count-Last-180-days = {0},
+Usage-Count-Since-2013 = {0},
+Journal-ISO = {P. ACM Program. Lang.},
+Doc-Delivery-Number = {2PK7A},
+Web-of-Science-Index = {Emerging Sources Citation Index (ESCI)},
+Unique-ID = {WOS:001488160700018},
+OA = {gold},
+DA = {2026-02-17},
+}
+
+@article{ WOS:000712025300005,
+Author = {Jeong, Hae-Seon and Kwak, Jin},
+Title = {Massive IoT Malware Classification Method Using Binary Lifting},
+Journal = {INTELLIGENT AUTOMATION AND SOFT COMPUTING},
+Year = {2022},
+Volume = {32},
+Number = {1},
+Pages = {467-481},
+Abstract = {Owing to the development of next-generation network and data processing
+   technologies, massive Internet of Things (IoT) devices are becoming
+   hyperconnected. As a result, Linux malware is being created to attack
+   such hyperconnected networks by exploiting security threats in IoT
+   devices. To determine the potential threats of such Linux malware and
+   respond effectively, malware classification through an analysis of the
+   executed code is required; however, a limitation exists in that each
+   heterogeneous architecture must be analyzed separately. However, the
+   binary codes of a heterogeneous architecture can be translated to a
+   high-level intermediate representation (IR) of the same format using
+   binary lifting and malicious behavior information can be identified
+   because the functions and parameters of the assembly code are stored in
+   the IR. Consequently, this study suggests a Linux malware classification
+   method applicable to various architectures by converting Linux assembly
+   codes into an IR using binary lifting and then learning the IR Sequence
+   which reflects malicious behavior pattern using deep learning model for
+   sequence learning.},
+Publisher = {TECH SCIENCE PRESS},
+Address = {871 CORONADO CENTER DR, SUTE 200, HENDERSON, NV 89052 USA},
+Type = {Article},
+Language = {English},
+Affiliation = {Kwak, J (Corresponding Author), Ajou Univ, Dept AI Convergence Network, Dept Cyber Secur, Suwon 16499, South Korea.
+   Jeong, Hae-Seon, Ajou Univ, Dept AI Convergence Network, ISAA Lab, Suwon 16499, South Korea.
+   Kwak, Jin, Ajou Univ, Dept AI Convergence Network, Dept Cyber Secur, Suwon 16499, South Korea.},
+DOI = {10.32604/iasc.2022.021038},
+ISSN = {1079-8587},
+EISSN = {2326-005X},
+Keywords = {Assembly code; binary lifting; Linux malware; malware classification},
+Keywords-Plus = {THINGS MALWARE; LSTM; INTERNET},
+Research-Areas = {Automation \& Control Systems; Computer Science},
+Web-of-Science-Categories  = {Automation \& Control Systems; Computer Science, Artificial Intelligence},
+Author-Email = {security@ajou.ac.kr},
+Affiliations = {Ajou University; Ajou University},
+ORCID-Numbers = {Kwak, Jin/0000-0001-6931-2705},
+Funding-Acknowledgement = {National Research Foundation of Korea (NRF) - Korean government (MSIT)
+   {[}2021R1A2C2011391]; BK21 FOUR program of the National Research
+   Foundation of Korea - Ministry of Education {[}NRF5199991514504]},
+Funding-Text = {This work was supported by a National Research Foundation of Korea (NRF)
+   grant funded by the Korean government (MSIT) (No. 2021R1A2C2011391) and
+   this work was supported by the BK21 FOUR program of the National
+   Research Foundation of Korea funded by the Ministry of Education
+   (NRF5199991514504) .},
+Cited-References = {Ahmad I, 2019, IEEE COMMUN SURV TUT, V21, P3682, DOI 10.1109/COMST.2019.2916180.
+   Alasmary H, 2019, IEEE INTERNET THINGS, V6, P8977, DOI 10.1109/JIOT.2019.2925929.
+   Andrade ED, 2019, PROCEDIA COMPUT SCI, V159, P182, DOI 10.1016/j.procs.2019.09.173.
+   Avast Threat Intelligence Team, LIN DDOS TROJ HID IT.
+   Ban T., 2018, 2018 ELEVENTH INTERNATIONAL CONFERENCE ON MOBILE COMPUTING AND UBIQUITOUS NETWORK (ICMU 2018), P1.
+   Basole S, 2020, J COMPUT VIROL HACKI, V16, P79, DOI 10.1007/s11416-019-00345-8.
+   Chatterjee S, 2020, MIRAI BACKDOOR THREA.
+   Cheng X, 2019, IEEE INT C ENG COMP, P41, DOI 10.1109/ICECCS.2019.00012.
+   Chi Y, 2020, KSII T INTERNET INF, V14, P2444, DOI 10.3837/tiis.2020.06.007.
+   Cozzi E, 2018, P IEEE S SECUR PRIV, P161, DOI 10.1109/SP.2018.00054.
+   Das S, 2016, IEEE T INF FOREN SEC, V11, P289, DOI 10.1109/TIFS.2015.2491300.
+   Ding YX, 2014, COMPUT SECUR, V44, P65, DOI 10.1016/j.cose.2014.04.003.
+   Forman G., 2008, P 17 ACM C INF KNOWL, P263, DOI DOI 10.1145/1458082.1458119.
+   Gers FA, 1999, IEE CONF PUBL, P850, DOI {[}10.1049/cp:19991218, 10.1162/089976600300015015].
+   전덕조, 2019, {[}Journal of Korean Institute of Information Technology, 한국정보기술학회논문지], V17, P111, DOI {[}10.14801/jkiit.2019.17.7.111, 10.14801/jkiit.2019.17.7.111].
+   HaddadPajouh H, 2018, FUTURE GENER COMP SY, V85, P88, DOI 10.1016/j.future.2018.03.007.
+   Hochreiter S, 1997, ADV NEUR IN, V9, P473.
+   Hwang Jun-ho, 2019, {[}Journal of The Korea Institute of Information Security and Cryptology, 정보보호학회논문지], V29, P1327, DOI 10.13089/JKIISC.2019.29.6.1327.
+   Jing QF, 2020, KSII T INTERNET INF, V14, P4664, DOI 10.3837/tiis.2020.12.003.
+   Jung M., 2019, P NDSS WORKSH BIN AN, P1.
+   Kalnai P., 2016, DDOS TROJAN MALICIOU.
+   Kang J, 2019, COMPUT ELECTR ENG, V77, P366, DOI 10.1016/j.compeleceng.2019.06.014.
+   Kapoor A, 2016, DEFENCE SCI J, V66, P138, DOI 10.14429/dsj.66.9701.
+   Kim Se-Jin, 2020, {[}Journal of Korea Academia-Industrial cooperation Society, 한국산학기술학회논문지], V21, P634, DOI {[}10.5762/kais.2020.21.9.634, 10.5762/KAIS.2020.21.9.634].
+   Ma X, 2019, IEEE ACCESS, V7, P155270, DOI 10.1109/ACCESS.2019.2948358.
+   Malubay M, WORM LINUX MALXMR PU, P2021.
+   Malwarebytes Labs, 2020, 2020 STAT MALW REP.
+   Martin H, 2008, CASE AV LINUX LINUX.
+   Obuchi K, 2018, HKTL SSHBRUTE GA ELF.
+   Schuster M, 1997, IEEE T SIGNAL PROCES, V45, P2673, DOI 10.1109/78.650093.
+   Sung Y, 2020, COMPUT COMMUN, V153, P342, DOI 10.1016/j.comcom.2020.02.005.
+   Trend Micro Cyber Safety Solutions Team, 2018, PERL BAS SHELLB LOOK.
+   Wan TL, 2020, ASIA JT CONF INF SEC, P143, DOI 10.1109/AsiaJCIS50894.2020.00033.},
+Number-of-Cited-References = {33},
+Times-Cited = {2},
+Usage-Count-Last-180-days = {1},
+Usage-Count-Since-2013 = {25},
+Journal-ISO = {Intell. Autom. Soft Comput.},
+Doc-Delivery-Number = {WN8OB},
+Web-of-Science-Index = {Science Citation Index Expanded (SCI-EXPANDED)},
+Unique-ID = {WOS:000712025300005},
+OA = {hybrid},
+DA = {2026-02-17},
+}
+
+@article{ WOS:000230566600003,
+Author = {Kiss, A and Jász, J and Gyimóthy, T},
+Title = {Using dynamic information in the interprocedural static slicing of
+   binary executables},
+Journal = {SOFTWARE QUALITY JOURNAL},
+Year = {2005},
+Volume = {13},
+Number = {3},
+Pages = {227-245},
+Month = {SEP},
+Abstract = {Although the slicing of programs written in a high-level language has
+   been widely studied in the literature, relatively few papers have been
+   published on the slicing of binary executable programs. The lack of
+   existing solutions for the latter is really hard to understand since the
+   application domain for slicing binaries is similar to that for slicing
+   high-level languages. Furthermore, there are special applications of the
+   slicing of programs without source code like source code recovery, code
+   transformation and the detection of security critical code fragments. In
+   this paper, in addition to describing the method of interprocedural
+   static slicing of binaries, we discuss how the set of the possible
+   targets of indirect call sites can be reduced by dynamically gathered
+   information. Our evaluation of the slicing method shows that, if
+   indirect function calls are extensively used, both the number of edges
+   in the call graph and the size of the slices can be significantly
+   reduced.},
+Publisher = {SPRINGER},
+Address = {VAN GODEWIJCKSTRAAT 30, 3311 GZ DORDRECHT, NETHERLANDS},
+Type = {Article},
+Language = {English},
+Affiliation = {Kiss, A (Corresponding Author), Univ Szeged, Dept Software Engn, Szeged, Hungary.
+   Univ Szeged, Dept Software Engn, Szeged, Hungary.},
+DOI = {10.1007/s11219-005-1751-x},
+ISSN = {0963-9314},
+EISSN = {1573-1367},
+Keywords = {static slicing; interprocedural slicing; binary executables; call graph;
+   indirect function call; dynamic information},
+Research-Areas = {Computer Science},
+Web-of-Science-Categories  = {Computer Science, Software Engineering},
+Author-Email = {akiss@inf.u-szeged.hu
+   jasy@inf.u-szeged.hu
+   gyimi@inf.u-szeged.hu},
+Affiliations = {Szeged University},
+ResearcherID-Numbers = {Kiss, Akos/A-3508-2008
+   Jász, Judit/ABA-6962-2021
+   Gyimóthy, Tibor/M-3705-2018},
+ORCID-Numbers = {Kiss, Akos/0000-0003-3077-7075
+   Jász, Judit/0000-0001-6176-9401
+   Gyimóthy, Tibor/0000-0002-2123-7387},
+Cited-References = {AGRAWAL H, 1994, P ACM SIGPLAN C PROG, P302.
+   {[}Anonymous], 2000, SPEC CINT2000 benchmarks.
+   {[}Anonymous], 2003, PhD thesis.
+   {[}Anonymous], P 1 ACM SIGSOFT SIGP.
+   {[}Anonymous], P 13 ANN IEEE ACM IN.
+   Antoniol G, 1999, PROCEEDINGS OF THE THIRD EUROPEAN CONFERENCE ON SOFTWARE MAINTENANCE AND REENGINEERING, P51, DOI 10.1109/CSMR.1999.756682.
+   BALL T, 1993, P 1 INT WORKSH AUT A, P206.
+   BERGERON J, 1999, P IEEE INT WORKSH EN.
+   Beszédes A, 2002, PROC IEEE INT CONF S, P12, DOI 10.1109/ICSM.2002.1167743.
+   Beszédes A, 2001, FIFTH EUROPEAN CONFERENCE ON SOFTWARE MAINTENANCE AND REENGINEERING, PROCEEDINGS, P105, DOI 10.1109/CSMR.2001.914974.
+   Binkley D., 1996, ADV COMPUT, V43, P1, DOI DOI 10.1016/S0065-2458(08)60641-5.
+   Canfora G, 1998, INFORM SOFTWARE TECH, V40, P595, DOI 10.1016/S0950-5849(98)00086-X.
+   CHOI JD, 1994, ACM T PROGR LANG SYS, V16, P1097, DOI 10.1145/183432.183438.
+   Cifuentes C., 1997, Proceedings International Conference on Software Maintenance (Cat. No.97CB36119), P188, DOI 10.1109/ICSM.1997.624245.
+   Debray SK, 2000, ACM T PROGR LANG SYS, V22, P378, DOI 10.1145/349214.349233.
+   FERRANTE J, 1987, ACM T PROGR LANG SYS, V9, P319, DOI 10.1145/24039.24041.
+   Harman M, 2003, J SYST SOFTWARE, V68, P45, DOI 10.1016/S0164-1212(02)00135-8.
+   HORWITZ S, 1990, ACM T PROGR LANG SYS, V12, P26, DOI {[}10.1145/77606.77608, 10.1145/960116.53994].
+   Kiss A, 2003, THIRD IEEE INTERNATIONAL WORKSHOP ON SOURCE CODE ANALYSIS AND MANIPULATION - PROCEEDINGS, P118, DOI 10.1109/SCAM.2003.1238038.
+   KOREL B, 1988, INFORM PROCESS LETT, V29, P155, DOI 10.1016/0020-0190(88)90054-3.
+   KUMAR S, 2002, P FASE 2002 FUND APP.
+   LARUS JR, 1995, ACM SIGPLAN NOTICES, V30, P291.
+   Lengauer T., 1979, ACM T PROGR LANG SYS, V1, P121, DOI DOI 10.1145/357062.357071.
+   Microsoft Corporation, 1999, MICR PORT EX COMM OB.
+   MOCK M, 2002, P 10 ACM SIGSOFT S F, P71.
+   REPS T, 1994, P ACM SIGSOFT 94 S F, P11.
+   SHAPIRO M, 1997, P 24 ACM SIGPLAN SIG.
+   TIP F, 1995, J PROGRAM LANG, V3, P121.
+   TIS Committee, 1995, Tool Interface Standard (TIS) Executable and Linking Format (ELF) Specification (Version 1.2).
+   WEISER M, 1984, IEEE T SOFTWARE ENG, V10, P352, DOI 10.1109/TSE.1984.5010248.},
+Number-of-Cited-References = {30},
+Times-Cited = {5},
+Usage-Count-Last-180-days = {0},
+Usage-Count-Since-2013 = {0},
+Journal-ISO = {Softw. Qual. J.},
+Doc-Delivery-Number = {946IW},
+Web-of-Science-Index = {Science Citation Index Expanded (SCI-EXPANDED)},
+Unique-ID = {WOS:000230566600003},
+DA = {2026-02-17},
+}
+
+@inproceedings{ WOS:000083613400014,
+Author = {Mycroft, A},
+Editor = {Swierstra, SD},
+Title = {Type-based decompilation (or program reconstruction via type
+   reconstruction)},
+Booktitle = {PROGRAMMING LANGUAGES AND SYSTEMS},
+Series = {LECTURE NOTES IN COMPUTER SCIENCE},
+Year = {1999},
+Volume = {1576},
+Pages = {208-223},
+Note = {Joint European Conference on Theory and Practice of Software (ETAPS 99),
+   AMSTERDAM, NETHERLANDS, MAR 22-28, 1999},
+Organization = {KPN Res; Phillips Res; EU Programme Training \& Mobil Researchers; CWI;
+   Univ Amsterdam; European Assoc Programming Languages \& Syst; European
+   Assoc Theoret Comp Sci},
+Abstract = {We describe a system which decompiles (reverse engineers) C programs
+   from target machine code by type-inference techniques. This extends
+   recent trends in the converse process of compiling high-level languages
+   whereby type information is preserved during compilation. The algorithms
+   remain independent of the particular architecture by virtue of treating
+   target instructions as register-transfer specifications. Target code
+   expressed in such RTL form is then transformed into SSA form (undoing
+   register colouring etc.); this then generates a set of type constraints.
+   Iteration and recursion over data-structures causes synthesis of
+   appropriate recursive C structs; this is triggered by and resolves
+   occurs-check constraint violation. Other constraint violations are
+   resolved by C's casts and unions. In the limit we use heuristics to
+   select between equally suitable C code-a good GUI would clearly
+   facilitate its professional use.},
+Publisher = {SPRINGER-VERLAG BERLIN},
+Address = {HEIDELBERGER PLATZ 3, D-14197 BERLIN, GERMANY},
+Type = {Article; Proceedings Paper},
+Language = {English},
+Affiliation = {Mycroft, A (Corresponding Author), Univ Cambridge, Comp Lab, Pembroke St,New Museums Site, Cambridge CB2 3QG, England.
+   Univ Cambridge, Comp Lab, Cambridge CB2 3QG, England.},
+ISSN = {0302-9743},
+ISBN = {3-540-65699-5},
+Research-Areas = {Computer Science},
+Web-of-Science-Categories  = {Computer Science, Software Engineering; Computer Science, Theory \&
+   Methods},
+Affiliations = {University of Cambridge},
+ORCID-Numbers = {Mycroft, Alan/0000-0001-7013-8572},
+Cited-References = {Cifuentes Cristina., 1994, Reverse compilation techniques.
+   CYTRON R, 1991, ACM T PROGR LANG SYS, V13, P451, DOI 10.1145/115372.115320.
+   GANDHE M, 1996, P 16 C FDN SOFTW TEC, V1180.
+   GANNOD GC, 1996, P IEEE INT C SOFTW M.
+   GLASSCOCK PE, 1998, 80 86 C REVERSE COMP.
+   MILNER R, 1978, JCSS.
+   MORRISETT G, 1998, P 25 ACM S PRINC PRO.
+   NECULA GC, 1998, P ACM C PROGR LANG D.
+   RICHARDS M, 1979, BCPL LANGUAGE ITS CO.
+   TANG YM, 1995, P ACM S PART EV PROG.},
+Number-of-Cited-References = {10},
+Times-Cited = {27},
+Usage-Count-Last-180-days = {0},
+Usage-Count-Since-2013 = {1},
+Doc-Delivery-Number = {BN94E},
+Web-of-Science-Index = {Conference Proceedings Citation Index - Science (CPCI-S); Science Citation Index Expanded (SCI-EXPANDED)},
+Unique-ID = {WOS:000083613400014},
+DA = {2026-02-17},
+}
