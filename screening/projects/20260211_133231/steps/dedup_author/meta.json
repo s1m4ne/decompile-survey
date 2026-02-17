@@ -1,0 +1,43 @@
+{
+  "step_id": "dedup_author",
+  "step_type": "dedup-author",
+  "name": "Author Deduplication",
+  "input": {
+    "from": "dedup_title",
+    "output": "passed",
+    "file": "steps/dedup_title/outputs/passed.json",
+    "count": 514
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/dedup_author/outputs/passed.bib",
+      "count": 514,
+      "description": "Representative entries kept after author clustering"
+    },
+    "removed": {
+      "file": "steps/dedup_author/outputs/removed.bib",
+      "count": 0,
+      "description": "Entries removed as author duplicates"
+    }
+  },
+  "stats": {
+    "input_count": 514,
+    "total_output_count": 514,
+    "passed_count": 514,
+    "removed_count": 0
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-02-11T14:26:16.530908",
+    "completed_at": "2026-02-11T14:26:16.663313",
+    "duration_sec": 0.132405,
+    "error": null,
+    "progress": {
+      "completed": 514,
+      "total": 514,
+      "percent": 100.0,
+      "message": "Completed",
+      "updated_at": "2026-02-11T14:26:16.663313"
+    }
+  }
+}

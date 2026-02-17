@@ -1,0 +1,130 @@
+{
+  "id": "20260210_183148",
+  "name": "My Import with Springer",
+  "description": "",
+  "files": [
+    {
+      "filename": "acm.bib",
+      "database": "ACM",
+      "search_query": "\"query\": { title:(decompil*) OR abstract:(decompil*) } \"filter\": { E-Publication Date: (01/01/2017 TO 12/31/2026), ACM Content: DL }",
+      "search_date": "2026-02-04",
+      "url": "https://dl.acm.org/action/doSearch?fillQuickSearch=false&target=advanced&expand=dl&AfterMonth=1&AfterYear=2017&BeforeMonth=12&BeforeYear=2026&AllField=title%3A%28decompil*%29+OR+abstract%3A%28decompil*%29&startPage=0&pageSize=50#",
+      "tags": [
+        "decompil*"
+      ],
+      "count": 156
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.4.15.1.18.bib",
+      "database": "IEEE",
+      "search_query": "(\"Document Title\":decompil*) OR (\"Abstract\":decompil*)",
+      "search_date": "2026-02-04",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&newsearch=true&matchBoolean=true&queryText=(%22Document%20Title%22:decompil*)%20OR%20(%22Abstract%22:decompil*)&ranges=2017_2026_Year&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&rowsPerPage=100&pageNumber=1",
+      "tags": [
+        "decompil*"
+      ],
+      "count": 100
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.4.15.1.54.bib",
+      "database": "IEEE",
+      "search_query": "(\"Document Title\":decompil*) OR (\"Abstract\":decompil*)",
+      "search_date": "2026-02-04",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&newsearch=true&matchBoolean=true&queryText=(%22Document%20Title%22:decompil*)%20OR%20(%22Abstract%22:decompil*)&ranges=2017_2026_Year&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&rowsPerPage=100&pageNumber=1",
+      "tags": [
+        "decompil*"
+      ],
+      "count": 41
+    },
+    {
+      "filename": "savedrecs.bib",
+      "database": "WoS",
+      "search_query": "(TI=(decompil*)) OR AB=(decompil*)",
+      "search_date": "2026-02-04",
+      "url": "https://www.webofscience.com/wos/woscc/summary/ff1340af-f945-4097-8591-e04d61c7e49f-019d3da5e9/relevance/1",
+      "tags": [
+        "decompil*"
+      ],
+      "count": 119
+    },
+    {
+      "filename": "decompile_arxiv_2017_2026.bib",
+      "database": "arxiv",
+      "search_query": "order: -announced_date_first; size: 200; date_range: from 2017-01-01 to 2026-12-31; classification: Computer Science (cs); include_cross_list: True; terms: AND title=decompil*; OR abstract=decompil*",
+      "search_date": "2026-02-04",
+      "url": "https://arxiv.org/search/advanced?advanced=1&terms-0-operator=AND&terms-0-term=decompil*&terms-0-field=title&terms-1-operator=OR&terms-1-term=decompil*&terms-1-field=abstract&classification-computer_science=y&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2017-01-01&date-to_date=2026-12-31&date-date_type=submitted_date&abstracts=show&size=200&order=-announced_date_first",
+      "tags": [
+        "decompil*"
+      ],
+      "count": 105
+    },
+    {
+      "filename": "arXiv_query2_20260205_0231.bib",
+      "database": "arxiv",
+      "search_query": "(\r\n  (\r\n    ti:\"reverse compilation\" OR abs:\"reverse compilation\" OR\r\n    ti:\"source code recovery\" OR abs:\"source code recovery\" OR\r\n    ti:\"source recovery\" OR abs:\"source recovery\" OR\r\n    ti:\"program reconstruction\" OR abs:\"program reconstruction\" OR\r\n    ti:\"binary-to-source\" OR abs:\"binary-to-source\" OR\r\n    ti:\"binary to source\" OR abs:\"binary to source\" OR\r\n    ti:\"assembly-to-C\" OR abs:\"assembly-to-C\" OR\r\n    ti:\"assembly to C\" OR abs:\"assembly to C\" OR\r\n    ti:\"binary lifting\" OR abs:\"binary lifting\" OR\r\n    ti:\"instruction lifting\" OR abs:\"instruction lifting\" OR\r\n    ti:\"lifting to LLVM\" OR abs:\"lifting to LLVM\" OR\r\n    ti:\"lifting to IR\" OR abs:\"lifting to IR\"\r\n  )\r\n  AND\r\n  (\r\n    ti:\"machine code\" OR abs:\"machine code\" OR\r\n    ti:\"binary code\" OR abs:\"binary code\" OR\r\n    ti:\"assembly code\" OR abs:\"assembly code\" OR\r\n    ti:disassembly OR abs:disassembly OR\r\n    ti:disassembler OR abs:disassembler OR\r\n    ti:bytecode OR abs:bytecode OR\r\n    ti:executable OR abs:executable OR\r\n    ti:opcode OR abs:opcode\r\n  )\r\n  AND\r\n  (\r\n    ti:\"machine learning\" OR abs:\"machine learning\" OR\r\n    ti:\"deep learning\" OR abs:\"deep learning\" OR\r\n    ti:\"neural network\" OR abs:\"neural network\" OR\r\n    ti:transformer OR abs:transformer OR\r\n    ti:\"language model\" OR abs:\"language model\" OR\r\n    ti:\"large language model\" OR abs:\"large language model\" OR\r\n    ti:LLM OR abs:LLM OR\r\n    ti:GPT OR abs:GPT\r\n  )\r\n  AND submittedDate:[201701010000 TO 202612312359]\r\n)",
+      "search_date": "2026-02-05",
+      "url": null,
+      "tags": [
+        "query2"
+      ],
+      "count": 5
+    },
+    {
+      "filename": "acm (1).bib",
+      "database": "ACM",
+      "search_query": "\"query\": {AllField:(( ( Title:\"reverse compilation\" OR Abstract:\"reverse compilation\" OR Title:\"source code recovery\" OR Abstract:\"source code recovery\" OR Title:\"source recovery\" OR Abstract:\"source recovery\" OR Title:\"program reconstruction\" OR Abstract:\"program reconstruction\" OR Title:\"binary-to-source\" OR Abstract:\"binary-to-source\" OR Title:\"binary to source\" OR Abstract:\"binary to source\" OR Title:\"assembly-to-C\" OR Abstract:\"assembly-to-C\" OR Title:\"assembly to C\" OR Abstract:\"assembly to C\" OR Title:\"binary lifting\" OR Abstract:\"binary lifting\" OR Title:\"instruction lifting\" OR Abstract:\"instruction lifting\" OR Title:\"lifting to LLVM\" OR Abstract:\"lifting to LLVM\" OR Title:\"lifting to IR\" OR Abstract:\"lifting to IR\" ) AND ( Title:\"machine code\" OR Abstract:\"machine code\" OR Title:\"binary code\" OR Abstract:\"binary code\" OR Title:\"assembly code\" OR Abstract:\"assembly code\" OR Title:disassembly OR Abstract:disassembly OR Title:disassembler OR Abstract:disassembler OR Title:bytecode OR Abstract:bytecode OR Title:executable OR Abstract:executable OR Title:opcode OR Abstract:opcode ) AND ( Title:\"machine learning\" OR Abstract:\"machine learning\" OR Title:\"deep learning\" OR Abstract:\"deep learning\" OR Title:\"neural network\" OR Abstract:\"neural network\" OR Title:transformer OR Abstract:transformer OR Title:\"language model\" OR Abstract:\"language model\" OR Title:\"large language model\" OR Abstract:\"large language model\" OR Title:LLM OR Abstract:LLM OR Title:GPT OR Abstract:GPT ) ))} \"filter\": {E-Publication Date: (01/01/2017 TO 12/31/2026)},{ACM Content: DL}\r\n",
+      "search_date": "2026-02-05",
+      "url": "https://dl.acm.org/action/doSearch?fillQuickSearch=false&target=advanced&expand=dl&AfterMonth=1&AfterYear=2017&BeforeMonth=12&BeforeYear=2026&AllField=%28%0D%0A++%28%0D%0A++++Title%3A%22reverse+compilation%22+OR+Abstract%3A%22reverse+compilation%22+OR%0D%0A++++Title%3A%22source+code+recovery%22+OR+Abstract%3A%22source+code+recovery%22+OR%0D%0A++++Title%3A%22source+recovery%22+OR+Abstract%3A%22source+recovery%22+OR%0D%0A++++Title%3A%22program+reconstruction%22+OR+Abstract%3A%22program+reconstruction%22+OR%0D%0A++++Title%3A%22binary-to-source%22+OR+Abstract%3A%22binary-to-source%22+OR%0D%0A++++Title%3A%22binary+to+source%22+OR+Abstract%3A%22binary+to+source%22+OR%0D%0A++++Title%3A%22assembly-to-C%22+OR+Abstract%3A%22assembly-to-C%22+OR%0D%0A++++Title%3A%22assembly+to+C%22+OR+Abstract%3A%22assembly+to+C%22+OR%0D%0A++++Title%3A%22binary+lifting%22+OR+Abstract%3A%22binary+lifting%22+OR%0D%0A++++Title%3A%22instruction+lifting%22+OR+Abstract%3A%22instruction+lifting%22+OR%0D%0A++++Title%3A%22lifting+to+LLVM%22+OR+Abstract%3A%22lifting+to+LLVM%22+OR%0D%0A++++Title%3A%22lifting+to+IR%22+OR+Abstract%3A%22lifting+to+IR%22%0D%0A++%29%0D%0A++AND%0D%0A++%28%0D%0A++++Title%3A%22machine+code%22+OR+Abstract%3A%22machine+code%22+OR%0D%0A++++Title%3A%22binary+code%22+OR+Abstract%3A%22binary+code%22+OR%0D%0A++++Title%3A%22assembly+code%22+OR+Abstract%3A%22assembly+code%22+OR%0D%0A++++Title%3Adisassembly+OR+Abstract%3Adisassembly+OR%0D%0A++++Title%3Adisassembler+OR+Abstract%3Adisassembler+OR%0D%0A++++Title%3Abytecode+OR+Abstract%3Abytecode+OR%0D%0A++++Title%3Aexecutable+OR+Abstract%3Aexecutable+OR%0D%0A++++Title%3Aopcode+OR+Abstract%3Aopcode%0D%0A++%29%0D%0A++AND%0D%0A++%28%0D%0A++++Title%3A%22machine+learning%22+OR+Abstract%3A%22machine+learning%22+OR%0D%0A++++Title%3A%22deep+learning%22+OR+Abstract%3A%22deep+learning%22+OR%0D%0A++++Title%3A%22neural+network%22+OR+Abstract%3A%22neural+network%22+OR%0D%0A++++Title%3Atransformer+OR+Abstract%3Atransformer+OR%0D%0A++++Title%3A%22language+model%22+OR+Abstract%3A%22language+model%22+OR%0D%0A++++Title%3A%22large+language+model%22+OR+Abstract%3A%22large+language+model%22+OR%0D%0A++++Title%3ALLM+OR+Abstract%3ALLM+OR%0D%0A++++Title%3AGPT+OR+Abstract%3AGPT%0D%0A++%29%0D%0A%29%0D%0A#",
+      "tags": [
+        "query2"
+      ],
+      "count": 10
+    },
+    {
+      "filename": "IEEE Xplore Citation BibTeX Download 2026.2.5.14.8.51.bib",
+      "database": "IEEE",
+      "search_query": "(\r\n  (\r\n    \"Document Title\":\"reverse compilation\" OR \"Abstract\":\"reverse compilation\" OR\r\n    \"Document Title\":\"source code recovery\" OR \"Abstract\":\"source code recovery\" OR\r\n    \"Document Title\":\"source recovery\" OR \"Abstract\":\"source recovery\" OR\r\n    \"Document Title\":\"program reconstruction\" OR \"Abstract\":\"program reconstruction\" OR\r\n    \"Document Title\":\"binary-to-source\" OR \"Abstract\":\"binary-to-source\" OR\r\n    \"Document Title\":\"binary to source\" OR \"Abstract\":\"binary to source\" OR\r\n    \"Document Title\":\"assembly-to-C\" OR \"Abstract\":\"assembly-to-C\" OR\r\n    \"Document Title\":\"assembly to C\" OR \"Abstract\":\"assembly to C\" OR\r\n    \"Document Title\":\"binary lifting\" OR \"Abstract\":\"binary lifting\" OR\r\n    \"Document Title\":\"instruction lifting\" OR \"Abstract\":\"instruction lifting\" OR\r\n    \"Document Title\":\"lifting to LLVM\" OR \"Abstract\":\"lifting to LLVM\" OR\r\n    \"Document Title\":\"lifting to IR\" OR \"Abstract\":\"lifting to IR\"\r\n  )\r\n  AND\r\n  (\r\n    \"Document Title\":\"machine code\" OR \"Abstract\":\"machine code\" OR\r\n    \"Document Title\":\"binary code\" OR \"Abstract\":\"binary code\" OR\r\n    \"Document Title\":\"assembly code\" OR \"Abstract\":\"assembly code\" OR\r\n    \"Document Title\":disassembly OR \"Abstract\":disassembly OR\r\n    \"Document Title\":disassembler OR \"Abstract\":disassembler OR\r\n    \"Document Title\":bytecode OR \"Abstract\":bytecode OR\r\n    \"Document Title\":executable OR \"Abstract\":executable OR\r\n    \"Document Title\":opcode OR \"Abstract\":opcode\r\n  )\r\n  AND\r\n  (\r\n    \"Document Title\":\"machine learning\" OR \"Abstract\":\"machine learning\" OR\r\n    \"Document Title\":\"deep learning\" OR \"Abstract\":\"deep learning\" OR\r\n    \"Document Title\":\"neural network\" OR \"Abstract\":\"neural network\" OR\r\n    \"Document Title\":transformer OR \"Abstract\":transformer OR\r\n    \"Document Title\":\"language model\" OR \"Abstract\":\"language model\" OR\r\n    \"Document Title\":\"large language model\" OR \"Abstract\":\"large language model\" OR\r\n    \"Document Title\":LLM OR \"Abstract\":LLM OR\r\n    \"Document Title\":GPT OR \"Abstract\":GPT\r\n  )\r\n)\r\n",
+      "search_date": "2026-02-05",
+      "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&matchBoolean=true&newsearch=true&queryText=((%0A%20%20(%0A%20%20%20%20%22Document%20Title%22:%22reverse%20compilation%22%20OR%20%22Abstract%22:%22reverse%20compilation%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22source%20code%20recovery%22%20OR%20%22Abstract%22:%22source%20code%20recovery%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22source%20recovery%22%20OR%20%22Abstract%22:%22source%20recovery%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22program%20reconstruction%22%20OR%20%22Abstract%22:%22program%20reconstruction%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22binary-to-source%22%20OR%20%22Abstract%22:%22binary-to-source%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22binary%20to%20source%22%20OR%20%22Abstract%22:%22binary%20to%20source%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22assembly-to-C%22%20OR%20%22Abstract%22:%22assembly-to-C%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22assembly%20to%20C%22%20OR%20%22Abstract%22:%22assembly%20to%20C%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22binary%20lifting%22%20OR%20%22Abstract%22:%22binary%20lifting%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22instruction%20lifting%22%20OR%20%22Abstract%22:%22instruction%20lifting%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22lifting%20to%20LLVM%22%20OR%20%22Abstract%22:%22lifting%20to%20LLVM%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22lifting%20to%20IR%22%20OR%20%22Abstract%22:%22lifting%20to%20IR%22%0A%20%20)%0A%20%20AND%0A%20%20(%0A%20%20%20%20%22Document%20Title%22:%22machine%20code%22%20OR%20%22Abstract%22:%22machine%20code%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22binary%20code%22%20OR%20%22Abstract%22:%22binary%20code%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22assembly%20code%22%20OR%20%22Abstract%22:%22assembly%20code%22%20OR%0A%20%20%20%20%22Document%20Title%22:disassembly%20OR%20%22Abstract%22:disassembly%20OR%0A%20%20%20%20%22Document%20Title%22:disassembler%20OR%20%22Abstract%22:disassembler%20OR%0A%20%20%20%20%22Document%20Title%22:bytecode%20OR%20%22Abstract%22:bytecode%20OR%0A%20%20%20%20%22Document%20Title%22:executable%20OR%20%22Abstract%22:executable%20OR%0A%20%20%20%20%22Document%20Title%22:opcode%20OR%20%22Abstract%22:opcode%0A%20%20)%0A%20%20AND%0A%20%20(%0A%20%20%20%20%22Document%20Title%22:%22machine%20learning%22%20OR%20%22Abstract%22:%22machine%20learning%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22deep%20learning%22%20OR%20%22Abstract%22:%22deep%20learning%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22neural%20network%22%20OR%20%22Abstract%22:%22neural%20network%22%20OR%0A%20%20%20%20%22Document%20Title%22:transformer%20OR%20%22Abstract%22:transformer%20OR%0A%20%20%20%20%22Document%20Title%22:%22language%20model%22%20OR%20%22Abstract%22:%22language%20model%22%20OR%0A%20%20%20%20%22Document%20Title%22:%22large%20language%20model%22%20OR%20%22Abstract%22:%22large%20language%20model%22%20OR%0A%20%20%20%20%22Document%20Title%22:LLM%20OR%20%22Abstract%22:LLM%20OR%0A%20%20%20%20%22Document%20Title%22:GPT%20OR%20%22Abstract%22:GPT%0A%20%20)%0A)%0A)",
+      "tags": [
+        "query2"
+      ],
+      "count": 2
+    },
+    {
+      "filename": "savedrecs (1).bib",
+      "database": "WoS",
+      "search_query": "(\r\n  (\r\n    TI=(\"reverse compilation\") OR AB=(\"reverse compilation\") OR\r\n    TI=(\"source code recovery\") OR AB=(\"source code recovery\") OR\r\n    TI=(\"source recovery\") OR AB=(\"source recovery\") OR\r\n    TI=(\"program reconstruction\") OR AB=(\"program reconstruction\") OR\r\n    TI=(\"binary-to-source\") OR AB=(\"binary-to-source\") OR\r\n    TI=(\"binary to source\") OR AB=(\"binary to source\") OR\r\n    TI=(\"assembly-to-C\") OR AB=(\"assembly-to-C\") OR\r\n    TI=(\"assembly to C\") OR AB=(\"assembly to C\") OR\r\n    TI=(\"binary lifting\") OR AB=(\"binary lifting\") OR\r\n    TI=(\"instruction lifting\") OR AB=(\"instruction lifting\") OR\r\n    TI=(\"lifting to LLVM\") OR AB=(\"lifting to LLVM\") OR\r\n    TI=(\"lifting to IR\") OR AB=(\"lifting to IR\")\r\n  )\r\n  AND\r\n  (\r\n    TI=(\"machine code\") OR AB=(\"machine code\") OR\r\n    TI=(\"binary code\") OR AB=(\"binary code\") OR\r\n    TI=(\"assembly code\") OR AB=(\"assembly code\") OR\r\n    TI=(disassembly) OR AB=(disassembly) OR\r\n    TI=(disassembler) OR AB=(disassembler) OR\r\n    TI=(bytecode) OR AB=(bytecode) OR\r\n    TI=(executable) OR AB=(executable) OR\r\n    TI=(opcode) OR AB=(opcode)\r\n  )\r\n  AND\r\n  (\r\n    TI=(\"machine learning\") OR AB=(\"machine learning\") OR\r\n    TI=(\"deep learning\") OR AB=(\"deep learning\") OR\r\n    TI=(\"neural network\") OR AB=(\"neural network\") OR\r\n    TI=(transformer) OR AB=(transformer) OR\r\n    TI=(\"language model\") OR AB=(\"language model\") OR\r\n    TI=(\"large language model\") OR AB=(\"large language model\") OR\r\n    TI=(LLM) OR AB=(LLM) OR\r\n    TI=(GPT) OR AB=(GPT)\r\n  )\r\n)\r\n",
+      "search_date": "2026-02-05",
+      "url": "https://www.webofscience.com/wos/woscc/summary/3970c56e-f006-4570-8f93-1fc9c1a4d952-019d78bec9/relevance/1",
+      "tags": [
+        "query2"
+      ],
+      "count": 2
+    },
+    {
+      "filename": "import_20260210_182808_query_results.bib",
+      "database": "Springer",
+      "search_query": "title:decompil* OR abstract:decompil*",
+      "search_date": "2026-02-10",
+      "url": null,
+      "tags": [
+        "decompil*"
+      ],
+      "count": 65
+    },
+    {
+      "filename": "import_20260210_182808_query_results (1).bib",
+      "database": "Springer",
+      "search_query": "(\r\n  (\r\n    title:(\"reverse compilation\" OR \"source code recovery\" OR \"source recovery\" OR \"program reconstruction\" OR \"binary-to-source\" OR \"binary to source\" OR \"assembly-to-C\" OR \"assembly to C\" OR \"binary lifting\" OR \"instruction lifting\" OR \"lifting to LLVM\" OR \"lifting to IR\")\r\n    OR\r\n    abstract:(\"reverse compilation\" OR \"source code recovery\" OR \"source recovery\" OR \"program reconstruction\" OR \"binary-to-source\" OR \"binary to source\" OR \"assembly-to-C\" OR \"assembly to C\" OR \"binary lifting\" OR \"instruction lifting\" OR \"lifting to LLVM\" OR \"lifting to IR\")\r\n  )\r\n  AND\r\n  (\r\n    title:(\"machine code\" OR \"binary code\" OR \"assembly code\" OR disassembly OR disassembler OR bytecode OR executable OR opcode)\r\n    OR\r\n    abstract:(\"machine code\" OR \"binary code\" OR \"assembly code\" OR disassembly OR disassembler OR bytecode OR executable OR opcode)\r\n  )\r\n  AND\r\n  (\r\n    title:(\"machine learning\" OR \"deep learning\" OR \"neural network\" OR transformer OR \"language model\" OR \"large language model\" OR LLM OR GPT)\r\n    OR\r\n    abstract:(\"machine learning\" OR \"deep learning\" OR \"neural network\" OR transformer OR \"language model\" OR \"large language model\" OR LLM OR GPT)\r\n  )\r\n)\r\n",
+      "search_date": "2026-02-10",
+      "url": null,
+      "tags": [
+        "query2"
+      ],
+      "count": 2
+    }
+  ],
+  "created_at": "2026-02-10T18:31:48.481694",
+  "updated_at": "2026-02-10T19:19:31.405104"
+}

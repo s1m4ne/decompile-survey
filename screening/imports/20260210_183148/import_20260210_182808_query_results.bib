@@ -1,0 +1,869 @@
+@incollection{springer_10_1007_978_3_031_94448_2_6,
+  abstract = {WebAssembly (abbreviated WASM) is a low-level bytecode language designed for client-side execution in web browsers. As WASM continues to gain widespread adoption and its security concerns, the need for decompilation techniques that recover high-level source code from WASM binaries has grown. However, little research has been done to assess the quality of decompiled code from WASM. This paper aims to fill this gap by conducting a comprehensive comparative analysis between decompiled C code from WASM binaries and state-of-the-art native binary decompilers. To achieve this goal, we presented a novel framework for empirically evaluating C-based decompilers from various aspects, thus assessing the proficiency of WASM decompilers in generating readable and correct code when compared to native binary decompilers. Specifically, we evaluated the decompiled code’s correctness , readability , and structural similarity with the original code from current WASM decompilers. We validated the proposed metrics’ practicality in decompiler assessment and provided insightful observations regarding the characteristics and constraints of existing decompiled code. By encouraging improvements in these tools, we seek to enhance their use in critical tasks such as auditing and sandboxing third-party libraries. This, in turn, contributes to bolstering the security and reliability of software systems that rely on WASM and native binaries.},
+  author = {Wu, Wei-Cheng and Yan, Yutian and Egilsson, Hallgrimur David and Park, David and Chan, Steven and Hauser, Christophe and Wang, Weihang},
+  booktitle = {Lecture Notes of the Institute for Computer Sciences, Social Informatics and Telecommunications Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-94448-2\_6},
+  pages = {108-130},
+  publisher = {Springer Nature Switzerland},
+  title = {Is This the Same Code? A Comprehensive Study of Decompilation Techniques for WebAssembly Binaries},
+  url = {https://doi.org/10.1007/978-3-031-94448-2\_6},
+  year = {2026}
+}
+
+@incollection{springer_10_1007_978_3_031_97620_9_14,
+  abstract = {Decompilers are tools that reverse the process of compilation, converting executable binaries into a high-level language like C. They are useful in situations where the original source code is unavailable, such as when analyzing malware, doing vulnerability research, and patching legacy software. Unfortunately, decompilation is necessarily incomplete, because the compiler discards many of the abstractions that make source code readable, like identifier names and types. A large body of existing work uses machine learning to predict missing names, types, and other abstractions in decompiled code. However, little of this work considers obfuscations : semantics-preserving transformations that obscure the functionality and design of a program. At the same time, obfuscations are common in practice, especially in malware. In this work, we perform a quantitative analysis of the impact that obfuscations have on decompiled code. Further, we investigate the degree to which training on obfuscated code mitigates the impact of obfuscations. We perform our experiments on three different models from the literature: DIRTY, HexT5, and VarBERT. We find that obfuscations do negatively impact machine learning models, but training on obfuscations can partially help recover lost accuracy.},
+  author = {Dramko, Luke and Bölöni-Turgut, Deniz and Le Goues, Claire and Schwartz, Edward},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-97620-9\_14},
+  pages = {244-266},
+  publisher = {Springer Nature Switzerland},
+  title = {Quantifying and Mitigating the Impact of Obfuscations on Machine-Learning-Based Decompilation Improvement},
+  url = {https://doi.org/10.1007/978-3-031-97620-9\_14},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_981_96_4731_6_16,
+  abstract = {Decompilation transforms low-level program languages (PL) (e.g., binary code) into high-level PLs (e.g., C/C++ ). It has been widely used when analysts perform security analysis on software (systems) whose source code is unavailable, such as vulnerability search and malware analysis. However, current decompilation tools usually need lots of experts’ efforts, even for years, to generate the rules for decompilation, which also requires long-term maintenance as the syntax of high-level PL or low-level PL changes. Also, an ideal decompiler should concisely generate high-level PL with similar functionality to the source low-level PL. In this paper, we propose a novel neural decompilation approach to translate low-level PL into accurate high-level PL. We design a transformer-based neural network model, including a data dependency-based masked self-attention scheme and an instruction embedding scheme that accurately learns the mapping rules between low-level PLs and high-level PLs. We also propose a new intermediate language representation to bridge the information asymmetry between high-level and low-level PL. Furthermore, we implement the proposed approach called ANDE . Evaluations of four real-world applications show that ANDE has an average accuracy of 94.41\%, much better than prior neural machine translation (NMT) models.},
+  author = {Liang, Ruigang and Cao, Ying and Hu, Peiwei and Chen, Kai},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-96-4731-6\_16},
+  pages = {319-339},
+  publisher = {Springer Nature Singapore},
+  title = {Attention-Based Decompilation Through Neural Machine Translation},
+  url = {https://doi.org/10.1007/978-981-96-4731-6\_16},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_981_96_9849_3_19,
+  abstract = {Decompilation technology has long been a pivotal tool in the field of computer software reverse engineering. Traditional decompilation methods frequently result in code that is structurally incomplete, semantically incoherent, and of low readability. With the advent of Large Language Models (LLMs) and their application to decompilation tasks, the field of decompilation research has witnessed notable advancements. Nevertheless, the performance of these models in decompiling C language programs on ARM platforms remains less than optimal. In this paper, we propose an inlined data processing algorithm to address the prevalent phenomenon of inlined data in ARM architecture, thereby enhancing the quality of the training dataset. Leveraging this, we have developed ARMQwen2, the first LLM that significantly improves the decompilation output quality of C programs on the ARM platform through fine-tuning techniques. We evaluate it under two test benchmarks and two different optimization levels, and the experimental results demonstrate that ARMQwen2 attains a re-executablility rate of up to 55\%, which is more than twice as high as Ghidra, the current state-of-the-art decompiler, and 20\% higher than the advanced large language model GPT-4o-mini. In terms of re-compilability and edit similarity, ARMQwen2 achieves an average of 90\% and 60\% respectively.},
+  author = {Liu, Jiahan and Lin, Jian and Liu, Haoran and Wang, Yonghao and Jing, Jing},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-96-9849-3\_19},
+  pages = {221-234},
+  publisher = {Springer Nature Singapore},
+  title = {ARMQwen2: Enhancing C Language Decompilation on ARM Platform Using Large Language Model},
+  url = {https://doi.org/10.1007/978-981-96-9849-3\_19},
+  year = {2025}
+}
+
+@article{springer_10_1007_s00521_024_10735_9,
+  abstract = {Traditional decompilers utilize countless hardcoded rules written by subject matter experts, making them inflexible. Some recent systems address this using deep learning. The current consensus is that these systems have to include considerable domain knowledge and iterative heuristic components to solve parts of the decompilation problem, particularly the problem of predicting identifiers and literals. In this paper, we present a single-pass end-to-end neural decompilation system that utilizes copying mechanism . The copying mechanism is able to copy the literals and (offsets of) variables directly from the assembly code, in a single step , as part of the single forward pass through the model. Additionally, we take a further step toward decompiling real-world code by addressing important programming constructs like switch statements, function definitions, and function calls. We compile a dataset of real-world programming competition code and evaluate our model on it. The method achieves a program accuracy of 73\% on the hardest complexity level of our generated dataset and 51\% on the real-world examples without any additional error correction (EC) techniques, which surpasses the results of previous works without EC.},
+  author = {Szalay, Gergő and Poór, Máté Bálint and Pintér, Balázs and Gregorics, Tibor},
+  content_type = {Article},
+  doi = {10.1007/s00521-024-10735-9},
+  journal = {Neural Computing and Applications},
+  number = {7},
+  pages = {5309-5323},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Single-pass end-to-end neural decompilation using copying mechanism},
+  url = {https://doi.org/10.1007/s00521-024-10735-9},
+  volume = {37},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_3_031_71602_7_3,
+  abstract = {Recently, the transformer architecture has enabled substantial progress in many areas of pattern recognition and machine learning. However, as with other neural network models, there is currently no general method available to explain their inner workings. The present paper represents a first step towards this direction. We utilize Transformer Compiler for RASP (Tracr) to generate a large dataset of pairs of transformer weights and corresponding RASP programs. Based on this dataset, we then build and train a model, with the aim of recovering the RASP code from the compiled model. We demonstrate that the simple form of Tracr compiled transformer weights is interpretable for such a decompiler model. In an empirical evaluation, our model achieves exact reproductions on more than 30\% of the test objects, while the remaining 70\% can generally be reproduced with only few errors. Additionally, more than 70\% of the programs, produced by our model, are functionally equivalent to the ground truth, and therefore a valid decompilation of the Tracr compiled transformer weights.},
+  author = {Thurnherr, Hannes and Riesen, Kaspar},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-71602-7\_3},
+  pages = {25-36},
+  publisher = {Springer Nature Switzerland},
+  title = {Neural Decompiling of Tracr Transformers},
+  url = {https://doi.org/10.1007/978-3-031-71602-7\_3},
+  year = {2024}
+}
+
+@incollection{springer_10_1007_978_3_031_49266_2_18,
+  abstract = {Decompiler is a system for recovering the original code from bytecode. A critical challenge in decompilers is that the decompiled code contains differences from the original code. These differences not only reduce the readability of the source code but may also change the program’s behavior. In this study, we propose a deep learning-based quirk fixation method that adopts grammatical error correction. One advantage of the proposed method is that it can be applied to any decompiler and programming language. Our experimental results show that the proposed method removes 55\% of identifier quirks and 91\% of structural quirks. In some cases, however, the proposed method injected a small amount of new quirks.},
+  author = {Kaichi, Ryunosuke and Matsumoto, Shinsuke and Kusumoto, Shinji},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-49266-2\_18},
+  pages = {259-266},
+  publisher = {Springer Nature Switzerland},
+  title = {Automatic Fixation of Decompilation Quirks Using Pre-trained Language Model},
+  url = {https://doi.org/10.1007/978-3-031-49266-2\_18},
+  year = {2024}
+}
+
+@incollection{springer_10_1007_978_981_99_8703_0_13,
+  abstract = {Due to its vast popularity, the Android operating system has quickly become the main target of mobile malware creators. Consequently, there is a huge need for intensive efforts in the research of Android malware applications to identify malware features and thus be able to create an efficient method for malware detection. One of the main issues related to malware research is obtaining reliable datasets. Malware datasets could be obtained from various sources. Not only that they can tally up to thousands of individual applications, but also can contain damaged, corrupted, or otherwise invalid files. A large number of applications in a dataset is nearly impossible to be processed manually, invalid files can also jeopardize the process of analysis. For the results to be reproducible there needs to be a way how to specify which dataset was used and that it contained only valid files. This work introduces a tool, Perfect Knife, created by our research team for automatised decompilation, dataset validation, unification, and preparation for further research purposes.},
+  author = {Dorotik, Ladislav and Kincl, Jan and Oulehla, Milan and Šenkeřík, Roman and Komínková Oplatková, Zuzana},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-99-8703-0\_13},
+  pages = {153-164},
+  publisher = {Springer Nature Singapore},
+  title = {A Perfect Knife—Bulk Decompilation and Preprocessing Tool},
+  url = {https://doi.org/10.1007/978-981-99-8703-0\_13},
+  year = {2024}
+}
+
+@article{springer_10_3103_s0146411623080060,
+  abstract = {This article proposes a method for preprocessing fragments of binary program codes for subsequent detection of their similarity using machine learning methods. The method is based on the analysis of pseudocode obtained as a result of decompiling fragments of binary codes. The analysis is performed using attributed abstract syntax trees (AASTs). As part of the study, testing and comparative analysis of the effectiveness of the developed method are carried out. This method makes it possible to increase the efficiency of detecting functionally similar fragments of program code, compared to analogs, by using the semantic context of vertices in abstract syntax trees.},
+  author = {Gribkov, N. A. and Ovasapyan, T. D. and Moskvin, D. A.},
+  content_type = {Article},
+  doi = {10.3103/s0146411623080060},
+  journal = {Automatic Control and Computer Sciences},
+  number = {8},
+  pages = {958-967},
+  publisher = {Allerton Press},
+  title = {Analysis of Decompiled Program Code Using Abstract Syntax Trees},
+  url = {https://doi.org/10.3103/s0146411623080060},
+  volume = {57},
+  year = {2023}
+}
+
+@article{springer_10_1007_s10664_022_10281_9,
+  abstract = {Abstract Decompilers are indispensable tools in Android malware analysis and app security auditing. Numerous academic works also employ an Android decompiler as the first step in a program analysis pipeline. In such settings, decompilation is frequently regarded as a “solved” problem, in that it is simply expected that source code can be accurately recovered from an app. On the other hand, it is known that, e.g, obfuscation can negatively impact a decompiler’s effectiveness. Therefore, in order to better understand potential failure modes of, e.g., automated analysis pipelines involving decompilation, it is important to characterize the performance of decompilers on both benign and malicious apps. To this end, we have performed what is, to the best of our knowledge, the first large-scale study of Android decompilation failure rates, using three sets of apps; namely, 3,018 open-source apps, 13,601 apps crawled from Google Play, and an existing collection of 24,553 malware samples. In addition to the state-of-the-art Dalvik bytecode decompiler Jadx, we also studied the performance of three popular Java decompilers. Furthermore, this paper also presents the findings from a follow-up study on 54,945 malware apps, where we additionally performed an analysis of the reasons for decompilation failures. Our study revealed that decompilers generally have very low failure rates, and that few failures on benign apps appear to be related to obfuscation. On malware, however, obfuscation appears to be a more prominent cause of failures, although the vast majority of malicious apps could still be fully decompiled by an ensemble of decompilers.},
+  author = {Kargén, Ulf and Mauthe, Noah and Shahmehri, Nahid},
+  content_type = {Article},
+  doi = {10.1007/s10664-022-10281-9},
+  journal = {Empirical Software Engineering},
+  number = {2},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Android decompiler performance on benign and malicious apps: an empirical study},
+  url = {https://doi.org/10.1007/s10664-022-10281-9},
+  volume = {28},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_031_45933_7_15,
+  abstract = {Binary and source matching is vital for vulnerability detection or program comprehension. Most existing works focus on library matching (coarse-grained) by utilizing some simple features. However, they are so coarse-grained that high false positives occur since developers tend to reuse source code library partly. These shortcomings drive us to perform fine-grained matching (i.e., binary and source function matching). At the same time, due to the enormous differences between the form of binary and source functions, function matching (fine-grained) meets huge challenges. In this work, inspired by the decompilation technique and advanced neural networks, we propose tool, a D ecompilation based deep B inary- S ource function M atching framework. Specifically, we take the triplet features from both binary pseudo-code and source code functions as input, which are extracted from code property graph and can represent both the syntactic and semantic information. In this way, the binary and source functions are represented in the same feature space so to ease the matching model to learn function similarity. For the matching model, we adopt a self-attention based siamese network with contrastive loss. Experiments on two datasets, R 0 and R 3, show that our tool achieves consistent improvements than other methods, which demonstrate the effectiveness of our self-attention based matching model, and our triplets features can well capture the two kinds of code functions. Our work improves the accuracy of binary and source code matching, which in turn enables us to better address security issues such as vulnerability detection and program comprehension.},
+  author = {Wang, Xiaowei and Yuan, Zimu and Xiao, Yang and Wang, Liyan and Yao, Yican and Chen, Haiming and Huo, Wei},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-45933-7\_15},
+  pages = {244-260},
+  publisher = {Springer Nature Switzerland},
+  title = {Decompilation Based Deep Binary-Source Function Matching},
+  url = {https://doi.org/10.1007/978-3-031-45933-7\_15},
+  year = {2023}
+}
+
+@article{springer_10_1186_s42400_026_00552_z,
+  abstract = {Abstract Android OS is today the most used Operating System for mobile devices. However, it is susceptible to several malware attacks that may seriously compromise the privacy and security of individuals and organizations. This paper proposes an approach based on a static analysis of decompiled Android PacKages (APKs) to extract critical APIs and detect Android malware. The main contributions lie in the adoption of a graph-based data engineering schema to represent APIs taken from the Function Call Graphs of decompiled APKs and the formulation of a graph-based deep learning approach for explainable malware detection. In particular, the proposed approach, named , implements a Graph Neural Network (GNN) for binary classification (malware versus goodware), and integrates algorithm to disclose how specific API classes and control-flow edges between API calls influence malware alerts. The proposed approach was evaluated by considering 26,527 Android APKs. The results of an extensive and in-depth evaluation show that the presented GNN model achieves higher accuracy than deep neural models trained with traditional API call sequence representations and publicly available related methods. On the other hand, it produces decision explanations that yield interesting insights into the malicious patterns of APKs and support root cause analysis of missed malware alarms.},
+  author = {Andresini, Giuseppina and Appice, Annalisa and Belvedere, Vincenzo and Fiameni, Giuseppe and Malerba, Donato},
+  content_type = {Article},
+  doi = {10.1186/s42400-026-00552-z},
+  journal = {Cybersecurity},
+  number = {1},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Anakin: explainable android malware detection with graph neural networks},
+  url = {https://doi.org/10.1186/s42400-026-00552-z},
+  volume = {9},
+  year = {2026}
+}
+
+@incollection{springer_10_1007_978_981_95_4142_3_1,
+  abstract = {Smart contracts on Ethereum have driven the development of decentralized financial applications, but they have also become a breeding ground for fraudulent activities, particularly Ponzi schemes. These schemes often obscure the flow of funds and the relationships among participants, making their true nature difficult to detect–especially when only the contract’s bytecode is publicly available. Conventional detection methods largely depend on access to source code or large-scale labeled datasets to train supervised learning models. However, in real-world blockchain environments, only compiled bytecode is typically accessible on-chain, and obtaining labeled data is costly and often impractical. To address this challenge, we propose a novel approach to identify Ponzi schemes directly from Ethereum bytecode, without relying on source code or labeled data. Under a zero-shot setting, we utilize large language models to interpret and assess critical code fragments extracted from the contract, aiming to judge whether their functionality matches typical Ponzi-like fund behaviors. Our method first decompiles the bytecode into an intermediate form that preserves key semantic information, then constructs a data flow graph to represent data dependencies and control flow relationships within the contract. Based on this graph, we apply a set of manually defined rules to locate and extract code segments that are strongly related to fund transfer logic. These segments are then provided to the language model for further reasoning and judgment. By integrating bytecode analysis with LLM-based interpretation, our method can detect suspicious fund flow patterns even when the original source code is not available.},
+  author = {Xu, Zhenyong and Lan, Tian and Liu, Leyan and Zhu, Yihua and Zhang, Ruiheng and Chen, Wei},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-95-4142-3\_1},
+  pages = {3-14},
+  publisher = {Springer Nature Singapore},
+  title = {Zero-Shot Detection of Bytecode-Level Ponzi Contract Using LLM},
+  url = {https://doi.org/10.1007/978-981-95-4142-3\_1},
+  year = {2026}
+}
+
+@incollection{springer_10_1007_978_981_95_0129_8_27,
+  abstract = {With the rapid development of mobile internet and the increasing number of smartphone users, various applications have become easily accessible. Although most mobile applications publish corresponding privacy policies before being re-leased on app markets, there persists a critical issue of inconsistency between declared privacy policies and actual application behaviors, leading to user privacy breaches. This makes the detection and analysis of privacy leakage behaviors in Android applications and their third-party libraries an urgent research challenge. Natural Language Processing (NLP), which focuses on enabling effective human-machine interaction through natural language, proves particularly suitable for analyzing decompiled Android bytecode as an inspection medium. By employing NLP-based semantic analysis for static code examination, this research addresses privacy leakage detection in Android applications. This paper presents an NLP-based system for detecting consistency between application privacy policies and behaviors. The system utilizes NLP techniques to extract and process privacy-related declarations from policy documents and sensitive behaviors from applications. Through static analysis, it distinguishes actual sensitive behaviors and private data handling between core applications and third-party libraries. The system establishes a correlation model by mapping permission requirements with privacy information disclosures, ultimately achieving consistency verification. For experimental validation, we selected 100 Chinese mobile applications and their third-party libraries. Experimental results reveal that approximately 80\% of applications exhibited inconsistencies between documented policies and actual behaviors (including third-party components).},
+  author = {Yu, Cheng and Yuan, Xinyu and Tian, Xin and Wan, Xiangyu},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-95-0129-8\_27},
+  pages = {372-383},
+  publisher = {Springer Nature Singapore},
+  title = {NLP-Based Detecting Privacy Policy and Behavior Inconsistencies in Android Apps},
+  url = {https://doi.org/10.1007/978-981-95-0129-8\_27},
+  year = {2026}
+}
+
+@incollection{springer_10_1007_978_981_95_3543_9_9,
+  abstract = {Ethereum ERC-20 smart contracts are now widely utilized in various domains for trust and transparent transaction process. However, ERC-20 contracts face significant security risks, particularly backdoors that can lead to severe incidents. In backdoor attacks, malicious actors can exploit these vulnerabilities to perform unauthorized transactions, steal funds, or manipulate token balances, resulting in substantial financial losses and damaging trust of blockchain system. This paper introduces MDetector, a tool for efficiently detecting backdoors in ERC-20 contracts through static analysis. Firstly, MDetector defines 9 basic and 3 complex types of backdoors, covering existing potential risks. Based on these definitions, MDetector runs corresponding detection logic via datalog analysis. Secondly, MDetector is compatible with Solidity versions 0.4 to 0.8.24 and can be deployed on Linux, Windows and Android. Thirdly, MDetector initiates a high-performance decompilation engine to disassemble and convert contract bytecode into intermediate code. The experimental results demonstrate its high precision and reliability, achieving an accuracy of 94.0\% in an average of just 1.3 s. This represents a significant improvement over the most advanced scientific tools currently available, achieving approximately 1.55 \\(\\times \\) greater accuracy and 6.17 \\(\\times \\) faster processing speed.},
+  author = {Zhou, Shouchen and Zhou, Lu and Tao, Yu},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-95-3543-9\_9},
+  pages = {159-177},
+  publisher = {Springer Nature Singapore},
+  title = {No Place to Hide: An Efficient and Accurate Backdoor Detection Tool for Ethereum ERC-20 Smart Contracts},
+  url = {https://doi.org/10.1007/978-981-95-3543-9\_9},
+  year = {2026}
+}
+
+@article{springer_10_1007_s11416_025_00565_1,
+  abstract = {Abstract Reverse engineering complex proprietary software is a tedious and time consuming task. A fair amount of the overall effort is usually devoted to locating those software components which are responsible for the functionality of interest (e.g., a proprietary encryption algorithm). To aid this process, several tools, available in the public domain, can be used, implementing sophisticated algorithms for control-flow recovery, stack frame recovery, data type inference, decompilation etc. However, the important problem of decomposing a binary executable to its constituent object files (or compile-units) has not been, in our opinion, sufficiently studied. In this paper we present novel techniques for estimating the number, as well as the boundaries, of compile-units in binary executables. We present algorithms which recover information that improves the precision degree in reverse engineering tasks. In addition, our algorithms can be used to reduce the effort of locating, recovering and understanding specific functionalities of closed-source software. We evaluate our algorithms on the public DeepBinDiff ELF dataset, consisting of \$\$\\approx\$\$ 2000 binaries, as well as two larger executables of GNU GDB, built for ARM and AArch64 and show that they consistently approach the ground-truth, with an average recovery precision close to 75\%. Furthermore, we show how our research can aid in binary diffing applications, by comparing the recovered compile-unit structure of a pair of Microsoft Windows kernel images. We make our prototype implementation, written in Python and named REcover , publicly available for further evaluation by the reverse engineering community.},
+  author = {Karamitas, Chariton and Kehagias, Athanasios},
+  content_type = {Article},
+  doi = {10.1007/s11416-025-00565-1},
+  journal = {Journal of Computer Virology and Hacking Techniques},
+  number = {1},
+  publisher = {Springer Science and Business Media LLC},
+  title = {REcover: towards recovering object files from stripped binary executables},
+  url = {https://doi.org/10.1007/s11416-025-00565-1},
+  volume = {21},
+  year = {2025}
+}
+
+@article{springer_10_1007_s10207_025_00982_9,
+  abstract = {FPGA bitstream is a binary file containing chip configuration information. It is often compressed to conserve storage space and reduce configuration time. However, if the bitstream file is compressed, hardware attacks cannot be detected because FPGA reverse-engineering tools can only decompile uncompressed and unencrypted bitstream. This study proposes a low complexity decompression method for commercial FPGA bitstreams, which is a crucial step for assessing the security of FPGAs. By comparing the structure of compressed and uncompressed bitstream files, we identify the compression region, extract the compressed data, and construct a database for the mapping information. Then, we introduce a decoding algorithm that utilizes a sliding window approach based on the characteristics of the compressed data and implement the algorithm on an Intel Cyclone V FPGA. Finally, the proposed framework is validated on 24 different types of Intel FPGAs from 6 families, with a perfect accuracy rate of 100\%. To the best of our knowledge, this is the first paper to disclose a decompression method for commercial FPGAs.},
+  author = {Ren, Lingrui and Zhang, Xingcan and Wang, Jian},
+  content_type = {Article},
+  doi = {10.1007/s10207-025-00982-9},
+  journal = {International Journal of Information Security},
+  number = {1},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Low complexity decompression method for FPGA bitstreams},
+  url = {https://doi.org/10.1007/s10207-025-00982-9},
+  volume = {24},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_94_024_2308_2_7,
+  abstract = {Reverse engineering is a critical tool in modern cybersecurity, enabling the detection of vulnerabilities, the analysis of malicious code, and the enhancement of defense mechanisms. This paper examines key techniques such as code decompilation, binary analysis, and dynamic behavior monitoring, highlighting their applications in securing IoT devices, traditional software, and mobile applications. A practical example involving the analysis of an Android application demonstrates the steps and tools used in reverse engineering, offering insights into real-world challenges and solutions. Additionally, the paper explores the legal and ethical considerations of reverse engineering, emphasizing the importance of responsible practices. By addressing both technical and ethical aspects, this research underscores the importance of reverse engineering in creating resilient cybersecurity solutions for complex digital systems.},
+  author = {Maravić Čisar, Sanja and Pinter, Robert and Čisar, Petar and Szedmina, Livia},
+  booktitle = {NATO Science for Peace and Security Series C: Environmental Security},
+  content_type = {Conference paper},
+  doi = {10.1007/978-94-024-2308-2\_7},
+  pages = {99-115},
+  publisher = {Springer Netherlands},
+  title = {Reverse Engineering and Cyber Security},
+  url = {https://doi.org/10.1007/978-94-024-2308-2\_7},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_3_031_77941_1_4,
+  abstract = {Among numerical libraries capable of computing gradient descent optimization, JAX stands out by offering more features, accelerated by an intermediate representation known as Jaxpr language. However, editing the Jaxpr code is not directly possible. This article introduces JaxDecompiler, a tool that transforms any JAX function into an editable Python code, especially useful for editing the JAX function generated by the gradient function. JaxDecompiler simplifies the processes of reverse engineering, understanding, customizing, and interoperability of software developed by JAX. We highlight its capabilities, emphasize its practical applications especially in deep learning and more generally gradient-informed software, and demonstrate that the decompiled code speed performance is similar to the original.},
+  author = {Pochelu, Pierrick},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-77941-1\_4},
+  pages = {41-50},
+  publisher = {Springer Nature Switzerland},
+  title = {JaxDecompiler: Redefining Gradient-Informed Software Design},
+  url = {https://doi.org/10.1007/978-3-031-77941-1\_4},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_981_96_4245_8_31,
+  abstract = {VR devices are a rapidly emerging type of sensory terminal device in the context of the metaverse, with its immersive use effects attracting a large number of users to experience. However, with the continuous development of virtual reality technology, an increasing number of criminal incidents in the virtual world have raised concerns. VR devices are developed based on the Android system but have their unique security mechanisms. Therefore, how to securely extract and preserve data from VR devices is a crucial concern for digital forensic practitioners. This paper first proposes a method for application data extraction and analysis in a non root environment within the VR ecosystem based on the Linux shared user id mechanism. This method utilizes Edge Developer Tools to debug Vuplex 3D Webview, enabling the extraction of internal storage data from embedded web pages within the application. Subsequently, a combination of decompilation and packet capture techniques is used to analyze the data transmission methods and data interaction logic of applications in the VR ecosystem. Finally, based on the experimental results, a comprehensive assessment of the security of VR devices is conducted in the paper. Data extraction from VR devices is an indispensable part of digital forensics in the era of the metaverse. The research on methods for extracting and analyzing application data in the VR ecosystem in this paper provides valuable reference for future forensic work on VR devices.},
+  author = {Su, Fu and Liang, Guangjun and Ni, Xueli and Zhang, Qinrui and Chen, Pu and Liu, Jianning and Li, Xiang and Du, Hongtian},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-96-4245-8\_31},
+  pages = {352-364},
+  publisher = {Springer Nature Singapore},
+  title = {Metaverse Security and Forensics: VR Devices as an Example},
+  url = {https://doi.org/10.1007/978-981-96-4245-8\_31},
+  year = {2025}
+}
+
+@article{springer_10_1186_s42400_021_00070_0,
+  abstract = {Abstract Decompilation aims to analyze and transform low-level program language (PL) codes such as binary code or assembly code to obtain an equivalent high-level PL. Decompilation plays a vital role in the cyberspace security fields such as software vulnerability discovery and analysis, malicious code detection and analysis, and software engineering fields such as source code analysis, optimization, and cross-language cross-operating system migration. Unfortunately, the existing decompilers mainly rely on experts to write rules, which leads to bottlenecks such as low scalability, development difficulties, and long cycles. The generated high-level PL codes often violate the code writing specifications. Further, their readability is still relatively low. The problems mentioned above hinder the efficiency of advanced applications (e.g., vulnerability discovery) based on decompiled high-level PL codes.In this paper, we propose a decompilation approach based on the attention-based neural machine translation (NMT) mechanism, which converts low-level PL into high-level PL while acquiring legibility and keeping functionally similar. To compensate for the information asymmetry between the low-level and high-level PL, a translation method based on basic operations of low-level PL is designed. This method improves the generalization of the NMT model and captures the translation rules between PLs more accurately and efficiently. Besides, we implement a neural decompilation framework called Neutron. The evaluation of two practical applications shows that Neutron’s average program accuracy is 96.96\%, which is better than the traditional NMT model.},
+  author = {Liang, Ruigang and Cao, Ying and Hu, Peiwei and Chen, Kai},
+  content_type = {Article},
+  doi = {10.1186/s42400-021-00070-0},
+  journal = {Cybersecurity},
+  number = {1},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Neutron: an attention-based neural decompiler},
+  url = {https://doi.org/10.1186/s42400-021-00070-0},
+  volume = {4},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_3_030_89051_3_16,
+  abstract = {There is increasing interest in applying verification tools to programs that have bitvector operations. SMT solvers, which serve as a foundation for these tools, have thus increased support for bitvector reasoning through bit-blasting and linear arithmetic approximations. In this paper we show that similar linear arithmetic approximation of bitvector operations can be done at the source level through transformations. Specifically, we introduce new paths that over-approximate bitvector operations with linear conditions/constraints, increasing branching but allowing us to better exploit the well-developed integer reasoning and interpolation of verification tools. We show that, for reachability of bitvector programs, increased branching incurs negligible overhead yet, when combined with integer interpolation optimizations, enables more programs to be verified. We further show this exploitation of integer interpolation in the common case also enables competitive termination verification of bitvector programs and leads to the first effective technique for linear temporal logic (LTL) verification of bitvector programs. Finally, we provide an in-depth case study of decompiled (“lifted”) binary programs, which emulate X86 execution through frequent use of bitvector operations. We present a new tool DarkSea , the first tool capable of verifying reachability, termination and LTL of lifted binaries.},
+  author = {Liu, Yuandong Cyrus and Pang, Chengbin and Dietsch, Daniel and Koskinen, Eric and Le, Ton-Chanh and Portokalidis, Georgios and Xu, Jun},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-89051-3\_16},
+  pages = {285-304},
+  publisher = {Springer International Publishing},
+  title = {Proving LTL Properties of Bitvector Programs and Decompiled Binaries},
+  url = {https://doi.org/10.1007/978-3-030-89051-3\_16},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_981_97_8749_4_1,
+  abstract = {For the Android app market, malware uses code encryption techniques for block detection. For Android applications, scholars have proposed a method to determine whether Android applications are malicious software by analyzing the behavioral characteristics of software operation. The most traditional method is static detection, which is characterized by fast detection speed and less resource occupation. However, Android software cannot be detected by static methods after using encryption technology. The APK package of the application is first decompiled to detect and extract key features, behavioral patterns, and invocation information using Frida and Camille. Subsequently, the long short-term memory network (LSTM) is employed to analyze software intent for determining the presence of malware. The experimental results demonstrate that the static method achieves an accuracy of approximately 80\%, whereas the dynamic method achieves an accuracy of 91\%. Through the utilization of software intention analysis and permission usage checks in combination, the accuracy rate can be further enhanced to 94\%. Upon comparison of the different algorithms utilized in each detection method, it is concluded that both the KNN and random forest algorithms exhibit higher accuracy in the application of such detection methods.},
+  author = {Wan, Xiong and Sun, Yuxi and Wang, Yanqing and Xia, Meng},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-97-8749-4\_1},
+  pages = {3-18},
+  publisher = {Springer Nature Singapore},
+  title = {Android Malware Detection Method Based on Machine Learning},
+  url = {https://doi.org/10.1007/978-981-97-8749-4\_1},
+  year = {2024}
+}
+
+@incollection{springer_10_1007_978_3_031_64171_8_1,
+  abstract = {Standard control flow graphs (CFGs) extracted from binaries by state-of-the-art disassembly/decompilation tools do not include information about exception-related control flow. However, such information is useful when statically analyzing programs that utilize structured exceptions. To fill that gap, we propose the concept of Exceptional Interprocedural Control Flow Graphs (EICFGs) . These graphs extend traditional CFGs by adding edges for stack unwinding, frame cleanup, and try/catch behavior caused by thrown exceptions. We provide an approach for generating EICFGs from x86-64 binaries featuring C++ exceptions. The approach is based on symbolically executing an abstract semantics that includes binary-level exception-related function calls. We validated our abstract semantics by generating concrete test cases that were then evaluated using real binaries. We applied an implementation of our approach to 341 off-the-shelf x86-64 binaries compiled from C++ as well as C and Fortran source code. From those binaries, we identified 2574 unique throws and successfully resolved the exceptional control flow for every one of them. We show that resolving throws leads to increased instruction reachability and uncovers edges not found by state-of-the-art tools such as Ghidra.},
+  author = {Bockenek, Joshua and Verbeek, Freek and Ravindran, Binoy},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-64171-8\_1},
+  pages = {3-22},
+  publisher = {Springer Nature Switzerland},
+  title = {Exceptional Interprocedural Control Flow Graphs for x86-64 Binaries},
+  url = {https://doi.org/10.1007/978-3-031-64171-8\_1},
+  year = {2024}
+}
+
+@incollection{springer_10_1007_978_981_97_0811_6_15,
+  abstract = {The rapid development of information technology and computer networks has led to the emergence of various new applications on both PC platforms and mobile devices. Malware continues to evolve and update, which often developing new variants or changing existing features to evade detection. Traditional feature based malware detection methods are limited in their ability to detect variants, and are computationally resource-intensive. Considering these issues, a new visualization-based and integrated malware detection method, Mal\_Vis, is introduced. It decompiles the application software and applies PCA to reduce the feature dimension, then visualises the decompiled data to greyscale and RGB image. A Stacking-based ensemble machine learning algorithm is used to classify the visualized images to detect malware. Experiments show the method achievs detection accuracy of 98.19\% and 93.03\% in the Windows and Android application software datasets.},
+  author = {Xie, Nannan and Liang, Haoxiang and Mu, Linyang and Zhang, Chuanxue},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-97-0811-6\_15},
+  pages = {252-264},
+  publisher = {Springer Nature Singapore},
+  title = {Malware Detection Method Based on Visualization},
+  url = {https://doi.org/10.1007/978-981-97-0811-6\_15},
+  year = {2024}
+}
+
+@article{springer_10_1038_s42256_023_00668_8,
+  abstract = {Abstract From logical reasoning to mental simulation, biological and artificial neural systems possess an incredible capacity for computation. Such neural computers offer a fundamentally novel computing paradigm by representing data continuously and processing information in a natively parallel and distributed manner. To harness this computation, prior work has developed extensive training techniques to understand existing neural networks. However, the lack of a concrete and low-level machine code for neural networks precludes us from taking full advantage of a neural computing framework. Here we provide such a machine code along with a programming framework by using a recurrent neural network—a reservoir computer—to decompile, code and compile analogue computations. By decompiling the reservoir’s internal representation and dynamics into an analytic basis of its inputs, we define a low-level neural machine code that we use to program the reservoir to solve complex equations and store chaotic dynamical systems as random-access memory. We further provide a fully distributed neural implementation of software virtualization and logical circuits, and even program a playable game of pong inside of a reservoir computer. Importantly, all of these functions are programmed without requiring any example data or sampling of state space. Finally, we demonstrate that we can accurately decompile the analytic, internal representations of a full-rank reservoir computer that has been conventionally trained using data. Taken together, we define an implementation of neural computation that can both decompile computations from existing neural connectivity and compile distributed programs as new connections.},
+  author = {Kim, Jason Z. and Bassett, Dani S.},
+  content_type = {Article},
+  doi = {10.1038/s42256-023-00668-8},
+  journal = {Nature Machine Intelligence},
+  number = {6},
+  pages = {622-630},
+  publisher = {Springer Science and Business Media LLC},
+  title = {A neural machine code and programming framework for the reservoir computer},
+  url = {https://doi.org/10.1038/s42256-023-00668-8},
+  volume = {5},
+  year = {2023}
+}
+
+@article{springer_10_1007_s10207_023_00679_x,
+  abstract = {Android is now one of the most popular operating systems in the world because of its open source character, so the threshold for hackers to make malware has also become lower, and more and more malware has started to threaten people’s lives. Graphs are used to represent the program’s syntactic and semantic structure, and can naturally represent malicious behavior, so we propose a malware detection method named SFCGDroid, which based on sensitive function call graph, so we propose a malware detection method named SFCGDroid, which based on sensitive function call graph. We first decompile the Android application to generate a function call graph (FCG), and extract the sensitive function call graph (SFCG) on the FCG. Secondly, we extract two class features (1) use the Skip-gram model to obtain function embeddings, and (2) treat the SFCG as a social network and extract the triads attribute of the sensitive API. The two types of features are combined as a feature representation of the SFCG and fed into a graph convolutional network (GCN) for malware detection. For experiments on 26,939 Android software datasets, SFCGDroid in this paper can achieve 98.22\% accuracy and 98.20\% F1 score.},
+  author = {Shi, Sibo and Tian, Shengwei and Wang, Bo and Zhou, Tiejun and Chen, Guanxin},
+  content_type = {Article},
+  doi = {10.1007/s10207-023-00679-x},
+  journal = {International Journal of Information Security},
+  number = {5},
+  pages = {1115-1124},
+  publisher = {Springer Science and Business Media LLC},
+  title = {SFCGDroid: android malware detection based on sensitive function call graph},
+  url = {https://doi.org/10.1007/s10207-023-00679-x},
+  volume = {22},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_030_80825_9_7,
+  abstract = {Growing numbers of advanced malware-based attacks against governments and corporations, for political, financial and scientific gains, have taken security breaches to the next level. In response to such attacks, both academia and industry have investigated techniques to model and reconstruct these attacks and to defend against them. While such efforts have been all useful in mitigating the effects of modern attacks, automated malware code reuse inspection and campaign attribution have received less attention. In this paper, we present an automated system, called SCRUTINIZER , to identify code reuse in malware via a novel machine learning-based encoding mechanism at the function-level. By creating a large knowledge base of previously observed and tagged malware campaigns, we can compare unknown samples against this knowledge base and determine how much overlap exists. SCRUTINIZER leverages an unsupervised learning approach to filter out irrelevant functions before code reuse detection. It provides two valuable capabilities. First, it identifies ties between an unknown sample and those malware specimens that are known to be used by a specific campaign. Second, it inspects if specific tools or functionalities are used by a campaign. Using SCRUTINIZER , we were able to identify 12 samples that were previously unknown to us and that we were able to correctly assign to well-known APT campaigns.},
+  author = {Mirzaei, Omid and Vasilenko, Roman and Kirda, Engin and Lu, Long and Kharraz, Amin},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-80825-9\_7},
+  pages = {130-150},
+  publisher = {Springer International Publishing},
+  title = {SCRUTINIZER: Detecting Code Reuse in Malware via Decompilation and Machine Learning},
+  url = {https://doi.org/10.1007/978-3-030-80825-9\_7},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_981_99_1157_8_55,
+  abstract = {In this paper, we propose a method of vulnerability mining using data association rules mining. This method first decompiles the target file, build an abstract syntax tree (AST) of the function on the basis of decompilation, design an algorithm to extract the reverse association information of key variables, and then apply the extracted information to vulnerability mining. The experimental results show that the decompilation results of Hex Rays recover some variable information, and the program structure is clear, on this basis, the work of vulnerability mining has great advantages. The method proposed by the author is used to process the decompilation results, on the basis of the pattern matching detection results, the preliminary detection results are filtered with the help of the association between data, to some extent, it reduces the false positives caused by using simple pattern matching. It proves that this method has obvious advantages in non source code vulnerability mining, it can effectively discover the suspicious points of buffer overflow vulnerabilities in software, and improve the efficiency and automation of vulnerability mining.},
+  author = {Jin, Xin and Li, Hongyan and Liu, Hengwang and Wang, Wen and Sun, Xin},
+  booktitle = {Lecture Notes on Data Engineering and Communications Technologies},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-99-1157-8\_55},
+  pages = {455-462},
+  publisher = {Springer Nature Singapore},
+  title = {Intelligent Vulnerability Association Algorithm Based on Association Rule Mining},
+  url = {https://doi.org/10.1007/978-981-99-1157-8\_55},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_981_19_9379_4_39,
+  abstract = {Android operating system is one of the most prominent operating systems among the mobile device users worldwide. But it is often the most targeted platform for malicious activities. Many researchers have studied android malware detection systems over the previous years. But android malware detection systems face many challenges, and obfuscation is one of them. String encryption is one such obfuscation technique which helps android malwares to evade malware detection systems. To address this challenge in android malware detection systems, a novel approach is being proposed in this study where crypto-detector: An open-source cryptography detection tool has been used in decompiled application code to extract encrypted strings and encryption methods as features. Accuracy of 0.9880 and F 1-score of 0.9843 have been achieved during performance evaluation. Importance of newly proposed crypto features has been discussed. Performance of our framework has been compared to those of other similar existing works, and our work has outperformed all of them.},
+  author = {Bhakta, Dip and Yousuf, Mohammad Abu and Rana, Md. Sohel},
+  booktitle = {Lecture Notes in Networks and Systems},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-19-9379-4\_39},
+  pages = {543-555},
+  publisher = {Springer Nature Singapore},
+  title = {Android Malware Detection Against String Encryption Based Obfuscation},
+  url = {https://doi.org/10.1007/978-981-19-9379-4\_39},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_031_25803_9_7,
+  abstract = {Abstract Decompilation is currently a widely used tool in reverse engineering and exploit detection in binaries. Ghidra, developed by the National Security Agency, is one of the most popular decompilers. It decompiles binaries to high P-Code, from which the final decompilation output in C code is generated. Ghidra allows users to work with P-Code, so users can analyze the intermediate representation directly. Several projects make use of this to build tools that perform verification, decompilation, taint analysis and emulation, to name a few. P-Code lacks a formal semantics, and its documentation is limited. It has a notoriously subtle semantics, which makes it hard to do any sort of analysis on P-Code. We show that P-Code, as-is, cannot be given an executable semantics. In this paper, we augment P-Code and define a complete, executable, formal semantics for it. This is done by looking at the documentation and the decompilation results of binaries with known source code. The development of a formal P-Code semantics uncovered several issues in Ghidra, P-Code, and the documentation. We show that these issues affect projects that rely on Ghidra and P-Code. We evaluate the executability of our semantics by building a P-Code interpreter that directly uses our semantics. Our work uncovered several issues in Ghidra and allows Ghidra users to better leverage P-Code.},
+  author = {Naus, Nico and Verbeek, Freek and Walker, Dale and Ravindran, Binoy},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-25803-9\_7},
+  pages = {111-128},
+  publisher = {Springer International Publishing},
+  title = {A Formal Semantics for P-Code},
+  url = {https://doi.org/10.1007/978-3-031-25803-9\_7},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_031_37963_5_22,
+  abstract = {Manual translation of the algorithms from sequential version to its parallel counterpart is time consuming and can be done only with the specific knowledge of hardware accelerator architecture, parallel programming or programming environment. The automation of this process makes porting the code much easier and faster. The key aspect in this case is how efficient the generated parallel code will be. The paper describes J-Parallelio, the framework for automatic analysis of the bytecode source codes and its parallelisation on multicore processors. The process consists of a few steps. First step is a process of decompilation of JVM and its translation to internal abstract syntax tree, the dependency extraction and memory analysis is performed. Finally, the mapping process is performed which consists of a set of rules responsible for translating the input virtual machine source code to its parallel version. The main novelty is that it can deal with pure java virtual machine and can generate parallel code for multicore processors. This makes the system portable and it can work with different languages based on JVM after some small modifications. The efficiency of automatically translated source codes were compared with their manually written counterparts on chosen benchmarks.},
+  author = {Listkiewicz, Piotr and Stuglik, Krzysztof and Kulczyk, Mateusz and Pietron, Marcin},
+  booktitle = {Lecture Notes in Networks and Systems},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-37963-5\_22},
+  pages = {307-320},
+  publisher = {Springer Nature Switzerland},
+  title = {J-Parallelio: Automatic Parallelization Framework for Java Virtual Machine},
+  url = {https://doi.org/10.1007/978-3-031-37963-5\_22},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_031_36096_1_1,
+  abstract = {Reverse engineering is undoing or circumventing the protections deployed on a code region. Software crackers perform this to remove license checks in commercial applications and video games, but it can also be done for legitimate purposes. Many software houses perform a security assessment phase by reverse engineering their protected software before releasing it to the market. Furthermore, anti-virus experts need to reverse engineering malware (e.g., viruses and ransomware) to understand how it works and spreads. Typically, reverse engineering is performed by hand with minimal computer support with debuggers, decompilers, and disassemblers. Nevertheless, in recent years, new research directions have proposed various promising automatic methods, primarily based on machine learning and symbolic execution techniques.},
+  author = {Canavese, Daniele and Regano, Leonardo and Lioy, Antonio},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-36096-1\_1},
+  pages = {3-15},
+  publisher = {Springer Nature Switzerland},
+  title = {Computer-Aided Reverse Engineering of Protected Software},
+  url = {https://doi.org/10.1007/978-3-031-36096-1\_1},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_031_21333_5_105,
+  abstract = {Despite the large number of approaches proposed for detecting malicious applications targeting platforms such as Android, malware continuously evolves in order to avoid its detection and reach the users. Likewise, malware detection engines are continuously improved, trying to detect the most modern malware. Most of these detection tools employ signatures or machine learning models, trained on thousands of features, such as API calls, permissions or using taint analysis, among many others, and using machine learning classification algorithms such as decision trees, ensemble methods or deep learning. However, the use of these features leads to biased models due to the use of limited datasets, without considering the real semantics (goals and intentions) of the malicious sample. In this paper, we conduct an initial study of the use of context and semantic aware embeddings generated with the CodeT5 pre-trained language model for a better representation of the behaviour of Android applications. After decompiling a sample to Java, it is possible to generate embeddings from chunks of the source code, generating a rich representation of the sample. We show how these embeddings can be used to train a recurrent neural network for malware detection tasks, evidencing promising results.},
+  author = {García-Soto, Eva and Martín, Alejandro and Huertas-Tato, Javier and Camacho, David},
+  booktitle = {Lecture Notes in Networks and Systems},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-21333-5\_105},
+  pages = {1055-1060},
+  publisher = {Springer International Publishing},
+  title = {Android Malware Detection Through a Pre-trained Model for Code Understanding},
+  url = {https://doi.org/10.1007/978-3-031-21333-5\_105},
+  year = {2023}
+}
+
+@article{springer_10_1007_s11219_022_09602_4,
+  abstract = {Malware detection is an important task in software maintenance. It can effectively protect user information from the attack of malicious developers. Existing studies mainly focus on leveraging permission information and API call information to identify malware. However, many studies pay attention to the API call without considering the role of API call sequences. In this study, we propose a new method by combining both the permission information and the API call sequence information to distinguish malicious applications from benign applications. First, we extract features of permission and API call sequence with a decompiling tool. Then, one-hot encoding and Word2Vec are adopted to represent the permission feature and the API call sequence feature for each application, respectively. Based on this, we leverage Random Forest (RF) and Convolutional Neural Networks (CNN) to train a permission-based classifier and an API call sequence-based classifier, respectively. Finally, we design a linear strategy to combine the outputs of these two classifiers to predict the labels of newly arrived applications. By an evaluation with 15,198 malicious applications and 15,129 benign applications, our approach achieves 98.84\% in terms of precision, 98.17\% in terms of recall, 98.50\% in terms of F1-score, and 98.52\% in terms of accuracy on average, and outperforms the state-of-art method Malscan by 2.12\%, 0.27\%, 1.20\%, and 1.24\%, respectively. In addition, we demonstrate that the method combining two features achieves better performance than the methods based on a single feature.},
+  author = {Chen, Xin and Yu, Haihua and Yu, Dongjin and Chen, Jie and Sun, Xiaoxiao},
+  content_type = {Article},
+  doi = {10.1007/s11219-022-09602-4},
+  journal = {Software Quality Journal},
+  number = {3},
+  pages = {655-685},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Predicting Android malware combining permissions and API call sequences},
+  url = {https://doi.org/10.1007/s11219-022-09602-4},
+  volume = {31},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_030_58768_0_14,
+  abstract = {We present FoxDec: an approach to C code decompilation that aims at producing sound and recompilable code. Formal methods are used during three phases of the decompilation process: control flow recovery, symbolic execution, and variable analysis. The use of formal methods minimizes the trusted code base and ensures soundness: the extracted C code behaves the same as the original binary. Soundness and recompilablity enable C code decompilation to be used in the contexts of binary patching, binary porting, binary analysis and binary improvement, with confidence that the recompiled code’s behavior is consistent with the original program. We demonstrate that FoxDec can be used to improve execution speed by recompiling a binary with different compiler options, to patch a memory leak with a code transformation tool, and to port a binary to a different architecture. FoxDec can also be leveraged to port a binary to run as a unikernel, a minimal and secure virtual machine usually requiring source access for porting.},
+  author = {Verbeek, Freek and Olivier, Pierre and Ravindran, Binoy},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-58768-0\_14},
+  pages = {247-264},
+  publisher = {Springer International Publishing},
+  title = {Sound C Code Decompilation for a Subset of x86-64 Binaries},
+  url = {https://doi.org/10.1007/978-3-030-58768-0\_14},
+  year = {2020}
+}
+
+@incollection{springer_10_1007_978_3_031_06764_8_41,
+  abstract = {The rapid growth in the number of malware apps poses a great danger to users of power mobile terminals. Among smart devices, devices using the Android system are very popular and thus are easy targets for malware attacks. In this paper, we propose a mobile terminal security protection method based on community detection algorithms and graph matching networks. First, the call relationships between functions are extracted from the decompiled APK files, and runtime information is collected as a supplement to complete the construction of the behavior graph. Second, based on the behavior graph of malware samples, we propose a method to extract the public behavior graph as the features of malware families. Finally, a graph matching network is used to learn and calculate the similarity between the public behavior graph and the software behavior graph, and use it as the basis for detection. Our evaluation of the dataset containing 1274 malware apps and 108 benign apps shows that the selected public behavior graph is effective for Android malware detection, with an overall accuracy of 90.4\%. The experimental results show that the method has a high detection rate and a low false rate, and can detect malware and its variants.},
+  author = {Chen, Mu and Dai, Zaojian and Li, Yong and Zhang, Juling and Wang, Sheng and Zhou, Jian and Wu, Fan},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-06764-8\_41},
+  pages = {529-542},
+  publisher = {Springer International Publishing},
+  title = {Mobile Terminal Security Protection Method Based on Community Detection Algorithms and Graph Matching Networks},
+  url = {https://doi.org/10.1007/978-3-031-06764-8\_41},
+  year = {2022}
+}
+
+@incollection{springer_10_1007_978_3_030_95918_0_5,
+  abstract = {In this paper, we study the security attacks on Android using Long Short Term Memory (LSTM) Recurrent Neural Networks. As one of the most popular operating systems, Android is a prime target for security attacks. Only in 2019, 10.5 million malware was detected. Recursive neural networks are in essence machine models made up of a list of cells. Their particularity is that part of the output of the previous cell is used as input for the next one. LSTM have shown good results in several areas, for example, text generation, translation, trajectory prediction. Among the recursive neural network models, LSTM is one of the most efficient approaches to sequence classification as it is able to make relations between very distant elements in a sequence. This research explored the application of LSTM for Android malware detection using source code decompiled from the Android Application Package (APK). The approach we have tried is to first extract the instructions from the source code while respecting their execution order as much as possible. We then explored several ways to filter and encode these instructions. For all feature sets we created, we obtained an accuracy greater than 70 \\(\\\%\\) of accuracy and for some feature sets the accuracy reached 83 \\(\\\%\\) showing that it is possible to successfully detect malware using source code and LSTM.},
+  author = {Georgieva, Lilia and Lamarque, Basile},
+  booktitle = {Lecture Notes in Networks and Systems},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-95918-0\_5},
+  pages = {42-52},
+  publisher = {Springer International Publishing},
+  title = {Android Malware Detection Using Long Short Term Memory Recurrent Neural Networks},
+  url = {https://doi.org/10.1007/978-3-030-95918-0\_5},
+  year = {2022}
+}
+
+@incollection{springer_10_1007_978_981_19_0019_8_2,
+  abstract = {Android, being the most widely used mobile operating system of choice, also poses a security risk of mass privacy intrusion and sensitive data theft. Hence, as a mitigation effort, it is imperative to identify robust methods in identifying android malwares. In this paper, we extend our previous research work titled “Anatomizing Android Malwares” [ 20 ] and bring forward a novel method of identifying malicious android apps using object-oriented software metrics and supervised machine learning techniques. Initially, we retrieve object-oriented software metrics from the decompiled android app, and then this metrics tuple is tagged either as benign or malware using VirusTotal service. Finally, the set of metrics tuple acts as input features in machine learning algorithms. We evaluated the performance and stability of our forty-eight different machine-learned models against 5774 android apps collected from AndroZoo [ 1 ]. The discriminatory power of every machine-learned model is measured using its area under ROC curve (AUC), accuracy and F -measure values. Our method yields AUC, accuracy and F -measure of 1.0, 100\% and 1.0, respectively.},
+  author = {Tirkey, Anand and Kumar Mohapatra, Ramesh and Kumar, Lov},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-19-0019-8\_2},
+  pages = {17-32},
+  publisher = {Springer Singapore},
+  title = {Discerning Android Malwares Using Extreme Learning Machine},
+  url = {https://doi.org/10.1007/978-981-19-0019-8\_2},
+  year = {2022}
+}
+
+@article{springer_10_1007_s13042_020_01246_9,
+  abstract = {The protection and privacy of the 5G-IoT framework is a major challenge due to the vast number of mobile devices. Specialized applications running these 5G-IoT systems may be vulnerable to clone attacks. Cloning applications can be achieved by stealing or distributing commercial Android apps to harm the advanced services of the 5G-IoT framework. Meanwhile, most Android app stores run and manage Android apps that developers have submitted separately without any central verification systems. Android scammers sell pirated versions of commercial software to other app stores under different names. Android applications are typically stored on cloud servers, while API access services may be used to detect and prevent cloned applications from being released. In this paper, we proposed a hybrid approach to the Control Flow Graph (CFG) and a deep learning model to secure the smart services of the 5G-IoT framework. First, the newly submitted APK file is extracted and the JDEX decompiler is used to retrieve Java source files from possibly original and cloned applications. Second, the source files are broken down into various android-based components. After generating Control-Flow Graphs (CFGs), the weighted features are stripped from each component. Finally, the Recurrent Neural Network (RNN) is designed to predict potential cloned applications by training features from different components of android applications. Experimental results have shown that the proposed approach can achieve an average accuracy of 96.24\% for cloned applications selected from different android application stores.},
+  author = {Ullah, Farhan and Naeem, Muhammad Rashid and Mostarda, Leonardo and Shah, Syed Aziz},
+  content_type = {Article},
+  doi = {10.1007/s13042-020-01246-9},
+  journal = {International Journal of Machine Learning and Cybernetics},
+  number = {11},
+  pages = {3115-3127},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Clone detection in 5G-enabled social IoT system using graph semantics and deep learning model},
+  url = {https://doi.org/10.1007/s13042-020-01246-9},
+  volume = {12},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_3_030_73429_9_8,
+  abstract = {In recent years, with the quiet popularity of mobile payment methods, mobile terminal equipment also have potential security problems while facilitating people’s lives. Behavior-based Android malware detection is mostly based on permission analysis and API calls. In this paper, we propose a static Android malicious detection scheme based on sensitive API calls. We extracted all APIs called in the experimental samples through decompilation, and then calculated and ranked the threats related to these APIs according to the mutual information model, selected the top 20 sensitive API calls, and generated a 20-dimensional feature vector for each application. In the classification process, an integrated learning model based on DT classifier, kNN classifier and SVM classifier is used to effectively detect unknown APK samples. We collected 516 benign samples and 528 malicious samples. Through a large number of experiments, the results show that the accuracy of our scheme can be up to 94\%, and the precision is up to 95\%.},
+  author = {Yu, Junhui and Zhao, Chunlei and Zheng, Wenbai and Li, Yunlong and Zhang, Chunxiang and Chen, Chao},
+  booktitle = {Lecture Notes of the Institute for Computer Sciences, Social Informatics and Telecommunications Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-73429-9\_8},
+  pages = {126-140},
+  publisher = {Springer International Publishing},
+  title = {Android Malware Detection Using Ensemble Learning on Sensitive APIs},
+  url = {https://doi.org/10.1007/978-3-030-73429-9\_8},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_981_15_9647_6_95,
+  abstract = {One of the leading and the most popular operating system for smartphones and tablets is an Android. Being an open-source platform has also become a prime target for the attackers as growing users. This paper focuses on the work done on the Android platform by performing static analysis on the permission-based framework and permission extraction tool—AndRev, which is designed. Extracted many permission-based features by reverse engineering of the Android application (apk) files using the batch-scripted tool. AndRev tool is used to decompile apks in batch mode. Features have been stored in feature vectors. Firstly, analysis is done using feature vectors to study the pattern of permissions in applications as per the category. Two categories of apks, namely general and entertainment apps, are studied with an initial dataset of 50 applications each. Secondly, do an experimental study of applications permission removal by using a reverse engineering method. Updated apks are recompiled apps, which execute on a mobile phone as the way it executes like the original app. The study consists of ten apps from Google Play with various categories. The study concludes that it is not easy to remove permission as per the type of permission and the relation of apps permission with app’s relevant functionality. Finally, performed security analysis on the vulnerabilities within the source code, and those are used for accessing resources or unauthorized permission authorization of Android apk. For the study, many vulnerabilities based features were extracted by vulnerability assessment tool Quixxi for the Android application (apk) files. The study depicts that medium-risk vulnerabilities are higher than high- and low-risk vulnerabilities. In security analysis point of view, observations concluded would be useful to future Android app developers},
+  author = {Patil, Manisha and Pramod, Dhanya},
+  booktitle = {Lecture Notes on Data Engineering and Communications Technologies},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-15-9647-6\_95},
+  pages = {1199-1207},
+  publisher = {Springer Nature Singapore},
+  title = {AndRev: Reverse Engineering Tool to Extract Permissions of Android Mobile Apps for Analysis},
+  url = {https://doi.org/10.1007/978-981-15-9647-6\_95},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_981_16_0965_7_4,
+  abstract = {With the boom of malware, the area of malware detection and the use of gadget assist to gain knowledge in research drastically with the aid of researchers. The conventional methods of malware detection are incompetent to detect new and generic malware. In this article, a generic malware detection process is proposed using machine learning named AndroHealthCheck. The malware detection process is divided into four phases, namely android file collection, decompilation, feature mining and machine learning. The overall contributions made in AndroHealthCheck are as follows: (1) designing and implementing a crawler for automating the process of benign files download, (2) collection of unstructured data from the downloaded APK files through the decompilation process, (3) defining a proper mechanism for the feature selection process by performing a static analysis process, (4) designing and implementing a feature mining script for extracting the features from unstructured data collection from APK files, (5) generating a rich homemade data set for machine learning with a huge variety and different flavours of malware files from different families and (6) evaluating the performance of the generated data set by using different types of supervised machine learning classifiers. In this article, the overall architecture and deployment flow of AndroHealthCheck are also discussed.},
+  author = {Agrawal, Prerna and Trivedi, Bhushan},
+  booktitle = {Lecture Notes on Data Engineering and Communications Technologies},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-16-0965-7\_4},
+  pages = {35-41},
+  publisher = {Springer Singapore},
+  title = {AndroHealthCheck: A Malware Detection System for Android Using Machine Learning},
+  url = {https://doi.org/10.1007/978-981-16-0965-7\_4},
+  year = {2021}
+}
+
+@incollection{springer_10_1007_978_3_030_63128_4_42,
+  abstract = {According to kids’ learning process, an auto-encoder which can be split into two parts is designed. The two parts can work well separately. The top half is an abstract network which is trained by supervised learning and can be used to classify and regress. The bottom half is a concrete network which is accomplished by inverse function and trained by self-supervised learning. It can generate the input of abstract network from concept or label. The network can achieve its intended functionality through testing by mnist dataset and convolution neural network. Round function is added between the abstract network and concrete network in order to get the representative generation of class. The generation ability can be increased by adding jump connection and negative feedback. At last, the characteristics of the network is discussed. The input can be changed to any form by encoder and then change it back by decoder through inverse function. The concrete network can be seen as the memory stored by the parameters. Lethe is that when new knowledge input, the training process makes the parameters change. At last, the application of the network is discussed. The network can be used for logic generation through deep reinforcement learning. The network can also be used for language translation, zip and unzip, encryption and decryption, compile and decompile, modulation and demodulation.},
+  author = {Wei, Jinxin and Ren, Qunying},
+  booktitle = {Advances in Intelligent Systems and Computing},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-63128-4\_42},
+  pages = {553-560},
+  publisher = {Springer International Publishing},
+  title = {A Functionally Separate Autoencoder},
+  url = {https://doi.org/10.1007/978-3-030-63128-4\_42},
+  year = {2021}
+}
+
+@article{springer_10_1007_s12652_020_02196_4,
+  abstract = {Traditional machine learning based malware detection methods often use decompiling techniques or dynamic monitoring techniques to extract the feature representation of malware. This procedure is time consuming and strongly depends on the skills of experts. In addition, malware can be packed or encrypted to evade the analysis of decompiling tools. To solve this issue, we propose a static detection method based on deep learning. We directly extract bytecode file from Android APK file, and convert the bytecode file into a two-dimensional bytecode matrix, then use the deep learning algorithm, convolution neural network (CNN), to train a detection model and apply it to classify malware. CNN can automatically learn features of bytecode file which can be used to recognize malware. The proposed detection model avoids the procedure for analyzing malware features and designing the feature representation of malware. The experimental results show the proposed method is effective to detect malware, especially malware encrypted using polymorphic techniques.},
+  author = {Ding, Yuxin and Zhang, Xiao and Hu, Jieke and Xu, Wenting},
+  content_type = {Article},
+  doi = {10.1007/s12652-020-02196-4},
+  journal = {Journal of Ambient Intelligence and Humanized Computing},
+  number = {5},
+  pages = {6401-6410},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Android malware detection method based on bytecode image},
+  url = {https://doi.org/10.1007/s12652-020-02196-4},
+  volume = {14},
+  year = {2023}
+}
+
+@incollection{springer_10_1007_978_3_030_65299_9_5,
+  abstract = {In this paper, we have developed a tool to perform an analysis for all APIs over an APK and all APIs of every version of Android, to solve problems of overfitting in machine-learning-based malware classification. The tool is Java-based software consisting of approximately 2,000 lines, performing frequency analysis for the entire API or performing frequency analysis based on the decompiled APK. For frequency analysis, we split all API signatures into word units and grouped them according to their entropy, which is calculated by the number of the emergence of each unit words. As a result, the tool reduces 39,031 methods to 4,972 groups and 12,123 groups when including classes. This shows an approximately 69\% feature reduction rate. For classification using machine learning, 14,290 APKs from 14 different categories are collected and trained with 10,003 APKs and tested with 4,287 APKs among them. As a result, we got 98.83\% of true positive rate and 1.16\% of false positive rate on average, with 98.8\% of F-measure score.},
+  author = {Shim, Hyunseok and Jung, Souhwan},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-65299-9\_5},
+  pages = {59-72},
+  publisher = {Springer International Publishing},
+  title = {Entropy-Based Feature Grouping in Machine Learning for Android Malware Classification},
+  url = {https://doi.org/10.1007/978-3-030-65299-9\_5},
+  year = {2020}
+}
+
+@article{springer_10_1134_s106373971903003x,
+  abstract = {In this paper, we address the problem of converting a flat CMOS circuit of transistors in the SPICE format into a hierarchical circuit of CMOS gates in the same format. This problem arises in the process of layout versus schematic (LVS) verification, as well as when reengineering integrated circuits. A method for recognizing subcircuits (CMOS gates) is described. The method is implemented as a C++ program; it recognizes subcircuits that are described by the same logic functions but are not isomorphic at the transistor level as different ones. This provides the isomorphism of the original and decompiled circuits.},
+  author = {Cheremisinov, D. I. and Cheremisinova, L. D.},
+  content_type = {Article},
+  doi = {10.1134/s106373971903003x},
+  journal = {Russian Microelectronics},
+  number = {3},
+  pages = {187-196},
+  publisher = {Pleiades Publishing Ltd},
+  title = {Extracting a Logic Gate Network from a Transistor-Level CMOS Circuit},
+  url = {https://doi.org/10.1134/s106373971903003x},
+  volume = {48},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_981_13_0311_1_29,
+  abstract = {Android apps developed in Java language is vulnerable to repackaging attacks as it is easy to decompile an app. Therefore, obfuscation techniques can be used to make it difficult to analyzing the source of Android apps. However, repackaging attacks are fundamentally impossible to block. Especially, it has been confirmed that most Android-based smart phones do not support verification process for the forged applications. Accordingly, the user installs and uses a fake app that appears to be functioning normally. In this case, the user is easily exposed to attacks such as leakage of personal information. Therefore, in this paper, we have constructed mobile apps identification system that applies the signature self-verification server monitoring method for Android apps and proposed a method of judging Android mobile forgery apps by performing the verification process.},
+  author = {Lee, Hyung-Woo and Lee, Jaekyu},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-13-0311-1\_29},
+  pages = {176-182},
+  publisher = {Springer Singapore},
+  title = {Mobile Forged App Identification System with Centralized Signature Self-verification Method},
+  url = {https://doi.org/10.1007/978-981-13-0311-1\_29},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_22038_9_6,
+  abstract = {Programmable logic controllers (PLCs) in industrial control systems (ICS) are vulnerable to remote control logic injection attacks. Attackers target the control logic of a PLC to manipulate the behavior of a physical process such as nuclear plants, power grids, and gas pipelines. Control logic attacks have been studied extensively in the literature, including hiding the transfer of a control logic over the network from both packet header-based signatures, and deep packet inspection. For instance, these attacks transfer a control logic code as data, into small fragments (one-byte per packet), that are further padded with noise data. To detect control logic in ICS network traffic, this paper presents Shade , a novel shadow memory technique that observes the network traffic to maintain a local copy of the current state of a PLC memory. To analyze the memory contents, Shade employs a classification algorithm with 42 unique features categorized into five types at different semantic levels of a control logic code, such as number of rungs, number of consecutive decompiled instructions, and n-grams. We then evaluate Shade against control logic injection attacks on two PLCs, Modicon M221 and MicroLogix 1400 from two ICS vendors, Schneider electric and Allen-Bradley, respectively. The evaluation results show that Shade can detect an attack instance (i.e., identifying at least one attack packet during the transfer of a malicious control logic) accurately without any false alarms.},
+  author = {Yoo, Hyunguk and Kalle, Sushma and Smith, Jared and Ahmed, Irfan},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-22038-9\_6},
+  pages = {109-132},
+  publisher = {Springer International Publishing},
+  title = {Overshadow PLC to Detect Remote Control-Logic Injection Attacks},
+  url = {https://doi.org/10.1007/978-3-030-22038-9\_6},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_21373_2_10,
+  abstract = {With the widespread use of the Android operating system, the number of applications based on the Android platform is growing. How to effectively identify malware is critical to the security of phones. This paper proposes an Android malware detection method based on the combination of sensitive permissions and API features. This method extracts the permission features and API features by decompiling the APK file, and then uses the mutual information to select sensitive permissions and APIs as feature sets. On this basis, an ensemble learning model based on decision tree classifier and KNN classifier is used to quickly and accurately detect unknown APKs. The experimental results show that the discriminative accuracy of the proposed method is higher than that of the permission set or the API set alone, and the accuracy rate can reach up to 95.5\%.},
+  author = {Zhao, Chunhui and Wang, Chundong and Zheng, Wenbai},
+  booktitle = {Lecture Notes of the Institute for Computer Sciences, Social Informatics and Telecommunications Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-21373-2\_10},
+  pages = {105-113},
+  publisher = {Springer International Publishing},
+  title = {Android Malware Detection Based on Sensitive Permissions and APIs},
+  url = {https://doi.org/10.1007/978-3-030-21373-2\_10},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_24907_6_29,
+  abstract = {Nowadays, the security risks brought by Android malwares are increasing. Machine learning is considered as a potential solution for promoting the performance of malware detection. For machine learning based Android malware detection, feature extraction plays a key role. Thinking the source codes of applications are comparable with text documents, we propose a new Android malware detection method based on the topic model which is an effective technique in text feature extraction. Our method regards the decompiled codes of an application as a text document, and the topic model is used to mine the potential topics in the codes which can reflect the semantic feature of the application. The experimental results demonstrate that, our approach performs better than the state-of-the-art methods. Also, our method mines the features in the application files automatically without manually design, and therefore overcomes the limitation in present methods which relies on experts’ prior knowledge.},
+  author = {Song, Yucai and Chen, Yang and Lang, Bo and Liu, Hongyu and Chen, Shaojie},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-24907-6\_29},
+  pages = {384-396},
+  publisher = {Springer International Publishing},
+  title = {Topic Model Based Android Malware Detection},
+  url = {https://doi.org/10.1007/978-3-030-24907-6\_29},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_11935_5_68,
+  abstract = {The paper points out to digital competence as an essential part of the competence model of a teacher in education. It points out to the fact that existing competence models need to be further explored, decompiled, and illustrated by the digital competences extensions. This is related to the importance of applying digital technologies to teaching and management.},
+  author = {Andres, Pavel and Svoboda, Petr},
+  booktitle = {Advances in Intelligent Systems and Computing},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-11935-5\_68},
+  pages = {720-731},
+  publisher = {Springer International Publishing},
+  title = {Development of Digital Competences of Teachers of Social Sciences at Secondary Vocational Schools},
+  url = {https://doi.org/10.1007/978-3-030-11935-5\_68},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_30215_3_20,
+  abstract = {This paper presents Similo , an automated scalable framework for control logic forensics in industrial control systems. Similo is designed to investigate denial of engineering operations (DEO) attacks, recently demonstrated to hide malicious control logic in a programmable logic controller (PLC) at field sites from an engineering software (at control center). The network traffic (if captured) contains substantial evidence to investigate DEO attacks including manipulation of control logic. Laddis , a state-of-the-art forensic approach for DEO attacks, is a binary-logic decompiler for the Allen-Bradley’s RSLogix engineering software and MicroLogix 1400 PLC. It is developed with extensive manual reverse engineering effort of the underlying proprietary network protocol and the binary control logic. Unfortunately, Laddis is not scalable and requires similar efforts to extend on other engineering software/PLCs. The proposed solution, Similo , is based on the observation that engineering software of different vendors are equipped with decompilers. Similo is a virtual-PLC framework that integrates the decompilers with their respective (previously-captured) ICS network traffic of control logic. It recovers the binary logic into a high-level source code (of the programming languages defined by IEC 61131-3 standard) automatically. Similo can work with both proprietary/open protocols without requiring protocol specifications and the binary formats of control logic. Thus, it is scalable to different ICS vendors. We evaluate Similo on three PLCs of two ICS vendors, i.e. MicroLogix 1400, MicroLogix 1100, and Modicon M221. These PLCs support proprietary protocols and the control logics written in two programming languages: Ladder Logic and Instruction List. The evaluation results show that Similo can accurately reconstruct a control logic from an ICS network traffic and can be used to investigate the DEO attacks effectively.},
+  author = {Qasim, Syed Ali and Lopez, Juan and Ahmed, Irfan},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-30215-3\_20},
+  pages = {402-422},
+  publisher = {Springer International Publishing},
+  title = {Automated Reconstruction of Control Logic for Programmable Logic Controller Forensics},
+  url = {https://doi.org/10.1007/978-3-030-30215-3\_20},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_24268_8_22,
+  abstract = {With the development of software, software maintenance and software security become an important research of software engineering. Software reverse engineering plays an irreplaceable role in software maintenance and software security. In this paper, the applications of software reverse engineering in software maintenance and malware analysis, as well as the legitimacy of software reverse engineering research are briefly discussed, and then software reverse engineering, disassembly, decompilation and so on are introduced. Related technique such as software protection technology, static analysis technology, dynamic analysis technology are described. Then, we discuss the application of software reverse engineering, such as software maintenance, software vulnerability mining, malware analysis and so on. In addition, we also describe how to use software reverse engineering to learn the method of software cracking, so as to resist reverse attack and improve the ability of anti-piracy of software itself.},
+  author = {Chen, Zhuangyou and Pan, Bing and Sun, Yanbin},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-24268-8\_22},
+  pages = {235-245},
+  publisher = {Springer International Publishing},
+  title = {A Survey of Software Reverse Engineering Applications},
+  url = {https://doi.org/10.1007/978-3-030-24268-8\_22},
+  year = {2019}
+}
+
+@incollection{springer_10_1007_978_3_030_44041_1_75,
+  abstract = {Intent-Based Networking (IBN) is showing significant improvements in network management, especially by reducing the complexity through intent-level languages. However, IBN is not yet integrated and widely deployed in most networks. Network operators may still encounter several issues deploying new intents, such as reasoning about complex configurations to understand previously deployed rules before writing an intent to update the network state. Many networks include several devices distributed along with its topology, each device configured using vendor-specific languages. Thus, inferring the behavior of devices as high-level intents from low-level configurations can be an arduous and time-consuming task. Current solutions that derive high-level representations from bottom-up configuration analysis can not represent configurations in an intent-level. In this work, we present a bottom-up approach to extract intents from network configurations. To validate our approach, we develop a system called SCRIBE (SeCuRity Intent-Based Extractor), which decompiles security configurations from different network devices and translates them to an intent-level language called Nile. To demonstrate the feasibility of SCRIBE, we outline a case study and evaluate with dumps of real-world firewall configurations containing rules from various servers and institutions.},
+  author = {Ribeiro, Rafael Hengen and Jacobs, Arthur Selle and Parizotto, Ricardo and Zembruzki, Luciano and Schaeffer-Filho, Alberto Egon and Granville, Lisandro Zambenedetti},
+  booktitle = {Advances in Intelligent Systems and Computing},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-44041-1\_75},
+  pages = {858-870},
+  publisher = {Springer International Publishing},
+  title = {A Bottom-Up Approach for Extracting Network Intents},
+  url = {https://doi.org/10.1007/978-3-030-44041-1\_75},
+  year = {2020}
+}
+
+@incollection{springer_10_1007_978_3_030_05057_3_32,
+  abstract = {Java code is easy to be decompiled, and third-party SO files are used frequently by developers to improve development efficiency. Therefore, more and more core functions of Android applications are implemented in the native layer. However, there is neither comprehensive security research work nor automated security analysis tools on Android native layer, especially for third-party SO files that are dynamically loaded within the applications. To solve this problem, SoProtector, a novel and effective system is proposed to defend against the privacy leaks, which mainly analyzes the data stream between two levels: application and Native layers. In addition, SoProtector includes a real-time monitor to detect malicious functions in binary code. Our evaluation using 3400 applications has demonstrated that SoProtector can detect more sources, sinks and smudges than most static analysis tools; And it detects and effectively blocks more than 82\% of applications that dynamically load malicious third-party SO files with low performance overhead.},
+  author = {Zhang, Ning and Xu, Guangquan and Meng, Guozhu and Zheng, Xi},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-030-05057-3\_32},
+  pages = {417-431},
+  publisher = {Springer International Publishing},
+  title = {SoProtector: Securing Native C/C++ Libraries for Mobile Applications},
+  url = {https://doi.org/10.1007/978-3-030-05057-3\_32},
+  year = {2018}
+}
+
+@incollection{springer_10_1007_978_3_319_89500_0_56,
+  abstract = {Storm has been a popular distributed real-time computation system for stream data processing, which currently provides an acker mechanism to enable all topologies to be processed reliably. In this paper, via the source code analysis, we point out that the acker failure and message retransmission result in the consumption of network resources. Even worse, adversary conducts a malicious topology to consume over unconstrained network resources, which seriously affects the average processing time of topology for normal users. Aiming at defending the vulnerability, we design an offline static detection against acker failure in Storm, mainly including the code decompile, the function call relationship and the judgement rules in offline module. Meanwhile, we validate the protection scheme in Storm 0.10.0 cluster, and experimental results show that our mentioned judgement rules can achieve well precision.},
+  author = {Qian, Wenjun and Shen, Qingni and Yang, Yizhe and Yang, Yahui and Wu, Zhonghai},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-319-89500-0\_56},
+  pages = {661-673},
+  publisher = {Springer International Publishing},
+  title = {Statically Defend Network Consumption Against Acker Failure Vulnerability in Storm},
+  url = {https://doi.org/10.1007/978-3-319-89500-0\_56},
+  year = {2018}
+}
+
+@incollection{springer_10_1007_978_981_10_7605_3_125,
+  abstract = {Analysts sometimes need to analyze the app depending on the situation. There are two main ways to analyze Android apps. This is the static analysis that grasps the flow of the app through the source code and the dynamic analysis that analyzes the variable that changes during the app’s operation. For dynamic analysis, this can be done by setting the debugging option of the Android Manifest file. In most cases, modification is done by decompiling the app and modifying the original source. In some cases, however, there is a problem with the decompiling process. So we propose a way to modify the debugging option of the Android manifest file to “true” without decompiling the app.},
+  author = {Lee, Suhyoo and Park, Junhoo and Ryou, Jaecheol},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-10-7605-3\_125},
+  pages = {784-789},
+  publisher = {Springer Singapore},
+  title = {Method to Modify the Hex of Android Manifest File in Android Apps for Dynamic Analysis},
+  url = {https://doi.org/10.1007/978-981-10-7605-3\_125},
+  year = {2018}
+}
+
+@article{springer_10_1007_s11277_017_5069_3,
+  abstract = {Software defect prediction locates defective code to help developers improve the security of software. However, existing studies on software defect prediction are mostly limited to the source code. Defect prediction for Android binary executables (called apks) has never been explored in previous studies. In this paper, we propose an explorative study of defect prediction in Android apks. We first propose smali2vec, a new approach to generate features that capture the characteristics of smali (decompiled files of apks) files in apks. Smali2vec extracts both token and semantic features of the defective files in apks and such comprehensive features are needed for building accurate prediction models. Then we leverage deep neural network (DNN), which is one of the most common architecture of deep learning networks, to train and build the defect prediction model in order to achieve accuracy. We apply our defect prediction model to more than 90,000 smali files from 50 Android apks and the results show that our model could achieve an AUC (the area under the receiver operating characteristic curve) of 85.98\% and it is capable of predicting defects in apks. Furthermore, the DNN is proved to have a better performance than the traditional shallow machine learning algorithms (e.g., support vector machine and naive bayes) used in previous studies. The model has been used in our practical work and helped locate many defective files in apks.},
+  author = {Dong, Feng and Wang, Junfeng and Li, Qi and Xu, Guoai and Zhang, Shaodong},
+  content_type = {Article},
+  doi = {10.1007/s11277-017-5069-3},
+  journal = {Wireless Personal Communications},
+  number = {3},
+  pages = {2261-2285},
+  publisher = {Springer Science and Business Media LLC},
+  title = {Defect Prediction in Android Binary Executables Using Deep Neural Network},
+  url = {https://doi.org/10.1007/s11277-017-5069-3},
+  volume = {102},
+  year = {2018}
+}
+
+@article{springer_10_1007_s10664_017_9564_7,
+  abstract = {Copying and pasting of source code is a common activity in software engineering. Often, the code is not copied as it is and it may be modified for various purposes; e.g. refactoring, bug fixing, or even software plagiarism. These code modifications could affect the performance of code similarity analysers including code clone and plagiarism detectors to some certain degree. We are interested in two types of code modification in this study: pervasive modifications, i.e. transformations that may have a global effect, and local modifications, i.e. code changes that are contained in a single method or code block. We evaluate 30 code similarity detection techniques and tools using five experimental scenarios for Java source code. These are (1) pervasively modified code, created with tools for source code and bytecode obfuscation, and boiler-plate code, (2) source code normalisation through compilation and decompilation using different decompilers, (3) reuse of optimal configurations over different data sets, (4) tool evaluation using ranked-based measures, and (5) local + global code modifications. Our experimental results show that in the presence of pervasive modifications, some of the general textual similarity measures can offer similar performance to specialised code similarity tools, whilst in the presence of boiler-plate code, highly specialised source code similarity detection techniques and tools outperform textual similarity measures. Our study strongly validates the use of compilation/decompilation as a normalisation technique. Its use reduced false classifications to zero for three of the tools. Moreover, we demonstrate that optimal configurations are very sensitive to a specific data set. After directly applying optimal configurations derived from one data set to another, the tools perform poorly on the new data set. The code similarity analysers are thoroughly evaluated not only based on several well-known pair-based and query-based error measures but also on each specific type of pervasive code modification. This broad, thorough study is the largest in existence and potentially an invaluable guide for future users of similarity detection in source code.},
+  author = {Ragkhitwetsagul, Chaiyong and Krinke, Jens and Clark, David},
+  content_type = {Article},
+  doi = {10.1007/s10664-017-9564-7},
+  journal = {Empirical Software Engineering},
+  number = {4},
+  pages = {2464-2519},
+  publisher = {Springer Science and Business Media LLC},
+  title = {A comparison of code similarity analysers},
+  url = {https://doi.org/10.1007/s10664-017-9564-7},
+  volume = {23},
+  year = {2018}
+}
+
+@incollection{springer_10_1007_978_3_319_52709_3_13,
+  abstract = {Structured programs are believed to be easier to understand, and compiler friendly [ 5 , 10 , 45 ]. However, compilers do not process the source programs directly; they instead work on control flow graphs (CFGs) of the programs. Unfortunately, there is little formalization of structured CFGs. This paper shows how the lack of formalization has led to varying interpretations of structured CFGs. The paper next presents new formalization of structured CFGs which eliminates the ambiguity. Structured CFGs gain importance as they ease compiler optimizations, decompilation, and help reduce the performance degradation caused by thread divergence on SIMD units. The paper elaborates on these benefits. It also shows that compilers, both front-ends and back-ends, may generate unstructured CFGs from structured program sources, which necessitates mechanisms to obtain structured CFGs from unstructured ones.},
+  author = {Sabne, Amit and Sakdhnagool, Putt and Eigenmann, Rudolf},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-319-52709-3\_13},
+  pages = {153-168},
+  publisher = {Springer International Publishing},
+  title = {Formalizing Structured Control Flow Graphs},
+  url = {https://doi.org/10.1007/978-3-319-52709-3\_13},
+  year = {2017}
+}
+
+@incollection{springer_10_1007_978_981_10_6385_5_23,
+  abstract = {Nowadays, analysis methods based on big data have been widely used in malicious software detection. Since Android has become the dominator of smartphone operating system market, the number of Android malicious applications are increasing rapidly as well, which attracts attention of malware attackers and researchers alike. Due to the endless evolution of the malware, it is critical to apply the analysis methods based on machine learning to detect malwares and stop them from leakaging our privacy information. In this paper, we propose a novel Android malware detection method based on binary texture feature recognition by Local Binary Pattern and Principal Component Analysis, which can visualize malware and detect malware accurately. Also, our method analyzes malware binary directly without any decompiler, sandbox or virtual machines, which avoid time and resource consumption caused by decompiler or monitor in this process. Experimentation on 5127 benigns and 5560 malwares shows that we obtain a detection accuracy of 90\%.},
+  author = {Wu, Qixin and Qin, Zheng and Zhang, Jinxin and Yin, Hui and Yang, Guangyi and Hu, Kuangsheng},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-10-6385-5\_23},
+  pages = {262-275},
+  publisher = {Springer Singapore},
+  title = {Android Malware Detection Using Local Binary Pattern and Principal Component Analysis},
+  url = {https://doi.org/10.1007/978-981-10-6385-5\_23},
+  year = {2017}
+}
+
+@incollection{springer_10_1007_978_3_319_69471_9_27,
+  abstract = {Unauthorized code modification through reverse engineering is a major concern for Android application developers. Code reverse engineering is often used by adversaries to remove the copyright protection or advertisements from the app, or to inject malicious code into the program. By making the program difficult to analyze, code obfuscation is a potential solution to the problem. However, there is currently little work on applying code obfuscation to compiled Android bytecode. This paper presents DexPro , a novel bytecode level code obfuscation system for Android applications. Unlike prior approaches, our method performs on the Android Dex bytecode and does not require access to high-level program source or modification of the compiler or the VM. Our approach leverages the fact all except floating operands in Dex are stored in a 32-bit register to pack two 32-bit operands into a 64-bit operand. In this way, any attempt to decompile the bytecode will result in incorrect information. Meanwhile, our approach obfuscates the program control flow by inserting opaque predicates before the return instruction of a function call, which makes it harder for the attacker to trace calls to protected functions. Experimental results show that our approach can deter sophisticate reverse engineering and code analysis tools, and the overhead of runtime and memory footprint is comparable to existing code obfuscation methods.},
+  author = {Zhao, Beibei and Tang, Zhanyong and Li, Zhen and Song, Lina and Gong, Xiaoqing and Fang, Dingyi and Liu, Fangyuan and Wang, Zheng},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-319-69471-9\_27},
+  pages = {367-382},
+  publisher = {Springer International Publishing},
+  title = {DexPro: A Bytecode Level Code Protection System for Android Applications},
+  url = {https://doi.org/10.1007/978-3-319-69471-9\_27},
+  year = {2017}
+}
+
+@incollection{springer_10_1007_978_3_319_68690_5_12,
+  abstract = {Energy bugs in Android apps are defects that can make Android systems waste much energy as a whole. Energy bugs detection in Android apps has become an important issue since smartphones usually operate on a limited amount of battery capacity and the existence of energy bugs may lead to serious drain in the battery power. This paper focuses on detecting two types of energy bugs, namely resource leak and layout defect, in Android apps. A resource leak is a particular type of energy wasting phenomena where an app does not release its acquired resources such as a sensor and GPS. A layout defect refers to a poor layout structure causing more energy consumption for measuring and drawing the layout. In this paper, we present a static analysis technique called SAAD, that can automatically detect energy bugs in a context-sensitive way. SAAD detects the energy bugs by taking an inter-procedural anaysis of an app. For resource leak analysis, SAAD decompiles APK file into Dalvik bytecodes files and then performs resource leak analysis by taking components call relationship analysis, inter-procedure and intra-procedure analysis. For detecting layout defect, SAAD firstly employs Lint to perform some traditional app analysis, then filters energy defects from reported issues. Our experimental result on 64 publicly-available Android apps shows that SAAD can detect energy bugs effectively. The accuracies of detecting resource leak and layout energy defect are \\(87.5\\\%\\) and \\(78.1\\\%\\) respectively.},
+  author = {Jiang, Hao and Yang, Hongli and Qin, Shengchao and Su, Zhendong and Zhang, Jian and Yan, Jun},
+  booktitle = {Lecture Notes in Computer Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-319-68690-5\_12},
+  pages = {192-208},
+  publisher = {Springer International Publishing},
+  title = {Detecting Energy Bugs in Android Apps Using Static Analysis},
+  url = {https://doi.org/10.1007/978-3-319-68690-5\_12},
+  year = {2017}
+}
+
+@incollection{springer_10_1007_978_981_10_6385_5_32,
+  abstract = {The diversity of Linux versions brings challenges to Linux memory analysis, which is an established technique in security and forensic investigations. During memory forensics, kernel data structures are essential information. Existing solutions obtain this information by analyzing debugging information or by decompiling kernel functions to handle a certain range of versions. In this paper, by collecting and analyzing a number of Linux versions, we characterize the properties of different Linux kernel versions and how struct offsets change between versions. Furthermore, the Linux kernel provides over 10,000 configurable features, which leads to different kernel structure layouts for the same kernel version. To deal with this problem, we propose a method of identifying kernel struct layout based on brute-force matching. By examining the relationships between kernel structures, common features are extracted and exploited for brute-force matching. The experimental results show that the proposed technology can deduce structure member offsets accurately and efficiently.},
+  author = {Zhang, Shuhui and Meng, Xiangxu and Wang, Lianhai and Liu, Guangqi},
+  booktitle = {Communications in Computer and Information Science},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-10-6385-5\_32},
+  pages = {373-385},
+  publisher = {Springer Singapore},
+  title = {Research on Linux Kernel Version Diversity for Precise Memory Analysis},
+  url = {https://doi.org/10.1007/978-981-10-6385-5\_32},
+  year = {2017}
+}

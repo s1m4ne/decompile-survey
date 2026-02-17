@@ -1,0 +1,25 @@
+@incollection{springer_10_1007_978_981_96_2042_5_59,
+  abstract = {With the widespread application of Internet of Things (IoT) devices and the deep integration of cyber systems with physical systems, power systems are gradually evolving towards Cyber-Physical Power System (CPPS). However, the proliferation of IoT devices has expanded the system’s attack surface, allowing malware to infiltrate and compromise CPPS operation. Therefore, it is imperative to conduct research on malware detection specifically for CPPS. Current detection methods, however, have certain limitations, such as difficulty in analyzing IoT malware across multiple CPU architectures and insufficient opcode feature extraction. To address these issues, this paper proposes a multi-CPU architecture IoT malware detection approach based on Intermediate Representation (IR). The approach consists of a binary lifting model, an IR deduplication model, and a deep learning classification model. The binary lifting model performs in-depth malware opcode analysis and outputs them as higher-level IR, facilitating malware processing across different CPU architectures. Due to significant redundancy in the IR output, an IR deduplication model is designed to optimize the IR, ensuring high-quality data input for the classification model. The deep learning classification model processes the deduplicated IR using word embedding techniques, employs a one-dimensional convolutional neural network (1D-CNN) for dimensionality reduction, and utilizes a Long Short-Term Memory (LSTM) network for malware classification. Experimental results demonstrate that the proposed IR-based multi-CPU architecture malware detection approach can more effectively identify and classify malware across different architectures, thereby enhancing detection accuracy.},
+  author = {Zhao, Xichao and Tang, Zhuofan and Shi, Jie and Zheng, Qingrong and Zhao, Jianli and Deng, Boya and He, Yujun},
+  booktitle = {Lecture Notes in Electrical Engineering},
+  content_type = {Conference paper},
+  doi = {10.1007/978-981-96-2042-5\_59},
+  pages = {546-553},
+  publisher = {Springer Nature Singapore},
+  title = {A Multi-CPU Architecture IoT Malware Detection Approach in Cyber-Physical Power System},
+  url = {https://doi.org/10.1007/978-981-96-2042-5\_59},
+  year = {2025}
+}
+
+@incollection{springer_10_1007_978_3_031_20738_9_4,
+  abstract = {Binary code similarity detection has extensive and important applications in IoT device security, yet which suffers the challenges from the differentiated underlying architectures of the diverse IoT devices. To this end, this paper presents XFSim ( Cross -architecture F unction-level binary code Sim ilarity detection), through binary lifting and neural similarity metric learning. Firstly, to make the detection method architecture agnostic, the binaries to be analyzed are lifted to an intermediate code called LLVM-IR and normalized for an uniform representation, so as to alleviate the discrepancies between the raw assemblies of different instruction set architectures (ISAs). Secondly, we utilize FastText, a widely used word embedding algorithm, that learns on the functions’ normalized intermediate codes to obtain high quality token embeddings. Then, an efficient CNN-based model is utilized to encode the semantics of each function into numerical vectors, meanwhile the siamese neural network structure is resorted to supervise the whole model training, with the goal of minimizing the contrastive loss. Finally, the similarity of two binary code snippets can measured by the cosine similarity of their encoded vectors. The experiments conducted on a public dataset show that, the strategy of lifting and normalizing the assemblies to uniform representations greatly alleviates the semantic-gaps between different ISAs, and XFSim outperforms two existing cross-architecture binary code similarity detectors.},
+  author = {Tian, Zhenzhou and Li, Chen and Qiu, Sihao},
+  booktitle = {Lecture Notes on Data Engineering and Communications Technologies},
+  content_type = {Conference paper},
+  doi = {10.1007/978-3-031-20738-9\_4},
+  pages = {27-34},
+  publisher = {Springer International Publishing},
+  title = {Cross Architecture Function Similarity Detection with Binary Lifting and Neural Metric Learning},
+  url = {https://doi.org/10.1007/978-3-031-20738-9\_4},
+  year = {2023}
+}

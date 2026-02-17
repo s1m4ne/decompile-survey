@@ -1,0 +1,43 @@
+{
+  "step_id": "dedup_title",
+  "step_type": "dedup-title",
+  "name": "Title Deduplication",
+  "input": {
+    "from": "dedup_doi",
+    "output": "passed",
+    "file": "steps/dedup_doi/outputs/passed.json",
+    "count": 553
+  },
+  "outputs": {
+    "passed": {
+      "file": "steps/dedup_title/outputs/passed.bib",
+      "count": 514,
+      "description": "Representative entries kept after title clustering"
+    },
+    "removed": {
+      "file": "steps/dedup_title/outputs/removed.bib",
+      "count": 39,
+      "description": "Entries removed as title duplicates"
+    }
+  },
+  "stats": {
+    "input_count": 553,
+    "total_output_count": 553,
+    "passed_count": 514,
+    "removed_count": 39
+  },
+  "execution": {
+    "status": "completed",
+    "started_at": "2026-02-11T14:24:15.540024",
+    "completed_at": "2026-02-11T14:24:25.510180",
+    "duration_sec": 9.970156,
+    "error": null,
+    "progress": {
+      "completed": 553,
+      "total": 553,
+      "percent": 100.0,
+      "message": "Completed",
+      "updated_at": "2026-02-11T14:24:25.510180"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "20260210_182808",
+  "name": "Query Search Springer",
+  "description": "",
+  "files": [
+    {
+      "filename": "SearchResults.bib",
+      "database": "Springer",
+      "search_query": "decompil*",
+      "search_date": "2026-02-10",
+      "url": null,
+      "tags": [],
+      "count": 936
+    },
+    {
+      "filename": "SearchResults (1)_20260210_1913.bib",
+      "database": "Springer",
+      "search_query": "(   (\"reverse compilation\" OR \"source code recovery\" OR \"source recovery\" OR \"program reconstruction\" OR \"binary-to-source\" OR \"binary to source\" OR \"assembly-to-C\" OR \"assembly to C\" OR \"binary lifting\" OR \"instruction lifting\" OR \"lifting to LLVM\" OR \"lifting to IR\")   AND   (\"machine code\" OR \"binary code\" OR \"assembly code\" OR disassembly OR disassembler OR bytecode OR executable OR opcode)   AND   (\"machine learning\" OR \"deep learning\" OR \"neural network\" OR transformer OR \"language model\" OR \"large language model\" OR LLM OR GPT) )",
+      "search_date": "2026-02-10",
+      "url": "https://link.springer.com/search?advancedSearch=true&sortBy=relevance&query=%28+++%28%22reverse+compilation%22+OR+%22source+code+recovery%22+OR+%22source+recovery%22+OR+%22program+reconstruction%22+OR+%22binary-to-source%22+OR+%22binary+to+source%22+OR+%22assembly-to-C%22+OR+%22assembly+to+C%22+OR+%22binary+lifting%22+OR+%22instruction+lifting%22+OR+%22lifting+to+LLVM%22+OR+%22lifting+to+IR%22%29+++AND+++%28%22machine+code%22+OR+%22binary+code%22+OR+%22assembly+code%22+OR+disassembly+OR+disassembler+OR+bytecode+OR+executable+OR+opcode%29+++AND+++%28%22machine+learning%22+OR+%22deep+learning%22+OR+%22neural+network%22+OR+transformer+OR+%22language+model%22+OR+%22large+language+model%22+OR+LLM+OR+GPT%29+%29&title=&contributor=&journal=&date=custom&dateFrom=2017&dateTo=2026",
+      "tags": [],
+      "count": 30
+    }
+  ],
+  "created_at": "2026-02-10T18:28:08.301865",
+  "updated_at": "2026-02-10T19:20:06.374858"
+}
