@@ -1,0 +1,45 @@
+{
+  "tool": "semantic_scholar_fetch.py",
+  "timestamp": "20260217_1926",
+  "venues": [
+    "NDSS",
+    "USENIX_Security"
+  ],
+  "queries": [
+    "Q1",
+    "Q2"
+  ],
+  "year_range": [
+    null,
+    null
+  ],
+  "total_fetched": 53986,
+  "total_matched": 13,
+  "api_key_used": false,
+  "files": [
+    {
+      "file": "S2_Q1_NDSS_20260217_1926.bib",
+      "query": "Q1",
+      "venue": "NDSS",
+      "count": 4
+    },
+    {
+      "file": "S2_Q2_NDSS_20260217_1926.bib",
+      "query": "Q2",
+      "venue": "NDSS",
+      "count": 1
+    },
+    {
+      "file": "S2_Q1_USENIX_Security_20260217_1926.bib",
+      "query": "Q1",
+      "venue": "USENIX_Security",
+      "count": 8
+    },
+    {
+      "file": "S2_Q2_USENIX_Security_20260217_1926.bib",
+      "query": "Q2",
+      "venue": "USENIX_Security",
+      "count": 0
+    }
+  ]
+}

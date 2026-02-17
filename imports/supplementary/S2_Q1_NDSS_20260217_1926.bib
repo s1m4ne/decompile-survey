@@ -1,0 +1,48 @@
+@inproceedings{Yakdan2015No,
+  title = {No More Gotos: Decompilation Using Pattern-Independent Control-Flow Structuring and Semantic-Preserving Transformations},
+  author = {Khaled Yakdan and Sebastian Eschweiler and E. Gerhards-Padilla and Matthew Smith},
+  year = {2015},
+  venue = {Network and Distributed System Security Symposium},
+  doi = {10.14722/NDSS.2015.23185},
+  dblp = {conf/ndss/YakdanEGS15},
+  semantic_scholar_id = {c1a02442b6c34d994f90eab697b924db3376991f},
+  url = {https://doi.org/10.14722/NDSS.2015.23185},
+}
+
+@inproceedings{Caliskan2015When,
+  title = {When Coding Style Survives Compilation: De-anonymizing Programmers from Executable Binaries},
+  author = {Aylin Caliskan and Fabian Yamaguchi and Edwin Dauber and Richard E. Harang and Konrad Rieck and R. Greenstadt and Arvind Narayanan},
+  abstract = {The ability to identify authors of computer programs based on their coding style is a direct threat to the privacy and anonymity of programmers. While recent work found that source code can be attributed to authors with high accuracy, attribution of executable binaries appears to be much more difficult. Many distinguishing features present in source code, e.g. variable names, are removed in the compilation process, and compiler optimization may alter the structure of a program, further obscuring features that are known to be useful in determining authorship. We examine programmer de-anonymization from the standpoint of machine learning, using a novel set of features that include ones obtained by decompiling the executable binary to source code. We adapt a powerful set of techniques from the domain of source code authorship attribution along with stylistic representations embedded in assembly, resulting in successful de-anonymization of a large set of programmers. 
+We evaluate our approach on data from the Google Code Jam, obtaining attribution accuracy of up to 96\% with 100 and 83\% with 600 candidate programmers. We present an executable binary authorship attribution approach, for the first time, that is robust to basic obfuscations, a range of compiler optimization settings, and binaries that have been stripped of their symbol tables. We perform programmer de-anonymization using both obfuscated binaries, and real-world code found "in the wild" in single-author GitHub repositories and the recently leaked Nulled.IO hacker forum. We show that programmers who would like to remain anonymous need to take extreme countermeasures to protect their privacy.},
+  year = {2015},
+  venue = {Network and Distributed System Security Symposium},
+  doi = {10.14722/ndss.2018.23304},
+  dblp = {journals/corr/IslamYDHRGN15},
+  semantic_scholar_id = {c863c9b479e0b92e796b4ca1f4f36c0bb5f7254c},
+  url = {https://doi.org/10.14722/ndss.2018.23304},
+}
+
+@inproceedings{Hu2024DeGPT,
+  title = {DeGPT: Optimizing Decompiler Output with LLM},
+  author = {Peiwei Hu and Ruigang Liang and Kai Chen},
+  abstract = {—Reverse engineering is essential in malware analysis, vulnerability discovery, etc. Decompilers assist the reverse engineers by lifting the assembly to the high-level programming language, which highly boosts binary comprehension. However, decompilers suffer from problems such as meaningless variable names, redundant variables, and lacking comments describing the purpose of the code. Previous studies have shown promising performance in refining the decompiler output by training the models with huge datasets containing various decompiler outputs. However, even datasets that take much time to construct cover limited binaries in the real world. The performance degrades severely facing the binary migration. In this paper, we present DeGPT, an end-to-end framework aiming to optimize the decompiler output to improve its readability and simplicity and further assist the reverse engineers in understanding the binaries better. The Large Language Model (LLM) can mitigate performance degradation with its extraordinary ability endowed by large model size and training set containing rich multi-modal data. However, its potential is difficult to unlock through one-shot use. Thus, we propose the three-role mechanism, which includes referee (R\_ref), advisor (R\_adv), and operator (R\_ope), to adapt the LLM to our optimization tasks. Specifically, R\_ref provides the optimization scheme for the target decompiler output, while R\_adv gives the rectification measures based on the scheme, and R\_ope inspects whether the optimization changes the original function semantics and concludes the final verdict about whether to accept the optimizations. We evaluate DeGPT on the datasets containing decompiler outputs of various software, such as the practical command line tools, malware, a library for audio processing, and implementations of algorithms. The experimental results show that even on the output of the current top-level decompiler (Ghidra), DeGPT can achieve 24.4\% reduction in the cognitive burden of understanding the decompiler outputs and provide comments of which 62.9\% can provide practical semantics for the reverse engineers to help the understanding of binaries. Our user surveys also show that the optimizations can significantly simplify the code and add helpful semantic information (variable names and comments), facilitating a quick and accurate understanding of the binary.},
+  year = {2024},
+  venue = {Network and Distributed System Security Symposium},
+  doi = {10.14722/ndss.2024.24401},
+  dblp = {conf/ndss/HuL024},
+  semantic_scholar_id = {32bb8b85124e554dd995e1c3a102eb921a710a99},
+  url = {https://doi.org/10.14722/ndss.2024.24401},
+}
+
+@inproceedings{Xu2025Unleashing,
+  title = {Unleashing the Power of Generative Model in Recovering Variable Names from Stripped Binary},
+  author = {Xiangzhe Xu and Zhuo Zhang and Zian Su and Ziyang Huang and Shiwei Feng and Yapeng Ye and Nan Jiang and Danning Xie and Siyuan Cheng and Lin Tan and Xiangyu Zhang},
+  abstract = {—Decompilation aims to recover the source code form of a binary executable. It has many security applications, such as malware analysis, vulnerability detection, and code hardening. A prominent challenge in decompilation is to recover variable names. We propose a novel technique that leverages the strengths of generative models while mitigating model biases. We build a prototype, G EN N M , from pre-trained generative models CodeGemma-2B, CodeLlama-7B, and CodeLlama-34B. We fine-tune G EN N M on decompiled functions and teach models to leverage contextual information. G EN N M includes names from callers and callees while querying a function, providing rich contextual information within the model’s input token limitation. We mitigate model biases by aligning the output distribution of models with symbol preferences of developers. Our results show that G EN N M improves the state-of-the-art name recovery precision by 5.6–11.4 percentage points on two commonly used datasets and improves the state-of-the-art by 32\% (from 17.3\% to 22.8\%) in the most challenging setup where ground-truth variable names are not seen in the training dataset.},
+  year = {2025},
+  venue = {Network and Distributed System Security Symposium},
+  doi = {10.14722/ndss.2025.240276},
+  dblp = {conf/ndss/Xu0SH0Y0X00025},
+  semantic_scholar_id = {fb1c6b452989eb06fd6860d86ce7ef83b82a3e0f},
+  url = {https://doi.org/10.14722/ndss.2025.240276},
+}
+
