@@ -13,6 +13,7 @@ from .dedup_utils import (
     title_similarity,
     pick_representative,
     cluster_by_threshold,
+    parse_database_priority,
 )
 
 
@@ -49,6 +50,11 @@ class DedupTitleHandler(StepHandler):
                     "default": 0.9,
                     "description": "Title similarity threshold for clustering",
                 },
+                "database_priority": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Preferred database order for representative selection (e.g., ACM, IEEE, WoS)",
+                },
             },
         }
 
@@ -59,6 +65,7 @@ class DedupTitleHandler(StepHandler):
         progress_callback: ProgressCallback | None = None,
     ) -> StepResult:
         threshold = float(config.get("similarity_threshold", 0.9))
+        database_priority = parse_database_priority(config.get("database_priority"))
         total_entries = len(input_entries)
         if progress_callback:
             progress_callback(0, total_entries, "Building title clusters")
@@ -88,7 +95,12 @@ class DedupTitleHandler(StepHandler):
                     progress_callback(processed_entries, total_entries, "Deduplicating titles")
                 continue
 
-            representative_index = pick_representative(member_indices, input_entries)
+            representative_index = pick_representative(
+                member_indices,
+                input_entries,
+                database_priority=database_priority,
+                prefer_doi=True,
+            )
             representative = input_entries[representative_index]
             rep_key = representative.get("ID", "unknown")
             cluster_id = f"cluster-{index}"
@@ -163,6 +175,7 @@ class DedupTitleHandler(StepHandler):
             changes=changes,
             details={
                 "similarity_threshold": threshold,
+                "database_priority": list(database_priority.keys()),
                 "clusters": clusters_payload,
                 "total_clusters": len([c for c in clusters if len(c) > 1]),
             },

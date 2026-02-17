@@ -189,6 +189,8 @@ def _ensure_record(index: dict[str, Any], key: str, title: str | None = None) ->
             "id": key_to_record_id(key),
             "key": key,
             "doi": key[4:] if key.startswith("doi:") else None,
+            "year": None,
+            "database": None,
             "title": title or "",
             "status": "missing",
             "pdf_path": None,
@@ -241,6 +243,8 @@ def mark_record_found(
     *,
     key: str,
     title: str | None = None,
+    year: str | None = None,
+    database: str | None = None,
     pdf_path: Path,
     managed_file: bool,
     source: str,
@@ -255,6 +259,10 @@ def mark_record_found(
     now = utcnow_iso()
     record["status"] = "found"
     record["title"] = title or record.get("title", "")
+    if year:
+        record["year"] = year
+    if database:
+        record["database"] = database
     record["pdf_path"] = str(pdf_path.resolve())
     record["managed_file"] = bool(managed_file)
     record["source"] = source
@@ -279,6 +287,8 @@ def mark_record_missing(
     *,
     key: str,
     title: str | None = None,
+    year: str | None = None,
+    database: str | None = None,
     reason: str,
     project_id: str | None,
     step_id: str | None,
@@ -288,6 +298,10 @@ def mark_record_missing(
     now = utcnow_iso()
     record["status"] = "missing"
     record["title"] = title or record.get("title", "")
+    if year:
+        record["year"] = year
+    if database:
+        record["database"] = database
     record["missing_reason"] = reason
     record["failure_count"] = int(record.get("failure_count", 0) or 0) + 1
     record["last_checked_at"] = now
@@ -338,4 +352,3 @@ def delete_record(
         "removed_file": removed_file,
         "removed_path": removed_path,
     }
-

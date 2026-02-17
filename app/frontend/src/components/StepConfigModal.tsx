@@ -1,16 +1,53 @@
 /**
  * Modal for configuring and running a step.
  */
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { X, Play, Loader2, Plus } from 'lucide-react';
-import { stepTypesApi, rulesApi, llmApi, PipelineStep, LocalLLMCheckResponse } from '../lib/api';
+import { X, Play, Loader2, Plus, ArrowUp, ArrowDown, GripVertical, RotateCcw } from 'lucide-react';
+import {
+  stepTypesApi,
+  rulesApi,
+  llmApi,
+  projectImportSourcesApi,
+  sourcesApi,
+  PipelineStep,
+  LocalLLMCheckResponse,
+} from '../lib/api';
+
+function normalizeDatabaseKey(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function parseDatabasePriority(value: unknown): string[] {
+  if (typeof value !== 'string') {
+    return [];
+  }
+  return value
+    .split(/[,\n>]+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+}
+
+function uniqueDatabaseList(values: Array<string | null | undefined>): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const value of values) {
+    const token = String(value ?? '').trim();
+    if (!token) continue;
+    const key = normalizeDatabaseKey(token);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(token);
+  }
+  return result;
+}
 
 interface StepConfigModalProps {
   isOpen: boolean;
   onClose: () => void;
   onRun: (config: Record<string, unknown>) => void;
   step: PipelineStep;
+  projectId: string;
   isRunning: boolean;
 }
 
@@ -19,6 +56,7 @@ export function StepConfigModal({
   onClose,
   onRun,
   step,
+  projectId,
   isRunning,
 }: StepConfigModalProps) {
   const queryClient = useQueryClient();
@@ -27,6 +65,9 @@ export function StepConfigModal({
   const [showNewRuleForm, setShowNewRuleForm] = useState(false);
   const [newRuleFilename, setNewRuleFilename] = useState('');
   const [newRuleContent, setNewRuleContent] = useState('');
+  const [draggingDbIndex, setDraggingDbIndex] = useState<number | null>(null);
+  const [dragOverDbIndex, setDragOverDbIndex] = useState<number | null>(null);
+  const isDatabasePriorityStep = step.type === 'dedup-doi' || step.type === 'dedup-title';
 
   // Fetch step type info for config schema
   const { data: stepTypeInfo } = useQuery({
@@ -40,6 +81,18 @@ export function StepConfigModal({
     queryKey: ['rules'],
     queryFn: () => rulesApi.list(),
     enabled: isOpen && step.type === 'ai-screening',
+  });
+
+  const { data: importSources = [] } = useQuery({
+    queryKey: ['project-import-sources', projectId],
+    queryFn: () => projectImportSourcesApi.get(projectId),
+    enabled: isOpen && isDatabasePriorityStep && Boolean(projectId),
+  });
+
+  const { data: legacySources } = useQuery({
+    queryKey: ['sources', projectId],
+    queryFn: () => sourcesApi.get(projectId),
+    enabled: isOpen && isDatabasePriorityStep && Boolean(projectId),
   });
 
   // Fetch suggested next filename for new rules
@@ -75,6 +128,8 @@ export function StepConfigModal({
     setShowNewRuleForm(false);
     setNewRuleFilename('');
     setNewRuleContent('');
+    setDraggingDbIndex(null);
+    setDragOverDbIndex(null);
   }, [step.config]);
 
   // Apply defaults from schema
@@ -98,6 +153,39 @@ export function StepConfigModal({
       }
     }
   }, [stepTypeInfo]);
+
+  const availableDatabases = useMemo(() => {
+    const fromImportSources = importSources.flatMap((source) => source.databases || []);
+    const fromLegacyDatabases = (legacySources?.databases || []).map((source) => source.database);
+    const fromLegacyOther = (legacySources?.other || []).map((source) => source.database);
+    return uniqueDatabaseList([
+      ...fromImportSources,
+      ...fromLegacyDatabases,
+      ...fromLegacyOther,
+    ]);
+  }, [importSources, legacySources]);
+
+  const configuredDatabasePriority = useMemo(
+    () => parseDatabasePriority(config.database_priority),
+    [config.database_priority]
+  );
+
+  const databasePriorityOrder = useMemo(
+    () => uniqueDatabaseList([...configuredDatabasePriority, ...availableDatabases]),
+    [configuredDatabasePriority, availableDatabases]
+  );
+
+  useEffect(() => {
+    if (!isDatabasePriorityStep || availableDatabases.length === 0) return;
+    setConfig((prev) => {
+      const current = parseDatabasePriority(prev.database_priority);
+      if (current.length > 0) return prev;
+      return {
+        ...prev,
+        database_priority: availableDatabases.join(', '),
+      };
+    });
+  }, [isDatabasePriorityStep, availableDatabases]);
 
   const previousProviderRef = useRef<string | null>(null);
 
@@ -166,6 +254,20 @@ export function StepConfigModal({
     setConfig((prev) => ({ ...prev, [key]: value }));
   };
 
+  const applyDatabasePriorityOrder = (nextOrder: string[]) => {
+    const uniqueOrder = uniqueDatabaseList(nextOrder);
+    updateConfig('database_priority', uniqueOrder.join(', '));
+  };
+
+  const moveDatabasePriority = (fromIndex: number, toIndex: number) => {
+    if (fromIndex === toIndex) return;
+    if (toIndex < 0 || toIndex >= databasePriorityOrder.length) return;
+    const nextOrder = [...databasePriorityOrder];
+    const [moved] = nextOrder.splice(fromIndex, 1);
+    nextOrder.splice(toIndex, 0, moved);
+    applyDatabasePriorityOrder(nextOrder);
+  };
+
   // Render config field based on schema
   const renderConfigField = (key: string, schema: Record<string, unknown>) => {
     const type = schema.type as string;
@@ -176,6 +278,101 @@ export function StepConfigModal({
 
     if (key === 'output_mode' && step.type === 'ai-screening') {
       return null;
+    }
+
+    if (key === 'database_priority' && isDatabasePriorityStep) {
+      const hasDetectedDatabases = availableDatabases.length > 0;
+      return (
+        <div key={key} className="space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="block text-sm font-medium">
+              {formatLabel(key)}
+            </label>
+            <button
+              type="button"
+              onClick={() => applyDatabasePriorityOrder(availableDatabases)}
+              disabled={!hasDetectedDatabases}
+              className="inline-flex items-center gap-1 px-2 py-1 text-xs border border-[hsl(var(--border))] rounded-md hover:bg-[hsl(var(--muted))] disabled:opacity-50"
+            >
+              <RotateCcw className="w-3 h-3" />
+              Reset
+            </button>
+          </div>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]">
+            優先度が高い順に上から並べてください。ドラッグまたは上下ボタンで入れ替えできます。
+          </p>
+          {databasePriorityOrder.length === 0 ? (
+            <div className="rounded-md border border-dashed border-[hsl(var(--border))] p-3 text-xs text-[hsl(var(--muted-foreground))]">
+              利用可能な文献DBが見つかりません。先にSources/Importsを設定してください。
+            </div>
+          ) : (
+            <ul className="space-y-2">
+              {databasePriorityOrder.map((database, index) => {
+                const isDragging = draggingDbIndex === index;
+                const isDropTarget = dragOverDbIndex === index && draggingDbIndex !== index;
+                return (
+                  <li
+                    key={`${database}-${index}`}
+                    draggable
+                    onDragStart={() => setDraggingDbIndex(index)}
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                      setDragOverDbIndex(index);
+                    }}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      if (draggingDbIndex === null) return;
+                      moveDatabasePriority(draggingDbIndex, index);
+                      setDraggingDbIndex(null);
+                      setDragOverDbIndex(null);
+                    }}
+                    onDragEnd={() => {
+                      setDraggingDbIndex(null);
+                      setDragOverDbIndex(null);
+                    }}
+                    className={`flex items-center justify-between rounded-md border px-3 py-2 transition-colors ${
+                      isDropTarget
+                        ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]'
+                        : 'border-[hsl(var(--border))] bg-[hsl(var(--background))]'
+                    } ${isDragging ? 'opacity-60' : ''}`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <GripVertical className="w-4 h-4 text-[hsl(var(--muted-foreground))] shrink-0" />
+                      <span className="inline-flex w-6 h-6 items-center justify-center rounded-full bg-[hsl(var(--secondary))] text-xs font-semibold text-[hsl(var(--secondary-foreground))] shrink-0">
+                        {index + 1}
+                      </span>
+                      <span className="text-sm font-medium truncate">{database}</span>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => moveDatabasePriority(index, index - 1)}
+                        disabled={index === 0}
+                        className="p-1 rounded border border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))] disabled:opacity-40"
+                        title="Move up"
+                      >
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => moveDatabasePriority(index, index + 1)}
+                        disabled={index === databasePriorityOrder.length - 1}
+                        className="p-1 rounded border border-[hsl(var(--border))] hover:bg-[hsl(var(--muted))] disabled:opacity-40"
+                        title="Move down"
+                      >
+                        <ArrowDown className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {description && (
+            <p className="text-xs text-[hsl(var(--muted-foreground))]">{description}</p>
+          )}
+        </div>
+      );
     }
 
     // Special handling for rules field - use fetched rules list
@@ -450,6 +647,7 @@ export function StepConfigModal({
   const schema = stepTypeInfo?.config_schema as {
     properties?: Record<string, Record<string, unknown>>;
   } | undefined;
+  const modalWidthClass = isDatabasePriorityStep ? 'max-w-2xl' : 'max-w-md';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -460,7 +658,7 @@ export function StepConfigModal({
       />
 
       {/* Modal */}
-      <div className="relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+      <div className={`relative bg-[hsl(var(--background))] rounded-lg shadow-xl w-full ${modalWidthClass} mx-4 max-h-[90vh] overflow-y-auto`}>
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-[hsl(var(--border))]">
           <h2 className="text-lg font-semibold">Run {step.name}</h2>

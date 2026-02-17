@@ -146,12 +146,28 @@ def load_input_entries(project_id: str, input_from: str | dict) -> tuple[list[di
                 import_dir = imports_dir / import_id
                 if not import_dir.exists():
                     continue
+                file_database_map: dict[str, str] = {}
+                import_meta_file = import_dir / "meta.json"
+                if import_meta_file.exists():
+                    try:
+                        with open(import_meta_file, encoding="utf-8") as f:
+                            import_meta = json.load(f)
+                        for import_file in import_meta.get("files", []):
+                            filename = str(import_file.get("filename", "")).strip()
+                            database = str(import_file.get("database", "")).strip()
+                            if filename and database:
+                                file_database_map[filename] = database
+                    except Exception:
+                        file_database_map = {}
                 for bib_file in import_dir.glob("*.bib"):
+                    source_database = file_database_map.get(bib_file.name)
                     with open(bib_file, encoding="utf-8") as f:
                         bib_db = bibtexparser.load(f)
                         for entry in bib_db.entries:
                             entry["_source_import"] = import_id
                             entry["_source_file"] = bib_file.name
+                            if source_database:
+                                entry["_source_database"] = source_database
                         entries.extend(bib_db.entries)
 
             return entries, StepInput(
@@ -164,6 +180,20 @@ def load_input_entries(project_id: str, input_from: str | dict) -> tuple[list[di
         # Legacy: Load from project's source files
         sources_dir = PROJECTS_DIR / project_id / "sources"
         entries = []
+        source_database_map: dict[tuple[str, str], str] = {}
+        sources_meta_file = sources_dir / "meta.json"
+        if sources_meta_file.exists():
+            try:
+                with open(sources_meta_file, encoding="utf-8") as f:
+                    sources_meta = json.load(f)
+                for category in ("databases", "other"):
+                    for source in sources_meta.get(category, []):
+                        filename = str(source.get("filename", "")).strip()
+                        database = str(source.get("database", "")).strip()
+                        if filename and database:
+                            source_database_map[(category, filename)] = database
+            except Exception:
+                source_database_map = {}
 
         for category in ["databases", "other"]:
             category_dir = sources_dir / category
@@ -171,11 +201,14 @@ def load_input_entries(project_id: str, input_from: str | dict) -> tuple[list[di
                 continue
 
             for bib_file in category_dir.glob("*.bib"):
+                source_database = source_database_map.get((category, bib_file.name))
                 with open(bib_file, encoding="utf-8") as f:
                     bib_db = bibtexparser.load(f)
                     for entry in bib_db.entries:
                         entry["_source_file"] = bib_file.name
                         entry["_source_category"] = category
+                        if source_database:
+                            entry["_source_database"] = source_database
                     entries.extend(bib_db.entries)
 
         return entries, StepInput(
@@ -189,32 +222,53 @@ def load_input_entries(project_id: str, input_from: str | dict) -> tuple[list[di
         step_id = input_from.get("step")
         output_name = input_from.get("output", "passed")
 
+        output_json_file = (
+            PROJECTS_DIR / project_id / "steps" / step_id / "outputs" / f"{output_name}.json"
+        )
         output_file = (
             PROJECTS_DIR / project_id / "steps" / step_id / "outputs" / f"{output_name}.bib"
         )
 
-        if not output_file.exists():
+        if output_json_file.exists():
+            with open(output_json_file, encoding="utf-8") as f:
+                entries = json.load(f)
+            loaded_file = output_json_file
+        elif output_file.exists():
+            with open(output_file, encoding="utf-8") as f:
+                bib_db = bibtexparser.load(f)
+            entries = bib_db.entries
+            loaded_file = output_file
+        else:
             raise HTTPException(
                 status_code=400,
                 detail=f"Input not available: step '{step_id}' output '{output_name}' not found",
             )
 
-        with open(output_file, encoding="utf-8") as f:
-            bib_db = bibtexparser.load(f)
-
-        return bib_db.entries, StepInput(
+        return entries, StepInput(
             from_source=step_id,
             output=output_name,
-            file=str(output_file.relative_to(PROJECTS_DIR / project_id)),
-            count=len(bib_db.entries),
+            file=str(loaded_file.relative_to(PROJECTS_DIR / project_id)),
+            count=len(entries),
         )
     else:
         # input_from is a step ID string (shorthand for step's passed output)
+        output_json_file = (
+            PROJECTS_DIR / project_id / "steps" / input_from / "outputs" / "passed.json"
+        )
         output_file = (
             PROJECTS_DIR / project_id / "steps" / input_from / "outputs" / "passed.bib"
         )
 
-        if not output_file.exists():
+        if output_json_file.exists():
+            with open(output_json_file, encoding="utf-8") as f:
+                entries = json.load(f)
+            loaded_file = output_json_file
+        elif output_file.exists():
+            with open(output_file, encoding="utf-8") as f:
+                bib_db = bibtexparser.load(f)
+            entries = bib_db.entries
+            loaded_file = output_file
+        else:
             # Maybe it's "sources"
             if input_from == "sources":
                 return load_input_entries(project_id, "sources")
@@ -223,14 +277,11 @@ def load_input_entries(project_id: str, input_from: str | dict) -> tuple[list[di
                 detail=f"Input not available: step '{input_from}' output 'passed' not found",
             )
 
-        with open(output_file, encoding="utf-8") as f:
-            bib_db = bibtexparser.load(f)
-
-        return bib_db.entries, StepInput(
+        return entries, StepInput(
             from_source=input_from,
             output="passed",
-            file=str(output_file.relative_to(PROJECTS_DIR / project_id)),
-            count=len(bib_db.entries),
+            file=str(loaded_file.relative_to(PROJECTS_DIR / project_id)),
+            count=len(entries),
         )
 
 
@@ -240,6 +291,11 @@ def save_output_entries(project_id: str, step_id: str, output_name: str, entries
     output_dir.mkdir(parents=True, exist_ok=True)
 
     output_file = output_dir / f"{output_name}.bib"
+    output_json_file = output_dir / f"{output_name}.json"
+
+    # Save full entries in JSON for downstream steps (keeps source metadata fields).
+    with open(output_json_file, "w", encoding="utf-8") as f:
+        json.dump(entries, f, indent=2, ensure_ascii=False)
 
     # Create BibTeX database
     db = BibDatabase()
@@ -741,7 +797,13 @@ def get_step_output(project_id: str, step_id: str, output_name: str) -> dict:
     import bibtexparser
 
     step_dir = get_step_dir(project_id, step_id)
+    output_json_file = step_dir / "outputs" / f"{output_name}.json"
     output_file = step_dir / "outputs" / f"{output_name}.bib"
+
+    if output_json_file.exists():
+        with open(output_json_file, encoding="utf-8") as f:
+            entries = json.load(f)
+        return {"entries": entries, "count": len(entries)}
 
     if not output_file.exists():
         raise HTTPException(status_code=404, detail=f"Output not found: {output_name}")

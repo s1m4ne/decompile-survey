@@ -93,6 +93,51 @@ def summarize_entry_label(entry_key: str, doi: str | None, title: str | None) ->
     return entry_key
 
 
+def normalize_entry_year(raw: Any) -> str | None:
+    value = str(raw or "").strip()
+    if not value:
+        return None
+    match = re.search(r"(19|20)\d{2}", value)
+    if not match:
+        return None
+    year = int(match.group(0))
+    if year < 1900 or year > 2100:
+        return None
+    return match.group(0)
+
+
+def infer_database_from_entry(entry: dict[str, Any], doi: str | None) -> str | None:
+    if doi:
+        lower_doi = doi.lower()
+        if lower_doi.startswith("10.1145/"):
+            return "acm"
+        if lower_doi.startswith("10.1109/"):
+            return "ieee"
+        if lower_doi.startswith("10.48550/arxiv."):
+            return "arxiv"
+
+    normalized_url = normalize_url(entry.get("url") or entry.get("URL"))
+    host = urlparse(normalized_url).netloc.lower() if normalized_url else ""
+    if "dl.acm.org" in host:
+        return "acm"
+    if "ieeexplore.ieee.org" in host:
+        return "ieee"
+    if "arxiv.org" in host:
+        return "arxiv"
+
+    text = " ".join(
+        str(entry.get(field) or "")
+        for field in ("publisher", "journal", "booktitle", "series")
+    ).lower()
+    if "arxiv" in text:
+        return "arxiv"
+    if "ieee" in text:
+        return "ieee"
+    if "acm" in text or "association for computing machinery" in text:
+        return "acm"
+    return None
+
+
 def browser_profiles_dir() -> Path:
     return SCREENING_DIR / "browser_profiles"
 
@@ -883,6 +928,8 @@ class PdfFetchHandler(StepHandler):
                     entry_key = str(entry.get("ID") or f"row_{index_no}")
                     title = guess_title(entry)
                     doi = normalize_doi(entry.get("doi") or entry.get("DOI"))
+                    year = normalize_entry_year(entry.get("year"))
+                    database = infer_database_from_entry(entry, doi)
                     entry_label = summarize_entry_label(entry_key=entry_key, doi=doi, title=title)
                     canonical_key = canonical_key_for_entry(entry)
                     if doi:
@@ -937,6 +984,8 @@ class PdfFetchHandler(StepHandler):
                                     index,
                                     key=canonical_key,
                                     title=title,
+                                    year=year,
+                                    database=database,
                                     pdf_path=cached_path,
                                     managed_file=bool(cached_record.get("managed_file")),
                                     source="cache",
@@ -963,6 +1012,8 @@ class PdfFetchHandler(StepHandler):
                                     index,
                                     key=canonical_key,
                                     title=title,
+                                    year=year,
+                                    database=database,
                                     pdf_path=local_path,
                                     managed_file=False,
                                     source="local_file",
@@ -1044,6 +1095,8 @@ class PdfFetchHandler(StepHandler):
                                 index,
                                 key=canonical_key,
                                 title=title,
+                                year=year,
+                                database=database,
                                 pdf_path=target_path,
                                 managed_file=True,
                                 source="download",
@@ -1142,6 +1195,8 @@ class PdfFetchHandler(StepHandler):
                                     index,
                                     key=canonical_key,
                                     title=title,
+                                    year=year,
+                                    database=database,
                                     pdf_path=target_path,
                                     managed_file=True,
                                     source="browser_assist",
@@ -1175,6 +1230,8 @@ class PdfFetchHandler(StepHandler):
                                 index,
                                 key=canonical_key,
                                 title=title,
+                                year=year,
+                                database=database,
                                 reason=missing_reason,
                                 project_id=project_id,
                                 step_id=step_id,

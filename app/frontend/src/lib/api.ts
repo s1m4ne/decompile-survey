@@ -430,6 +430,41 @@ export interface ImportFileUpdate {
   tags?: string;
 }
 
+export interface QueryPreset {
+  filename: string;
+  database: string;
+  search_query: string;
+  search_date: string;
+  url?: string | null;
+  tags?: string[];
+  count: number;
+}
+
+export interface ImportQuerySearchRequest {
+  query: string;
+  selected_files?: string[];
+  max_results?: number;
+  exclude_without_abstract?: boolean;
+  normalize_external_syntax?: boolean;
+}
+
+export interface ImportQuerySearchStats {
+  selected_file_count: number;
+  total_entries: number;
+  entries_with_abstract: number;
+  excluded_without_abstract: number;
+  matched_entries: number;
+  returned_entries: number;
+}
+
+export interface ImportQuerySearchResponse {
+  query: string;
+  normalized_query: string;
+  stats: ImportQuerySearchStats;
+  entries: Record<string, unknown>[];
+  bibtex: string;
+}
+
 export interface ImportSourceSummary {
   id: string;
   name: string;
@@ -534,6 +569,15 @@ export const importsApi = {
     }),
 
   get: (id: string) => fetchApi<ImportDetail>(`/imports/${id}`),
+
+  getQueryPresets: (id: string) =>
+    fetchApi<{ presets: QueryPreset[] }>(`/imports/${id}/query-presets`),
+
+  querySearch: (id: string, request: ImportQuerySearchRequest) =>
+    fetchApi<ImportQuerySearchResponse>(`/imports/${id}/query-search`, {
+      method: 'POST',
+      body: JSON.stringify(request),
+    }),
 
   update: (id: string, data: ImportUpdate) =>
     fetchApi<ImportCollection>(`/imports/${id}`, {

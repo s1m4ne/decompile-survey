@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path
 
 import bibtexparser
+from bibtexparser.bibdatabase import BibDatabase
+from bibtexparser.bwriter import BibTexWriter
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
 
@@ -20,6 +22,13 @@ from models.import_collection import (
     ImportFileUpdate,
     ImportSummary,
     ImportUpdate,
+)
+from query_search import (
+    QuerySyntaxError,
+    clean_bib_text,
+    evaluate as evaluate_query_node,
+    normalize_query,
+    parse_query,
 )
 
 router = APIRouter(prefix="/imports", tags=["imports"])
@@ -61,6 +70,21 @@ def parse_tags(raw: str | None) -> list[str]:
         seen.add(key)
         tags.append(item)
     return tags
+
+
+def entries_to_bibtex(entries: list[dict]) -> str:
+    """Serialize BibTeX entries preserving fields."""
+    if not entries:
+        return ""
+
+    sanitized_entries = [{k: v for k, v in entry.items() if not k.startswith("_")} for entry in entries]
+
+    db = BibDatabase()
+    db.entries = sanitized_entries
+    writer = BibTexWriter()
+    writer.indent = "  "
+    writer.order_entries_by = None
+    return writer.write(db)
 
 
 def load_import_meta(import_id: str) -> ImportCollection:
@@ -238,6 +262,155 @@ class PickFileResponse(BaseModel):
     modified_at: list[str] | None = None
     created_at: list[str | None] | None = None
     entry_counts: list[int] | None = None
+
+
+class QueryPreset(BaseModel):
+    filename: str
+    database: str
+    search_query: str
+    search_date: str
+    url: str | None = None
+    tags: list[str] = []
+    count: int = 0
+
+
+class ImportQuerySearchRequest(BaseModel):
+    query: str
+    selected_files: list[str] | None = None
+    max_results: int | None = None
+    exclude_without_abstract: bool = True
+    normalize_external_syntax: bool = True
+
+
+class ImportQuerySearchStats(BaseModel):
+    selected_file_count: int
+    total_entries: int
+    entries_with_abstract: int
+    excluded_without_abstract: int
+    matched_entries: int
+    returned_entries: int
+
+
+class ImportQuerySearchResponse(BaseModel):
+    query: str
+    normalized_query: str
+    stats: ImportQuerySearchStats
+    entries: list[dict]
+    bibtex: str
+
+
+def run_import_query_search(
+    import_id: str,
+    request: ImportQuerySearchRequest,
+) -> tuple[str, ImportQuerySearchStats, list[dict], str]:
+    meta = load_import_meta(import_id)
+    available_files = {f.filename: f for f in meta.files}
+    selected_files = request.selected_files or list(available_files.keys())
+
+    if not selected_files:
+        raise HTTPException(status_code=400, detail="No files selected.")
+
+    missing_files = [name for name in selected_files if name not in available_files]
+    if missing_files:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Selected files not found in import: {', '.join(missing_files)}",
+        )
+
+    raw_query = request.query.strip()
+    if not raw_query:
+        raise HTTPException(status_code=400, detail="Query is required.")
+
+    normalized_query = normalize_query(raw_query) if request.normalize_external_syntax else raw_query
+    if not normalized_query:
+        raise HTTPException(status_code=400, detail="Normalized query is empty.")
+
+    try:
+        query_ast = parse_query(normalized_query)
+    except QuerySyntaxError as exc:
+        raise HTTPException(status_code=400, detail=f"Query parse error: {exc}") from exc
+
+    import_dir = get_import_dir(import_id)
+    matched_entries: list[dict] = []
+    stats = ImportQuerySearchStats(
+        selected_file_count=len(selected_files),
+        total_entries=0,
+        entries_with_abstract=0,
+        excluded_without_abstract=0,
+        matched_entries=0,
+        returned_entries=0,
+    )
+    matched_total = 0
+
+    max_results = request.max_results if request.max_results and request.max_results > 0 else None
+
+    for filename in selected_files:
+        source_file = available_files[filename]
+        file_path = import_dir / filename
+        if not file_path.exists():
+            continue
+
+        with open(file_path, encoding="utf-8") as handle:
+            bib_db = bibtexparser.load(handle)
+
+        for entry in bib_db.entries:
+            stats.total_entries += 1
+
+            title = clean_bib_text(str(entry.get("title", "")))
+            abstract = clean_bib_text(str(entry.get("abstract", "")))
+
+            if abstract:
+                stats.entries_with_abstract += 1
+            elif request.exclude_without_abstract:
+                stats.excluded_without_abstract += 1
+                continue
+
+            if evaluate_query_node(query_ast, title=title, abstract=abstract):
+                matched_total += 1
+                if max_results is None or len(matched_entries) < max_results:
+                    enriched = dict(entry)
+                    enriched["_source_file"] = filename
+                    enriched["_database"] = source_file.database
+                    matched_entries.append(enriched)
+
+    stats.matched_entries = matched_total
+    stats.returned_entries = len(matched_entries)
+    bibtex = entries_to_bibtex(matched_entries)
+    return normalized_query, stats, matched_entries, bibtex
+
+
+@router.get("/{import_id}/query-presets")
+def get_query_presets(import_id: str) -> dict:
+    """List query presets from import metadata files."""
+    meta = load_import_meta(import_id)
+    presets: list[QueryPreset] = []
+    for file in meta.files:
+        if file.search_query and file.search_query.strip():
+            presets.append(
+                QueryPreset(
+                    filename=file.filename,
+                    database=file.database,
+                    search_query=file.search_query,
+                    search_date=file.search_date,
+                    url=file.url,
+                    tags=file.tags,
+                    count=file.count,
+                )
+            )
+    return {"presets": presets}
+
+
+@router.post("/{import_id}/query-search")
+def query_search(import_id: str, request: ImportQuerySearchRequest) -> ImportQuerySearchResponse:
+    """Run local boolean search over title/abstract for selected BibTeX files."""
+    normalized_query, stats, entries, bibtex = run_import_query_search(import_id, request)
+    return ImportQuerySearchResponse(
+        query=request.query,
+        normalized_query=normalized_query,
+        stats=stats,
+        entries=entries,
+        bibtex=bibtex,
+    )
 
 
 @router.post("/{import_id}/files/pick")

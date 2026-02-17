@@ -3,7 +3,7 @@
  */
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Brain, ChevronDown, ChevronRight, ExternalLink, User } from 'lucide-react';
+import { Brain, ChevronDown, ChevronRight, ExternalLink, User, PieChart, List } from 'lucide-react';
 import { stepsApi, StepMeta } from '../../lib/api';
 import { cn } from '../../lib/utils';
 import { Badge } from '../ui/Badge';
@@ -49,6 +49,12 @@ type TabGroup = {
   tabs: TabConfig[];
 };
 
+type DatabaseStat = {
+  label: string;
+  count: number;
+  ratio: number;
+};
+
 export interface HumanReviewViewerProps {
   projectId: string;
   stepId: string;
@@ -65,6 +71,7 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
   const [activeTab, setActiveTab] = useState<string>('all');
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const selectAllRef = useRef<HTMLInputElement | null>(null);
+  const [viewMode, setViewMode] = useState<'papers' | 'stats'>('papers');
 
   const { data: inputData } = useQuery({
     queryKey: ['step-input', projectId, stepId],
@@ -132,6 +139,15 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
     year?: string;
     doi?: string;
     abstract?: string;
+    url?: string;
+    URL?: string;
+    publisher?: string;
+    journal?: string;
+    booktitle?: string;
+    _source_file?: string;
+    _source_database?: string;
+    _database?: string;
+    database?: string;
   }[];
 
   const aiDecisionMap = useMemo(() => {
@@ -198,7 +214,7 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
     },
   ]), [aiDecisionCounts, entries.length, humanDecisionCounts]);
 
-  const filteredEntries = useMemo(() => {
+  const tabEntries = useMemo(() => {
     let result = entries;
     if (activeTab !== 'all') {
       result = result.filter((entry) => {
@@ -212,7 +228,11 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
         return true;
       });
     }
+    return result;
+  }, [activeTab, aiDecisionMap, entries, reviewDraft]);
 
+  const filteredEntries = useMemo(() => {
+    let result = tabEntries;
     if (!searchQuery) return result;
     const query = searchQuery.toLowerCase();
     return result.filter((entry) =>
@@ -221,11 +241,84 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
       || entry.ID?.toLowerCase().includes(query)
       || entry.doi?.toLowerCase().includes(query)
     );
-  }, [activeTab, aiDecisionMap, entries, reviewDraft, searchQuery]);
+  }, [tabEntries, searchQuery]);
+
+  const databaseStats = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const entry of tabEntries) {
+      const label = inferDatabaseLabel(entry);
+      counts.set(label, (counts.get(label) ?? 0) + 1);
+    }
+    const total = tabEntries.length || 1;
+    return Array.from(counts.entries())
+      .map(([label, count]) => ({ label, count, ratio: count / total }))
+      .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  }, [tabEntries]);
+  const topDatabaseStats = useMemo(() => {
+    const maxSlices = 6;
+    if (databaseStats.length <= maxSlices) return databaseStats;
+    const top = databaseStats.slice(0, maxSlices - 1);
+    const otherCount = databaseStats.slice(maxSlices - 1).reduce((sum, item) => sum + item.count, 0);
+    const total = tabEntries.length || 1;
+    return [...top, { label: 'Other', count: otherCount, ratio: otherCount / total }];
+  }, [databaseStats, tabEntries.length]);
+  const doiStats = useMemo(() => {
+    const doiValues = tabEntries
+      .map((entry) => String(entry.doi ?? '').trim().toLowerCase())
+      .filter((value) => value.length > 0);
+    const uniqueDoiCount = new Set(doiValues).size;
+    const withDoiCount = doiValues.length;
+    return {
+      withDoiCount,
+      withoutDoiCount: tabEntries.length - withDoiCount,
+      uniqueDoiCount,
+      duplicateDoiEntryCount: Math.max(0, withDoiCount - uniqueDoiCount),
+    };
+  }, [tabEntries]);
+  const yearStats = useMemo(() => {
+    const years = tabEntries
+      .map((entry) => parseYear(entry.year))
+      .filter((year): year is number => year !== null);
+    if (years.length === 0) {
+      return { min: null, max: null, median: null };
+    }
+    const sorted = [...years].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const median = sorted.length % 2 === 0
+      ? Math.round((sorted[mid - 1] + sorted[mid]) / 2)
+      : sorted[mid];
+    return {
+      min: sorted[0],
+      max: sorted[sorted.length - 1],
+      median,
+    };
+  }, [tabEntries]);
+  const humanJudgedCount = useMemo(
+    () => tabEntries.filter((entry) => Boolean(reviewDraft[entry.ID ?? '']?.decision)).length,
+    [tabEntries, reviewDraft]
+  );
+  const aiHumanMatchCount = useMemo(() => {
+    let matched = 0;
+    for (const entry of tabEntries) {
+      const key = entry.ID ?? '';
+      if (!key) continue;
+      const aiDecision = aiDecisionMap.get(key)?.details?.decision;
+      const humanDecision = reviewDraft[key]?.decision;
+      if (!aiDecision || !humanDecision) continue;
+      if (aiDecision === humanDecision) {
+        matched += 1;
+      }
+    }
+    return matched;
+  }, [aiDecisionMap, reviewDraft, tabEntries]);
+  const tabInfo = useMemo(
+    () => tabGroups.flatMap((group) => group.tabs).find((tab) => tab.id === activeTab),
+    [tabGroups, activeTab]
+  );
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
-  }, [activeTab, searchQuery, entries.length]);
+  }, [activeTab, searchQuery, tabEntries.length]);
 
   const visibleEntries = useMemo(
     () => filteredEntries.slice(0, visibleCount),
@@ -259,6 +352,9 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
   useEffect(() => {
     setSelectedKeys(new Set());
   }, [activeTab, searchQuery]);
+  useEffect(() => {
+    setViewMode('papers');
+  }, [stepId]);
 
   useEffect(() => {
     setSelectedKeys((prev) => {
@@ -461,11 +557,147 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
           </div>
         ))}
       </div>
-      <SearchFilter
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        placeholder="Search by title, author, key, or DOI..."
-      />
+      <div className="flex flex-col gap-3 rounded-xl border border-[hsl(var(--border))] bg-gradient-to-r from-[hsl(var(--card))] to-[hsl(var(--muted))] px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div className="text-[11px] font-medium tracking-wide uppercase text-[hsl(var(--muted-foreground))]">
+            Display Mode
+          </div>
+          <div className="text-sm">
+            <span className="font-semibold text-[hsl(var(--foreground))]">
+              {tabInfo?.label ?? activeTab}
+            </span>
+            <span className="ml-2 text-[hsl(var(--muted-foreground))]">
+              {tabEntries.length} papers
+            </span>
+          </div>
+        </div>
+        <div className="relative grid w-full grid-cols-2 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-1 shadow-sm sm:w-auto">
+          <span
+            aria-hidden
+            className={cn(
+              'absolute left-1 top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-sm transition-transform duration-200 ease-out',
+              viewMode === 'papers' ? 'translate-x-0' : 'translate-x-full'
+            )}
+          />
+          <button
+            type="button"
+            onClick={() => setViewMode('papers')}
+            aria-pressed={viewMode === 'papers'}
+            className={cn(
+              'relative z-10 inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2',
+              viewMode === 'papers'
+                ? 'text-[hsl(var(--foreground))]'
+                : 'text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]'
+            )}
+          >
+            <List className="w-3.5 h-3.5" />
+            Papers
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode('stats')}
+            aria-pressed={viewMode === 'stats'}
+            className={cn(
+              'relative z-10 inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2',
+              viewMode === 'stats'
+                ? 'text-[hsl(var(--foreground))]'
+                : 'text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]'
+            )}
+          >
+            <PieChart className="w-3.5 h-3.5" />
+            Stats
+          </button>
+        </div>
+      </div>
+
+      {viewMode === 'papers' && (
+        <SearchFilter
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          placeholder="Search by title, author, key, or DOI..."
+        />
+      )}
+
+      {viewMode === 'stats' && (
+        tabEntries.length === 0 ? (
+          <div className="text-center py-8 text-[hsl(var(--muted-foreground))]">
+            No statistics available for this tab.
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              <StatCard label="Total Papers" value={tabEntries.length} />
+              <StatCard label="With DOI" value={doiStats.withDoiCount} />
+              <StatCard label="Unique DOI" value={doiStats.uniqueDoiCount} />
+              <StatCard label="Duplicate DOI Entries" value={doiStats.duplicateDoiEntryCount} />
+              <StatCard label="Without DOI" value={doiStats.withoutDoiCount} />
+              <StatCard label="Databases" value={databaseStats.length} />
+              <StatCard label="Human Judged" value={humanJudgedCount} />
+              <StatCard label="AI/Human Match" value={aiHumanMatchCount} />
+              <StatCard
+                label="Year Range"
+                value={yearStats.min !== null && yearStats.max !== null ? `${yearStats.min}-${yearStats.max}` : '-'}
+              />
+              <StatCard
+                label="Median Year"
+                value={yearStats.median !== null ? yearStats.median : '-'}
+              />
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
+                <div className="text-sm font-medium text-[hsl(var(--card-foreground))] mb-3">
+                  Database Breakdown
+                </div>
+                <div className="flex flex-col gap-3 md:flex-row md:items-center">
+                  <DatabaseDonutChart stats={topDatabaseStats} total={tabEntries.length} />
+                  <div className="flex-1 space-y-2">
+                    {topDatabaseStats.map((item, index) => (
+                      <div key={item.label} className="flex items-center justify-between gap-3 text-xs">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span
+                            className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                            style={{ backgroundColor: PIE_COLORS[index % PIE_COLORS.length] }}
+                          />
+                          <span className="truncate">{item.label}</span>
+                        </div>
+                        <span className="text-[hsl(var(--muted-foreground))]">
+                          {item.count} ({(item.ratio * 100).toFixed(1)}%)
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
+                <div className="text-sm font-medium text-[hsl(var(--card-foreground))] mb-3">
+                  Top Databases
+                </div>
+                <div className="space-y-2">
+                  {databaseStats.slice(0, 8).map((item) => (
+                    <div key={item.label} className="space-y-1">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="truncate">{item.label}</span>
+                        <span className="text-[hsl(var(--muted-foreground))]">
+                          {item.count} papers
+                        </span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-[hsl(var(--muted))] overflow-hidden">
+                        <div
+                          className="h-full bg-[hsl(var(--primary))]"
+                          style={{ width: `${Math.max(4, item.ratio * 100)}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      )}
+
+      {viewMode === 'papers' && (
+        <>
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
@@ -563,6 +795,7 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
                 <th className="p-2">Title</th>
                 <th className="w-40 p-2">Authors</th>
                 <th className="w-16 p-2 text-center">Year</th>
+                <th className="w-28 p-2 text-center">Database</th>
                 <th className="w-32 p-2 text-center">AI Decision</th>
                 <th className="w-32 p-2 text-center">Action</th>
               </tr>
@@ -622,6 +855,11 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
                         </span>
                       </td>
                       <td className="p-2 text-center">{entry.year || '-'}</td>
+                      <td className="p-2 text-center">
+                        <span className="inline-flex items-center px-2 py-0.5 text-[10px] rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]">
+                          {inferDatabaseLabel(entry)}
+                        </span>
+                      </td>
                       <td className="p-2 text-center">
                         {renderDecisionBadge(aiDecision)}
                       </td>
@@ -756,6 +994,8 @@ export function HumanReviewViewer({ projectId, stepId, stepMeta }: HumanReviewVi
           )}
         </div>
       )}
+        </>
+      )}
     </div>
   );
 }
@@ -793,4 +1033,147 @@ function getToneClasses(tone: OutputTone | null): { label: string; badge: string
     label: `text-[hsl(var(${base}-fg))]`,
     badge: `border border-[hsl(var(${base}-border))] bg-[hsl(var(${base}-bg))] text-[hsl(var(${base}-fg))]`,
   };
+}
+
+const PIE_COLORS = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#84cc16'];
+
+function parseYear(raw: unknown): number | null {
+  const text = String(raw ?? '').trim();
+  const matched = text.match(/\b(19|20)\d{2}\b/);
+  if (!matched) return null;
+  return Number(matched[0]);
+}
+
+function normalizeDatabaseToken(raw: string): string {
+  const token = raw.trim().toLowerCase();
+  if (!token) return '';
+  const compact = token.replace(/[^a-z0-9]/g, '');
+  if (compact.includes('webofscience') || compact === 'wos') return 'wos';
+  if (compact.includes('ieee') || compact.includes('xplore')) return 'ieee';
+  if (compact.includes('acm')) return 'acm';
+  if (compact.includes('arxiv')) return 'arxiv';
+  if (compact.includes('springer')) return 'springer';
+  if (compact.includes('scopus')) return 'scopus';
+  if (compact.includes('pubmed') || compact.includes('medline')) return 'pubmed';
+  if (compact.includes('sciencedirect') || compact.includes('elsevier')) return 'sciencedirect';
+  return compact;
+}
+
+function formatDatabaseToken(token: string): string {
+  switch (token) {
+    case 'acm':
+      return 'ACM';
+    case 'ieee':
+      return 'IEEE';
+    case 'wos':
+      return 'WoS';
+    case 'arxiv':
+      return 'arXiv';
+    case 'springer':
+      return 'Springer';
+    case 'scopus':
+      return 'Scopus';
+    case 'pubmed':
+      return 'PubMed';
+    case 'sciencedirect':
+      return 'ScienceDirect';
+    default:
+      return token ? token.toUpperCase() : 'Unknown';
+  }
+}
+
+function inferDatabaseLabel(entry: {
+  _source_database?: unknown;
+  _database?: unknown;
+  database?: unknown;
+  doi?: unknown;
+  url?: unknown;
+  URL?: unknown;
+  publisher?: unknown;
+  journal?: unknown;
+  booktitle?: unknown;
+}): string {
+  const candidates = [
+    entry._source_database,
+    entry._database,
+    entry.database,
+  ];
+  for (const candidate of candidates) {
+    const normalized = normalizeDatabaseToken(String(candidate ?? ''));
+    if (normalized) return formatDatabaseToken(normalized);
+  }
+
+  const doi = String(entry.doi ?? '').trim().toLowerCase();
+  if (doi.startsWith('10.1145/')) return 'ACM';
+  if (doi.startsWith('10.1109/')) return 'IEEE';
+  if (doi.startsWith('10.48550/arxiv.')) return 'arXiv';
+
+  const sourceUrl = String(entry.url ?? entry.URL ?? '').trim().toLowerCase();
+  if (sourceUrl) {
+    try {
+      const host = new URL(sourceUrl).host;
+      if (host.includes('dl.acm.org')) return 'ACM';
+      if (host.includes('ieeexplore.ieee.org')) return 'IEEE';
+      if (host.includes('arxiv.org')) return 'arXiv';
+      if (host.includes('webofscience.com')) return 'WoS';
+      if (host.includes('link.springer.com')) return 'Springer';
+      if (host.includes('sciencedirect.com')) return 'ScienceDirect';
+    } catch {
+      // Keep fallback flow.
+    }
+  }
+
+  const publisherText = String(entry.publisher ?? entry.journal ?? entry.booktitle ?? '').trim();
+  const normalized = normalizeDatabaseToken(publisherText);
+  return normalized ? formatDatabaseToken(normalized) : 'Unknown';
+}
+
+function StatCard({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2">
+      <div className="text-[11px] text-[hsl(var(--muted-foreground))]">{label}</div>
+      <div className="text-lg font-semibold text-[hsl(var(--card-foreground))]">{value}</div>
+    </div>
+  );
+}
+
+function DatabaseDonutChart({ stats, total }: { stats: DatabaseStat[]; total: number }) {
+  const radius = 42;
+  const strokeWidth = 16;
+  const circumference = 2 * Math.PI * radius;
+  let cumulative = 0;
+
+  return (
+    <svg viewBox="0 0 120 120" className="w-36 h-36 shrink-0">
+      <g transform="translate(60 60)">
+        <circle r={radius} fill="none" stroke="hsl(var(--muted))" strokeWidth={strokeWidth} />
+        {stats.map((item, index) => {
+          const fraction = total > 0 ? item.count / total : 0;
+          const dash = fraction * circumference;
+          const offset = -cumulative * circumference;
+          cumulative += fraction;
+          return (
+            <circle
+              key={item.label}
+              r={radius}
+              fill="none"
+              stroke={PIE_COLORS[index % PIE_COLORS.length]}
+              strokeWidth={strokeWidth}
+              strokeDasharray={`${dash} ${Math.max(0, circumference - dash)}`}
+              strokeDashoffset={offset}
+              transform="rotate(-90)"
+              strokeLinecap="butt"
+            />
+          );
+        })}
+        <circle r={radius - strokeWidth / 2 - 1} fill="hsl(var(--card))" />
+        <text x="0" y="-2" textAnchor="middle" className="fill-current text-[9px] text-[hsl(var(--muted-foreground))]">
+          Total
+        </text>
+        <text x="0" y="14" textAnchor="middle" className="fill-current text-sm font-semibold text-[hsl(var(--foreground))]">
+          {total}
+        </text>
+      </g>
+    </svg>
+  );
 }

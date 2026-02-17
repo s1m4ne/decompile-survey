@@ -39,6 +39,81 @@ function formatPdfMissingReason(reason: string): string {
   return PDF_MISSING_REASON_LABELS[reason] ?? reason;
 }
 
+function normalizeDatabaseToken(raw: string): string {
+  const token = raw.trim().toLowerCase();
+  if (!token) return '';
+  const compact = token.replace(/[^a-z0-9]/g, '');
+  if (compact.includes('webofscience') || compact === 'wos') return 'wos';
+  if (compact.includes('ieee') || compact.includes('xplore')) return 'ieee';
+  if (compact.includes('acm')) return 'acm';
+  if (compact.includes('arxiv')) return 'arxiv';
+  if (compact.includes('springer')) return 'springer';
+  if (compact.includes('scopus')) return 'scopus';
+  if (compact.includes('pubmed') || compact.includes('medline')) return 'pubmed';
+  if (compact.includes('sciencedirect') || compact.includes('elsevier')) return 'sciencedirect';
+  return compact;
+}
+
+function formatDatabaseToken(token: string): string {
+  switch (token) {
+    case 'acm':
+      return 'ACM';
+    case 'ieee':
+      return 'IEEE';
+    case 'wos':
+      return 'WoS';
+    case 'arxiv':
+      return 'arXiv';
+    case 'springer':
+      return 'Springer';
+    case 'scopus':
+      return 'Scopus';
+    case 'pubmed':
+      return 'PubMed';
+    case 'sciencedirect':
+      return 'ScienceDirect';
+    default:
+      return token ? token.toUpperCase() : 'Unknown';
+  }
+}
+
+function inferDatabaseLabel(entry?: Record<string, unknown>): string {
+  if (!entry) return 'Unknown';
+  const candidates = [
+    entry._source_database,
+    entry._database,
+    entry.database,
+  ];
+  for (const candidate of candidates) {
+    const normalized = normalizeDatabaseToken(String(candidate ?? ''));
+    if (normalized) return formatDatabaseToken(normalized);
+  }
+
+  const doi = String(entry.doi ?? '').trim().toLowerCase();
+  if (doi.startsWith('10.1145/')) return 'ACM';
+  if (doi.startsWith('10.1109/')) return 'IEEE';
+  if (doi.startsWith('10.48550/arxiv.')) return 'arXiv';
+
+  const sourceUrl = String(entry.url ?? entry.URL ?? '').trim().toLowerCase();
+  if (sourceUrl) {
+    try {
+      const host = new URL(sourceUrl).host;
+      if (host.includes('dl.acm.org')) return 'ACM';
+      if (host.includes('ieeexplore.ieee.org')) return 'IEEE';
+      if (host.includes('arxiv.org')) return 'arXiv';
+      if (host.includes('webofscience.com')) return 'WoS';
+      if (host.includes('link.springer.com')) return 'Springer';
+      if (host.includes('sciencedirect.com')) return 'ScienceDirect';
+    } catch {
+      // Fall through to publisher fallback.
+    }
+  }
+
+  const publisherText = String(entry.publisher ?? entry.journal ?? entry.booktitle ?? '').trim();
+  const normalizedPublisher = normalizeDatabaseToken(publisherText);
+  return normalizedPublisher ? formatDatabaseToken(normalizedPublisher) : 'Unknown';
+}
+
 export function StepDetailPage() {
   const { projectId, stepId } = useParams<{ projectId: string; stepId: string }>();
   const navigate = useNavigate();
@@ -110,6 +185,15 @@ export function StepDetailPage() {
       author?: string;
       year?: string;
       abstract?: string;
+      doi?: string;
+      url?: string;
+      URL?: string;
+      publisher?: string;
+      journal?: string;
+      booktitle?: string;
+      _source_database?: string;
+      _database?: string;
+      database?: string;
     }[];
     const inputEntryMap = new Map(inputEntries.map((entry) => [entry.ID ?? '', entry]));
     const storedClusters = (clustersData?.clusters ?? []) as {
@@ -126,6 +210,7 @@ export function StepDetailPage() {
         authors: string;
         year: string;
         abstract?: string;
+        database?: string;
         similarity: number;
         action: string;
       }[];
@@ -134,11 +219,11 @@ export function StepDetailPage() {
       const hydrated = storedClusters.map((cluster) => ({
         ...cluster,
         members: cluster.members.map((member) => {
-          if (member.abstract) return member;
           const entry = inputEntryMap.get(member.id);
           return {
             ...member,
-            abstract: entry?.abstract ?? '',
+            abstract: member.abstract ?? entry?.abstract ?? '',
+            database: member.database ?? inferDatabaseLabel(entry),
           };
         }),
       }));
@@ -206,6 +291,7 @@ export function StepDetailPage() {
           authors: entry?.author ?? '',
           year: entry?.year ?? '',
           abstract: entry?.abstract ?? '',
+          database: inferDatabaseLabel(entry),
           similarity: 1,
           action,
         };
@@ -1132,6 +1218,13 @@ export function StepDetailPage() {
                                   <div className="text-xs text-[hsl(var(--muted-foreground))]">
                                     {authorLine} {member.year ? `· ${member.year}` : ''}
                                   </div>
+                                  {isDuplicateGroupStep && (
+                                    <div className="mt-1">
+                                      <span className="inline-flex items-center rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--muted))] px-2 py-0.5 text-[10px] text-[hsl(var(--foreground))]">
+                                        {String((member as { database?: string }).database || 'Unknown')}
+                                      </span>
+                                    </div>
+                                  )}
                                   {change?.reason && (
                                     <div className="text-[10px] text-[hsl(var(--muted-foreground))]">
                                       {change.reason}
@@ -1520,6 +1613,7 @@ export function StepDetailPage() {
           onClose={() => setIsConfigModalOpen(false)}
           onRun={handleRunWithConfig}
           step={pipelineStep}
+          projectId={projectId!}
           isRunning={runMutation.isPending || updateStepMutation.isPending}
         />
       )}

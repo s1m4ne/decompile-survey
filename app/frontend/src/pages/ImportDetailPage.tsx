@@ -17,6 +17,7 @@ import {
   ChevronRight,
   ExternalLink,
   Pencil,
+  Search,
 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
@@ -377,6 +378,14 @@ export function ImportDetailPage() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <Link
+              to={`/imports/${importId}/query-search`}
+              className="inline-flex items-center gap-2 px-3 py-2 text-sm border border-[hsl(var(--border))] rounded-md hover:bg-[hsl(var(--muted))]"
+              title="Query Search"
+            >
+              <Search className="w-4 h-4" />
+              Query Search
+            </Link>
             <button
               onClick={() => duplicateMutation.mutate()}
               disabled={duplicateMutation.isPending}

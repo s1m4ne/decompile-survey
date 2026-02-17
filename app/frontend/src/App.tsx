@@ -9,6 +9,7 @@ import { StepTypesPage } from './pages/StepTypesPage';
 import { SourcesPage } from './pages/SourcesPage';
 import { ImportsPage } from './pages/ImportsPage';
 import { ImportDetailPage } from './pages/ImportDetailPage';
+import { ImportQuerySearchPage } from './pages/ImportQuerySearchPage';
 import { PdfLibraryPage } from './pages/PdfLibraryPage';
 
 const queryClient = new QueryClient({
@@ -33,6 +34,7 @@ function App() {
               <Route path="/projects/:projectId/sources" element={<SourcesPage />} />
               <Route path="/imports" element={<ImportsPage />} />
               <Route path="/imports/:importId" element={<ImportDetailPage />} />
+              <Route path="/imports/:importId/query-search" element={<ImportQuerySearchPage />} />
               <Route path="/pdf-library" element={<PdfLibraryPage />} />
               <Route path="/step-types" element={<StepTypesPage />} />
             </Routes>
