@@ -6,12 +6,16 @@
 
 ### bibtex_fetcher/
 
-arXiv APIからBibTeXを取得するスクリプト。
+arXiv APIからBibTeXを取得するスクリプトと、Springer CSVをBibTeXに変換するスクリプト。
 
 ```bash
 python3 arxiv_fetch.py \
   --query '(ti:"decompil*" OR abs:"decompil*")' \
   --page-size 100 --max-pages 2
+
+python3 springer_csv_to_bibtex.py \
+  --input /path/to/SearchResults.csv \
+  --output /path/to/SearchResults.bib
 ```
 
 詳細: [bibtex_fetcher/README.md](bibtex_fetcher/README.md)

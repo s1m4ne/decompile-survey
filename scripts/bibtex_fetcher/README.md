@@ -1,6 +1,6 @@
 # BibTeX Fetcher
 
-arXiv APIからBibTeXを取得するスクリプト。アブストラクトやその他のメタデータも含めて出力する。
+arXiv APIからBibTeXを取得するスクリプト、およびSpringer CSVをBibTeXに変換するスクリプト。
 
 ## 使い方
 
@@ -14,6 +14,13 @@ uv run python scripts/bibtex_fetcher/arxiv_fetch.py \
 uv run python scripts/bibtex_fetcher/arxiv_fetch.py \
   --query '(ti:"source recovery" OR abs:"source recovery") AND (cat:cs.CR)' \
   --output imports/arXiv/arXiv_decompil_20260115_1200.bib
+```
+
+```bash
+# Springer CSVをBibTeXに変換（Crossref + Springerページのabstract補完）
+python3 scripts/bibtex_fetcher/springer_csv_to_bibtex.py \
+  --input /Users/matsulab/Downloads/SearchResults.csv \
+  --output /Users/matsulab/Downloads/SearchResults.bib
 ```
 
 ## オプション
@@ -30,3 +37,5 @@ uv run python scripts/bibtex_fetcher/arxiv_fetch.py \
 
 - arXiv APIの`search_query`構文を使用
 - 大量の結果を取得する場合は`--max-pages`を増やし、`--sleep`を適切に設定
+- `springer_csv_to_bibtex.py` は、Crossrefにabstractが無い場合に `link.springer.com` ページをスクレイピングしてabstractを補完する
+- `--no-springer-scrape` を付けるとスクレイピング補完を無効化できる
